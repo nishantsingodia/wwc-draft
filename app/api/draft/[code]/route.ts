@@ -46,7 +46,7 @@ export async function GET(
     .where(eq(teamSelections.contestId, contest.id));
 
   const match = getMatchByKey(contest.matchKey);
-  const lastXI = getLastPlayedXI();
+  const lastXI = await getLastPlayedXI();
 
   const pool = match
     ? getPlayersByTeams(match.team1, match.team2, lastXI)

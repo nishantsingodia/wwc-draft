@@ -33,7 +33,7 @@ export async function GET(
 
   // contest.matchLabel is "Match N: TEAM1 v TEAM2"; CSV uses "Match N — TEAM1 v TEAM2"
   const csvLabel = toCsvMatchLabel(contest.matchLabel);
-  const pointsMap = getMatchPoints(csvLabel);
+  const pointsMap = await getMatchPoints(csvLabel);
 
   const teams = selections.map((sel) => {
     const playerKeys: string[] = JSON.parse(sel.selectedPlayers ?? "[]");

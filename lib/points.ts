@@ -1,35 +1,72 @@
 import { readFileSync } from "fs";
 
-const CSV_PATH =
-  process.env.POINTS_CSV_PATH ??
-  "/Users/nishant-singodia/wwc-points-bot/out.csv";
+const CSV_PATH = process.env.POINTS_CSV_PATH;
+const CSV_URL = process.env.POINTS_CSV_URL;
 
-function readCsv(): string[][] | null {
-  try {
-    const raw = readFileSync(CSV_PATH, "utf-8");
-    const lines = raw.split("\n").filter((l) => l.trim());
-    return lines.map((l) => l.split(","));
-  } catch {
-    return null;
+async function fetchCsvText(): Promise<string | null> {
+  // Local file first (dev)
+  if (CSV_PATH) {
+    try {
+      return readFileSync(CSV_PATH, "utf-8");
+    } catch {
+      // fall through to URL
+    }
   }
+
+  // Remote URL (production — Google Sheet CSV export)
+  if (CSV_URL) {
+    try {
+      const res = await fetch(CSV_URL, { next: { revalidate: 300 } });
+      if (res.ok) return await res.text();
+    } catch {
+      // fall through
+    }
+  }
+
+  return null;
 }
 
-let _cache: string[][] | null | undefined = undefined;
-function getCsv(): string[][] | null {
-  if (_cache === undefined) _cache = readCsv();
-  return _cache;
+function parseLine(line: string): string[] {
+  const result: string[] = [];
+  let current = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') {
+      inQuotes = !inQuotes;
+    } else if (c === "," && !inQuotes) {
+      result.push(current);
+      current = "";
+    } else {
+      current += c;
+    }
+  }
+  result.push(current);
+  return result;
+}
+
+function parseCsv(text: string): string[][] {
+  return text
+    .split("\n")
+    .filter((l) => l.trim())
+    .map(parseLine);
+}
+
+let _cachePromise: Promise<string[][] | null> | null = null;
+
+async function getCsv(): Promise<string[][] | null> {
+  if (!_cachePromise) {
+    _cachePromise = fetchCsvText().then((text) => (text ? parseCsv(text) : null));
+  }
+  return _cachePromise;
 }
 
 function headerIdx(header: string[], col: string): number {
   return header.indexOf(col);
 }
 
-/**
- * Returns a map of teamCode → Set<playerDisplayName> for the last played XI.
- * Teams with no CSV data return an empty Set (caller should fall back to squadNumber).
- */
-export function getLastPlayedXI(): Map<string, Set<string>> {
-  const rows = getCsv();
+export async function getLastPlayedXI(): Promise<Map<string, Set<string>>> {
+  const rows = await getCsv();
   if (!rows || rows.length < 2) return new Map();
 
   const header = rows[0];
@@ -38,7 +75,6 @@ export function getLastPlayedXI(): Map<string, Set<string>> {
   const nameIdx = headerIdx(header, "Full Name");
   const playedIdx = headerIdx(header, "Played");
 
-  // Find last match number per team
   const lastMatchPerTeam = new Map<string, string>();
   for (const row of rows.slice(1)) {
     const team = row[teamIdx];
@@ -47,7 +83,6 @@ export function getLastPlayedXI(): Map<string, Set<string>> {
     lastMatchPerTeam.set(team, match);
   }
 
-  // Collect XI for each team's last match
   const result = new Map<string, Set<string>>();
   for (const row of rows.slice(1)) {
     const team = row[teamIdx];
@@ -64,12 +99,8 @@ export function getLastPlayedXI(): Map<string, Set<string>> {
   return result;
 }
 
-/**
- * Returns Map<playerDisplayName, fantasyPoints> for a given match label.
- * Match label format: "Match N — TEAM1 v TEAM2"
- */
-export function getMatchPoints(matchLabel: string): Map<string, number> {
-  const rows = getCsv();
+export async function getMatchPoints(matchLabel: string): Promise<Map<string, number>> {
+  const rows = await getCsv();
   if (!rows || rows.length < 2) return new Map();
 
   const header = rows[0];
@@ -87,9 +118,6 @@ export function getMatchPoints(matchLabel: string): Map<string, number> {
   return result;
 }
 
-/**
- * Convert matches.json label ("Match N: TEAM1 v TEAM2") to out.csv format ("Match N — TEAM1 v TEAM2").
- */
 export function toCsvMatchLabel(label: string): string {
   return label.replace(":", " —");
 }
