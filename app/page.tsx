@@ -50,8 +50,8 @@ export default function LoginPage() {
             <Input
               value={code}
               onChange={(e) => setCode(e.target.value.toUpperCase())}
-              placeholder="NISH2026"
-              className="bg-zinc-900 border-zinc-700 text-white text-center text-lg tracking-widest font-mono h-12"
+              placeholder="Enter code"
+className="bg-zinc-900 border-zinc-700 text-white text-center text-lg tracking-widest font-mono h-12"
               autoComplete="off"
               autoFocus
             />

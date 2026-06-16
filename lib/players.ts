@@ -132,12 +132,27 @@ export function getAllPlayers(): Player[] {
   return ALL_PLAYERS;
 }
 
-export function getPlayersByTeams(team1: string, team2: string): Player[] {
+export type PlayerPool = Player & { isLikelyXI: boolean };
+
+export function getPlayersByTeams(
+  team1: string,
+  team2: string,
+  lastXI?: Map<string, Set<string>>
+): PlayerPool[] {
   return ALL_PLAYERS.filter(
-    (p) =>
-      (p.teamCode === team1 || p.teamCode === team2) &&
-      p.squadNumber <= 11 // likely playing XI (squad positions 1-11)
-  ).sort((a, b) => b.efppm - a.efppm);
+    (p) => p.teamCode === team1 || p.teamCode === team2
+  )
+    .sort((a, b) => {
+      if (a.teamCode !== b.teamCode) return a.teamCode.localeCompare(b.teamCode);
+      return a.squadNumber - b.squadNumber;
+    })
+    .map((p) => {
+      const teamXI = lastXI?.get(p.teamCode);
+      const isLikelyXI = teamXI
+        ? teamXI.has(p.displayName)
+        : p.squadNumber <= 11;
+      return { ...p, isLikelyXI };
+    });
 }
 
 export function getPlayerByKey(key: string): Player | undefined {

@@ -2,9 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, draftPicks, contestParticipants, teamSelections } from "@/lib/db";
 import { eq } from "drizzle-orm";
-import { getPlayersByTeams, getFullSquadByTeams } from "@/lib/players";
+import { getPlayersByTeams } from "@/lib/players";
 import { getMatchByKey } from "@/lib/matches";
 import { currentPicker } from "@/lib/snake-draft";
+import { getLastPlayedXI } from "@/lib/points";
 
 export async function GET(
   request: NextRequest,
@@ -45,14 +46,19 @@ export async function GET(
     .where(eq(teamSelections.contestId, contest.id));
 
   const match = getMatchByKey(contest.matchKey);
-  // Player pool: squad positions 1-11 (probable XI) from each team
-  const pool = match
-    ? getPlayersByTeams(match.team1, match.team2)
-    : getFullSquadByTeams("NZ", "SL");
+  const lastXI = getLastPlayedXI();
 
-  const takenKeys = new Set(picks.map((p) => p.playerKey));
+  const pool = match
+    ? getPlayersByTeams(match.team1, match.team2, lastXI)
+    : getPlayersByTeams("NZ", "SL", lastXI);
+
   const playerPool = pool.map((p) => ({
-    ...p,
+    key: p.key,
+    displayName: p.displayName,
+    role: p.role,
+    teamCode: p.teamCode,
+    efppm: p.efppm,
+    isLikelyXI: p.isLikelyXI,
     takenBy: picks.find((pk) => pk.playerKey === p.key)?.pickedBy ?? null,
   }));
 
@@ -80,6 +86,6 @@ export async function GET(
     mySelection: mySelection.find((s) => s.user === username) ?? null,
     allSelections: mySelection,
     username,
-    takenCount: takenKeys.size,
+    takenCount: picks.length,
   });
 }

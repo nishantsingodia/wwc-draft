@@ -7,25 +7,23 @@ import Link from "next/link";
 import { getUserLabel } from "@/lib/users";
 import LogoutButton from "@/components/logout-button";
 
-async function getActiveContests(username: string) {
+async function getMyContests(username: string) {
   const db = getDb();
-  // Get contests the user has joined or created
   const participated = await db
     .select({ contestId: contestParticipants.contestId })
     .from(contestParticipants)
     .where(eq(contestParticipants.user, username));
 
-  const createdContests = await db
+  const created = await db
     .select()
     .from(draftContests)
     .where(eq(draftContests.createdBy, username))
     .orderBy(desc(draftContests.createdAt))
-    .limit(10);
+    .limit(20);
 
-  // Merge
   const ids = new Set([
     ...participated.map((p) => p.contestId),
-    ...createdContests.map((c) => c.id),
+    ...created.map((c) => c.id),
   ]);
 
   if (ids.size === 0) return [];
@@ -34,9 +32,21 @@ async function getActiveContests(username: string) {
     .select()
     .from(draftContests)
     .orderBy(desc(draftContests.createdAt))
-    .limit(20);
+    .limit(30);
 
   return all.filter((c) => ids.has(c.id));
+}
+
+async function getOpenWaitingDrafts(username: string) {
+  const db = getDb();
+  const rows = await db
+    .select()
+    .from(draftContests)
+    .where(eq(draftContests.status, "WAITING"))
+    .orderBy(desc(draftContests.createdAt))
+    .limit(10);
+  // Exclude ones the user created (already shown in My Drafts)
+  return rows.filter((c) => c.createdBy !== username);
 }
 
 const STATUS_LABELS: Record<string, { label: string; color: string }> = {
@@ -51,11 +61,15 @@ export default async function LobbyPage() {
   const username = await getSession();
   if (!username) redirect("/");
 
-  let contests: Awaited<ReturnType<typeof getActiveContests>> = [];
+  let myContests: Awaited<ReturnType<typeof getMyContests>> = [];
+  let openDrafts: Awaited<ReturnType<typeof getOpenWaitingDrafts>> = [];
   try {
-    contests = await getActiveContests(username);
+    [myContests, openDrafts] = await Promise.all([
+      getMyContests(username),
+      getOpenWaitingDrafts(username),
+    ]);
   } catch {
-    // DB not configured yet — show empty state
+    // DB not configured yet
   }
 
   return (
@@ -65,9 +79,7 @@ export default async function LobbyPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold">🏏 WWC Draft</h1>
-            <p className="text-zinc-400 text-sm">
-              Welcome, {getUserLabel(username)}
-            </p>
+            <p className="text-zinc-400 text-sm">Welcome, {getUserLabel(username)}</p>
           </div>
           <LogoutButton />
         </div>
@@ -81,25 +93,46 @@ export default async function LobbyPage() {
             <span className="text-3xl">+</span>
             <span className="font-semibold">Create Draft</span>
           </Link>
-
           <JoinDraftCard />
         </div>
 
-        {/* Active Contests */}
+        {/* Open WAITING drafts from others */}
+        {openDrafts.length > 0 && (
+          <div className="space-y-3">
+            <h2 className="text-sm text-zinc-400 uppercase tracking-wider">
+              Open — Join Now
+            </h2>
+            {openDrafts.map((c) => (
+              <Link
+                key={c.id}
+                href={`/draft/${c.code}`}
+                className="flex items-center justify-between bg-yellow-900/30 border border-yellow-700/50 rounded-xl px-4 py-3 hover:bg-yellow-900/50 transition-colors"
+              >
+                <div>
+                  <p className="font-semibold">{c.matchLabel}</p>
+                  <p className="text-sm text-yellow-400">Waiting for players</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-yellow-300 font-mono text-sm font-bold">{c.code}</p>
+                  <p className="text-zinc-500 text-xs">
+                    {c.mode === "live" ? "Live Draft" : "Manual Entry"}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* My Drafts */}
         <div className="space-y-3">
-          <h2 className="text-sm text-zinc-400 uppercase tracking-wider">
-            Your Drafts
-          </h2>
-          {contests.length === 0 ? (
+          <h2 className="text-sm text-zinc-400 uppercase tracking-wider">Your Drafts</h2>
+          {myContests.length === 0 ? (
             <p className="text-zinc-600 text-sm py-4">
               No drafts yet. Create one or join with a code.
             </p>
           ) : (
-            contests.map((c) => {
-              const st = STATUS_LABELS[c.status] ?? {
-                label: c.status,
-                color: "text-zinc-400",
-              };
+            myContests.map((c) => {
+              const st = STATUS_LABELS[c.status] ?? { label: c.status, color: "text-zinc-400" };
               return (
                 <Link
                   key={c.id}

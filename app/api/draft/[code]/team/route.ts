@@ -64,11 +64,11 @@ export async function POST(
     return NextResponse.json({ error: "Teams are locked" }, { status: 403 });
   }
 
-  // Auto-lock if past deadline
+  // Auto-lock only for live drafts past deadline; manual drafts never auto-lock
   const now = Math.floor(Date.now() / 1000);
-  const isLocked = now >= contest.matchDeadline;
+  const isLocked = contest.mode === "live" && now >= contest.matchDeadline;
 
-  const now2 = Math.floor(Date.now() / 1000);
+  const now2 = now;
 
   // Upsert team selection
   const existing = await db

@@ -2,11 +2,12 @@ import matchesData from "@/data/matches.json";
 
 export type Match = {
   key: string;
+  matchNum: number;
   team1: string;
   team2: string;
   label: string;
-  date: string; // ISO string
-  deadlineTs: number; // unix seconds
+  date: string;
+  deadlineTs: number;
 };
 
 export function getAllMatches(): Match[] {
@@ -18,8 +19,7 @@ export function getAllMatches(): Match[] {
 
 export function getUpcomingMatches(): Match[] {
   const now = Math.floor(Date.now() / 1000);
-  // Show matches within 3 days from now or already started but not too far in past
-  return getAllMatches().filter((m) => m.deadlineTs > now - 3600 * 6); // up to 6h after start
+  return getAllMatches().filter((m) => m.deadlineTs > now);
 }
 
 export function getMatchByKey(key: string): Match | undefined {

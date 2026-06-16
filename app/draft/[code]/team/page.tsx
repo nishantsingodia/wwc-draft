@@ -114,7 +114,8 @@ export default function TeamPage({
 
   const isLocked =
     data?.mySelection?.isLocked ||
-    (data?.contest?.matchDeadline != null &&
+    (data?.contest?.mode === "live" &&
+      data?.contest?.matchDeadline != null &&
       Math.floor(Date.now() / 1000) >= data.contest.matchDeadline);
 
   const countdown = useCountdown(data?.contest?.matchDeadline ?? 0);
