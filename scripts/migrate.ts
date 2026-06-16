@@ -1,0 +1,81 @@
+#!/usr/bin/env npx tsx
+/**
+ * Run this once to create the tables in Turso:
+ *   TURSO_DATABASE_URL=... TURSO_AUTH_TOKEN=... npx tsx scripts/migrate.ts
+ *
+ * For local dev with a file-based SQLite (no Turso account yet), set:
+ *   TURSO_DATABASE_URL=file:db/draft.db
+ */
+import { createClient } from "@libsql/client";
+import * as dotenv from "dotenv";
+import path from "path";
+
+dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
+
+const url = process.env.TURSO_DATABASE_URL ?? "file:db/draft.db";
+const authToken = process.env.TURSO_AUTH_TOKEN;
+
+const client = createClient({ url, authToken: authToken ?? undefined });
+
+const DDL = [
+  `CREATE TABLE IF NOT EXISTS draft_contests (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    code TEXT NOT NULL UNIQUE,
+    match_key TEXT NOT NULL,
+    match_label TEXT NOT NULL,
+    match_deadline INTEGER NOT NULL,
+    picks_per_user INTEGER NOT NULL DEFAULT 11,
+    backups_per_user INTEGER NOT NULL DEFAULT 4,
+    mode TEXT NOT NULL DEFAULT 'live',
+    status TEXT NOT NULL DEFAULT 'WAITING',
+    draft_order TEXT,
+    pick_count INTEGER NOT NULL DEFAULT 0,
+    created_by TEXT NOT NULL,
+    created_at INTEGER NOT NULL
+  )`,
+  `CREATE TABLE IF NOT EXISTS draft_picks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    contest_id INTEGER NOT NULL,
+    picked_by TEXT NOT NULL,
+    player_key TEXT NOT NULL,
+    player_name TEXT NOT NULL,
+    player_role TEXT NOT NULL,
+    player_team TEXT NOT NULL,
+    pick_number INTEGER NOT NULL,
+    picked_at INTEGER NOT NULL,
+    UNIQUE(contest_id, player_key)
+  )`,
+  `CREATE TABLE IF NOT EXISTS team_selections (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    contest_id INTEGER NOT NULL,
+    user TEXT NOT NULL,
+    selected_players TEXT NOT NULL DEFAULT '[]',
+    captain_key TEXT,
+    vice_captain_key TEXT,
+    submitted_at INTEGER,
+    is_locked INTEGER NOT NULL DEFAULT 0,
+    UNIQUE(contest_id, user)
+  )`,
+  `CREATE TABLE IF NOT EXISTS contest_participants (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    contest_id INTEGER NOT NULL,
+    user TEXT NOT NULL,
+    joined_at INTEGER NOT NULL,
+    UNIQUE(contest_id, user)
+  )`,
+];
+
+async function migrate() {
+  console.log("Connecting to:", url);
+  for (const sql of DDL) {
+    await client.execute(sql);
+    console.log("✓", sql.slice(0, 60).trim() + "...");
+  }
+  console.log("Migration complete.");
+  client.close();
+}
+
+migrate().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
