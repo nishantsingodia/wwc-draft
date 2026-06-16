@@ -36,6 +36,7 @@ type ContestState = {
     status: string;
     draftOrder: string[] | null;
     pickCount: number;
+    createdBy: string;
   };
   participants: string[];
   picks: Pick[];
@@ -175,6 +176,26 @@ export default function DraftBoardPage({
   const isWaiting = contest.status === "WAITING";
   const isDrafting = contest.status === "DRAFTING";
 
+  // 2-player live: show interactive coin toss instead of plain waiting screen
+  const awaitingToss =
+    isWaiting &&
+    contest.mode === "live" &&
+    !contest.draftOrder &&
+    participants.length >= 2;
+
+  if (awaitingToss) {
+    return (
+      <CoinTossScreen
+        code={code}
+        matchLabel={contest.matchLabel}
+        participants={participants}
+        username={username}
+        isCreator={username === contest.createdBy}
+        onDraftStart={fetchState}
+      />
+    );
+  }
+
   const teamCodes = [...new Set(playerPool.map((p) => p.teamCode))].sort();
   const [team1Code, team2Code] = teamCodes;
 
@@ -199,14 +220,6 @@ export default function DraftBoardPage({
 
   return (
     <main className="min-h-screen bg-[#0a1628] text-white">
-      {coinFlipActive && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="text-center space-y-4 animate-bounce">
-            <div className="text-6xl">🪙</div>
-            <p className="text-2xl font-bold text-yellow-400">Deciding who picks first…</p>
-          </div>
-        </div>
-      )}
 
       {/* Top bar */}
       <div className="bg-[#112347] px-3 pt-3 pb-0 sticky top-0 z-20">
@@ -510,6 +523,163 @@ function PlayerCard({
         <div className="h-px bg-zinc-700/60 mx-2 my-0.5" />
       )}
     </>
+  );
+}
+
+type TossPhase = "CHOOSE" | "FLIPPING" | "RESULT";
+
+function CoinTossScreen({
+  code,
+  matchLabel,
+  participants,
+  username,
+  isCreator,
+  onDraftStart,
+}: {
+  code: string;
+  matchLabel: string;
+  participants: string[];
+  username: string;
+  isCreator: boolean;
+  onDraftStart: () => void;
+}) {
+  const [phase, setPhase] = useState<TossPhase>("CHOOSE");
+  const [myCall, setMyCall] = useState<"H" | "T" | null>(null);
+  const [coinFace, setCoinFace] = useState<"H" | "T">("H");
+  const [tossResult, setTossResult] = useState<{
+    result: "H" | "T";
+    callerWins: boolean;
+    winner: string;
+  } | null>(null);
+
+  const others = participants.filter((u) => u !== username);
+
+  async function callToss(call: "H" | "T") {
+    setMyCall(call);
+    setPhase("FLIPPING");
+
+    // Rapid coin face alternation during flip
+    let flips = 0;
+    const interval = setInterval(() => {
+      setCoinFace((f) => (f === "H" ? "T" : "H"));
+      flips++;
+    }, 100);
+
+    const res = await fetch(`/api/draft/${code}/toss`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ call }),
+    });
+    const data = await res.json();
+
+    // Let the flip run for at least 2.5s total
+    await new Promise((r) => setTimeout(r, 2500));
+    clearInterval(interval);
+    setCoinFace(data.result);
+    setTossResult(data);
+    setPhase("RESULT");
+
+    // Show result for 2.5s then load draft
+    setTimeout(() => onDraftStart(), 2500);
+  }
+
+  return (
+    <main className="min-h-screen bg-[#0a1628] text-white flex flex-col items-center justify-center px-6 gap-8">
+      {/* Match label */}
+      <div className="text-center space-y-1">
+        <p className="text-zinc-400 text-xs uppercase tracking-widest">Live Draft</p>
+        <h1 className="font-bold text-lg">{matchLabel}</h1>
+      </div>
+
+      {/* Players list */}
+      <div className="flex gap-6 justify-center">
+        {participants.map((u) => (
+          <div key={u} className="text-center space-y-1">
+            <div className="w-12 h-12 rounded-full bg-[#112347] border-2 border-zinc-600 flex items-center justify-center text-lg font-bold">
+              {getUserLabel(u)[0].toUpperCase()}
+            </div>
+            <p className="text-sm text-zinc-300">{getUserLabel(u)}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Coin */}
+      <div
+        className={`w-28 h-28 rounded-full flex items-center justify-center text-5xl border-4 transition-all duration-150 ${
+          phase === "FLIPPING"
+            ? "border-yellow-400 bg-yellow-900/30 scale-110"
+            : phase === "RESULT" && tossResult?.callerWins
+            ? "border-green-400 bg-green-900/30"
+            : phase === "RESULT"
+            ? "border-red-400 bg-red-900/20"
+            : "border-zinc-600 bg-[#112347]"
+        }`}
+      >
+        {phase === "FLIPPING" ? (
+          <span className="font-black text-yellow-300 text-4xl">{coinFace}</span>
+        ) : phase === "RESULT" ? (
+          <span className="font-black text-4xl">
+            {tossResult?.result === "H" ? "🪙" : "🥏"}
+          </span>
+        ) : (
+          <span className="text-5xl">🪙</span>
+        )}
+      </div>
+
+      {/* Phase-specific content */}
+      {phase === "CHOOSE" && (
+        <div className="space-y-4 text-center w-full max-w-xs">
+          {isCreator ? (
+            <>
+              <p className="text-zinc-300 font-semibold">Call the toss!</p>
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  onClick={() => callToss("H")}
+                  className="h-16 rounded-2xl bg-[#112347] border-2 border-zinc-600 hover:border-yellow-400 hover:bg-yellow-900/20 transition-all font-black text-2xl text-yellow-300"
+                >
+                  H
+                  <p className="text-xs font-normal text-zinc-400 mt-0.5">Heads</p>
+                </button>
+                <button
+                  onClick={() => callToss("T")}
+                  className="h-16 rounded-2xl bg-[#112347] border-2 border-zinc-600 hover:border-yellow-400 hover:bg-yellow-900/20 transition-all font-black text-2xl text-yellow-300"
+                >
+                  T
+                  <p className="text-xs font-normal text-zinc-400 mt-0.5">Tails</p>
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="text-center space-y-2">
+              <p className="text-zinc-400 animate-pulse">
+                ⏳ Waiting for <span className="text-white font-semibold">{getUserLabel(others[0] ?? "")}</span> to call the toss…
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      {phase === "FLIPPING" && (
+        <p className="text-yellow-400 font-semibold animate-pulse text-lg">Flipping…</p>
+      )}
+
+      {phase === "RESULT" && tossResult && (
+        <div className="text-center space-y-3">
+          <p className="text-2xl font-black text-white">
+            {tossResult.result === "H" ? "HEADS!" : "TAILS!"}
+          </p>
+          {myCall && (
+            <p className={`text-lg font-semibold ${tossResult.callerWins ? "text-green-400" : "text-red-400"}`}>
+              {tossResult.callerWins ? "You called it! 🎉" : "Unlucky! 😅"}
+            </p>
+          )}
+          <p className="text-zinc-300">
+            <span className="font-bold text-white">{getUserLabel(tossResult.winner)}</span> picks first!
+          </p>
+          <p className="text-zinc-500 text-sm animate-pulse">Starting draft…</p>
+        </div>
+      )}
+    </main>
   );
 }
 

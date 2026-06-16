@@ -65,15 +65,27 @@ export async function POST(
     contest.mode === "live" ? users.length >= 2 : users.length >= 1;
 
   if (canStart) {
-    const order = shuffleArray(users);
-    const newStatus = contest.mode === "live" ? "DRAFTING" : "TEAM_SELECT";
+    if (contest.mode === "manual") {
+      const order = shuffleArray(users);
+      await db
+        .update(draftContests)
+        .set({ status: "TEAM_SELECT", draftOrder: JSON.stringify(order) })
+        .where(eq(draftContests.id, contest.id));
+      return NextResponse.json({ status: "TEAM_SELECT" });
+    }
 
+    if (users.length === 2) {
+      // 2-player live: stay WAITING — client shows interactive coin toss
+      return NextResponse.json({ status: "WAITING", users, awaitingToss: true });
+    }
+
+    // 3+ players live: auto-shuffle and start
+    const order = shuffleArray(users);
     await db
       .update(draftContests)
-      .set({ status: newStatus, draftOrder: JSON.stringify(order) })
+      .set({ status: "DRAFTING", draftOrder: JSON.stringify(order) })
       .where(eq(draftContests.id, contest.id));
-
-    return NextResponse.json({ status: newStatus, draftOrder: order });
+    return NextResponse.json({ status: "DRAFTING", draftOrder: order });
   }
 
   return NextResponse.json({ status: "WAITING", users });
