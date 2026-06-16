@@ -132,6 +132,34 @@ export function getAllPlayers(): Player[] {
   return ALL_PLAYERS;
 }
 
+// Same approach as wwc-points-bot match_squad_to_perf: normalize then last-name + first-initial
+function normName(s: string): string {
+  return s
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function matchesXI(displayName: string, xi: Set<string>): boolean {
+  const dn = normName(displayName);
+  const dnParts = dn.split(" ");
+  const lastName = dnParts[dnParts.length - 1];
+  const firstInit = dnParts[0]?.[0] ?? "";
+
+  for (const xiName of xi) {
+    const xn = normName(xiName);
+    if (xn === dn) return true;
+    const xnParts = xn.split(" ");
+    const xLast = xnParts[xnParts.length - 1];
+    const xFirst = xnParts[0]?.[0] ?? "";
+    if (xLast === lastName && xFirst === firstInit) return true;
+  }
+  return false;
+}
+
 export type PlayerPool = Player & { isLikelyXI: boolean };
 
 export function getPlayersByTeams(
@@ -149,7 +177,7 @@ export function getPlayersByTeams(
     .map((p) => {
       const teamXI = lastXI?.get(p.teamCode);
       const isLikelyXI = teamXI
-        ? teamXI.has(p.displayName)
+        ? matchesXI(p.displayName, teamXI)
         : p.squadNumber <= 11;
       return { ...p, isLikelyXI };
     });
