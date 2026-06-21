@@ -1,1 +1,3256 @@
-[{"id":852,"name":"BL Mooney","country":"Australia","role":"WK","squad_number":1,"team_code":"AUS","efppm":84.5},{"id":2480,"name":"G Voll","country":"Australia","role":"BAT","squad_number":2,"team_code":"AUS","efppm":80.8},{"id":2481,"name":"P Litchfield","country":"Australia","role":"BAT","squad_number":3,"team_code":"AUS","efppm":49.1},{"id":849,"name":"EA Perry","country":"Australia","role":"AR","squad_number":4,"team_code":"AUS","efppm":46.1},{"id":2483,"name":"TM McGrath","country":"Australia","role":"BAT","squad_number":5,"team_code":"AUS","efppm":41.1},{"id":1132,"name":"A Gardner","country":"Australia","role":"AR","squad_number":6,"team_code":"AUS","efppm":77.2},{"id":2482,"name":"A Sutherland","country":"Australia","role":"BOWL","squad_number":7,"team_code":"AUS","efppm":73.6},{"id":2594,"name":"S Molineux","country":"Australia","role":"BOWL","squad_number":8,"team_code":"AUS","efppm":50.7},{"id":2484,"name":"GM Harris","country":"Australia","role":"BAT","squad_number":9,"team_code":"AUS","efppm":61.9},{"id":1135,"name":"G Wareham","country":"Australia","role":"BOWL","squad_number":10,"team_code":"AUS","efppm":60.7},{"id":854,"name":"ML Schutt","country":"Australia","role":"BOWL","squad_number":11,"team_code":"AUS","efppm":45.3},{"id":2485,"name":"A King","country":"Australia","role":"BOWL","squad_number":12,"team_code":"AUS","efppm":61.1},{"id":2821,"name":"NJ Carey","country":"Australia","role":"BOWL","squad_number":13,"team_code":"AUS","efppm":68.9},{"id":7308,"name":"Kim Garth","country":"Australia","role":"BOWL","squad_number":14,"team_code":"AUS","efppm":20},{"id":7309,"name":"Lucy Hamilton","country":"Australia","role":"BOWL","squad_number":15,"team_code":"AUS","efppm":20},{"id":1197,"name":"Dilara Akter","country":"Bangladesh","role":"WK","squad_number":1,"team_code":"BAN","efppm":30.2},{"id":3274,"name":"Juairiya Ferdous","country":"Bangladesh","role":"BAT","squad_number":2,"team_code":"BAN","efppm":39.3},{"id":2364,"name":"S Mostary","country":"Bangladesh","role":"BAT","squad_number":3,"team_code":"BAN","efppm":31.9},{"id":1199,"name":"Nigar Sultana","country":"Bangladesh","role":"WK","squad_number":4,"team_code":"BAN","efppm":46.3},{"id":7318,"name":"Sharmin Akter Supta","country":"Bangladesh","role":"BAT","squad_number":5,"team_code":"BAN","efppm":20},{"id":3275,"name":"Shorna Akter","country":"Bangladesh","role":"BAT","squad_number":6,"team_code":"BAN","efppm":28.4},{"id":1201,"name":"Ritu Moni","country":"Bangladesh","role":"BOWL","squad_number":7,"team_code":"BAN","efppm":35.5},{"id":1204,"name":"Nahida Akter","country":"Bangladesh","role":"BOWL","squad_number":8,"team_code":"BAN","efppm":51.6},{"id":2366,"name":"Rabeya Khan","country":"Bangladesh","role":"BOWL","squad_number":9,"team_code":"BAN","efppm":36.2},{"id":3128,"name":"Fariha Trisna","country":"Bangladesh","role":"BOWL","squad_number":10,"team_code":"BAN","efppm":24.4},{"id":1203,"name":"Marufa Akter","country":"Bangladesh","role":"BOWL","squad_number":11,"team_code":"BAN","efppm":24.5},{"id":2365,"name":"Fahima Khatun","country":"Bangladesh","role":"BOWL","squad_number":12,"team_code":"BAN","efppm":69},{"id":7319,"name":"Shanjida Akther Maghla","country":"Bangladesh","role":"BOWL","squad_number":13,"team_code":"BAN","efppm":20},{"id":4963,"name":"Sultana Khatun","country":"Bangladesh","role":"BOWL","squad_number":14,"team_code":"BAN","efppm":50.5},{"id":6331,"name":"Taj Nehar","country":"Bangladesh","role":"BAT","squad_number":15,"team_code":"BAN","efppm":9.4},{"id":840,"name":"SIR Dunkley","country":"England","role":"BAT","squad_number":1,"team_code":"ENG","efppm":46.9},{"id":836,"name":"DN Wyatt","country":"England","role":"BAT","squad_number":2,"team_code":"ENG","efppm":40.8},{"id":837,"name":"NR Sciver","country":"England","role":"AR","squad_number":3,"team_code":"ENG","efppm":69.5},{"id":3049,"name":"A Capsey","country":"England","role":"BAT","squad_number":4,"team_code":"ENG","efppm":47.6},{"id":838,"name":"HC Knight","country":"England","role":"BAT","squad_number":5,"team_code":"ENG","efppm":54.1},{"id":839,"name":"AE Jones","country":"England","role":"WK","squad_number":6,"team_code":"ENG","efppm":27.2},{"id":2487,"name":"FG Kemp","country":"England","role":"BOWL","squad_number":7,"team_code":"ENG","efppm":47},{"id":2488,"name":"CE Dean","country":"England","role":"BOWL","squad_number":8,"team_code":"ENG","efppm":72.8},{"id":842,"name":"S Ecclestone","country":"England","role":"BOWL","squad_number":9,"team_code":"ENG","efppm":53.5},{"id":2489,"name":"LK Bell","country":"England","role":"BOWL","squad_number":10,"team_code":"ENG","efppm":66.1},{"id":2838,"name":"LCN Smith","country":"England","role":"BOWL","squad_number":11,"team_code":"ENG","efppm":40.1},{"id":4265,"name":"DR Gibson","country":"England","role":"BOWL","squad_number":12,"team_code":"ENG","efppm":50.4},{"id":4340,"name":"IECM Wong","country":"England","role":"BOWL","squad_number":13,"team_code":"ENG","efppm":44.8},{"id":3821,"name":"L Filer","country":"England","role":"BOWL","squad_number":14,"team_code":"ENG","efppm":40.3},{"id":7310,"name":"Tilly Corteen-Coleman","country":"England","role":"BOWL","squad_number":15,"team_code":"ENG","efppm":20},{"id":1073,"name":"S Mandhana","country":"India","role":"BAT","squad_number":1,"team_code":"IND","efppm":67.4},{"id":1641,"name":"Shafali Verma","country":"India","role":"BAT","squad_number":2,"team_code":"IND","efppm":57.9},{"id":1074,"name":"JI Rodrigues","country":"India","role":"BAT","squad_number":3,"team_code":"IND","efppm":48.5},{"id":1075,"name":"H Kaur","country":"India","role":"BAT","squad_number":4,"team_code":"IND","efppm":52.4},{"id":1640,"name":"YH Bhatia","country":"India","role":"WK","squad_number":5,"team_code":"IND","efppm":48.8},{"id":1642,"name":"RM Ghosh","country":"India","role":"WK","squad_number":6,"team_code":"IND","efppm":40.2},{"id":1077,"name":"DB Sharma","country":"India","role":"AR","squad_number":7,"team_code":"IND","efppm":56.5},{"id":1081,"name":"A Reddy","country":"India","role":"BOWL","squad_number":8,"team_code":"IND","efppm":53.1},{"id":2870,"name":"N Shree Charani","country":"India","role":"BOWL","squad_number":9,"team_code":"IND","efppm":60.1},{"id":1080,"name":"RP Yadav","country":"India","role":"BOWL","squad_number":10,"team_code":"IND","efppm":49.5},{"id":1646,"name":"Renuka Singh","country":"India","role":"BOWL","squad_number":11,"team_code":"IND","efppm":37.3},{"id":7307,"name":"Kranti Gaud","country":"India","role":"BOWL","squad_number":12,"team_code":"IND","efppm":20},{"id":3130,"name":"SR Patil","country":"India","role":"BOWL","squad_number":13,"team_code":"IND","efppm":56.2},{"id":7079,"name":"BS Fulmali","country":"India","role":"BAT","squad_number":14,"team_code":"IND","efppm":29.4},{"id":7306,"name":"Nandani Sharma","country":"India","role":"BOWL","squad_number":15,"team_code":"IND","efppm":20},{"id":1779,"name":"A Hunter","country":"Ireland","role":"WK","squad_number":1,"team_code":"IRE","efppm":38.9},{"id":1780,"name":"GH Lewis","country":"Ireland","role":"BAT","squad_number":2,"team_code":"IRE","efppm":71.2},{"id":1781,"name":"O Prendergast","country":"Ireland","role":"AR","squad_number":3,"team_code":"IRE","efppm":133.4},{"id":1782,"name":"L Paul","country":"Ireland","role":"BAT","squad_number":4,"team_code":"IRE","efppm":31.6},{"id":1783,"name":"R Stokell","country":"Ireland","role":"BAT","squad_number":5,"team_code":"IRE","efppm":30.6},{"id":1295,"name":"L Delany","country":"Ireland","role":"AR","squad_number":6,"team_code":"IRE","efppm":31.4},{"id":1785,"name":"AN Kelly","country":"Ireland","role":"BOWL","squad_number":7,"team_code":"IRE","efppm":28.6},{"id":1786,"name":"C Murray","country":"Ireland","role":"BOWL","squad_number":8,"team_code":"IRE","efppm":22.5},{"id":3252,"name":"G Dempsey","country":"Ireland","role":"BOWL","squad_number":9,"team_code":"IRE","efppm":20},{"id":1784,"name":"A Canning","country":"Ireland","role":"BOWL","squad_number":10,"team_code":"IRE","efppm":52.5},{"id":5119,"name":"AK Maguire","country":"Ireland","role":"BOWL","squad_number":11,"team_code":"IRE","efppm":52.3},{"id":4030,"name":"L Little","country":"Ireland","role":"BOWL","squad_number":12,"team_code":"IRE","efppm":16.5},{"id":3647,"name":"A Dalzell","country":"Ireland","role":"BOWL","squad_number":13,"team_code":"IRE","efppm":29.8},{"id":4847,"name":"CE Coulter Reilly","country":"Ireland","role":"WK","squad_number":14,"team_code":"IRE","efppm":13.8},{"id":1787,"name":"LA McBride","country":"Ireland","role":"BOWL","squad_number":15,"team_code":"IRE","efppm":38},{"id":1324,"name":"SL Kalis","country":"Netherlands","role":"BAT","squad_number":1,"team_code":"NED","efppm":20},{"id":1323,"name":"HDJ Siegers","country":"Netherlands","role":"BAT","squad_number":2,"team_code":"NED","efppm":20},{"id":2964,"name":"P Molkenboer","country":"Netherlands","role":"BAT","squad_number":3,"team_code":"NED","efppm":20},{"id":1322,"name":"B de Leede","country":"Netherlands","role":"WK","squad_number":4,"team_code":"NED","efppm":20},{"id":1325,"name":"R Rijke","country":"Netherlands","role":"BAT","squad_number":5,"team_code":"NED","efppm":20},{"id":4891,"name":"S Khurana","country":"Netherlands","role":"BAT","squad_number":6,"team_code":"NED","efppm":20},{"id":1327,"name":"F Overdijk","country":"Netherlands","role":"BOWL","squad_number":7,"team_code":"NED","efppm":20},{"id":1326,"name":"IJR Zwilling","country":"Netherlands","role":"AR","squad_number":8,"team_code":"NED","efppm":20},{"id":1332,"name":"C de Lange","country":"Netherlands","role":"BOWL","squad_number":9,"team_code":"NED","efppm":20},{"id":1331,"name":"S Siegers","country":"Netherlands","role":"BOWL","squad_number":10,"team_code":"NED","efppm":20},{"id":2965,"name":"MIW van den Raad","country":"Netherlands","role":"BAT","squad_number":11,"team_code":"NED","efppm":20},{"id":7516,"name":"RA Lawrence","country":"Netherlands","role":"BAT","squad_number":12,"team_code":"NED","efppm":20},{"id":1330,"name":"HWA Landheer","country":"Netherlands","role":"BOWL","squad_number":13,"team_code":"NED","efppm":20},{"id":2967,"name":"I van der Woning","country":"Netherlands","role":"BOWL","squad_number":14,"team_code":"NED","efppm":20},{"id":5141,"name":"L Leemhuis","country":"Netherlands","role":"BAT","squad_number":15,"team_code":"NED","efppm":20},{"id":1190,"name":"GE Plimmer","country":"New Zealand","role":"BAT","squad_number":1,"team_code":"NZ","efppm":37.8},{"id":1189,"name":"SW Bates","country":"New Zealand","role":"BAT","squad_number":2,"team_code":"NZ","efppm":36.3},{"id":827,"name":"AC Kerr","country":"New Zealand","role":"AR","squad_number":3,"team_code":"NZ","efppm":107.8},{"id":824,"name":"SFM Devine","country":"New Zealand","role":"AR","squad_number":4,"team_code":"NZ","efppm":90.1},{"id":829,"name":"BM Halliday","country":"New Zealand","role":"BAT","squad_number":5,"team_code":"NZ","efppm":21.5},{"id":830,"name":"ML Green","country":"New Zealand","role":"WK","squad_number":6,"team_code":"NZ","efppm":40.5},{"id":3552,"name":"IG Sharp","country":"New Zealand","role":"BAT","squad_number":7,"team_code":"NZ","efppm":19.8},{"id":833,"name":"JM Kerr","country":"New Zealand","role":"BOWL","squad_number":8,"team_code":"NZ","efppm":54.2},{"id":1193,"name":"LMM Tahuhu","country":"New Zealand","role":"BOWL","squad_number":9,"team_code":"NZ","efppm":39.5},{"id":834,"name":"RA Mair","country":"New Zealand","role":"BOWL","squad_number":10,"team_code":"NZ","efppm":30.6},{"id":6325,"name":"NH Patel","country":"New Zealand","role":"BOWL","squad_number":11,"team_code":"NZ","efppm":65},{"id":3554,"name":"BG Illing","country":"New Zealand","role":"BOWL","squad_number":12,"team_code":"NZ","efppm":42},{"id":7036,"name":"FDM Devonshire","country":"New Zealand","role":"BOWL","squad_number":13,"team_code":"NZ","efppm":32},{"id":1426,"name":"IC Gaze","country":"New Zealand","role":"WK","squad_number":14,"team_code":"NZ","efppm":23.3},{"id":3553,"name":"PM Inglis","country":"New Zealand","role":"BAT","squad_number":15,"team_code":"NZ","efppm":10.5},{"id":1632,"name":"Muneeba Ali","country":"Pakistan","role":"WK","squad_number":1,"team_code":"PAK","efppm":38.3},{"id":4364,"name":"Gull Feroza","country":"Pakistan","role":"BAT","squad_number":2,"team_code":"PAK","efppm":18.3},{"id":1796,"name":"Ayesha Zafar","country":"Pakistan","role":"BAT","squad_number":3,"team_code":"PAK","efppm":39},{"id":1635,"name":"Aliya Riaz","country":"Pakistan","role":"BAT","squad_number":4,"team_code":"PAK","efppm":32.4},{"id":1604,"name":"Iram Javed","country":"Pakistan","role":"BAT","squad_number":5,"team_code":"PAK","efppm":13.3},{"id":7312,"name":"Saira Jabeen","country":"Pakistan","role":"BAT","squad_number":6,"team_code":"PAK","efppm":82},{"id":1636,"name":"Fatima Sana","country":"Pakistan","role":"AR","squad_number":7,"team_code":"PAK","efppm":91.8},{"id":1792,"name":"Rameen Shamim","country":"Pakistan","role":"BOWL","squad_number":8,"team_code":"PAK","efppm":83.3},{"id":1799,"name":"Diana Baig","country":"Pakistan","role":"BOWL","squad_number":9,"team_code":"PAK","efppm":28},{"id":1638,"name":"Nashra Sandhu","country":"Pakistan","role":"BOWL","squad_number":10,"team_code":"PAK","efppm":54.9},{"id":1639,"name":"Sadia Iqbal","country":"Pakistan","role":"BOWL","squad_number":11,"team_code":"PAK","efppm":63.8},{"id":7311,"name":"Natalia Parvaiz","country":"Pakistan","role":"BAT","squad_number":12,"team_code":"PAK","efppm":20},{"id":1791,"name":"Eyman Fatima","country":"Pakistan","role":"BAT","squad_number":13,"team_code":"PAK","efppm":2},{"id":1793,"name":"Tuba Hassan","country":"Pakistan","role":"BOWL","squad_number":14,"team_code":"PAK","efppm":26.8},{"id":4365,"name":"Tasmia Rubab","country":"Pakistan","role":"BAT","squad_number":15,"team_code":"PAK","efppm":8},{"id":1252,"name":"T Brits","country":"South Africa","role":"BAT","squad_number":1,"team_code":"SA","efppm":39.3},{"id":1431,"name":"L Wolvaardt","country":"South Africa","role":"BAT","squad_number":2,"team_code":"SA","efppm":78.2},{"id":1253,"name":"M Kapp","country":"South Africa","role":"AR","squad_number":3,"team_code":"SA","efppm":69.5},{"id":1257,"name":"A Dercksen","country":"South Africa","role":"BAT","squad_number":4,"team_code":"SA","efppm":48.5},{"id":1254,"name":"S Luus","country":"South Africa","role":"BAT","squad_number":5,"team_code":"SA","efppm":51.6},{"id":1256,"name":"N de Klerk","country":"South Africa","role":"AR","squad_number":6,"team_code":"SA","efppm":53.3},{"id":1255,"name":"CL Tryon","country":"South Africa","role":"BOWL","squad_number":7,"team_code":"SA","efppm":44.1},{"id":1800,"name":"S Jafta","country":"South Africa","role":"WK","squad_number":8,"team_code":"SA","efppm":19.1},{"id":1432,"name":"A Khaka","country":"South Africa","role":"BOWL","squad_number":9,"team_code":"SA","efppm":60.5},{"id":1307,"name":"S Ismail","country":"South Africa","role":"BOWL","squad_number":10,"team_code":"SA","efppm":20},{"id":1259,"name":"N Mlaba","country":"South Africa","role":"BOWL","squad_number":11,"team_code":"SA","efppm":58.6},{"id":5113,"name":"K Reyneke","country":"South Africa","role":"AR","squad_number":12,"team_code":"SA","efppm":63.6},{"id":1261,"name":"TS Sekhukhune","country":"South Africa","role":"BOWL","squad_number":13,"team_code":"SA","efppm":59.8},{"id":1258,"name":"K Meso","country":"South Africa","role":"WK","squad_number":14,"team_code":"SA","efppm":14.2},{"id":1302,"name":"D van Niekerk","country":"South Africa","role":"AR","squad_number":15,"team_code":"SA","efppm":14.3},{"id":2270,"name":"SJ Bryce","country":"Scotland","role":"WK","squad_number":1,"team_code":"SCO","efppm":26.8},{"id":2280,"name":"K Fraser","country":"Scotland","role":"BOWL","squad_number":2,"team_code":"SCO","efppm":28.6},{"id":2386,"name":"DEM Carter","country":"Scotland","role":"BAT","squad_number":3,"team_code":"SCO","efppm":21.6},{"id":2272,"name":"KE Bryce","country":"Scotland","role":"AR","squad_number":4,"team_code":"SCO","efppm":56.8},{"id":2389,"name":"A Lister","country":"Scotland","role":"BAT","squad_number":5,"team_code":"SCO","efppm":25.9},{"id":2385,"name":"M McColl","country":"Scotland","role":"BAT","squad_number":6,"team_code":"SCO","efppm":14},{"id":2275,"name":"PA Chatterji","country":"Scotland","role":"AR","squad_number":7,"team_code":"SCO","efppm":31.3},{"id":2278,"name":"AH Maqsood","country":"Scotland","role":"BOWL","squad_number":8,"team_code":"SCO","efppm":12.1},{"id":7628,"name":"Kirstie Gordon","country":"Scotland","role":"BOWL","squad_number":9,"team_code":"SCO","efppm":20},{"id":2388,"name":"C Abel","country":"Scotland","role":"BOWL","squad_number":10,"team_code":"SCO","efppm":14},{"id":2387,"name":"R Slater","country":"Scotland","role":"BOWL","squad_number":11,"team_code":"SCO","efppm":37.8},{"id":3298,"name":"O Bell","country":"Scotland","role":"BOWL","squad_number":12,"team_code":"SCO","efppm":44.7},{"id":7517,"name":"G Fontenla","country":"Scotland","role":"BOWL","squad_number":13,"team_code":"SCO","efppm":20},{"id":7574,"name":"MG Maceira","country":"Scotland","role":"BAT","squad_number":14,"team_code":"SCO","efppm":20},{"id":7090,"name":"PN Sproul","country":"Scotland","role":"BAT","squad_number":15,"team_code":"SCO","efppm":20},{"id":858,"name":"AC Jayangani","country":"Sri Lanka","role":"BAT","squad_number":1,"team_code":"SL","efppm":67.5},{"id":7313,"name":"Vishmi Gunarathne","country":"Sri Lanka","role":"BAT","squad_number":2,"team_code":"SL","efppm":20},{"id":1264,"name":"GWHM Perera","country":"Sri Lanka","role":"WK","squad_number":3,"team_code":"SL","efppm":45.8},{"id":7314,"name":"Harshitha Samarawickrama","country":"Sri Lanka","role":"BAT","squad_number":4,"team_code":"SL","efppm":20},{"id":1429,"name":"I Dulani","country":"Sri Lanka","role":"BAT","squad_number":5,"team_code":"SL","efppm":40.5},{"id":1265,"name":"WK Dilhari","country":"Sri Lanka","role":"BOWL","squad_number":6,"team_code":"SL","efppm":68.4},{"id":1266,"name":"NND de Silva","country":"Sri Lanka","role":"BAT","squad_number":7,"team_code":"SL","efppm":29.8},{"id":4770,"name":"H Karunaratne","country":"Sri Lanka","role":"BAT","squad_number":8,"team_code":"SL","efppm":20},{"id":7316,"name":"Sugandika Dasanayaka","country":"Sri Lanka","role":"BOWL","squad_number":9,"team_code":"SL","efppm":20},{"id":2867,"name":"M Madara","country":"Sri Lanka","role":"BOWL","squad_number":10,"team_code":"SL","efppm":48.2},{"id":6560,"name":"HML Madushani","country":"Sri Lanka","role":"BAT","squad_number":11,"team_code":"SL","efppm":20},{"id":7315,"name":"Kaushini Nuthyangana","country":"Sri Lanka","role":"WK","squad_number":12,"team_code":"SL","efppm":20},{"id":2598,"name":"S Gimhani","country":"Sri Lanka","role":"BOWL","squad_number":13,"team_code":"SL","efppm":6.7},{"id":1430,"name":"K Kavindi","country":"Sri Lanka","role":"BOWL","squad_number":14,"team_code":"SL","efppm":34.7},{"id":7317,"name":"Mithali Ayodhya","country":"Sri Lanka","role":"BAT","squad_number":15,"team_code":"SL","efppm":20},{"id":2111,"name":"HK Matthews","country":"West Indies","role":"AR","squad_number":1,"team_code":"WI","efppm":91.1},{"id":2498,"name":"DJS Dottin","country":"West Indies","role":"BAT","squad_number":2,"team_code":"WI","efppm":67.2},{"id":2247,"name":"Q Joseph","country":"West Indies","role":"BAT","squad_number":3,"team_code":"WI","efppm":34.3},{"id":2496,"name":"SR Taylor","country":"West Indies","role":"BAT","squad_number":4,"team_code":"WI","efppm":37.1},{"id":2251,"name":"JKC Claxton","country":"West Indies","role":"BOWL","squad_number":5,"team_code":"WI","efppm":45.4},{"id":2114,"name":"CA Henry","country":"West Indies","role":"AR","squad_number":6,"team_code":"WI","efppm":77.2},{"id":2113,"name":"SA Campbelle","country":"West Indies","role":"WK","squad_number":7,"team_code":"WI","efppm":37.5},{"id":2249,"name":"J Glasgow","country":"West Indies","role":"BAT","squad_number":8,"team_code":"WI","efppm":25.6},{"id":2116,"name":"AA Alleyne","country":"West Indies","role":"BOWL","squad_number":9,"team_code":"WI","efppm":18.9},{"id":2117,"name":"ASS Fletcher","country":"West Indies","role":"BOWL","squad_number":10,"team_code":"WI","efppm":49.7},{"id":2121,"name":"K Ramharack","country":"West Indies","role":"BOWL","squad_number":11,"team_code":"WI","efppm":35.4},{"id":2119,"name":"Z James","country":"West Indies","role":"BOWL","squad_number":12,"team_code":"WI","efppm":29.6},{"id":2248,"name":"S Hector","country":"West Indies","role":"BOWL","squad_number":13,"team_code":"WI","efppm":29.8},{"id":3051,"name":"M Mangru","country":"West Indies","role":"BAT","squad_number":14,"team_code":"WI","efppm":16.3},{"id":3052,"name":"A Munisar","country":"West Indies","role":"BOWL","squad_number":15,"team_code":"WI","efppm":11.6}]
+[
+  {
+    "id": 852,
+    "name": "Beth Mooney",
+    "country": "Australia",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "AUS",
+    "efppm": 84.5,
+    "pid": "52d1dbc8"
+  },
+  {
+    "id": 2480,
+    "name": "Georgia Voll",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "AUS",
+    "efppm": 80.8,
+    "pid": "5c30d455"
+  },
+  {
+    "id": 2481,
+    "name": "Phoebe Litchfield",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "AUS",
+    "efppm": 49.1,
+    "pid": "4e6ef14f"
+  },
+  {
+    "id": 849,
+    "name": "Ellyse Perry",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "AUS",
+    "efppm": 46.1,
+    "pid": "be150fc8"
+  },
+  {
+    "id": 2483,
+    "name": "Tahlia McGrath",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "AUS",
+    "efppm": 41.1,
+    "pid": "ca5acfa4"
+  },
+  {
+    "id": 1132,
+    "name": "Ashleigh Gardner",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "AUS",
+    "efppm": 77.2,
+    "pid": "bc969efb"
+  },
+  {
+    "id": 2482,
+    "name": "Annabel Sutherland",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "AUS",
+    "efppm": 73.6,
+    "pid": "65d9b6b6"
+  },
+  {
+    "id": 2594,
+    "name": "Sophie Molineux",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "AUS",
+    "efppm": 50.7,
+    "pid": "99e23670"
+  },
+  {
+    "id": 2484,
+    "name": "Grace Harris",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "AUS",
+    "efppm": 61.9,
+    "pid": "72166006"
+  },
+  {
+    "id": 1135,
+    "name": "Georgia Wareham",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "AUS",
+    "efppm": 60.7,
+    "pid": "f0b4e47d"
+  },
+  {
+    "id": 854,
+    "name": "Megan Schutt",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "AUS",
+    "efppm": 45.3,
+    "pid": "17608a6f"
+  },
+  {
+    "id": 2485,
+    "name": "Alana King",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "AUS",
+    "efppm": 61.1,
+    "pid": "83558266"
+  },
+  {
+    "id": 2821,
+    "name": "Nicola Carey",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "AUS",
+    "efppm": 68.9,
+    "pid": "dff806f4"
+  },
+  {
+    "id": 7308,
+    "name": "Kim Garth",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "AUS",
+    "efppm": 20,
+    "pid": "espn:418423"
+  },
+  {
+    "id": 7309,
+    "name": "Lucy Hamilton",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "AUS",
+    "efppm": 20,
+    "pid": "espn:1343643"
+  },
+  {
+    "id": 1197,
+    "name": "Dilara Akter",
+    "country": "Bangladesh",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "BAN",
+    "efppm": 30.2,
+    "pid": "f2670a3d"
+  },
+  {
+    "id": 3274,
+    "name": "Juairiya Ferdous",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "BAN",
+    "efppm": 39.3,
+    "pid": "e6f05a84"
+  },
+  {
+    "id": 2364,
+    "name": "Sobhana Mostary",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "BAN",
+    "efppm": 31.9,
+    "pid": "94de63bf"
+  },
+  {
+    "id": 1199,
+    "name": "Nigar Sultana Joty",
+    "country": "Bangladesh",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "BAN",
+    "efppm": 46.3,
+    "pid": "3827f6a2"
+  },
+  {
+    "id": 7318,
+    "name": "Sharmin Akter Supta",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "BAN",
+    "efppm": 20,
+    "pid": "espn:535868"
+  },
+  {
+    "id": 3275,
+    "name": "Shorna Akter",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "BAN",
+    "efppm": 28.4,
+    "pid": "espn:535868"
+  },
+  {
+    "id": 1201,
+    "name": "Ritu Moni",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "BAN",
+    "efppm": 35.5,
+    "pid": "ad3940a5"
+  },
+  {
+    "id": 1204,
+    "name": "Nahida Akter",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "BAN",
+    "efppm": 51.6,
+    "pid": "66078174"
+  },
+  {
+    "id": 2366,
+    "name": "Rabeya Khan",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "BAN",
+    "efppm": 36.2,
+    "pid": "aaf037b1"
+  },
+  {
+    "id": 3128,
+    "name": "Fariha Islam Trisna",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "BAN",
+    "efppm": 24.4,
+    "pid": "7b51bfa4"
+  },
+  {
+    "id": 1203,
+    "name": "Marufa Akter",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "BAN",
+    "efppm": 24.5,
+    "pid": "a50797a4"
+  },
+  {
+    "id": 2365,
+    "name": "Fahima Khatun",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "BAN",
+    "efppm": 69,
+    "pid": "558cdd64"
+  },
+  {
+    "id": 7319,
+    "name": "Shanjida Akther Maghla",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "BAN",
+    "efppm": 20,
+    "pid": "espn:1205142"
+  },
+  {
+    "id": 4963,
+    "name": "Sultana Khatun",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "BAN",
+    "efppm": 50.5,
+    "pid": "558cdd64"
+  },
+  {
+    "id": 6331,
+    "name": "Taj Nehar",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "BAN",
+    "efppm": 9.4,
+    "pid": "426eaf06"
+  },
+  {
+    "id": 840,
+    "name": "Sophia Dunkley",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "ENG",
+    "efppm": 46.9,
+    "pid": "3a9e9cb2"
+  },
+  {
+    "id": 836,
+    "name": "Danni Wyatt-Hodge",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "ENG",
+    "efppm": 40.8,
+    "pid": "a139c379"
+  },
+  {
+    "id": 837,
+    "name": "Nat Sciver-Brunt",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "ENG",
+    "efppm": 69.5,
+    "pid": "espn:515905"
+  },
+  {
+    "id": 3049,
+    "name": "Alice Capsey",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "ENG",
+    "efppm": 47.6,
+    "pid": "910dd54e"
+  },
+  {
+    "id": 838,
+    "name": "Heather Knight",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "ENG",
+    "efppm": 54.1,
+    "pid": "4ba0289e"
+  },
+  {
+    "id": 839,
+    "name": "Amy Jones",
+    "country": "England",
+    "role": "WK",
+    "squad_number": 6,
+    "team_code": "ENG",
+    "efppm": 27.2,
+    "pid": "b05e45e4"
+  },
+  {
+    "id": 2487,
+    "name": "Freya Kemp",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "ENG",
+    "efppm": 47,
+    "pid": "abc9f8a4"
+  },
+  {
+    "id": 2488,
+    "name": "Charlie Dean",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "ENG",
+    "efppm": 72.8,
+    "pid": "c6625a26"
+  },
+  {
+    "id": 842,
+    "name": "Sophie Ecclestone",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "ENG",
+    "efppm": 53.5,
+    "pid": "cdb82f1c"
+  },
+  {
+    "id": 2489,
+    "name": "Lauren Bell",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "ENG",
+    "efppm": 66.1,
+    "pid": "38b4583c"
+  },
+  {
+    "id": 2838,
+    "name": "Linsey Smith",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "ENG",
+    "efppm": 40.1,
+    "pid": "espn:517577"
+  },
+  {
+    "id": 4265,
+    "name": "Danielle Gibson",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "ENG",
+    "efppm": 50.4,
+    "pid": "d2763568"
+  },
+  {
+    "id": 4340,
+    "name": "Issy Wong",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "ENG",
+    "efppm": 44.8,
+    "pid": "e5b17517"
+  },
+  {
+    "id": 3821,
+    "name": "Lauren Filer",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "ENG",
+    "efppm": 40.3,
+    "pid": "31adb911"
+  },
+  {
+    "id": 7310,
+    "name": "Tilly Corteen-Coleman",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "ENG",
+    "efppm": 20,
+    "pid": "slug:tilly-corteen-coleman"
+  },
+  {
+    "id": 1073,
+    "name": "Smriti Mandhana",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "IND",
+    "efppm": 67.4,
+    "pid": "5d2eda89"
+  },
+  {
+    "id": 1641,
+    "name": "Shafali Verma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "IND",
+    "efppm": 57.9,
+    "pid": "185e6c0c"
+  },
+  {
+    "id": 1074,
+    "name": "Jemimah Rodrigues",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "IND",
+    "efppm": 48.5,
+    "pid": "cb08b611"
+  },
+  {
+    "id": 1075,
+    "name": "Harmanpreet Kaur",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "IND",
+    "efppm": 52.4,
+    "pid": "espn:372317"
+  },
+  {
+    "id": 1640,
+    "name": "Yastika Bhatia",
+    "country": "India",
+    "role": "WK",
+    "squad_number": 5,
+    "team_code": "IND",
+    "efppm": 48.8,
+    "pid": "espn:960715"
+  },
+  {
+    "id": 1642,
+    "name": "Richa Ghosh",
+    "country": "India",
+    "role": "WK",
+    "squad_number": 6,
+    "team_code": "IND",
+    "efppm": 40.2,
+    "pid": "721e0199"
+  },
+  {
+    "id": 1077,
+    "name": "Deepti Sharma",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "IND",
+    "efppm": 56.5,
+    "pid": "espn:597811"
+  },
+  {
+    "id": 1081,
+    "name": "Arundhati Reddy",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "IND",
+    "efppm": 53.1,
+    "pid": "a3ead8da"
+  },
+  {
+    "id": 2870,
+    "name": "Shree Charani",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "IND",
+    "efppm": 60.1,
+    "pid": "583ce32c"
+  },
+  {
+    "id": 1080,
+    "name": "Radha Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "IND",
+    "efppm": 49.5,
+    "pid": "slug:radha-yadav"
+  },
+  {
+    "id": 1646,
+    "name": "Renuka Singh",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "IND",
+    "efppm": 37.3,
+    "pid": "7298db76"
+  },
+  {
+    "id": 7307,
+    "name": "Kranti Gaud",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "IND",
+    "efppm": 20,
+    "pid": "espn:1464471"
+  },
+  {
+    "id": 3130,
+    "name": "Shreyanka Patil",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "IND",
+    "efppm": 56.2,
+    "pid": "espn:1289948"
+  },
+  {
+    "id": 7079,
+    "name": "Bharti Fulmali",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "IND",
+    "efppm": 29.4,
+    "pid": "bd8689b0"
+  },
+  {
+    "id": 7306,
+    "name": "Nandani Sharma",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "IND",
+    "efppm": 20,
+    "pid": "espn:1289676"
+  },
+  {
+    "id": 1779,
+    "name": "Amy Hunter",
+    "country": "Ireland",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "IRE",
+    "efppm": 38.9,
+    "pid": "e8fa03ed"
+  },
+  {
+    "id": 1780,
+    "name": "Gaby Lewis",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "IRE",
+    "efppm": 71.2,
+    "pid": "1b9d1579"
+  },
+  {
+    "id": 1781,
+    "name": "Orla Prendergast",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "IRE",
+    "efppm": 133.4,
+    "pid": "d8f20ba5"
+  },
+  {
+    "id": 1782,
+    "name": "Leah Paul",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "IRE",
+    "efppm": 31.6,
+    "pid": "07248d8e"
+  },
+  {
+    "id": 1783,
+    "name": "Rebecca Stokell",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "IRE",
+    "efppm": 30.6,
+    "pid": "def7b1bb"
+  },
+  {
+    "id": 1295,
+    "name": "Laura Delany",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "IRE",
+    "efppm": 31.4,
+    "pid": "b4f73b44"
+  },
+  {
+    "id": 1785,
+    "name": "Arlene Kelly",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "IRE",
+    "efppm": 28.6,
+    "pid": "397369e0"
+  },
+  {
+    "id": 1786,
+    "name": "Cara Murray",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "IRE",
+    "efppm": 22.5,
+    "pid": "5a50471c"
+  },
+  {
+    "id": 3252,
+    "name": "Georgina Dempsey",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "IRE",
+    "efppm": 20,
+    "pid": "940feccc"
+  },
+  {
+    "id": 1784,
+    "name": "Ava Canning",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "IRE",
+    "efppm": 52.5,
+    "pid": "ffd5fcd8"
+  },
+  {
+    "id": 5119,
+    "name": "Aimee Maguire",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "IRE",
+    "efppm": 52.3,
+    "pid": "espn:1351945"
+  },
+  {
+    "id": 4030,
+    "name": "Louise Little",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "IRE",
+    "efppm": 16.5,
+    "pid": "espn:1094718"
+  },
+  {
+    "id": 3647,
+    "name": "Alana Dalzell",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "IRE",
+    "efppm": 29.8,
+    "pid": "66498395"
+  },
+  {
+    "id": 4847,
+    "name": "Christina Coulter Reilly",
+    "country": "Ireland",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "IRE",
+    "efppm": 13.8,
+    "pid": "slug:christina-coulter-reilly"
+  },
+  {
+    "id": 1787,
+    "name": "Lara McBride",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "IRE",
+    "efppm": 38,
+    "pid": "9bd0d19d"
+  },
+  {
+    "id": 7629,
+    "name": "Alice Tector",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "IRE",
+    "efppm": 25.0
+  },
+  {
+    "id": 1324,
+    "name": "Sterre Kalis",
+    "country": "Netherlands",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "2b150c6b"
+  },
+  {
+    "id": 1323,
+    "name": "Heather Siegers",
+    "country": "Netherlands",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "espn:577359"
+  },
+  {
+    "id": 2964,
+    "name": "Phebe Molkenboer",
+    "country": "Netherlands",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "fa9db243"
+  },
+  {
+    "id": 1322,
+    "name": "Babette de Leede",
+    "country": "Netherlands",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "b3020075"
+  },
+  {
+    "id": 1325,
+    "name": "Robine Rijke",
+    "country": "Netherlands",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "42e4b276"
+  },
+  {
+    "id": 4891,
+    "name": "Sanya Khurana",
+    "country": "Netherlands",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "9a9a056d"
+  },
+  {
+    "id": 1327,
+    "name": "Frederique Overdijk",
+    "country": "Netherlands",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "022745d5"
+  },
+  {
+    "id": 1326,
+    "name": "Iris Zwilling",
+    "country": "Netherlands",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "espn:1185795"
+  },
+  {
+    "id": 1332,
+    "name": "Caroline de Lange",
+    "country": "Netherlands",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "c6a019f5"
+  },
+  {
+    "id": 1331,
+    "name": "Silver Siegers",
+    "country": "Netherlands",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "espn:1022083"
+  },
+  {
+    "id": 2965,
+    "name": "Myrthe van den Raad",
+    "country": "Netherlands",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "dead3b10"
+  },
+  {
+    "id": 7516,
+    "name": "Rosalie Ann Lawrence",
+    "country": "Netherlands",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "8f201b0a"
+  },
+  {
+    "id": 1330,
+    "name": "Hannah Landheer",
+    "country": "Netherlands",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "a6ec88f4"
+  },
+  {
+    "id": 2967,
+    "name": "Isabel van der Woning",
+    "country": "Netherlands",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "5aa8574b"
+  },
+  {
+    "id": 5141,
+    "name": "Lara Leemhuis",
+    "country": "Netherlands",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "NED",
+    "efppm": 20,
+    "pid": "c0e88e7d"
+  },
+  {
+    "id": 1190,
+    "name": "Georgia Plimmer",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "NZ",
+    "efppm": 37.8,
+    "pid": "575494db"
+  },
+  {
+    "id": 1189,
+    "name": "Suzie Bates",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "NZ",
+    "efppm": 36.3,
+    "pid": "89bbc67a"
+  },
+  {
+    "id": 827,
+    "name": "Amelia Kerr",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "NZ",
+    "efppm": 107.8,
+    "pid": "7673c908"
+  },
+  {
+    "id": 824,
+    "name": "Sophie Devine",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "NZ",
+    "efppm": 90.1,
+    "pid": "de69af96"
+  },
+  {
+    "id": 829,
+    "name": "Brooke Halliday",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "NZ",
+    "efppm": 21.5,
+    "pid": "efb6cb2a"
+  },
+  {
+    "id": 830,
+    "name": "Maddy Green",
+    "country": "New Zealand",
+    "role": "WK",
+    "squad_number": 6,
+    "team_code": "NZ",
+    "efppm": 40.5,
+    "pid": "865eae1f"
+  },
+  {
+    "id": 3552,
+    "name": "Izzy Sharp",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "NZ",
+    "efppm": 19.8,
+    "pid": "4de0779a"
+  },
+  {
+    "id": 833,
+    "name": "Jess Kerr",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "NZ",
+    "efppm": 54.2,
+    "pid": "9af58032"
+  },
+  {
+    "id": 1193,
+    "name": "Lea Tahuhu",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "NZ",
+    "efppm": 39.5,
+    "pid": "60471339"
+  },
+  {
+    "id": 834,
+    "name": "Rosemary Mair",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "NZ",
+    "efppm": 30.6,
+    "pid": "d5eb8b84"
+  },
+  {
+    "id": 6325,
+    "name": "Nensi Patel",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "NZ",
+    "efppm": 65,
+    "pid": "d945db3e"
+  },
+  {
+    "id": 3554,
+    "name": "Bree Illing",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "NZ",
+    "efppm": 42,
+    "pid": "80a0cd77"
+  },
+  {
+    "id": 7036,
+    "name": "Flora Devonshire",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "NZ",
+    "efppm": 32,
+    "pid": "c8b0b64c"
+  },
+  {
+    "id": 1426,
+    "name": "Izzy Gaze",
+    "country": "New Zealand",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "NZ",
+    "efppm": 23.3,
+    "pid": "60c250bf"
+  },
+  {
+    "id": 3553,
+    "name": "Polly Inglis",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "NZ",
+    "efppm": 10.5,
+    "pid": "e4a71d18"
+  },
+  {
+    "id": 1632,
+    "name": "Muneeba Ali",
+    "country": "Pakistan",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "PAK",
+    "efppm": 38.3,
+    "pid": "86fdf668"
+  },
+  {
+    "id": 4364,
+    "name": "Gull Feroza",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "PAK",
+    "efppm": 18.3,
+    "pid": "9ff1e91e"
+  },
+  {
+    "id": 1796,
+    "name": "Ayesha Zafar",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "PAK",
+    "efppm": 39,
+    "pid": "e15f4fa4"
+  },
+  {
+    "id": 1635,
+    "name": "Aliya Riaz",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "PAK",
+    "efppm": 32.4,
+    "pid": "2904b4b6"
+  },
+  {
+    "id": 1604,
+    "name": "Iram Javed",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "PAK",
+    "efppm": 13.3,
+    "pid": "dc596fac"
+  },
+  {
+    "id": 7312,
+    "name": "Saira Jabeen",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "PAK",
+    "efppm": 82,
+    "pid": "e4ff6a62"
+  },
+  {
+    "id": 1636,
+    "name": "Fatima Sana",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "PAK",
+    "efppm": 91.8,
+    "pid": "ea9c54de"
+  },
+  {
+    "id": 1792,
+    "name": "Rameen Shamim",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "PAK",
+    "efppm": 83.3,
+    "pid": "0b78b7c1"
+  },
+  {
+    "id": 1799,
+    "name": "Diana Baig",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "PAK",
+    "efppm": 28,
+    "pid": "a51e6c6e"
+  },
+  {
+    "id": 1638,
+    "name": "Nashra Sandhu",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "PAK",
+    "efppm": 54.9,
+    "pid": "c981d3c2"
+  },
+  {
+    "id": 1639,
+    "name": "Sadia Iqbal",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "PAK",
+    "efppm": 63.8,
+    "pid": "53bb50f0"
+  },
+  {
+    "id": 7311,
+    "name": "Natalia Parvaiz",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "PAK",
+    "efppm": 20,
+    "pid": "espn:1125059"
+  },
+  {
+    "id": 1791,
+    "name": "Eyman Fatima",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "PAK",
+    "efppm": 2,
+    "pid": "4357f6f8"
+  },
+  {
+    "id": 1793,
+    "name": "Tuba Hassan",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "PAK",
+    "efppm": 26.8,
+    "pid": "0d56e9a5"
+  },
+  {
+    "id": 4365,
+    "name": "Tasmia Rubab",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "PAK",
+    "efppm": 8,
+    "pid": "bf350134"
+  },
+  {
+    "id": 1252,
+    "name": "Tazmin Brits",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "SA",
+    "efppm": 39.3,
+    "pid": "espn:600731"
+  },
+  {
+    "id": 1431,
+    "name": "Laura Wolvaardt",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "SA",
+    "efppm": 78.2,
+    "pid": "e60f81c9"
+  },
+  {
+    "id": 1253,
+    "name": "Marizanne Kapp",
+    "country": "South Africa",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "SA",
+    "efppm": 69.5,
+    "pid": "63e3b6b3"
+  },
+  {
+    "id": 1257,
+    "name": "Annerie Dercksen",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "SA",
+    "efppm": 48.5,
+    "pid": "d2b1f515"
+  },
+  {
+    "id": 1254,
+    "name": "Sune Luus",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "SA",
+    "efppm": 51.6,
+    "pid": "6d76bc23"
+  },
+  {
+    "id": 1256,
+    "name": "Nadine de Klerk",
+    "country": "South Africa",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "SA",
+    "efppm": 53.3,
+    "pid": "ea544967"
+  },
+  {
+    "id": 1255,
+    "name": "Chloe Tryon",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "SA",
+    "efppm": 44.1,
+    "pid": "4d4605e6"
+  },
+  {
+    "id": 1800,
+    "name": "Sinalo Jafta",
+    "country": "South Africa",
+    "role": "WK",
+    "squad_number": 8,
+    "team_code": "SA",
+    "efppm": 19.1,
+    "pid": "espn:499254"
+  },
+  {
+    "id": 1432,
+    "name": "Ayabonga Khaka",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "SA",
+    "efppm": 60.5,
+    "pid": "0d518f89"
+  },
+  {
+    "id": 1307,
+    "name": "Shabnim Ismail",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "SA",
+    "efppm": 20,
+    "pid": "108c4c09"
+  },
+  {
+    "id": 1259,
+    "name": "Nonkululeko Mlaba",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "SA",
+    "efppm": 58.6,
+    "pid": "686362af"
+  },
+  {
+    "id": 5113,
+    "name": "Kayla Reyneke",
+    "country": "South Africa",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "SA",
+    "efppm": 63.6,
+    "pid": "9e5f4ad7"
+  },
+  {
+    "id": 1261,
+    "name": "Tumi Sekhukhune",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "SA",
+    "efppm": 59.8,
+    "pid": "6e28e586"
+  },
+  {
+    "id": 1258,
+    "name": "Karabo Meso",
+    "country": "South Africa",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "SA",
+    "efppm": 14.2,
+    "pid": "130336c6"
+  },
+  {
+    "id": 1302,
+    "name": "Dane van Niekerk",
+    "country": "South Africa",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "SA",
+    "efppm": 14.3,
+    "pid": "8c5775f3"
+  },
+  {
+    "id": 2270,
+    "name": "Sarah Bryce",
+    "country": "Scotland",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "SCO",
+    "efppm": 26.8,
+    "pid": "2ca65aee"
+  },
+  {
+    "id": 2280,
+    "name": "Katherine Fraser",
+    "country": "Scotland",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "SCO",
+    "efppm": 28.6,
+    "pid": "a0a65375"
+  },
+  {
+    "id": 2386,
+    "name": "Darcey Carter",
+    "country": "Scotland",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "SCO",
+    "efppm": 21.6,
+    "pid": "c3394c16"
+  },
+  {
+    "id": 2272,
+    "name": "Kathryn Bryce",
+    "country": "Scotland",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "SCO",
+    "efppm": 56.8,
+    "pid": "f13d3eba"
+  },
+  {
+    "id": 2389,
+    "name": "Ailsa Lister",
+    "country": "Scotland",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "SCO",
+    "efppm": 25.9,
+    "pid": "090c0213"
+  },
+  {
+    "id": 2385,
+    "name": "Megan McColl",
+    "country": "Scotland",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "SCO",
+    "efppm": 14,
+    "pid": "d5fa2ab3"
+  },
+  {
+    "id": 2275,
+    "name": "Priyanaz Chatterji",
+    "country": "Scotland",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "SCO",
+    "efppm": 31.3,
+    "pid": "8e7be59c"
+  },
+  {
+    "id": 2278,
+    "name": "Abtaha Maqsood",
+    "country": "Scotland",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "SCO",
+    "efppm": 12.1,
+    "pid": "f61e2829"
+  },
+  {
+    "id": 7628,
+    "name": "Kirstie Gordon",
+    "country": "Scotland",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "SCO",
+    "efppm": 20,
+    "pid": "espn:577317"
+  },
+  {
+    "id": 2388,
+    "name": "Chloe Abel",
+    "country": "Scotland",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "SCO",
+    "efppm": 14,
+    "pid": "d92d3563"
+  },
+  {
+    "id": 2387,
+    "name": "Rachel Slater",
+    "country": "Scotland",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "SCO",
+    "efppm": 37.8,
+    "pid": "8a452195"
+  },
+  {
+    "id": 3298,
+    "name": "Olivia Bell",
+    "country": "Scotland",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "SCO",
+    "efppm": 44.7,
+    "pid": "38b4583c"
+  },
+  {
+    "id": 7517,
+    "name": "Gabriella Fontenla",
+    "country": "Scotland",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "SCO",
+    "efppm": 20,
+    "pid": "581eec7e"
+  },
+  {
+    "id": 7574,
+    "name": "Maisie Maceira",
+    "country": "Scotland",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "SCO",
+    "efppm": 20,
+    "pid": "421a0275"
+  },
+  {
+    "id": 7090,
+    "name": "Pippa Sproul",
+    "country": "Scotland",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "SCO",
+    "efppm": 20,
+    "pid": "789fe152"
+  },
+  {
+    "id": 858,
+    "name": "Chamari Athapaththu",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "SL",
+    "efppm": 67.5,
+    "pid": "ac56b5a7"
+  },
+  {
+    "id": 7313,
+    "name": "Vishmi Gunarathne",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "SL",
+    "efppm": 20,
+    "pid": "espn:1290105"
+  },
+  {
+    "id": 1264,
+    "name": "Hasini Perera",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 3,
+    "team_code": "SL",
+    "efppm": 45.8,
+    "pid": "dbd79036"
+  },
+  {
+    "id": 7314,
+    "name": "Harshitha Samarawickrama",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "SL",
+    "efppm": 20,
+    "pid": "espn:557839"
+  },
+  {
+    "id": 1429,
+    "name": "Imesha Dulani",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "SL",
+    "efppm": 40.5,
+    "pid": "a2c23f31"
+  },
+  {
+    "id": 1265,
+    "name": "Kaveesha Dilhari",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "SL",
+    "efppm": 68.4,
+    "pid": "c34a15e6"
+  },
+  {
+    "id": 1266,
+    "name": "Nilakshika Silva",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "SL",
+    "efppm": 29.8,
+    "pid": "f0b4294e"
+  },
+  {
+    "id": 4770,
+    "name": "Hansima Karunaratne",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "SL",
+    "efppm": 20,
+    "pid": "espn:631722"
+  },
+  {
+    "id": 7316,
+    "name": "Sugandika Dasanayaka",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "SL",
+    "efppm": 20,
+    "pid": "espn:631609"
+  },
+  {
+    "id": 2867,
+    "name": "Malki Madara",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "SL",
+    "efppm": 48.2,
+    "pid": "ecbcfef6"
+  },
+  {
+    "id": 6560,
+    "name": "Nimasha Madushani",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "SL",
+    "efppm": 20,
+    "pid": "07485bb9"
+  },
+  {
+    "id": 7315,
+    "name": "Kaushini Nuthyangana",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "SL",
+    "efppm": 20,
+    "pid": "slug:kaushini-nuthyangana"
+  },
+  {
+    "id": 2598,
+    "name": "Shashini Gimhani",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "SL",
+    "efppm": 6.7,
+    "pid": "11b78c67"
+  },
+  {
+    "id": 1430,
+    "name": "Kawya Kavindi",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "SL",
+    "efppm": 34.7,
+    "pid": "2fa916b3"
+  },
+  {
+    "id": 7317,
+    "name": "Mithali Ayodhya",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "SL",
+    "efppm": 20,
+    "pid": "espn:1503617"
+  },
+  {
+    "id": 2111,
+    "name": "Hayley Matthews",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "WI",
+    "efppm": 91.1,
+    "pid": "d32cf49a"
+  },
+  {
+    "id": 2498,
+    "name": "Deandra Dottin",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "WI",
+    "efppm": 67.2,
+    "pid": "53bee17f"
+  },
+  {
+    "id": 2247,
+    "name": "Qiana Joseph",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WI",
+    "efppm": 34.3,
+    "pid": "d6164dc0"
+  },
+  {
+    "id": 2496,
+    "name": "Stafanie Taylor",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "WI",
+    "efppm": 37.1,
+    "pid": "92cf79a8"
+  },
+  {
+    "id": 2251,
+    "name": "Jahzara Claxton",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WI",
+    "efppm": 45.4,
+    "pid": "e22f8ec1"
+  },
+  {
+    "id": 2114,
+    "name": "Chinelle Henry",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WI",
+    "efppm": 77.2,
+    "pid": "75820733"
+  },
+  {
+    "id": 2113,
+    "name": "Shemaine Campbelle",
+    "country": "West Indies",
+    "role": "WK",
+    "squad_number": 3,
+    "team_code": "WI",
+    "efppm": 37.5,
+    "pid": "a7cd72b2"
+  },
+  {
+    "id": 2249,
+    "name": "Jannillea Glasgow",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "WI",
+    "efppm": 25.6,
+    "pid": "a2632c7c"
+  },
+  {
+    "id": 2116,
+    "name": "Aaliyah Alleyne",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WI",
+    "efppm": 18.9,
+    "pid": "4b0e3049"
+  },
+  {
+    "id": 2117,
+    "name": "Afy Fletcher",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WI",
+    "efppm": 49.7,
+    "pid": "42d9dd09"
+  },
+  {
+    "id": 2121,
+    "name": "Karishma Ramharack",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WI",
+    "efppm": 35.4,
+    "pid": "321c980e"
+  },
+  {
+    "id": 2119,
+    "name": "Zaida James",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "WI",
+    "efppm": 29.6,
+    "pid": "816af623"
+  },
+  {
+    "id": 2248,
+    "name": "Shawnisha Hector",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "WI",
+    "efppm": 29.8,
+    "pid": "3faa312e"
+  },
+  {
+    "id": 3051,
+    "name": "Mandy Mangru",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WI",
+    "efppm": 16.3,
+    "pid": "b9fec7a5"
+  },
+  {
+    "id": 3052,
+    "name": "Ashmini Munisar",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WI",
+    "efppm": 11.6,
+    "pid": "a811cb83"
+  },
+  {
+    "id": 10001,
+    "name": "Mitchell Marsh",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MAUS",
+    "efppm": 55.0,
+    "pid": "3d8feaf8"
+  },
+  {
+    "id": 10002,
+    "name": "Josh Inglis",
+    "country": "Australia",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "MAUS",
+    "efppm": 50.0,
+    "pid": "989889ff"
+  },
+  {
+    "id": 10003,
+    "name": "Cooper Connolly",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MAUS",
+    "efppm": 40.0,
+    "pid": "fe366f34"
+  },
+  {
+    "id": 10004,
+    "name": "Matt Renshaw",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MAUS",
+    "efppm": 38.0,
+    "pid": "218d4d78"
+  },
+  {
+    "id": 10005,
+    "name": "Tim David",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MAUS",
+    "efppm": 58.0,
+    "pid": "espn:892749"
+  },
+  {
+    "id": 10006,
+    "name": "Nikhil Chaudhary",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MAUS",
+    "efppm": 32.0,
+    "pid": "espn:1079380"
+  },
+  {
+    "id": 10007,
+    "name": "Joel Davies",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MAUS",
+    "efppm": 30.0,
+    "pid": "espn:1295851"
+  },
+  {
+    "id": 10008,
+    "name": "Xavier Bartlett",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MAUS",
+    "efppm": 42.0,
+    "pid": "espn:1050545"
+  },
+  {
+    "id": 10009,
+    "name": "Nathan Ellis",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MAUS",
+    "efppm": 38.0,
+    "pid": "9eb1455b"
+  },
+  {
+    "id": 10010,
+    "name": "Spencer Johnson",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MAUS",
+    "efppm": 42.0,
+    "pid": "espn:1123718"
+  },
+  {
+    "id": 10011,
+    "name": "Adam Zampa",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MAUS",
+    "efppm": 50.0,
+    "pid": "espn:379504"
+  },
+  {
+    "id": 10012,
+    "name": "Cameron Green",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "MAUS",
+    "efppm": 55.0,
+    "pid": "eaa76d3c"
+  },
+  {
+    "id": 10013,
+    "name": "Aaron Hardie",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MAUS",
+    "efppm": 40.0,
+    "pid": "d405c0d5"
+  },
+  {
+    "id": 10014,
+    "name": "Josh Philippe",
+    "country": "Australia",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "MAUS",
+    "efppm": 45.0,
+    "pid": "slug:josh-philippe"
+  },
+  {
+    "id": 10015,
+    "name": "Matthew Kuhnemann",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MAUS",
+    "efppm": 35.0,
+    "pid": "7b953689"
+  },
+  {
+    "id": 10016,
+    "name": "Riley Meredith",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MAUS",
+    "efppm": 30.0,
+    "pid": "espn:961713"
+  },
+  {
+    "id": 10017,
+    "name": "Tanzid Hasan Tamim",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MBAN",
+    "efppm": 50.0,
+    "pid": "80fe764d"
+  },
+  {
+    "id": 10018,
+    "name": "Soumya Sarkar",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MBAN",
+    "efppm": 38.0,
+    "pid": "4d9f9686"
+  },
+  {
+    "id": 10019,
+    "name": "Saif Hassan",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MBAN",
+    "efppm": 30.0,
+    "pid": "bb95564b"
+  },
+  {
+    "id": 10020,
+    "name": "Parvez Hossain Emon",
+    "country": "Bangladesh",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "MBAN",
+    "efppm": 32.0,
+    "pid": "489aaf0a"
+  },
+  {
+    "id": 10021,
+    "name": "Towhid Hridoy",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MBAN",
+    "efppm": 50.0,
+    "pid": "9e52a414"
+  },
+  {
+    "id": 10022,
+    "name": "Shamim Hossain",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MBAN",
+    "efppm": 38.0,
+    "pid": "711249d1"
+  },
+  {
+    "id": 10023,
+    "name": "Mahedi Hasan",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MBAN",
+    "efppm": 45.0,
+    "pid": "9dad0f2e"
+  },
+  {
+    "id": 10024,
+    "name": "Rishad Hossain",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MBAN",
+    "efppm": 48.0,
+    "pid": "5935d694"
+  },
+  {
+    "id": 10025,
+    "name": "Shoriful Islam",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MBAN",
+    "efppm": 38.0,
+    "pid": "bb34fd31"
+  },
+  {
+    "id": 10026,
+    "name": "Abdul Gaffar Saqlain",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MBAN",
+    "efppm": 30.0,
+    "pid": "espn:1182029"
+  },
+  {
+    "id": 10027,
+    "name": "Mustafizur Rahman",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MBAN",
+    "efppm": 48.0,
+    "pid": "espn:330902"
+  },
+  {
+    "id": 10028,
+    "name": "Litton Das",
+    "country": "Bangladesh",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "MBAN",
+    "efppm": 55.0,
+    "pid": "espn:536936"
+  },
+  {
+    "id": 10029,
+    "name": "Taskin Ahmed",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MBAN",
+    "efppm": 42.0,
+    "pid": "ef18b66e"
+  },
+  {
+    "id": 10030,
+    "name": "Nahid Rana",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MBAN",
+    "efppm": 38.0,
+    "pid": "5318ee68"
+  },
+  {
+    "id": 10031,
+    "name": "Nasum Ahmed",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MBAN",
+    "efppm": 35.0,
+    "pid": "37654b75"
+  },
+  {
+    "id": 10032,
+    "name": "Nurul Hasan Sohan",
+    "country": "Bangladesh",
+    "role": "WK",
+    "squad_number": 16,
+    "team_code": "MBAN",
+    "efppm": 30.0,
+    "pid": "d365d463"
+  },
+  {
+    "id": 10033,
+    "name": "Ryan Rickelton",
+    "country": "SA",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "MINY",
+    "efppm": 50.0,
+    "pid": "e66732f8"
+  },
+  {
+    "id": 10034,
+    "name": "Quinton de Kock",
+    "country": "SA",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MINY",
+    "efppm": 58.0,
+    "pid": "372455c4"
+  },
+  {
+    "id": 10035,
+    "name": "Nicholas Pooran",
+    "country": "WI",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MINY",
+    "efppm": 68.0,
+    "pid": "3241e3fd"
+  },
+  {
+    "id": 10036,
+    "name": "Monank Patel",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MINY",
+    "efppm": 42.0,
+    "pid": "slug:monank-patel"
+  },
+  {
+    "id": 10037,
+    "name": "Kieron Pollard",
+    "country": "WI",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MINY",
+    "efppm": 55.0,
+    "pid": "a757b0d8"
+  },
+  {
+    "id": 10038,
+    "name": "Corey Anderson",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MINY",
+    "efppm": 32.0,
+    "pid": "slug:corey-anderson"
+  },
+  {
+    "id": 10039,
+    "name": "Corbin Bosch",
+    "country": "SA",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MINY",
+    "efppm": 46.0,
+    "pid": "172dff15"
+  },
+  {
+    "id": 10040,
+    "name": "Sunny Patel",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MINY",
+    "efppm": 26.0,
+    "pid": "db481029"
+  },
+  {
+    "id": 10041,
+    "name": "Nosthush Kenjige",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MINY",
+    "efppm": 26.0,
+    "pid": "f7d267f7"
+  },
+  {
+    "id": 10042,
+    "name": "Trent Boult",
+    "country": "NZ",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MINY",
+    "efppm": 52.0,
+    "pid": "a818c1be"
+  },
+  {
+    "id": 10043,
+    "name": "Rushil Ugarkar",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MINY",
+    "efppm": 26.0,
+    "pid": "8a58f203"
+  },
+  {
+    "id": 10044,
+    "name": "Romario Shepherd",
+    "country": "WI",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MINY",
+    "efppm": 48.0,
+    "pid": "c5aef772"
+  },
+  {
+    "id": 10045,
+    "name": "Allah Ghazanfar",
+    "country": "AFG",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MINY",
+    "efppm": 16.0,
+    "pid": "slug:allah-ghazanfar"
+  },
+  {
+    "id": 10046,
+    "name": "Tristan Luus",
+    "country": "SA",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MINY",
+    "efppm": 16.0,
+    "pid": "a0b76243"
+  },
+  {
+    "id": 10047,
+    "name": "Tajinder Dhillon",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MINY",
+    "efppm": 16.0,
+    "pid": "f9d99806"
+  },
+  {
+    "id": 10048,
+    "name": "Agni Chopra",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MINY",
+    "efppm": 16.0,
+    "pid": "slug:agni-chopra"
+  },
+  {
+    "id": 10049,
+    "name": "Kunwarjeet Singh",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 17,
+    "team_code": "MINY",
+    "efppm": 16.0,
+    "pid": "f9d99806"
+  },
+  {
+    "id": 10050,
+    "name": "Faisal Khan Ahmadzai",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 18,
+    "team_code": "MINY",
+    "efppm": 16.0,
+    "pid": "slug:faisal-khan-ahmadzai"
+  },
+  {
+    "id": 10051,
+    "name": "Mitchell Owen",
+    "country": "AUS",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WAF",
+    "efppm": 46.0,
+    "pid": "f2c936d7"
+  },
+  {
+    "id": 10052,
+    "name": "Andries Gous",
+    "country": "USA",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "WAF",
+    "efppm": 42.0,
+    "pid": "d1305df0"
+  },
+  {
+    "id": 10053,
+    "name": "Steven Smith",
+    "country": "AUS",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WAF",
+    "efppm": 52.0,
+    "pid": "slug:steven-smith"
+  },
+  {
+    "id": 10054,
+    "name": "Glenn Maxwell",
+    "country": "AUS",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WAF",
+    "efppm": 66.0,
+    "pid": "b681e71e"
+  },
+  {
+    "id": 10055,
+    "name": "Mark Chapman",
+    "country": "NZ",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WAF",
+    "efppm": 32.0,
+    "pid": "7fa12533"
+  },
+  {
+    "id": 10056,
+    "name": "Mukhtar Ahmed",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "WAF",
+    "efppm": 32.0,
+    "pid": "456f6d99"
+  },
+  {
+    "id": 10057,
+    "name": "Obus Pienaar",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "WAF",
+    "efppm": 26.0,
+    "pid": "647a48da"
+  },
+  {
+    "id": 10058,
+    "name": "Marco Jansen",
+    "country": "SA",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WAF",
+    "efppm": 50.0,
+    "pid": "slug:marco-jansen"
+  },
+  {
+    "id": 10059,
+    "name": "Ian Holland",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "WAF",
+    "efppm": 26.0,
+    "pid": "4167f30b"
+  },
+  {
+    "id": 10060,
+    "name": "Ben Dwarshuis",
+    "country": "AUS",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WAF",
+    "efppm": 44.0,
+    "pid": "e1b9f3a9"
+  },
+  {
+    "id": 10061,
+    "name": "Saurabh Netravalkar",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WAF",
+    "efppm": 40.0,
+    "pid": "c8a3f688"
+  },
+  {
+    "id": 10062,
+    "name": "Rachin Ravindra",
+    "country": "NZ",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WAF",
+    "efppm": 54.0,
+    "pid": "ba5e1069"
+  },
+  {
+    "id": 10063,
+    "name": "Lockie Ferguson",
+    "country": "NZ",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WAF",
+    "efppm": 48.0,
+    "pid": "slug:lockie-ferguson"
+  },
+  {
+    "id": 10064,
+    "name": "Jack Edwards",
+    "country": "AUS",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WAF",
+    "efppm": 16.0,
+    "pid": "slug:jack-edwards"
+  },
+  {
+    "id": 10065,
+    "name": "Nikhil Chaudhary",
+    "country": "AUS",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "WAF",
+    "efppm": 16.0,
+    "pid": "espn:1079380"
+  },
+  {
+    "id": 10066,
+    "name": "Amila Aponso",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "WAF",
+    "efppm": 16.0,
+    "pid": "e2ee90d9"
+  },
+  {
+    "id": 10067,
+    "name": "Lahiru Milantha",
+    "country": "USA",
+    "role": "WK",
+    "squad_number": 17,
+    "team_code": "WAF",
+    "efppm": 16.0,
+    "pid": "dcabd6bc"
+  },
+  {
+    "id": 10068,
+    "name": "Abhishek Paradkar",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 18,
+    "team_code": "WAF",
+    "efppm": 16.0,
+    "pid": "96f5b685"
+  },
+  {
+    "id": 10069,
+    "name": "Smit Patel",
+    "country": "USA",
+    "role": "WK",
+    "squad_number": 15,
+    "team_code": "TSK",
+    "efppm": 32.0,
+    "pid": "f93b43dd"
+  },
+  {
+    "id": 10070,
+    "name": "Faf du Plessis",
+    "country": "SA",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "TSK",
+    "efppm": 64.0,
+    "pid": "3355b542"
+  },
+  {
+    "id": 10071,
+    "name": "Saiteja Mukkamalla",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "TSK",
+    "efppm": 32.0,
+    "pid": "156d0ea2"
+  },
+  {
+    "id": 10072,
+    "name": "Shubham Ranjane",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "TSK",
+    "efppm": 32.0,
+    "pid": "6c7a68d0"
+  },
+  {
+    "id": 10073,
+    "name": "Rilee Rossouw",
+    "country": "SA",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "TSK",
+    "efppm": 58.0,
+    "pid": "cad00a4d"
+  },
+  {
+    "id": 10074,
+    "name": "Donovan Ferreira",
+    "country": "SA",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "TSK",
+    "efppm": 44.0,
+    "pid": "f0af99a7"
+  },
+  {
+    "id": 10075,
+    "name": "Calvin Savage",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "TSK",
+    "efppm": 26.0,
+    "pid": "a55e0360"
+  },
+  {
+    "id": 10076,
+    "name": "Akeal Hosein",
+    "country": "WI",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "TSK",
+    "efppm": 46.0,
+    "pid": "4d7f517e"
+  },
+  {
+    "id": 10077,
+    "name": "Keshav Maharaj",
+    "country": "SA",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "TSK",
+    "efppm": 46.0,
+    "pid": "0b60eb09"
+  },
+  {
+    "id": 10078,
+    "name": "Adam Milne",
+    "country": "NZ",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "TSK",
+    "efppm": 44.0,
+    "pid": "350bb1b1"
+  },
+  {
+    "id": 10079,
+    "name": "Mohammad Mohsin",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "TSK",
+    "efppm": 26.0,
+    "pid": "79f8472d"
+  },
+  {
+    "id": 10080,
+    "name": "Wiaan Mulder",
+    "country": "SA",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "TSK",
+    "efppm": 48.0,
+    "pid": "c96f6ac5"
+  },
+  {
+    "id": 10081,
+    "name": "Nandre Burger",
+    "country": "SA",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "TSK",
+    "efppm": 40.0,
+    "pid": "465aa633"
+  },
+  {
+    "id": 10082,
+    "name": "Hardus Viljoen",
+    "country": "SA",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "TSK",
+    "efppm": 16.0,
+    "pid": "a316d663"
+  },
+  {
+    "id": 10083,
+    "name": "Milind Kumar",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "TSK",
+    "efppm": 16.0,
+    "pid": "b4296080"
+  },
+  {
+    "id": 10084,
+    "name": "Joshua Tromp",
+    "country": "USA",
+    "role": "WK",
+    "squad_number": 16,
+    "team_code": "TSK",
+    "efppm": 16.0,
+    "pid": "slug:joshua-tromp"
+  },
+  {
+    "id": 10085,
+    "name": "Amshi de Silva",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 17,
+    "team_code": "TSK",
+    "efppm": 16.0,
+    "pid": "espn:1194775"
+  },
+  {
+    "id": 10086,
+    "name": "Abhimanyu Lamba",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 18,
+    "team_code": "TSK",
+    "efppm": 16.0,
+    "pid": "slug:abhimanyu-lamba"
+  },
+  {
+    "id": 10087,
+    "name": "Finn Allen",
+    "country": "NZ",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "SFU",
+    "efppm": 60.0,
+    "pid": "bf74b130"
+  },
+  {
+    "id": 10088,
+    "name": "Matthew Short",
+    "country": "AUS",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "SFU",
+    "efppm": 58.0,
+    "pid": "espn:605575"
+  },
+  {
+    "id": 10089,
+    "name": "Lhuan-dre Pretorius",
+    "country": "SA",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "SFU",
+    "efppm": 42.0,
+    "pid": "espn:1385640"
+  },
+  {
+    "id": 10090,
+    "name": "Connor Esterhuizen",
+    "country": "SA",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "SFU",
+    "efppm": 32.0,
+    "pid": "ef9acbcc"
+  },
+  {
+    "id": 10091,
+    "name": "Hammad Azam",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "SFU",
+    "efppm": 32.0,
+    "pid": "57bd3ecc"
+  },
+  {
+    "id": 10092,
+    "name": "Hassan Khan",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "SFU",
+    "efppm": 32.0,
+    "pid": "486065b3"
+  },
+  {
+    "id": 10093,
+    "name": "Ravichandran Ashwin",
+    "country": "IND",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "SFU",
+    "efppm": 54.0,
+    "pid": "espn:26421"
+  },
+  {
+    "id": 10094,
+    "name": "Sanjay Krishnamurthi",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "SFU",
+    "efppm": 26.0,
+    "pid": "3b8e7647"
+  },
+  {
+    "id": 10095,
+    "name": "Haris Rauf",
+    "country": "PAK",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "SFU",
+    "efppm": 52.0,
+    "pid": "24bb1c2f"
+  },
+  {
+    "id": 10096,
+    "name": "Brody Couch",
+    "country": "AUS",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "SFU",
+    "efppm": 26.0,
+    "pid": "be69e09d"
+  },
+  {
+    "id": 10097,
+    "name": "Zia-ul-Haq",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "SFU",
+    "efppm": 26.0,
+    "pid": "99c81226"
+  },
+  {
+    "id": 10098,
+    "name": "Aaron Hardie",
+    "country": "AUS",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "SFU",
+    "efppm": 46.0,
+    "pid": "d405c0d5"
+  },
+  {
+    "id": 10099,
+    "name": "Xavier Bartlett",
+    "country": "AUS",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "SFU",
+    "efppm": 44.0,
+    "pid": "espn:1050545"
+  },
+  {
+    "id": 10100,
+    "name": "Oliver Peake",
+    "country": "AUS",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "SFU",
+    "efppm": 16.0,
+    "pid": "slug:oliver-peake"
+  },
+  {
+    "id": 10101,
+    "name": "Peter Siddle",
+    "country": "AUS",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "SFU",
+    "efppm": 42.0,
+    "pid": "bd93fea4"
+  },
+  {
+    "id": 10102,
+    "name": "Saideep Ganesh",
+    "country": "USA",
+    "role": "WK",
+    "squad_number": 16,
+    "team_code": "SFU",
+    "efppm": 16.0,
+    "pid": "slug:saideep-ganesh"
+  },
+  {
+    "id": 10103,
+    "name": "Mohammad Ilyas",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 17,
+    "team_code": "SFU",
+    "efppm": 16.0,
+    "pid": "slug:mohammad-ilyas"
+  },
+  {
+    "id": 10104,
+    "name": "Juanoy Drysdale",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 18,
+    "team_code": "SFU",
+    "efppm": 16.0,
+    "pid": "23f94c02"
+  },
+  {
+    "id": 10105,
+    "name": "Tim Seifert",
+    "country": "NZ",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "SEO",
+    "efppm": 56.0,
+    "pid": "4663bd23"
+  },
+  {
+    "id": 10106,
+    "name": "Matthew Breetzke",
+    "country": "SA",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "SEO",
+    "efppm": 46.0,
+    "pid": "35f173a0"
+  },
+  {
+    "id": 10107,
+    "name": "Tim Robinson",
+    "country": "NZ",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "SEO",
+    "efppm": 40.0,
+    "pid": "slug:tim-robinson"
+  },
+  {
+    "id": 10108,
+    "name": "Shimron Hetmyer",
+    "country": "WI",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "SEO",
+    "efppm": 58.0,
+    "pid": "48a1d7b7"
+  },
+  {
+    "id": 10109,
+    "name": "Marcus Stoinis",
+    "country": "AUS",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "SEO",
+    "efppm": 62.0,
+    "pid": "d9273ee7"
+  },
+  {
+    "id": 10110,
+    "name": "Shehan Jayasuriya",
+    "country": "SL",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "SEO",
+    "efppm": 32.0,
+    "pid": "b58b7db6"
+  },
+  {
+    "id": 10111,
+    "name": "Harmeet Singh",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "SEO",
+    "efppm": 26.0,
+    "pid": "espn:422847"
+  },
+  {
+    "id": 10112,
+    "name": "Tanveer Sangha",
+    "country": "AUS",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "SEO",
+    "efppm": 46.0,
+    "pid": "52c952d9"
+  },
+  {
+    "id": 10113,
+    "name": "Cameron Gannon",
+    "country": "AUS",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "SEO",
+    "efppm": 26.0,
+    "pid": "519c30cb"
+  },
+  {
+    "id": 10114,
+    "name": "Jasdeep Singh",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "SEO",
+    "efppm": 26.0,
+    "pid": "f9d99806"
+  },
+  {
+    "id": 10115,
+    "name": "Ayan Desai",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "SEO",
+    "efppm": 26.0,
+    "pid": "slug:ayan-desai"
+  },
+  {
+    "id": 10116,
+    "name": "Dasun Shanaka",
+    "country": "SL",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "SEO",
+    "efppm": 46.0,
+    "pid": "espn:437316"
+  },
+  {
+    "id": 10117,
+    "name": "Lutho Sipamla",
+    "country": "SA",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "SEO",
+    "efppm": 16.0,
+    "pid": "f892fcf9"
+  },
+  {
+    "id": 10118,
+    "name": "Ottniel Baartman",
+    "country": "SA",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "SEO",
+    "efppm": 42.0,
+    "pid": "6b9eb501"
+  },
+  {
+    "id": 10119,
+    "name": "Shayan Jahangir",
+    "country": "USA",
+    "role": "WK",
+    "squad_number": 15,
+    "team_code": "SEO",
+    "efppm": 16.0,
+    "pid": "571e1d2a"
+  },
+  {
+    "id": 10120,
+    "name": "Sharad Lumba",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 16,
+    "team_code": "SEO",
+    "efppm": 16.0,
+    "pid": "03c29939"
+  },
+  {
+    "id": 10121,
+    "name": "Sujit Nayak",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 17,
+    "team_code": "SEO",
+    "efppm": 16.0,
+    "pid": "e06f7116"
+  },
+  {
+    "id": 10122,
+    "name": "Ali Sheikh",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 18,
+    "team_code": "SEO",
+    "efppm": 16.0,
+    "pid": "fa4f5a0b"
+  },
+  {
+    "id": 10123,
+    "name": "Alex Hales",
+    "country": "ENG",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "LAKR",
+    "efppm": 56.0,
+    "pid": "92aeac25"
+  },
+  {
+    "id": 10124,
+    "name": "Unmukt Chand",
+    "country": "USA",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "LAKR",
+    "efppm": 32.0,
+    "pid": "slug:unmukt-chand"
+  },
+  {
+    "id": 10125,
+    "name": "Colin Munro",
+    "country": "NZ",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "LAKR",
+    "efppm": 50.0,
+    "pid": "af2c687b"
+  },
+  {
+    "id": 10126,
+    "name": "Saif Badar",
+    "country": "USA",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "LAKR",
+    "efppm": 32.0,
+    "pid": "e5d452d7"
+  },
+  {
+    "id": 10127,
+    "name": "Sherfane Rutherford",
+    "country": "WI",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "LAKR",
+    "efppm": 48.0,
+    "pid": "slug:sherfane-rutherford"
+  },
+  {
+    "id": 10128,
+    "name": "Andre Russell",
+    "country": "WI",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "LAKR",
+    "efppm": 64.0,
+    "pid": "bbd41817"
+  },
+  {
+    "id": 10129,
+    "name": "Sunil Narine",
+    "country": "WI",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "LAKR",
+    "efppm": 62.0,
+    "pid": "slug:sunil-narine"
+  },
+  {
+    "id": 10130,
+    "name": "Shadley van Schalkwyk",
+    "country": "SA",
+    "role": "AR",
+    "squad_number": 16,
+    "team_code": "LAKR",
+    "efppm": 26.0,
+    "pid": "97b0e4ff"
+  },
+  {
+    "id": 10131,
+    "name": "Jason Holder",
+    "country": "WI",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "LAKR",
+    "efppm": 52.0,
+    "pid": "0f721006"
+  },
+  {
+    "id": 10132,
+    "name": "Carmi le Roux",
+    "country": "SA",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "LAKR",
+    "efppm": 26.0,
+    "pid": "7a490dec"
+  },
+  {
+    "id": 10133,
+    "name": "Ali Khan",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "LAKR",
+    "efppm": 26.0,
+    "pid": "486065b3"
+  },
+  {
+    "id": 10134,
+    "name": "Anrich Nortje",
+    "country": "SA",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "LAKR",
+    "efppm": 50.0,
+    "pid": "acdc62f5"
+  },
+  {
+    "id": 10135,
+    "name": "Rovman Powell",
+    "country": "WI",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "LAKR",
+    "efppm": 48.0,
+    "pid": "slug:rovman-powell"
+  },
+  {
+    "id": 10136,
+    "name": "Matheesha Pathirana",
+    "country": "SL",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "LAKR",
+    "efppm": 50.0,
+    "pid": "64839cb3"
+  },
+  {
+    "id": 10137,
+    "name": "Nitish Kumar",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "LAKR",
+    "efppm": 16.0,
+    "pid": "b4296080"
+  },
+  {
+    "id": 10138,
+    "name": "Jahmar Hamilton",
+    "country": "WI",
+    "role": "WK",
+    "squad_number": 15,
+    "team_code": "LAKR",
+    "efppm": 16.0,
+    "pid": "slug:jahmar-hamilton"
+  },
+  {
+    "id": 10139,
+    "name": "Matthew Tromp",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 17,
+    "team_code": "LAKR",
+    "efppm": 16.0,
+    "pid": "slug:matthew-tromp"
+  },
+  {
+    "id": 10140,
+    "name": "Karthik Gattepalli",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 18,
+    "team_code": "LAKR",
+    "efppm": 16.0,
+    "pid": "f6c313ea"
+  },
+  {
+    "id": 10141,
+    "name": "Asif Mehmood",
+    "country": "USA",
+    "role": "BOWL",
+    "squad_number": 19,
+    "team_code": "WAF",
+    "efppm": 24.0
+  },
+  {
+    "id": 10142,
+    "name": "Ghulam Mudassar",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 19,
+    "team_code": "SFU",
+    "efppm": 24.0
+  },
+  {
+    "id": 10143,
+    "name": "Andre Fletcher",
+    "country": "West Indies",
+    "role": "WK",
+    "squad_number": 19,
+    "team_code": "LAKR",
+    "efppm": 42.0
+  },
+  {
+    "id": 10144,
+    "name": "Dinesh Chandimal",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 20,
+    "team_code": "LAKR",
+    "efppm": 36.0
+  },
+  {
+    "id": 10145,
+    "name": "Russell Peterson",
+    "country": "USA",
+    "role": "AR",
+    "squad_number": 21,
+    "team_code": "LAKR",
+    "efppm": 18.0
+  }
+]

@@ -3,7 +3,8 @@ import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, teamSelections } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import { getPlayerByKey } from "@/lib/players";
-import { getMatchPoints, toCsvMatchLabel } from "@/lib/points";
+import { getMatchByKey } from "@/lib/matches";
+import { getMatchPointsForMatch, lookupPlayerPoints } from "@/lib/points";
 
 export async function GET(
   request: NextRequest,
@@ -31,9 +32,9 @@ export async function GET(
     .from(teamSelections)
     .where(eq(teamSelections.contestId, contest.id));
 
-  // contest.matchLabel is "Match N: TEAM1 v TEAM2"; CSV uses "Match N — TEAM1 v TEAM2"
-  const csvLabel = toCsvMatchLabel(contest.matchLabel);
-  const pointsMap = await getMatchPoints(csvLabel);
+  // Match points by teams+date (not the "Match N" label — bot numbering differs).
+  const match = getMatchByKey(contest.matchKey);
+  const pointsMap = match ? await getMatchPointsForMatch(match) : new Map<string, number>();
 
   const teams = selections.map((sel) => {
     const playerKeys: string[] = JSON.parse(sel.selectedPlayers ?? "[]");
@@ -43,7 +44,8 @@ export async function GET(
     const mapPlayer = (key: string, isBackup: boolean) => {
       const p = getPlayerByKey(key);
       const displayName = p?.displayName ?? key;
-      const rawPts = pointsMap.get(displayName) ?? null;
+      // Identity-first: exact match on the stable Player ID, then fuzzy name fallback.
+      const rawPts = lookupPlayerPoints(p?.pid, displayName, p?.name, pointsMap);
       const isCap = key === sel.captainKey && !isBackup;
       const isVC = key === sel.viceCaptainKey && !isBackup;
       const multiplier = isCap ? 2 : isVC ? 1.5 : 1;
