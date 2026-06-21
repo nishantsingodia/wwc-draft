@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
-import { getDb, draftContests } from "@/lib/db";
+import { getDb, draftContests, contestParticipants } from "@/lib/db";
 import { generateCode } from "@/lib/generate-code";
 import { getMatchByKey } from "@/lib/matches";
+import { eq } from "drizzle-orm";
 
 export async function POST(request: NextRequest) {
   let username: string;
@@ -38,6 +39,19 @@ export async function POST(request: NextRequest) {
       createdBy: username,
       createdAt: now,
     });
+
+    // Add creator to participants immediately so the draft appears in their lobby
+    const [contest] = await db
+      .select()
+      .from(draftContests)
+      .where(eq(draftContests.code, code));
+    if (contest) {
+      await db.insert(contestParticipants).values({
+        contestId: contest.id,
+        user: username,
+        joinedAt: now,
+      });
+    }
 
     return NextResponse.json({ code, matchLabel: match.label });
   } catch (err) {

@@ -20,9 +20,20 @@ export const draftContests = sqliteTable("draft_contests", {
     .default("WAITING"),
   draftOrder: text("draft_order"), // JSON: ["nishant","pushap"]
   pickCount: integer("pick_count").notNull().default(0),
+  // Pending undo request (single-flight): a player asked to roll the draft back
+  // to their own last pick. The other player must approve before it executes,
+  // because the rollback discards every pick from `pendingUndoTarget` onward —
+  // including any the opponent made after. Null when no undo is pending.
+  pendingUndoBy: text("pending_undo_by"),
+  pendingUndoTarget: integer("pending_undo_target"), // discard all picks with pick_number >= this
+  pendingUndoAt: integer("pending_undo_at"), // unix secs; used for TTL expiry
   createdBy: text("created_by").notNull(),
   createdAt: integer("created_at").notNull(),
 });
+
+// A pending undo older than this (seconds) is treated as expired, so an
+// unresponsive opponent can never permanently freeze the draft.
+export const UNDO_TTL_SECONDS = 180;
 
 export const draftPicks = sqliteTable(
   "draft_picks",

@@ -284,6 +284,44 @@ export async function getMatchPointsForMatch(
   return result;
 }
 
+// Accumulated TOUR points per player: sum of Fantasy Points across every completed match
+// in the sheet, keyed by both stable Player ID and canonical name. A player appears only in
+// their own tour's rows, so their sum is their tour total. Used on the draft board to show
+// real form ("X pts") instead of the pre-tournament projection while picking.
+export async function getTourPoints(): Promise<Map<string, number>> {
+  const rows = await getCsv();
+  const result = new Map<string, number>();
+  if (!rows || rows.length < 2) return result;
+  const header = rows[0];
+  const nameIdx = headerIdx(header, "Full Name");
+  const pidIdx = headerIdx(header, "Player ID"); // -1 on older sheets
+  const ptsIdx = headerIdx(header, "Fantasy Points");
+  const add = (k: string, v: number) => k && result.set(k, (result.get(k) ?? 0) + v);
+  for (const row of rows.slice(1)) {
+    const pts = parseFloat(row[ptsIdx]);
+    if (isNaN(pts)) continue;
+    const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
+    const name = row[nameIdx]?.trim();
+    if (pid) add(pid, pts);
+    if (name) add(normName(name), pts);
+  }
+  return result;
+}
+
+// Tour points for one player: stable pid first, then canonical name.
+export function lookupTourPoints(
+  pid: string | undefined,
+  displayName: string,
+  name: string | undefined,
+  tourPoints: Map<string, number>
+): number | null {
+  if (pid && tourPoints.has(pid)) return tourPoints.get(pid) ?? null;
+  return (
+    tourPoints.get(normName(displayName)) ??
+    (name ? tourPoints.get(normName(name)) ?? null : null)
+  );
+}
+
 // Which of the given matches are scored (have ≥1 row with a numeric points value).
 export async function getCompletedMatchKeys(
   matches: (MatchLike & { key: string })[]

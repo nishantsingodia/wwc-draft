@@ -9,6 +9,7 @@ type PlayerCardProps = {
   role: string;
   teamCode: string;
   efppm: number;
+  tourPoints?: number | null; // accumulated real tour points (null until they've played)
   takenBy: string | null;
   isMyPick?: boolean;
   isSelected?: boolean;
@@ -19,6 +20,7 @@ type PlayerCardProps = {
   onCaptainClick?: () => void;
   onViceCaptainClick?: () => void;
   compact?: boolean;
+  xiStatus?: "in" | "out" | null; // shown only when the official lineup is out
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -34,6 +36,7 @@ export default function PlayerCard({
   role,
   teamCode,
   efppm,
+  tourPoints = null,
   takenBy,
   isMyPick = false,
   isSelected = false,
@@ -44,6 +47,7 @@ export default function PlayerCard({
   onCaptainClick,
   onViceCaptainClick,
   compact = false,
+  xiStatus = null,
 }: PlayerCardProps) {
   const isTaken = !!takenBy;
   const canClick = !isTaken && isMyTurn && onClick;
@@ -94,12 +98,30 @@ export default function PlayerCard({
           {displayName}
         </span>
 
-        {/* Points */}
-        {!compact && (
-          <span className="text-emerald-400 font-bold text-sm">
-            {efppm.toFixed(0)}
-            <span className="text-zinc-500 font-normal text-xs"> pts</span>
+        {/* Official-lineup status (only when lineups are out) — helps swap in/out */}
+        {xiStatus === "in" && (
+          <span className="shrink-0 text-[10px] font-bold uppercase tracking-wide text-emerald-300 bg-emerald-500/15 border border-emerald-500/50 rounded px-1.5 py-0.5">
+            ✓ In XI
           </span>
+        )}
+        {xiStatus === "out" && (
+          <span className="shrink-0 text-[10px] font-bold uppercase tracking-wide text-red-300 bg-red-500/15 border border-red-500/50 rounded px-1.5 py-0.5">
+            ✗ Not in XI
+          </span>
+        )}
+
+        {/* Real accumulated tour points once the player has featured (amber, an actual
+            score) — otherwise the greyed "~exp" projection pick-guide. */}
+        {!compact && (
+          tourPoints != null ? (
+            <span className="text-amber-300 font-semibold text-xs whitespace-nowrap" title="Total points this tour">
+              {tourPoints.toFixed(0)} pts
+            </span>
+          ) : (
+            <span className="text-zinc-500 font-medium text-xs whitespace-nowrap" title="Projected (pre-tournament estimate)">
+              ~{efppm.toFixed(0)} exp
+            </span>
+          )
         )}
 
         {/* C/VC buttons */}

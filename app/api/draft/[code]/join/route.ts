@@ -36,7 +36,18 @@ export async function POST(
   }
 
   if (contest.status !== "WAITING") {
-    // Already started — just return current state (idempotent)
+    // For manual drafts in TEAM_SELECT, still let the second user join as a participant
+    if (contest.mode === "manual" && contest.status === "TEAM_SELECT") {
+      try {
+        await db.insert(contestParticipants).values({
+          contestId: contest.id,
+          user: username,
+          joinedAt: Math.floor(Date.now() / 1000),
+        });
+      } catch {
+        // Unique constraint — already joined, fine
+      }
+    }
     return NextResponse.json({ status: contest.status, already: true });
   }
 

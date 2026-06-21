@@ -65,12 +65,31 @@ const DDL = [
   )`,
 ];
 
+// SQLite has no `ADD COLUMN IF NOT EXISTS`, so check the table shape first.
+async function addColumnIfMissing(table: string, column: string, definition: string) {
+  const info = await client.execute(`PRAGMA table_info(${table})`);
+  const exists = info.rows.some((r) => r.name === column);
+  if (exists) {
+    console.log(`• ${table}.${column} already exists`);
+    return;
+  }
+  await client.execute(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+  console.log(`✓ added ${table}.${column}`);
+}
+
 async function migrate() {
   console.log("Connecting to:", url);
   for (const sql of DDL) {
     await client.execute(sql);
     console.log("✓", sql.slice(0, 60).trim() + "...");
   }
+
+  // Undo feature: pending-undo columns on draft_contests (additive, safe on
+  // existing rows — all default to NULL = no undo pending).
+  await addColumnIfMissing("draft_contests", "pending_undo_by", "TEXT");
+  await addColumnIfMissing("draft_contests", "pending_undo_target", "INTEGER");
+  await addColumnIfMissing("draft_contests", "pending_undo_at", "INTEGER");
+
   console.log("Migration complete.");
   client.close();
 }

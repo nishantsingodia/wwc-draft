@@ -1,8 +1,11 @@
 import matchesData from "@/data/matches.json";
 
+export const LOCK_BUFFER = 15 * 60; // teams lock 15 min after match start
+
 export type Match = {
   key: string;
   matchNum: number;
+  gender: "W" | "M";
   team1: string;
   team2: string;
   label: string;
@@ -11,15 +14,21 @@ export type Match = {
 };
 
 export function getAllMatches(): Match[] {
-  return (matchesData as typeof matchesData).map((m) => ({
-    ...m,
-    deadlineTs: Math.floor(new Date(m.date).getTime() / 1000),
-  }));
+  // Sorted chronologically so lists (lobby, schedule) interleave all tours by
+  // date — file order groups by tour, which buries later-added tours (MLC) at
+  // the end and hides them behind the lobby's top-5 cap.
+  return (matchesData as typeof matchesData)
+    .map((m) => ({
+      ...m,
+      gender: m.gender as "W" | "M",
+      deadlineTs: Math.floor(new Date(m.date).getTime() / 1000),
+    }))
+    .sort((a, b) => a.deadlineTs - b.deadlineTs);
 }
 
 export function getUpcomingMatches(): Match[] {
   const now = Math.floor(Date.now() / 1000);
-  return getAllMatches().filter((m) => m.deadlineTs > now);
+  return getAllMatches().filter((m) => m.deadlineTs + LOCK_BUFFER > now);
 }
 
 export function getMatchByKey(key: string): Match | undefined {

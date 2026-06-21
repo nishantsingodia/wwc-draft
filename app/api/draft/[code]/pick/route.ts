@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
-import { getDb, draftContests, draftPicks } from "@/lib/db";
+import { getDb, draftContests, draftPicks, UNDO_TTL_SECONDS } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import { currentPicker, isDraftComplete } from "@/lib/snake-draft";
 import { getPlayerByKey } from "@/lib/players";
@@ -34,6 +34,20 @@ export async function POST(
     return NextResponse.json({ error: "Draft not active" }, { status: 400 });
   }
 
+  // Freeze picking while an undo is awaiting approval, so the set of picks the
+  // approver is reviewing can't shift under them.
+  const now = Math.floor(Date.now() / 1000);
+  if (
+    contest.pendingUndoBy &&
+    contest.pendingUndoAt &&
+    now - contest.pendingUndoAt < UNDO_TTL_SECONDS
+  ) {
+    return NextResponse.json(
+      { error: "An undo is pending — resolve it before picking" },
+      { status: 409 }
+    );
+  }
+
   const order = JSON.parse(contest.draftOrder ?? "[]") as string[];
   const picker = currentPicker(order, contest.pickCount);
 
@@ -45,8 +59,6 @@ export async function POST(
   if (!player) {
     return NextResponse.json({ error: "Player not found" }, { status: 400 });
   }
-
-  const now = Math.floor(Date.now() / 1000);
 
   try {
     await db.insert(draftPicks).values({
