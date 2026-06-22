@@ -133,7 +133,7 @@ export default function DraftBoardPage({
   }, []);
 
   const fetchState = useCallback(async () => {
-    const res = await fetch(`/api/draft/${code}`);
+    const res = await fetch(`/api/draft/${code}`, { cache: "no-store" });
     if (res.status === 401) { router.push("/"); return; }
     if (res.status === 404) { setError("Draft not found."); return; }
     if (res.ok) {
@@ -162,7 +162,17 @@ export default function DraftBoardPage({
     const id = setInterval(() => {
       if (document.visibilityState === "visible") fetchState();
     }, 2000);
-    return () => clearInterval(id);
+    // Refetch immediately when the tab is foregrounded, so a returning opponent
+    // sees a pending undo (or any fresh state) at once instead of waiting up to
+    // the next 2s tick.
+    const onVisible = () => {
+      if (document.visibilityState === "visible") fetchState();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      clearInterval(id);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, [fetchState]);
 
   // Detect an applied undo (pickCount dropped). Reset local pick/queue state so

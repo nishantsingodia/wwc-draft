@@ -32,8 +32,12 @@ export const draftContests = sqliteTable("draft_contests", {
 });
 
 // A pending undo older than this (seconds) is treated as expired, so an
-// unresponsive opponent can never permanently freeze the draft.
-export const UNDO_TTL_SECONDS = 180;
+// unresponsive opponent can never permanently freeze the draft. This is a
+// HUMAN approval handshake ("hey, approve my undo") — keep it generous; 3 min
+// expired before players could coordinate. Either party can clear it instantly
+// (requester Cancel / opponent Reject), so a long window carries no real freeze
+// risk.
+export const UNDO_TTL_SECONDS = 1800; // 30 min
 
 export const draftPicks = sqliteTable(
   "draft_picks",
