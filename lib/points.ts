@@ -83,15 +83,28 @@ const CACHE_TTL_MS = 45_000;
 let _cache: { at: number; rows: string[][] } | null = null;
 let _inflight: Promise<string[][] | null> | null = null;
 
-// Merge multiple parsed CSVs (one per tour tab) into a single table.
-// Schemas are identical, so we keep the first source's header and append
-// every source's data rows beneath it.
+// Merge multiple parsed CSVs (one per tour tab) into a single table, realigning each tab
+// to a canonical header BY COLUMN NAME. Tabs usually share a schema, but if one lags (e.g.
+// the bot added "Player ID" to some tabs first), blindly reusing the first header would read
+// every later tab's rows shifted (wrong Full Name / Fantasy Points). Mapping by name is robust.
 function mergeCsvs(tables: string[][][]): string[][] | null {
   const nonEmpty = tables.filter((t) => t.length >= 1);
   if (nonEmpty.length === 0) return null;
-  const header = nonEmpty[0][0];
-  const merged: string[][] = [header];
-  for (const t of nonEmpty) merged.push(...t.slice(1));
+  // Master columns = union of every tab's header (base order = the widest header).
+  const master: string[] = [
+    ...nonEmpty.reduce((a, t) => (t[0].length > a.length ? t[0] : a), nonEmpty[0][0]),
+  ];
+  for (const t of nonEmpty) for (const c of t[0]) if (!master.includes(c)) master.push(c);
+  const merged: string[][] = [master];
+  for (const t of nonEmpty) {
+    const idx = new Map(t[0].map((c, i) => [c, i]));
+    for (const row of t.slice(1)) {
+      merged.push(master.map((c) => {
+        const i = idx.get(c);
+        return i != null && i < row.length ? row[i] : "";
+      }));
+    }
+  }
   return merged;
 }
 
@@ -237,20 +250,31 @@ function labelDateMap(rows: string[][]): Map<string, string> {
   return out;
 }
 
-// Resolve our match to the single best sheet label (teams match, date closest).
+// A scored label is only THIS match if its date is within a few days. The same team pair
+// meets again later in the tournament (double round-robin / knockouts), so without a date cap
+// a not-yet-played rematch would resolve to an earlier meeting's points and show "completed".
+const MATCH_DATE_GUARD_MS = 3 * 24 * 60 * 60 * 1000;
+
+// Resolve our match to the single best sheet label (teams match, date closest + within guard).
 function resolveLabel(rows: string[][], match: MatchLike): string | null {
   const matchTs = new Date(match.date).getTime();
   let best: string | null = null;
   let bestDist = Infinity;
+  let bestDated = false;
   for (const [lbl, dstr] of labelDateMap(rows)) {
     if (!teamsMatch(labelTeams(lbl), match.team1, match.team2)) continue;
     const d = dstr ? new Date(dstr + "T00:00:00Z").getTime() : NaN;
-    const dist = isNaN(d) ? 0 : Math.abs(d - matchTs);
+    const dated = !isNaN(d);
+    // Prefer dated candidates; an undated label only wins if nothing dated matches (legacy).
+    const dist = dated ? Math.abs(d - matchTs) : Number.MAX_SAFE_INTEGER;
     if (dist < bestDist) {
       bestDist = dist;
       best = lbl;
+      bestDated = dated;
     }
   }
+  // Reject when the closest scored meeting of this pair is far in time (a future rematch).
+  if (best && bestDated && bestDist > MATCH_DATE_GUARD_MS) return null;
   return best;
 }
 
@@ -346,17 +370,21 @@ export async function getCompletedMatchKeys(
     const matchTs = new Date(m.date).getTime();
     let best: string | null = null;
     let bestDist = Infinity;
+    let bestDated = false;
     for (const lbl of scored) {
       if (!teamsMatch(labelTeams(lbl), m.team1, m.team2)) continue;
       const dstr = dates.get(lbl) ?? "";
       const d = dstr ? new Date(dstr + "T00:00:00Z").getTime() : NaN;
-      const dist = isNaN(d) ? 0 : Math.abs(d - matchTs);
+      const dated = !isNaN(d);
+      const dist = dated ? Math.abs(d - matchTs) : Number.MAX_SAFE_INTEGER;
       if (dist < bestDist) {
         bestDist = dist;
         best = lbl;
+        bestDated = dated;
       }
     }
-    if (best) done.add(m.key);
+    // Same date guard as resolveLabel: a future rematch must not count an earlier meeting.
+    if (best && !(bestDated && bestDist > MATCH_DATE_GUARD_MS)) done.add(m.key);
   }
   return done;
 }
