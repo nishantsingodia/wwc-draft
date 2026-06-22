@@ -158,9 +158,15 @@ export default async function LobbyPage() {
     // DB or sheet not available
   }
 
+  // Only surface recently-started matches in Live/Completed (last ~18 days)
+  const RECENT_WINDOW = 18 * 24 * 60 * 60;
+  const recentTs = now - RECENT_WINDOW;
+
   // Classify matches — "started" means past lock window (match start + 15 min)
   const upcomingMatches = allMatches.filter((m) => m.deadlineTs + LOCK_BUFFER > now);
-  const startedMatches = allMatches.filter((m) => m.deadlineTs + LOCK_BUFFER <= now);
+  const startedMatches = allMatches.filter(
+    (m) => m.deadlineTs + LOCK_BUFFER <= now && m.deadlineTs >= recentTs
+  );
   const liveMatches = startedMatches.filter((m) => !completedMatchKeys.has(m.key));
 
   const upcomingMatchKeys = new Set(upcomingMatches.map((m) => m.key));
@@ -193,10 +199,14 @@ export default async function LobbyPage() {
     upcomingDraftsByMatch.set(c.matchKey, arr);
   }
 
-  // Completed: matches with user drafts
-  const myCompletedMatchKeys = [...completedMatchKeys].filter((key) =>
-    userContestsByMatch.has(key)
-  );
+  // Completed: matches with user drafts, within the recent window, newest first
+  const matchByKey = new Map(allMatches.map((m) => [m.key, m]));
+  const myCompletedMatchKeys = [...completedMatchKeys]
+    .filter((key) => userContestsByMatch.has(key))
+    .map((key) => matchByKey.get(key))
+    .filter((m): m is NonNullable<typeof m> => !!m && m.deadlineTs >= recentTs)
+    .sort((a, b) => b.deadlineTs - a.deadlineTs)
+    .map((m) => m.key);
 
   // Fetch match points for live drafts and completed matches (in parallel)
   const matchPointsCache = new Map<string, Map<string, number>>();
@@ -223,6 +233,7 @@ export default async function LobbyPage() {
     <div className="space-y-3">
       {liveMatches
         .filter((m) => liveDraftMatchKeys.has(m.key))
+        .sort((a, b) => b.deadlineTs - a.deadlineTs)
         .map((m) => {
                 const matchPts = matchPointsCache.get(m.key) ?? new Map();
                 const myDrafts = (userContestsByMatch.get(m.key) ?? []).filter(
@@ -234,8 +245,13 @@ export default async function LobbyPage() {
                     {/* Match header */}
                     <div className="flex items-center gap-2 px-1">
                       <span className="text-lg">{getFlag(m.team1)}{getFlag(m.team2)}</span>
-                      <span className="text-sm font-semibold">{m.label}</span>
-                      <span className="text-xs text-red-400 font-medium">In progress</span>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-semibold truncate">{m.label}</span>
+                          <span className="text-xs text-red-400 font-medium shrink-0">In progress</span>
+                        </div>
+                        <p className="text-[11px] text-zinc-400">{formatMatchDate(m.date)}</p>
+                      </div>
                     </div>
 
                     {/* Draft cards */}
@@ -385,7 +401,12 @@ export default async function LobbyPage() {
                   {/* Match header */}
                   <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800">
                     <span className="text-lg">{getFlag(match?.team1 ?? "")}{getFlag(match?.team2 ?? "")}</span>
-                    <span className="text-sm font-semibold">{match?.label ?? matchKey}</span>
+                    <div className="min-w-0">
+                      <span className="text-sm font-semibold block truncate">{match?.label ?? matchKey}</span>
+                      {match && (
+                        <p className="text-[11px] text-zinc-400">{formatMatchDate(match.date)}</p>
+                      )}
+                    </div>
                   </div>
 
                   {/* Contest rows */}
