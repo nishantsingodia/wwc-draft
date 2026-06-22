@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getUserLabel } from "@/lib/users";
 import LogoutButton from "@/components/logout-button";
 import DeleteDraftButton from "@/components/delete-draft-button";
+import LobbyTabs from "@/components/lobby-tabs";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
 import { getCompletedMatchKeys, getMatchPointsForMatch, lookupPlayerPoints } from "@/lib/points";
 import { getFlag, getPlayerByKey } from "@/lib/players";
@@ -209,29 +210,20 @@ export default async function LobbyPage() {
     })
   );
 
-  return (
-    <main className="min-h-screen bg-zinc-950 text-white">
-      <div className="max-w-lg mx-auto px-4 py-6 space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-bold">🏏 WWC Draft</h1>
-            <p className="text-zinc-400 text-sm">Welcome, {getUserLabel(username)}</p>
-          </div>
-          <LogoutButton />
-        </div>
+  // Default tab: prefer Live, then Upcoming, then Completed
+  const defaultTab =
+    liveDraftMatchKeys.size > 0
+      ? "live"
+      : upcomingMatches.length > 0
+      ? "upcoming"
+      : "completed";
 
-        {/* ── LIVE NOW ── */}
-        {liveDraftMatchKeys.size > 0 && (
-          <section className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <h2 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider">Live Now</h2>
-            </div>
-
-            {liveMatches
-              .filter((m) => liveDraftMatchKeys.has(m.key))
-              .map((m) => {
+  // ── LIVE NOW panel ──
+  const liveContent = (
+    <div className="space-y-3">
+      {liveMatches
+        .filter((m) => liveDraftMatchKeys.has(m.key))
+        .map((m) => {
                 const matchPts = matchPointsCache.get(m.key) ?? new Map();
                 const myDrafts = (userContestsByMatch.get(m.key) ?? []).filter(
                   (c) => c.status !== "COMPLETED"
@@ -312,24 +304,21 @@ export default async function LobbyPage() {
                   </div>
                 );
               })}
-          </section>
-        )}
+    </div>
+  );
 
-        {/* ── UPCOMING ── */}
-        {upcomingMatches.length > 0 && (
-          <section className="space-y-3">
-            <div className="flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider flex items-center gap-2">
-                <span className="text-base">📅</span> Upcoming
-              </h2>
-              {upcomingMatches.length > 8 && (
-                <Link href="/schedule" className="text-xs text-zinc-500 hover:text-zinc-300">
-                  All {upcomingMatches.length} →
-                </Link>
-              )}
-            </div>
+  // ── UPCOMING panel ──
+  const upcomingContent = (
+    <div className="space-y-3">
+      {upcomingMatches.length > 8 && (
+        <div className="flex justify-end">
+          <Link href="/schedule" className="text-xs text-zinc-500 hover:text-zinc-300">
+            All {upcomingMatches.length} →
+          </Link>
+        </div>
+      )}
 
-            {upcomingMatches.slice(0, 8).map((m) => {
+      {upcomingMatches.slice(0, 8).map((m) => {
               const myDrafts = upcomingDraftsByMatch.get(m.key) ?? [];
 
               return (
@@ -380,17 +369,13 @@ export default async function LobbyPage() {
                 </div>
               );
             })}
-          </section>
-        )}
+    </div>
+  );
 
-        {/* ── COMPLETED ── */}
-        {myCompletedMatchKeys.length > 0 && (
-          <section className="space-y-3">
-            <h2 className="text-sm font-semibold text-zinc-300 uppercase tracking-wider flex items-center gap-2">
-              <span className="text-base">✅</span> Completed
-            </h2>
-
-            {myCompletedMatchKeys.map((matchKey) => {
+  // ── COMPLETED panel ──
+  const completedContent = (
+    <div className="space-y-3">
+      {myCompletedMatchKeys.map((matchKey) => {
               const match = allMatches.find((m) => m.key === matchKey);
               const matchPts = matchPointsCache.get(matchKey) ?? new Map();
               const contests = userContestsByMatch.get(matchKey) ?? [];
@@ -470,11 +455,34 @@ export default async function LobbyPage() {
                 </div>
               );
             })}
-          </section>
-        )}
+    </div>
+  );
 
-        {/* Empty state */}
-        {liveMatches.length === 0 && upcomingMatches.length === 0 && (
+  const hasAnyMatches = allMatches.length > 0;
+
+  return (
+    <main className="min-h-screen bg-zinc-950 text-white">
+      <div className="max-w-lg mx-auto px-4 py-6 space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-bold">🏏 WWC Draft</h1>
+            <p className="text-zinc-400 text-sm">Welcome, {getUserLabel(username)}</p>
+          </div>
+          <LogoutButton />
+        </div>
+
+        {hasAnyMatches ? (
+          <LobbyTabs
+            defaultTab={defaultTab}
+            upcomingCount={upcomingMatches.length}
+            liveCount={liveDraftMatchKeys.size}
+            completedCount={myCompletedMatchKeys.length}
+            upcoming={upcomingContent}
+            live={liveContent}
+            completed={completedContent}
+          />
+        ) : (
           <div className="text-center py-12">
             <p className="text-zinc-500">No matches scheduled.</p>
           </div>
