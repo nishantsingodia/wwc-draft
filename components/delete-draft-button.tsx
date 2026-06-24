@@ -31,7 +31,7 @@ export default function DeleteDraftButton({ code }: { code: string }) {
         </button>
         <button
           onClick={() => setConfirming(false)}
-          className="text-xs px-2 py-1 rounded-lg bg-zinc-700 text-zinc-300"
+          className="text-xs px-2 py-1 rounded-lg bg-navy2 text-cloud"
         >
           No
         </button>
@@ -42,7 +42,7 @@ export default function DeleteDraftButton({ code }: { code: string }) {
   return (
     <button
       onClick={(e) => { e.preventDefault(); setConfirming(true); }}
-      className="text-zinc-600 hover:text-red-400 text-sm shrink-0 transition-colors"
+      className="text-mist2 hover:text-red-400 text-sm shrink-0 transition-colors"
       title="Delete draft"
     >
       🗑

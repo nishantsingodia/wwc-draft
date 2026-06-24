@@ -82,7 +82,7 @@ export default function ResultsPage({
 
   if (error) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
+      <main className="min-h-screen bg-ink text-white flex items-center justify-center">
         <p className="text-red-400">{error}</p>
       </main>
     );
@@ -90,8 +90,8 @@ export default function ResultsPage({
 
   if (!data) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
-        <p className="text-zinc-400">Loading results…</p>
+      <main className="min-h-screen bg-ink text-white flex items-center justify-center">
+        <p className="text-mist">Loading results…</p>
       </main>
     );
   }
@@ -107,18 +107,18 @@ export default function ResultsPage({
   const orderedTeams = [myTeam, ...otherTeams].filter(Boolean) as TeamResult[];
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white pb-8">
+    <main className="min-h-screen bg-ink text-white pb-8">
       <div className="max-w-lg mx-auto px-3 pt-4 space-y-4">
         {/* Header */}
         <div className="flex items-center gap-2">
-          <Link href={`/match/${contest.matchKey}`} className="text-zinc-400 hover:text-white text-lg">←</Link>
+          <Link href={`/match/${contest.matchKey}`} className="text-mist hover:text-white text-lg">←</Link>
           <div className="flex-1">
             <h1 className="font-bold">{contest.matchLabel}</h1>
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs text-mist">
               {hasPoints ? "Live points — refreshes every 30s" : "Waiting for match to start"}
             </p>
           </div>
-          <Link href="/lobby" className="text-xs text-zinc-500 hover:text-zinc-300">Home</Link>
+          <Link href="/lobby" className="text-xs text-mist2 hover:text-cloud">Home</Link>
         </div>
 
         {/* Scoreboard */}
@@ -132,19 +132,19 @@ export default function ResultsPage({
               return (
                 <div
                   key={team.user}
-                  className={`bg-zinc-900 rounded-xl p-3 ${isWinner ? "ring-2 ring-yellow-400" : ""}`}
+                  className={`bg-ink2 rounded-xl p-3 ${isWinner ? "ring-2 ring-yellow-400" : ""}`}
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <span className={`w-3 h-3 rounded-full ${color}`} />
                     <span className="font-semibold text-sm truncate">
                       {getUserLabel(team.user)}
-                      {team.user === username && <span className="text-zinc-500"> (you)</span>}
+                      {team.user === username && <span className="text-mist2"> (you)</span>}
                     </span>
                     {isWinner && <span className="ml-auto text-yellow-400 shrink-0">🏆</span>}
                   </div>
-                  <p className={`text-2xl font-bold ${hasPoints ? "text-emerald-400" : "text-zinc-600"}`}>
+                  <p className={`text-2xl font-bold ${hasPoints ? "text-amber-300" : "text-mist2"}`}>
                     {total.toFixed(1)}
-                    <span className="text-sm text-zinc-500 font-normal"> pts</span>
+                    <span className="text-sm text-mist2 font-normal"> pts</span>
                   </p>
                 </div>
               );
@@ -162,7 +162,7 @@ export default function ResultsPage({
             <div key={team.user} className="space-y-2">
               <div className="flex items-center gap-2">
                 <span className={`w-2 h-2 rounded-full ${color}`} />
-                <h2 className="text-sm font-semibold text-zinc-300">
+                <h2 className="text-sm font-semibold text-cloud">
                   {getUserLabel(team.user)}{team.user === username ? "'s team (you)" : "'s team"}
                 </h2>
               </div>
@@ -180,7 +180,7 @@ export default function ResultsPage({
               {/* Bench */}
               {bench.length > 0 && (
                 <div className="space-y-1 opacity-60">
-                  <p className="text-xs text-zinc-500 uppercase tracking-wider px-1 pt-1">Bench — not counted</p>
+                  <p className="text-xs text-mist2 uppercase tracking-wider px-1 pt-1">Bench — not counted</p>
                   {bench.map((p) => (
                     <PlayerRow key={p.key} player={p} isBench />
                   ))}
@@ -192,14 +192,14 @@ export default function ResultsPage({
 
         {teams.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-zinc-500">No teams submitted yet. Go finalize your team!</p>
-            <Link href={`/draft/${code}/team`} className="mt-4 inline-block text-emerald-400 underline">
+            <p className="text-mist2">No teams submitted yet. Go finalize your team!</p>
+            <Link href={`/draft/${code}/team`} className="mt-4 inline-block text-gold underline">
               Set my team →
             </Link>
           </div>
         )}
 
-        <p className="text-xs text-zinc-700 text-center">
+        <p className="text-xs text-mist2 text-center">
           Points refresh every 30s · ~ means projected EFPPM (no live data yet)
         </p>
       </div>
@@ -214,9 +214,9 @@ function PlayerRow({ player, isBench = false }: { player: PlayerResult; isBench?
   const displayPts = raw !== null ? raw * mult : null;
 
   return (
-    <div className={`flex items-center gap-2 bg-zinc-900 rounded-lg px-3 py-2 ${isBench ? "opacity-70" : ""}`}>
+    <div className={`flex items-center gap-2 bg-ink2 rounded-lg px-3 py-2 ${isBench ? "opacity-70" : ""}`}>
       <span className="text-base">{getFlag(player.team)}</span>
-      <span className={`text-xs font-bold ${ROLE_COLORS[player.role] ?? "text-zinc-400"}`}>
+      <span className={`text-xs font-bold ${ROLE_COLORS[player.role] ?? "text-mist"}`}>
         {player.role}
       </span>
       <span className="flex-1 text-sm font-medium min-w-0 truncate">
@@ -228,12 +228,12 @@ function PlayerRow({ player, isBench = false }: { player: PlayerResult; isBench?
           <span className="ml-1 text-xs bg-blue-500 text-white px-1 rounded font-bold">VC</span>
         )}
       </span>
-      <span className="text-sm text-zinc-400 shrink-0">
-        <span className={displayPts !== null ? "text-emerald-400 font-semibold" : "text-zinc-600"}>
+      <span className="text-sm text-mist shrink-0">
+        <span className={displayPts !== null ? "text-amber-300 font-semibold" : "text-mist2"}>
           {(displayPts ?? 0).toFixed(1)}
         </span>
         {mult > 1 && displayPts !== null && (
-          <span className="text-zinc-600 text-xs ml-1">×{mult}</span>
+          <span className="text-mist2 text-xs ml-1">×{mult}</span>
         )}
       </span>
     </div>

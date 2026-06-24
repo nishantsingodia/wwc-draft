@@ -128,3 +128,72 @@
     @apply font-sans;
   }
 }
+
+/* ============================================================
+   STADIUM — unified dark theme (navy + gold), redesign 2026-06
+   Semantic tokens exposed as Tailwind utilities (bg-/text-/border-).
+   ============================================================ */
+@theme {
+  --color-ink: #0a1628;        /* app ground */
+  --color-ink2: #0d1f3c;       /* deepest card (draft board) */
+  --color-navy: #112347;       /* bars / surfaces */
+  --color-navy2: #1a2f56;      /* raised surfaces */
+  --color-gold: #d4af37;       /* primary accent */
+  --color-grn: #4ade80;        /* your-turn / success */
+  --color-live: #f87171;       /* live / red */
+  --color-cloud: #e4e9f2;      /* text */
+  --color-mist: #9aa6c0;       /* muted text */
+  --color-mist2: #5d6b8a;      /* faint text */
+  --color-hair: rgba(228, 233, 242, 0.1);   /* hairline */
+  --color-hair2: rgba(228, 233, 242, 0.18); /* stronger hairline */
+  /* role colors (functional — unchanged) */
+  --color-rwk: #eab308;
+  --color-rbat: #3b82f6;
+  --color-rar: #a855f7;
+  --color-rbowl: #ef4444;
+}
+
+/* Floodlight wash — a soft top radial used on full screens */
+@utility floodlight {
+  background-image: radial-gradient(
+    90% 60% at 70% -15%,
+    rgba(212, 175, 55, 0.1),
+    transparent 60%
+  );
+}
+
+/* Elevated stadium card */
+@utility card-stadium {
+  background-image: linear-gradient(165deg, var(--color-navy), var(--color-ink2));
+  border: 1px solid var(--color-hair);
+  box-shadow: 0 22px 44px -32px rgba(0, 0, 0, 0.8);
+}
+
+/* Glows */
+@utility glow-gold {
+  box-shadow: 0 0 26px -10px rgba(212, 175, 55, 0.5);
+}
+@utility glow-grn {
+  box-shadow: 0 0 26px -8px rgba(74, 222, 128, 0.5);
+}
+
+/* ============================================================
+   SLIDE CHOREOGRAPHY (contained, no experimental flags)
+   Lobby → Draft: lobby lifts & dims on tap (.vt-lift), the draft
+   board rises from below on mount (.vt-rise). Reduced-motion safe.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .vt-rise {
+    animation: vt-rise 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .vt-lift {
+    animation: vt-lift 240ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    pointer-events: none;
+  }
+}
+@keyframes vt-rise {
+  from { transform: translateY(100%); }
+}
+@keyframes vt-lift {
+  to { transform: translateY(-6%) scale(0.96); opacity: 0; }
+}

@@ -7,6 +7,7 @@ import { getUserLabel } from "@/lib/users";
 import LogoutButton from "@/components/logout-button";
 import DeleteDraftButton from "@/components/delete-draft-button";
 import LobbyTabs from "@/components/lobby-tabs";
+import TransitionLink from "@/components/transition-link";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
 import { getCompletedMatchKeys, getMatchPointsForMatch, lookupPlayerPoints } from "@/lib/points";
 import { getFlag, getPlayerByKey } from "@/lib/players";
@@ -123,11 +124,11 @@ function getDraftStatusLine(
       return { label: "Draft done · select your XI", color: "text-emerald-400" };
     }
     case "LOCKED":
-      return { label: "Team locked", color: "text-zinc-400" };
+      return { label: "Team locked", color: "text-mist" };
     case "COMPLETED":
-      return { label: "Completed", color: "text-zinc-500" };
+      return { label: "Completed", color: "text-mist2" };
     default:
-      return { label: contest.status, color: "text-zinc-400" };
+      return { label: contest.status, color: "text-mist" };
   }
 }
 
@@ -247,10 +248,10 @@ export default async function LobbyPage() {
                       <span className="text-lg">{getFlag(m.team1)}{getFlag(m.team2)}</span>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-semibold truncate">{m.label}</span>
-                          <span className="text-xs text-red-400 font-medium shrink-0">In progress</span>
+                          <span className="text-sm font-bold truncate">{m.label}</span>
+                          <span className="text-xs text-live font-bold shrink-0 flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-live animate-pulse" />In progress</span>
                         </div>
-                        <p className="text-[11px] text-zinc-400">{formatMatchDate(m.date)}</p>
+                        <p className="text-[11px] text-mist font-mono">{formatMatchDate(m.date)}</p>
                       </div>
                     </div>
 
@@ -272,14 +273,14 @@ export default async function LobbyPage() {
                       return (
                         <div
                           key={c.id}
-                          className="bg-zinc-900/80 border border-zinc-700/40 rounded-xl overflow-hidden"
+                          className="card-stadium rounded-2xl overflow-hidden"
                         >
                           {/* Card header */}
                           <div className="flex items-center gap-2 px-3 pt-2.5 pb-1.5">
-                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase ${c.mode === "live" ? "bg-red-900/60 text-red-400" : "bg-zinc-700 text-zinc-400"}`}>
+                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide ${c.mode === "live" ? "bg-live/15 text-live border border-live/40" : "bg-navy2 text-mist"}`}>
                               {c.mode === "live" ? "Live" : "Manual"}
                             </span>
-                            <span className="text-zinc-500 font-mono text-xs">{c.code}</span>
+                            <span className="text-mist2 font-mono text-xs">{c.code}</span>
                             <span className="flex-1" />
                             {isDeletable && <DeleteDraftButton code={c.code} />}
                           </div>
@@ -288,31 +289,31 @@ export default async function LobbyPage() {
                           <Link href={`/draft/${c.code}/results`} className="block px-3 pb-3 space-y-1.5">
                             {userRows.map(({ u, capName, vcName, pts }) => (
                               <div key={u} className="flex items-center gap-2 text-xs">
-                                <span className="text-zinc-400 w-14 shrink-0 font-medium truncate">
+                                <span className="text-mist w-14 shrink-0 font-medium truncate">
                                   {getUserLabel(u)}{u === username ? " (you)" : ""}
                                 </span>
                                 <div className="flex-1 flex items-center gap-1.5 min-w-0 overflow-hidden">
                                   {capName ? (
                                     <>
                                       <span className="bg-yellow-500 text-black text-[9px] font-bold px-1 rounded shrink-0">C</span>
-                                      <span className="text-zinc-200 truncate">{capName}</span>
+                                      <span className="text-cloud truncate">{capName}</span>
                                       {vcName && (
                                         <>
                                           <span className="bg-blue-500 text-white text-[9px] font-bold px-1 rounded shrink-0">VC</span>
-                                          <span className="text-zinc-200 truncate">{vcName}</span>
+                                          <span className="text-cloud truncate">{vcName}</span>
                                         </>
                                       )}
                                     </>
                                   ) : (
-                                    <span className="text-zinc-600">Team not set</span>
+                                    <span className="text-mist2">Team not set</span>
                                   )}
                                 </div>
-                                <span className={`font-bold shrink-0 ${pts !== null ? "text-emerald-400" : "text-zinc-600"}`}>
+                                <span className={`font-bold shrink-0 ${pts !== null ? "text-emerald-400" : "text-mist2"}`}>
                                   {(pts ?? 0).toFixed(0)}pt
                                 </span>
                               </div>
                             ))}
-                            <p className="text-[10px] text-zinc-600 pt-0.5">Tap to compare teams →</p>
+                            <p className="text-[10px] text-mist2 font-mono pt-0.5">Tap to compare teams →</p>
                           </Link>
                         </div>
                       );
@@ -328,7 +329,7 @@ export default async function LobbyPage() {
     <div className="space-y-3">
       {upcomingMatches.length > 8 && (
         <div className="flex justify-end">
-          <Link href="/schedule" className="text-xs text-zinc-500 hover:text-zinc-300">
+          <Link href="/schedule" className="text-xs text-mist2 hover:text-cloud">
             All {upcomingMatches.length} →
           </Link>
         </div>
@@ -342,16 +343,16 @@ export default async function LobbyPage() {
                   {/* Match header */}
                   <Link
                     href={`/match/${m.key}`}
-                    className="flex items-center justify-between bg-zinc-900 rounded-xl px-4 py-3 hover:bg-zinc-800 transition-colors"
+                    className="flex items-center justify-between card-stadium rounded-2xl px-4 py-3 hover:brightness-110 transition"
                   >
                     <div className="flex items-center gap-3">
                       <div className="text-xl">{getFlag(m.team1)}{getFlag(m.team2)}</div>
                       <div>
-                        <p className="font-semibold text-sm">{m.label}</p>
-                        <p className="text-xs text-zinc-400">{formatMatchDate(m.date)}</p>
+                        <p className="font-bold text-sm">{m.label}</p>
+                        <p className="text-xs text-mist font-mono mt-0.5">{formatMatchDate(m.date)}</p>
                       </div>
                     </div>
-                    <span className="text-zinc-500 text-sm shrink-0">Draft →</span>
+                    <span className="text-gold text-xs font-mono shrink-0 border border-gold/30 rounded-lg px-2.5 py-1.5">Draft →</span>
                   </Link>
 
                   {/* User's drafts for this match */}
@@ -364,20 +365,21 @@ export default async function LobbyPage() {
                     return (
                       <div
                         key={c.id}
-                        className="ml-4 flex items-start gap-2 bg-zinc-900/70 border border-zinc-700/30 rounded-xl px-3 py-2.5"
+                        className="ml-4 flex items-center gap-2 rounded-xl border border-gold/30 bg-gradient-to-br from-gold/10 to-navy2 px-3 py-2.5"
                       >
-                        <Link href={`/draft/${c.code}`} className="flex-1 min-w-0">
+                        <TransitionLink href={`/draft/${c.code}`} className="flex-1 min-w-0 group">
                           <div className="flex items-center gap-1.5 mb-1">
-                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase ${c.mode === "live" ? "bg-red-900/60 text-red-400" : "bg-zinc-700 text-zinc-400"}`}>
+                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide ${c.mode === "live" ? "bg-live/15 text-live border border-live/40" : "bg-navy2 text-mist"}`}>
                               {c.mode === "live" ? "Live" : "Manual"}
                             </span>
-                            <span className="text-zinc-500 font-mono text-xs">{c.code}</span>
+                            <span className="text-mist2 font-mono text-xs">{c.code}</span>
                           </div>
-                          <p className={`text-xs font-semibold ${statusInfo.color}`}>{statusInfo.label}</p>
+                          <p className={`text-sm font-bold ${statusInfo.color}`}>{statusInfo.label}</p>
                           {statusInfo.sub && (
-                            <p className="text-[11px] text-zinc-500 mt-0.5">{statusInfo.sub}</p>
+                            <p className="text-[11px] text-mist2 font-mono mt-0.5">{statusInfo.sub}</p>
                           )}
-                        </Link>
+                        </TransitionLink>
+                        <span className="shrink-0 grid place-items-center w-8 h-8 rounded-full bg-gold text-ink font-bold shadow-[0_8px_18px_-8px_rgba(212,175,55,0.8)]">→</span>
                         {isDeletable && <DeleteDraftButton code={c.code} />}
                       </div>
                     );
@@ -397,20 +399,20 @@ export default async function LobbyPage() {
               const contests = userContestsByMatch.get(matchKey) ?? [];
 
               return (
-                <div key={matchKey} className="bg-zinc-900 rounded-xl overflow-hidden">
+                <div key={matchKey} className="card-stadium rounded-2xl overflow-hidden">
                   {/* Match header */}
-                  <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800">
+                  <div className="flex items-center gap-2 px-4 py-3 border-b border-hair">
                     <span className="text-lg">{getFlag(match?.team1 ?? "")}{getFlag(match?.team2 ?? "")}</span>
                     <div className="min-w-0">
                       <span className="text-sm font-semibold block truncate">{match?.label ?? matchKey}</span>
                       {match && (
-                        <p className="text-[11px] text-zinc-400">{formatMatchDate(match.date)}</p>
+                        <p className="text-[11px] text-mist font-mono">{formatMatchDate(match.date)}</p>
                       )}
                     </div>
                   </div>
 
                   {/* Contest rows */}
-                  <div className="divide-y divide-zinc-800">
+                  <div className="divide-y divide-hair">
                     {contests.map((c) => {
                       const sels = selectionsMap.get(c.id) ?? [];
                       const parts = participantsMap.get(c.id) ?? [];
@@ -428,14 +430,14 @@ export default async function LobbyPage() {
                       const maxPts = allPts.length > 0 ? Math.max(...allPts) : null;
 
                       return (
-                        <Link key={c.id} href={`/draft/${c.code}/results`} className="block px-4 py-3 hover:bg-zinc-800/50 transition-colors">
+                        <Link key={c.id} href={`/draft/${c.code}/results`} className="block px-4 py-3 hover:bg-navy2/40 transition-colors">
                           <div className="flex items-center gap-2 mb-2">
-                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase ${c.mode === "live" ? "bg-red-900/60 text-red-400" : "bg-zinc-700 text-zinc-400"}`}>
+                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide ${c.mode === "live" ? "bg-live/15 text-live border border-live/40" : "bg-navy2 text-mist"}`}>
                               {c.mode === "live" ? "Live" : "Manual"}
                             </span>
-                            <span className="text-zinc-500 font-mono text-xs">{c.code}</span>
+                            <span className="text-mist2 font-mono text-xs">{c.code}</span>
                             <span className="flex-1" />
-                            <span className="text-xs text-zinc-500">Results →</span>
+                            <span className="text-xs text-mist2">Results →</span>
                           </div>
 
                           <div className="space-y-1.5">
@@ -443,26 +445,26 @@ export default async function LobbyPage() {
                               const isWinner = pts !== null && maxPts !== null && pts === maxPts && allPts.length > 1;
                               return (
                                 <div key={u} className="flex items-center gap-2 text-xs">
-                                  <span className={`w-14 shrink-0 font-medium truncate ${isWinner ? "text-yellow-400" : "text-zinc-400"}`}>
+                                  <span className={`w-14 shrink-0 font-medium truncate ${isWinner ? "text-yellow-400" : "text-mist"}`}>
                                     {getUserLabel(u)}{isWinner ? " 🏆" : ""}
                                   </span>
                                   <div className="flex-1 flex items-center gap-1.5 min-w-0 overflow-hidden">
                                     {capName ? (
                                       <>
                                         <span className="bg-yellow-500 text-black text-[9px] font-bold px-1 rounded shrink-0">C</span>
-                                        <span className="text-zinc-300 truncate">{capName}</span>
+                                        <span className="text-cloud truncate">{capName}</span>
                                         {vcName && (
                                           <>
                                             <span className="bg-blue-500 text-white text-[9px] font-bold px-1 rounded shrink-0">VC</span>
-                                            <span className="text-zinc-300 truncate">{vcName}</span>
+                                            <span className="text-cloud truncate">{vcName}</span>
                                           </>
                                         )}
                                       </>
                                     ) : (
-                                      <span className="text-zinc-600">No team</span>
+                                      <span className="text-mist2">No team</span>
                                     )}
                                   </div>
-                                  <span className={`font-bold shrink-0 ${isWinner ? "text-yellow-400" : pts !== null ? "text-emerald-400" : "text-zinc-600"}`}>
+                                  <span className={`font-bold shrink-0 ${isWinner ? "text-yellow-400" : pts !== null ? "text-emerald-400" : "text-mist2"}`}>
                                     {(pts ?? 0).toFixed(0)}pt
                                   </span>
                                 </div>
@@ -482,13 +484,16 @@ export default async function LobbyPage() {
   const hasAnyMatches = allMatches.length > 0;
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white">
+    <main className="relative min-h-screen bg-ink floodlight text-cloud">
       <div className="max-w-lg mx-auto px-4 py-6 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-bold">🏏 WWC Draft</h1>
-            <p className="text-zinc-400 text-sm">Welcome, {getUserLabel(username)}</p>
+          <div className="flex items-center gap-2.5">
+            <span className="text-2xl drop-shadow-[0_0_14px_rgba(212,175,55,0.4)]">🏏</span>
+            <div>
+              <h1 className="text-lg font-bold uppercase tracking-tight leading-none">WWC Draft</h1>
+              <p className="text-mist text-xs font-mono mt-0.5">Welcome, {getUserLabel(username)}</p>
+            </div>
           </div>
           <LogoutButton />
         </div>
@@ -505,7 +510,7 @@ export default async function LobbyPage() {
           />
         ) : (
           <div className="text-center py-12">
-            <p className="text-zinc-500">No matches scheduled.</p>
+            <p className="text-mist2">No matches scheduled.</p>
           </div>
         )}
       </div>

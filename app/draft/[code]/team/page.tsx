@@ -95,8 +95,8 @@ function ManualPool({
   const xi = available.filter((p) => p.isLikelyXI);
   const bench = available.filter((p) => !p.isLikelyXI);
   return (
-    <div className="space-y-2 pt-2 border-t border-zinc-800">
-      <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider px-1">Player Pool</h2>
+    <div className="space-y-2 pt-2 border-t border-hair">
+      <h2 className="text-sm font-semibold text-mist uppercase tracking-wider px-1">Player Pool</h2>
       <div className="space-y-1.5">
         {xi.map((p) => {
           const taken = opponentPicked.has(p.key);
@@ -117,9 +117,9 @@ function ManualPool({
         })}
         {bench.length > 0 && xi.length > 0 && (
           <div className="flex items-center gap-2 py-1 px-1">
-            <div className="flex-1 h-px bg-zinc-800" />
-            <p className="text-[10px] text-zinc-600 uppercase tracking-widest">Others</p>
-            <div className="flex-1 h-px bg-zinc-800" />
+            <div className="flex-1 h-px bg-navy" />
+            <p className="text-[10px] text-mist2 uppercase tracking-widest">Others</p>
+            <div className="flex-1 h-px bg-navy" />
           </div>
         )}
         {bench.map((p) => {
@@ -207,7 +207,7 @@ function SortablePlayerRow({
       style={style}
       className={`flex items-center gap-1.5 ${isDragging ? "relative opacity-90" : ""}`}
     >
-      <span className="w-5 shrink-0 text-center text-xs font-mono text-zinc-500">
+      <span className="w-5 shrink-0 text-center text-xs font-mono text-mist2">
         {index + 1}
       </span>
       <div className="flex-1 min-w-0">
@@ -234,7 +234,7 @@ function SortablePlayerRow({
           {...attributes}
           {...listeners}
           aria-label={`Drag ${displayName} to reorder`}
-          className="shrink-0 h-10 w-8 grid place-items-center rounded-md bg-zinc-800 hover:bg-zinc-700 text-zinc-400 cursor-grab active:cursor-grabbing touch-none"
+          className="shrink-0 h-10 w-8 grid place-items-center rounded-md bg-navy hover:bg-navy2 text-mist cursor-grab active:cursor-grabbing touch-none"
         >
           <GripVertical className="w-4 h-4" />
         </button>
@@ -396,7 +396,7 @@ export default function TeamPage({
 
   if (error) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
+      <main className="min-h-screen bg-ink text-white flex items-center justify-center">
         <p className="text-red-400">{error}</p>
       </main>
     );
@@ -404,8 +404,8 @@ export default function TeamPage({
 
   if (!data) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
-        <p className="text-zinc-400">Loading…</p>
+      <main className="min-h-screen bg-ink text-white flex items-center justify-center">
+        <p className="text-mist">Loading…</p>
       </main>
     );
   }
@@ -465,25 +465,25 @@ export default function TeamPage({
   }
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white pb-28">
+    <main className="min-h-screen bg-ink text-white pb-28">
       <div className="max-w-lg mx-auto px-3 pt-4 space-y-5">
         {/* Header */}
         <div className="flex items-center gap-2">
-          <Link href={`/match/${data.contest.matchKey}`} className="text-zinc-400 hover:text-white text-lg">←</Link>
+          <Link href={`/match/${data.contest.matchKey}`} className="text-mist hover:text-white text-lg">←</Link>
           <div className="flex-1">
             <h1 className="font-bold">{data.contest.matchLabel}</h1>
-            <p className="text-xs text-zinc-400">{countdown}</p>
+            <p className="text-xs text-mist">{countdown}</p>
           </div>
-          <Link href={`/draft/${code}/results`} className="text-xs text-emerald-400 hover:text-emerald-300">
+          <Link href={`/draft/${code}/results`} className="text-xs text-gold hover:brightness-110 font-mono">
             Results →
           </Link>
         </div>
 
         {isLocked && (
-          <div className="bg-zinc-800 rounded-xl px-4 py-3 text-center">
-            <p className="text-zinc-400 font-medium">
+          <div className="bg-navy rounded-xl px-4 py-3 text-center">
+            <p className="text-mist font-medium">
               🔒 Team locked ·{" "}
-              <Link href={`/draft/${code}/results`} className="text-emerald-400">View results</Link>
+              <Link href={`/draft/${code}/results`} className="text-gold">View results</Link>
             </p>
           </div>
         )}
@@ -506,21 +506,21 @@ export default function TeamPage({
 
         {/* ── MY TEAM (one priority-ranked list) ── */}
         <div className="space-y-2">
-          <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider px-1">
+          <p className="text-xs font-semibold text-mist uppercase tracking-wider px-1">
             My Team — ranked by priority
           </p>
 
           {/* Call out the auto-backup behaviour up front so it's predictable */}
           {!isLocked && (
-            <div className="rounded-xl px-3 py-2 bg-zinc-900 border border-zinc-800 space-y-1">
-              <p className="text-[11px] text-zinc-300 leading-relaxed">
+            <div className="rounded-xl px-3 py-2 bg-ink2 border border-hair space-y-1">
+              <p className="text-[11px] text-cloud leading-relaxed">
                 Drag the ⠿ handle to rank your squad.{" "}
                 <span className="text-yellow-400 font-bold">①</span> = Captain (2×),{" "}
                 <span className="text-blue-400 font-bold">②</span> = Vice (1.5×) — tap{" "}
                 <span className="text-yellow-400 font-bold">C</span>/
                 <span className="text-blue-400 font-bold">VC</span> to promote anyone (even a backup) to the top.
               </p>
-              <p className="text-[11px] text-zinc-500 leading-relaxed">
+              <p className="text-[11px] text-mist2 leading-relaxed">
                 On match day we field your top {ppu} who are{" "}
                 <span className="text-emerald-400">playing</span>. If someone&apos;s out, the next-ranked
                 playing player slides up — and the armband passes down to your next playing pick.
@@ -529,7 +529,7 @@ export default function TeamPage({
           )}
 
           {ranking.length === 0 ? (
-            <p className="text-zinc-600 text-sm py-2 px-1">
+            <p className="text-mist2 text-sm py-2 px-1">
               {isManual ? "Tap players below to add them" : "Your players from the draft"}
             </p>
           ) : (
@@ -561,11 +561,11 @@ export default function TeamPage({
                         />
                         {i === ppu - 1 && ranking.length > ppu && (
                           <div className="flex items-center gap-2 py-1.5 px-1">
-                            <div className="flex-1 h-px bg-zinc-700" />
-                            <p className="text-[10px] text-zinc-500 uppercase tracking-widest whitespace-nowrap">
+                            <div className="flex-1 h-px bg-navy2" />
+                            <p className="text-[10px] text-mist2 uppercase tracking-widest whitespace-nowrap">
                               ↑ top {ppu} = your XI · drag backups up ↓
                             </p>
-                            <div className="flex-1 h-px bg-zinc-700" />
+                            <div className="flex-1 h-px bg-navy2" />
                           </div>
                         )}
                       </Fragment>
@@ -589,21 +589,21 @@ export default function TeamPage({
         </div>
 
         {/* ── OPPONENT'S TEAM ── */}
-        <div className="space-y-1 pt-2 border-t border-zinc-800">
-          <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider px-1">
+        <div className="space-y-1 pt-2 border-t border-hair">
+          <p className="text-xs font-semibold text-mist uppercase tracking-wider px-1">
             {opponent ? `${getUserLabel(opponent)}'s Team` : "Opponent's Team"}
           </p>
 
           {!opponentSel ? (
-            <p className="text-zinc-600 text-sm py-3 px-1">
+            <p className="text-mist2 text-sm py-3 px-1">
               {opponent ? `${getUserLabel(opponent)} hasn't set their team yet` : "Waiting for opponent…"}
             </p>
           ) : (
             <>
               <div className="space-y-2">
                 <div className="flex items-center justify-between px-1">
-                  <h2 className="text-sm font-semibold text-zinc-200">Starting XI</h2>
-                  <span className="text-xs text-zinc-500">{opponentStarters.length}/{ppu}</span>
+                  <h2 className="text-sm font-semibold text-cloud">Starting XI</h2>
+                  <span className="text-xs text-mist2">{opponentStarters.length}/{ppu}</span>
                 </div>
                 <div className="space-y-1">
                   {opponentStarters.map((key) => (
@@ -620,8 +620,8 @@ export default function TeamPage({
               {bpu > 0 && opponentBackups.length > 0 && (
                 <div className="space-y-2 pt-1">
                   <div className="flex items-center justify-between px-1">
-                    <h2 className="text-sm font-semibold text-zinc-500">Bench</h2>
-                    <span className="text-xs text-zinc-600">{opponentBackups.length}/{bpu}</span>
+                    <h2 className="text-sm font-semibold text-mist2">Bench</h2>
+                    <span className="text-xs text-mist2">{opponentBackups.length}/{bpu}</span>
                   </div>
                   <div className="space-y-1">
                     {opponentBackups.map((key) => (
@@ -643,7 +643,7 @@ export default function TeamPage({
 
       {/* Save button */}
       {!isLocked && (
-        <div className="fixed bottom-0 inset-x-0 p-3 bg-zinc-950/95 backdrop-blur border-t border-zinc-800">
+        <div className="fixed bottom-0 inset-x-0 p-3 bg-ink/95 backdrop-blur border-t border-hair">
           <div className="max-w-lg mx-auto space-y-2">
             {ranking.length < ppu && ranking.length > 0 && (
               <p className="text-yellow-400 text-xs text-center">
@@ -654,7 +654,7 @@ export default function TeamPage({
             <button
               onClick={handleSave}
               disabled={saving || ranking.length < ppu}
-              className="w-full h-12 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:bg-zinc-700 text-white font-semibold transition-colors"
+              className="w-full h-12 rounded-xl bg-gold hover:brightness-110 disabled:bg-navy2 disabled:text-mist2 disabled:shadow-none text-ink font-bold uppercase tracking-wide glow-gold transition"
             >
               {saving ? "Saving…" : "Save Team"}
             </button>

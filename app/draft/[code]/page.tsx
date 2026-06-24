@@ -367,7 +367,7 @@ export default function DraftBoardPage({
 
   if (error) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
+      <main className="min-h-screen bg-ink text-white flex items-center justify-center">
         <div className="text-center space-y-4">
           <p className="text-red-400">{error}</p>
           <Link href="/lobby" className="text-emerald-400 underline">Back to lobby</Link>
@@ -378,10 +378,10 @@ export default function DraftBoardPage({
 
   if (!state || joining) {
     return (
-      <main className="min-h-screen bg-zinc-950 text-white flex items-center justify-center">
+      <main className="min-h-screen bg-ink text-white flex items-center justify-center">
         <div className="text-center space-y-2">
           <div className="text-4xl animate-spin">⟳</div>
-          <p className="text-zinc-400">Joining draft…</p>
+          <p className="text-mist">Joining draft…</p>
         </div>
       </main>
     );
@@ -449,13 +449,13 @@ export default function DraftBoardPage({
   };
 
   return (
-    <main className="min-h-screen bg-[#0a1628] text-white">
+    <main className="min-h-screen bg-ink text-white vt-rise">
 
       {/* Steal / saved / undo toast */}
       {(stealToast || savedToast || undoToast) && (
         <div className="fixed top-0 inset-x-0 z-50 flex justify-center pt-2 px-3 pointer-events-none">
           <div className={`rounded-full px-4 py-2 text-sm font-semibold shadow-xl ${
-            stealToast ? "bg-red-600 text-white" : undoToast ? "bg-amber-500 text-black" : "bg-[#d4af37] text-black"
+            stealToast ? "bg-red-600 text-white" : undoToast ? "bg-amber-500 text-black" : "bg-gold text-black"
           }`}>
             {stealToast ?? undoToast ?? savedToast}
           </div>
@@ -463,12 +463,12 @@ export default function DraftBoardPage({
       )}
 
       {/* Top bar */}
-      <div className="bg-[#112347] px-3 pt-3 pb-0 sticky top-0 z-20">
+      <div className="bg-navy px-3 pt-3 pb-0 sticky top-0 z-20">
         <div className="flex items-center gap-2 pb-3">
-          <Link href="/lobby" className="text-zinc-400 hover:text-white text-xl leading-none">←</Link>
+          <Link href="/lobby" className="text-mist hover:text-white text-xl leading-none">←</Link>
           <div className="flex-1 min-w-0">
             <h1 className="font-bold text-sm truncate">{contest.matchLabel}</h1>
-            <p className="text-xs text-zinc-400 font-mono">{code}</p>
+            <p className="text-xs text-mist font-mono">{code}</p>
           </div>
 
           {/* ⚡ Quick Draft toggle */}
@@ -478,57 +478,57 @@ export default function DraftBoardPage({
                 onClick={handleQdToggle}
                 className={`text-xs px-2 py-1 rounded-full border transition-all ${
                   quickDraftOn || savedQueue.length > 0
-                    ? "text-[#d4af37] border-[#d4af37] bg-[#d4af37]/10"
+                    ? "text-gold border-gold bg-gold/10"
                     : qdPulse
-                    ? "text-[#d4af37] border-[#d4af37] animate-pulse"
-                    : "text-zinc-400 border-zinc-600 hover:border-zinc-400"
+                    ? "text-gold border-gold animate-pulse"
+                    : "text-mist border-hair2 hover:border-hair2"
                 }`}
               >
                 ⚡{savedQueue.length > 0 && !quickDraftOn ? ` ${savedQueue.length}` : " Quick"}
               </button>
               {showQdTooltip && (
-                <div className="absolute top-full right-0 mt-2 w-44 bg-zinc-800 border border-zinc-600 rounded-lg px-3 py-2 text-xs text-zinc-300 shadow-xl z-30">
+                <div className="absolute top-full right-0 mt-2 w-44 bg-navy border border-hair2 rounded-lg px-3 py-2 text-xs text-cloud shadow-xl z-30">
                   Queue up to 5 picks — auto-fired each turn
-                  <div className="absolute -top-1.5 right-4 w-3 h-3 bg-zinc-800 border-l border-t border-zinc-600 rotate-45" />
+                  <div className="absolute -top-1.5 right-4 w-3 h-3 bg-navy border-l border-t border-hair2 rotate-45" />
                 </div>
               )}
             </div>
           )}
 
-          <Link href={`/draft/${code}/results`} className="text-xs text-zinc-400 hover:text-white shrink-0">
+          <Link href={`/draft/${code}/results`} className="text-xs text-mist hover:text-white shrink-0">
             Results →
           </Link>
         </div>
 
         {isDrafting && team1Code && team2Code && (
-          <div className="grid grid-cols-2 divide-x divide-zinc-600 border-t border-zinc-700">
+          <div className="grid grid-cols-2 divide-x divide-hair2 border-t border-hair2">
             <div className="text-center py-1.5">
               <p className="text-base">{getFlag(team1Code)}</p>
-              <p className="text-xs font-bold text-zinc-200">{team1Code}</p>
+              <p className="text-xs font-bold text-cloud">{team1Code}</p>
             </div>
             <div className="text-center py-1.5">
               <p className="text-base">{getFlag(team2Code)}</p>
-              <p className="text-xs font-bold text-zinc-200">{team2Code}</p>
+              <p className="text-xs font-bold text-cloud">{team2Code}</p>
             </div>
           </div>
         )}
 
         {isDrafting && (
-          <div className="flex border-t border-zinc-700">
+          <div className="flex border-t border-hair2">
             {ROLES.map((r) => (
               <button
                 key={r}
                 onClick={() => setRoleFilter(r)}
                 className={`flex-1 py-2 text-xs font-semibold transition-colors relative ${
-                  roleFilter === r ? "text-[#d4af37]" : "text-zinc-400 hover:text-zinc-200"
+                  roleFilter === r ? "text-gold" : "text-mist hover:text-cloud"
                 }`}
               >
                 {r}
                 {r !== "ALL" && (
-                  <span className="ml-0.5 text-zinc-500">({roleCounts[r] ?? 0})</span>
+                  <span className="ml-0.5 text-mist2">({roleCounts[r] ?? 0})</span>
                 )}
                 {roleFilter === r && (
-                  <span className="absolute bottom-0 inset-x-0 h-0.5 bg-[#d4af37] rounded-t" />
+                  <span className="absolute bottom-0 inset-x-0 h-0.5 bg-gold rounded-t" />
                 )}
               </button>
             ))}
@@ -550,11 +550,11 @@ export default function DraftBoardPage({
               </span>
             </div>
           ) : (
-            <div className="rounded-xl px-4 py-2 bg-zinc-900 border border-zinc-700/60 flex items-center gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400 bg-zinc-700/40 rounded px-1.5 py-0.5">
+            <div className="rounded-xl px-4 py-2 bg-ink2 border border-hair2/60 flex items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-mist bg-navy2/40 rounded px-1.5 py-0.5">
                 Likely XI
               </span>
-              <span className="text-xs text-zinc-500">Predicted from last match — lineups not announced yet</span>
+              <span className="text-xs text-mist2">Predicted from last match — lineups not announced yet</span>
             </div>
           )
         )}
@@ -564,11 +564,11 @@ export default function DraftBoardPage({
             <p className="text-yellow-400 text-sm font-medium">⏳ Waiting for all players to join…</p>
             <div className="flex flex-wrap gap-2">
               {participants.map((u) => (
-                <span key={u} className="bg-zinc-700 px-3 py-1 rounded-full text-sm">✓ {getUserLabel(u)}</span>
+                <span key={u} className="bg-navy2 px-3 py-1 rounded-full text-sm">✓ {getUserLabel(u)}</span>
               ))}
             </div>
-            <div className="bg-zinc-800 rounded-lg px-3 py-2 text-center">
-              <p className="text-xs text-zinc-400">Share code:</p>
+            <div className="bg-navy rounded-lg px-3 py-2 text-center">
+              <p className="text-xs text-mist">Share code:</p>
               <p className="font-mono text-2xl font-bold text-emerald-400 tracking-widest">{code}</p>
             </div>
           </div>
@@ -581,17 +581,17 @@ export default function DraftBoardPage({
               className={`rounded-xl px-4 py-3 transition-all ${
                 isMyTurn
                   ? "bg-green-950 border-2 border-green-400 shadow-[0_0_20px_rgba(74,222,128,0.35)]"
-                  : "bg-[#1a2f56] border border-zinc-700"
+                  : "bg-navy2 border border-hair2"
               }`}
             >
               {savedQueue.length > 0 && !quickDraftOn ? (
                 <div className="flex items-center justify-between">
-                  <p className="text-[#d4af37] text-sm font-semibold">
+                  <p className="text-gold text-sm font-semibold">
                     ⚡ Auto-pick armed · {savedQueue.length} queued
                   </p>
                   <button
                     onClick={() => setSavedQueue([])}
-                    className="text-zinc-500 hover:text-zinc-300 text-xs"
+                    className="text-mist2 hover:text-cloud text-xs"
                   >
                     Clear
                   </button>
@@ -603,17 +603,17 @@ export default function DraftBoardPage({
                 </div>
               ) : (
                 <div className="flex items-center justify-between">
-                  <p className="text-zinc-300 text-sm">
+                  <p className="text-cloud text-sm">
                     ⏳ <span className="font-semibold">{getUserLabel(currentPicker ?? "")}</span> is picking…
                   </p>
-                  <p className="text-zinc-500 text-xs bg-zinc-800 px-2 py-0.5 rounded-full">
+                  <p className="text-mist2 text-xs bg-navy px-2 py-0.5 rounded-full">
                     {contest.pickCount + 1}/{totalPicks}
                   </p>
                 </div>
               )}
-              <div className="mt-2 bg-zinc-800 rounded-full h-1">
+              <div className="mt-2 bg-navy rounded-full h-1">
                 <div
-                  className="bg-[#d4af37] h-1 rounded-full transition-all"
+                  className="bg-gold h-1 rounded-full transition-all"
                   style={{ width: `${totalPicks > 0 ? (contest.pickCount / totalPicks) * 100 : 0}%` }}
                 />
               </div>
@@ -634,7 +634,7 @@ export default function DraftBoardPage({
                   <button
                     onClick={() => sendUndoAction("cancel")}
                     disabled={undoBusy}
-                    className="shrink-0 text-xs text-zinc-400 hover:text-white underline disabled:opacity-40"
+                    className="shrink-0 text-xs text-mist hover:text-white underline disabled:opacity-40"
                   >
                     Cancel
                   </button>
@@ -654,7 +654,7 @@ export default function DraftBoardPage({
                         className={`text-xs rounded px-1.5 py-0.5 ${
                           d.pickedBy === username
                             ? "bg-red-500/20 text-red-200 border border-red-500/50"
-                            : "bg-zinc-700 text-zinc-200"
+                            : "bg-navy2 text-cloud"
                         }`}
                       >
                         {getFlag(d.playerTeam)} {d.playerName}
@@ -676,7 +676,7 @@ export default function DraftBoardPage({
                     <button
                       onClick={() => sendUndoAction("reject")}
                       disabled={undoBusy}
-                      className="h-10 rounded-lg bg-zinc-700 hover:bg-zinc-600 text-zinc-200 font-semibold text-sm disabled:opacity-40 transition-colors"
+                      className="h-10 rounded-lg bg-navy2 hover:bg-navy text-cloud font-semibold text-sm disabled:opacity-40 transition-colors"
                     >
                       Reject
                     </button>
@@ -689,7 +689,7 @@ export default function DraftBoardPage({
                   <button
                     onClick={() => sendUndoAction("request")}
                     disabled={undoBusy}
-                    className="text-xs text-zinc-400 hover:text-amber-300 border border-zinc-600 hover:border-amber-400 rounded-full px-3 py-1 transition-colors disabled:opacity-40"
+                    className="text-xs text-mist hover:text-amber-300 border border-hair2 hover:border-amber-400 rounded-full px-3 py-1 transition-colors disabled:opacity-40"
                   >
                     ↩ Undo my last pick
                     {myPicks.length > 0 ? `: ${myPicks[myPicks.length - 1].playerName}` : ""}
@@ -700,37 +700,37 @@ export default function DraftBoardPage({
 
             {/* Opponent's last pick — quick tracking of what they just took */}
             {lastOppPick && (
-              <div className="flex items-center gap-2 bg-[#1a2f56]/60 border border-zinc-700 rounded-lg px-3 py-2">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#d4af37] bg-[#d4af37]/10 border border-[#d4af37]/40 rounded px-1.5 py-0.5 shrink-0">
+              <div className="flex items-center gap-2 bg-navy2/60 border border-hair2 rounded-lg px-3 py-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-gold bg-gold/10 border border-gold/40 rounded px-1.5 py-0.5 shrink-0">
                   Last pick
                 </span>
                 <span className="text-base shrink-0">{getFlag(lastOppPick.playerTeam)}</span>
-                <span className="text-sm text-zinc-200 font-medium truncate">
+                <span className="text-sm text-cloud font-medium truncate">
                   {lastOppPick.playerName}
                 </span>
-                <span className="text-xs text-zinc-500 shrink-0">{lastOppPick.playerRole}</span>
-                <span className="text-xs text-zinc-500 ml-auto shrink-0 truncate">
+                <span className="text-xs text-mist2 shrink-0">{lastOppPick.playerRole}</span>
+                <span className="text-xs text-mist2 ml-auto shrink-0 truncate">
                   by {getUserLabel(lastOppPick.pickedBy)}
                 </span>
               </div>
             )}
 
             {roleFilter !== "ALL" && (
-              <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider px-1">
+              <p className="text-xs font-semibold text-mist uppercase tracking-wider px-1">
                 {ROLE_FULL[roleFilter]} — {roleCounts[roleFilter] ?? 0} available
               </p>
             )}
 
             {/* Two-column player grid */}
-            <div className="grid grid-cols-2 gap-px bg-zinc-800 rounded-xl overflow-hidden">
-              <div className="bg-[#0a1628] space-y-px">
+            <div className="grid grid-cols-2 gap-px bg-navy rounded-xl overflow-hidden">
+              <div className="bg-ink space-y-px">
                 {renderTeamSection(
                   t1, pendingKey, isMyTurn, handleTap, username,
                   quickDraftOn, getDraftQueuePos, getSavedQueuePos, handleQueueTap,
                   lastOppPick?.playerKey ?? null
                 )}
               </div>
-              <div className="bg-[#0a1628] space-y-px">
+              <div className="bg-ink space-y-px">
                 {renderTeamSection(
                   t2, pendingKey, isMyTurn, handleTap, username,
                   quickDraftOn, getDraftQueuePos, getSavedQueuePos, handleQueueTap,
@@ -750,19 +750,19 @@ export default function DraftBoardPage({
       {isDrafting && (
         quickDraftOn ? (
           /* Quick Draft bottom bar */
-          <div className="fixed bottom-0 inset-x-0 bg-[#112347] border-t border-[#d4af37]/50 px-3 py-2 z-20">
+          <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-gold/50 px-3 py-2 z-20">
             <div className="max-w-lg mx-auto flex items-center gap-2">
               <button
                 onClick={() => { setQuickDraftOn(false); setDraftQueue([]); }}
-                className="text-zinc-400 hover:text-white text-sm px-2 shrink-0"
+                className="text-mist hover:text-white text-sm px-2 shrink-0"
               >
                 ✕
               </button>
               <div className="flex-1 min-w-0">
                 {draftQueue.length === 0 ? (
-                  <p className="text-zinc-500 text-xs">Tap players to queue picks (max 5)</p>
+                  <p className="text-mist2 text-xs">Tap players to queue picks (max 5)</p>
                 ) : (
-                  <p className="text-xs text-[#d4af37] truncate">
+                  <p className="text-xs text-gold truncate">
                     {draftQueue.map((key, i) => {
                       const p = playerPool.find((pl) => pl.key === key);
                       const surname = p?.displayName.split(" ").pop() ?? "?";
@@ -774,7 +774,7 @@ export default function DraftBoardPage({
               <button
                 onClick={handleSaveQueue}
                 disabled={draftQueue.length === 0}
-                className="shrink-0 bg-[#d4af37] text-black font-bold text-sm px-3 py-1.5 rounded-lg disabled:opacity-40 transition-opacity"
+                className="shrink-0 bg-gold text-black font-bold text-sm px-3 py-1.5 rounded-lg disabled:opacity-40 transition-opacity"
               >
                 SAVE ⚡
               </button>
@@ -782,17 +782,17 @@ export default function DraftBoardPage({
           </div>
         ) : (
           /* Normal picks counter */
-          <div className="fixed bottom-0 inset-x-0 bg-[#112347] border-t border-zinc-700 px-4 py-2 z-20">
+          <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-hair2 px-4 py-2 z-20">
             <div className="max-w-lg mx-auto flex items-center justify-between text-xs">
-              <span className="text-zinc-400">
+              <span className="text-mist">
                 You: <span className="text-white font-bold">{myPicks.length}</span>/{contest.picksPerUser + contest.backupsPerUser}
               </span>
               {others.map((u) => (
-                <span key={u} className="text-zinc-400">
+                <span key={u} className="text-mist">
                   {getUserLabel(u)}: <span className="text-white font-bold">{theirPicks.filter((p) => p.pickedBy === u).length}</span>
                 </span>
               ))}
-              <Link href={`/draft/${code}/team`} className="text-[#d4af37] font-semibold">Team →</Link>
+              <Link href={`/draft/${code}/team`} className="text-gold font-semibold">Team →</Link>
             </div>
           </div>
         )
@@ -814,7 +814,7 @@ function renderTeamSection(
   lastPickedKey: string | null,
 ) {
   if (players.length === 0) {
-    return <div className="py-6 text-center text-xs text-zinc-600">—</div>;
+    return <div className="py-6 text-center text-xs text-mist2">—</div>;
   }
   const xi = players.filter((p) => p.isLikelyXI);
   const bench = players.filter((p) => !p.isLikelyXI);
@@ -892,13 +892,13 @@ function PlayerCard({
       : "bg-gray-500";
 
   const bg = isTaken
-    ? "bg-zinc-900"
-    : "bg-[#0d1f3c] active:bg-[#1a3558]";
+    ? "bg-ink2"
+    : "bg-ink2 active:bg-navy2";
 
   const border = isOwnPick
     ? "border-l-2 border-blue-500"
     : isBench
-    ? "border-l border-zinc-700/50"
+    ? "border-l border-hair2/50"
     : "";
 
   function handleClick() {
@@ -913,16 +913,16 @@ function PlayerCard({
   // Right-side indicator
   const rightEl = quickDraftOn && !isTaken ? (
     draftQueuePos != null ? (
-      <span className="w-5 h-5 rounded-full bg-[#d4af37] text-black text-xs font-bold flex items-center justify-center shrink-0">
+      <span className="w-5 h-5 rounded-full bg-gold text-black text-xs font-bold flex items-center justify-center shrink-0">
         {draftQueuePos}
       </span>
     ) : (
-      <span className="w-5 h-5 rounded-full border border-zinc-600 text-zinc-500 text-xs flex items-center justify-center shrink-0">
+      <span className="w-5 h-5 rounded-full border border-hair2 text-mist2 text-xs flex items-center justify-center shrink-0">
         +
       </span>
     )
   ) : !quickDraftOn && savedQueuePos != null && !isTaken ? (
-    <span className="text-[#d4af37] text-xs font-bold shrink-0">⚡{savedQueuePos}</span>
+    <span className="text-gold text-xs font-bold shrink-0">⚡{savedQueuePos}</span>
   ) : null;
 
   return (
@@ -934,23 +934,23 @@ function PlayerCard({
         } ${isBench ? "opacity-70" : ""}`}
       >
         {/* Role badge */}
-        <span className={`text-xs font-bold px-1 py-0.5 rounded shrink-0 ${ROLE_COLORS[player.role] ?? "bg-zinc-600 text-white"}`}>
+        <span className={`text-xs font-bold px-1 py-0.5 rounded shrink-0 ${ROLE_COLORS[player.role] ?? "bg-navy2 text-white"}`}>
           {player.role[0]}
         </span>
         {/* Name + pts */}
         <div className="flex-1 min-w-0">
-          <p className={`text-xs font-semibold truncate leading-tight ${isTaken ? "text-zinc-500" : "text-white"}`}>
+          <p className={`text-xs font-semibold truncate leading-tight ${isTaken ? "text-mist2" : "text-white"}`}>
             {player.displayName}
           </p>
           {!isTaken && (
             player.tourPoints != null ? (
               <p className="text-amber-300 text-xs font-semibold leading-tight" title="Total points this tour">{player.tourPoints.toFixed(0)} pts</p>
             ) : (
-              <p className="text-zinc-500 text-xs leading-tight" title="Projected (pre-tournament estimate)">~{player.efppm.toFixed(0)} exp</p>
+              <p className="text-mist2 text-xs leading-tight" title="Projected (pre-tournament estimate)">~{player.efppm.toFixed(0)} exp</p>
             )
           )}
           {isTaken && (
-            <p className="text-zinc-600 text-xs leading-tight flex items-center gap-1">
+            <p className="text-mist2 text-xs leading-tight flex items-center gap-1">
               <span className={`inline-block w-1.5 h-1.5 rounded-full ${takerColor}`} />
               {getUserLabel(player.takenBy!)}
             </p>
@@ -958,7 +958,7 @@ function PlayerCard({
         </div>
         {/* "LAST" tag on the opponent's most-recent pick */}
         {isTaken && isLastPick && !isOwnPick && (
-          <span className="text-[9px] font-bold uppercase tracking-wider text-[#d4af37] bg-[#d4af37]/10 border border-[#d4af37]/40 rounded px-1 py-0.5 shrink-0">
+          <span className="text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 border border-gold/40 rounded px-1 py-0.5 shrink-0">
             Last
           </span>
         )}
@@ -971,7 +971,7 @@ function PlayerCard({
               isPending
                 ? isMyTurn
                   ? "opacity-100 bg-green-500/90 text-black"
-                  : "opacity-100 bg-[#d4af37]/90 text-black"
+                  : "opacity-100 bg-gold/90 text-black"
                 : "opacity-0 pointer-events-none"
             }`}
           >
@@ -980,7 +980,7 @@ function PlayerCard({
         )}
       </div>
       {showBarrier && (
-        <div className="h-px bg-zinc-700/60 mx-2 my-0.5" />
+        <div className="h-px bg-navy2/60 mx-2 my-0.5" />
       )}
     </>
   );
@@ -1053,19 +1053,19 @@ function CoinTossScreen({
   }
 
   return (
-    <main className="min-h-screen bg-[#0a1628] text-white flex flex-col items-center justify-center px-6 gap-8">
+    <main className="min-h-screen bg-ink text-white flex flex-col items-center justify-center px-6 gap-8">
       <div className="text-center space-y-1">
-        <p className="text-zinc-400 text-xs uppercase tracking-widest">Live Draft</p>
+        <p className="text-mist text-xs uppercase tracking-widest">Live Draft</p>
         <h1 className="font-bold text-lg">{matchLabel}</h1>
       </div>
 
       <div className="flex gap-6 justify-center">
         {participants.map((u) => (
           <div key={u} className="text-center space-y-1">
-            <div className="w-12 h-12 rounded-full bg-[#112347] border-2 border-zinc-600 flex items-center justify-center text-lg font-bold">
+            <div className="w-12 h-12 rounded-full bg-navy border-2 border-hair2 flex items-center justify-center text-lg font-bold">
               {getUserLabel(u)[0].toUpperCase()}
             </div>
-            <p className="text-sm text-zinc-300">{getUserLabel(u)}</p>
+            <p className="text-sm text-cloud">{getUserLabel(u)}</p>
           </div>
         ))}
       </div>
@@ -1078,7 +1078,7 @@ function CoinTossScreen({
             ? "border-green-400 bg-green-900/30"
             : phase === "RESULT"
             ? "border-red-400 bg-red-900/20"
-            : "border-zinc-600 bg-[#112347]"
+            : "border-hair2 bg-navy"
         }`}
       >
         {phase === "FLIPPING" ? (
@@ -1096,7 +1096,7 @@ function CoinTossScreen({
         <div className="space-y-4 text-center w-full max-w-xs">
           {isCreator ? (
             <>
-              <p className="text-zinc-300 font-semibold">Has the real toss happened yet?</p>
+              <p className="text-cloud font-semibold">Has the real toss happened yet?</p>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => setPhase("REAL_TOSS")}
@@ -1106,7 +1106,7 @@ function CoinTossScreen({
                 </button>
                 <button
                   onClick={() => setPhase("CHOOSE")}
-                  className="h-14 rounded-2xl bg-[#112347] border-2 border-zinc-600 hover:border-yellow-400 hover:bg-yellow-900/20 transition-all text-zinc-300 font-semibold text-sm"
+                  className="h-14 rounded-2xl bg-navy border-2 border-hair2 hover:border-yellow-400 hover:bg-yellow-900/20 transition-all text-cloud font-semibold text-sm"
                 >
                   No, flip now
                 </button>
@@ -1114,7 +1114,7 @@ function CoinTossScreen({
             </>
           ) : (
             <div className="text-center space-y-2">
-              <p className="text-zinc-400 animate-pulse">
+              <p className="text-mist animate-pulse">
                 ⏳ Waiting for <span className="text-white font-semibold">{getUserLabel(others[0] ?? "")}</span> to set the draft order…
               </p>
             </div>
@@ -1124,22 +1124,22 @@ function CoinTossScreen({
 
       {phase === "REAL_TOSS" && isCreator && (
         <div className="space-y-4 text-center w-full max-w-xs">
-          <p className="text-zinc-300 font-semibold">Who picks first?</p>
+          <p className="text-cloud font-semibold">Who picks first?</p>
           <div className="grid grid-cols-2 gap-3">
             {participants.map((u) => (
               <button
                 key={u}
                 onClick={() => assignWinner(u)}
-                className="h-14 rounded-2xl bg-[#112347] border-2 border-zinc-600 hover:border-emerald-400 hover:bg-emerald-900/20 transition-all text-white font-semibold text-sm"
+                className="h-14 rounded-2xl bg-navy border-2 border-hair2 hover:border-emerald-400 hover:bg-emerald-900/20 transition-all text-white font-semibold text-sm"
               >
                 {getUserLabel(u)}
-                {u === username && <span className="block text-xs text-zinc-400 font-normal mt-0.5">you</span>}
+                {u === username && <span className="block text-xs text-mist font-normal mt-0.5">you</span>}
               </button>
             ))}
           </div>
           <button
             onClick={() => setPhase("ASK")}
-            className="text-xs text-zinc-500 hover:text-zinc-300 underline"
+            className="text-xs text-mist2 hover:text-cloud underline"
           >
             ← back
           </button>
@@ -1150,33 +1150,33 @@ function CoinTossScreen({
         <div className="space-y-4 text-center w-full max-w-xs">
           {isCreator ? (
             <>
-              <p className="text-zinc-300 font-semibold">Call the toss!</p>
+              <p className="text-cloud font-semibold">Call the toss!</p>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => callToss("H")}
-                  className="h-16 rounded-2xl bg-[#112347] border-2 border-zinc-600 hover:border-yellow-400 hover:bg-yellow-900/20 transition-all font-black text-2xl text-yellow-300"
+                  className="h-16 rounded-2xl bg-navy border-2 border-hair2 hover:border-yellow-400 hover:bg-yellow-900/20 transition-all font-black text-2xl text-yellow-300"
                 >
                   H
-                  <p className="text-xs font-normal text-zinc-400 mt-0.5">Heads</p>
+                  <p className="text-xs font-normal text-mist mt-0.5">Heads</p>
                 </button>
                 <button
                   onClick={() => callToss("T")}
-                  className="h-16 rounded-2xl bg-[#112347] border-2 border-zinc-600 hover:border-yellow-400 hover:bg-yellow-900/20 transition-all font-black text-2xl text-yellow-300"
+                  className="h-16 rounded-2xl bg-navy border-2 border-hair2 hover:border-yellow-400 hover:bg-yellow-900/20 transition-all font-black text-2xl text-yellow-300"
                 >
                   T
-                  <p className="text-xs font-normal text-zinc-400 mt-0.5">Tails</p>
+                  <p className="text-xs font-normal text-mist mt-0.5">Tails</p>
                 </button>
               </div>
               <button
                 onClick={() => setPhase("ASK")}
-                className="text-xs text-zinc-500 hover:text-zinc-300 underline"
+                className="text-xs text-mist2 hover:text-cloud underline"
               >
                 ← back
               </button>
             </>
           ) : (
             <div className="text-center space-y-2">
-              <p className="text-zinc-400 animate-pulse">
+              <p className="text-mist animate-pulse">
                 ⏳ Waiting for <span className="text-white font-semibold">{getUserLabel(others[0] ?? "")}</span> to call the toss…
               </p>
             </div>
@@ -1202,10 +1202,10 @@ function CoinTossScreen({
               )}
             </>
           )}
-          <p className="text-zinc-300">
+          <p className="text-cloud">
             <span className="font-bold text-white">{getUserLabel(tossResult.winner)}</span> picks first!
           </p>
-          <p className="text-zinc-500 text-sm animate-pulse">Starting draft…</p>
+          <p className="text-mist2 text-sm animate-pulse">Starting draft…</p>
         </div>
       )}
     </main>
@@ -1226,40 +1226,40 @@ function PicksSummary({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-[#112347] rounded-xl overflow-hidden border border-zinc-700">
+    <div className="bg-navy rounded-xl overflow-hidden border border-hair2">
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium"
       >
-        <span className="text-zinc-300">
+        <span className="text-cloud">
           You: <strong>{myPicks.length}</strong>
           {others.map((u) => (
             <span key={u}> · {getUserLabel(u)}: <strong>{theirPicks.filter((p) => p.pickedBy === u).length}</strong></span>
           ))}
         </span>
-        <span className="text-zinc-500">{open ? "▲" : "▼"}</span>
+        <span className="text-mist2">{open ? "▲" : "▼"}</span>
       </button>
       {open && (
         <div className="px-3 pb-3 grid grid-cols-2 gap-2">
           <div>
-            <p className="text-xs text-zinc-500 mb-1">You</p>
+            <p className="text-xs text-mist2 mb-1">You</p>
             <div className="space-y-0.5">
               {myPicks.map((pk) => (
-                <div key={pk.playerKey} className="text-xs bg-zinc-800 rounded px-2 py-1 flex justify-between gap-1">
+                <div key={pk.playerKey} className="text-xs bg-navy rounded px-2 py-1 flex justify-between gap-1">
                   <span className="font-medium truncate">{pk.playerName}</span>
-                  <span className="text-zinc-500 shrink-0">{pk.playerTeam}</span>
+                  <span className="text-mist2 shrink-0">{pk.playerTeam}</span>
                 </div>
               ))}
             </div>
           </div>
           {others.map((u) => (
             <div key={u}>
-              <p className="text-xs text-zinc-500 mb-1">{getUserLabel(u)}</p>
+              <p className="text-xs text-mist2 mb-1">{getUserLabel(u)}</p>
               <div className="space-y-0.5">
                 {theirPicks.filter((p) => p.pickedBy === u).map((pk) => (
-                  <div key={pk.playerKey} className="text-xs bg-zinc-800 rounded px-2 py-1 flex justify-between gap-1">
+                  <div key={pk.playerKey} className="text-xs bg-navy rounded px-2 py-1 flex justify-between gap-1">
                     <span className="font-medium truncate">{pk.playerName}</span>
-                    <span className="text-zinc-500 shrink-0">{pk.playerTeam}</span>
+                    <span className="text-mist2 shrink-0">{pk.playerTeam}</span>
                   </div>
                 ))}
               </div>

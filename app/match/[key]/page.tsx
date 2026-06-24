@@ -39,8 +39,8 @@ const STATUS_LABELS: Record<string, { label: string; color: string }> = {
   WAITING: { label: "Waiting for players", color: "text-yellow-400" },
   DRAFTING: { label: "Draft in progress", color: "text-blue-400" },
   TEAM_SELECT: { label: "Select your team", color: "text-emerald-400" },
-  LOCKED: { label: "Match started", color: "text-zinc-400" },
-  COMPLETED: { label: "Completed", color: "text-zinc-500" },
+  LOCKED: { label: "Match started", color: "text-mist" },
+  COMPLETED: { label: "Completed", color: "text-mist2" },
 };
 
 export default async function MatchPage({
@@ -88,14 +88,14 @@ export default async function MatchPage({
   );
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white pb-8">
+    <main className="min-h-screen bg-ink text-white pb-8">
       <div className="max-w-lg mx-auto px-4 pt-4 space-y-4">
         {/* Header */}
         <div className="flex items-center gap-3">
-          <Link href="/lobby" className="text-zinc-400 hover:text-white text-xl">←</Link>
+          <Link href="/lobby" className="text-mist hover:text-white text-xl">←</Link>
           <div className="flex-1">
             <h1 className="font-bold text-lg">{match.label}</h1>
-            <p className="text-xs text-zinc-400">{formatMatchDate(match.date)}</p>
+            <p className="text-xs text-mist">{formatMatchDate(match.date)}</p>
           </div>
         </div>
 
@@ -104,13 +104,13 @@ export default async function MatchPage({
           isLive
             ? "bg-red-900/25 border border-red-700/40"
             : isCompleted
-            ? "bg-zinc-900 border border-zinc-700"
-            : "bg-[#112347] border border-zinc-700"
+            ? "bg-ink2 border border-hair2"
+            : "bg-[#112347] border border-hair2"
         }`}>
           <div className="text-3xl">{getTeamFlag(match.team1)}{getTeamFlag(match.team2)}</div>
           <div>
             <p className="font-bold">{match.team1} vs {match.team2}</p>
-            <p className={`text-sm ${isLive ? "text-red-400" : isCompleted ? "text-zinc-400" : "text-emerald-400"}`}>
+            <p className={`text-sm ${isLive ? "text-red-400" : isCompleted ? "text-mist" : "text-emerald-400"}`}>
               {isLive ? "🔴 Match in progress" : isCompleted ? "✅ Match completed · points available" : `⏳ Starts ${formatMatchDate(match.date)}`}
             </p>
           </div>
@@ -119,32 +119,32 @@ export default async function MatchPage({
         {/* Open drafts to join */}
         {openDrafts.length > 0 && (
           <section className="space-y-2">
-            <h2 className="text-sm text-zinc-400 uppercase tracking-wider">Open Drafts</h2>
+            <h2 className="text-sm text-mist uppercase tracking-wider">Open Drafts</h2>
             {openDrafts.map((d) => {
-              const st = STATUS_LABELS[d.status] ?? { label: d.status, color: "text-zinc-400" };
+              const st = STATUS_LABELS[d.status] ?? { label: d.status, color: "text-mist" };
               const members = participantsMap.get(d.id) ?? [];
               return (
                 <Link
                   key={d.id}
                   href={`/draft/${d.code}`}
-                  className="flex items-center justify-between bg-zinc-900 rounded-xl px-4 py-3 hover:bg-zinc-800 transition-colors"
+                  className="flex items-center justify-between bg-ink2 rounded-xl px-4 py-3 hover:bg-navy transition-colors"
                 >
                   <div>
                     <div className="flex items-center gap-2 mb-0.5">
                       <p className={`text-sm font-semibold ${st.color}`}>{st.label}</p>
-                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${d.mode === "live" ? "bg-red-900/50 text-red-400" : "bg-zinc-700 text-zinc-300"}`}>
+                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${d.mode === "live" ? "bg-red-900/50 text-red-400" : "bg-navy2 text-cloud"}`}>
                         {d.mode === "live" ? "Live" : "Manual"}
                       </span>
                     </div>
                     {members.length > 0 && (
-                      <p className="text-xs text-zinc-500">
+                      <p className="text-xs text-mist2">
                         {members.map((u) => getUserLabel(u)).join(" vs ")}
                       </p>
                     )}
                   </div>
                   <div className="text-right">
-                    <p className="text-zinc-400 font-mono text-sm">{d.code}</p>
-                    <p className="text-emerald-400 text-xs font-semibold">Join →</p>
+                    <p className="text-mist font-mono text-sm">{d.code}</p>
+                    <p className="text-gold text-xs font-semibold">Join →</p>
                   </div>
                 </Link>
               );
@@ -155,28 +155,28 @@ export default async function MatchPage({
         {/* Your drafts for this match */}
         {myDrafts.length > 0 && (
           <section className="space-y-2">
-            <h2 className="text-sm text-zinc-400 uppercase tracking-wider">Your Drafts</h2>
+            <h2 className="text-sm text-mist uppercase tracking-wider">Your Drafts</h2>
             {myDrafts.map((d) => {
-              const st = STATUS_LABELS[d.status] ?? { label: d.status, color: "text-zinc-400" };
+              const st = STATUS_LABELS[d.status] ?? { label: d.status, color: "text-mist" };
               const href = isCompleted || d.status === "COMPLETED"
                 ? `/draft/${d.code}/results`
                 : d.status === "TEAM_SELECT" ? `/draft/${d.code}/team`
                 : `/draft/${d.code}`;
               const isDeletable = d.createdBy === username && !["COMPLETED", "LOCKED"].includes(d.status);
               return (
-                <div key={d.id} className="flex items-center gap-2 bg-zinc-900 rounded-xl px-4 py-3">
+                <div key={d.id} className="flex items-center gap-2 bg-ink2 rounded-xl px-4 py-3">
                   <Link href={href} className="flex-1 flex items-center justify-between hover:opacity-80 transition-opacity">
                     <div>
                       <div className="flex items-center gap-2 mb-0.5">
                         <p className={`text-sm font-semibold ${st.color}`}>{st.label}</p>
-                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${d.mode === "live" ? "bg-red-900/50 text-red-400" : "bg-zinc-700 text-zinc-300"}`}>
+                        <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${d.mode === "live" ? "bg-red-900/50 text-red-400" : "bg-navy2 text-cloud"}`}>
                           {d.mode === "live" ? "Live" : "Manual"}
                         </span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-zinc-400 font-mono text-sm">{d.code}</p>
-                      <p className={`text-xs font-semibold ${isCompleted ? "text-emerald-400" : "text-zinc-400"}`}>
+                      <p className="text-mist font-mono text-sm">{d.code}</p>
+                      <p className={`text-xs font-semibold ${isCompleted ? "text-emerald-400" : "text-mist"}`}>
                         {isCompleted ? "Results →" : "Open →"}
                       </p>
                     </div>
@@ -192,14 +192,14 @@ export default async function MatchPage({
         {!isCompleted && (
           <Link
             href={`/draft/create?matchKey=${key}`}
-            className="flex items-center justify-center gap-2 w-full h-14 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-base transition-colors"
+            className="flex items-center justify-center gap-2 w-full h-14 rounded-xl bg-gold hover:brightness-110 text-ink font-bold text-base uppercase tracking-wide glow-gold transition"
           >
             + Create Draft for this match
           </Link>
         )}
 
         {isCompleted && myDrafts.length === 0 && (
-          <p className="text-center text-zinc-600 py-4 text-sm">
+          <p className="text-center text-mist2 py-4 text-sm">
             Match completed — no draft for this match.
           </p>
         )}

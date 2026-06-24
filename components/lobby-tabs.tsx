@@ -32,7 +32,7 @@ export default function LobbyTabs({
   return (
     <div className="space-y-5">
       {/* Tab bar (segmented control) */}
-      <div className="flex gap-1 bg-zinc-900 rounded-xl p-1">
+      <div className="flex gap-1 bg-navy border border-hair rounded-xl p-1">
         {tabs.map((t) => {
           const active = tab === t.key;
           const showDot = t.live && t.count > 0;
@@ -43,18 +43,18 @@ export default function LobbyTabs({
               onClick={() => setTab(t.key)}
               aria-selected={active}
               role="tab"
-              className={`flex-1 flex items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-semibold transition-colors ${
-                active ? "bg-zinc-700 text-white shadow-sm" : "text-zinc-400 hover:text-zinc-200"
+              className={`flex-1 flex items-center justify-center gap-1.5 rounded-lg py-2 text-xs font-bold transition-colors ${
+                active ? "bg-gold text-ink shadow-[0_6px_16px_-8px_rgba(212,175,55,0.7)]" : "text-mist hover:text-cloud"
               }`}
             >
               {showDot && (
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                <span className="w-1.5 h-1.5 rounded-full bg-live animate-pulse" />
               )}
               <span>{t.label}</span>
               {t.count > 0 && (
                 <span
-                  className={`text-[10px] tabular-nums px-1 rounded ${
-                    active ? "bg-zinc-900/60 text-zinc-200" : "text-zinc-500"
+                  className={`text-[10px] font-mono tabular-nums px-1 rounded ${
+                    active ? "bg-ink/30 text-ink" : "text-mist2"
                   }`}
                 >
                   {t.count}
@@ -81,7 +81,7 @@ export default function LobbyTabs({
 function EmptyPanel({ msg }: { msg: string }) {
   return (
     <div className="text-center py-12">
-      <p className="text-zinc-500 text-sm">{msg}</p>
+      <p className="text-mist2 text-sm">{msg}</p>
     </div>
   );
 }
