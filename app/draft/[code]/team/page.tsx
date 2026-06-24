@@ -24,6 +24,7 @@ import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { GripVertical } from "lucide-react";
 import PlayerCard from "@/components/player-card";
 import ChangesBanner from "@/components/changes-banner";
+import LineupRefresh from "@/components/lineup-refresh";
 import { getPlayerByKey } from "@/lib/players";
 import { getUserLabel } from "@/lib/users";
 import type { Change } from "@/lib/effective-lineup";
@@ -478,6 +479,15 @@ export default function TeamPage({
             Results →
           </Link>
         </div>
+
+        {/* Refresh the lineup — manual + auto-check at roundlock. Available whether
+            you've picked or are still building, so you can pull the official XI
+            the moment it posts (rows below flip to In XI / Not in XI). */}
+        <LineupRefresh
+          announced={!!data.lineups?.announced}
+          roundlockTs={lockTs}
+          onRefresh={fetchData}
+        />
 
         {isLocked && (
           <div className="bg-navy rounded-xl px-4 py-3 text-center">

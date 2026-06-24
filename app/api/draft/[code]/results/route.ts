@@ -4,12 +4,8 @@ import { getDb, draftContests, teamSelections } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import { getPlayerByKey } from "@/lib/players";
 import { getMatchByKey, LOCK_BUFFER } from "@/lib/matches";
-import {
-  getMatchPointsForMatch,
-  lookupPlayerPoints,
-  getLastPlayedXI,
-  getLineupMeta,
-} from "@/lib/points";
+import { getMatchPointsForMatch, lookupPlayerPoints } from "@/lib/points";
+import { getOfficialLineup } from "@/lib/official-lineup";
 import {
   computeEffectiveLineup,
   rankingFromSelection,
@@ -45,10 +41,10 @@ export async function GET(
 
   // Match points by teams+date (not the "Match N" label — bot numbering differs).
   const match = getMatchByKey(contest.matchKey);
-  const [pointsMap, lastXI, lineupMeta] = await Promise.all([
+  // Official XI + announced status: direct ESPN fetch (live), sheet fallback.
+  const [pointsMap, { lastXI, lineupMeta }] = await Promise.all([
     match ? getMatchPointsForMatch(match) : Promise.resolve(new Map<string, number>()),
-    getLastPlayedXI(),
-    getLineupMeta(),
+    getOfficialLineup(match),
   ]);
 
   // BACKUP_INTELLIGENCE eligibility: auto-substitute only once the team is locked
@@ -158,5 +154,5 @@ export async function GET(
     })
   );
 
-  return NextResponse.json({ contest, teams, username });
+  return NextResponse.json({ contest, teams, username, announced });
 }

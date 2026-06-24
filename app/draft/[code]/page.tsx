@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
 import { getFlag } from "@/lib/players";
+import LineupRefresh from "@/components/lineup-refresh";
 
 type PlayerInPool = {
   key: string;
@@ -537,6 +538,17 @@ export default function DraftBoardPage({
       </div>
 
       <div className="px-3 pt-3 pb-24 space-y-3 max-w-lg mx-auto">
+        {/* Refresh the lineup while drafting — manual + auto-check at roundlock.
+            When the official XI posts, the pool below flips from "Likely XI" to
+            the real Playing XI so you draft on live info. */}
+        {(isWaiting || isDrafting) && (
+          <LineupRefresh
+            announced={!!state.lineups?.announced}
+            roundlockTs={(state.contest.matchDeadline ?? 0) + 15 * 60}
+            onRefresh={fetchState}
+          />
+        )}
+
         {/* Dream11-style lineup status: green when official XIs are out, with toss */}
         {(isWaiting || isDrafting) && (
           state.lineups?.announced ? (

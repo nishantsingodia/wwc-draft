@@ -6,6 +6,7 @@ import { getUserLabel, USER_COLORS } from "@/lib/users";
 import { getFlag } from "@/lib/players";
 import type { Change } from "@/lib/effective-lineup";
 import ChangesBanner from "@/components/changes-banner";
+import LineupRefresh from "@/components/lineup-refresh";
 
 type PlayerResult = {
   key: string;
@@ -40,6 +41,7 @@ type ResultsData = {
   };
   teams: TeamResult[];
   username: string;
+  announced: boolean; // both teams' official XIs are out
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -120,6 +122,15 @@ export default function ResultsPage({
           </div>
           <Link href="/lobby" className="text-xs text-mist2 hover:text-cloud">Home</Link>
         </div>
+
+        {/* Refresh the lineup — manual + auto-check at roundlock. On the results
+            page this re-pulls the official XI so backup-intelligence subs + the
+            effective lineup update the moment lineups post. */}
+        <LineupRefresh
+          announced={data.announced}
+          roundlockTs={(contest.matchDeadline ?? 0) + 15 * 60}
+          onRefresh={fetchResults}
+        />
 
         {/* Scoreboard */}
         {teams.length > 0 && (

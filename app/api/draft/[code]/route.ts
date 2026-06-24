@@ -5,7 +5,8 @@ import { eq, asc } from "drizzle-orm";
 import { getPlayersByTeams } from "@/lib/players";
 import { getMatchByKey } from "@/lib/matches";
 import { currentPicker } from "@/lib/snake-draft";
-import { getLastPlayedXI, getSheetRoster, getLineupMeta, getTourPoints, lookupTourPoints } from "@/lib/points";
+import { getSheetRoster, getTourPoints, lookupTourPoints } from "@/lib/points";
+import { getOfficialLineup } from "@/lib/official-lineup";
 
 export async function GET(
   request: NextRequest,
@@ -47,10 +48,10 @@ export async function GET(
     .where(eq(teamSelections.contestId, contest.id));
 
   const match = getMatchByKey(contest.matchKey);
-  const [lastXI, sheetRoster, lineupMeta, tourPoints] = await Promise.all([
-    getLastPlayedXI(),
+  // Official XI + announced status: direct ESPN fetch (live), sheet fallback.
+  const [{ lastXI, lineupMeta }, sheetRoster, tourPoints] = await Promise.all([
+    getOfficialLineup(match),
     getSheetRoster(),
-    getLineupMeta(),
     getTourPoints(),
   ]);
 
