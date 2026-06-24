@@ -207,7 +207,7 @@
     "squad_number": 6,
     "team_code": "BAN",
     "efppm": 28.4,
-    "pid": "espn:535868"
+    "pid": "89895ae1"
   },
   {
     "id": 1201,
@@ -287,7 +287,7 @@
     "squad_number": 14,
     "team_code": "BAN",
     "efppm": 50.5,
-    "pid": "558cdd64"
+    "pid": "fb0c0bcc"
   },
   {
     "id": 6331,
@@ -756,7 +756,8 @@
     "role": "BAT",
     "squad_number": 4,
     "team_code": "IRE",
-    "efppm": 25.0
+    "efppm": 25.0,
+    "pid": "d58e9bfb"
   },
   {
     "id": 1324,
@@ -1476,7 +1477,7 @@
     "squad_number": 12,
     "team_code": "SCO",
     "efppm": 44.7,
-    "pid": "38b4583c"
+    "pid": "slug:olivia-bell"
   },
   {
     "id": 7517,
@@ -2296,7 +2297,7 @@
     "squad_number": 17,
     "team_code": "MINY",
     "efppm": 16.0,
-    "pid": "f9d99806"
+    "pid": "b0af303d"
   },
   {
     "id": 10050,
@@ -2946,7 +2947,7 @@
     "squad_number": 12,
     "team_code": "SEO",
     "efppm": 26.0,
-    "pid": "f9d99806"
+    "pid": "5ec41cd7"
   },
   {
     "id": 10115,
@@ -3136,7 +3137,7 @@
     "squad_number": 11,
     "team_code": "LAKR",
     "efppm": 26.0,
-    "pid": "486065b3"
+    "pid": "b0eaaac6"
   },
   {
     "id": 10134,
@@ -3176,7 +3177,7 @@
     "squad_number": 13,
     "team_code": "LAKR",
     "efppm": 16.0,
-    "pid": "b4296080"
+    "pid": "slug:nitish-kumar"
   },
   {
     "id": 10138,
@@ -3215,7 +3216,8 @@
     "role": "BOWL",
     "squad_number": 19,
     "team_code": "WAF",
-    "efppm": 24.0
+    "efppm": 24.0,
+    "pid": "slug:asif-mehmood"
   },
   {
     "id": 10142,
@@ -3224,7 +3226,8 @@
     "role": "BOWL",
     "squad_number": 19,
     "team_code": "SFU",
-    "efppm": 24.0
+    "efppm": 24.0,
+    "pid": "espn:938937"
   },
   {
     "id": 10143,
@@ -3233,7 +3236,8 @@
     "role": "WK",
     "squad_number": 19,
     "team_code": "LAKR",
-    "efppm": 42.0
+    "efppm": 42.0,
+    "pid": "espn:51862"
   },
   {
     "id": 10144,
@@ -3242,7 +3246,8 @@
     "role": "BAT",
     "squad_number": 20,
     "team_code": "LAKR",
-    "efppm": 36.0
+    "efppm": 36.0,
+    "pid": "8dd02a98"
   },
   {
     "id": 10145,
@@ -3251,6 +3256,7 @@
     "role": "AR",
     "squad_number": 21,
     "team_code": "LAKR",
-    "efppm": 18.0
+    "efppm": 18.0,
+    "pid": "26ff4c29"
   }
 ]
