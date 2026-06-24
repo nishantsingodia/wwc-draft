@@ -66,6 +66,12 @@ export const teamSelections = sqliteTable(
     viceCaptainKey: text("vice_captain_key"),
     submittedAt: integer("submitted_at"),
     isLocked: integer("is_locked", { mode: "boolean" }).notNull().default(false),
+    // BACKUP_INTELLIGENCE: the substitution decision, frozen once post-lock when
+    // lineups are announced. NULL until then. effectiveLineup = JSON
+    // {xi:string[], captainKey, viceCaptainKey}; effectiveChanges = JSON Change[].
+    effectiveLineup: text("effective_lineup"),
+    effectiveChanges: text("effective_changes"),
+    effectiveComputedAt: integer("effective_computed_at"),
   },
   (t) => [uniqueIndex("team_selections_contest_user").on(t.contestId, t.user)]
 );

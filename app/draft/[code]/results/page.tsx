@@ -4,6 +4,8 @@ import { useEffect, useState, use, useCallback } from "react";
 import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
 import { getFlag } from "@/lib/players";
+import type { Change } from "@/lib/effective-lineup";
+import ChangesBanner from "@/components/changes-banner";
 
 type PlayerResult = {
   key: string;
@@ -25,6 +27,7 @@ type TeamResult = {
   viceCaptainKey: string | null;
   isLocked: boolean;
   totalPoints: number | null;
+  changes?: Change[]; // BACKUP_INTELLIGENCE: what auto-substitution did (empty if nothing moved)
 };
 
 type ResultsData = {
@@ -163,6 +166,9 @@ export default function ResultsPage({
                   {getUserLabel(team.user)}{team.user === username ? "'s team (you)" : "'s team"}
                 </h2>
               </div>
+
+              {/* What backup intelligence changed for this team */}
+              <ChangesBanner changes={team.changes ?? []} />
 
               {/* XI */}
               <div className="space-y-1">

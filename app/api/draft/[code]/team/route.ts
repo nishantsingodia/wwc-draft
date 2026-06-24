@@ -49,7 +49,15 @@ export async function POST(
   }
 
   const { code } = await params;
-  const { selectedPlayers, captainKey, viceCaptainKey } = await request.json();
+  const { selectedPlayers } = await request.json();
+
+  // The ranking IS the team and the single source of truth: index 0 = highest
+  // priority = Captain, index 1 = Vice-Captain. Derive C/VC here so they can
+  // never drift from the saved order (and old clients sending stale C/VC can't
+  // desync it).
+  const ranking: string[] = Array.isArray(selectedPlayers) ? selectedPlayers : [];
+  const captainKey = ranking[0] ?? null;
+  const viceCaptainKey = ranking[1] ?? null;
 
   const db = getDb();
 
@@ -89,9 +97,9 @@ export async function POST(
     await db
       .update(teamSelections)
       .set({
-        selectedPlayers: JSON.stringify(selectedPlayers),
-        captainKey: captainKey ?? null,
-        viceCaptainKey: viceCaptainKey ?? null,
+        selectedPlayers: JSON.stringify(ranking),
+        captainKey,
+        viceCaptainKey,
         submittedAt: now2,
         isLocked,
       })
@@ -105,9 +113,9 @@ export async function POST(
     await db.insert(teamSelections).values({
       contestId: contest.id,
       user: username,
-      selectedPlayers: JSON.stringify(selectedPlayers),
-      captainKey: captainKey ?? null,
-      viceCaptainKey: viceCaptainKey ?? null,
+      selectedPlayers: JSON.stringify(ranking),
+      captainKey,
+      viceCaptainKey,
       submittedAt: now2,
       isLocked,
     });

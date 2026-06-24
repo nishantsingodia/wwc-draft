@@ -246,6 +246,38 @@ function syntheticPlayer(team: string, role: string, name: string, squadNumber =
   };
 }
 
+// Is this player in the given team's official XI? Identity-first: match on the
+// stable pid (the sheet's "Player ID"), only then fall back to fuzzy NAME for
+// players/rows without a pid — fuzzy never sees a pid key, so a hash can't be
+// mistaken for a name. `teamXI` is one team's slice of getLastPlayedXI()
+// (name|pid -> batOrder); its KEYS are the XI membership, its VALUES the live
+// batting order. This is the single source of truth for "is this player playing",
+// shared by the draft board (getPlayersByTeams) and the substitution engine
+// (lib/effective-lineup.ts).
+export function matchPlayerInXI(
+  player: Pick<Player, "pid" | "displayName">,
+  teamXI: Map<string, number> | undefined
+): { inXI: boolean; batOrder: number } {
+  if (!teamXI || teamXI.size === 0) return { inXI: false, batOrder: 0 };
+  if (player.pid && teamXI.has(player.pid)) {
+    return { inXI: true, batOrder: teamXI.get(player.pid) ?? 0 };
+  }
+  const matched = fuzzyMatchName(
+    player.displayName,
+    [...teamXI.keys()].filter((k) => !isPidKey(k))
+  );
+  return matched !== null
+    ? { inXI: true, batOrder: teamXI.get(matched) ?? 0 }
+    : { inXI: false, batOrder: 0 };
+}
+
+export function isPlayerInOfficialXI(
+  player: Pick<Player, "pid" | "displayName">,
+  teamXI: Map<string, number> | undefined
+): boolean {
+  return matchPlayerInXI(player, teamXI).inXI;
+}
+
 // Order players for the draft board within each team:
 //   1. XI members before non-XI
 //   2. within the XI, by live batting order (from the sheet) when available,
@@ -292,20 +324,9 @@ export function getPlayersByTeams(
       let isLikelyXI: boolean;
       let batOrder = 0;
       if (teamXI && teamXI.size > 0) {
-        // Identity-first: match on the stable pid (the sheet's "Player ID"); only
-        // fall back to fuzzy NAME for players/rows without a pid. Fuzzy never sees a
-        // pid key, so a hash can't be mistaken for a name.
-        if (p.pid && teamXI.has(p.pid)) {
-          isLikelyXI = true;
-          batOrder = teamXI.get(p.pid) ?? 0;
-        } else {
-          const matched = fuzzyMatchName(
-            p.displayName,
-            [...teamXI.keys()].filter((k) => !isPidKey(k))
-          );
-          isLikelyXI = matched !== null;
-          batOrder = matched !== null ? (teamXI.get(matched) ?? 0) : 0;
-        }
+        const m = matchPlayerInXI(p, teamXI);
+        isLikelyXI = m.inXI;
+        batOrder = m.batOrder;
       } else {
         isLikelyXI = p.squadNumber <= 11;
       }

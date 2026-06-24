@@ -90,6 +90,13 @@ async function migrate() {
   await addColumnIfMissing("draft_contests", "pending_undo_target", "INTEGER");
   await addColumnIfMissing("draft_contests", "pending_undo_at", "INTEGER");
 
+  // BACKUP_INTELLIGENCE: frozen effective lineup + change log on team_selections,
+  // computed once post-lock when lineups are announced (additive, NULL on existing
+  // rows = not yet computed).
+  await addColumnIfMissing("team_selections", "effective_lineup", "TEXT");
+  await addColumnIfMissing("team_selections", "effective_changes", "TEXT");
+  await addColumnIfMissing("team_selections", "effective_computed_at", "INTEGER");
+
   console.log("Migration complete.");
   client.close();
 }
