@@ -171,8 +171,10 @@ export default function PlayerCard({
         </div>
       )}
 
-      {/* C/VC badge overlay */}
-      {(isCaptain || isViceCaptain) && (
+      {/* C/VC corner badge — ONLY on read-only cards (no C/VC buttons). On
+          editable cards the highlighted C/VC button already shows the state, so
+          a second corner badge would be a redundant double "C" on one card. */}
+      {(isCaptain || isViceCaptain) && !onCaptainClick && !onViceCaptainClick && (
         <span
           className={`absolute top-1 right-1 text-xs font-bold px-1 rounded ${
             isCaptain ? "bg-yellow-500 text-black" : "bg-blue-500 text-white"
