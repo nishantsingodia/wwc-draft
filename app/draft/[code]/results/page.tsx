@@ -239,13 +239,16 @@ function PlayerRow({ player, isBench = false }: { player: PlayerResult; isBench?
           <span className="ml-1 text-xs bg-blue-500 text-white px-1 rounded font-bold">VC</span>
         )}
       </span>
-      <span className="text-sm text-mist shrink-0">
+      {/* For C/VC, show base ×mult = total so the multiplier is visibly ALREADY
+          applied (102 ×2 = 204) — never the multiplied value beside a bare "×2",
+          which misreads as if it'll be doubled again. */}
+      <span className="text-sm text-mist shrink-0 whitespace-nowrap">
+        {mult > 1 && displayPts !== null && raw !== null && (
+          <span className="text-mist2 text-xs mr-1">{raw.toFixed(1)} ×{mult} =</span>
+        )}
         <span className={displayPts !== null ? "text-amber-300 font-semibold" : "text-mist2"}>
           {(displayPts ?? 0).toFixed(1)}
         </span>
-        {mult > 1 && displayPts !== null && (
-          <span className="text-mist2 text-xs ml-1">×{mult}</span>
-        )}
       </span>
     </div>
   );

@@ -164,6 +164,10 @@ POINTS_CSV_URLS=<womens export?gid url>,<mlc gviz url>,<mens gviz url>
 - A tab by name → `.../gviz/tq?tqx=out:csv&sheet=<URL-encoded tab name>&headers=1`. **`&headers=1` is REQUIRED** — without it gviz merges the header row into the first data row and column lookups break.
 - `POINTS_CSV_PATH` (local dev) still overrides everything as a single source.
 
+### Live lineups come from ESPN — keep `lib/espn.ts` in sync (tour-setup touchpoint)
+
+"🟢 Lineups Out", the ✓ In-XI / ✗ Not-in-XI markers, and BACKUP_INTELLIGENCE's auto-substitution all need the **announced XI**, which the app pulls **directly from ESPN** (`lib/espn.ts` → `getEspnLineup`; the sheet's `getLineupMeta` is only a fallback). ESPN series are chosen by **gender** in `SERIES_BY_GENDER`, which **must stay in sync with the points-bot's `tours.json` `espn_series`**. So when you add a tour the draft app uses, add that tour's ESPN series id to `SERIES_BY_GENDER[gender]` — otherwise the lineup silently falls back to the sheet (which for franchise tours like MLC carries **no** announced-XI rows) and "Lineups Out" never fires. Cross-referenced from the bot's `TOURS.md` step 4.
+
 ### Sheet not ready yet?
 
 All drafts, team selection, and lobby work with no sheet at all. Until a sheet is ready:
@@ -262,6 +266,8 @@ The CSV "Full Name" column uses the official announced name. `players-raw.json` 
 ### Never double-apply C/VC multipliers
 
 The results API returns both `rawPoints` (base) and `fantasyPoints` (raw × multiplier). The results page uses `rawPoints` as base and applies `mult` once for display. `calcXITotal()` sums `fantasyPoints` (already multiplied). Never re-multiply `fantasyPoints` anywhere.
+
+**Display rule (C/VC rows):** show the multiplier *visibly already applied* — `102.0 ×2 = 204.0` (base ×mult = total), never the multiplied value next to a bare `×2`. Rendering `204.0 ×2` reads as if 204 will be doubled again (→ "is this 408? is it a bug?") — exactly the confusion that made a captain's legit 102→204 look broken. The base (`rawPoints`) goes before the `×mult`; the emphasised number is the resulting contribution. Applies anywhere C/VC points surface (results page today). See BUGS.md #8.
 
 ### Points lookup is teams + date (not label)
 

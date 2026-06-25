@@ -146,3 +146,15 @@ Each match label in the output must have an exact corresponding entry in `matche
 **Fix:** Prefix keys for non-primary tournaments: `"M_AUS_BAN_T20I1_Jun17"` vs `"AUS_BAN_Jun17"`. The `key` is stored in `draft_contests.matchKey` and must be globally unique across all tournaments in the app.
 
 **Rule: when adding a new tournament, scan existing keys in matches.json for potential collisions. If any team pair + date overlaps, add a tournament prefix to the key.**
+
+---
+
+## 8. C/VC results display showed the ALREADY-multiplied value next to "×2"
+
+**What broke:** During a live game a captain who scored 102 showed on the results page as `204.0 ×2` (and a VC of 64 as `96.0 ×1.5`). 204 is *correct* (102×2 = the captain's contribution), but printing it beside `×2` reads as "204 will be doubled" → looked like a double-multiply bug and prompted "is this expected?".
+
+**Root cause:** `PlayerRow` rendered `displayPts = rawPoints × mult` AND a `×mult` chip — i.e. the already-multiplied number next to the multiplier.
+
+**Fix:** C/VC rows now render `base ×mult = total` (`102.0 ×2 = 204.0`) — multiplier visibly already applied, the emphasised number is the contribution. `app/draft/[code]/results/page.tsx`.
+
+**Rule: never show a multiplied points value next to a bare "×N". Show `base ×mult = total` (or just the total). The sheet stores RAW points only — multipliers are applied + displayed in the app (see CLAUDE.md "Never double-apply C/VC multipliers").**
