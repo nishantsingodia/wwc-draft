@@ -84,7 +84,7 @@ const ROLE_FULL: Record<string, string> = {
   BOWL: "Bowlers",
 };
 
-const MAX_QUEUE = 5;
+const MAX_QUEUE = 10;
 
 export default function DraftBoardPage({
   params,
@@ -489,7 +489,7 @@ export default function DraftBoardPage({
               </button>
               {showQdTooltip && (
                 <div className="absolute top-full right-0 mt-2 w-44 bg-navy border border-hair2 rounded-lg px-3 py-2 text-xs text-cloud shadow-xl z-30">
-                  Queue up to 5 picks — auto-fired each turn
+                  Queue up to {MAX_QUEUE} picks — auto-fired each turn
                   <div className="absolute -top-1.5 right-4 w-3 h-3 bg-navy border-l border-t border-hair2 rotate-45" />
                 </div>
               )}
@@ -772,7 +772,7 @@ export default function DraftBoardPage({
               </button>
               <div className="flex-1 min-w-0">
                 {draftQueue.length === 0 ? (
-                  <p className="text-mist2 text-xs">Tap players to queue picks (max 5)</p>
+                  <p className="text-mist2 text-xs">Tap players to queue picks (max {MAX_QUEUE})</p>
                 ) : (
                   <p className="text-xs text-gold truncate">
                     {draftQueue.map((key, i) => {

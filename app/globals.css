@@ -184,7 +184,12 @@
    ============================================================ */
 @media (prefers-reduced-motion: no-preference) {
   .vt-rise {
-    animation: vt-rise 460ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    /* `backwards` (not `both`): hold the pre-start frame to avoid a flash, but
+       do NOT forwards-fill. A forwards-filled transform keyframe keeps <main>
+       a containing block for position:fixed descendants forever, which un-sticks
+       the bottom bar (SAVE CTA / picks counter) — it'd anchor to the bottom of
+       the page content instead of the viewport. */
+    animation: vt-rise 460ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
   .vt-lift {
     animation: vt-lift 240ms cubic-bezier(0.4, 0, 0.2, 1) both;
