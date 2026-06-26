@@ -3266,7 +3266,8 @@
     "role": "AR",
     "squad_number": 1,
     "team_code": "MIND",
-    "efppm": 75.0
+    "efppm": 75.0,
+    "pid": "f29185a1"
   },
   {
     "id": 10147,
@@ -3275,7 +3276,8 @@
     "role": "WK",
     "squad_number": 2,
     "team_code": "MIND",
-    "efppm": 65.0
+    "efppm": 65.0,
+    "pid": "a4cc73aa"
   },
   {
     "id": 10148,
@@ -3284,7 +3286,8 @@
     "role": "WK",
     "squad_number": 3,
     "team_code": "MIND",
-    "efppm": 55.0
+    "efppm": 55.0,
+    "pid": "752f7486"
   },
   {
     "id": 10149,
@@ -3293,7 +3296,8 @@
     "role": "BAT",
     "squad_number": 4,
     "team_code": "MIND",
-    "efppm": 60.0
+    "efppm": 60.0,
+    "pid": "espn:642519"
   },
   {
     "id": 10150,
@@ -3302,7 +3306,8 @@
     "role": "BAT",
     "squad_number": 5,
     "team_code": "MIND",
-    "efppm": 65.0
+    "efppm": 65.0,
+    "pid": "b0482a1d"
   },
   {
     "id": 10151,
@@ -3311,7 +3316,8 @@
     "role": "AR",
     "squad_number": 6,
     "team_code": "MIND",
-    "efppm": 50.0
+    "efppm": 50.0,
+    "pid": "f19ccfad"
   },
   {
     "id": 10152,
@@ -3320,7 +3326,8 @@
     "role": "AR",
     "squad_number": 7,
     "team_code": "MIND",
-    "efppm": 45.0
+    "efppm": 45.0,
+    "pid": "a4e37e47"
   },
   {
     "id": 10153,
@@ -3329,7 +3336,8 @@
     "role": "AR",
     "squad_number": 8,
     "team_code": "MIND",
-    "efppm": 55.0
+    "efppm": 55.0,
+    "pid": "espn:554691"
   },
   {
     "id": 10154,
@@ -3338,7 +3346,8 @@
     "role": "BOWL",
     "squad_number": 9,
     "team_code": "MIND",
-    "efppm": 55.0
+    "efppm": 55.0,
+    "pid": "244048f6"
   },
   {
     "id": 10155,
@@ -3347,7 +3356,8 @@
     "role": "BOWL",
     "squad_number": 10,
     "team_code": "MIND",
-    "efppm": 40.0
+    "efppm": 40.0,
+    "pid": "77b1aa15"
   },
   {
     "id": 10156,
@@ -3356,7 +3366,8 @@
     "role": "BOWL",
     "squad_number": 11,
     "team_code": "MIND",
-    "efppm": 35.0
+    "efppm": 35.0,
+    "pid": "80b2fb19"
   },
   {
     "id": 10157,
@@ -3365,7 +3376,8 @@
     "role": "BAT",
     "squad_number": 12,
     "team_code": "MIND",
-    "efppm": 40.0
+    "efppm": 40.0,
+    "pid": "slug:vaibhav-sooryavanshi"
   },
   {
     "id": 10158,
@@ -3374,7 +3386,8 @@
     "role": "AR",
     "squad_number": 13,
     "team_code": "MIND",
-    "efppm": 20.0
+    "efppm": 20.0,
+    "pid": "970ddd24"
   },
   {
     "id": 10159,
@@ -3383,7 +3396,8 @@
     "role": "BOWL",
     "squad_number": 14,
     "team_code": "MIND",
-    "efppm": 35.0
+    "efppm": 35.0,
+    "pid": "slug:prasidh-krishna"
   },
   {
     "id": 10160,
@@ -3392,7 +3406,8 @@
     "role": "BOWL",
     "squad_number": 15,
     "team_code": "MIND",
-    "efppm": 40.0
+    "efppm": 40.0,
+    "pid": "df064e1a"
   },
   {
     "id": 10161,
@@ -3401,7 +3416,8 @@
     "role": "BAT",
     "squad_number": 1,
     "team_code": "MIRE",
-    "efppm": 30.0
+    "efppm": 30.0,
+    "pid": "espn:1195143"
   },
   {
     "id": 10162,
@@ -3410,7 +3426,8 @@
     "role": "BAT",
     "squad_number": 2,
     "team_code": "MIRE",
-    "efppm": 40.0
+    "efppm": 40.0,
+    "pid": "slug:ross-adair"
   },
   {
     "id": 10163,
@@ -3419,7 +3436,8 @@
     "role": "BAT",
     "squad_number": 3,
     "team_code": "MIRE",
-    "efppm": 50.0
+    "efppm": 50.0,
+    "pid": "espn:961407"
   },
   {
     "id": 10164,
@@ -3428,7 +3446,8 @@
     "role": "WK",
     "squad_number": 4,
     "team_code": "MIRE",
-    "efppm": 50.0
+    "efppm": 50.0,
+    "pid": "3979b5e0"
   },
   {
     "id": 10165,
@@ -3437,7 +3456,8 @@
     "role": "BAT",
     "squad_number": 5,
     "team_code": "MIRE",
-    "efppm": 30.0
+    "efppm": 30.0,
+    "pid": "24ad97e7"
   },
   {
     "id": 10166,
@@ -3446,7 +3466,8 @@
     "role": "AR",
     "squad_number": 6,
     "team_code": "MIRE",
-    "efppm": 45.0
+    "efppm": 45.0,
+    "pid": "espn:1099379"
   },
   {
     "id": 10167,
@@ -3455,7 +3476,8 @@
     "role": "AR",
     "squad_number": 7,
     "team_code": "MIRE",
-    "efppm": 40.0
+    "efppm": 40.0,
+    "pid": "99cddc5e"
   },
   {
     "id": 10168,
@@ -3464,7 +3486,8 @@
     "role": "BOWL",
     "squad_number": 8,
     "team_code": "MIRE",
-    "efppm": 35.0
+    "efppm": 35.0,
+    "pid": "2c54c49b"
   },
   {
     "id": 10169,
@@ -3473,7 +3496,8 @@
     "role": "BOWL",
     "squad_number": 9,
     "team_code": "MIRE",
-    "efppm": 25.0
+    "efppm": 25.0,
+    "pid": "espn:1490554"
   },
   {
     "id": 10170,
@@ -3482,7 +3506,8 @@
     "role": "BOWL",
     "squad_number": 10,
     "team_code": "MIRE",
-    "efppm": 25.0
+    "efppm": 25.0,
+    "pid": "05de1a5a"
   },
   {
     "id": 10171,
@@ -3491,7 +3516,8 @@
     "role": "BOWL",
     "squad_number": 11,
     "team_code": "MIRE",
-    "efppm": 25.0
+    "efppm": 25.0,
+    "pid": "espn:1448923"
   },
   {
     "id": 10172,
@@ -3500,7 +3526,8 @@
     "role": "WK",
     "squad_number": 12,
     "team_code": "MIRE",
-    "efppm": 20.0
+    "efppm": 20.0,
+    "pid": "4992d6f6"
   },
   {
     "id": 10173,
@@ -3509,7 +3536,8 @@
     "role": "AR",
     "squad_number": 13,
     "team_code": "MIRE",
-    "efppm": 18.0
+    "efppm": 18.0,
+    "pid": "slug:gavin-hoey"
   },
   {
     "id": 10174,
@@ -3518,6 +3546,7 @@
     "role": "BOWL",
     "squad_number": 14,
     "team_code": "MIRE",
-    "efppm": 18.0
+    "efppm": 18.0,
+    "pid": "espn:1278203"
   }
 ]
