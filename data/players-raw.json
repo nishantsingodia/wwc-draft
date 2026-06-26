@@ -3258,5 +3258,266 @@
     "team_code": "LAKR",
     "efppm": 18.0,
     "pid": "26ff4c29"
+  },
+  {
+    "id": 10146,
+    "name": "Abhishek Sharma",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MIND",
+    "efppm": 75.0
+  },
+  {
+    "id": 10147,
+    "name": "Sanju Samson",
+    "country": "India",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "MIND",
+    "efppm": 65.0
+  },
+  {
+    "id": 10148,
+    "name": "Ishan Kishan",
+    "country": "India",
+    "role": "WK",
+    "squad_number": 3,
+    "team_code": "MIND",
+    "efppm": 55.0
+  },
+  {
+    "id": 10149,
+    "name": "Shreyas Iyer",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MIND",
+    "efppm": 60.0
+  },
+  {
+    "id": 10150,
+    "name": "Tilak Varma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MIND",
+    "efppm": 65.0
+  },
+  {
+    "id": 10151,
+    "name": "Washington Sundar",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MIND",
+    "efppm": 50.0
+  },
+  {
+    "id": 10152,
+    "name": "Shivam Dube",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MIND",
+    "efppm": 45.0
+  },
+  {
+    "id": 10153,
+    "name": "Axar Patel",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MIND",
+    "efppm": 55.0
+  },
+  {
+    "id": 10154,
+    "name": "Arshdeep Singh",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MIND",
+    "efppm": 55.0
+  },
+  {
+    "id": 10155,
+    "name": "Harshit Rana",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MIND",
+    "efppm": 40.0
+  },
+  {
+    "id": 10156,
+    "name": "Prince Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MIND",
+    "efppm": 35.0
+  },
+  {
+    "id": 10157,
+    "name": "Vaibhav Sooryavanshi",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MIND",
+    "efppm": 40.0
+  },
+  {
+    "id": 10158,
+    "name": "Suryansh Shedge",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MIND",
+    "efppm": 20.0
+  },
+  {
+    "id": 10159,
+    "name": "Prasidh Krishna",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MIND",
+    "efppm": 35.0
+  },
+  {
+    "id": 10160,
+    "name": "Ravi Bishnoi",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MIND",
+    "efppm": 40.0
+  },
+  {
+    "id": 10161,
+    "name": "Tim Tector",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MIRE",
+    "efppm": 30.0
+  },
+  {
+    "id": 10162,
+    "name": "Ross Adair",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MIRE",
+    "efppm": 40.0
+  },
+  {
+    "id": 10163,
+    "name": "Harry Tector",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MIRE",
+    "efppm": 50.0
+  },
+  {
+    "id": 10164,
+    "name": "Lorcan Tucker",
+    "country": "Ireland",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "MIRE",
+    "efppm": 50.0
+  },
+  {
+    "id": 10165,
+    "name": "Ben Calitz",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MIRE",
+    "efppm": 30.0
+  },
+  {
+    "id": 10166,
+    "name": "Gareth Delany",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MIRE",
+    "efppm": 45.0
+  },
+  {
+    "id": 10167,
+    "name": "George Dockrell",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MIRE",
+    "efppm": 40.0
+  },
+  {
+    "id": 10168,
+    "name": "Matthew Humphreys",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MIRE",
+    "efppm": 35.0
+  },
+  {
+    "id": 10169,
+    "name": "Matthew Hollard",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MIRE",
+    "efppm": 25.0
+  },
+  {
+    "id": 10170,
+    "name": "Reuben Wilson",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MIRE",
+    "efppm": 25.0
+  },
+  {
+    "id": 10171,
+    "name": "Jai Moondra",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MIRE",
+    "efppm": 25.0
+  },
+  {
+    "id": 10172,
+    "name": "Stephen Doheny",
+    "country": "Ireland",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "MIRE",
+    "efppm": 20.0
+  },
+  {
+    "id": 10173,
+    "name": "Gavin Hoey",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MIRE",
+    "efppm": 18.0
+  },
+  {
+    "id": 10174,
+    "name": "Liam McCarthy",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MIRE",
+    "efppm": 18.0
   }
 ]

@@ -619,5 +619,23 @@
     "team2": "TBD",
     "label": "MLC Final",
     "date": "2026-07-19T05:00:00+05:30"
+  },
+  {
+    "matchNum": 70,
+    "key": "M_IND_IRE_T20I1_Jun26",
+    "gender": "M",
+    "team1": "MIND",
+    "team2": "MIRE",
+    "label": "Match 1: IND v IRE",
+    "date": "2026-06-26T18:00:00+05:30"
+  },
+  {
+    "matchNum": 71,
+    "key": "M_IND_IRE_T20I2_Jun28",
+    "gender": "M",
+    "team1": "MIND",
+    "team2": "MIRE",
+    "label": "Match 2: IND v IRE",
+    "date": "2026-06-28T18:00:00+05:30"
   }
 ]
