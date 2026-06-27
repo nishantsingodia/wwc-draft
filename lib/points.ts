@@ -24,14 +24,18 @@ export function fuzzyLookupPoints(
   return match !== null ? (pointsMap.get(match) ?? null) : null;
 }
 
-// Points for a player: stable pid first (exact identity), then fuzzy name fallback.
+// Points for a player. A stable pid is AUTHORITATIVE: the points sheet is keyed by the same
+// registry pid, so if a pid'd player isn't in this match's map they simply didn't feature →
+// null. We must NOT fuzzy-fall-back for a pid'd player — that's how "Smit Patel" (who didn't
+// play) wrongly grabbed "Sunny Patel" (same surname + first initial) in the same match.
+// Fuzzy name is only for legacy / un-pid'd rows (no stable identity to key on).
 export function lookupPlayerPoints(
   pid: string | undefined,
   displayName: string,
   name: string | undefined,
   pointsMap: Map<string, number>
 ): number | null {
-  if (pid && pointsMap.has(pid)) return pointsMap.get(pid) ?? null;
+  if (pid) return pointsMap.has(pid) ? (pointsMap.get(pid) ?? null) : null;
   return (
     fuzzyLookupPoints(displayName, pointsMap) ??
     (name && name !== displayName ? fuzzyLookupPoints(name, pointsMap) : null)
@@ -196,6 +200,51 @@ export async function getLastPlayedXI(): Promise<Map<string, Map<string, number>
   return result;
 }
 
+// The XI for ONE specific match (the contest's match), from the sheet's Played=Y rows for
+// that match block, keyed by BOTH canonical name and stable pid. This is the DEFINITIVE XI
+// for any match the sheet already covers — the bot resolved each player to their registry pid
+// (toss-announced rows AND completed rows carry Player ID). Preferred over ESPN's announced XI,
+// which is keyed by espn:<id> and so can't match a player whose registry pid is a cricsheet
+// hash or slug (e.g. slug:kaushini-nuthyangana) — the bug that wrongly benched a player who
+// actually featured. Empty when the sheet has no rows for this match yet (genuinely upcoming).
+export async function getMatchXI(
+  match: MatchLike
+): Promise<Map<string, Map<string, number>>> {
+  const rows = await getCsv();
+  const result = new Map<string, Map<string, number>>();
+  if (!rows || rows.length < 2) return result;
+  const target = resolveLabel(rows, match);
+  if (!target) return result;
+
+  const header = rows[0];
+  const matchIdx = headerIdx(header, "Match");
+  const teamIdx = headerIdx(header, "Team");
+  const nameIdx = headerIdx(header, "Full Name");
+  const pidIdx = headerIdx(header, "Player ID");
+  const playedIdx = headerIdx(header, "Played");
+  const batIdx = headerIdx(header, "Bat Order");
+
+  const setBat = (m: Map<string, number>, k: string, bat: number) => {
+    if (!k) return;
+    const cur = m.get(k);
+    if (cur === undefined || (cur === 0 && bat > 0)) m.set(k, bat);
+  };
+  for (const row of rows.slice(1)) {
+    if (row[matchIdx]?.trim() !== target) continue;
+    if (row[playedIdx]?.trim() !== "Y") continue;
+    const team = row[teamIdx]?.trim();
+    const name = row[nameIdx]?.trim();
+    const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
+    if (!team || !name) continue;
+    const batOrder = batIdx >= 0 ? parseInt(row[batIdx], 10) || 0 : 0;
+    if (!result.has(team)) result.set(team, new Map());
+    const m = result.get(team)!;
+    setBat(m, name, batOrder);
+    if (pid) setBat(m, pid, batOrder);
+  }
+  return result;
+}
+
 // ── Match identification (teams + date, NOT the "Match N" label) ──────────────
 //
 // The points bot numbers matches by its own (cricapi/espn) scheme, which does
@@ -339,7 +388,9 @@ export function lookupTourPoints(
   name: string | undefined,
   tourPoints: Map<string, number>
 ): number | null {
-  if (pid && tourPoints.has(pid)) return tourPoints.get(pid) ?? null;
+  // pid is authoritative (sheet is pid-keyed) — no name fallback for a pid'd player, so two
+  // same-surname players (e.g. Sunny/Smit Patel) can never borrow each other's tour total.
+  if (pid) return tourPoints.has(pid) ? (tourPoints.get(pid) ?? null) : null;
   return (
     tourPoints.get(normName(displayName)) ??
     (name ? tourPoints.get(normName(name)) ?? null : null)

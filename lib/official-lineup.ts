@@ -6,7 +6,7 @@
 // is a drop-in for both call sites.
 
 import { getEspnLineup } from "./espn";
-import { getLastPlayedXI, getLineupMeta } from "./points";
+import { getLastPlayedXI, getLineupMeta, getMatchXI } from "./points";
 import { type Match } from "./matches";
 
 export type OfficialLineup = {
@@ -15,32 +15,41 @@ export type OfficialLineup = {
 };
 
 export async function getOfficialLineup(match: Match | undefined): Promise<OfficialLineup> {
-  const [sheetXI, sheetMeta, espn] = await Promise.all([
+  const [sheetXI, sheetMeta, matchXI, espn] = await Promise.all([
     getLastPlayedXI(),
     getLineupMeta(),
+    match ? getMatchXI(match) : Promise.resolve(new Map<string, Map<string, number>>()),
     match ? getEspnLineup(match) : Promise.resolve(null),
   ]);
 
-  if (!espn || !match) return { lastXI: sheetXI, lineupMeta: sheetMeta };
+  if (!match) return { lastXI: sheetXI, lineupMeta: sheetMeta };
 
-  // ESPN is authoritative for this match's two teams; the sheet remains for all
-  // other teams (irrelevant to this contest, but keeps the maps complete).
   const lastXI = new Map(sheetXI);
   const lineupMeta = new Map(sheetMeta);
-  const espnToss = [...espn.lineupMeta.values()][0]?.toss ?? null;
+  const espnToss = espn ? [...espn.lineupMeta.values()][0]?.toss ?? null : null;
 
+  // Per-team precedence for THIS match's two teams:
+  //   1. The sheet's own per-match XI (getMatchXI) — the bot resolved each player to their
+  //      stable registry pid, so it matches our players by pid exactly (no espn:id-vs-slug
+  //      mismatch, no fuzzy-name surname collisions). Use it the moment the sheet has the
+  //      match (toss-announced OR completed). This is the authoritative, identity-safe XI.
+  //   2. ESPN's announced XI — only before the sheet has posted this match (live window).
+  //   3. The sheet's last-played XI (unchanged) — predicted-display fallback otherwise.
   for (const code of [match.team1, match.team2]) {
-    const xi = espn.xiByTeam.get(code);
-    if (xi) {
-      lastXI.set(code, xi);
-      lineupMeta.set(code, espn.lineupMeta.get(code)!);
-    } else {
-      // We're inside ESPN's lineup window (the other side posted) but THIS side
-      // isn't up yet. Mark it explicitly not-announced for this match — never trust
-      // a stale, global sheet toss-flag from a previous match. Keep the sheet's
-      // last-played XI as the "likely XI" fallback for ordering/predicted display.
+    const fromMatch = matchXI.get(code);
+    const fromEspn = espn?.xiByTeam.get(code);
+    if (fromMatch && fromMatch.size > 0) {
+      lastXI.set(code, fromMatch);
+      lineupMeta.set(code, { announced: true, toss: espn?.lineupMeta.get(code)?.toss ?? espnToss });
+    } else if (fromEspn) {
+      lastXI.set(code, fromEspn);
+      lineupMeta.set(code, espn!.lineupMeta.get(code)!);
+    } else if (espn) {
+      // ESPN window open but this side isn't up yet AND the sheet has nothing for this
+      // match — explicitly not-announced (never trust a stale global sheet toss-flag).
       lineupMeta.set(code, { announced: false, toss: espnToss });
     }
+    // else: no ESPN + no sheet-match rows -> keep the sheet's last-played XI + meta as-is.
   }
 
   return { lastXI, lineupMeta };
