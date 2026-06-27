@@ -544,7 +544,7 @@ export default function DraftBoardPage({
         {(isWaiting || isDrafting) && (
           <LineupRefresh
             announced={!!state.lineups?.announced}
-            roundlockTs={(state.contest.matchDeadline ?? 0) + 15 * 60}
+            roundlockTs={(state.contest.matchDeadline ?? 0) + 30 * 60}
             onRefresh={fetchState}
           />
         )}

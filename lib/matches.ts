@@ -1,6 +1,6 @@
 import matchesData from "@/data/matches.json";
 
-export const LOCK_BUFFER = 15 * 60; // teams lock 15 min after match start
+export const LOCK_BUFFER = 30 * 60; // teams lock 30 min after match start
 
 export type Match = {
   key: string;

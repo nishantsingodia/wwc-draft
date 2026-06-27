@@ -332,7 +332,7 @@ export default function TeamPage({
     return () => clearInterval(id);
   }, [isManual, fetchData]);
 
-  const LOCK_BUFFER = 15 * 60;
+  const LOCK_BUFFER = 30 * 60; // keep in sync with lib/matches.ts
   const lockTs = (data?.contest?.matchDeadline ?? 0) + LOCK_BUFFER;
 
   const isLocked =

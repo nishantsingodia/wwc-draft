@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, teamSelections } from "@/lib/db";
+import { LOCK_BUFFER } from "@/lib/matches";
 import { eq, and } from "drizzle-orm";
 
 export async function GET(
@@ -72,8 +73,7 @@ export async function POST(
     return NextResponse.json({ error: "Teams are locked" }, { status: 403 });
   }
 
-  // Auto-lock 15 min after match start; manual drafts never auto-lock
-  const LOCK_BUFFER = 15 * 60;
+  // Auto-lock LOCK_BUFFER after match start (see lib/matches.ts); manual drafts never auto-lock
   const now = Math.floor(Date.now() / 1000);
   const isLocked = contest.mode === "live" && now >= contest.matchDeadline + LOCK_BUFFER;
 

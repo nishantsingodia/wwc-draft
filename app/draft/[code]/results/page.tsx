@@ -128,7 +128,7 @@ export default function ResultsPage({
             effective lineup update the moment lineups post. */}
         <LineupRefresh
           announced={data.announced}
-          roundlockTs={(contest.matchDeadline ?? 0) + 15 * 60}
+          roundlockTs={(contest.matchDeadline ?? 0) + 30 * 60}
           onRefresh={fetchResults}
         />
 
