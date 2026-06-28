@@ -1,6 +1,6 @@
 # wwc-draft
 
-A real-time, turn-based fantasy cricket draft for two friends — with a "backup intelligence" engine that auto-substitutes benched players, cascades the captaincy down your priority ranking once official lineups drop, and then shows you exactly what it changed.
+A real-time, turn-based fantasy cricket draft for **2–6 players** — with a "backup intelligence" engine that auto-substitutes benched players, cascades the captaincy down your priority ranking once official lineups drop, and shows you exactly what it changed.
 
 **Live demo:** https://wwc-draft.vercel.app
 **Stack:** Next.js 16 (App Router, React 19) · TypeScript · Turso/libSQL + Drizzle · Tailwind CSS v4 · Vercel
@@ -27,19 +27,22 @@ A real-time, turn-based fantasy cricket draft for two friends — with a "backup
 
 ## Why I built it
 
-A friend and I wanted to draft fantasy cricket squads against each other across whatever tournament was on — but real cricket is messy: lineups change at the toss, the same surname appears twice in a squad, and the points feed numbers its matches differently than I do. Instead of nagging us to manage benched players or silently scoring zero, I wanted an app that quietly fields your next-best *playing* pick, moves the armband for you, and is honest about every change it made. Each production incident became a documented rule and an architectural fix, so the next tournament needs less babysitting than the last.
+**There's no genuinely reliable fantasy *draft* app out there.** The big platforms are salary-cap/pick-em products, not head-to-head drafts — and the few draft apps that exist don't host the tournaments my friends and I actually follow (women's World Cups, MLC, the smaller tours). So we kept improvising drafts over spreadsheets and WhatsApp, and it broke constantly.
+
+I wanted one app that just works for *our* leagues — and real cricket is messy in ways a hobby project usually ignores: lineups change at the toss, the same surname appears twice in a squad, and the points feed numbers its matches differently than I do. So instead of nagging us to manage benched players or silently scoring zero, this app quietly fields your next-best *playing* pick, moves the armband for you, and is honest about every change it made. Every production incident became a documented rule and an architectural fix — so each tournament needs less babysitting than the last.
 
 ## What it does
 
 - **Real-time live draft room** — coin-toss for pick order, strict turn enforcement, optimistic two-tap confirm, and steal detection when your opponent grabs a player mid-turn.
-- **Two-player and N-player snake draft** — N=2 alternates; N>2 runs a proper snake order (round 1 forward, round 2 reversed). *(No auction mechanic — the draft is purely turn-based.)*
+- **2–6 players** — N=2 alternates; 3–6 run a proper snake order (round 1 forward, round 2 reversed). *(No auction mechanic — purely turn-based.)*
 - **Quick Draft** — queue up to 10 picks that auto-fire on each of your turns, with steal-aware re-queuing if a queued player gets taken.
 - **Backup intelligence (the headline feature)** — your squad is a single drag-to-reorder priority ranking; the top 11 is your XI, and tapping C/VC promotes any player (even a backup) to rank 1/2. Once official lineups are announced, non-playing starters drop out, lower-ranked *playing* players slide up, and the captain/vice armband cascades down the ranking — then a post-lock banner discloses every substitution and armband move.
 - **Multi-tournament** — the same app handles many men's and women's tournaments at once, with a stadium-themed gold+navy design system (Tailwind v4 token layer) and a reduced-motion-safe lobby→draft slide.
 - **Lobby** — Live / Upcoming / Completed tabs with running scores, C/VC comparison, and a winner trophy.
 - **Approval-gated undo** — either player can request a cascading rollback of picks; it freezes picking until the opponent approves, with a TTL so an unresponsive opponent can't deadlock the draft.
 - **Manual draft mode** — draft over WhatsApp and enter the teams in-app, alongside the live draft mode.
-- **Live data feeds** — fantasy points stream in from a Google Sheet (one tab per tour, merged at read time) and the official playing XI comes from ESPN, with manual + auto refresh.
+- **Live & completed fantasy points** — every player's score ticks up *live* during the match and locks as a completed total when it ends, computed on the **Dream11 fantasy scoring system** (batting/bowling milestones, strike-rate & economy bonuses, wickets, catches, stumpings, run-outs, dot balls, and C/VC multipliers). The lobby surfaces both live and completed points per match.
+- **Live data feeds** — fantasy points stream in from a Google Sheet (one tab per tour, merged at read time) and the official playing XI comes from ESPN, with manual + auto refresh. For completed matches, points are **reconciled across three independent feeds — Cricsheet, CricAPI and ESPN — by a companion pipeline ([wwc-points-bot](https://github.com/nishantsingodia/wwc-points-bot))**, which flags any mismatch rather than silently trusting one source.
 
 ## How it's built
 
@@ -76,9 +79,9 @@ Access is intentionally hardcoded to two user codes (`lib/users.ts`) — this is
 
 This is a personal-scale app, and the README shouldn't pretend otherwise:
 
-- **Two hardcoded users**, names and colors baked in (`lib/users.ts`); no sign-up, not multi-tenant.
+- **Access is provisioned by hand** — the draft engine handles 2–6 players (snake for 3+), but logins are hardcoded in `lib/users.ts` (two set up today); you add a code per player. Built for a private friends' group, not public sign-up.
 - **No auction** despite the genre's connotations — it's purely turn-based.
-- **`JWT_SECRET` falls back to a hardcoded default** if the env var is unset — fine for a two-person app, not for any real deployment.
+- **`JWT_SECRET` falls back to a hardcoded default** if the env var is unset — fine for a private friends' app, not for any real deployment.
 - **Correctness depends on external feeds staying in sync.** The points bot's `tours.json` `espn_series` must match `lib/espn.ts` `SERIES_BY_GENDER` by hand, or "Lineups Out" silently falls back. Adding a tour is several manual, easy-to-miss steps ([`BUGS.md`](BUGS.md) documents past silent-0-points incidents); each new tournament needs a hand-researched expected-XI seed.
 - **Real-time is client polling** (2s/5s), not websockets/SSE.
 - **Single-region, serverless DB** — draft state lives in one Turso/libSQL database; there's no multi-region replication or backup story beyond Turso's own.
