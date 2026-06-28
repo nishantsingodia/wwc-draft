@@ -13,6 +13,7 @@
 import { type Match } from "./matches";
 import { TEAM_NAMES } from "./players";
 import { normName } from "./fuzzy-name-match";
+import { resolveEspnPid } from "./registry";
 
 const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/cricket";
 
@@ -145,10 +146,16 @@ async function fetchEspnLineup(match: Match): Promise<EspnLineup | null> {
         const a = (p.athlete as Record<string, unknown>) ?? {};
         const nm = ((a.fullName as string) || (a.displayName as string) || "").trim();
         if (!nm) continue;
-        // Key by name AND the stable espn pid, so isPlayerInOfficialXI matches
-        // pid-first (our players carry `espn:<id>`) then fuzzy name.
-        xi.set(nm, 0);
+        // Key by THREE things so isPlayerInOfficialXI matches by identity, not a name gamble:
+        //   1. the player's stable REGISTRY pid (resolved from ESPN's id, else ESPN's name via
+        //      the registry's alias spellings) — matches a slug:/cricsheet_id player whose pid
+        //      isn't an espn id and whose ESPN romanization differs from our display name;
+        //   2. `espn:<id>` (a player whose registry pid IS the espn id);
+        //   3. the raw name (legacy fuzzy fallback for anyone the registry doesn't know yet).
+        const regPid = resolveEspnPid(a.id as string | number | undefined, nm);
+        if (regPid) xi.set(regPid, 0);
         if (a.id) xi.set(`espn:${a.id}`, 0);
+        xi.set(nm, 0);
       }
 
       if (xi.size > 0) {
