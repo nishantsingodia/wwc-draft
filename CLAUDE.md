@@ -223,13 +223,13 @@ To add a player's missing spelling: do it ONCE in the registry
 
 ## Fuzzy name matching — the FALLBACK (shared across projects)
 
-Used only for rows/players without a `pid`. The algorithm lives in **two identical files**:
-- `wwc-draft/lib/fuzzy-name-match.ts` ← **canonical source**
-- `cricket-auction-helper/src/lib/fuzzy-name-match.ts` ← mirror
+Used only for rows/players without a `pid`. The algorithm now lives in **one shared package**, `cricket-identity` (`github:nishantsingodia/cricket-identity`), consumed by both apps:
+- `wwc-draft/lib/fuzzy-name-match.ts` — thin re-export shim → `cricket-identity`
+- `cricket-auction-helper/src/lib/fuzzy-name-match.ts` — same shim
 
-Both export `normName` and `fuzzyMatchName`. `wwc-draft/lib/points.ts` wraps it into `fuzzyLookupPoints`. `cricket-auction-helper/src/lib/squads/build-womens-pool.ts` calls `fuzzyMatchName` directly.
+Both export `normName` and `fuzzyMatchName`. `wwc-draft/lib/points.ts` wraps it into `fuzzyLookupPoints`. `cricket-auction-helper/src/lib/squads/build-womens-pool.ts` calls `fuzzyMatchName` directly. (Previously these were two hand-mirrored copies with a "copy verbatim" rule, which drifted — now extracted to kill that hazard.)
 
-**Rule: when you improve the logic in one file, copy the entire file verbatim to the other.** Never let them diverge. The header comment in each file names the canonical source as a reminder.
+**Rule: edit the algorithm ONLY in the cricket-identity repo, bump its version, then `npm update cricket-identity` in both apps.** Do NOT paste the algorithm back into the shim files. The package has fixtures (`src/index.test.ts`) — keep the points-bot's Python matcher aligned with them.
 
 Do NOT duplicate this algorithm anywhere else — not in quick-sell route, not in pool/import, not inline in any component.
 
