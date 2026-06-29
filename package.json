@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "migrate": "npx tsx scripts/migrate.ts"
+    "migrate": "npx tsx scripts/migrate.ts",
+    "test": "tsx scripts/test-effective-lineup.ts && tsx scripts/test-points.ts",
+    "test:integration": "rm -f db/test.db && TURSO_DATABASE_URL=file:db/test.db tsx scripts/migrate.ts && TURSO_DATABASE_URL=file:db/test.db tsx scripts/test-results-integration.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

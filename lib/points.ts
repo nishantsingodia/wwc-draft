@@ -146,6 +146,45 @@ function headerIdx(header: string[], col: string): number {
   return header.indexOf(col);
 }
 
+// Test-only: inject parsed CSV rows so the lookup/gate logic can be exercised offline (no
+// network/file/cache). CSV_PATH is captured at module load, so swapping env wouldn't work —
+// this seam sets the cache directly. Never called in production.
+export function __setPointsCacheForTest(rows: string[][] | null): void {
+  _cache = rows ? { at: Date.now(), rows } : null;
+  _inflight = null;
+}
+
+export type MatchStatus = "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED";
+
+// The bot's per-match "Match Status" column (+ human "Recon Flag" reason), as label -> {status,
+// flag}. Returns an EMPTY map when the column is absent (legacy sheets / tabs without recon) —
+// which makes every caller fall back to the legacy numeric-points completion rule (no regression).
+// A match stays LIVE (results hidden) until its L1 recon discrepancies are approved.
+function statusByLabel(rows: string[][]): Map<string, { status: MatchStatus; flag: string }> {
+  const header = rows[0];
+  const mi = headerIdx(header, "Match");
+  const si = headerIdx(header, "Match Status");
+  const fi = headerIdx(header, "Recon Flag");
+  const out = new Map<string, { status: MatchStatus; flag: string }>();
+  if (si < 0) return out; // column absent -> legacy fallback everywhere
+  for (const row of rows.slice(1)) {
+    const lbl = row[mi]?.trim();
+    if (!lbl || out.has(lbl)) continue;
+    const raw = (row[si] ?? "").trim().toUpperCase();
+    if (!raw || raw === "SCHEDULED") continue; // not-yet-completed rows carry no completion signal
+    const status: MatchStatus =
+      raw === "LIVE" ? "LIVE" : raw === "COMPLETED_FLAGGED" ? "COMPLETED_FLAGGED" : "COMPLETED";
+    out.set(lbl, { status, flag: fi >= 0 ? (row[fi] ?? "").trim() : "" });
+  }
+  return out;
+}
+
+// "Show results" gate: COMPLETED and COMPLETED_FLAGGED count as done (with a badge for FLAGGED);
+// LIVE never does — a scored-but-unreconciled match keeps showing as live.
+function showsResults(s: MatchStatus): boolean {
+  return s !== "LIVE";
+}
+
 // Per team, the most-recent match's XI as a map of playerName -> batting order.
 // Batting order comes from the bot's "Bat Order" column (scorecard position). If
 // that column is absent (older sheets) the order is 0 and callers fall back to
@@ -409,6 +448,7 @@ export async function getCompletedMatchKeys(
   const mi = headerIdx(header, "Match");
   const pi = headerIdx(header, "Fantasy Points");
   const dates = labelDateMap(rows);
+  const statusMap = statusByLabel(rows);
 
   // labels that actually have a scored row
   const scored = new Set<string>();
@@ -435,14 +475,77 @@ export async function getCompletedMatchKeys(
       }
     }
     // Same date guard as resolveLabel: a future rematch must not count an earlier meeting.
-    if (best && !(bestDated && bestDist > MATCH_DATE_GUARD_MS)) done.add(m.key);
+    if (best && !(bestDated && bestDist > MATCH_DATE_GUARD_MS)) {
+      // LIVE-until-L1-recon gate: a scored match whose feeds still disagree stays LIVE
+      // (excluded here) until approved. No status row -> legacy (scored => completed).
+      const st = statusMap.get(best);
+      if (!st || showsResults(st.status)) done.add(m.key);
+    }
   }
   return done;
 }
 
-// Single-match convenience for the match overview page.
+// Single-match convenience for the match overview page. Honors the same LIVE-until-L1 gate.
 export async function isMatchCompleted(match: MatchLike): Promise<boolean> {
-  return (await getMatchPointsForMatch(match)).size > 0;
+  const rows = await getCsv();
+  if (!rows || rows.length < 2) return false;
+  const target = resolveLabel(rows, match);
+  if (!target) return false;
+  const st = statusByLabel(rows).get(target);
+  if (st) return showsResults(st.status); // LIVE => not completed even though it's scored
+  return (await getMatchPointsForMatch(match)).size > 0; // legacy: scored => completed
+}
+
+// The bot's per-match status + human flag for one match — drives the results/match-page badges
+// ("⏳ provisional — awaiting recon", "⚠ official revision pending", "⚠ unverified — single
+// feed"). null when the sheet carries no "Match Status" column (legacy).
+export async function getMatchStatusFor(
+  match: MatchLike
+): Promise<{ status: MatchStatus; flag: string } | null> {
+  const rows = await getCsv();
+  if (!rows || rows.length < 2) return null;
+  const target = resolveLabel(rows, match);
+  if (!target) return null;
+  return statusByLabel(rows).get(target) ?? null;
+}
+
+// Per-player recon marker for a match (pid/name -> "⏳ unreconciled" / "⚠ official revision"),
+// so the results screen can flag exactly WHICH players' numbers aren't settled. Clean players
+// are omitted; an empty map means nothing to flag (or a legacy sheet without the column).
+export async function getMatchPlayerRecon(match: MatchLike): Promise<Map<string, string>> {
+  const rows = await getCsv();
+  const out = new Map<string, string>();
+  if (!rows || rows.length < 2) return out;
+  const target = resolveLabel(rows, match);
+  if (!target) return out;
+  const header = rows[0];
+  const matchIdx = headerIdx(header, "Match");
+  const nameIdx = headerIdx(header, "Full Name");
+  const pidIdx = headerIdx(header, "Player ID");
+  const reconIdx = headerIdx(header, "Player Recon");
+  if (reconIdx < 0) return out; // column absent (legacy) -> nothing to flag
+  for (const row of rows.slice(1)) {
+    if (row[matchIdx]?.trim() !== target) continue;
+    const marker = (row[reconIdx] ?? "").trim();
+    if (!marker) continue;
+    const name = row[nameIdx]?.trim();
+    const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
+    if (pid) out.set(pid, marker);
+    if (name) out.set(name, marker);
+  }
+  return out;
+}
+
+// pid-first, then exact name (mirrors lookupPlayerPoints). null when the player is clean/absent.
+export function lookupPlayerRecon(
+  pid: string | undefined,
+  displayName: string,
+  name: string | undefined,
+  reconMap: Map<string, string>
+): string | null {
+  if (reconMap.size === 0) return null;
+  if (pid) return reconMap.get(pid) ?? null;
+  return reconMap.get(displayName) ?? (name ? reconMap.get(name) ?? null : null) ?? null;
 }
 
 // Per team, is the XI we're showing the OFFICIAL announced XI (lineups out after

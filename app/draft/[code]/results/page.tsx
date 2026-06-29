@@ -19,6 +19,7 @@ type PlayerResult = {
   fantasyPoints: number | null;
   rawPoints: number | null;
   efppm: number;
+  recon?: string | null; // per-player: "⏳ unreconciled" / "⚠ official revision", null when settled
 };
 
 type TeamResult = {
@@ -42,6 +43,8 @@ type ResultsData = {
   teams: TeamResult[];
   username: string;
   announced: boolean; // both teams' official XIs are out
+  // Recon status from the bot's "Match Status" column (null on legacy sheets).
+  matchStatus: { status: "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED"; flag: string } | null;
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -56,6 +59,39 @@ function calcXITotal(team: TeamResult): number {
   return team.players
     .filter((p) => !p.isBackup)
     .reduce((sum, p) => sum + (p.fantasyPoints ?? 0), 0);
+}
+
+// Surfaces the bot's recon status so a provisional/revised result never looks plain-final.
+function ReconBanner({
+  ms,
+  hasPoints,
+}: {
+  ms: { status: "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED"; flag: string } | null;
+  hasPoints: boolean;
+}) {
+  if (!ms) return null;
+  if (ms.status === "COMPLETED_FLAGGED" && ms.flag.includes("revision")) {
+    return (
+      <div className="rounded-lg border border-red-500/60 bg-red-500/10 px-3 py-2 text-sm text-red-300">
+        ⚠ Official revision pending — these points may change once the official scorecard is approved.
+      </div>
+    );
+  }
+  if (ms.status === "LIVE" && hasPoints) {
+    return (
+      <div className="rounded-lg border border-amber-400/50 bg-amber-400/10 px-3 py-2 text-sm text-amber-300">
+        ⏳ Provisional — awaiting reconciliation. Points shown are live and may be revised before final.
+      </div>
+    );
+  }
+  if (ms.status === "COMPLETED_FLAGGED") {
+    return (
+      <div className="rounded-lg border border-amber-400/40 bg-amber-400/5 px-3 py-2 text-xs text-amber-200/90">
+        ⚠ Unverified — scored from a single source (no cross-check available).
+      </div>
+    );
+  }
+  return null;
 }
 
 export default function ResultsPage({
@@ -122,6 +158,10 @@ export default function ResultsPage({
           </div>
           <Link href="/lobby" className="text-xs text-mist2 hover:text-cloud">Home</Link>
         </div>
+
+        {/* Recon-status banner: a provisional/awaiting-recon or revised-but-pending result is
+            never presented as plain "final" — the numbers may still change. */}
+        <ReconBanner ms={data.matchStatus} hasPoints={hasPoints} />
 
         {/* Refresh the lineup — manual + auto-check at roundlock. On the results
             page this re-pulls the official XI so backup-intelligence subs + the
@@ -237,6 +277,22 @@ function PlayerRow({ player, isBench = false }: { player: PlayerResult; isBench?
         )}
         {player.isViceCaptain && (
           <span className="ml-1 text-xs bg-blue-500 text-white px-1 rounded font-bold">VC</span>
+        )}
+        {player.recon && (
+          <span
+            title={
+              player.recon === "⚠ official revision"
+                ? "Official scorecard differs from the approved value — pending review."
+                : "cricapi & ESPN disagree on this player — points not yet reconciled."
+            }
+            className={`ml-1.5 align-middle text-[10px] px-1.5 py-0.5 rounded font-semibold border ${
+              player.recon === "⚠ official revision"
+                ? "bg-red-500/15 text-red-300 border-red-500/40"
+                : "bg-amber-400/15 text-amber-300 border-amber-400/40"
+            }`}
+          >
+            {player.recon === "⚠ official revision" ? "⚠ revision" : "⏳ provisional"}
+          </span>
         )}
       </span>
       {/* For C/VC, show base ×mult = total so the multiplier is visibly ALREADY

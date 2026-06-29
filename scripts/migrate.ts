@@ -54,6 +54,9 @@ const DDL = [
     vice_captain_key TEXT,
     submitted_at INTEGER,
     is_locked INTEGER NOT NULL DEFAULT 0,
+    effective_lineup TEXT,
+    effective_changes TEXT,
+    effective_computed_at INTEGER,
     UNIQUE(contest_id, user)
   )`,
   `CREATE TABLE IF NOT EXISTS contest_participants (

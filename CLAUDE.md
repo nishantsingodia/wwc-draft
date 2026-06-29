@@ -143,6 +143,13 @@ Match | Date | Team | Player ID | Full Name | Played | Fantasy Points | Bat Orde
 - `Fantasy Points` — raw score only. Multipliers (C×2, VC×1.5) are applied in code — never pre-multiply in the sheet.
 - `Played` — `"Y"` if the player featured; drives `isLikelyXI`.
 - `Bat Order` — scorecard batting position; drives the draft-board XI order (see Step 0). Emitted automatically by the bot.
+- `Match Status` (optional) — `LIVE` / `COMPLETED` / `COMPLETED_FLAGGED`. The completion gate
+  (`getCompletedMatchKeys` + `isMatchCompleted`, via `statusByLabel`/`showsResults` in
+  `lib/points.ts`) reads this: a scored match whose cricapi↔ESPN feeds still disagree stays
+  **LIVE** (results hidden, live points shown) until the owner approves a value in the bot's
+  `Recon Review` tab. **Optional + backward-compatible** — absent ⇒ legacy "scored ⇒ completed".
+  `getMatchStatusFor` surfaces the `Recon Flag` for the results-page badges (provisional /
+  official-revision-pending / single-feed-unverified). See `wwc-points-bot/RECON_REVIEW_WORKFLOW.md`.
 
 ### ✅ Points are matched by TEAMS + DATE, not the label string
 

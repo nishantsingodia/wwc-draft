@@ -4,7 +4,13 @@ import { getDb, draftContests, teamSelections } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import { getPlayerByKey } from "@/lib/players";
 import { getMatchByKey, LOCK_BUFFER } from "@/lib/matches";
-import { getMatchPointsForMatch, lookupPlayerPoints } from "@/lib/points";
+import {
+  getMatchPointsForMatch,
+  getMatchStatusFor,
+  getMatchPlayerRecon,
+  lookupPlayerPoints,
+  lookupPlayerRecon,
+} from "@/lib/points";
 import { getOfficialLineup } from "@/lib/official-lineup";
 import {
   computeEffectiveLineup,
@@ -42,9 +48,11 @@ export async function GET(
   // Match points by teams+date (not the "Match N" label — bot numbering differs).
   const match = getMatchByKey(contest.matchKey);
   // Official XI + announced status: direct ESPN fetch (live), sheet fallback.
-  const [pointsMap, { lastXI, lineupMeta }] = await Promise.all([
+  const [pointsMap, { lastXI, lineupMeta }, matchStatus, reconMap] = await Promise.all([
     match ? getMatchPointsForMatch(match) : Promise.resolve(new Map<string, number>()),
     getOfficialLineup(match),
+    match ? getMatchStatusFor(match) : Promise.resolve(null),
+    match ? getMatchPlayerRecon(match) : Promise.resolve(new Map<string, string>()),
   ]);
 
   // BACKUP_INTELLIGENCE eligibility: auto-substitute only once the team is locked
@@ -129,6 +137,8 @@ export async function GET(
           fantasyPoints: rawPts !== null ? rawPts * multiplier : null,
           rawPoints: rawPts,
           efppm: p?.efppm ?? 0,
+          // Per-player recon marker ("⏳ unreconciled" / "⚠ official revision"), null when settled.
+          recon: lookupPlayerRecon(p?.pid, displayName, p?.name, reconMap),
         };
       };
 
@@ -154,5 +164,5 @@ export async function GET(
     })
   );
 
-  return NextResponse.json({ contest, teams, username, announced });
+  return NextResponse.json({ contest, teams, username, announced, matchStatus });
 }
