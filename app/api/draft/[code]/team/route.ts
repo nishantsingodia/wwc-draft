@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, teamSelections } from "@/lib/db";
 import { LOCK_BUFFER } from "@/lib/matches";
+import { isKnownUser } from "@/lib/users";
 import { eq, and } from "drizzle-orm";
 
 export async function GET(
@@ -50,7 +51,7 @@ export async function POST(
   }
 
   const { code } = await params;
-  const { selectedPlayers } = await request.json();
+  const { selectedPlayers, targetUser } = await request.json();
 
   // The ranking IS the team and the single source of truth: index 0 = highest
   // priority = Captain, index 1 = Vice-Captain. Derive C/VC here so they can
@@ -73,26 +74,37 @@ export async function POST(
     return NextResponse.json({ error: "Teams are locked" }, { status: 403 });
   }
 
+  // Whose team to write. In MANUAL mode one person enters both friends' teams from
+  // the WhatsApp draft, so any participant may write either known user's selection.
+  // In live mode you may only write your own team.
+  let writeUser = username;
+  if (contest.mode === "manual" && typeof targetUser === "string" && targetUser && targetUser !== username) {
+    if (!isKnownUser(targetUser)) {
+      return NextResponse.json({ error: "Unknown user" }, { status: 400 });
+    }
+    writeUser = targetUser;
+  }
+
   // Auto-lock LOCK_BUFFER after match start (see lib/matches.ts); manual drafts never auto-lock
   const now = Math.floor(Date.now() / 1000);
   const isLocked = contest.mode === "live" && now >= contest.matchDeadline + LOCK_BUFFER;
 
   const now2 = now;
 
-  // Upsert team selection
+  // Upsert team selection (for writeUser — self, or the other friend in manual mode)
   const existing = await db
     .select()
     .from(teamSelections)
     .where(
       and(
         eq(teamSelections.contestId, contest.id),
-        eq(teamSelections.user, username)
+        eq(teamSelections.user, writeUser)
       )
     );
 
   if (existing.length > 0) {
     if (existing[0].isLocked) {
-      return NextResponse.json({ error: "Your team is locked" }, { status: 403 });
+      return NextResponse.json({ error: "That team is locked" }, { status: 403 });
     }
     await db
       .update(teamSelections)
@@ -106,13 +118,13 @@ export async function POST(
       .where(
         and(
           eq(teamSelections.contestId, contest.id),
-          eq(teamSelections.user, username)
+          eq(teamSelections.user, writeUser)
         )
       );
   } else {
     await db.insert(teamSelections).values({
       contestId: contest.id,
-      user: username,
+      user: writeUser,
       selectedPlayers: JSON.stringify(ranking),
       captainKey,
       viceCaptainKey,

@@ -48,11 +48,15 @@ export async function GET(
     .where(eq(teamSelections.contestId, contest.id));
 
   const match = getMatchByKey(contest.matchKey);
+  // The two teams in this match — also the tour scope for tour-points (a player's
+  // total is summed only over these teams' rows, never other tours in the sheet).
+  const t1 = match?.team1 ?? "NZ";
+  const t2 = match?.team2 ?? "SL";
   // Official XI + announced status: direct ESPN fetch (live), sheet fallback.
   const [{ lastXI, lineupMeta }, sheetRoster, tourPoints] = await Promise.all([
     getOfficialLineup(match),
     getSheetRoster(),
-    getTourPoints(),
+    getTourPoints(t1, t2),
   ]);
 
   const pool = match
@@ -60,8 +64,6 @@ export async function GET(
     : getPlayersByTeams("NZ", "SL", lastXI, sheetRoster);
 
   // Lineup status (Dream11-style "lineups out" + toss), per the two teams.
-  const t1 = match?.team1 ?? "NZ";
-  const t2 = match?.team2 ?? "SL";
   const m1 = lineupMeta.get(t1) ?? { announced: false, toss: null };
   const m2 = lineupMeta.get(t2) ?? { announced: false, toss: null };
   const lineups = {

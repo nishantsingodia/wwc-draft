@@ -15,6 +15,7 @@ import {
   getMatchStatusFor,
   getMatchPlayerRecon,
   lookupPlayerRecon,
+  getTourPoints,
 } from "../lib/points";
 
 let pass = 0;
@@ -105,6 +106,36 @@ async function main() {
   check("player recon: empty once completed", (await getMatchPlayerRecon(M30)).size === 0);
   __setPointsCacheForTest(LEGACY);
   check("player recon: empty on legacy (no column)", (await getMatchPlayerRecon(M30)).size === 0);
+
+  // ── getTourPoints: scoped to ONE tour by the match's two teams ──
+  // The merged sheet holds every tour's tab. A player who features in TWO tours must
+  // NOT have their points summed across tours — only rows for the current match's
+  // teams count. Team column may be a code (women's, MLC) or a full name (men's tab).
+  const TOURS: string[][] = [
+    H_FULL,
+    // Women's WC — England player, two matches (both Team ENG) => summed within tour
+    ["Match 1 — ENG v SL", "2026-06-12", "ENG", "engnat", "Nat Sciver", "Y", "50", "COMPLETED", "", ""],
+    ["Match 8 — ENG v IRE", "2026-06-16", "ENG", "engnat", "Nat Sciver", "Y", "30", "COMPLETED", "", ""],
+    // Cross-tour player: 60 in the bilateral (full-name Team "Australia") + 40 in MLC (code Team "WAF")
+    ["Match 1 — Bangladesh v Australia", "2026-06-17", "Australia", "dualman", "Marcus Stoinis", "Y", "60", "COMPLETED", "", ""],
+    ["Match 3 — SEO v WAF", "2026-06-20", "WAF", "dualman", "Marcus Stoinis", "Y", "40", "COMPLETED", "", ""],
+    // MLC-only player
+    ["Match 3 — SEO v WAF", "2026-06-20", "WAF", "mlconly", "Aaron Jones", "Y", "25", "COMPLETED", "", ""],
+  ];
+  __setPointsCacheForTest(TOURS);
+  const wcPts = await getTourPoints("ENG", "SL");
+  check("tour points: within-tour summed by pid (50+30)", wcPts.get("engnat") === 80);
+  check("tour points: within-tour summed by name", wcPts.get("nat sciver") === 80);
+  check("tour points: other-tour player absent from WC scope", wcPts.get("dualman") === undefined);
+
+  const biPts = await getTourPoints("MAUS", "MBAN");
+  check("tour points: cross-tour scoped to bilateral only (60, not 100)", biPts.get("dualman") === 60);
+  check("tour points: full-name Team column matches code (Australia->MAUS)", biPts.has("dualman"));
+  check("tour points: MLC-only player absent from bilateral scope", biPts.get("mlconly") === undefined);
+
+  const mlcPts = await getTourPoints("WAF", "SFU");
+  check("tour points: cross-tour scoped to MLC only (40)", mlcPts.get("dualman") === 40);
+  check("tour points: MLC-only player present in MLC scope", mlcPts.get("mlconly") === 25);
 
   __setPointsCacheForTest(null);
   console.log(`\n${pass} passed, ${fail} failed`);

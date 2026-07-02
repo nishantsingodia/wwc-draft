@@ -26,7 +26,7 @@ import PlayerCard from "@/components/player-card";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
 import { getPlayerByKey } from "@/lib/players";
-import { getUserLabel } from "@/lib/users";
+import { getUserLabel, ALL_USERS } from "@/lib/users";
 import type { Change } from "@/lib/effective-lineup";
 
 type ContestInfo = {
@@ -181,6 +181,7 @@ function SortablePlayerRow({
   isLocked,
   onCaptain,
   onVice,
+  onRemove,
 }: {
   id: string;
   index: number;
@@ -194,6 +195,7 @@ function SortablePlayerRow({
   isLocked: boolean;
   onCaptain: () => void;
   onVice: () => void;
+  onRemove?: () => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id, disabled: isLocked });
@@ -230,6 +232,15 @@ function SortablePlayerRow({
           xiStatus={xiStatus}
         />
       </div>
+      {onRemove && !isLocked && (
+        <button
+          onClick={onRemove}
+          aria-label={`Remove ${displayName}`}
+          className="shrink-0 h-10 w-8 grid place-items-center rounded-md bg-navy hover:bg-red-500/80 text-mist hover:text-white text-sm transition-colors"
+        >
+          ✕
+        </button>
+      )}
       {!isLocked && (
         <button
           {...attributes}
@@ -256,12 +267,31 @@ export default function TeamPage({
 
   const initializedRef = useRef(false);
 
-  // My team — a single priority ranking of the full squad.
-  // Index 0 = highest priority = Captain; index 1 = Vice-Captain. On match day
-  // the top `picksPerUser` who are actually playing form the scoring XI.
-  const [ranking, setRanking] = useState<string[]>([]);
+  // Per-user priority rankings. Index 0 = highest priority = Captain; index 1 =
+  // Vice-Captain. On match day the top `picksPerUser` who are actually playing form
+  // the scoring XI. In MANUAL mode one person can build BOTH friends' teams, so we
+  // keep each friend's in-progress ranking keyed by username and edit whichever
+  // `editUser` points at. In live mode only the current user's ranking is edited.
+  const [rankings, setRankings] = useState<Record<string, string[]>>({});
+  const [editUser, setEditUser] = useState<string>("");
+  const [savedToast, setSavedToast] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
+  // Ticking clock (mirrors useCountdown) so the live-lock check stays a pure render
+  // read of state rather than calling Date.now() during render.
+  const [nowSec, setNowSec] = useState(() => Math.floor(Date.now() / 1000));
+
+  const ranking = rankings[editUser] ?? [];
+  const setRanking = useCallback(
+    (updater: string[] | ((r: string[]) => string[])) => {
+      setRankings((all) => {
+        const cur = all[editUser] ?? [];
+        const next = typeof updater === "function" ? updater(cur) : updater;
+        return { ...all, [editUser]: next };
+      });
+    },
+    [editUser]
+  );
 
   // Drag-to-reorder. PointerSensor (distance 6) covers mouse + touch; the grip
   // handle is `touch-none` so dragging it never scrolls the page. Keyboard sensor
@@ -295,23 +325,34 @@ export default function TeamPage({
     if (initializedRef.current) return;
     initializedRef.current = true;
 
-    const players = parsePlayers(d.mySelection?.selectedPlayers);
-    if (players.length > 0) {
-      // Normalize legacy rows: float the stored C/VC to the top two so the
-      // ranking's head matches the armband (new model: C = #1, VC = #2).
-      const c = d.mySelection?.captainKey;
-      const vc = d.mySelection?.viceCaptainKey;
-      const head = [c, vc].filter(
-        (k): k is string => !!k && players.includes(k)
-      );
-      const rest = players.filter((k) => !head.includes(k));
-      setRanking([...head, ...rest]);
-    } else if (d.contest.mode === "live") {
-      const myPicks = (d.picks ?? [])
-        .filter((p) => p.pickedBy === d.username)
-        .sort((a, b) => a.pickNumber - b.pickNumber);
-      setRanking(myPicks.map((p) => p.playerKey));
+    // Seed each friend's starting ranking. Manual mode lets one person edit both
+    // teams, so we seed all of them; live mode still seeds every friend but only
+    // the current user's is editable. A user with no saved team but live picks is
+    // seeded from those picks (draft order).
+    const friendList = d.participants.length >= 2 ? d.participants : ALL_USERS;
+    const seeded: Record<string, string[]> = {};
+    for (const u of friendList) {
+      const sel = d.allSelections.find((s) => s.user === u);
+      const players = parsePlayers(sel?.selectedPlayers);
+      if (players.length > 0) {
+        // Normalize legacy rows: float the stored C/VC to the top two so the
+        // ranking's head matches the armband (new model: C = #1, VC = #2).
+        const c = sel?.captainKey;
+        const vc = sel?.viceCaptainKey;
+        const head = [c, vc].filter((k): k is string => !!k && players.includes(k));
+        const rest = players.filter((k) => !head.includes(k));
+        seeded[u] = [...head, ...rest];
+      } else if (d.contest.mode === "live" && u === d.username) {
+        const myPicks = (d.picks ?? [])
+          .filter((p) => p.pickedBy === u)
+          .sort((a, b) => a.pickNumber - b.pickNumber);
+        seeded[u] = myPicks.map((p) => p.playerKey);
+      } else {
+        seeded[u] = [];
+      }
     }
+    setRankings(seeded);
+    setEditUser(d.username);
   }, [code]);
 
   useEffect(() => {
@@ -332,14 +373,21 @@ export default function TeamPage({
     return () => clearInterval(id);
   }, [isManual, fetchData]);
 
+  useEffect(() => {
+    const id = setInterval(() => setNowSec(Math.floor(Date.now() / 1000)), 1000);
+    return () => clearInterval(id);
+  }, []);
+
   const LOCK_BUFFER = 30 * 60; // keep in sync with lib/matches.ts
   const lockTs = (data?.contest?.matchDeadline ?? 0) + LOCK_BUFFER;
 
+  // Lock reflects the team currently being edited (each friend locks independently).
+  const editSelection = data?.allSelections.find((s) => s.user === editUser) ?? null;
   const isLocked =
-    data?.mySelection?.isLocked ||
+    editSelection?.isLocked ||
     (data?.contest?.mode === "live" &&
       data?.contest?.matchDeadline != null &&
-      Math.floor(Date.now() / 1000) >= lockTs);
+      nowSec >= lockTs);
 
   const countdown = useCountdown(lockTs);
 
@@ -354,15 +402,29 @@ export default function TeamPage({
         selectedPlayers: ranking,
         captainKey: ranking[0] ?? null,
         viceCaptainKey: ranking[1] ?? null,
+        // Manual mode: may be the other friend's team. Server ignores this in live mode.
+        targetUser: editUser,
       }),
     });
     setSaving(false);
     if (res.ok) {
-      router.push(`/match/${data?.contest.matchKey}`);
+      if (isManual) {
+        // One person can enter both teams — stay on the page, confirm, and refresh
+        // the read-only "other team" panel. initializedRef keeps local edits intact.
+        setSavedToast(`✓ Saved ${getUserLabel(editUser)}'s team`);
+        setTimeout(() => setSavedToast(null), 2500);
+        fetchData();
+      } else {
+        router.push(`/match/${data?.contest.matchKey}`);
+      }
     } else {
       const err = await res.json().catch(() => ({}));
       setSaveError(err.error ?? "Save failed. Try again.");
     }
+  }
+
+  function removeFromRanking(key: string) {
+    setRanking((r) => r.filter((k) => k !== key));
   }
 
   // Move a player to an absolute rank (others slide to fill the gap).
@@ -415,10 +477,15 @@ export default function TeamPage({
   const bpu = data.contest.backupsPerUser;
   const selectedSet = new Set(ranking);
 
+  // The two friends. For a live draft both are participants; for a manual draft only
+  // the creator is a participant, but one person can build both teams, so fall back
+  // to the fixed two-person roster.
+  const friends = data.participants.length >= 2 ? data.participants : ALL_USERS;
+
   // Frozen post-lock substitution log for MY team (written by the results route
-  // once lineups are out). Empty/absent until then.
+  // once lineups are out). Only meaningful when viewing your own team.
   let myChanges: Change[] = [];
-  if (data.mySelection?.effectiveChanges) {
+  if (editUser === data.username && data.mySelection?.effectiveChanges) {
     try {
       myChanges = JSON.parse(data.mySelection.effectiveChanges) as Change[];
     } catch {
@@ -437,12 +504,18 @@ export default function TeamPage({
     return meta.isLikelyXI ? "in" : "out";
   }
 
-  // Opponent's team
-  const opponent = data.participants.find((u) => u !== data.username);
+  // The "other" team — the friend NOT currently being edited (shown read-only below).
+  // Prefer the in-memory ranking so unsaved edits made while building both teams are
+  // reflected; fall back to that friend's saved selection.
+  const opponent = friends.find((u) => u !== editUser) ?? null;
   const opponentSel = data.allSelections.find((s) => s.user === opponent);
-  const opponentPlayers = parsePlayers(opponentSel?.selectedPlayers);
+  const opponentPlayers =
+    (opponent ? rankings[opponent] : undefined) ?? parsePlayers(opponentSel?.selectedPlayers);
+  const opponentCaptain = opponentPlayers[0] ?? opponentSel?.captainKey ?? null;
+  const opponentVice = opponentPlayers[1] ?? opponentSel?.viceCaptainKey ?? null;
   const opponentStarters = opponentPlayers.slice(0, ppu);
   const opponentBackups = opponentPlayers.slice(ppu);
+  const opponentHasTeam = opponentPlayers.length > 0;
 
   function OpponentPlayerRow({ keyVal, isCaptain, isVC, compact }: { keyVal: string; isCaptain: boolean; isVC: boolean; compact?: boolean }) {
     const p = getPlayerByKey(keyVal);
@@ -467,6 +540,13 @@ export default function TeamPage({
 
   return (
     <main className="min-h-screen bg-ink text-white pb-28">
+      {savedToast && (
+        <div className="fixed top-3 inset-x-0 z-30 flex justify-center px-3 pointer-events-none">
+          <div className="rounded-full bg-emerald-600 text-white text-sm font-semibold px-4 py-2 shadow-lg">
+            {savedToast}
+          </div>
+        </div>
+      )}
       <div className="max-w-lg mx-auto px-3 pt-4 space-y-5">
         {/* Header */}
         <div className="flex items-center gap-2">
@@ -514,27 +594,56 @@ export default function TeamPage({
         {/* What backup intelligence did to my team (post-lock, once lineups are out) */}
         <ChangesBanner changes={myChanges} />
 
-        {/* ── MY TEAM (one priority-ranked list) ── */}
+        {/* ── TEAM (one priority-ranked list) ── */}
         <div className="space-y-2">
+          {/* Manual mode: one person can enter BOTH friends' teams — toggle whose you edit */}
+          {isManual && friends.length > 1 && (
+            <div className="flex items-center gap-1.5 rounded-xl bg-ink2 border border-hair p-1">
+              {friends.map((u) => {
+                const active = u === editUser;
+                const count = (rankings[u] ?? []).length;
+                return (
+                  <button
+                    key={u}
+                    type="button"
+                    onClick={() => setEditUser(u)}
+                    className={`flex-1 rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
+                      active ? "bg-gold text-ink" : "text-cloud hover:bg-navy"
+                    }`}
+                  >
+                    {getUserLabel(u)}
+                    {u === data.username ? " (you)" : ""}
+                    <span className={`ml-1 text-xs font-mono ${active ? "text-ink/70" : "text-mist2"}`}>
+                      {count}/{ppu + bpu}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
           <p className="text-xs font-semibold text-mist uppercase tracking-wider px-1">
-            My Team — ranked by priority
+            {isManual ? `${getUserLabel(editUser)}'s Team` : "My Team"} — ranked by priority
           </p>
 
-          {/* Call out the auto-backup behaviour up front so it's predictable */}
+          {/* Call out the ranking + auto-backup behaviour up front so it's predictable */}
           {!isLocked && (
             <div className="rounded-xl px-3 py-2 bg-ink2 border border-hair space-y-1">
               <p className="text-[11px] text-cloud leading-relaxed">
-                Drag the ⠿ handle to rank your squad.{" "}
+                Drag the ⠿ handle to rank {isManual ? "the" : "your"} squad.{" "}
                 <span className="text-yellow-400 font-bold">①</span> = Captain (2×),{" "}
                 <span className="text-blue-400 font-bold">②</span> = Vice (1.5×) — tap{" "}
                 <span className="text-yellow-400 font-bold">C</span>/
-                <span className="text-blue-400 font-bold">VC</span> to promote anyone (even a backup) to the top.
+                <span className="text-blue-400 font-bold">VC</span> to promote {bpu > 0 ? "anyone (even a backup)" : "anyone"} to the top.
+                {isManual && bpu > 0 ? " Tap ✕ to drop a player." : isManual ? " Tap ✕ to remove a player." : ""}
               </p>
-              <p className="text-[11px] text-mist2 leading-relaxed">
-                On match day we field your top {ppu} who are{" "}
-                <span className="text-emerald-400">playing</span>. If someone&apos;s out, the next-ranked
-                playing player slides up — and the armband passes down to your next playing pick.
-              </p>
+              {bpu > 0 && (
+                <p className="text-[11px] text-mist2 leading-relaxed">
+                  On match day we field the top {ppu} who are{" "}
+                  <span className="text-emerald-400">playing</span>. If someone&apos;s out, the next-ranked
+                  playing player slides up — and the armband passes down to the next playing pick.
+                </p>
+              )}
             </div>
           )}
 
@@ -568,6 +677,7 @@ export default function TeamPage({
                           isLocked={!!isLocked}
                           onCaptain={() => setCaptain(key)}
                           onVice={() => setVC(key)}
+                          onRemove={isManual && !isLocked ? () => removeFromRanking(key) : undefined}
                         />
                         {i === ppu - 1 && ranking.length > ppu && (
                           <div className="flex items-center gap-2 py-1.5 px-1">
@@ -590,7 +700,7 @@ export default function TeamPage({
             <ManualPool
               pool={data.playerPool}
               selectedSet={selectedSet}
-              opponentKey={opponentSel?.user ?? null}
+              opponentKey={opponent}
               opponentPicked={new Set(opponentPlayers)}
               canAddMore={ranking.length < ppu + bpu}
               onAdd={addNew}
@@ -598,15 +708,17 @@ export default function TeamPage({
           )}
         </div>
 
-        {/* ── OPPONENT'S TEAM ── */}
+        {/* ── OTHER FRIEND'S TEAM (read-only preview; edit it via the toggle above) ── */}
         <div className="space-y-1 pt-2 border-t border-hair">
           <p className="text-xs font-semibold text-mist uppercase tracking-wider px-1">
             {opponent ? `${getUserLabel(opponent)}'s Team` : "Opponent's Team"}
           </p>
 
-          {!opponentSel ? (
+          {!opponentHasTeam ? (
             <p className="text-mist2 text-sm py-3 px-1">
-              {opponent ? `${getUserLabel(opponent)} hasn't set their team yet` : "Waiting for opponent…"}
+              {opponent
+                ? `${getUserLabel(opponent)} hasn't set their team yet${isManual ? " — switch above to build it" : ""}`
+                : "Waiting for opponent…"}
             </p>
           ) : (
             <>
@@ -620,8 +732,8 @@ export default function TeamPage({
                     <OpponentPlayerRow
                       key={key}
                       keyVal={key}
-                      isCaptain={key === opponentSel.captainKey}
-                      isVC={key === opponentSel.viceCaptainKey}
+                      isCaptain={key === opponentCaptain}
+                      isVC={key === opponentVice}
                     />
                   ))}
                 </div>
@@ -666,7 +778,7 @@ export default function TeamPage({
               disabled={saving || ranking.length < ppu}
               className="w-full h-12 rounded-xl bg-gold hover:brightness-110 disabled:bg-navy2 disabled:text-mist2 disabled:shadow-none text-ink font-bold uppercase tracking-wide glow-gold transition"
             >
-              {saving ? "Saving…" : "Save Team"}
+              {saving ? "Saving…" : isManual ? `Save ${getUserLabel(editUser)}'s Team` : "Save Team"}
             </button>
           </div>
         </div>

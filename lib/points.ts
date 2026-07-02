@@ -396,20 +396,31 @@ export async function getMatchPointsForMatch(
   return result;
 }
 
-// Accumulated TOUR points per player: sum of Fantasy Points across every completed match
-// in the sheet, keyed by both stable Player ID and canonical name. A player appears only in
-// their own tour's rows, so their sum is their tour total. Used on the draft board to show
-// real form ("X pts") instead of the pre-tournament projection while picking.
-export async function getTourPoints(): Promise<Map<string, number>> {
+// Accumulated TOUR points per player, keyed by both stable Player ID and canonical name.
+// Scoped to ONE tour by the two teams of the match being drafted: only rows whose `Team`
+// column is team1 or team2 are counted. The merged sheet holds EVERY tour's tab (Women's
+// WC + men's bilateral + MLC), and a player can feature in more than one of them; summing
+// every row would show an inflated cross-tour total on the draft/selection board. A player's
+// team code is constant within a tour, so filtering on {team1, team2} captures their full
+// tour total (across all opponents) while excluding their rows from any OTHER tour.
+// `Team` may be a code (women's, MLC) or a full name (men's tab) — tokenMatchesCode handles both.
+export async function getTourPoints(team1: string, team2: string): Promise<Map<string, number>> {
   const rows = await getCsv();
   const result = new Map<string, number>();
   if (!rows || rows.length < 2) return result;
   const header = rows[0];
+  const teamIdx = headerIdx(header, "Team"); // -1 on legacy tabs without a Team column
   const nameIdx = headerIdx(header, "Full Name");
   const pidIdx = headerIdx(header, "Player ID"); // -1 on older sheets
   const ptsIdx = headerIdx(header, "Fantasy Points");
   const add = (k: string, v: number) => k && result.set(k, (result.get(k) ?? 0) + v);
   for (const row of rows.slice(1)) {
+    // Tour scope: skip rows for teams outside this match. If a tab lacks a Team
+    // column we can't scope it, so it falls back to counting (legacy behaviour).
+    if (teamIdx >= 0) {
+      const team = row[teamIdx]?.trim() ?? "";
+      if (!(tokenMatchesCode(team, team1) || tokenMatchesCode(team, team2))) continue;
+    }
     const pts = parseFloat(row[ptsIdx]);
     if (isNaN(pts)) continue;
     const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
