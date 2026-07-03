@@ -273,8 +273,8 @@
   "matchNum": 31,
   "key": "SF1_Jun30",
   "gender": "W",
-  "team1": "TBD",
-  "team2": "TBD",
+  "team1": "AUS",
+  "team2": "WI",
   "label": "Semi Final 1",
   "date": "2026-06-30T19:00:00+05:30"
  },
@@ -291,8 +291,8 @@
   "matchNum": 33,
   "key": "FINAL_Jul05",
   "gender": "W",
-  "team1": "TBD",
-  "team2": "TBD",
+  "team1": "AUS",
+  "team2": "ENG",
   "label": "Final",
   "date": "2026-07-05T19:00:00+05:30"
  },
