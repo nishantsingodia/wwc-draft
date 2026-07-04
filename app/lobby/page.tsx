@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getUserLabel } from "@/lib/users";
 import LogoutButton from "@/components/logout-button";
 import DeleteDraftButton from "@/components/delete-draft-button";
+import MatchRefresh from "@/components/match-refresh";
 import LobbyTabs from "@/components/lobby-tabs";
 import TransitionLink from "@/components/transition-link";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
@@ -281,6 +282,10 @@ export default async function LobbyPage() {
                         <p className="text-[11px] text-mist font-mono">{formatMatchDate(m.date)}</p>
                       </div>
                     </div>
+
+                    {/* Match-level live-points refresh + cricapi quota gauge (one bot run
+                        scores every contest on this match). */}
+                    <MatchRefresh matchStarted />
 
                     {/* Draft cards */}
                     {myDrafts.map((c) => {
