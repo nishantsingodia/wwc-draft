@@ -7,6 +7,7 @@ import { getFlag } from "@/lib/players";
 import type { Change } from "@/lib/effective-lineup";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
+import RefreshPoints from "@/components/refresh-points";
 
 type PlayerResult = {
   key: string;
@@ -45,6 +46,7 @@ type ResultsData = {
   announced: boolean; // both teams' official XIs are out
   // Recon status from the bot's "Match Status" column (null on legacy sheets).
   matchStatus: { status: "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED"; flag: string } | null;
+  started: boolean; // match has begun (server-computed; gates the live-refresh button)
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -113,7 +115,10 @@ export default function ResultsPage({
   }, [code]);
 
   useEffect(() => {
-    fetchResults();
+    async function init() {
+      await fetchResults();
+    }
+    init();
     const id = setInterval(fetchResults, 30000);
     return () => clearInterval(id);
   }, [fetchResults]);
@@ -171,6 +176,15 @@ export default function ResultsPage({
           roundlockTs={(contest.matchDeadline ?? 0) + 30 * 60}
           onRefresh={fetchResults}
         />
+
+        {/* Human-triggered live-points pull (with a cricapi quota gauge). Shown once the
+            match has started and until it's marked final — mid-match the sheet otherwise
+            only refreshes on the bot's passive 2-hourly cron. */}
+        {data.started &&
+          data.matchStatus?.status !== "COMPLETED" &&
+          data.matchStatus?.status !== "COMPLETED_FLAGGED" && (
+            <RefreshPoints matchStarted onRefreshed={fetchResults} />
+          )}
 
         {/* Scoreboard */}
         {teams.length > 0 && (

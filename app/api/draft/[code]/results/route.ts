@@ -164,5 +164,10 @@ export async function GET(
     })
   );
 
-  return NextResponse.json({ contest, teams, username, announced, matchStatus });
+  // Has the match started? Computed server-side (nowSec is the source of "now" here, like
+  // `announced`/`eligible`) so the client can gate the live-refresh button without an
+  // impure Date.now() in render. Re-evaluated on every 30s results poll.
+  const started = nowSec >= contest.matchDeadline;
+
+  return NextResponse.json({ contest, teams, username, announced, matchStatus, started });
 }
