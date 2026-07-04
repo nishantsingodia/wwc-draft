@@ -294,25 +294,40 @@ export default function DraftBoardPage({
     });
   }
 
-  async function handleSaveQueue() {
+  // Persist the queue to the server (the source of truth) and re-sync from what
+  // it actually stored. Used by both Save and Clear so the DB and the UI can
+  // never diverge — the fetchState re-hydrates savedQueue from the stored value.
+  const persistQueue = useCallback(
+    async (keys: string[]) => {
+      queueSavingRef.current = true;
+      setSavedQueue(keys); // optimistic; corrected by fetchState below
+      try {
+        await fetch(`/api/draft/${code}/queue`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ playerKeys: keys }),
+        });
+        await fetchState();
+      } finally {
+        queueSavingRef.current = false;
+      }
+    },
+    [code, fetchState]
+  );
+
+  function handleSaveQueue() {
     const toSave = draftQueue;
-    setSavedQueue(toSave);
     setQuickDraftOn(false);
     setDraftQueue([]);
     setSavedToast(`⚡ ${toSave.length} picks queued — auto-firing each turn`);
     setTimeout(() => setSavedToast(null), 3000);
-    // Persist to the server so picks fire on our turn even with no tab open.
-    queueSavingRef.current = true;
-    try {
-      await fetch(`/api/draft/${code}/queue`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ playerKeys: toSave }),
-      });
-      await fetchState();
-    } finally {
-      queueSavingRef.current = false;
-    }
+    persistQueue(toSave);
+  }
+
+  function handleClearQueue() {
+    setSavedToast("Autopick queue cleared");
+    setTimeout(() => setSavedToast(null), 2000);
+    persistQueue([]); // wipes the server row too, not just local state
   }
 
   function handleQdToggle() {
@@ -425,7 +440,7 @@ export default function DraftBoardPage({
     );
   }
 
-  const { contest, participants, picks, playerPool, currentPicker, isMyTurn, username, totalPicks, pendingUndo } = state;
+  const { contest, participants, picks, playerPool, currentPicker, isMyTurn, username, totalPicks, pendingUndo, myQueue = [] } = state;
 
   if (contest.mode === "manual" || ["TEAM_SELECT", "LOCKED", "COMPLETED"].includes(contest.status)) {
     router.push(`/draft/${code}/team`); return null;
@@ -633,18 +648,75 @@ export default function DraftBoardPage({
                   : "bg-navy2 border border-hair2"
               }`}
             >
-              {savedQueue.length > 0 && !quickDraftOn ? (
-                <div className="flex items-center justify-between">
-                  <p className="text-gold text-sm font-semibold">
-                    ⚡ Auto-pick armed · {savedQueue.length} queued
-                  </p>
-                  <button
-                    onClick={() => setSavedQueue([])}
-                    className="text-mist2 hover:text-cloud text-xs"
-                  >
-                    Clear
-                  </button>
-                </div>
+              {(myQueue.length > 0 || savedQueue.length > 0) && !quickDraftOn ? (
+                (() => {
+                  // Render the queue exactly as it is STORED ON THE SERVER (myQueue)
+                  // so the user sees the DB's truth, not just local state. Falls
+                  // back to the optimistic savedQueue for the sub-second window
+                  // between saving and the confirming refetch.
+                  const stored = myQueue.length > 0 ? myQueue : savedQueue;
+                  const willFire = stored.filter((k) => {
+                    const p = playerPool.find((pl) => pl.key === k);
+                    return p && !p.takenBy;
+                  }).length;
+                  let firePos = 0;
+                  return (
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <p className="text-gold text-sm font-semibold">
+                          ⚡ Auto-pick queue · {willFire} will fire
+                        </p>
+                        <div className="flex items-center gap-3">
+                          <button
+                            onClick={handleQdToggle}
+                            className="text-gold/80 hover:text-gold text-xs font-semibold"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            onClick={handleClearQueue}
+                            className="text-mist2 hover:text-cloud text-xs"
+                          >
+                            Clear
+                          </button>
+                        </div>
+                      </div>
+                      <ol className="space-y-1">
+                        {stored.map((k) => {
+                          const p = playerPool.find((pl) => pl.key === k);
+                          const taken = !!p?.takenBy;
+                          const pos = taken ? null : ++firePos;
+                          return (
+                            <li
+                              key={k}
+                              className={`flex items-center gap-2 text-xs ${taken ? "text-mist2/50" : "text-cloud"}`}
+                            >
+                              <span
+                                className={`w-4 text-right font-bold ${taken ? "text-mist2/40" : "text-gold"}`}
+                              >
+                                {taken ? "–" : pos}
+                              </span>
+                              <span className={taken ? "line-through" : ""}>
+                                {p?.displayName ?? k}
+                              </span>
+                              {p?.teamCode && (
+                                <span className="text-mist2/70">{p.teamCode}</span>
+                              )}
+                              {taken && (
+                                <span className="text-mist2/60">
+                                  · {p?.takenBy === username ? "you picked" : "taken"}
+                                </span>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ol>
+                      <p className="text-mist2/70 text-[11px] mt-2">
+                        ✓ Saved on the server — fires automatically on your turn, even if you close this tab.
+                      </p>
+                    </div>
+                  );
+                })()
               ) : isMyTurn ? (
                 <div className="text-center">
                   <p className="text-green-300 font-extrabold text-lg animate-pulse">🚨 YOUR PICK!</p>
