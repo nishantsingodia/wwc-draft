@@ -3,6 +3,10 @@ import { fuzzyMatchName, normName } from "./fuzzy-name-match";
 import { TEAM_NAMES, isPidKey, type SheetPlayer } from "./players";
 
 const CSV_PATH = process.env.POINTS_CSV_PATH;
+// Synthetic column injected by mergeCsvs to remember which tab (=tour) each row came
+// from. Consumed by the tour-cumulative reads to scope to a single tour (team codes
+// are reused across bilateral tours, so team-code scoping alone leaks across tours).
+const TAB_COL = "__tab";
 // Multiple Google-Sheet tabs (one per tour) are merged into a single pool.
 // POINTS_CSV_URLS = comma-separated list; falls back to the single POINTS_CSV_URL.
 // All tabs MUST share the same column schema (Match | Team | Full Name | Played | Fantasy Points | ...).
@@ -99,16 +103,26 @@ function mergeCsvs(tables: string[][][]): string[][] | null {
     ...nonEmpty.reduce((a, t) => (t[0].length > a.length ? t[0] : a), nonEmpty[0][0]),
   ];
   for (const t of nonEmpty) for (const c of t[0]) if (!master.includes(c)) master.push(c);
+  // Tag every row with its source tab index. Tour-cumulative reads (getTourPoints,
+  // getLastPlayedXI) MUST be able to isolate one tour: team codes are NOT globally
+  // unique across tabs — India is "MIND" in BOTH the Ireland and England bilateral
+  // tours — so scoping by team code alone bleeds one tour's points/XI into another.
+  // The per-match reads (getMatchXI/getMatchPointsForMatch) are already opponent-aware
+  // via the label, so this column is only consumed by the cumulative reads.
+  if (!master.includes(TAB_COL)) master.push(TAB_COL);
+  const tabPos = master.indexOf(TAB_COL);
   const merged: string[][] = [master];
-  for (const t of nonEmpty) {
+  nonEmpty.forEach((t, ti) => {
     const idx = new Map(t[0].map((c, i) => [c, i]));
     for (const row of t.slice(1)) {
-      merged.push(master.map((c) => {
+      const out = master.map((c) => {
         const i = idx.get(c);
         return i != null && i < row.length ? row[i] : "";
-      }));
+      });
+      out[tabPos] = String(ti);
+      merged.push(out);
     }
-  }
+  });
   return merged;
 }
 
@@ -190,7 +204,9 @@ function showsResults(s: MatchStatus): boolean {
 // that column is absent (older sheets) the order is 0 and callers fall back to
 // the hand-set squad_number. The map's KEYS are the XI membership; the VALUES
 // are the live batting positions — so order self-corrects after each match.
-export async function getLastPlayedXI(): Promise<Map<string, Map<string, number>>> {
+export async function getLastPlayedXI(
+  match?: MatchLike
+): Promise<Map<string, Map<string, number>>> {
   const rows = await getCsv();
   const result = new Map<string, Map<string, number>>();
   if (!rows || rows.length < 2) return result;
@@ -202,13 +218,21 @@ export async function getLastPlayedXI(): Promise<Map<string, Map<string, number>
   const pidIdx = headerIdx(header, "Player ID"); // -1 on older sheets
   const playedIdx = headerIdx(header, "Played");
   const batIdx = headerIdx(header, "Bat Order"); // -1 on older sheets
+  const tabIdx = headerIdx(header, TAB_COL);
+  // Scope to the match's own tour tab when known. Without it a team's "last match"
+  // is picked across ALL tabs by row order — so India's ("MIND") last IND-v-ENG XI
+  // could resolve to a later India-v-Ireland row and show the wrong tour's lineup.
+  const wantTab = match ? tabOfMatch(rows, match) : null;
+  const inScope = (row: string[]) =>
+    wantTab == null || (tabIdx >= 0 && row[tabIdx]?.trim() === wantTab);
 
   const lastMatchPerTeam = new Map<string, string>();
   for (const row of rows.slice(1)) {
+    if (!inScope(row)) continue;
     const team = row[teamIdx];
-    const match = row[matchIdx];
-    if (!team || !match) continue;
-    lastMatchPerTeam.set(team, match);
+    const match_ = row[matchIdx];
+    if (!team || !match_) continue;
+    lastMatchPerTeam.set(team, match_);
   }
 
   // Membership = rows with Played=Y for the team's last match. Keyed by BOTH the
@@ -221,6 +245,7 @@ export async function getLastPlayedXI(): Promise<Map<string, Map<string, number>
     if (cur === undefined || (cur === 0 && bat > 0)) m.set(k, bat);
   };
   for (const row of rows.slice(1)) {
+    if (!inScope(row)) continue;
     const team = row[teamIdx]?.trim();
     const match = row[matchIdx]?.trim();
     const name = row[nameIdx]?.trim();
@@ -366,6 +391,44 @@ function resolveLabel(rows: string[][], match: MatchLike): string | null {
   return best;
 }
 
+// Which merged tab (= tour) a match belongs to, as the tab-index string mergeCsvs
+// stamped into TAB_COL. Team codes repeat across bilateral tours (India is "MIND" in
+// both the Ireland and England series), so the cumulative reads can't scope by team
+// code — they scope to this tab instead. Found by the tab whose labels include this
+// match's TEAM PAIR (opponent-aware, so India-v-Ireland rows are never counted for an
+// India-v-England contest), nearest by date — which resolves the tour even for an
+// upcoming, unplayed match via its already-played siblings in the same tab.
+// Returns null when the tab column is absent (single-tab / legacy / test-injected
+// rows) so callers cleanly fall back to their team-code behaviour.
+function tabOfMatch(rows: string[][], match: MatchLike): string | null {
+  const header = rows[0];
+  const tabIdx = headerIdx(header, TAB_COL);
+  if (tabIdx < 0) return null;
+  const mi = headerIdx(header, "Match");
+  const di = headerIdx(header, "Date");
+  const matchTs = new Date(match.date).getTime();
+  const seen = new Set<string>();
+  let bestTab: string | null = null;
+  let bestDist = Infinity;
+  for (const row of rows.slice(1)) {
+    const lbl = row[mi]?.trim();
+    const tab = row[tabIdx]?.trim();
+    if (!lbl || !tab) continue;
+    const key = tab + " " + lbl;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    if (!teamsMatch(labelTeams(lbl), match.team1, match.team2)) continue;
+    const dstr = di >= 0 ? row[di]?.trim() : "";
+    const d = dstr ? new Date(dstr + "T00:00:00Z").getTime() : NaN;
+    const dist = isNaN(d) ? Number.MAX_SAFE_INTEGER : Math.abs(d - matchTs);
+    if (dist < bestDist) {
+      bestDist = dist;
+      bestTab = tab;
+    }
+  }
+  return bestTab;
+}
+
 // Points for a match, identified by teams+date (immune to the bot's numbering).
 export async function getMatchPointsForMatch(
   match: MatchLike
@@ -397,14 +460,26 @@ export async function getMatchPointsForMatch(
 }
 
 // Accumulated TOUR points per player, keyed by both stable Player ID and canonical name.
-// Scoped to ONE tour by the two teams of the match being drafted: only rows whose `Team`
-// column is team1 or team2 are counted. The merged sheet holds EVERY tour's tab (Women's
-// WC + men's bilateral + MLC), and a player can feature in more than one of them; summing
-// every row would show an inflated cross-tour total on the draft/selection board. A player's
-// team code is constant within a tour, so filtering on {team1, team2} captures their full
-// tour total (across all opponents) while excluding their rows from any OTHER tour.
+// The merged sheet holds EVERY tour's tab (Women's WC + men's bilateral + MLC) and a
+// player can feature in more than one, so a player's points must be scoped to ONE tour
+// or the draft/selection board shows an inflated cross-tour total.
+//
+// Preferred scope: the match's own tab (tour), resolved via tabOfMatch. This is the ONLY
+// correct scope when the same team code is reused across two bilateral tours — India is
+// "MIND" in BOTH the Ireland and the England series, so team-code scoping alone would add
+// a player's Ireland points onto the England board. Within one tab a player's pid is
+// unique, so summing that tab captures their full tour total (across all opponents) and
+// nothing from any other tour.
+//
+// Fallback (no tab column, e.g. single-tab/legacy/test-injected rows, or no match passed):
+// scope by the two team codes. Correct whenever a player's code differs per tour, which is
+// the case for every tour EXCEPT reused-code back-to-back bilaterals.
 // `Team` may be a code (women's, MLC) or a full name (men's tab) — tokenMatchesCode handles both.
-export async function getTourPoints(team1: string, team2: string): Promise<Map<string, number>> {
+export async function getTourPoints(
+  team1: string,
+  team2: string,
+  match?: MatchLike
+): Promise<Map<string, number>> {
   const rows = await getCsv();
   const result = new Map<string, number>();
   if (!rows || rows.length < 2) return result;
@@ -413,11 +488,14 @@ export async function getTourPoints(team1: string, team2: string): Promise<Map<s
   const nameIdx = headerIdx(header, "Full Name");
   const pidIdx = headerIdx(header, "Player ID"); // -1 on older sheets
   const ptsIdx = headerIdx(header, "Fantasy Points");
+  const tabIdx = headerIdx(header, TAB_COL);
+  const wantTab = match ? tabOfMatch(rows, match) : null;
   const add = (k: string, v: number) => k && result.set(k, (result.get(k) ?? 0) + v);
   for (const row of rows.slice(1)) {
-    // Tour scope: skip rows for teams outside this match. If a tab lacks a Team
-    // column we can't scope it, so it falls back to counting (legacy behaviour).
-    if (teamIdx >= 0) {
+    // Tour scope: prefer the match's own tab; else fall back to team-code scoping.
+    if (wantTab != null) {
+      if (row[tabIdx]?.trim() !== wantTab) continue;
+    } else if (teamIdx >= 0) {
       const team = row[teamIdx]?.trim() ?? "";
       if (!(tokenMatchesCode(team, team1) || tokenMatchesCode(team, team2))) continue;
     }

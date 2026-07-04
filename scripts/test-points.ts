@@ -16,6 +16,7 @@ import {
   getMatchPlayerRecon,
   lookupPlayerRecon,
   getTourPoints,
+  getLastPlayedXI,
 } from "../lib/points";
 
 let pass = 0;
@@ -136,6 +137,45 @@ async function main() {
   const mlcPts = await getTourPoints("WAF", "SFU");
   check("tour points: cross-tour scoped to MLC only (40)", mlcPts.get("dualman") === 40);
   check("tour points: MLC-only player present in MLC scope", mlcPts.get("mlconly") === 25);
+
+  // ── Reused team code across two BILATERAL tours (the IND-v-IRE → IND-v-ENG bug) ──
+  // team-code scoping breaks when the SAME code appears in two tours: India is "MIND"
+  // in both series, so summing by code would add its Ireland points onto the England
+  // board. mergeCsvs stamps a __tab (tour) column; getTourPoints/getLastPlayedXI scope
+  // to the match's own tab. (Test injects the __tab column mergeCsvs would produce.)
+  const H_TAB = [...H_FULL, "__tab"];
+  const REUSED: string[][] = [
+    H_TAB,
+    // tab 0 = IND v IRE: Abhishek plays twice; an Ireland-only player also features
+    ["Match 1 — MIND v MIRE", "2026-06-26", "MIND", "abh", "Abhishek Sharma", "Y", "100", "COMPLETED", "", "", "0"],
+    ["Match 2 — MIND v MIRE", "2026-06-28", "MIND", "abh", "Abhishek Sharma", "Y", "10", "COMPLETED", "", "", "0"],
+    ["Match 2 — MIND v MIRE", "2026-06-28", "MIRE", "ireonly", "Ire Only", "Y", "20", "COMPLETED", "", "", "0"],
+    // tab 1 = IND v ENG: SAME India code MIND (Abhishek) + an England player
+    ["Match 1 — MENG v MIND", "2026-07-01", "MIND", "abh", "Abhishek Sharma", "Y", "125", "COMPLETED", "", "", "1"],
+    ["Match 1 — MENG v MIND", "2026-07-01", "MENG", "brook", "Harry Brook", "Y", "10", "COMPLETED", "", "", "1"],
+  ];
+  const ENG_M2 = { team1: "MIND", team2: "MENG", date: "2026-07-04T23:00:00+05:30" };
+  const IRE_M2 = { team1: "MIND", team2: "MIRE", date: "2026-06-28T18:00:00+05:30" };
+  __setPointsCacheForTest(REUSED);
+
+  const engT = await getTourPoints("MIND", "MENG", ENG_M2);
+  check("reused-code: India total scoped to ENG tab only (125, not 235)", engT.get("abh") === 125);
+  check("reused-code: England player present in ENG scope", engT.get("brook") === 10);
+  check("reused-code: Ireland-only player absent from ENG scope", engT.get("ireonly") === undefined);
+
+  const ireT = await getTourPoints("MIND", "MIRE", IRE_M2);
+  check("reused-code: India total scoped to IRE tab only (100+10)", ireT.get("abh") === 110);
+  check("reused-code: England player absent from IRE scope", ireT.get("brook") === undefined);
+
+  const engXI = await getLastPlayedXI(ENG_M2);
+  check("reused-code XI: ENG-scoped last XI has England player", engXI.get("MENG")?.has("brook") === true);
+  check("reused-code XI: ENG-scoped last XI has India player", engXI.get("MIND")?.has("abh") === true);
+  check("reused-code XI: Ireland-tab team absent from ENG-scoped XI", engXI.get("MIRE") === undefined);
+
+  // Guard: WITHOUT a match (legacy / no tab resolution) it still falls back to
+  // team-code scoping — which is exactly the leak (235) the match-scoped path fixes.
+  const engNoMatch = await getTourPoints("MIND", "MENG");
+  check("reused-code: no-match fallback is team-code scoping (235 across tabs)", engNoMatch.get("abh") === 235);
 
   __setPointsCacheForTest(null);
   console.log(`\n${pass} passed, ${fail} failed`);

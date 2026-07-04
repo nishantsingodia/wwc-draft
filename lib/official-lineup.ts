@@ -16,7 +16,7 @@ export type OfficialLineup = {
 
 export async function getOfficialLineup(match: Match | undefined): Promise<OfficialLineup> {
   const [sheetXI, sheetMeta, matchXI, espn] = await Promise.all([
-    getLastPlayedXI(),
+    getLastPlayedXI(match),
     getLineupMeta(),
     match ? getMatchXI(match) : Promise.resolve(new Map<string, Map<string, number>>()),
     match ? getEspnLineup(match) : Promise.resolve(null),

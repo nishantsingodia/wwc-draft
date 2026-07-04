@@ -53,10 +53,12 @@ export async function GET(
   const t1 = match?.team1 ?? "NZ";
   const t2 = match?.team2 ?? "SL";
   // Official XI + announced status: direct ESPN fetch (live), sheet fallback.
+  // Pass `match` to getTourPoints so it scopes to THIS tour's tab — team codes repeat
+  // across bilateral tours (India is "MIND" in both the Ireland and England series).
   const [{ lastXI, lineupMeta }, sheetRoster, tourPoints] = await Promise.all([
     getOfficialLineup(match),
     getSheetRoster(),
-    getTourPoints(t1, t2),
+    getTourPoints(t1, t2, match),
   ]);
 
   const pool = match
