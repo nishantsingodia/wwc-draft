@@ -65,6 +65,9 @@ type ContestState = {
   takenCount: number;
   pendingUndo: PendingUndo | null;
   lineups: { announced: boolean; toss: string | null; perTeam: Record<string, boolean> };
+  // The caller's server-side autopick queue (durable source of truth). The client
+  // hydrates savedQueue from this so it survives a refresh and fires server-side.
+  myQueue: string[];
 };
 
 const ROLES = ["ALL", "WK", "BAT", "AR", "BOWL"] as const;
@@ -122,6 +125,9 @@ export default function DraftBoardPage({
   const [savedQueue, setSavedQueue] = useState<string[]>([]);
   const [qdPulse, setQdPulse] = useState(false);
   const [showQdTooltip, setShowQdTooltip] = useState(false);
+  // True while a queue save is in flight, so a background poll can't clobber the
+  // optimistic savedQueue with pre-save server state mid-write.
+  const queueSavingRef = useRef(false);
 
   // Pulse Quick Draft pill on first few sessions
   useEffect(() => {
@@ -194,6 +200,24 @@ export default function DraftBoardPage({
     }
     prevPickCountRef.current = pc;
   }, [state?.contest.pickCount]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Hydrate the local Quick Draft queue from the server-side source of truth so a
+  // refresh/reconnect restores it, and so it shrinks as the server cascade
+  // consumes picks. Skipped while a save is in flight (don't clobber the
+  // optimistic write). We show only still-available players — taken keys stay in
+  // the durable server queue but are inert (the cascade skips them).
+  useEffect(() => {
+    if (queueSavingRef.current || !state) return;
+    const available = (state.myQueue ?? []).filter((key) => {
+      const p = state.playerPool.find((pl) => pl.key === key);
+      return p && !p.takenBy;
+    });
+    setSavedQueue((prev) =>
+      prev.length === available.length && prev.every((k, i) => k === available[i])
+        ? prev
+        : available
+    );
+  }, [state?.myQueue, state?.playerPool]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Ref-based lock so async closures always see the latest picking state
   async function handleConfirmPick(playerKey: string) {
@@ -270,12 +294,25 @@ export default function DraftBoardPage({
     });
   }
 
-  function handleSaveQueue() {
-    setSavedQueue(draftQueue);
+  async function handleSaveQueue() {
+    const toSave = draftQueue;
+    setSavedQueue(toSave);
     setQuickDraftOn(false);
     setDraftQueue([]);
-    setSavedToast(`⚡ ${draftQueue.length} picks queued — auto-firing each turn`);
+    setSavedToast(`⚡ ${toSave.length} picks queued — auto-firing each turn`);
     setTimeout(() => setSavedToast(null), 3000);
+    // Persist to the server so picks fire on our turn even with no tab open.
+    queueSavingRef.current = true;
+    try {
+      await fetch(`/api/draft/${code}/queue`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ playerKeys: toSave }),
+      });
+      await fetchState();
+    } finally {
+      queueSavingRef.current = false;
+    }
   }
 
   function handleQdToggle() {

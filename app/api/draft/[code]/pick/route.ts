@@ -4,6 +4,7 @@ import { getDb, draftContests, draftPicks, UNDO_TTL_SECONDS } from "@/lib/db";
 import { eq } from "drizzle-orm";
 import { currentPicker, isDraftComplete } from "@/lib/snake-draft";
 import { getPlayerByKey } from "@/lib/players";
+import { resolveAutopicks } from "@/lib/autopick";
 
 export async function POST(
   request: NextRequest,
@@ -94,10 +95,18 @@ export async function POST(
     })
     .where(eq(draftContests.id, contest.id));
 
+  // Server-authoritative autopick: if the next picker(s) have a saved queue, fire
+  // their queued picks now — even if their browser is closed. Cascades through
+  // any run of consecutive queued pickers and returns the settled state.
+  const settled = done
+    ? { pickCount: newPickCount, status: "TEAM_SELECT" as string }
+    : await resolveAutopicks(contest.id);
+
+  const draftComplete = settled.status === "TEAM_SELECT";
   return NextResponse.json({
     ok: true,
     pickNumber: newPickCount,
-    draftComplete: done,
-    nextPicker: done ? null : currentPicker(order, newPickCount),
+    draftComplete,
+    nextPicker: draftComplete ? null : currentPicker(order, settled.pickCount),
   });
 }

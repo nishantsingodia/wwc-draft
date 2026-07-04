@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
-import { getDb, draftContests, draftPicks, contestParticipants, teamSelections, UNDO_TTL_SECONDS } from "@/lib/db";
-import { eq, asc } from "drizzle-orm";
+import { getDb, draftContests, draftPicks, contestParticipants, teamSelections, draftQueues, UNDO_TTL_SECONDS } from "@/lib/db";
+import { eq, asc, and } from "drizzle-orm";
 import { getPlayersByTeams } from "@/lib/players";
 import { getMatchByKey } from "@/lib/matches";
 import { currentPicker } from "@/lib/snake-draft";
@@ -46,6 +46,23 @@ export async function GET(
     .select()
     .from(teamSelections)
     .where(eq(teamSelections.contestId, contest.id));
+
+  // The caller's own saved autopick queue (server-side source of truth). The
+  // client hydrates its Quick Draft queue from this so a refresh/reconnect
+  // restores it, and it shrinks as the cascade consumes picks.
+  const [myQueueRow] = await db
+    .select()
+    .from(draftQueues)
+    .where(and(eq(draftQueues.contestId, contest.id), eq(draftQueues.user, username)));
+  let myQueue: string[] = [];
+  if (myQueueRow) {
+    try {
+      const parsed = JSON.parse(myQueueRow.playerKeys);
+      if (Array.isArray(parsed)) myQueue = parsed;
+    } catch {
+      /* corrupt row → empty queue */
+    }
+  }
 
   const match = getMatchByKey(contest.matchKey);
   // The two teams in this match — also the tour scope for tour-points (a player's
@@ -138,6 +155,7 @@ export async function GET(
     lineups,
     mySelection: mySelection.find((s) => s.user === username) ?? null,
     allSelections: mySelection,
+    myQueue,
     username,
     takenCount: picks.length,
   });

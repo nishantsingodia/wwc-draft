@@ -66,6 +66,16 @@ const DDL = [
     joined_at INTEGER NOT NULL,
     UNIQUE(contest_id, user)
   )`,
+  // Server-side autopick queue (one ordered player_key list per contest+user).
+  // Additive; existing contests simply have no queue rows until a user saves one.
+  `CREATE TABLE IF NOT EXISTS draft_queues (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    contest_id INTEGER NOT NULL,
+    user TEXT NOT NULL,
+    player_keys TEXT NOT NULL DEFAULT '[]',
+    updated_at INTEGER NOT NULL,
+    UNIQUE(contest_id, user)
+  )`,
 ];
 
 // SQLite has no `ADD COLUMN IF NOT EXISTS`, so check the table shape first.

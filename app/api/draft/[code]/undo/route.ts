@@ -6,6 +6,7 @@ import {
   draftPicks,
   teamSelections,
   contestParticipants,
+  draftQueues,
   UNDO_TTL_SECONDS,
 } from "@/lib/db";
 import { and, eq, gte, desc } from "drizzle-orm";
@@ -151,6 +152,10 @@ export async function POST(
         .where(and(eq(draftPicks.contestId, contest.id), gte(draftPicks.pickNumber, target))),
       // Team selections become stale the moment the draft reopens.
       db.delete(teamSelections).where(eq(teamSelections.contestId, contest.id)),
+      // Wipe every autopick queue too: a rolled-back player must not be instantly
+      // re-grabbed by the server cascade the moment the draft reopens. Players
+      // re-queue after reviewing the reset board.
+      db.delete(draftQueues).where(eq(draftQueues.contestId, contest.id)),
       db
         .update(draftContests)
         .set({

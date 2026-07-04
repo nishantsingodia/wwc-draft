@@ -76,6 +76,23 @@ export const teamSelections = sqliteTable(
   (t) => [uniqueIndex("team_selections_contest_user").on(t.contestId, t.user)]
 );
 
+// Server-side autopick queue. One row per (contest, user): an ordered list of
+// player_keys the user pre-selected. The autopick cascade (lib/autopick.ts)
+// consumes the front of this list on the user's turn, so queued picks fire
+// server-side even with no client connected. Cleared for the whole contest on
+// an approved undo (a rolled-back player must not be instantly re-grabbed).
+export const draftQueues = sqliteTable(
+  "draft_queues",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    contestId: integer("contest_id").notNull(),
+    user: text("user").notNull(),
+    playerKeys: text("player_keys").notNull().default("[]"), // JSON ordered array of player_key
+    updatedAt: integer("updated_at").notNull(),
+  },
+  (t) => [uniqueIndex("draft_queues_contest_user").on(t.contestId, t.user)]
+);
+
 // Joined participants (track who has joined a contest)
 export const contestParticipants = sqliteTable(
   "contest_participants",
@@ -112,3 +129,4 @@ export function getDb() {
 export type DraftContest = typeof draftContests.$inferSelect;
 export type DraftPick = typeof draftPicks.$inferSelect;
 export type TeamSelection = typeof teamSelections.$inferSelect;
+export type DraftQueue = typeof draftQueues.$inferSelect;
