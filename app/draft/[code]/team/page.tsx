@@ -385,9 +385,8 @@ export default function TeamPage({
   const editSelection = data?.allSelections.find((s) => s.user === editUser) ?? null;
   const isLocked =
     editSelection?.isLocked ||
-    (data?.contest?.mode === "live" &&
-      data?.contest?.matchDeadline != null &&
-      nowSec >= lockTs);
+    // Both live AND manual drafts lock once the match starts (match deadline + buffer).
+    (data?.contest?.matchDeadline != null && nowSec >= lockTs);
 
   const countdown = useCountdown(lockTs);
 

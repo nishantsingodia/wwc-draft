@@ -9,6 +9,7 @@ import { isMatchCompleted } from "@/lib/points";
 import { getUserLabel } from "@/lib/users";
 import { getFlag as getTeamFlag } from "@/lib/players";
 import DeleteDraftButton from "@/components/delete-draft-button";
+import MatchRefresh from "@/components/match-refresh";
 
 async function getDraftsForMatch(matchKey: string) {
   const db = getDb();
@@ -73,7 +74,6 @@ export default async function MatchPage({
   }
 
   const isLive = hasStarted && !isCompleted;
-  const isUpcoming = !hasStarted;
 
   // Separate joinable vs user's own drafts
   // Manual TEAM_SELECT drafts are still joinable (second user hasn't picked yet)
@@ -115,6 +115,10 @@ export default async function MatchPage({
             </p>
           </div>
         </div>
+
+        {/* Match-level live-points refresh (scores every contest on this match) + quota gauge.
+            Shown while the match is in progress. */}
+        {isLive && <MatchRefresh matchStarted />}
 
         {/* Open drafts to join */}
         {openDrafts.length > 0 && (
@@ -158,7 +162,9 @@ export default async function MatchPage({
             <h2 className="text-sm text-mist uppercase tracking-wider">Your Drafts</h2>
             {myDrafts.map((d) => {
               const st = STATUS_LABELS[d.status] ?? { label: d.status, color: "text-mist" };
-              const href = isCompleted || d.status === "COMPLETED"
+              // Live/completed → the scoreboard (both locked teams + scores). Only a not-yet-
+              // started match sends TEAM_SELECT to team editing / an open draft to the board.
+              const href = isCompleted || d.status === "COMPLETED" || isLive
                 ? `/draft/${d.code}/results`
                 : d.status === "TEAM_SELECT" ? `/draft/${d.code}/team`
                 : `/draft/${d.code}`;
@@ -176,8 +182,8 @@ export default async function MatchPage({
                     </div>
                     <div className="text-right">
                       <p className="text-mist font-mono text-sm">{d.code}</p>
-                      <p className={`text-xs font-semibold ${isCompleted ? "text-emerald-400" : "text-mist"}`}>
-                        {isCompleted ? "Results →" : "Open →"}
+                      <p className={`text-xs font-semibold ${isCompleted ? "text-emerald-400" : isLive ? "text-red-400" : "text-mist"}`}>
+                        {isCompleted ? "Results →" : isLive ? "Scores →" : "Open →"}
                       </p>
                     </div>
                   </Link>

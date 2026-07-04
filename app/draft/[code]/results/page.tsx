@@ -7,7 +7,6 @@ import { getFlag } from "@/lib/players";
 import type { Change } from "@/lib/effective-lineup";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
-import RefreshPoints from "@/components/refresh-points";
 
 type PlayerResult = {
   key: string;
@@ -176,15 +175,6 @@ export default function ResultsPage({
           roundlockTs={(contest.matchDeadline ?? 0) + 30 * 60}
           onRefresh={fetchResults}
         />
-
-        {/* Human-triggered live-points pull (with a cricapi quota gauge). Shown once the
-            match has started and until it's marked final — mid-match the sheet otherwise
-            only refreshes on the bot's passive 2-hourly cron. */}
-        {data.started &&
-          data.matchStatus?.status !== "COMPLETED" &&
-          data.matchStatus?.status !== "COMPLETED_FLAGGED" && (
-            <RefreshPoints matchStarted onRefreshed={fetchResults} />
-          )}
 
         {/* Scoreboard */}
         {teams.length > 0 && (

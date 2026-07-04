@@ -85,9 +85,16 @@ export async function POST(
     writeUser = targetUser;
   }
 
-  // Auto-lock LOCK_BUFFER after match start (see lib/matches.ts); manual drafts never auto-lock
+  // Auto-lock LOCK_BUFFER after match start (see lib/matches.ts) — BOTH live and manual
+  // drafts, so no team (either mode) can be edited once the match is underway.
   const now = Math.floor(Date.now() / 1000);
-  const isLocked = contest.mode === "live" && now >= contest.matchDeadline + LOCK_BUFFER;
+  const isLocked = now >= contest.matchDeadline + LOCK_BUFFER;
+  if (isLocked) {
+    return NextResponse.json(
+      { error: "Teams are locked — the match has started." },
+      { status: 403 }
+    );
+  }
 
   const now2 = now;
 
