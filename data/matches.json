@@ -654,7 +654,7 @@
   "team1": "MIND",
   "team2": "MENG",
   "label": "Match 2: IND v ENG",
-  "date": "2026-07-04T23:00:00+05:30"
+  "date": "2026-07-04T19:00:00+05:30"
  },
  {
   "matchNum": 74,
@@ -663,7 +663,7 @@
   "team1": "MIND",
   "team2": "MENG",
   "label": "Match 3: IND v ENG",
-  "date": "2026-07-07T23:00:00+05:30"
+  "date": "2026-07-07T19:00:00+05:30"
  },
  {
   "matchNum": 75,
@@ -672,7 +672,7 @@
   "team1": "MIND",
   "team2": "MENG",
   "label": "Match 4: IND v ENG",
-  "date": "2026-07-09T23:00:00+05:30"
+  "date": "2026-07-09T19:00:00+05:30"
  },
  {
   "matchNum": 76,
@@ -681,6 +681,6 @@
   "team1": "MIND",
   "team2": "MENG",
   "label": "Match 5: IND v ENG",
-  "date": "2026-07-11T23:00:00+05:30"
+  "date": "2026-07-11T19:00:00+05:30"
  }
 ]
