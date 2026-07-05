@@ -52,7 +52,13 @@ export const draftPicks = sqliteTable(
     pickNumber: integer("pick_number").notNull(),
     pickedAt: integer("picked_at").notNull(),
   },
-  (t) => [uniqueIndex("draft_picks_contest_player").on(t.contestId, t.playerKey)]
+  (t) => [
+    uniqueIndex("draft_picks_contest_player").on(t.contestId, t.playerKey),
+    // Serializes the draft: a (contest, pick_number) can be filled exactly once.
+    // This is the turn token — concurrent actors racing the same turn collide
+    // here, so a turn can never be double-filled or mis-attributed.
+    uniqueIndex("draft_picks_contest_picknum").on(t.contestId, t.pickNumber),
+  ]
 );
 
 export const teamSelections = sqliteTable(

@@ -103,6 +103,14 @@ async function migrate() {
   await addColumnIfMissing("draft_contests", "pending_undo_target", "INTEGER");
   await addColumnIfMissing("draft_contests", "pending_undo_at", "INTEGER");
 
+  // Turn serialization: a (contest, pick_number) can be filled exactly once, so
+  // concurrent autopick/pick races can never double-fill or mis-attribute a turn.
+  // Safe to add only if no existing duplicates — verified via check-pick-dupes.ts.
+  await client.execute(
+    "CREATE UNIQUE INDEX IF NOT EXISTS draft_picks_contest_picknum ON draft_picks(contest_id, pick_number)"
+  );
+  console.log("✓ unique index draft_picks_contest_picknum");
+
   // BACKUP_INTELLIGENCE: frozen effective lineup + change log on team_selections,
   // computed once post-lock when lineups are announced (additive, NULL on existing
   // rows = not yet computed).

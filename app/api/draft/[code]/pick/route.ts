@@ -61,24 +61,6 @@ export async function POST(
     return NextResponse.json({ error: "Player not found" }, { status: 400 });
   }
 
-  try {
-    await db.insert(draftPicks).values({
-      contestId: contest.id,
-      pickedBy: username,
-      playerKey: player.key,
-      playerName: player.displayName,
-      playerRole: player.role,
-      playerTeam: player.teamCode,
-      pickNumber: contest.pickCount + 1,
-      pickedAt: now,
-    });
-  } catch {
-    return NextResponse.json(
-      { error: "Player already picked" },
-      { status: 409 }
-    );
-  }
-
   const newPickCount = contest.pickCount + 1;
   const done = isDraftComplete(
     order,
@@ -87,13 +69,33 @@ export async function POST(
     contest.backupsPerUser
   );
 
-  await db
-    .update(draftContests)
-    .set({
-      pickCount: newPickCount,
-      status: done ? "TEAM_SELECT" : "DRAFTING",
-    })
-    .where(eq(draftContests.id, contest.id));
+  try {
+    // Atomic: the pick row and the turn advance commit together in one batch.
+    // pick_number is the turn token (UNIQUE(contest, pick_number)) — if another
+    // actor already took this turn, the insert collides, the whole batch rolls
+    // back, and we return 409 rather than double-advancing or mis-attributing.
+    await db.batch([
+      db.insert(draftPicks).values({
+        contestId: contest.id,
+        pickedBy: username,
+        playerKey: player.key,
+        playerName: player.displayName,
+        playerRole: player.role,
+        playerTeam: player.teamCode,
+        pickNumber: newPickCount,
+        pickedAt: now,
+      }),
+      db
+        .update(draftContests)
+        .set({ pickCount: newPickCount, status: done ? "TEAM_SELECT" : "DRAFTING" })
+        .where(eq(draftContests.id, contest.id)),
+    ]);
+  } catch {
+    return NextResponse.json(
+      { error: "That pick just went through for someone else — refreshing" },
+      { status: 409 }
+    );
+  }
 
   // Server-authoritative autopick: if the next picker(s) have a saved queue, fire
   // their queued picks now — even if their browser is closed. Cascades through

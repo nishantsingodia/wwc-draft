@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, contestParticipants } from "@/lib/db";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
+import { resolveAutopicks } from "@/lib/autopick";
 
 export async function POST(
   request: NextRequest,
@@ -44,6 +45,7 @@ export async function POST(
   }
 
   let draftOrder: string[];
+  let result: "H" | "T" | null = null;
 
   if (directWinner) {
     // Real toss already happened — creator directly names who picks first
@@ -51,34 +53,40 @@ export async function POST(
       return NextResponse.json({ error: "Invalid winner" }, { status: 400 });
     }
     draftOrder = [directWinner, ...users.filter((u) => u !== directWinner)];
-    await db
-      .update(draftContests)
-      .set({ status: "DRAFTING", draftOrder: JSON.stringify(draftOrder) })
-      .where(eq(draftContests.id, contest.id));
-    return NextResponse.json({ result: null, call: null, callerWins: true, winner: directWinner, draftOrder });
+  } else {
+    // Digital coin toss
+    if (call !== "H" && call !== "T") {
+      return NextResponse.json({ error: "Invalid call" }, { status: 400 });
+    }
+    result = Math.random() < 0.5 ? "H" : "T";
+    const callerWins = call === result;
+    const others = users.filter((u) => u !== username);
+    draftOrder = callerWins ? [username, ...others] : [...others, username];
   }
 
-  // Digital coin toss
-  if (call !== "H" && call !== "T") {
-    return NextResponse.json({ error: "Invalid call" }, { status: 400 });
-  }
-
-  const result: "H" | "T" = Math.random() < 0.5 ? "H" : "T";
-  const callerWins = call === result;
-
-  const others = users.filter((u) => u !== username);
-  draftOrder = callerWins ? [username, ...others] : [...others, username];
-
+  // Atomic claim: only the FIRST toss to land sets the order. A second concurrent
+  // toss (double-tap / retry) matches 0 rows here and cannot overwrite it —
+  // otherwise picks already made under the first order get mis-attributed when
+  // the order flips underneath them (the wrong-owner corruption).
   await db
     .update(draftContests)
     .set({ status: "DRAFTING", draftOrder: JSON.stringify(draftOrder) })
+    .where(and(eq(draftContests.id, contest.id), eq(draftContests.status, "WAITING")));
+
+  // Re-read the persisted truth — if another toss won the race, return ITS order,
+  // not this call's. Then kick off any pre-armed queue for the first picker.
+  const [fresh] = await db
+    .select()
+    .from(draftContests)
     .where(eq(draftContests.id, contest.id));
+  const finalOrder = JSON.parse(fresh?.draftOrder ?? "[]") as string[];
+  await resolveAutopicks(contest.id);
 
   return NextResponse.json({
     result,
-    call,
-    callerWins,
-    winner: draftOrder[0],
-    draftOrder,
+    call: directWinner ? null : call,
+    callerWins: finalOrder[0] === username,
+    winner: finalOrder[0] ?? null,
+    draftOrder: finalOrder,
   });
 }
