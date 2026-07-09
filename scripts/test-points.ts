@@ -177,6 +177,34 @@ async function main() {
   const engNoMatch = await getTourPoints("MIND", "MENG");
   check("reused-code: no-match fallback is team-code scoping (235 across tabs)", engNoMatch.get("abh") === 235);
 
+  // ── Future-start gate + tightened 36h guard (bilateral "borrow the previous match") ──
+  // The same pair plays every ~2 days, so an UPCOMING match sits within the OLD 3-day guard of
+  // the prior meeting and used to resolve to its completed block — showing that game's points
+  // with a "live" label before this match had even begun. Dates are far past/future so the
+  // now-relative gate is deterministic regardless of when the suite runs.
+  const FUT: string[][] = [
+    H_FULL,
+    ["Match 3 — MENG v MIND", "2099-01-07", "MIND", "abh", "Abhishek Sharma", "Y", "90", "COMPLETED", "", ""],
+    ["Match 3 — MENG v MIND", "2099-01-07", "MENG", "brook", "Harry Brook", "Y", "40", "COMPLETED", "", ""],
+  ];
+  __setPointsCacheForTest(FUT);
+  const FUTURE_M4 = { team1: "MIND", team2: "MENG", date: "2099-01-09T22:00:00+05:30", key: "M4_future" };
+  check("future match: no borrowed points", (await getMatchPointsForMatch(FUTURE_M4)).size === 0);
+  check("future match: not completed", (await isMatchCompleted(FUTURE_M4)) === false);
+  check("future match: excluded from completed set", !(await getCompletedMatchKeys([FUTURE_M4])).has("M4_future"));
+  check("future match: no status borrowed", (await getMatchStatusFor(FUTURE_M4)) === null);
+
+  const PAST: string[][] = [
+    H_FULL,
+    ["Match 3 — MENG v MIND", "2020-01-07", "MIND", "abh", "Abhishek Sharma", "Y", "90", "COMPLETED", "", ""],
+    ["Match 3 — MENG v MIND", "2020-01-07", "MENG", "brook", "Harry Brook", "Y", "40", "COMPLETED", "", ""],
+  ];
+  __setPointsCacheForTest(PAST);
+  const PAST_M4 = { team1: "MIND", team2: "MENG", date: "2020-01-09T22:00:00+05:30", key: "M4_past" };
+  check("started match: 2-day-apart sibling rejected by 36h guard", (await getMatchPointsForMatch(PAST_M4)).size === 0);
+  const PAST_M3 = { team1: "MIND", team2: "MENG", date: "2020-01-07T22:00:00+05:30", key: "M3_past" };
+  check("started match: own same-day block still resolves", (await getMatchPointsForMatch(PAST_M3)).get("abh") === 90);
+
   __setPointsCacheForTest(null);
   console.log(`\n${pass} passed, ${fail} failed`);
   process.exit(fail === 0 ? 0 : 1);

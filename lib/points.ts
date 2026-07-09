@@ -363,14 +363,23 @@ function labelDateMap(rows: string[][]): Map<string, string> {
   return out;
 }
 
-// A scored label is only THIS match if its date is within a few days. The same team pair
-// meets again later in the tournament (double round-robin / knockouts), so without a date cap
-// a not-yet-played rematch would resolve to an earlier meeting's points and show "completed".
-const MATCH_DATE_GUARD_MS = 3 * 24 * 60 * 60 * 1000;
+// A scored label is only THIS match if its date is CLOSE. The same team pair meets again
+// through the tournament — and in a bilateral series (IND v ENG, etc.) they play every ~2
+// days — so without a tight date cap a not-yet-played match resolves to the PREVIOUS
+// meeting's completed scorecard and shows its points / "live"/"completed" before it has even
+// begun. 36h is wide enough to absorb the US-local ↔ IST date skew on the sheet's Date column
+// (≤ ~a day) but narrower than the ≥48h gap between two meetings of the same pair.
+const MATCH_DATE_GUARD_MS = 36 * 60 * 60 * 1000;
 
 // Resolve our match to the single best sheet label (teams match, date closest + within guard).
 function resolveLabel(rows: string[][], match: MatchLike): string | null {
   const matchTs = new Date(match.date).getTime();
+  // A match whose scheduled start (its `date` = toss/lock time) is still in the future has no
+  // data of its own yet and must NEVER borrow a prior meeting's block — that's how an unplayed
+  // bilateral match wrongly showed the previous game's points with a "live" label. Once the
+  // match has begun, the tightened guard above keeps it from grabbing the earlier meeting until
+  // the bot writes this match's own rows.
+  if (matchTs > Date.now()) return null;
   let best: string | null = null;
   let bestDist = Infinity;
   let bestDated = false;
@@ -548,6 +557,9 @@ export async function getCompletedMatchKeys(
 
   for (const m of matches) {
     const matchTs = new Date(m.date).getTime();
+    // Same future-start gate as resolveLabel: a match that hasn't begun can't be "completed",
+    // even though a ≤guard-away prior meeting of the same pair is already scored.
+    if (matchTs > Date.now()) continue;
     let best: string | null = null;
     let bestDist = Infinity;
     let bestDated = false;
