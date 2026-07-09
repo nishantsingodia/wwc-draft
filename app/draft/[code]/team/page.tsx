@@ -27,6 +27,7 @@ import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
 import { getPlayerByKey } from "@/lib/players";
 import { getUserLabel, ALL_USERS } from "@/lib/users";
+import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
 
 type ContestInfo = {
@@ -378,7 +379,6 @@ export default function TeamPage({
     return () => clearInterval(id);
   }, []);
 
-  const LOCK_BUFFER = 30 * 60; // keep in sync with lib/matches.ts
   const lockTs = (data?.contest?.matchDeadline ?? 0) + LOCK_BUFFER;
 
   // Lock reflects the team currently being edited (each friend locks independently).

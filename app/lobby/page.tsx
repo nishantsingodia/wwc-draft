@@ -10,9 +10,9 @@ import MatchRefresh from "@/components/match-refresh";
 import LobbyTabs from "@/components/lobby-tabs";
 import TransitionLink from "@/components/transition-link";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
-import { getCompletedMatchKeys, getMatchPointsForMatch, lookupPlayerPoints } from "@/lib/points";
+import { getCompletedMatchKeys, getMatchPointsForMatch } from "@/lib/points";
 import { getFlag, getPlayerByKey } from "@/lib/players";
-import { rankingFromSelection } from "@/lib/effective-lineup";
+import { calcSelectionPoints } from "@/lib/contest-scoring";
 
 async function getUserContests(username: string) {
   const db = getDb();
@@ -57,50 +57,6 @@ async function getParticipantsForContests(ids: number[]): Promise<Map<number, st
     map.set(r.contestId, arr);
   }
   return map;
-}
-
-// Must agree byte-for-byte with the in-draft total (results/route.ts). Prefer the
-// FROZEN effective lineup BACKUP_INTELLIGENCE persisted (auto-subbed XI + cascaded
-// C/VC) — that's what the results page shows for a locked/announced match. Only when
-// nothing is frozen do we fall back to top-N by rank with C/VC floated to the head,
-// which mirrors the route's pass-through path. The old code sliced the raw saved
-// order with the originally-set armband and so diverged once auto-subs kicked in.
-function calcSelectionPoints(sel: TeamSelection, ppu: number, matchPts: Map<string, number>): number | null {
-  const playerKeys: string[] = JSON.parse(sel.selectedPlayers ?? "[]");
-
-  let xi: string[];
-  let captainKey: string | null;
-  let viceCaptainKey: string | null;
-
-  if (sel.effectiveComputedAt && sel.effectiveLineup) {
-    const fz = JSON.parse(sel.effectiveLineup) as {
-      xi: string[];
-      captainKey: string | null;
-      viceCaptainKey: string | null;
-    };
-    xi = fz.xi;
-    captainKey = fz.captainKey;
-    viceCaptainKey = fz.viceCaptainKey;
-  } else {
-    const ranking = rankingFromSelection(playerKeys, sel.captainKey, sel.viceCaptainKey);
-    xi = ranking.slice(0, ppu);
-    captainKey = ranking[0] ?? null;
-    viceCaptainKey = ranking[1] ?? null;
-  }
-
-  let total = 0;
-  let hasAny = false;
-  for (const key of xi) {
-    const p = getPlayerByKey(key);
-    if (!p) continue;
-    const raw = lookupPlayerPoints(p.pid, p.displayName, p.name, matchPts);
-    if (raw !== null) {
-      hasAny = true;
-      const mult = key === captainKey ? 2 : key === viceCaptainKey ? 1.5 : 1;
-      total += raw * mult;
-    }
-  }
-  return hasAny ? total : null;
 }
 
 function getPickCounts(draftOrder: string[] | null, pickCount: number): Map<string, number> {

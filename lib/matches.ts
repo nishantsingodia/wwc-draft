@@ -1,6 +1,9 @@
 import matchesData from "@/data/matches.json";
+import { LOCK_BUFFER } from "@/lib/lock-buffer";
 
-export const LOCK_BUFFER = 30 * 60; // teams lock 30 min after match start
+// Re-export so existing `import { LOCK_BUFFER } from "@/lib/matches"` callers keep
+// working; the constant itself now lives in lib/lock-buffer.ts (client-safe).
+export { LOCK_BUFFER };
 
 export type Match = {
   key: string;

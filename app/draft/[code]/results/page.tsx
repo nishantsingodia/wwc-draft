@@ -4,6 +4,7 @@ import { useEffect, useState, use, useCallback } from "react";
 import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
 import { getFlag } from "@/lib/players";
+import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
@@ -103,6 +104,7 @@ export default function ResultsPage({
   const { code } = use(params);
   const [data, setData] = useState<ResultsData | null>(null);
   const [error, setError] = useState("");
+  const [tab, setTab] = useState<"h2h" | "detail">("h2h");
 
   const fetchResults = useCallback(async () => {
     const res = await fetch(`/api/draft/${code}/results`);
@@ -142,11 +144,24 @@ export default function ResultsPage({
   const myTeam = teams.find((t) => t.user === username);
   const otherTeams = teams.filter((t) => t.user !== username);
 
-  const totals = teams.map((t) => calcXITotal(t));
   const hasPoints = teams.some((t) => t.players.some((p) => p.fantasyPoints !== null));
-  const maxTotal = hasPoints ? Math.max(...totals) : null;
-
   const orderedTeams = [myTeam, ...otherTeams].filter(Boolean) as TeamResult[];
+  const totals = orderedTeams.map((t) => calcXITotal(t));
+  const maxTotal = hasPoints && totals.length ? Math.max(...totals) : null;
+
+  // Head-to-head hero framing (built for the common 2-player draft; for 3+ the hero
+  // shows you vs the current leader, plus your rank).
+  const myTotal = myTeam ? calcXITotal(myTeam) : 0;
+  const rankedOpps = otherTeams
+    .map((t) => ({ team: t, total: calcXITotal(t) }))
+    .sort((a, b) => b.total - a.total);
+  const topOpp = rankedOpps[0] ?? null;
+  const myRank = 1 + rankedOpps.filter((o) => o.total > myTotal).length;
+  const leadMargin = topOpp ? myTotal - topOpp.total : null;
+  const denom = topOpp ? myTotal + topOpp.total : myTotal;
+  const myShare = denom > 0 ? (myTotal / denom) * 100 : 50;
+  const isFinal =
+    data.matchStatus?.status === "COMPLETED" || data.matchStatus?.status === "COMPLETED_FLAGGED";
 
   return (
     <main className="min-h-screen bg-ink text-white pb-8">
@@ -172,78 +187,180 @@ export default function ResultsPage({
             effective lineup update the moment lineups post. */}
         <LineupRefresh
           announced={data.announced}
-          roundlockTs={(contest.matchDeadline ?? 0) + 30 * 60}
+          roundlockTs={(contest.matchDeadline ?? 0) + LOCK_BUFFER}
           onRefresh={fetchResults}
         />
 
-        {/* Scoreboard */}
-        {teams.length > 0 && (
-          <div className="grid grid-cols-2 gap-2">
+        {/* ── Head-to-head hero — answers "am I winning?" before anything else ── */}
+        {orderedTeams.length > 0 && (
+          <div className={`rounded-2xl p-4 border ${hasPoints && leadMargin !== null && leadMargin > 0 ? "border-yellow-400/40 bg-gradient-to-b from-yellow-400/10 to-ink2" : "border-hair2 bg-ink2"}`}>
+            {topOpp ? (
+              <>
+                <div className="flex items-end justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-xs text-mist font-medium truncate">
+                      <span className="text-gold">{getUserLabel(username)}</span> (you)
+                    </p>
+                    <p className={`text-3xl font-bold tabular-nums ${myTotal >= topOpp.total ? "text-amber-300" : "text-cloud"}`}>
+                      {myTotal.toFixed(1)}
+                    </p>
+                  </div>
+                  <span className="text-mist2 text-xs font-bold pb-2">vs</span>
+                  <div className="min-w-0 text-right">
+                    <p className="text-xs text-mist font-medium truncate">{getUserLabel(topOpp.team.user)}</p>
+                    <p className={`text-3xl font-bold tabular-nums ${topOpp.total > myTotal ? "text-amber-300" : "text-cloud"}`}>
+                      {topOpp.total.toFixed(1)}
+                    </p>
+                  </div>
+                </div>
+                {/* Share bar */}
+                <div className="mt-3 h-2 rounded-full bg-navy2 overflow-hidden flex">
+                  <span className="h-full bg-gradient-to-r from-gold to-amber-300" style={{ width: `${myShare}%` }} />
+                  <span className="h-full bg-[#33456b]" style={{ width: `${100 - myShare}%` }} />
+                </div>
+                {/* Verdict */}
+                <p className={`mt-2.5 text-sm font-semibold ${
+                  !hasPoints ? "text-mist2" : leadMargin! > 0 ? "text-emerald-400" : leadMargin! < 0 ? "text-red-400" : "text-mist"
+                }`}>
+                  {!hasPoints
+                    ? "Waiting for points"
+                    : leadMargin! > 0
+                    ? `${isFinal ? "🏆 " : "▲ "}${
+                        otherTeams.length > 1
+                          ? `${myRank === 1 ? (isFinal ? "Won" : "Leading") : ordinal(myRank) + " of " + orderedTeams.length}`
+                          : isFinal
+                          ? "Won"
+                          : "Ahead"
+                      } by ${leadMargin!.toFixed(1)} pts`
+                    : leadMargin! < 0
+                    ? `${isFinal ? "Lost" : "▼ Behind"} by ${(-leadMargin!).toFixed(1)} pts`
+                    : isFinal ? "● Tied" : "● Level"}
+                </p>
+              </>
+            ) : (
+              // Solo (no opponent submitted): just your total.
+              <div>
+                <p className="text-xs text-mist font-medium">
+                  <span className="text-gold">{getUserLabel(username)}</span> (you)
+                </p>
+                <p className={`text-3xl font-bold tabular-nums ${hasPoints ? "text-amber-300" : "text-mist2"}`}>
+                  {myTotal.toFixed(1)}<span className="text-sm text-mist2 font-normal"> pts</span>
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Tab switcher — H2H comparison vs the rich single-team breakdown */}
+        {orderedTeams.length > 0 && (
+          <div className="flex bg-ink2 rounded-xl p-1 gap-1">
+            <button
+              onClick={() => setTab("h2h")}
+              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-colors ${tab === "h2h" ? "bg-ink text-gold" : "text-mist hover:text-cloud"}`}
+            >
+              Head-to-head
+            </button>
+            <button
+              onClick={() => setTab("detail")}
+              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-colors ${tab === "detail" ? "bg-ink text-gold" : "text-mist hover:text-cloud"}`}
+            >
+              My XI detail
+            </button>
+          </div>
+        )}
+
+        {/* ── HEAD-TO-HEAD: both XIs side by side, full names, sorted by points ── */}
+        {tab === "h2h" && orderedTeams.length > 0 && (
+          <div className={orderedTeams.length === 2 ? "grid grid-cols-2 gap-2" : "flex gap-2 overflow-x-auto pb-1"}>
             {orderedTeams.map((team) => {
               const total = calcXITotal(team);
-              const isWinner = total !== null && total === maxTotal && total > 0;
+              const isWinner = maxTotal !== null && total === maxTotal && total > 0 && orderedTeams.length > 1;
               const color = USER_COLORS[team.user] ?? "bg-gray-500";
+              const xi = team.players
+                .filter((p) => !p.isBackup)
+                .sort((a, b) => (b.fantasyPoints ?? 0) - (a.fantasyPoints ?? 0));
 
               return (
                 <div
                   key={team.user}
-                  className={`bg-ink2 rounded-xl p-3 ${isWinner ? "ring-2 ring-yellow-400" : ""}`}
+                  className={`rounded-xl border overflow-hidden ${orderedTeams.length === 2 ? "" : "min-w-[47%] shrink-0"} ${isWinner ? "border-yellow-400/50 ring-1 ring-yellow-400/20" : "border-hair2"} bg-ink2`}
                 >
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className={`w-3 h-3 rounded-full ${color}`} />
-                    <span className="font-semibold text-sm truncate">
-                      {getUserLabel(team.user)}
-                      {team.user === username && <span className="text-mist2"> (you)</span>}
-                    </span>
-                    {isWinner && <span className="ml-auto text-yellow-400 shrink-0">🏆</span>}
+                  {/* Column head */}
+                  <div className={`px-3 py-2.5 border-b border-hair2 ${isWinner ? "bg-yellow-400/[0.06]" : ""}`}>
+                    <div className="flex items-center gap-1.5">
+                      <span className={`w-2 h-2 rounded-full shrink-0 ${color}`} />
+                      <span className="text-xs font-semibold text-cloud truncate">
+                        {getUserLabel(team.user)}{team.user === username ? " (you)" : ""}
+                      </span>
+                      {isWinner && <span className="ml-auto shrink-0">👑</span>}
+                    </div>
+                    <p className={`text-xl font-bold tabular-nums mt-1 ${isWinner ? "text-amber-300" : "text-cloud"}`}>
+                      {total.toFixed(1)}
+                    </p>
                   </div>
-                  <p className={`text-2xl font-bold ${hasPoints ? "text-amber-300" : "text-mist2"}`}>
-                    {total.toFixed(1)}
-                    <span className="text-sm text-mist2 font-normal"> pts</span>
-                  </p>
+                  {/* Rows — two lines each so full names always read */}
+                  <div className="flex flex-col">
+                    {xi.map((p) => (
+                      <div key={p.key} className="flex flex-col gap-0.5 px-2.5 py-2 border-t border-hair2/50 first:border-t-0">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <span className="text-xs shrink-0">{getFlag(p.team)}</span>
+                          <span className="text-xs font-medium text-cloud truncate">{p.name}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className={`text-[9px] font-bold ${ROLE_COLORS[p.role] ?? "text-mist"}`}>{p.role}</span>
+                          {p.isCaptain && <span className="text-[8px] bg-yellow-500 text-black px-1 rounded font-bold">C</span>}
+                          {p.isViceCaptain && <span className="text-[8px] bg-blue-500 text-white px-1 rounded font-bold">VC</span>}
+                          <span className={`ml-auto text-xs font-bold tabular-nums ${p.fantasyPoints !== null ? "text-amber-300" : "text-mist2"}`}>
+                            {p.fantasyPoints !== null ? p.fantasyPoints.toFixed(1) : "–"}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               );
             })}
           </div>
         )}
 
-        {/* Team breakdowns — both users' teams always visible */}
-        {orderedTeams.map((team) => {
-          const color = USER_COLORS[team.user] ?? "bg-gray-500";
-          const xi = team.players.filter((p) => !p.isBackup);
-          const bench = team.players.filter((p) => p.isBackup);
+        {/* ── MY XI DETAIL: the rich single-column breakdown (C/VC math, bench, recon) ── */}
+        {tab === "detail" &&
+          orderedTeams.map((team) => {
+            const color = USER_COLORS[team.user] ?? "bg-gray-500";
+            const xi = team.players.filter((p) => !p.isBackup);
+            const bench = team.players.filter((p) => p.isBackup);
 
-          return (
-            <div key={team.user} className="space-y-2">
-              <div className="flex items-center gap-2">
-                <span className={`w-2 h-2 rounded-full ${color}`} />
-                <h2 className="text-sm font-semibold text-cloud">
-                  {getUserLabel(team.user)}{team.user === username ? "'s team (you)" : "'s team"}
-                </h2>
-              </div>
+            return (
+              <div key={team.user} className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${color}`} />
+                  <h2 className="text-sm font-semibold text-cloud">
+                    {getUserLabel(team.user)}{team.user === username ? "'s team (you)" : "'s team"}
+                  </h2>
+                </div>
 
-              {/* What backup intelligence changed for this team */}
-              <ChangesBanner changes={team.changes ?? []} />
+                {/* What backup intelligence changed for this team */}
+                <ChangesBanner changes={team.changes ?? []} />
 
-              {/* XI */}
-              <div className="space-y-1">
-                {xi.map((p) => (
-                  <PlayerRow key={p.key} player={p} />
-                ))}
-              </div>
-
-              {/* Bench */}
-              {bench.length > 0 && (
-                <div className="space-y-1 opacity-60">
-                  <p className="text-xs text-mist2 uppercase tracking-wider px-1 pt-1">Bench — not counted</p>
-                  {bench.map((p) => (
-                    <PlayerRow key={p.key} player={p} isBench />
+                {/* XI */}
+                <div className="space-y-1">
+                  {xi.map((p) => (
+                    <PlayerRow key={p.key} player={p} />
                   ))}
                 </div>
-              )}
-            </div>
-          );
-        })}
+
+                {/* Bench */}
+                {bench.length > 0 && (
+                  <div className="space-y-1 opacity-60">
+                    <p className="text-xs text-mist2 uppercase tracking-wider px-1 pt-1">Bench — not counted</p>
+                    {bench.map((p) => (
+                      <PlayerRow key={p.key} player={p} isBench />
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
 
         {teams.length === 0 && (
           <div className="text-center py-12">
@@ -260,6 +377,12 @@ export default function ResultsPage({
       </div>
     </main>
   );
+}
+
+function ordinal(n: number): string {
+  const s = ["th", "st", "nd", "rd"];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
 function PlayerRow({ player, isBench = false }: { player: PlayerResult; isBench?: boolean }) {

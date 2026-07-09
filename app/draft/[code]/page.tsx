@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
 import { getFlag } from "@/lib/players";
+import { getEffectiveState } from "@/lib/effective-state";
+import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import LineupRefresh from "@/components/lineup-refresh";
 
 type PlayerInPool = {
@@ -442,8 +444,22 @@ export default function DraftBoardPage({
 
   const { contest, participants, picks, playerPool, currentPicker, isMyTurn, username, totalPicks, pendingUndo, myQueue = [] } = state;
 
-  if (contest.mode === "manual" || ["TEAM_SELECT", "LOCKED", "COMPLETED"].includes(contest.status)) {
-    router.push(`/draft/${code}/team`); return null;
+  // Route by effective state, not raw contest.status: a LIVE/COMPLETED match must
+  // land on the scoreboard, never the (locked) team editor. contest.status never
+  // advances past TEAM_SELECT once a match starts, which used to strand live users
+  // on /team. The board is only its own destination for a live-mode draft that's
+  // still WAITING/DRAFTING; everything else redirects.
+  const startedNow = Math.floor(Date.now() / 1000) >= contest.matchDeadline + LOCK_BUFFER;
+  const eff = getEffectiveState({
+    code,
+    status: contest.status,
+    mode: contest.mode,
+    started: startedNow,
+    isCompleted: false, // completed ⇒ started ⇒ already routed to /results
+  });
+  if (eff.href !== `/draft/${code}`) {
+    router.push(eff.href);
+    return null;
   }
 
   const isWaiting = contest.status === "WAITING";
@@ -596,7 +612,7 @@ export default function DraftBoardPage({
         {(isWaiting || isDrafting) && (
           <LineupRefresh
             announced={!!state.lineups?.announced}
-            roundlockTs={(state.contest.matchDeadline ?? 0) + 30 * 60}
+            roundlockTs={(state.contest.matchDeadline ?? 0) + LOCK_BUFFER}
             onRefresh={fetchState}
           />
         )}
