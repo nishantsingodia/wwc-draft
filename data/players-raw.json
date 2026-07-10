@@ -3728,5 +3728,295 @@
     "team_code": "MENG",
     "efppm": 30.0,
     "pid": "78c12883"
+  },
+  {
+    "id": 10193,
+    "name": "Gaby Lewis",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "OIRE",
+    "efppm": 78.0,
+    "pid": "1b9d1579"
+  },
+  {
+    "id": 10194,
+    "name": "Amy Hunter",
+    "country": "Ireland",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "OIRE",
+    "efppm": 70.5,
+    "pid": "e8fa03ed"
+  },
+  {
+    "id": 10195,
+    "name": "Rebecca Stokell",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "OIRE",
+    "efppm": 24.3,
+    "pid": "def7b1bb"
+  },
+  {
+    "id": 10196,
+    "name": "Orla Prendergast",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "OIRE",
+    "efppm": 105.0,
+    "pid": "d8f20ba5"
+  },
+  {
+    "id": 10197,
+    "name": "Leah Paul",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "OIRE",
+    "efppm": 38.1,
+    "pid": "07248d8e"
+  },
+  {
+    "id": 10198,
+    "name": "Sarah Forbes",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "OIRE",
+    "efppm": 40.8,
+    "pid": "5ecfab18"
+  },
+  {
+    "id": 10199,
+    "name": "Cara Murray",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "OIRE",
+    "efppm": 67.2,
+    "pid": "5a50471c"
+  },
+  {
+    "id": 10200,
+    "name": "Louise Little",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "OIRE",
+    "efppm": 58.0,
+    "pid": "espn:1094718"
+  },
+  {
+    "id": 10201,
+    "name": "Jane Maguire",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "OIRE",
+    "efppm": 68.5,
+    "pid": "1b1c23bb"
+  },
+  {
+    "id": 10202,
+    "name": "Aimee Maguire",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "OIRE",
+    "efppm": 70.5,
+    "pid": "espn:1351945"
+  },
+  {
+    "id": 10203,
+    "name": "Alana Dalzell",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "OIRE",
+    "efppm": 53.6,
+    "pid": "66498395"
+  },
+  {
+    "id": 10204,
+    "name": "Kia McCartney",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "OIRE",
+    "efppm": 75.0,
+    "pid": "771b44ed"
+  },
+  {
+    "id": 10205,
+    "name": "Christina Coulter Reilly",
+    "country": "Ireland",
+    "role": "WK",
+    "squad_number": 13,
+    "team_code": "OIRE",
+    "efppm": 41.2,
+    "pid": "slug:christina-coulter-reilly"
+  },
+  {
+    "id": 10206,
+    "name": "Georgina Dempsey",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "OIRE",
+    "efppm": 52.8,
+    "pid": "940feccc"
+  },
+  {
+    "id": 10207,
+    "name": "Hayley Matthews",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "OWI",
+    "efppm": 145.0,
+    "pid": "d32cf49a"
+  },
+  {
+    "id": 10208,
+    "name": "Qiana Joseph",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "OWI",
+    "efppm": 47.6,
+    "pid": "d6164dc0"
+  },
+  {
+    "id": 10209,
+    "name": "Shemaine Campbelle",
+    "country": "West Indies",
+    "role": "WK",
+    "squad_number": 3,
+    "team_code": "OWI",
+    "efppm": 35.4,
+    "pid": "a7cd72b2"
+  },
+  {
+    "id": 10210,
+    "name": "Stafanie Taylor",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "OWI",
+    "efppm": 53.5,
+    "pid": "92cf79a8"
+  },
+  {
+    "id": 10211,
+    "name": "Deandra Dottin",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "OWI",
+    "efppm": 60.7,
+    "pid": "53bee17f"
+  },
+  {
+    "id": 10212,
+    "name": "Zaida James",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "OWI",
+    "efppm": 27.4,
+    "pid": "816af623"
+  },
+  {
+    "id": 10213,
+    "name": "Aaliyah Alleyne",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "OWI",
+    "efppm": 64.1,
+    "pid": "4b0e3049"
+  },
+  {
+    "id": 10214,
+    "name": "Ashmini Munisar",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "OWI",
+    "efppm": 43.3,
+    "pid": "a811cb83"
+  },
+  {
+    "id": 10215,
+    "name": "Afy Fletcher",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "OWI",
+    "efppm": 84.1,
+    "pid": "42d9dd09"
+  },
+  {
+    "id": 10216,
+    "name": "Karishma Ramharack",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "OWI",
+    "efppm": 57.2,
+    "pid": "321c980e"
+  },
+  {
+    "id": 10217,
+    "name": "Shawnisha Hector",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "OWI",
+    "efppm": 24.0,
+    "pid": "3faa312e"
+  },
+  {
+    "id": 10218,
+    "name": "Realeanna Grimmond",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "OWI",
+    "efppm": 41.2,
+    "pid": "5215d4c3"
+  },
+  {
+    "id": 10219,
+    "name": "Jannillea Glasgow",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "OWI",
+    "efppm": 37.3,
+    "pid": "a2632c7c"
+  },
+  {
+    "id": 10220,
+    "name": "Mandy Mangru",
+    "country": "West Indies",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "OWI",
+    "efppm": 16.4,
+    "pid": "b9fec7a5"
+  },
+  {
+    "id": 10221,
+    "name": "Jahzara Claxton",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "OWI",
+    "efppm": 39.9,
+    "pid": "e22f8ec1"
   }
 ]

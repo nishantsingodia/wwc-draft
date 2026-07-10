@@ -20,7 +20,7 @@ const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/cricket";
 // ESPN series ids per gender. KEEP IN SYNC with the bot's tours.json `espn_series`.
 // W = Women's T20 World Cup 2026; M = the two men's tours running alongside.
 const SERIES_BY_GENDER: Record<"W" | "M", string[]> = {
-  W: ["1483859"],
+  W: ["1483859", "1528524"], // + IRE v WI Women's ODI 2026 (findEventId disambiguates by team pair)
   M: ["1532475", "1528556", "1528532", "1496489"],
 };
 

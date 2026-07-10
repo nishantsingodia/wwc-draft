@@ -41,6 +41,10 @@ const TEAM_FLAGS: Record<string, string> = {
   SCO: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
   SL: "🇱🇰",
   WI: "🏏",
+  // Women's ODI bilateral (IRE v WI 2026) — distinct codes so the pool is isolated from the
+  // Women's T20 WC IRE/WI squads (which differ: Delany/Kelly/Henry vs Forbes/J.Maguire/Grimmond).
+  OIRE: "🇮🇪",
+  OWI: "🏏",
   // MLC 2026 franchises (themed emoji so the six US teams are distinguishable)
   MINY: "🗽",
   WAF: "🦅",
@@ -68,6 +72,8 @@ export const TEAM_NAMES: Record<string, string> = {
   SCO: "Scotland",
   SL: "Sri Lanka",
   WI: "West Indies",
+  OIRE: "Ireland",
+  OWI: "West Indies",
   MINY: "MI New York",
   WAF: "Washington Freedom",
   TSK: "Texas Super Kings",
