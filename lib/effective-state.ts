@@ -83,7 +83,7 @@ export function getEffectiveState(input: {
       return {
         phase: "waiting",
         href: team,
-        label: "Waiting for opponent",
+        label: "Waiting for players",
         labelColor: "text-yellow-400",
         cta: "Set team →",
         ctaColor: "text-emerald-400",

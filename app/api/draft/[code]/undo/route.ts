@@ -5,7 +5,6 @@ import {
   draftContests,
   draftPicks,
   teamSelections,
-  contestParticipants,
   draftQueues,
   UNDO_TTL_SECONDS,
 } from "@/lib/db";
@@ -13,22 +12,24 @@ import { and, eq, gte, desc } from "drizzle-orm";
 import { currentPicker } from "@/lib/snake-draft";
 
 /**
- * Undo a pick via an approval handshake.
+ * Undo a pick via an N-player approval handshake.
  *
  * Flow (body `{ action }`):
  *  - "request":  caller asks to roll the draft back to THEIR own last pick.
- *                Everything from that pick onward (their pick + any picks the
- *                opponent made after it) will be discarded. Stores a pending
- *                request; the other player must approve.
- *  - "approve":  the OTHER player confirms. Atomically deletes picks >= target,
- *                clears now-stale team selections, resets pickCount/status, and
- *                clears the pending request. Turn is whatever currentPicker()
- *                resolves to from the rolled-back pickCount.
- *  - "reject":   the other player declines → clears the pending request.
+ *                Everything from that pick onward is discarded — the requester's
+ *                own later picks AND any picks OTHER players made after it. Every
+ *                player who'd lose a pick (the "affected" set, excluding the
+ *                requester) must approve. If NO one else is affected, it executes
+ *                instantly with no handshake.
+ *  - "approve":  an affected player confirms. Once every affected player has
+ *                approved, the rollback fires atomically: delete picks >= target,
+ *                clear now-stale team selections + autopick queues, reset
+ *                pickCount/status, clear the pending request.
+ *  - "reject":   any affected player declines → clears the pending request.
  *  - "cancel":   the requester withdraws their own pending request.
  *
  * Picks are blocked while a request is pending (see pick/route.ts), so the set
- * of discarded picks the approver sees can't shift under them.
+ * of discarded picks — and thus the affected approvers — can't shift under them.
  */
 export async function POST(
   request: NextRequest,
@@ -64,8 +65,50 @@ export async function POST(
   async function clearPending() {
     await db
       .update(draftContests)
-      .set({ pendingUndoBy: null, pendingUndoTarget: null, pendingUndoAt: null })
+      .set({
+        pendingUndoBy: null,
+        pendingUndoTarget: null,
+        pendingUndoAt: null,
+        pendingUndoApprovals: null,
+      })
       .where(eq(draftContests.id, contest.id));
+  }
+
+  // Players (other than `requester`) who'd lose a pick if we roll back to `target`
+  // — i.e. distinct owners of any pick with pick_number >= target. These are the
+  // ones whose approval is required. Picks are frozen while an undo is pending, so
+  // this set is stable between request and approve.
+  async function affectedApprovers(target: number, requester: string): Promise<string[]> {
+    const rows = await db
+      .select({ pickedBy: draftPicks.pickedBy })
+      .from(draftPicks)
+      .where(and(eq(draftPicks.contestId, contest.id), gte(draftPicks.pickNumber, target)));
+    return [...new Set(rows.map((r) => r.pickedBy))].filter((u) => u !== requester);
+  }
+
+  // The atomic rollback — shared by the instant path (request with no one else
+  // affected) and the approve path once consensus is reached.
+  async function doRollback(target: number) {
+    await db.batch([
+      db
+        .delete(draftPicks)
+        .where(and(eq(draftPicks.contestId, contest.id), gte(draftPicks.pickNumber, target))),
+      // Team selections become stale the moment the draft reopens.
+      db.delete(teamSelections).where(eq(teamSelections.contestId, contest.id)),
+      // Wipe autopick queues so a rolled-back player isn't instantly re-grabbed.
+      db.delete(draftQueues).where(eq(draftQueues.contestId, contest.id)),
+      db
+        .update(draftContests)
+        .set({
+          pickCount: target - 1,
+          status: "DRAFTING",
+          pendingUndoBy: null,
+          pendingUndoTarget: null,
+          pendingUndoAt: null,
+          pendingUndoApprovals: null,
+        })
+        .where(eq(draftContests.id, contest.id)),
+    ]);
   }
 
   // --- request --------------------------------------------------------------
@@ -92,12 +135,31 @@ export async function POST(
       return NextResponse.json({ error: "You have no picks to undo" }, { status: 400 });
     }
 
+    const target = mine.pickNumber;
+    const affected = await affectedApprovers(target, username);
+
+    // No one else loses a pick → nothing to get consensus on. Roll back at once.
+    if (affected.length === 0) {
+      await doRollback(target);
+      return NextResponse.json({
+        ok: true,
+        instant: true,
+        resumedAt: target,
+        currentPicker: order.length ? currentPicker(order, target - 1) : null,
+      });
+    }
+
     await db
       .update(draftContests)
-      .set({ pendingUndoBy: username, pendingUndoTarget: mine.pickNumber, pendingUndoAt: now })
+      .set({
+        pendingUndoBy: username,
+        pendingUndoTarget: target,
+        pendingUndoAt: now,
+        pendingUndoApprovals: JSON.stringify([]),
+      })
       .where(eq(draftContests.id, contest.id));
 
-    return NextResponse.json({ ok: true, target: mine.pickNumber });
+    return NextResponse.json({ ok: true, target, needsApproval: affected });
   }
 
   // --- cancel (by the requester) -------------------------------------------
@@ -121,7 +183,7 @@ export async function POST(
     return NextResponse.json({ ok: true });
   }
 
-  // --- approve (by the other player) ---------------------------------------
+  // --- approve (by an affected player) -------------------------------------
   if (action === "approve") {
     if (!pendingLive) {
       return NextResponse.json(
@@ -132,46 +194,47 @@ export async function POST(
     if (contest.pendingUndoBy === username) {
       return NextResponse.json({ error: "You can't approve your own undo" }, { status: 403 });
     }
-    // Only a participant of this contest may approve.
-    const participants = await db
-      .select()
-      .from(contestParticipants)
-      .where(eq(contestParticipants.contestId, contest.id));
-    if (!participants.some((p) => p.user === username)) {
-      return NextResponse.json({ error: "Not a participant" }, { status: 403 });
-    }
 
     const target = contest.pendingUndoTarget!;
+    const affected = await affectedApprovers(target, contest.pendingUndoBy!);
 
-    // Atomic rollback in a single libsql batch — pickCount and the pick rows
-    // must never drift apart. batch() runs all three statements in one
-    // transaction (reliable on Turso HTTP, unlike interactive transactions).
-    await db.batch([
-      db
-        .delete(draftPicks)
-        .where(and(eq(draftPicks.contestId, contest.id), gte(draftPicks.pickNumber, target))),
-      // Team selections become stale the moment the draft reopens.
-      db.delete(teamSelections).where(eq(teamSelections.contestId, contest.id)),
-      // Wipe every autopick queue too: a rolled-back player must not be instantly
-      // re-grabbed by the server cascade the moment the draft reopens. Players
-      // re-queue after reviewing the reset board.
-      db.delete(draftQueues).where(eq(draftQueues.contestId, contest.id)),
-      db
-        .update(draftContests)
-        .set({
-          pickCount: target - 1,
-          status: "DRAFTING",
-          pendingUndoBy: null,
-          pendingUndoTarget: null,
-          pendingUndoAt: null,
-        })
-        .where(eq(draftContests.id, contest.id)),
-    ]);
+    // Only a player who'd actually lose a pick gets a vote.
+    if (!affected.includes(username)) {
+      return NextResponse.json(
+        { error: "You have no picks affected by this undo" },
+        { status: 403 }
+      );
+    }
 
+    // Record this approval (dedupe).
+    let approvals: string[] = [];
+    try {
+      const parsed = JSON.parse(contest.pendingUndoApprovals ?? "[]");
+      if (Array.isArray(parsed)) approvals = parsed;
+    } catch {
+      /* corrupt → treat as empty */
+    }
+    if (!approvals.includes(username)) approvals.push(username);
+
+    // Everyone affected has approved → execute the rollback atomically.
+    const allApproved = affected.every((u) => approvals.includes(u));
+    if (allApproved) {
+      await doRollback(target);
+      return NextResponse.json({
+        ok: true,
+        resumedAt: target,
+        currentPicker: order.length ? currentPicker(order, target - 1) : null,
+      });
+    }
+
+    // Otherwise just record the approval and keep waiting for the rest.
+    await db
+      .update(draftContests)
+      .set({ pendingUndoApprovals: JSON.stringify(approvals) })
+      .where(eq(draftContests.id, contest.id));
     return NextResponse.json({
       ok: true,
-      resumedAt: target,
-      currentPicker: order.length ? currentPicker(order, target - 1) : null,
+      waitingOn: affected.filter((u) => !approvals.includes(u)),
     });
   }
 

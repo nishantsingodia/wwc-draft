@@ -51,7 +51,19 @@ export async function POST(
     return NextResponse.json({ status: contest.status, already: true });
   }
 
+  const maxPlayers = contest.maxPlayers ?? 2;
   const now = Math.floor(Date.now() / 1000);
+
+  // Capacity (live only): never seat more than maxPlayers. Re-joining a seat you
+  // already hold is always fine — this only blocks a brand-new joiner once full.
+  const existing = await db
+    .select()
+    .from(contestParticipants)
+    .where(eq(contestParticipants.contestId, contest.id));
+  const alreadyIn = existing.some((p) => p.user === username);
+  if (contest.mode === "live" && !alreadyIn && existing.length >= maxPlayers) {
+    return NextResponse.json({ error: "This draft is full" }, { status: 403 });
+  }
 
   // Upsert participant
   try {
@@ -71,9 +83,9 @@ export async function POST(
 
   const users = participants.map((p) => p.user);
 
-  // For live draft: need at least 2 to start. For manual: creator alone can start.
+  // Live draft: start only once ALL seats are filled. Manual: creator alone can start.
   const canStart =
-    contest.mode === "live" ? users.length >= 2 : users.length >= 1;
+    contest.mode === "live" ? users.length >= maxPlayers : users.length >= 1;
 
   if (canStart) {
     if (contest.mode === "manual") {
@@ -85,12 +97,12 @@ export async function POST(
       return NextResponse.json({ status: "TEAM_SELECT" });
     }
 
-    if (users.length === 2) {
-      // 2-player live: stay WAITING — client shows interactive coin toss
+    if (maxPlayers === 2) {
+      // 2-player live: stay WAITING — client shows the interactive coin toss.
       return NextResponse.json({ status: "WAITING", users, awaitingToss: true });
     }
 
-    // 3+ players live: auto-shuffle and start
+    // 3+ players live: auto-shuffle and start (a visible order reveal comes later).
     const order = shuffleArray(users);
     await db
       .update(draftContests)

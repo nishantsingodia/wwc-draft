@@ -118,6 +118,22 @@ export async function GET(
     !!contest.pendingUndoBy &&
     !!contest.pendingUndoAt &&
     nowSec - contest.pendingUndoAt < UNDO_TTL_SECONDS;
+  const discardedPicks =
+    undoLive && contest.pendingUndoTarget != null
+      ? picks.filter((p) => p.pickNumber >= contest.pendingUndoTarget!)
+      : [];
+  // Everyone who'd lose a pick (excluding the requester) must approve — this is
+  // the N-player consensus set the board renders. Derived from the discarded picks.
+  const requiredApprovers = [
+    ...new Set(discardedPicks.map((p) => p.pickedBy)),
+  ].filter((u) => u !== contest.pendingUndoBy);
+  let undoApprovals: string[] = [];
+  try {
+    const parsed = JSON.parse(contest.pendingUndoApprovals ?? "[]");
+    if (Array.isArray(parsed)) undoApprovals = parsed;
+  } catch {
+    /* corrupt → none */
+  }
   const pendingUndo =
     undoLive && contest.pendingUndoTarget != null
       ? {
@@ -125,16 +141,17 @@ export async function GET(
           target: contest.pendingUndoTarget,
           requestedAt: contest.pendingUndoAt!,
           // Picks that will return to the pool, in draft order.
-          discarded: picks
-            .filter((p) => p.pickNumber >= contest.pendingUndoTarget!)
-            .map((p) => ({
-              playerKey: p.playerKey,
-              playerName: p.playerName,
-              playerTeam: p.playerTeam,
-              playerRole: p.playerRole,
-              pickedBy: p.pickedBy,
-              pickNumber: p.pickNumber,
-            })),
+          discarded: discardedPicks.map((p) => ({
+            playerKey: p.playerKey,
+            playerName: p.playerName,
+            playerTeam: p.playerTeam,
+            playerRole: p.playerRole,
+            pickedBy: p.pickedBy,
+            pickNumber: p.pickNumber,
+          })),
+          // Consensus: who must approve, and who already has.
+          requiredApprovers,
+          approvals: undoApprovals,
           // Whose turn it becomes after the rollback (computed, not assumed).
           resumePicker: order ? currentPicker(order, contest.pendingUndoTarget - 1) : null,
         }

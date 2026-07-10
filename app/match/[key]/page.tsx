@@ -344,8 +344,10 @@ export default async function MatchPage({
               }
 
               // Row-2 sub (pre-start only)
+              const seats = d.maxPlayers ?? 2;
               let sub: string;
-              if (d.status === "WAITING" && c.parts.length < 2) sub = "Waiting for opponent to join";
+              if (d.status === "WAITING" && c.parts.length < seats)
+                sub = `Waiting for players (${c.parts.length}/${seats} joined)`;
               else if (d.status === "DRAFTING") sub = c.isMyTurn ? "You're up — make your pick" : "Draft in progress";
               else sub = c.oppNames.length ? `You vs ${c.oppNames.join(", ")}` : "Build your XI";
 

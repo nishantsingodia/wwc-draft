@@ -3,6 +3,8 @@ import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, contestParticipants } from "@/lib/db";
 import { generateCode } from "@/lib/generate-code";
 import { getMatchByKey } from "@/lib/matches";
+import { getFullSquadByTeams } from "@/lib/players";
+import { MAX_ROSTER } from "@/lib/users";
 import { eq } from "drizzle-orm";
 
 export async function POST(request: NextRequest) {
@@ -13,7 +15,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { matchKey, picksPerUser, backupsPerUser, mode } = await request.json();
+  const { matchKey, picksPerUser, backupsPerUser, mode, maxPlayers } = await request.json();
 
   const match = getMatchByKey(matchKey);
   if (!match) {
@@ -26,8 +28,29 @@ export async function POST(request: NextRequest) {
   // honours 0 backups.
   const ppuNum = Number(picksPerUser);
   const bpuNum = Number(backupsPerUser);
+  const mpNum = Number(maxPlayers);
   const resolvedPicks = Number.isFinite(ppuNum) && ppuNum >= 1 ? Math.floor(ppuNum) : 11;
   const resolvedBackups = Number.isFinite(bpuNum) && bpuNum >= 0 ? Math.floor(bpuNum) : 4;
+  // Clamp drafters to [2, roster size]. Default 2 = the legacy head-to-head draft.
+  const resolvedMax =
+    Number.isFinite(mpNum) && mpNum >= 2 ? Math.min(MAX_ROSTER, Math.floor(mpNum)) : 2;
+
+  // The pool invariant — a live *exclusive* draft can't deal more unique players
+  // than the two squads hold. Validate server-side too (never trust the client);
+  // getFullSquadByTeams is the same deterministic count the create form shows, so
+  // the two agree. Manual mode is non-exclusive, so it's exempt.
+  const poolSize = getFullSquadByTeams(match.team1, match.team2).length;
+  const needed = resolvedMax * (resolvedPicks + resolvedBackups);
+  if (mode !== "manual" && needed > poolSize) {
+    return NextResponse.json(
+      {
+        error: `This match's pool has ${poolSize} players — ${resolvedMax} drafters × ${
+          resolvedPicks + resolvedBackups
+        } picks needs ${needed}. Reduce picks or drafters.`,
+      },
+      { status: 400 }
+    );
+  }
 
   const code = generateCode();
   const now = Math.floor(Date.now() / 1000);
@@ -41,6 +64,7 @@ export async function POST(request: NextRequest) {
       matchDeadline: match.deadlineTs,
       picksPerUser: resolvedPicks,
       backupsPerUser: resolvedBackups,
+      maxPlayers: resolvedMax,
       mode: mode === "manual" ? "manual" : "live",
       status: "WAITING",
       draftOrder: null,

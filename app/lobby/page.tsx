@@ -78,9 +78,10 @@ function getDraftStatusLine(
 
   switch (contest.status) {
     case "WAITING": {
-      if (participants.length < 2)
-        return { label: "Waiting for opponent to join", color: "text-yellow-400" };
-      if (contest.mode === "live")
+      const seats = contest.maxPlayers ?? 2;
+      if (participants.length < seats)
+        return { label: `Waiting for players (${participants.length}/${seats})`, color: "text-yellow-400" };
+      if (contest.mode === "live" && seats === 2)
         return { label: "Coin toss pending", color: "text-yellow-400" };
       return { label: "Waiting…", color: "text-yellow-400" };
     }

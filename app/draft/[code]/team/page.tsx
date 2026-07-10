@@ -26,7 +26,7 @@ import PlayerCard from "@/components/player-card";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
 import { getPlayerByKey } from "@/lib/players";
-import { getUserLabel, ALL_USERS } from "@/lib/users";
+import { getUserLabel, getUserColor, ALL_USERS } from "@/lib/users";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
 
@@ -37,6 +37,7 @@ type ContestInfo = {
   matchDeadline: number;
   picksPerUser: number;
   backupsPerUser: number;
+  maxPlayers: number;
   mode: "live" | "manual";
   status: string;
 };
@@ -80,15 +81,15 @@ function parsePlayers(raw: string[] | string | null | undefined): string[] {
 function ManualPool({
   pool,
   selectedSet,
-  opponentKey,
-  opponentPicked,
+  takenBy,
   canAddMore,
   onAdd,
 }: {
   pool: { key: string; displayName: string; role: string; teamCode: string; efppm: number; tourPoints: number | null; isLikelyXI: boolean }[];
   selectedSet: Set<string>;
-  opponentKey: string | null;
-  opponentPicked: Set<string>;
+  // Which OTHER friend (if any) already holds each player — keeps the pool
+  // exclusive across every team, not just one opponent.
+  takenBy: Map<string, string>;
   canAddMore: boolean;
   onAdd: (key: string) => void;
 }) {
@@ -96,27 +97,29 @@ function ManualPool({
   if (available.length === 0) return null;
   const xi = available.filter((p) => p.isLikelyXI);
   const bench = available.filter((p) => !p.isLikelyXI);
+  const renderCard = (p: (typeof pool)[number]) => {
+    const owner = takenBy.get(p.key) ?? null;
+    const taken = owner !== null;
+    return (
+      <PlayerCard
+        key={p.key}
+        playerKey={p.key}
+        displayName={p.displayName}
+        role={p.role}
+        teamCode={p.teamCode}
+        efppm={p.efppm}
+        tourPoints={p.tourPoints}
+        takenBy={owner}
+        isMyTurn={!taken && canAddMore}
+        onClick={!taken && canAddMore ? () => onAdd(p.key) : undefined}
+      />
+    );
+  };
   return (
     <div className="space-y-2 pt-2 border-t border-hair">
       <h2 className="text-sm font-semibold text-mist uppercase tracking-wider px-1">Player Pool</h2>
       <div className="space-y-1.5">
-        {xi.map((p) => {
-          const taken = opponentPicked.has(p.key);
-          return (
-            <PlayerCard
-              key={p.key}
-              playerKey={p.key}
-              displayName={p.displayName}
-              role={p.role}
-              teamCode={p.teamCode}
-              efppm={p.efppm}
-              tourPoints={p.tourPoints}
-              takenBy={taken ? opponentKey : null}
-              isMyTurn={!taken && canAddMore}
-              onClick={!taken && canAddMore ? () => onAdd(p.key) : undefined}
-            />
-          );
-        })}
+        {xi.map(renderCard)}
         {bench.length > 0 && xi.length > 0 && (
           <div className="flex items-center gap-2 py-1 px-1">
             <div className="flex-1 h-px bg-navy" />
@@ -124,23 +127,7 @@ function ManualPool({
             <div className="flex-1 h-px bg-navy" />
           </div>
         )}
-        {bench.map((p) => {
-          const taken = opponentPicked.has(p.key);
-          return (
-            <PlayerCard
-              key={p.key}
-              playerKey={p.key}
-              displayName={p.displayName}
-              role={p.role}
-              teamCode={p.teamCode}
-              efppm={p.efppm}
-              tourPoints={p.tourPoints}
-              takenBy={taken ? opponentKey : null}
-              isMyTurn={!taken && canAddMore}
-              onClick={!taken && canAddMore ? () => onAdd(p.key) : undefined}
-            />
-          );
-        })}
+        {bench.map(renderCard)}
       </div>
     </div>
   );
@@ -330,7 +317,8 @@ export default function TeamPage({
     // teams, so we seed all of them; live mode still seeds every friend but only
     // the current user's is editable. A user with no saved team but live picks is
     // seeded from those picks (draft order).
-    const friendList = d.participants.length >= 2 ? d.participants : ALL_USERS;
+    const friendList =
+      d.participants.length >= 2 ? d.participants : ALL_USERS.slice(0, d.contest.maxPlayers ?? 2);
     const seeded: Record<string, string[]> = {};
     for (const u of friendList) {
       const sel = d.allSelections.find((s) => s.user === u);
@@ -476,10 +464,11 @@ export default function TeamPage({
   const bpu = data.contest.backupsPerUser;
   const selectedSet = new Set(ranking);
 
-  // The two friends. For a live draft both are participants; for a manual draft only
-  // the creator is a participant, but one person can build both teams, so fall back
-  // to the fixed two-person roster.
-  const friends = data.participants.length >= 2 ? data.participants : ALL_USERS;
+  // The drafters. For a live draft all N are participants; for a manual draft only
+  // the creator is a participant, but one person can build every team, so fall back
+  // to the first maxPlayers of the roster.
+  const friends =
+    data.participants.length >= 2 ? data.participants : ALL_USERS.slice(0, data.contest.maxPlayers ?? 2);
 
   // Frozen post-lock substitution log for MY team (written by the results route
   // once lineups are out). Only meaningful when viewing your own team.
@@ -503,20 +492,31 @@ export default function TeamPage({
     return meta.isLikelyXI ? "in" : "out";
   }
 
-  // The "other" team — the friend NOT currently being edited (shown read-only below).
-  // Prefer the in-memory ranking so unsaved edits made while building both teams are
-  // reflected; fall back to that friend's saved selection.
-  const opponent = friends.find((u) => u !== editUser) ?? null;
-  const opponentSel = data.allSelections.find((s) => s.user === opponent);
-  const opponentPlayers =
-    (opponent ? rankings[opponent] : undefined) ?? parsePlayers(opponentSel?.selectedPlayers);
-  const opponentCaptain = opponentPlayers[0] ?? opponentSel?.captainKey ?? null;
-  const opponentVice = opponentPlayers[1] ?? opponentSel?.viceCaptainKey ?? null;
-  const opponentStarters = opponentPlayers.slice(0, ppu);
-  const opponentBackups = opponentPlayers.slice(ppu);
-  const opponentHasTeam = opponentPlayers.length > 0;
+  // The OTHER teams — every friend NOT currently being edited (read-only below).
+  // Prefer their in-memory ranking so unsaved edits made while building several
+  // teams show; fall back to their saved selection.
+  const others = friends.filter((u) => u !== editUser);
+  const otherTeams = others.map((u) => {
+    const sel = data.allSelections.find((s) => s.user === u);
+    const players = rankings[u] ?? parsePlayers(sel?.selectedPlayers);
+    return {
+      user: u,
+      players,
+      captain: players[0] ?? sel?.captainKey ?? null,
+      vice: players[1] ?? sel?.viceCaptainKey ?? null,
+      starters: players.slice(0, ppu),
+      backups: players.slice(ppu),
+      hasTeam: players.length > 0,
+    };
+  });
+  // Manual mode keeps the pool exclusive across ALL other teams — a player any
+  // other friend holds is unavailable. Map each taken key to its owner (for colour).
+  const takenByOther = new Map<string, string>();
+  for (const t of otherTeams) {
+    for (const k of t.players) if (!takenByOther.has(k)) takenByOther.set(k, t.user);
+  }
 
-  function OpponentPlayerRow({ keyVal, isCaptain, isVC, compact }: { keyVal: string; isCaptain: boolean; isVC: boolean; compact?: boolean }) {
+  function ReadonlyPlayerRow({ keyVal, isCaptain, isVC, compact }: { keyVal: string; isCaptain: boolean; isVC: boolean; compact?: boolean }) {
     const p = getPlayerByKey(keyVal);
     if (!p) return null;
     return (
@@ -699,67 +699,67 @@ export default function TeamPage({
             <ManualPool
               pool={data.playerPool}
               selectedSet={selectedSet}
-              opponentKey={opponent}
-              opponentPicked={new Set(opponentPlayers)}
+              takenBy={takenByOther}
               canAddMore={ranking.length < ppu + bpu}
               onAdd={addNew}
             />
           )}
         </div>
 
-        {/* ── OTHER FRIEND'S TEAM (read-only preview; edit it via the toggle above) ── */}
-        <div className="space-y-1 pt-2 border-t border-hair">
-          <p className="text-xs font-semibold text-mist uppercase tracking-wider px-1">
-            {opponent ? `${getUserLabel(opponent)}'s Team` : "Opponent's Team"}
-          </p>
-
-          {!opponentHasTeam ? (
-            <p className="text-mist2 text-sm py-3 px-1">
-              {opponent
-                ? `${getUserLabel(opponent)} hasn't set their team yet${isManual ? " — switch above to build it" : ""}`
-                : "Waiting for opponent…"}
+        {/* ── OTHER TEAMS (read-only; in manual mode edit any via the toggle above) ── */}
+        {otherTeams.length > 0 && (
+          <div className="space-y-2 pt-2 border-t border-hair">
+            <p className="text-xs font-semibold text-mist uppercase tracking-wider px-1">
+              {otherTeams.length === 1 ? `${getUserLabel(otherTeams[0].user)}'s Team` : `Other teams (${otherTeams.length})`}
             </p>
-          ) : (
-            <>
-              <div className="space-y-2">
-                <div className="flex items-center justify-between px-1">
-                  <h2 className="text-sm font-semibold text-cloud">Starting XI</h2>
-                  <span className="text-xs text-mist2">{opponentStarters.length}/{ppu}</span>
-                </div>
-                <div className="space-y-1">
-                  {opponentStarters.map((key) => (
-                    <OpponentPlayerRow
-                      key={key}
-                      keyVal={key}
-                      isCaptain={key === opponentCaptain}
-                      isVC={key === opponentVice}
-                    />
-                  ))}
-                </div>
-              </div>
 
-              {bpu > 0 && opponentBackups.length > 0 && (
-                <div className="space-y-2 pt-1">
-                  <div className="flex items-center justify-between px-1">
-                    <h2 className="text-sm font-semibold text-mist2">Bench</h2>
-                    <span className="text-xs text-mist2">{opponentBackups.length}/{bpu}</span>
-                  </div>
-                  <div className="space-y-1">
-                    {opponentBackups.map((key) => (
-                      <OpponentPlayerRow
-                        key={key}
-                        keyVal={key}
-                        isCaptain={false}
-                        isVC={false}
-                        compact
-                      />
-                    ))}
-                  </div>
+            {otherTeams.map((t) => (
+              <details
+                key={t.user}
+                open={otherTeams.length === 1}
+                className="rounded-xl bg-ink2 border border-hair overflow-hidden group"
+              >
+                <summary className="flex items-center gap-2 px-3 py-2.5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <span className={`w-2.5 h-2.5 rounded-full shrink-0 ${getUserColor(t.user)}`} />
+                  <span className="text-sm font-semibold text-cloud flex-1 truncate">
+                    {getUserLabel(t.user)}{t.user === data.username ? " (you)" : ""}
+                  </span>
+                  <span className="text-xs text-mist2 tabular-nums">
+                    {t.hasTeam ? `${t.starters.length}/${ppu}${bpu > 0 ? ` +${t.backups.length}` : ""}` : "—"}
+                  </span>
+                  <span className="text-mist2 text-xs group-open:rotate-180 transition-transform">▾</span>
+                </summary>
+                <div className="px-3 pb-3 space-y-1">
+                  {!t.hasTeam ? (
+                    <p className="text-mist2 text-sm py-1">
+                      {getUserLabel(t.user)} hasn&apos;t set their team yet{isManual ? " — switch above to build it" : ""}
+                    </p>
+                  ) : (
+                    <>
+                      {t.starters.map((key) => (
+                        <ReadonlyPlayerRow
+                          key={key}
+                          keyVal={key}
+                          isCaptain={key === t.captain}
+                          isVC={key === t.vice}
+                          compact
+                        />
+                      ))}
+                      {bpu > 0 && t.backups.length > 0 && (
+                        <>
+                          <p className="text-[10px] text-mist2 uppercase tracking-widest px-1 pt-1">Bench</p>
+                          {t.backups.map((key) => (
+                            <ReadonlyPlayerRow key={key} keyVal={key} isCaptain={false} isVC={false} compact />
+                          ))}
+                        </>
+                      )}
+                    </>
+                  )}
                 </div>
-              )}
-            </>
-          )}
-        </div>
+              </details>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Save button */}

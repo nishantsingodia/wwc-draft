@@ -41,6 +41,8 @@ type PendingUndo = {
     pickedBy: string;
     pickNumber: number;
   }[];
+  requiredApprovers: string[];
+  approvals: string[];
   resumePicker: string | null;
 };
 
@@ -51,6 +53,7 @@ type ContestState = {
     matchDeadline: number;
     picksPerUser: number;
     backupsPerUser: number;
+    maxPlayers: number;
     mode: "live" | "manual";
     status: string;
     draftOrder: string[] | null;
@@ -102,6 +105,13 @@ export default function DraftBoardPage({
   const [error, setError] = useState("");
   const [joining, setJoining] = useState(false);
   const [coinFlipActive, setCoinFlipActive] = useState(false);
+  // Order-reveal ceremony for 3+ player drafts (2-player uses the coin toss).
+  // Shown once per contest per device; the flag lives in localStorage so a refresh
+  // mid-draft doesn't replay it. Lazy init is safe (no hydration mismatch) because
+  // the reveal branch only renders after the async state load, post-hydration.
+  const [orderRevealDone, setOrderRevealDone] = useState<boolean>(
+    () => typeof window !== "undefined" && !!localStorage.getItem(`wwc_order_seen_${code}`)
+  );
   const [picking, setPicking] = useState(false);
   const pickingRef = useRef(false); // ref so async closures always read latest value
   const [pendingKey, setPendingKey] = useState<string | null>(null);
@@ -465,11 +475,39 @@ export default function DraftBoardPage({
   const isWaiting = contest.status === "WAITING";
   const isDrafting = contest.status === "DRAFTING";
 
+  // The interactive coin toss is a 2-player ceremony only. A 3+ player draft is
+  // auto-shuffled server-side the moment its last seat fills (join route), so it
+  // never sits in this WAITING-without-an-order state — while it's still filling
+  // seats we want the "waiting for players" panel, not a premature toss.
   const awaitingToss =
     isWaiting &&
     contest.mode === "live" &&
+    contest.maxPlayers === 2 &&
     !contest.draftOrder &&
     participants.length >= 2;
+
+  // 3+ player draft: the order was auto-shuffled server-side when the last seat
+  // filled. Reveal it to everyone (once) before the board, so the snake order is
+  // transparent rather than silent.
+  if (
+    isDrafting &&
+    contest.maxPlayers >= 3 &&
+    contest.draftOrder &&
+    contest.draftOrder.length > 0 &&
+    !orderRevealDone
+  ) {
+    return (
+      <OrderRevealScreen
+        order={contest.draftOrder}
+        matchLabel={contest.matchLabel}
+        username={username}
+        onDone={() => {
+          if (typeof window !== "undefined") localStorage.setItem(`wwc_order_seen_${code}`, "1");
+          setOrderRevealDone(true);
+        }}
+      />
+    );
+  }
 
   if (awaitingToss) {
     return (
@@ -641,7 +679,7 @@ export default function DraftBoardPage({
 
         {isWaiting && (
           <div className="bg-yellow-900/30 border border-yellow-700/50 rounded-xl px-4 py-4 space-y-3">
-            <p className="text-yellow-400 text-sm font-medium">⏳ Waiting for all players to join…</p>
+            <p className="text-yellow-400 text-sm font-medium">⏳ Waiting for players… ({participants.length}/{contest.maxPlayers} joined)</p>
             <div className="flex flex-wrap gap-2">
               {participants.map((u) => (
                 <span key={u} className="bg-navy2 px-3 py-1 rounded-full text-sm">✓ {getUserLabel(u)}</span>
@@ -756,68 +794,106 @@ export default function DraftBoardPage({
               </div>
             </div>
 
-            {/* Undo handshake */}
+            {/* Undo handshake — every player who'd lose a pick must approve */}
             {pendingUndo ? (
               pendingUndo.by === username ? (
-                /* Requester: waiting for the other player to approve */
-                <div className="rounded-xl px-4 py-3 bg-amber-950 border border-amber-500/60 flex items-center justify-between gap-3">
-                  <p className="text-amber-200 text-sm">
-                    ⏳ Waiting for <span className="font-semibold">{getUserLabel(others[0] ?? "")}</span> to approve your undo
-                    {(() => {
-                      const tgt = pendingUndo.discarded.find((d) => d.pickNumber === pendingUndo.target);
-                      return tgt ? <> of <span className="font-semibold">{tgt.playerName}</span></> : null;
-                    })()}…
-                  </p>
-                  <button
-                    onClick={() => sendUndoAction("cancel")}
-                    disabled={undoBusy}
-                    className="shrink-0 text-xs text-mist hover:text-white underline disabled:opacity-40"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              ) : (
-                /* Approver: confirm or decline the rollback */
-                <div className="rounded-xl px-4 py-3 bg-amber-950 border-2 border-amber-400 space-y-2.5 shadow-[0_0_20px_rgba(251,191,36,0.25)]">
-                  <p className="text-amber-100 text-sm">
-                    <span className="font-bold">{getUserLabel(pendingUndo.by)}</span> wants to undo — this returns{" "}
-                    <span className="font-bold">{pendingUndo.discarded.length}</span> pick
-                    {pendingUndo.discarded.length === 1 ? "" : "s"} to the pool:
-                  </p>
+                /* Requester: track approvals from everyone who'd lose a pick */
+                <div className="rounded-xl px-4 py-3 bg-amber-950 border border-amber-500/60 space-y-2.5">
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-amber-200 text-sm">
+                      ⏳ Undo needs approval from {pendingUndo.requiredApprovers.length}{" "}
+                      {pendingUndo.requiredApprovers.length === 1 ? "player" : "players"}
+                      {(() => {
+                        const tgt = pendingUndo.discarded.find((d) => d.pickNumber === pendingUndo.target);
+                        return tgt ? <> (back to <span className="font-semibold">{tgt.playerName}</span>)</> : null;
+                      })()}
+                    </p>
+                    <button
+                      onClick={() => sendUndoAction("cancel")}
+                      disabled={undoBusy}
+                      className="shrink-0 text-xs text-mist hover:text-white underline disabled:opacity-40"
+                    >
+                      Cancel
+                    </button>
+                  </div>
                   <div className="flex flex-wrap gap-1.5">
-                    {pendingUndo.discarded.map((d) => (
-                      <span
-                        key={d.playerKey}
-                        className={`text-xs rounded px-1.5 py-0.5 ${
-                          d.pickedBy === username
-                            ? "bg-red-500/20 text-red-200 border border-red-500/50"
-                            : "bg-navy2 text-cloud"
-                        }`}
+                    {pendingUndo.requiredApprovers.map((u) => {
+                      const ok = pendingUndo.approvals.includes(u);
+                      return (
+                        <span
+                          key={u}
+                          className={`text-xs rounded-full px-2 py-0.5 border ${
+                            ok
+                              ? "bg-emerald-500/15 text-emerald-300 border-emerald-500/40"
+                              : "bg-navy2 text-mist border-hair2"
+                          }`}
+                        >
+                          {ok ? "✓" : "⏳"} {getUserLabel(u)}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : pendingUndo.requiredApprovers.includes(username) ? (
+                pendingUndo.approvals.includes(username) ? (
+                  /* Affected player who already approved — waiting on the rest */
+                  <div className="rounded-xl px-4 py-3 bg-amber-950 border border-amber-500/60 text-sm text-amber-200">
+                    ✓ You approved <span className="font-semibold">{getUserLabel(pendingUndo.by)}</span>&apos;s undo — waiting for{" "}
+                    <span className="font-semibold">
+                      {pendingUndo.requiredApprovers.filter((u) => !pendingUndo.approvals.includes(u)).map(getUserLabel).join(", ")}
+                    </span>
+                    .
+                  </div>
+                ) : (
+                  /* Affected player: confirm or decline the rollback */
+                  <div className="rounded-xl px-4 py-3 bg-amber-950 border-2 border-amber-400 space-y-2.5 shadow-[0_0_20px_rgba(251,191,36,0.25)]">
+                    <p className="text-amber-100 text-sm">
+                      <span className="font-bold">{getUserLabel(pendingUndo.by)}</span> wants to undo — this returns{" "}
+                      <span className="font-bold">{pendingUndo.discarded.length}</span> pick
+                      {pendingUndo.discarded.length === 1 ? "" : "s"} to the pool:
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {pendingUndo.discarded.map((d) => (
+                        <span
+                          key={d.playerKey}
+                          className={`text-xs rounded px-1.5 py-0.5 ${
+                            d.pickedBy === username
+                              ? "bg-red-500/20 text-red-200 border border-red-500/50"
+                              : "bg-navy2 text-cloud"
+                          }`}
+                        >
+                          {getFlag(d.playerTeam)} {d.playerName}
+                          {d.pickedBy === username ? " · yours" : ""}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-xs text-amber-300/80">
+                      Then it&apos;s <span className="font-semibold">{getUserLabel(pendingUndo.resumePicker ?? "")}</span>&apos;s turn.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 pt-0.5">
+                      <button
+                        onClick={() => sendUndoAction("approve")}
+                        disabled={undoBusy}
+                        className="h-10 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm disabled:opacity-40 transition-colors"
                       >
-                        {getFlag(d.playerTeam)} {d.playerName}
-                        {d.pickedBy === username ? " · yours" : ""}
-                      </span>
-                    ))}
+                        Approve
+                      </button>
+                      <button
+                        onClick={() => sendUndoAction("reject")}
+                        disabled={undoBusy}
+                        className="h-10 rounded-lg bg-navy2 hover:bg-navy text-cloud font-semibold text-sm disabled:opacity-40 transition-colors"
+                      >
+                        Reject
+                      </button>
+                    </div>
                   </div>
-                  <p className="text-xs text-amber-300/80">
-                    Then it&apos;s <span className="font-semibold">{getUserLabel(pendingUndo.resumePicker ?? "")}</span>&apos;s turn.
-                  </p>
-                  <div className="grid grid-cols-2 gap-2 pt-0.5">
-                    <button
-                      onClick={() => sendUndoAction("approve")}
-                      disabled={undoBusy}
-                      className="h-10 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm disabled:opacity-40 transition-colors"
-                    >
-                      Approve
-                    </button>
-                    <button
-                      onClick={() => sendUndoAction("reject")}
-                      disabled={undoBusy}
-                      className="h-10 rounded-lg bg-navy2 hover:bg-navy text-cloud font-semibold text-sm disabled:opacity-40 transition-colors"
-                    >
-                      Reject
-                    </button>
-                  </div>
+                )
+              ) : (
+                /* Bystander (not losing a pick): passive notice, no vote */
+                <div className="rounded-xl px-4 py-3 bg-amber-950/60 border border-amber-500/40 text-sm text-amber-200/80">
+                  ⏳ <span className="font-semibold">{getUserLabel(pendingUndo.by)}</span> asked to undo — waiting on{" "}
+                  {pendingUndo.requiredApprovers.filter((u) => !pendingUndo.approvals.includes(u)).map(getUserLabel).join(", ")}.
+                  Picking is paused.
                 </div>
               )
             ) : (
@@ -1120,6 +1196,85 @@ function PlayerCard({
         <div className="h-px bg-navy2/60 mx-2 my-0.5" />
       )}
     </>
+  );
+}
+
+function OrderRevealScreen({
+  order,
+  matchLabel,
+  username,
+  onDone,
+}: {
+  order: string[];
+  matchLabel: string;
+  username: string;
+  onDone: () => void;
+}) {
+  const [revealed, setRevealed] = useState(false);
+
+  // Brief shuffle, then reveal the settled order. Auto-advance if the player just
+  // watches, but the button lets them move on immediately.
+  useEffect(() => {
+    const t = setTimeout(() => setRevealed(true), 1300);
+    return () => clearTimeout(t);
+  }, []);
+  useEffect(() => {
+    if (!revealed) return;
+    const t = setTimeout(onDone, 6000);
+    return () => clearTimeout(t);
+  }, [revealed, onDone]);
+
+  return (
+    <main className="min-h-screen bg-ink text-white flex flex-col items-center justify-center px-6 gap-7 floodlight">
+      <div className="text-center space-y-1">
+        <p className="text-mist text-xs uppercase tracking-widest">Live Draft</p>
+        <h1 className="font-bold text-lg">{matchLabel}</h1>
+      </div>
+
+      {!revealed ? (
+        <div className="flex flex-col items-center gap-4 py-6">
+          <div className="text-5xl animate-spin">🎲</div>
+          <p className="text-gold font-semibold animate-pulse">Setting the draft order…</p>
+        </div>
+      ) : (
+        <>
+          <p className="text-mist text-[11px] uppercase tracking-widest">Draft order</p>
+          <div className="w-full max-w-xs space-y-2">
+            {order.map((u, i) => {
+              const me = u === username;
+              return (
+                <div
+                  key={u}
+                  className={`flex items-center gap-3 rounded-xl px-3 py-2.5 border ${
+                    me ? "border-gold bg-gold/10" : "border-hair2 bg-navy2"
+                  }`}
+                >
+                  <span className="w-7 h-7 shrink-0 rounded-full bg-gold text-ink font-extrabold text-sm grid place-items-center">
+                    {i + 1}
+                  </span>
+                  <span className={`w-3 h-3 rounded-full ${USER_COLORS[u] ?? "bg-gray-500"}`} />
+                  <span className="font-semibold text-cloud flex-1 truncate">
+                    {getUserLabel(u)}
+                    {me && <span className="text-mist2 font-normal"> (you)</span>}
+                  </span>
+                  {i === 0 && <span className="text-xs text-gold font-semibold shrink-0">picks first</span>}
+                </div>
+              );
+            })}
+          </div>
+          <p className="text-xs text-mist2 text-center max-w-xs leading-relaxed">
+            Snake draft — round 1 runs top to bottom, round 2 reverses. Going last one
+            round means going first the next, so every seat is fair.
+          </p>
+          <button
+            onClick={onDone}
+            className="h-12 px-8 rounded-xl bg-gold hover:brightness-110 text-ink font-bold uppercase tracking-wide glow-gold transition"
+          >
+            Start drafting →
+          </button>
+        </>
+      )}
+    </main>
   );
 }
 

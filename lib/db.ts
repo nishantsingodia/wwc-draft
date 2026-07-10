@@ -12,6 +12,9 @@ export const draftContests = sqliteTable("draft_contests", {
   matchDeadline: integer("match_deadline").notNull(),
   picksPerUser: integer("picks_per_user").notNull().default(11),
   backupsPerUser: integer("backups_per_user").notNull().default(4),
+  // How many drafters this contest is for (2–6). Default 2 keeps every existing
+  // contest — and any created before N-player shipped — behaving exactly as before.
+  maxPlayers: integer("max_players").notNull().default(2),
   mode: text("mode", { enum: ["live", "manual"] }).notNull().default("live"),
   status: text("status", {
     enum: ["WAITING", "DRAFTING", "TEAM_SELECT", "LOCKED", "COMPLETED"],
@@ -21,12 +24,17 @@ export const draftContests = sqliteTable("draft_contests", {
   draftOrder: text("draft_order"), // JSON: ["nishant","pushap"]
   pickCount: integer("pick_count").notNull().default(0),
   // Pending undo request (single-flight): a player asked to roll the draft back
-  // to their own last pick. The other player must approve before it executes,
-  // because the rollback discards every pick from `pendingUndoTarget` onward —
-  // including any the opponent made after. Null when no undo is pending.
+  // to their own last pick. The rollback discards every pick from
+  // `pendingUndoTarget` onward — including picks OTHER players made after — so
+  // every player who'd lose a pick must approve (see pendingUndoApprovals). If no
+  // one else is affected it executes instantly with no handshake. Null when idle.
   pendingUndoBy: text("pending_undo_by"),
   pendingUndoTarget: integer("pending_undo_target"), // discard all picks with pick_number >= this
   pendingUndoAt: integer("pending_undo_at"), // unix secs; used for TTL expiry
+  // N-player consensus: JSON array of usernames who have approved the pending undo.
+  // The rollback fires only once EVERY player who'd lose a pick (everyone with a
+  // pick_number >= target, except the requester) is in here. NULL when none pending.
+  pendingUndoApprovals: text("pending_undo_approvals"),
   createdBy: text("created_by").notNull(),
   createdAt: integer("created_at").notNull(),
 });

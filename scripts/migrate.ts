@@ -97,11 +97,18 @@ async function migrate() {
     console.log("✓", sql.slice(0, 60).trim() + "...");
   }
 
+  // N-player drafts: how many drafters a contest is for (2–6). Additive, safe on
+  // existing rows — DEFAULT 2 makes every prior contest a 2-player draft, i.e. no
+  // behaviour change until a creator picks a higher number.
+  await addColumnIfMissing("draft_contests", "max_players", "INTEGER NOT NULL DEFAULT 2");
+
   // Undo feature: pending-undo columns on draft_contests (additive, safe on
   // existing rows — all default to NULL = no undo pending).
   await addColumnIfMissing("draft_contests", "pending_undo_by", "TEXT");
   await addColumnIfMissing("draft_contests", "pending_undo_target", "INTEGER");
   await addColumnIfMissing("draft_contests", "pending_undo_at", "INTEGER");
+  // N-player undo consensus: usernames who approved the pending undo (JSON array).
+  await addColumnIfMissing("draft_contests", "pending_undo_approvals", "TEXT");
 
   // Turn serialization: a (contest, pick_number) can be filled exactly once, so
   // concurrent autopick/pick races can never double-fill or mis-attribute a turn.

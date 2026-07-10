@@ -3,6 +3,8 @@
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getAllMatches, formatMatchDate } from "@/lib/matches";
+import { getFullSquadByTeams } from "@/lib/players";
+import { MAX_ROSTER } from "@/lib/users";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -16,6 +18,7 @@ function CreateDraftForm() {
 
   const [picksPerUser, setPicksPerUser] = useState(11);
   const [backupsPerUser, setBackupsPerUser] = useState(4);
+  const [maxPlayers, setMaxPlayers] = useState(2);
   const [mode, setMode] = useState<"live" | "manual">("live");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -30,6 +33,13 @@ function CreateDraftForm() {
     );
   }
 
+  // The draftable pool is the two squads combined. getFullSquadByTeams is the exact
+  // count the server validates against, so client and server never disagree. It only
+  // ever grows at runtime (self-heal + no-delete), so a setup valid now stays valid.
+  const poolSize = getFullSquadByTeams(match.team1, match.team2).length;
+  const needed = maxPlayers * (picksPerUser + backupsPerUser);
+  const overPool = mode === "live" && needed > poolSize;
+
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -38,7 +48,7 @@ function CreateDraftForm() {
       const res = await fetch("/api/draft", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ matchKey, picksPerUser, backupsPerUser, mode }),
+        body: JSON.stringify({ matchKey, picksPerUser, backupsPerUser, mode, maxPlayers }),
       });
       if (res.ok) {
         const { code } = await res.json();
@@ -98,6 +108,21 @@ function CreateDraftForm() {
             </div>
           </div>
 
+          {/* Friends — how many drafters (live only; manual is one entry point) */}
+          {mode === "live" && (
+            <div className="space-y-2">
+              <label className="text-sm text-mist uppercase tracking-wider">Friends drafting</label>
+              <div className="flex items-center gap-2">
+                <button type="button" onClick={() => setMaxPlayers((v) => Math.max(2, v - 1))}
+                  className="w-8 h-8 bg-navy rounded-lg text-lg font-bold">−</button>
+                <span className="w-8 text-center text-xl font-bold">{maxPlayers}</span>
+                <button type="button" onClick={() => setMaxPlayers((v) => Math.min(MAX_ROSTER, v + 1))}
+                  className="w-8 h-8 bg-navy rounded-lg text-lg font-bold">+</button>
+                <span className="text-xs text-mist2 ml-1">2–{MAX_ROSTER} players</span>
+              </div>
+            </div>
+          )}
+
           {/* Team size */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
@@ -122,17 +147,44 @@ function CreateDraftForm() {
             </div>
           </div>
 
-          <div className="bg-ink2 rounded-xl px-4 py-3 text-sm text-mist">
-            Total picks: <span className="text-white font-semibold">{picksPerUser + backupsPerUser}</span>{" "}
-            per person ({picksPerUser} starters + {backupsPerUser} backups)
-          </div>
+          {/* Squad-pool gauge — a live exclusive draft can't deal more unique players
+              than the two squads hold. Manual mode is non-exclusive, so it's exempt. */}
+          {mode === "live" ? (
+            <div className="bg-ink2 rounded-xl px-4 py-3 space-y-2">
+              <div className="flex items-baseline justify-between text-sm">
+                <span className="text-mist">Squad pool</span>
+                <span className={`font-semibold tabular-nums ${overPool ? "text-red-400" : "text-white"}`}>
+                  {needed} / {poolSize} drafted
+                </span>
+              </div>
+              <div className="h-2 rounded-full bg-navy overflow-hidden flex">
+                <span
+                  className={`h-full ${overPool ? "bg-gold" : "bg-gold"}`}
+                  style={{ width: `${Math.min(100, (needed / poolSize) * 100)}%` }}
+                />
+                {overPool && (
+                  <span className="h-full bg-red-500" style={{ width: `${Math.min(100, ((needed - poolSize) / poolSize) * 100)}%` }} />
+                )}
+              </div>
+              <p className={`text-xs ${overPool ? "text-red-400" : "text-emerald-400"}`}>
+                {overPool
+                  ? `✕ ${maxPlayers} × ${picksPerUser + backupsPerUser} = ${needed} — ${needed - poolSize} more than the pool holds. Fewer picks or friends.`
+                  : `✓ ${maxPlayers} ${maxPlayers === 1 ? "friend" : "friends"} × ${picksPerUser + backupsPerUser} picks = ${needed} · ${poolSize - needed} left in the pool`}
+              </p>
+            </div>
+          ) : (
+            <div className="bg-ink2 rounded-xl px-4 py-3 text-sm text-mist">
+              Total picks: <span className="text-white font-semibold">{picksPerUser + backupsPerUser}</span>{" "}
+              per person ({picksPerUser} starters + {backupsPerUser} backups)
+            </div>
+          )}
 
           {error && <p className="text-red-400 text-sm">{error}</p>}
 
           <Button
             type="submit"
-            disabled={loading}
-            className="w-full h-12 bg-gold hover:brightness-110 text-ink font-bold uppercase tracking-wide glow-gold transition"
+            disabled={loading || overPool}
+            className="w-full h-12 bg-gold hover:brightness-110 text-ink font-bold uppercase tracking-wide glow-gold transition disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {loading ? "Creating…" : "Create Draft →"}
           </Button>
