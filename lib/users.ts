@@ -15,13 +15,13 @@ export type RosterMember = {
 export const ROSTER: RosterMember[] = [
   { code: "NISH2026", username: "nishant", label: "Nishant", color: "bg-blue-500" },
   { code: "PUSH2026", username: "pushap", label: "Pushap", color: "bg-emerald-500" },
-  // ── Extra seats for 6-player drafts. PLACEHOLDERS — swap the label + code for the
-  //    real friends before deploying (keep `username`/`color` stable once used).
-  //    Colors are pre-chosen to stay distinct from the two above and each other. ──
-  { code: "PLAYER3", username: "player3", label: "Player 3", color: "bg-amber-500" },
-  { code: "PLAYER4", username: "player4", label: "Player 4", color: "bg-purple-500" },
-  { code: "PLAYER5", username: "player5", label: "Player 5", color: "bg-cyan-500" },
-  { code: "PLAYER6", username: "player6", label: "Player 6", color: "bg-pink-500" },
+  // Friends added 2026-07-11 for 6-player drafts. `username` + `color` are stable
+  // ids now — don't change them once someone's joined a draft (draft rows reference
+  // the username). Colours stay distinct from the two above and each other.
+  { code: "PRAD2026", username: "pradeep", label: "Pradeep", color: "bg-amber-500" },
+  { code: "ARIF2026", username: "arif", label: "Arif", color: "bg-purple-500" },
+  { code: "SHAR2026", username: "sharan", label: "Sharan", color: "bg-cyan-500" },
+  { code: "MIHI2026", username: "mihir", label: "Mihir", color: "bg-pink-500" },
 ];
 
 // The hard ceiling on drafters per contest — bounded by the roster size.
