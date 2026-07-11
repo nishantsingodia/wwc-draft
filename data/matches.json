@@ -709,5 +709,50 @@
     "team2": "OWI",
     "label": "3rd ODI: IRE-W v WI-W",
     "date": "2026-07-15T15:15:00+05:30"
+  },
+  {
+    "matchNum": 80,
+    "key": "M_NZWI_ODI1_Jul12",
+    "gender": "M",
+    "team1": "MWI",
+    "team2": "MNZ",
+    "label": "1st ODI: WI v NZ",
+    "date": "2026-07-12T00:00:00+05:30"
+  },
+  {
+    "matchNum": 81,
+    "key": "M_NZWI_ODI2_Jul14",
+    "gender": "M",
+    "team1": "MWI",
+    "team2": "MNZ",
+    "label": "2nd ODI: WI v NZ",
+    "date": "2026-07-14T00:00:00+05:30"
+  },
+  {
+    "matchNum": 82,
+    "key": "M_NZWI_ODI3_Jul17",
+    "gender": "M",
+    "team1": "MWI",
+    "team2": "MNZ",
+    "label": "3rd ODI: WI v NZ",
+    "date": "2026-07-17T00:00:00+05:30"
+  },
+  {
+    "matchNum": 83,
+    "key": "M_NZWI_ODI4_Jul20",
+    "gender": "M",
+    "team1": "MWI",
+    "team2": "MNZ",
+    "label": "4th ODI: WI v NZ",
+    "date": "2026-07-20T00:00:00+05:30"
+  },
+  {
+    "matchNum": 84,
+    "key": "M_NZWI_ODI5_Jul22",
+    "gender": "M",
+    "team1": "MWI",
+    "team2": "MNZ",
+    "label": "5th ODI: WI v NZ",
+    "date": "2026-07-22T00:00:00+05:30"
   }
 ]

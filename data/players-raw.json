@@ -4018,5 +4018,315 @@
     "team_code": "OWI",
     "efppm": 39.9,
     "pid": "e22f8ec1"
+  },
+  {
+    "id": 10222,
+    "name": "Will Young",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MNZ",
+    "efppm": 60.5,
+    "pid": "8afe73e2"
+  },
+  {
+    "id": 10223,
+    "name": "Tom Latham",
+    "country": "New Zealand",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "MNZ",
+    "efppm": 53.9,
+    "pid": "e824e6ee"
+  },
+  {
+    "id": 10224,
+    "name": "Nick Kelly",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MNZ",
+    "efppm": 64.0,
+    "pid": "97f437ed"
+  },
+  {
+    "id": 10225,
+    "name": "Daryl Mitchell",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MNZ",
+    "efppm": 92.5,
+    "pid": "eade4650"
+  },
+  {
+    "id": 10226,
+    "name": "Henry Nicholls",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MNZ",
+    "efppm": 48.6,
+    "pid": "03521fd3"
+  },
+  {
+    "id": 10227,
+    "name": "Mark Chapman",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MNZ",
+    "efppm": 56.3,
+    "pid": "7fa12533"
+  },
+  {
+    "id": 10228,
+    "name": "Michael Bracewell",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MNZ",
+    "efppm": 85.0,
+    "pid": "e38bce7a"
+  },
+  {
+    "id": 10229,
+    "name": "Mitchell Santner",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MNZ",
+    "efppm": 71.7,
+    "pid": "e4a0deae"
+  },
+  {
+    "id": 10230,
+    "name": "Nathan Smith",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MNZ",
+    "efppm": 63.1,
+    "pid": "05b1aef8"
+  },
+  {
+    "id": 10231,
+    "name": "Jacob Duffy",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MNZ",
+    "efppm": 73.9,
+    "pid": "dadbdb68"
+  },
+  {
+    "id": 10232,
+    "name": "Ben Lister",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MNZ",
+    "efppm": 61.0,
+    "pid": "79f5bc26"
+  },
+  {
+    "id": 10233,
+    "name": "Mitch Hay",
+    "country": "New Zealand",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "MNZ",
+    "efppm": 46.3,
+    "pid": "732f711b"
+  },
+  {
+    "id": 10234,
+    "name": "Dean Foxcroft",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MNZ",
+    "efppm": 90.0,
+    "pid": "ed6894af"
+  },
+  {
+    "id": 10235,
+    "name": "Kristian Clarke",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MNZ",
+    "efppm": 106.7,
+    "pid": "1e1a8922"
+  },
+  {
+    "id": 10236,
+    "name": "Matthew Fisher",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MNZ",
+    "efppm": 0,
+    "pid": null
+  },
+  {
+    "id": 10237,
+    "name": "Jayden Lennox",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MNZ",
+    "efppm": 67.6,
+    "pid": "07793daf"
+  },
+  {
+    "id": 10238,
+    "name": "John Campbell",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MWI",
+    "efppm": 61.2,
+    "pid": "6fd0c8e1"
+  },
+  {
+    "id": 10239,
+    "name": "Keacy Carty",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MWI",
+    "efppm": 58.2,
+    "pid": "6020a3c6"
+  },
+  {
+    "id": 10240,
+    "name": "Ackeem Auguste",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MWI",
+    "efppm": 32.3,
+    "pid": "4b167ede"
+  },
+  {
+    "id": 10241,
+    "name": "Shai Hope",
+    "country": "West Indies",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "MWI",
+    "efppm": 78.9,
+    "pid": "1fc6ef83"
+  },
+  {
+    "id": 10242,
+    "name": "Sherfane Rutherford",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MWI",
+    "efppm": 69.6,
+    "pid": "d014d5ac"
+  },
+  {
+    "id": 10243,
+    "name": "Roston Chase",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MWI",
+    "efppm": 58.4,
+    "pid": "3feda4fa"
+  },
+  {
+    "id": 10244,
+    "name": "Justin Greaves",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MWI",
+    "efppm": 56.2,
+    "pid": "74d12124"
+  },
+  {
+    "id": 10245,
+    "name": "Keemo Paul",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MWI",
+    "efppm": 67.0,
+    "pid": "75224f22"
+  },
+  {
+    "id": 10246,
+    "name": "Gudakesh Motie",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MWI",
+    "efppm": 76.2,
+    "pid": "97bdec3d"
+  },
+  {
+    "id": 10247,
+    "name": "Alzarri Joseph",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MWI",
+    "efppm": 81.6,
+    "pid": "b0946605"
+  },
+  {
+    "id": 10248,
+    "name": "Jayden Seales",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MWI",
+    "efppm": 65.0,
+    "pid": "ded9ff1e"
+  },
+  {
+    "id": 10249,
+    "name": "Amir Jangoo",
+    "country": "West Indies",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "MWI",
+    "efppm": 48.8,
+    "pid": "88626ed2"
+  },
+  {
+    "id": 10250,
+    "name": "Matthew Forde",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MWI",
+    "efppm": 82.5,
+    "pid": "83d17bbc"
+  },
+  {
+    "id": 10251,
+    "name": "Shamar Joseph",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MWI",
+    "efppm": 0,
+    "pid": null
+  },
+  {
+    "id": 10252,
+    "name": "Vitel Lawes",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MWI",
+    "efppm": 0,
+    "pid": null
   }
 ]

@@ -45,6 +45,9 @@ const TEAM_FLAGS: Record<string, string> = {
   // Women's T20 WC IRE/WI squads (which differ: Delany/Kelly/Henry vs Forbes/J.Maguire/Grimmond).
   OIRE: "🇮🇪",
   OWI: "🏏",
+  // Men's NZ v WI ODI 2026 (M-prefixed, distinct from women's NZ/WI)
+  MNZ: "🇳🇿",
+  MWI: "🏏",
   // MLC 2026 franchises (themed emoji so the six US teams are distinguishable)
   MINY: "🗽",
   WAF: "🦅",
@@ -74,6 +77,8 @@ export const TEAM_NAMES: Record<string, string> = {
   WI: "West Indies",
   OIRE: "Ireland",
   OWI: "West Indies",
+  MNZ: "New Zealand",
+  MWI: "West Indies",
   MINY: "MI New York",
   WAF: "Washington Freedom",
   TSK: "Texas Super Kings",
