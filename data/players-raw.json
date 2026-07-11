@@ -4057,7 +4057,7 @@
     "squad_number": 4,
     "team_code": "MNZ",
     "efppm": 92.5,
-    "pid": "eade4650"
+    "pid": "slug:daryl-mitchell"
   },
   {
     "id": 10226,
@@ -4087,7 +4087,7 @@
     "squad_number": 7,
     "team_code": "MNZ",
     "efppm": 85.0,
-    "pid": "e38bce7a"
+    "pid": "slug:michael-bracewell"
   },
   {
     "id": 10229,
@@ -4157,7 +4157,7 @@
     "squad_number": 14,
     "team_code": "MNZ",
     "efppm": 106.7,
-    "pid": "1e1a8922"
+    "pid": "slug:kristian-clarke"
   },
   {
     "id": 10236,
@@ -4167,7 +4167,7 @@
     "squad_number": 15,
     "team_code": "MNZ",
     "efppm": 0,
-    "pid": null
+    "pid": "slug:matthew-fisher"
   },
   {
     "id": 10237,
@@ -4187,7 +4187,7 @@
     "squad_number": 1,
     "team_code": "MWI",
     "efppm": 61.2,
-    "pid": "6fd0c8e1"
+    "pid": "slug:john-campbell"
   },
   {
     "id": 10239,
@@ -4217,7 +4217,7 @@
     "squad_number": 4,
     "team_code": "MWI",
     "efppm": 78.9,
-    "pid": "1fc6ef83"
+    "pid": "c59d8f8a"
   },
   {
     "id": 10242,
@@ -4227,7 +4227,7 @@
     "squad_number": 5,
     "team_code": "MWI",
     "efppm": 69.6,
-    "pid": "d014d5ac"
+    "pid": "slug:sherfane-rutherford"
   },
   {
     "id": 10243,
@@ -4257,7 +4257,7 @@
     "squad_number": 8,
     "team_code": "MWI",
     "efppm": 67.0,
-    "pid": "75224f22"
+    "pid": "slug:keemo-paul"
   },
   {
     "id": 10246,
@@ -4277,7 +4277,7 @@
     "squad_number": 10,
     "team_code": "MWI",
     "efppm": 81.6,
-    "pid": "b0946605"
+    "pid": "slug:alzarri-joseph"
   },
   {
     "id": 10248,
@@ -4317,7 +4317,7 @@
     "squad_number": 14,
     "team_code": "MWI",
     "efppm": 0,
-    "pid": null
+    "pid": "slug:shamar-joseph"
   },
   {
     "id": 10252,
@@ -4327,6 +4327,6 @@
     "squad_number": 15,
     "team_code": "MWI",
     "efppm": 0,
-    "pid": null
+    "pid": "slug:vitel-lawes"
   }
 ]
