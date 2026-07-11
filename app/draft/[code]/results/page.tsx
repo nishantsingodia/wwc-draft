@@ -8,6 +8,7 @@ import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
+import RefreshPoints from "@/components/refresh-points";
 
 type PlayerResult = {
   key: string;
@@ -172,7 +173,11 @@ export default function ResultsPage({
           <div className="flex-1">
             <h1 className="font-bold">{contest.matchLabel}</h1>
             <p className="text-xs text-mist">
-              {hasPoints ? "Live points — refreshes every 30s" : "Waiting for match to start"}
+              {hasPoints
+                ? "Live points — refreshes every 30s"
+                : data.started
+                ? "Match underway — waiting for points"
+                : "Waiting for match to start"}
             </p>
           </div>
           <Link href="/lobby" className="text-xs text-mist2 hover:text-cloud">Home</Link>
@@ -181,6 +186,15 @@ export default function ResultsPage({
         {/* Recon-status banner: a provisional/awaiting-recon or revised-but-pending result is
             never presented as plain "final" — the numbers may still change. */}
         <ReconBanner ms={data.matchStatus} hasPoints={hasPoints} />
+
+        {/* Live-points refresh — the same control as the match hub, so a user watching the
+            scoreline can force a bot run (points update in ~1–2 min) without bouncing back
+            to the match page. Gated on the server-computed `started` flag, which the results
+            API returns for exactly this purpose; hidden pre-start and when live-refresh isn't
+            configured. */}
+        {data.started && (
+          <RefreshPoints matchStarted={data.started} onRefreshed={fetchResults} />
+        )}
 
         {/* Refresh the lineup — manual + auto-check at roundlock. On the results
             page this re-pulls the official XI so backup-intelligence subs + the
