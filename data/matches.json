@@ -588,8 +588,8 @@
     "matchNum": 66,
     "key": "MLC_Qualifier_Jul16",
     "gender": "M",
-    "team1": "TBD",
-    "team2": "TBD",
+    "team1": "SFU",
+    "team2": "LAKR",
     "label": "MLC Qualifier",
     "date": "2026-07-16T03:00:00+05:30"
   },
@@ -597,8 +597,8 @@
     "matchNum": 67,
     "key": "MLC_Eliminator_Jul16",
     "gender": "M",
-    "team1": "TBD",
-    "team2": "TBD",
+    "team1": "WAF",
+    "team2": "MINY",
     "label": "MLC Eliminator",
     "date": "2026-07-16T07:00:00+05:30"
   },
