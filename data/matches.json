@@ -590,7 +590,7 @@
     "gender": "M",
     "team1": "SFU",
     "team2": "LAKR",
-    "label": "MLC Qualifier: SFU v LAKR",
+    "label": "MLC Qualifier",
     "date": "2026-07-16T03:00:00+05:30"
   },
   {
@@ -599,7 +599,7 @@
     "gender": "M",
     "team1": "WAF",
     "team2": "MINY",
-    "label": "MLC Eliminator: WAF v MINY",
+    "label": "MLC Eliminator",
     "date": "2026-07-16T07:00:00+05:30"
   },
   {
