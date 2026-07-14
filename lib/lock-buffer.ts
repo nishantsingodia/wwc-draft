@@ -3,4 +3,4 @@
 // — e.g. the draft board's redirect guard — can import the constant without pulling
 // the whole schedule into their bundle. Previously hardcoded as `30 * 60` in four
 // places (results page, team page, lineup refresh); import this instead.
-export const LOCK_BUFFER = 30 * 60; // 30 min
+export const LOCK_BUFFER = 90 * 60; // 90 min (raised from 30 to allow late drafting of in-progress matches)
