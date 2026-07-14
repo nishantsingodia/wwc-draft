@@ -1,5 +1,6 @@
 import rawPlayers from "@/data/players-raw.json";
 import { fuzzyMatchName } from "./fuzzy-name-match";
+import teamCodes from "@/data/team-codes.json";
 
 export type Player = {
   id: number;
@@ -23,85 +24,16 @@ export function isPidKey(k: string): boolean {
 // One player as seen in the points sheet's self-healing roster (getSheetRoster).
 export type SheetPlayer = { role: string; pid: string };
 
-const TEAM_FLAGS: Record<string, string> = {
-  AUS: "🇦🇺",
-  BAN: "🇧🇩",
-  MAUS: "🇦🇺",
-  MBAN: "🇧🇩",
-  MIND: "🇮🇳",
-  MIRE: "🇮🇪",
-  ENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-  MENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-  IND: "🇮🇳",
-  IRE: "🇮🇪",
-  NED: "🇳🇱",
-  NZ: "🇳🇿",
-  PAK: "🇵🇰",
-  SA: "🇿🇦",
-  SCO: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
-  SL: "🇱🇰",
-  WI: "🏏",
-  // Women's ODI bilateral (IRE v WI 2026) — distinct codes so the pool is isolated from the
-  // Women's T20 WC IRE/WI squads (which differ: Delany/Kelly/Henry vs Forbes/J.Maguire/Grimmond).
-  OIRE: "🇮🇪",
-  OWI: "🏏",
-  // Men's NZ v WI ODI 2026 (M-prefixed, distinct from women's NZ/WI)
-  MNZ: "🇳🇿",
-  MWI: "🏏",
-  // Men's IND v ENG ODI 2026 (O-prefixed = ODI variant, distinct from T20I MIND/MENG whose squads differ)
-  OIND: "🇮🇳",
-  OENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-  // MLC 2026 franchises (themed emoji so the six US teams are distinguishable)
-  MINY: "🗽",
-  WAF: "🦅",
-  TSK: "🦁",
-  SFU: "🦄",
-  SEO: "🐋",
-  LAKR: "⚔️",
-  // LPL 2026 franchises (Sri Lanka)
-  LPLJK: "👑",
-  LPLCK: "🧢",
-  LPLKR: "🐘",
-  LPLGG: "🏰",
-  LPLDS: "6️⃣",
-};
-
-export const TEAM_NAMES: Record<string, string> = {
-  AUS: "Australia",
-  BAN: "Bangladesh",
-  MAUS: "Australia",
-  MBAN: "Bangladesh",
-  MIND: "India",
-  MIRE: "Ireland",
-  ENG: "England",
-  MENG: "England",
-  IND: "India",
-  IRE: "Ireland",
-  NED: "Netherlands",
-  NZ: "New Zealand",
-  PAK: "Pakistan",
-  SA: "South Africa",
-  SCO: "Scotland",
-  SL: "Sri Lanka",
-  WI: "West Indies",
-  OIRE: "Ireland",
-  OWI: "West Indies",
-  MNZ: "New Zealand",
-  MWI: "West Indies",
-  OIND: "India",
-  OENG: "England",
-  MINY: "MI New York",
-  WAF: "Washington Freedom",
-  TSK: "Texas Super Kings",
-  SFU: "San Francisco Unicorns",
-  SEO: "Seattle Orcas",
-  LAKR: "Los Angeles Knight Riders",
-  LPLJK: "Jaffna Kings",
-  LPLCK: "Colombo Kaps",
-  LPLKR: "Kandy Royals",
-  LPLGG: "Galle Gallants",
-  LPLDS: "Dambulla Sixers",
-};
+// Team codes now live in data/team-codes.json (machine-writable, so the tour-sync
+// job can append new tours without editing this file). Values must stay exact —
+// TEAM_NAMES feeds points matching (sheet team tokens) and the ESPN lineup team match.
+const _codes = teamCodes as Record<string, { flag: string; name: string }>;
+const TEAM_FLAGS: Record<string, string> = Object.fromEntries(
+  Object.entries(_codes).map(([code, v]) => [code, v.flag])
+);
+export const TEAM_NAMES: Record<string, string> = Object.fromEntries(
+  Object.entries(_codes).map(([code, v]) => [code, v.name])
+);
 
 // Names in players-raw.json are now canonical announced names.
 // DISPLAY_NAME_MAP is kept only for any legacy stale entries in the DB that

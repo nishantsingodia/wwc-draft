@@ -14,15 +14,15 @@ import { type Match } from "./matches";
 import { TEAM_NAMES } from "./players";
 import { normName } from "./fuzzy-name-match";
 import { resolveEspnPid } from "./registry";
+import espnSeries from "@/data/espn-series.json";
 
 const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/cricket";
 
 // ESPN series ids per gender. KEEP IN SYNC with the bot's tours.json `espn_series`.
 // W = Women's T20 World Cup 2026; M = the two men's tours running alongside.
-const SERIES_BY_GENDER: Record<"W" | "M", string[]> = {
-  W: ["1483859", "1528524"], // + IRE v WI Women's ODI 2026 (findEventId disambiguates by team pair)
-  M: ["1532475", "1528556", "1528532", "1496489", "1538619", "1537330"], // + LPL 2026 (1537330)
-};
+// ESPN series ids per gender — now in data/espn-series.json (machine-writable for
+// the tour-sync job). KEEP IN SYNC with the bot's tours.json `espn_series`.
+const SERIES_BY_GENDER = espnSeries as Record<"W" | "M", string[]>;
 
 type EspnLineup = {
   // teamCode -> (name|pid) -> batOrder (0 = unknown, falls back to squad_number)

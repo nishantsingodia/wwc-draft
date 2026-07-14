@@ -1,0 +1,138 @@
+{
+  "AUS": {
+    "flag": "🇦🇺",
+    "name": "Australia"
+  },
+  "BAN": {
+    "flag": "🇧🇩",
+    "name": "Bangladesh"
+  },
+  "ENG": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name": "England"
+  },
+  "IND": {
+    "flag": "🇮🇳",
+    "name": "India"
+  },
+  "IRE": {
+    "flag": "🇮🇪",
+    "name": "Ireland"
+  },
+  "LAKR": {
+    "flag": "⚔️",
+    "name": "Los Angeles Knight Riders"
+  },
+  "LPLCK": {
+    "flag": "🧢",
+    "name": "Colombo Kaps"
+  },
+  "LPLDS": {
+    "flag": "6️⃣",
+    "name": "Dambulla Sixers"
+  },
+  "LPLGG": {
+    "flag": "🏰",
+    "name": "Galle Gallants"
+  },
+  "LPLJK": {
+    "flag": "👑",
+    "name": "Jaffna Kings"
+  },
+  "LPLKR": {
+    "flag": "🐘",
+    "name": "Kandy Royals"
+  },
+  "MAUS": {
+    "flag": "🇦🇺",
+    "name": "Australia"
+  },
+  "MBAN": {
+    "flag": "🇧🇩",
+    "name": "Bangladesh"
+  },
+  "MENG": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name": "England"
+  },
+  "MIND": {
+    "flag": "🇮🇳",
+    "name": "India"
+  },
+  "MINY": {
+    "flag": "🗽",
+    "name": "MI New York"
+  },
+  "MIRE": {
+    "flag": "🇮🇪",
+    "name": "Ireland"
+  },
+  "MNZ": {
+    "flag": "🇳🇿",
+    "name": "New Zealand"
+  },
+  "MWI": {
+    "flag": "🏏",
+    "name": "West Indies"
+  },
+  "NED": {
+    "flag": "🇳🇱",
+    "name": "Netherlands"
+  },
+  "NZ": {
+    "flag": "🇳🇿",
+    "name": "New Zealand"
+  },
+  "OENG": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name": "England"
+  },
+  "OIND": {
+    "flag": "🇮🇳",
+    "name": "India"
+  },
+  "OIRE": {
+    "flag": "🇮🇪",
+    "name": "Ireland"
+  },
+  "OWI": {
+    "flag": "🏏",
+    "name": "West Indies"
+  },
+  "PAK": {
+    "flag": "🇵🇰",
+    "name": "Pakistan"
+  },
+  "SA": {
+    "flag": "🇿🇦",
+    "name": "South Africa"
+  },
+  "SCO": {
+    "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    "name": "Scotland"
+  },
+  "SEO": {
+    "flag": "🐋",
+    "name": "Seattle Orcas"
+  },
+  "SFU": {
+    "flag": "🦄",
+    "name": "San Francisco Unicorns"
+  },
+  "SL": {
+    "flag": "🇱🇰",
+    "name": "Sri Lanka"
+  },
+  "TSK": {
+    "flag": "🦁",
+    "name": "Texas Super Kings"
+  },
+  "WAF": {
+    "flag": "🦅",
+    "name": "Washington Freedom"
+  },
+  "WI": {
+    "flag": "🏏",
+    "name": "West Indies"
+  }
+}
