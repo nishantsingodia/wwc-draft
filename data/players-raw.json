@@ -4328,5 +4328,315 @@
     "team_code": "MWI",
     "efppm": 0,
     "pid": "slug:vitel-lawes"
+  },
+  {
+    "id": 10253,
+    "name": "Rohit Sharma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "OIND",
+    "efppm": 72.0,
+    "pid": "slug:rohit-sharma"
+  },
+  {
+    "id": 10254,
+    "name": "Shubman Gill",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "OIND",
+    "efppm": 75.0,
+    "pid": "slug:shubman-gill"
+  },
+  {
+    "id": 10255,
+    "name": "Virat Kohli",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "OIND",
+    "efppm": 78.0,
+    "pid": "slug:virat-kohli"
+  },
+  {
+    "id": 10256,
+    "name": "Shreyas Iyer",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "OIND",
+    "efppm": 68.0,
+    "pid": "espn:642519"
+  },
+  {
+    "id": 10257,
+    "name": "KL Rahul",
+    "country": "India",
+    "role": "WK",
+    "squad_number": 5,
+    "team_code": "OIND",
+    "efppm": 68.0,
+    "pid": "slug:kl-rahul"
+  },
+  {
+    "id": 10258,
+    "name": "Ishan Kishan",
+    "country": "India",
+    "role": "WK",
+    "squad_number": 6,
+    "team_code": "OIND",
+    "efppm": 45.0,
+    "pid": "752f7486"
+  },
+  {
+    "id": 10259,
+    "name": "Shivam Dube",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "OIND",
+    "efppm": 45.0,
+    "pid": "a4e37e47"
+  },
+  {
+    "id": 10260,
+    "name": "Washington Sundar",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "OIND",
+    "efppm": 52.0,
+    "pid": "f19ccfad"
+  },
+  {
+    "id": 10261,
+    "name": "Axar Patel",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "OIND",
+    "efppm": 58.0,
+    "pid": "espn:554691"
+  },
+  {
+    "id": 10262,
+    "name": "Kuldeep Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "OIND",
+    "efppm": 72.0,
+    "pid": "slug:kuldeep-yadav"
+  },
+  {
+    "id": 10263,
+    "name": "Jasprit Bumrah",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "OIND",
+    "efppm": 75.0,
+    "pid": "slug:jasprit-bumrah"
+  },
+  {
+    "id": 10264,
+    "name": "Arshdeep Singh",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "OIND",
+    "efppm": 55.0,
+    "pid": "244048f6"
+  },
+  {
+    "id": 10265,
+    "name": "Prasidh Krishna",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "OIND",
+    "efppm": 48.0,
+    "pid": "slug:prasidh-krishna"
+  },
+  {
+    "id": 10266,
+    "name": "Gurnoor Brar",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "OIND",
+    "efppm": 28.0,
+    "pid": "slug:gurnoor-brar"
+  },
+  {
+    "id": 10267,
+    "name": "Prince Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "OIND",
+    "efppm": 30.0,
+    "pid": "80b2fb19"
+  },
+  {
+    "id": 10268,
+    "name": "Ben Duckett",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "OENG",
+    "efppm": 62.0,
+    "pid": "slug:ben-duckett"
+  },
+  {
+    "id": 10269,
+    "name": "Harry Brook",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "OENG",
+    "efppm": 68.0,
+    "pid": "slug:harry-brook"
+  },
+  {
+    "id": 10270,
+    "name": "Joe Root",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "OENG",
+    "efppm": 70.0,
+    "pid": "slug:joe-root"
+  },
+  {
+    "id": 10271,
+    "name": "Jos Buttler",
+    "country": "England",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "OENG",
+    "efppm": 70.0,
+    "pid": "99b75528"
+  },
+  {
+    "id": 10272,
+    "name": "Tom Banton",
+    "country": "England",
+    "role": "WK",
+    "squad_number": 5,
+    "team_code": "OENG",
+    "efppm": 42.0,
+    "pid": "25f7b7d6"
+  },
+  {
+    "id": 10273,
+    "name": "Jacob Bethell",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "OENG",
+    "efppm": 55.0,
+    "pid": "3c55c703"
+  },
+  {
+    "id": 10274,
+    "name": "Will Jacks",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "OENG",
+    "efppm": 58.0,
+    "pid": "9caf69a1"
+  },
+  {
+    "id": 10275,
+    "name": "Sam Curran",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "OENG",
+    "efppm": 56.0,
+    "pid": "e94915e6"
+  },
+  {
+    "id": 10276,
+    "name": "Liam Dawson",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "OENG",
+    "efppm": 50.0,
+    "pid": "4a461c24"
+  },
+  {
+    "id": 10277,
+    "name": "Gus Atkinson",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "OENG",
+    "efppm": 55.0,
+    "pid": "slug:gus-atkinson"
+  },
+  {
+    "id": 10278,
+    "name": "Rehan Ahmed",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "OENG",
+    "efppm": 45.0,
+    "pid": "0ecb4de6"
+  },
+  {
+    "id": 10279,
+    "name": "James Coles",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "OENG",
+    "efppm": 28.0,
+    "pid": "slug:james-coles"
+  },
+  {
+    "id": 10280,
+    "name": "Jofra Archer",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "OENG",
+    "efppm": 65.0,
+    "pid": "5574750c"
+  },
+  {
+    "id": 10281,
+    "name": "Adil Rashid",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "OENG",
+    "efppm": 65.0,
+    "pid": "slug:adil-rashid"
+  },
+  {
+    "id": 10282,
+    "name": "Saqib Mahmood",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "OENG",
+    "efppm": 52.0,
+    "pid": "slug:saqib-mahmood"
+  },
+  {
+    "id": 10283,
+    "name": "Josh Tongue",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "OENG",
+    "efppm": 48.0,
+    "pid": "slug:josh-tongue"
   }
 ]

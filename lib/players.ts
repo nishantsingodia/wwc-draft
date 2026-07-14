@@ -48,6 +48,9 @@ const TEAM_FLAGS: Record<string, string> = {
   // Men's NZ v WI ODI 2026 (M-prefixed, distinct from women's NZ/WI)
   MNZ: "🇳🇿",
   MWI: "🏏",
+  // Men's IND v ENG ODI 2026 (O-prefixed = ODI variant, distinct from T20I MIND/MENG whose squads differ)
+  OIND: "🇮🇳",
+  OENG: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
   // MLC 2026 franchises (themed emoji so the six US teams are distinguishable)
   MINY: "🗽",
   WAF: "🦅",
@@ -79,6 +82,8 @@ export const TEAM_NAMES: Record<string, string> = {
   OWI: "West Indies",
   MNZ: "New Zealand",
   MWI: "West Indies",
+  OIND: "India",
+  OENG: "England",
   MINY: "MI New York",
   WAF: "Washington Freedom",
   TSK: "Texas Super Kings",
