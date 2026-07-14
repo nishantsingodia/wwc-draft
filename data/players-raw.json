@@ -4638,5 +4638,985 @@
     "team_code": "OENG",
     "efppm": 48.0,
     "pid": "slug:josh-tongue"
+  },
+  {
+    "id": 10284,
+    "name": "Avishka Fernando",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "LPLJK",
+    "efppm": 38.8,
+    "pid": "slug:avishka-fernando"
+  },
+  {
+    "id": 10285,
+    "name": "Kamil Mishara",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "LPLJK",
+    "efppm": 54.9,
+    "pid": "65cebd5d"
+  },
+  {
+    "id": 10286,
+    "name": "Ibrahim Zadran",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "LPLJK",
+    "efppm": 39.5,
+    "pid": "d4550956"
+  },
+  {
+    "id": 10287,
+    "name": "Bhanuka Rajapaksa",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "LPLJK",
+    "efppm": 43.3,
+    "pid": "slug:bhanuka-rajapaksa"
+  },
+  {
+    "id": 10288,
+    "name": "Shakib Al Hasan",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "LPLJK",
+    "efppm": 25.2,
+    "pid": "7dc35884"
+  },
+  {
+    "id": 10289,
+    "name": "Dunith Wellalage",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "LPLJK",
+    "efppm": 75.0,
+    "pid": "736123bb"
+  },
+  {
+    "id": 10290,
+    "name": "Chamindu Wickramasinghe",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "LPLJK",
+    "efppm": 58.9,
+    "pid": "slug:chamindu-wickramasinghe"
+  },
+  {
+    "id": 10291,
+    "name": "Traveen Mathews",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "LPLJK",
+    "efppm": 20.0,
+    "pid": "slug:traveen-mathews"
+  },
+  {
+    "id": 10292,
+    "name": "Taskin Ahmed",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "LPLJK",
+    "efppm": 65.3,
+    "pid": "ef18b66e"
+  },
+  {
+    "id": 10293,
+    "name": "David Wiese",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "LPLJK",
+    "efppm": 72.0,
+    "pid": "aa8d28ae"
+  },
+  {
+    "id": 10294,
+    "name": "Kugathas Mathulan",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "LPLJK",
+    "efppm": 20.0,
+    "pid": "slug:kugathas-mathulan"
+  },
+  {
+    "id": 10295,
+    "name": "Dilshan Madushanka",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "LPLJK",
+    "efppm": 42.6,
+    "pid": "slug:dilshan-madushanka"
+  },
+  {
+    "id": 10296,
+    "name": "Nishan Madushka",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "LPLJK",
+    "efppm": 20.0,
+    "pid": "slug:nishan-madushka"
+  },
+  {
+    "id": 10297,
+    "name": "Sandeep Lamichhane",
+    "country": "Nepal",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "LPLJK",
+    "efppm": 32.1,
+    "pid": "b410bd3d"
+  },
+  {
+    "id": 10298,
+    "name": "Piyush Chawla",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "LPLJK",
+    "efppm": 51.3,
+    "pid": "98ae73b1"
+  },
+  {
+    "id": 10299,
+    "name": "Zahoor Khan",
+    "country": "United Arab Emirates",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "LPLJK",
+    "efppm": 70.2,
+    "pid": "f0e293b0"
+  },
+  {
+    "id": 10300,
+    "name": "Lizaad Williams",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 17,
+    "team_code": "LPLJK",
+    "efppm": 46.5,
+    "pid": "slug:lizaad-williams"
+  },
+  {
+    "id": 10301,
+    "name": "Nuwanidu Fernando",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 18,
+    "team_code": "LPLJK",
+    "efppm": 20.0,
+    "pid": "slug:nuwanidu-fernando"
+  },
+  {
+    "id": 10302,
+    "name": "Mohommed Shiraz",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 19,
+    "team_code": "LPLJK",
+    "efppm": 20.0,
+    "pid": "cdac5a3d"
+  },
+  {
+    "id": 10303,
+    "name": "Praveen Manisha",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 20,
+    "team_code": "LPLJK",
+    "efppm": 20.0,
+    "pid": "slug:praveen-manisha"
+  },
+  {
+    "id": 10304,
+    "name": "Sharujan Shanmuganathan",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "slug:sharujan-shanmuganathan"
+  },
+  {
+    "id": 10305,
+    "name": "Kusal Mendis",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "LPLCK",
+    "efppm": 59.4,
+    "pid": "slug:kusal-mendis"
+  },
+  {
+    "id": 10306,
+    "name": "Sadeera Samarawickrama",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "LPLCK",
+    "efppm": 39.0,
+    "pid": "slug:sadeera-samarawickrama"
+  },
+  {
+    "id": 10307,
+    "name": "Kamindu Mendis",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "LPLCK",
+    "efppm": 45.5,
+    "pid": "slug:kamindu-mendis"
+  },
+  {
+    "id": 10308,
+    "name": "Ben McDermott",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "c41043e6"
+  },
+  {
+    "id": 10309,
+    "name": "Janith Liyanage",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "LPLCK",
+    "efppm": 30.5,
+    "pid": "slug:janith-liyanage"
+  },
+  {
+    "id": 10310,
+    "name": "Jimmy Neesham",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "LPLCK",
+    "efppm": 56.7,
+    "pid": "9219eff0"
+  },
+  {
+    "id": 10311,
+    "name": "Milan Ratnayake",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "slug:milan-ratnayake"
+  },
+  {
+    "id": 10312,
+    "name": "Hasan Mahmud",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "LPLCK",
+    "efppm": 59.2,
+    "pid": "80ad39ac"
+  },
+  {
+    "id": 10313,
+    "name": "Jeffrey Vandersay",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "aceb7654"
+  },
+  {
+    "id": 10314,
+    "name": "Mujeeb Ur Rahman",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "LPLCK",
+    "efppm": 32.0,
+    "pid": "slug:mujeeb-ur-rahman"
+  },
+  {
+    "id": 10315,
+    "name": "Binura Fernando",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "slug:binura-fernando"
+  },
+  {
+    "id": 10316,
+    "name": "Rubin Hermann",
+    "country": "South Africa",
+    "role": "WK",
+    "squad_number": 13,
+    "team_code": "LPLCK",
+    "efppm": 34.1,
+    "pid": "slug:rubin-hermann"
+  },
+  {
+    "id": 10317,
+    "name": "Kushal Bhurtel",
+    "country": "Nepal",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "LPLCK",
+    "efppm": 91.9,
+    "pid": "e3386c8a"
+  },
+  {
+    "id": 10318,
+    "name": "Shahnawaz Dahani",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "7ccbb09f"
+  },
+  {
+    "id": 10319,
+    "name": "Thanuka Dabare",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 16,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "slug:thanuka-dabare"
+  },
+  {
+    "id": 10320,
+    "name": "Movin Subasingha",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 17,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "5d499f67"
+  },
+  {
+    "id": 10321,
+    "name": "Wanuja Sahan",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 18,
+    "team_code": "LPLCK",
+    "efppm": 7.2,
+    "pid": "d86d276e"
+  },
+  {
+    "id": 10322,
+    "name": "Anthony Pragasam",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 19,
+    "team_code": "LPLCK",
+    "efppm": 20.0,
+    "pid": "slug:anthony-pragasam"
+  },
+  {
+    "id": 10323,
+    "name": "Malsha Tharupathi",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 20,
+    "team_code": "LPLCK",
+    "efppm": 18.7,
+    "pid": "ec0b9258"
+  },
+  {
+    "id": 10324,
+    "name": "Sediqullah Atal",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "LPLKR",
+    "efppm": 40.0,
+    "pid": "3c28853f"
+  },
+  {
+    "id": 10325,
+    "name": "Vishen Halambage",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "slug:vishen-halambage"
+  },
+  {
+    "id": 10326,
+    "name": "Kusal Perera",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 3,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "slug:kusal-perera"
+  },
+  {
+    "id": 10327,
+    "name": "Wanindu Hasaranga",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "LPLKR",
+    "efppm": 76.4,
+    "pid": "slug:wanindu-hasaranga"
+  },
+  {
+    "id": 10328,
+    "name": "Angelo Mathews",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "LPLKR",
+    "efppm": 63.4,
+    "pid": "slug:angelo-mathews"
+  },
+  {
+    "id": 10329,
+    "name": "Vijay Shankar",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "LPLKR",
+    "efppm": 35.6,
+    "pid": "0994d0ae"
+  },
+  {
+    "id": 10330,
+    "name": "Moeen Ali",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "LPLKR",
+    "efppm": 47.6,
+    "pid": "slug:moeen-ali"
+  },
+  {
+    "id": 10331,
+    "name": "Pawan Sandesh",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "slug:pawan-sandesh"
+  },
+  {
+    "id": 10332,
+    "name": "Daniel Sams",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "caf69bf7"
+  },
+  {
+    "id": 10333,
+    "name": "Asitha Fernando",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "slug:asitha-fernando"
+  },
+  {
+    "id": 10334,
+    "name": "Garuka Sanketh",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "LPLKR",
+    "efppm": 7.0,
+    "pid": "40db4769"
+  },
+  {
+    "id": 10335,
+    "name": "Nuwan Thushara",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "LPLKR",
+    "efppm": 41.1,
+    "pid": "slug:nuwan-thushara"
+  },
+  {
+    "id": 10336,
+    "name": "Zahir Khan",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "slug:zahir-khan"
+  },
+  {
+    "id": 10337,
+    "name": "Brandon McMullen",
+    "country": "Scotland",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "LPLKR",
+    "efppm": 79.7,
+    "pid": "436c763a"
+  },
+  {
+    "id": 10338,
+    "name": "Lahiru Udara",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "slug:lahiru-udara"
+  },
+  {
+    "id": 10339,
+    "name": "Dushan Hemantha",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 16,
+    "team_code": "LPLKR",
+    "efppm": 83.0,
+    "pid": "slug:dushan-hemantha"
+  },
+  {
+    "id": 10340,
+    "name": "Muditha Lakshan",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 17,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "slug:muditha-lakshan"
+  },
+  {
+    "id": 10341,
+    "name": "Dale Phillips",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 18,
+    "team_code": "LPLKR",
+    "efppm": 47.3,
+    "pid": "9a46c4e5"
+  },
+  {
+    "id": 10342,
+    "name": "Sahan Mihira",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 19,
+    "team_code": "LPLKR",
+    "efppm": 20.0,
+    "pid": "slug:sahan-mihira"
+  },
+  {
+    "id": 10343,
+    "name": "Isitha Wijesundera",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 20,
+    "team_code": "LPLKR",
+    "efppm": 59.5,
+    "pid": "be620896"
+  },
+  {
+    "id": 10344,
+    "name": "Lasith Croospulle",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "LPLGG",
+    "efppm": 2.0,
+    "pid": "e30c9b2d"
+  },
+  {
+    "id": 10345,
+    "name": "Chris Lynn",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "slug:chris-lynn"
+  },
+  {
+    "id": 10346,
+    "name": "Litton Das",
+    "country": "Bangladesh",
+    "role": "WK",
+    "squad_number": 3,
+    "team_code": "LPLGG",
+    "efppm": 45.9,
+    "pid": "espn:536936"
+  },
+  {
+    "id": 10347,
+    "name": "Charith Asalanka",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "LPLGG",
+    "efppm": 49.2,
+    "pid": "slug:charith-asalanka"
+  },
+  {
+    "id": 10348,
+    "name": "Mohammad Nawaz",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "LPLGG",
+    "efppm": 81.0,
+    "pid": "3086f7a4"
+  },
+  {
+    "id": 10349,
+    "name": "Dasun Shanaka",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "LPLGG",
+    "efppm": 48.5,
+    "pid": "espn:437316"
+  },
+  {
+    "id": 10350,
+    "name": "Chamika Karunaratne",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "LPLGG",
+    "efppm": 33.0,
+    "pid": "slug:chamika-karunaratne"
+  },
+  {
+    "id": 10351,
+    "name": "Dinura Kalupahana",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "slug:dinura-kalupahana"
+  },
+  {
+    "id": 10352,
+    "name": "Pramod Madushan",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "slug:pramod-madushan"
+  },
+  {
+    "id": 10353,
+    "name": "Eshan Malinga",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "LPLGG",
+    "efppm": 40.6,
+    "pid": "slug:eshan-malinga"
+  },
+  {
+    "id": 10354,
+    "name": "Vijayakanth Viyaskanth",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "LPLGG",
+    "efppm": 35.7,
+    "pid": "03a83c50"
+  },
+  {
+    "id": 10355,
+    "name": "Mehidy Hasan Miraz",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "LPLGG",
+    "efppm": 57.6,
+    "pid": "slug:mehidy-hasan-miraz"
+  },
+  {
+    "id": 10356,
+    "name": "Sam Harper",
+    "country": "Australia",
+    "role": "WK",
+    "squad_number": 13,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "slug:sam-harper"
+  },
+  {
+    "id": 10357,
+    "name": "Virandeep Singh",
+    "country": "Malaysia",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "415d30b6"
+  },
+  {
+    "id": 10358,
+    "name": "Akif Javed",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "slug:akif-javed"
+  },
+  {
+    "id": 10359,
+    "name": "Kasun Rajitha",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "LPLGG",
+    "efppm": 33.0,
+    "pid": "slug:kasun-rajitha"
+  },
+  {
+    "id": 10360,
+    "name": "Sahan Arachchige",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 17,
+    "team_code": "LPLGG",
+    "efppm": 44.7,
+    "pid": "slug:sahan-arachchige"
+  },
+  {
+    "id": 10361,
+    "name": "Tharindu Rathnayake",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 18,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "slug:tharindu-rathnayake"
+  },
+  {
+    "id": 10362,
+    "name": "Sachindu Colombage",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 19,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "4b6f6b73"
+  },
+  {
+    "id": 10363,
+    "name": "Uri Koththigoda",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 20,
+    "team_code": "LPLGG",
+    "efppm": 20.0,
+    "pid": "slug:uri-koththigoda"
+  },
+  {
+    "id": 10364,
+    "name": "Sahibzada Farhan",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "LPLDS",
+    "efppm": 66.3,
+    "pid": "1aba45cd"
+  },
+  {
+    "id": 10365,
+    "name": "Niroshan Dickwella",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "LPLDS",
+    "efppm": 33.5,
+    "pid": "45963d9e"
+  },
+  {
+    "id": 10366,
+    "name": "Reeza Hendricks",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "LPLDS",
+    "efppm": 65.0,
+    "pid": "slug:reeza-hendricks"
+  },
+  {
+    "id": 10367,
+    "name": "Dinesh Chandimal",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "LPLDS",
+    "efppm": 47.0,
+    "pid": "8dd02a98"
+  },
+  {
+    "id": 10368,
+    "name": "Pavan Rathnayake",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "LPLDS",
+    "efppm": 35.5,
+    "pid": "slug:pavan-rathnayake"
+  },
+  {
+    "id": 10369,
+    "name": "Marques Ackerman",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "LPLDS",
+    "efppm": 20.0,
+    "pid": "slug:marques-ackerman"
+  },
+  {
+    "id": 10370,
+    "name": "Ramesh Mendis",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "LPLDS",
+    "efppm": 50.3,
+    "pid": "slug:ramesh-mendis"
+  },
+  {
+    "id": 10371,
+    "name": "Gayana Weerasinghe",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "LPLDS",
+    "efppm": 20.0,
+    "pid": "slug:gayana-weerasinghe"
+  },
+  {
+    "id": 10372,
+    "name": "Maheesh Theekshana",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "LPLDS",
+    "efppm": 49.8,
+    "pid": "f24c6701"
+  },
+  {
+    "id": 10373,
+    "name": "Akila Dananjaya",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "LPLDS",
+    "efppm": 60.6,
+    "pid": "5b16a806"
+  },
+  {
+    "id": 10374,
+    "name": "Dushmantha Chameera",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "LPLDS",
+    "efppm": 63.3,
+    "pid": "slug:dushmantha-chameera"
+  },
+  {
+    "id": 10375,
+    "name": "Gulbadin Naib",
+    "country": "Afghanistan",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "LPLDS",
+    "efppm": 23.0,
+    "pid": "9f77963a"
+  },
+  {
+    "id": 10376,
+    "name": "Mohammad Wasim",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "LPLDS",
+    "efppm": 55.9,
+    "pid": "9e9af5f2"
+  },
+  {
+    "id": 10377,
+    "name": "Shadley van Schalkwyk",
+    "country": "South Africa",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "LPLDS",
+    "efppm": 122.0,
+    "pid": "97b0e4ff"
+  },
+  {
+    "id": 10378,
+    "name": "Fazalhaq Farooqi",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "LPLDS",
+    "efppm": 5.2,
+    "pid": "e9c7f0d0"
+  },
+  {
+    "id": 10379,
+    "name": "Dhananjaya Lakshan",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 16,
+    "team_code": "LPLDS",
+    "efppm": 20.0,
+    "pid": "slug:dhananjaya-lakshan"
+  },
+  {
+    "id": 10380,
+    "name": "Sachitha Jayatilake",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 17,
+    "team_code": "LPLDS",
+    "efppm": 20.0,
+    "pid": "slug:sachitha-jayatilake"
+  },
+  {
+    "id": 10381,
+    "name": "Vishva Kumara",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 18,
+    "team_code": "LPLDS",
+    "efppm": 20.0,
+    "pid": "slug:vishva-kumara"
   }
 ]

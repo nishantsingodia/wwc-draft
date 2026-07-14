@@ -58,6 +58,12 @@ const TEAM_FLAGS: Record<string, string> = {
   SFU: "🦄",
   SEO: "🐋",
   LAKR: "⚔️",
+  // LPL 2026 franchises (Sri Lanka)
+  LPLJK: "👑",
+  LPLCK: "🧢",
+  LPLKR: "🐘",
+  LPLGG: "🏰",
+  LPLDS: "6️⃣",
 };
 
 export const TEAM_NAMES: Record<string, string> = {
@@ -90,6 +96,11 @@ export const TEAM_NAMES: Record<string, string> = {
   SFU: "San Francisco Unicorns",
   SEO: "Seattle Orcas",
   LAKR: "Los Angeles Knight Riders",
+  LPLJK: "Jaffna Kings",
+  LPLCK: "Colombo Kaps",
+  LPLKR: "Kandy Royals",
+  LPLGG: "Galle Gallants",
+  LPLDS: "Dambulla Sixers",
 };
 
 // Names in players-raw.json are now canonical announced names.

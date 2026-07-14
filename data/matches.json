@@ -781,5 +781,221 @@
     "team2": "OIND",
     "label": "3rd ODI: ENG v IND",
     "date": "2026-07-20T15:30:00+05:30"
+  },
+  {
+    "matchNum": 112,
+    "key": "M_LPL_JKvGG_0717",
+    "gender": "M",
+    "team1": "LPLJK",
+    "team2": "LPLGG",
+    "label": "Match 1: JK v GG",
+    "date": "2026-07-17T15:00:00+05:30"
+  },
+  {
+    "matchNum": 113,
+    "key": "M_LPL_KRvDS_0718",
+    "gender": "M",
+    "team1": "LPLKR",
+    "team2": "LPLDS",
+    "label": "Match 2: KR v DS",
+    "date": "2026-07-18T15:00:00+05:30"
+  },
+  {
+    "matchNum": 114,
+    "key": "M_LPL_GGvCK_0718",
+    "gender": "M",
+    "team1": "LPLGG",
+    "team2": "LPLCK",
+    "label": "Match 3: GG v CK",
+    "date": "2026-07-18T19:30:00+05:30"
+  },
+  {
+    "matchNum": 115,
+    "key": "M_LPL_DSvJK_0719",
+    "gender": "M",
+    "team1": "LPLDS",
+    "team2": "LPLJK",
+    "label": "Match 4: DS v JK",
+    "date": "2026-07-19T15:00:00+05:30"
+  },
+  {
+    "matchNum": 116,
+    "key": "M_LPL_CKvKR_0719",
+    "gender": "M",
+    "team1": "LPLCK",
+    "team2": "LPLKR",
+    "label": "Match 5: CK v KR",
+    "date": "2026-07-19T19:30:00+05:30"
+  },
+  {
+    "matchNum": 117,
+    "key": "M_LPL_DSvKR_0721",
+    "gender": "M",
+    "team1": "LPLDS",
+    "team2": "LPLKR",
+    "label": "Match 6: DS v KR",
+    "date": "2026-07-21T15:00:00+05:30"
+  },
+  {
+    "matchNum": 118,
+    "key": "M_LPL_JKvCK_0722",
+    "gender": "M",
+    "team1": "LPLJK",
+    "team2": "LPLCK",
+    "label": "Match 7: JK v CK",
+    "date": "2026-07-22T15:00:00+05:30"
+  },
+  {
+    "matchNum": 119,
+    "key": "M_LPL_DSvGG_0722",
+    "gender": "M",
+    "team1": "LPLDS",
+    "team2": "LPLGG",
+    "label": "Match 8: DS v GG",
+    "date": "2026-07-22T19:30:00+05:30"
+  },
+  {
+    "matchNum": 120,
+    "key": "M_LPL_KRvCK_0723",
+    "gender": "M",
+    "team1": "LPLKR",
+    "team2": "LPLCK",
+    "label": "Match 9: KR v CK",
+    "date": "2026-07-23T15:00:00+05:30"
+  },
+  {
+    "matchNum": 121,
+    "key": "M_LPL_GGvJK_0723",
+    "gender": "M",
+    "team1": "LPLGG",
+    "team2": "LPLJK",
+    "label": "Match 10: GG v JK",
+    "date": "2026-07-23T19:30:00+05:30"
+  },
+  {
+    "matchNum": 122,
+    "key": "M_LPL_GGvKR_0725",
+    "gender": "M",
+    "team1": "LPLGG",
+    "team2": "LPLKR",
+    "label": "Match 11: GG v KR",
+    "date": "2026-07-25T15:00:00+05:30"
+  },
+  {
+    "matchNum": 123,
+    "key": "M_LPL_DSvCK_0725",
+    "gender": "M",
+    "team1": "LPLDS",
+    "team2": "LPLCK",
+    "label": "Match 12: DS v CK",
+    "date": "2026-07-25T19:30:00+05:30"
+  },
+  {
+    "matchNum": 124,
+    "key": "M_LPL_KRvJK_0726",
+    "gender": "M",
+    "team1": "LPLKR",
+    "team2": "LPLJK",
+    "label": "Match 13: KR v JK",
+    "date": "2026-07-26T15:00:00+05:30"
+  },
+  {
+    "matchNum": 125,
+    "key": "M_LPL_GGvDS_0726",
+    "gender": "M",
+    "team1": "LPLGG",
+    "team2": "LPLDS",
+    "label": "Match 14: GG v DS",
+    "date": "2026-07-26T19:30:00+05:30"
+  },
+  {
+    "matchNum": 126,
+    "key": "M_LPL_CKvJK_0728",
+    "gender": "M",
+    "team1": "LPLCK",
+    "team2": "LPLJK",
+    "label": "Match 15: CK v JK",
+    "date": "2026-07-28T15:00:00+05:30"
+  },
+  {
+    "matchNum": 127,
+    "key": "M_LPL_GGvKR2_0729",
+    "gender": "M",
+    "team1": "LPLGG",
+    "team2": "LPLKR",
+    "label": "Match 16: GG v KR",
+    "date": "2026-07-29T15:00:00+05:30"
+  },
+  {
+    "matchNum": 128,
+    "key": "M_LPL_CKvDS_0729",
+    "gender": "M",
+    "team1": "LPLCK",
+    "team2": "LPLDS",
+    "label": "Match 17: CK v DS",
+    "date": "2026-07-29T19:30:00+05:30"
+  },
+  {
+    "matchNum": 129,
+    "key": "M_LPL_JKvKR_0730",
+    "gender": "M",
+    "team1": "LPLJK",
+    "team2": "LPLKR",
+    "label": "Match 18: JK v KR",
+    "date": "2026-07-30T19:30:00+05:30"
+  },
+  {
+    "matchNum": 130,
+    "key": "M_LPL_CKvGG_0801",
+    "gender": "M",
+    "team1": "LPLCK",
+    "team2": "LPLGG",
+    "label": "Match 19: CK v GG",
+    "date": "2026-08-01T15:00:00+05:30"
+  },
+  {
+    "matchNum": 131,
+    "key": "M_LPL_JKvDS_0802",
+    "gender": "M",
+    "team1": "LPLJK",
+    "team2": "LPLDS",
+    "label": "Match 20: JK v DS",
+    "date": "2026-08-02T19:30:00+05:30"
+  },
+  {
+    "matchNum": 132,
+    "key": "M_LPL_QF1_0805",
+    "gender": "M",
+    "team1": "TBD",
+    "team2": "TBD",
+    "label": "LPL Qualifier 1",
+    "date": "2026-08-05T15:00:00+05:30"
+  },
+  {
+    "matchNum": 133,
+    "key": "M_LPL_ELIM_0805",
+    "gender": "M",
+    "team1": "TBD",
+    "team2": "TBD",
+    "label": "LPL Eliminator",
+    "date": "2026-08-05T19:30:00+05:30"
+  },
+  {
+    "matchNum": 134,
+    "key": "M_LPL_QF2_0807",
+    "gender": "M",
+    "team1": "TBD",
+    "team2": "TBD",
+    "label": "LPL Qualifier 2",
+    "date": "2026-08-07T19:30:00+05:30"
+  },
+  {
+    "matchNum": 135,
+    "key": "M_LPL_FINAL_0808",
+    "gender": "M",
+    "team1": "TBD",
+    "team2": "TBD",
+    "label": "LPL Final",
+    "date": "2026-08-08T19:30:00+05:30"
   }
 ]
