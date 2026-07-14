@@ -4646,7 +4646,7 @@
     "role": "BAT",
     "squad_number": 1,
     "team_code": "LPLJK",
-    "efppm": 38.8,
+    "efppm": 39.5,
     "pid": "slug:avishka-fernando"
   },
   {
@@ -4656,7 +4656,7 @@
     "role": "WK",
     "squad_number": 2,
     "team_code": "LPLJK",
-    "efppm": 54.9,
+    "efppm": 50.6,
     "pid": "65cebd5d"
   },
   {
@@ -4676,7 +4676,7 @@
     "role": "BAT",
     "squad_number": 4,
     "team_code": "LPLJK",
-    "efppm": 43.3,
+    "efppm": 37.1,
     "pid": "slug:bhanuka-rajapaksa"
   },
   {
@@ -4686,7 +4686,7 @@
     "role": "AR",
     "squad_number": 5,
     "team_code": "LPLJK",
-    "efppm": 25.2,
+    "efppm": 52.9,
     "pid": "7dc35884"
   },
   {
@@ -4696,7 +4696,7 @@
     "role": "AR",
     "squad_number": 6,
     "team_code": "LPLJK",
-    "efppm": 75.0,
+    "efppm": 71.0,
     "pid": "736123bb"
   },
   {
@@ -4706,7 +4706,7 @@
     "role": "AR",
     "squad_number": 7,
     "team_code": "LPLJK",
-    "efppm": 58.9,
+    "efppm": 57.6,
     "pid": "slug:chamindu-wickramasinghe"
   },
   {
@@ -4726,7 +4726,7 @@
     "role": "BOWL",
     "squad_number": 9,
     "team_code": "LPLJK",
-    "efppm": 65.3,
+    "efppm": 66.7,
     "pid": "ef18b66e"
   },
   {
@@ -4736,7 +4736,7 @@
     "role": "AR",
     "squad_number": 10,
     "team_code": "LPLJK",
-    "efppm": 72.0,
+    "efppm": 77.3,
     "pid": "aa8d28ae"
   },
   {
@@ -4756,7 +4756,7 @@
     "role": "BOWL",
     "squad_number": 12,
     "team_code": "LPLJK",
-    "efppm": 42.6,
+    "efppm": 47.0,
     "pid": "slug:dilshan-madushanka"
   },
   {
@@ -4776,7 +4776,7 @@
     "role": "BOWL",
     "squad_number": 14,
     "team_code": "LPLJK",
-    "efppm": 32.1,
+    "efppm": 63.0,
     "pid": "b410bd3d"
   },
   {
@@ -4796,7 +4796,7 @@
     "role": "BOWL",
     "squad_number": 16,
     "team_code": "LPLJK",
-    "efppm": 70.2,
+    "efppm": 63.7,
     "pid": "f0e293b0"
   },
   {
@@ -4806,7 +4806,7 @@
     "role": "BOWL",
     "squad_number": 17,
     "team_code": "LPLJK",
-    "efppm": 46.5,
+    "efppm": 50.4,
     "pid": "slug:lizaad-williams"
   },
   {
@@ -4856,7 +4856,7 @@
     "role": "WK",
     "squad_number": 2,
     "team_code": "LPLCK",
-    "efppm": 59.4,
+    "efppm": 60.7,
     "pid": "slug:kusal-mendis"
   },
   {
@@ -4866,7 +4866,7 @@
     "role": "BAT",
     "squad_number": 3,
     "team_code": "LPLCK",
-    "efppm": 39.0,
+    "efppm": 46.4,
     "pid": "slug:sadeera-samarawickrama"
   },
   {
@@ -4876,7 +4876,7 @@
     "role": "AR",
     "squad_number": 4,
     "team_code": "LPLCK",
-    "efppm": 45.5,
+    "efppm": 47.5,
     "pid": "slug:kamindu-mendis"
   },
   {
@@ -4886,7 +4886,7 @@
     "role": "BAT",
     "squad_number": 5,
     "team_code": "LPLCK",
-    "efppm": 20.0,
+    "efppm": 33.4,
     "pid": "c41043e6"
   },
   {
@@ -4896,7 +4896,7 @@
     "role": "BAT",
     "squad_number": 6,
     "team_code": "LPLCK",
-    "efppm": 30.5,
+    "efppm": 28.6,
     "pid": "slug:janith-liyanage"
   },
   {
@@ -4906,7 +4906,7 @@
     "role": "AR",
     "squad_number": 7,
     "team_code": "LPLCK",
-    "efppm": 56.7,
+    "efppm": 52.9,
     "pid": "9219eff0"
   },
   {
@@ -4916,7 +4916,7 @@
     "role": "AR",
     "squad_number": 8,
     "team_code": "LPLCK",
-    "efppm": 20.0,
+    "efppm": 36.1,
     "pid": "slug:milan-ratnayake"
   },
   {
@@ -4926,7 +4926,7 @@
     "role": "BOWL",
     "squad_number": 9,
     "team_code": "LPLCK",
-    "efppm": 59.2,
+    "efppm": 57.5,
     "pid": "80ad39ac"
   },
   {
@@ -4936,7 +4936,7 @@
     "role": "BOWL",
     "squad_number": 10,
     "team_code": "LPLCK",
-    "efppm": 20.0,
+    "efppm": 40.4,
     "pid": "aceb7654"
   },
   {
@@ -4946,7 +4946,7 @@
     "role": "BOWL",
     "squad_number": 11,
     "team_code": "LPLCK",
-    "efppm": 32.0,
+    "efppm": 38.4,
     "pid": "slug:mujeeb-ur-rahman"
   },
   {
@@ -4966,7 +4966,7 @@
     "role": "WK",
     "squad_number": 13,
     "team_code": "LPLCK",
-    "efppm": 34.1,
+    "efppm": 41.1,
     "pid": "slug:rubin-hermann"
   },
   {
@@ -4976,7 +4976,7 @@
     "role": "BAT",
     "squad_number": 14,
     "team_code": "LPLCK",
-    "efppm": 91.9,
+    "efppm": 84.1,
     "pid": "e3386c8a"
   },
   {
@@ -4996,7 +4996,7 @@
     "role": "AR",
     "squad_number": 16,
     "team_code": "LPLCK",
-    "efppm": 20.0,
+    "efppm": 31.4,
     "pid": "slug:thanuka-dabare"
   },
   {
@@ -5076,7 +5076,7 @@
     "role": "AR",
     "squad_number": 4,
     "team_code": "LPLKR",
-    "efppm": 76.4,
+    "efppm": 83.6,
     "pid": "slug:wanindu-hasaranga"
   },
   {
@@ -5086,7 +5086,7 @@
     "role": "AR",
     "squad_number": 5,
     "team_code": "LPLKR",
-    "efppm": 63.4,
+    "efppm": 63.3,
     "pid": "slug:angelo-mathews"
   },
   {
@@ -5106,7 +5106,7 @@
     "role": "AR",
     "squad_number": 7,
     "team_code": "LPLKR",
-    "efppm": 47.6,
+    "efppm": 52.0,
     "pid": "slug:moeen-ali"
   },
   {
@@ -5156,7 +5156,7 @@
     "role": "BOWL",
     "squad_number": 12,
     "team_code": "LPLKR",
-    "efppm": 41.1,
+    "efppm": 48.6,
     "pid": "slug:nuwan-thushara"
   },
   {
@@ -5176,7 +5176,7 @@
     "role": "AR",
     "squad_number": 14,
     "team_code": "LPLKR",
-    "efppm": 79.7,
+    "efppm": 75.0,
     "pid": "436c763a"
   },
   {
@@ -5196,7 +5196,7 @@
     "role": "AR",
     "squad_number": 16,
     "team_code": "LPLKR",
-    "efppm": 83.0,
+    "efppm": 74.3,
     "pid": "slug:dushan-hemantha"
   },
   {
@@ -5216,7 +5216,7 @@
     "role": "BAT",
     "squad_number": 18,
     "team_code": "LPLKR",
-    "efppm": 47.3,
+    "efppm": 63.6,
     "pid": "9a46c4e5"
   },
   {
@@ -5246,7 +5246,7 @@
     "role": "BAT",
     "squad_number": 1,
     "team_code": "LPLGG",
-    "efppm": 2.0,
+    "efppm": 23.1,
     "pid": "e30c9b2d"
   },
   {
@@ -5266,7 +5266,7 @@
     "role": "WK",
     "squad_number": 3,
     "team_code": "LPLGG",
-    "efppm": 45.9,
+    "efppm": 47.1,
     "pid": "espn:536936"
   },
   {
@@ -5276,7 +5276,7 @@
     "role": "BAT",
     "squad_number": 4,
     "team_code": "LPLGG",
-    "efppm": 49.2,
+    "efppm": 46.2,
     "pid": "slug:charith-asalanka"
   },
   {
@@ -5286,7 +5286,7 @@
     "role": "AR",
     "squad_number": 5,
     "team_code": "LPLGG",
-    "efppm": 81.0,
+    "efppm": 71.9,
     "pid": "3086f7a4"
   },
   {
@@ -5296,7 +5296,7 @@
     "role": "AR",
     "squad_number": 6,
     "team_code": "LPLGG",
-    "efppm": 48.5,
+    "efppm": 50.6,
     "pid": "espn:437316"
   },
   {
@@ -5306,7 +5306,7 @@
     "role": "AR",
     "squad_number": 7,
     "team_code": "LPLGG",
-    "efppm": 33.0,
+    "efppm": 38.1,
     "pid": "slug:chamika-karunaratne"
   },
   {
@@ -5336,7 +5336,7 @@
     "role": "BOWL",
     "squad_number": 10,
     "team_code": "LPLGG",
-    "efppm": 40.6,
+    "efppm": 43.4,
     "pid": "slug:eshan-malinga"
   },
   {
@@ -5346,7 +5346,7 @@
     "role": "BOWL",
     "squad_number": 11,
     "team_code": "LPLGG",
-    "efppm": 35.7,
+    "efppm": 38.0,
     "pid": "03a83c50"
   },
   {
@@ -5356,7 +5356,7 @@
     "role": "AR",
     "squad_number": 12,
     "team_code": "LPLGG",
-    "efppm": 57.6,
+    "efppm": 58.4,
     "pid": "slug:mehidy-hasan-miraz"
   },
   {
@@ -5376,7 +5376,7 @@
     "role": "AR",
     "squad_number": 14,
     "team_code": "LPLGG",
-    "efppm": 20.0,
+    "efppm": 64.4,
     "pid": "415d30b6"
   },
   {
@@ -5396,7 +5396,7 @@
     "role": "BOWL",
     "squad_number": 16,
     "team_code": "LPLGG",
-    "efppm": 33.0,
+    "efppm": 47.3,
     "pid": "slug:kasun-rajitha"
   },
   {
@@ -5406,7 +5406,7 @@
     "role": "AR",
     "squad_number": 17,
     "team_code": "LPLGG",
-    "efppm": 44.7,
+    "efppm": 43.0,
     "pid": "slug:sahan-arachchige"
   },
   {
@@ -5426,7 +5426,7 @@
     "role": "AR",
     "squad_number": 19,
     "team_code": "LPLGG",
-    "efppm": 20.0,
+    "efppm": 36.1,
     "pid": "4b6f6b73"
   },
   {
@@ -5446,7 +5446,7 @@
     "role": "BAT",
     "squad_number": 1,
     "team_code": "LPLDS",
-    "efppm": 66.3,
+    "efppm": 65.8,
     "pid": "1aba45cd"
   },
   {
@@ -5456,7 +5456,7 @@
     "role": "WK",
     "squad_number": 2,
     "team_code": "LPLDS",
-    "efppm": 33.5,
+    "efppm": 38.2,
     "pid": "45963d9e"
   },
   {
@@ -5466,7 +5466,7 @@
     "role": "BAT",
     "squad_number": 3,
     "team_code": "LPLDS",
-    "efppm": 65.0,
+    "efppm": 59.6,
     "pid": "slug:reeza-hendricks"
   },
   {
@@ -5476,7 +5476,7 @@
     "role": "BAT",
     "squad_number": 4,
     "team_code": "LPLDS",
-    "efppm": 47.0,
+    "efppm": 53.8,
     "pid": "8dd02a98"
   },
   {
@@ -5486,7 +5486,7 @@
     "role": "BAT",
     "squad_number": 5,
     "team_code": "LPLDS",
-    "efppm": 35.5,
+    "efppm": 40.7,
     "pid": "slug:pavan-rathnayake"
   },
   {
@@ -5506,7 +5506,7 @@
     "role": "AR",
     "squad_number": 7,
     "team_code": "LPLDS",
-    "efppm": 50.3,
+    "efppm": 45.0,
     "pid": "slug:ramesh-mendis"
   },
   {
@@ -5526,7 +5526,7 @@
     "role": "BOWL",
     "squad_number": 9,
     "team_code": "LPLDS",
-    "efppm": 49.8,
+    "efppm": 52.6,
     "pid": "f24c6701"
   },
   {
@@ -5536,7 +5536,7 @@
     "role": "AR",
     "squad_number": 10,
     "team_code": "LPLDS",
-    "efppm": 60.6,
+    "efppm": 49.0,
     "pid": "5b16a806"
   },
   {
@@ -5546,7 +5546,7 @@
     "role": "BOWL",
     "squad_number": 11,
     "team_code": "LPLDS",
-    "efppm": 63.3,
+    "efppm": 61.0,
     "pid": "slug:dushmantha-chameera"
   },
   {
@@ -5566,7 +5566,7 @@
     "role": "BOWL",
     "squad_number": 13,
     "team_code": "LPLDS",
-    "efppm": 55.9,
+    "efppm": 56.4,
     "pid": "9e9af5f2"
   },
   {
@@ -5576,7 +5576,7 @@
     "role": "AR",
     "squad_number": 14,
     "team_code": "LPLDS",
-    "efppm": 122.0,
+    "efppm": 90.3,
     "pid": "97b0e4ff"
   },
   {
@@ -5596,7 +5596,7 @@
     "role": "AR",
     "squad_number": 16,
     "team_code": "LPLDS",
-    "efppm": 20.0,
+    "efppm": 31.9,
     "pid": "slug:dhananjaya-lakshan"
   },
   {
@@ -5616,7 +5616,7 @@
     "role": "BOWL",
     "squad_number": 18,
     "team_code": "LPLDS",
-    "efppm": 20.0,
+    "efppm": 39.2,
     "pid": "slug:vishva-kumara"
   }
 ]
