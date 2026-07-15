@@ -1,6 +1,9 @@
 import { readFileSync } from "fs";
 import { fuzzyMatchName, normName } from "./fuzzy-name-match";
 import { TEAM_NAMES, isPidKey, type SheetPlayer } from "./players";
+// gviz CSV URLs for auto-ingested tours — the tour-sync job appends here so a new
+// tour's points tab self-registers WITHOUT editing the POINTS_CSV_URLS env var.
+import pointsTabs from "@/data/points-tabs.json";
 
 const CSV_PATH = process.env.POINTS_CSV_PATH;
 // Synthetic column injected by mergeCsvs to remember which tab (=tour) each row came
@@ -13,9 +16,16 @@ const TAB_COL = "__tab";
 // Tabs added via the gviz endpoint MUST include &headers=1 so the header row parses cleanly.
 function csvUrls(): string[] {
   const multi = process.env.POINTS_CSV_URLS;
-  if (multi) return multi.split(",").map((u) => u.trim()).filter(Boolean);
-  const single = process.env.POINTS_CSV_URL;
-  return single ? [single] : [];
+  const fromEnv = multi
+    ? multi.split(",").map((u) => u.trim()).filter(Boolean)
+    : process.env.POINTS_CSV_URL
+      ? [process.env.POINTS_CSV_URL]
+      : [];
+  // Merge the committed manifest (auto-ingested tours) with the env list, dedup so a
+  // tab listed in both is fetched once (double-fetch would double-count nothing, but
+  // wastes a request). Env stays the source for hand-added tours; manifest for auto ones.
+  const fromManifest = (pointsTabs as string[]).map((u) => u.trim()).filter(Boolean);
+  return [...new Set([...fromEnv, ...fromManifest])];
 }
 
 export function fuzzyLookupPoints(
