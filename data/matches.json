@@ -997,5 +997,581 @@
     "team2": "TBD",
     "label": "LPL Final",
     "date": "2026-08-08T19:30:00+05:30"
+  },
+  {
+    "matchNum": 136,
+    "key": "THMSC_M1_MTMILO_MTSUNL_Jul21",
+    "gender": "M",
+    "team1": "MTMILO",
+    "team2": "MTSUNL",
+    "label": "Match 1: MTMILO v MTSUNL",
+    "date": "2026-07-21T23:00:00+05:30"
+  },
+  {
+    "matchNum": 137,
+    "key": "THMSC_M2_MTSBR_MTWLF_Jul22",
+    "gender": "M",
+    "team1": "MTSBR",
+    "team2": "MTWLF",
+    "label": "Match 2: MTSBR v MTWLF",
+    "date": "2026-07-22T23:00:00+05:30"
+  },
+  {
+    "matchNum": 138,
+    "key": "THMSC_M3_MTLSP_MTMSG_Jul23",
+    "gender": "M",
+    "team1": "MTLSP",
+    "team2": "MTMSG",
+    "label": "Match 3: MTLSP v MTMSG",
+    "date": "2026-07-23T23:00:00+05:30"
+  },
+  {
+    "matchNum": 139,
+    "key": "THMSC_M4_MTBPH_MTTRR_Jul24",
+    "gender": "M",
+    "team1": "MTBPH",
+    "team2": "MTTRR",
+    "label": "Match 4: MTBPH v MTTRR",
+    "date": "2026-07-24T23:00:00+05:30"
+  },
+  {
+    "matchNum": 140,
+    "key": "THMSC_M5_MTSUNL_MTSBR_Jul25",
+    "gender": "M",
+    "team1": "MTSUNL",
+    "team2": "MTSBR",
+    "label": "Match 5: MTSUNL v MTSBR",
+    "date": "2026-07-25T19:00:00+05:30"
+  },
+  {
+    "matchNum": 141,
+    "key": "THMSC_M6_MTWLF_MTMILO_Jul25",
+    "gender": "M",
+    "team1": "MTWLF",
+    "team2": "MTMILO",
+    "label": "Match 6: MTWLF v MTMILO",
+    "date": "2026-07-25T22:30:00+05:30"
+  },
+  {
+    "matchNum": 142,
+    "key": "THMSC_M7_MTMSG_MTBPH_Jul26",
+    "gender": "M",
+    "team1": "MTMSG",
+    "team2": "MTBPH",
+    "label": "Match 7: MTMSG v MTBPH",
+    "date": "2026-07-26T19:00:00+05:30"
+  },
+  {
+    "matchNum": 143,
+    "key": "THMSC_M8_MTTRR_MTLSP_Jul26",
+    "gender": "M",
+    "team1": "MTTRR",
+    "team2": "MTLSP",
+    "label": "Match 8: MTTRR v MTLSP",
+    "date": "2026-07-26T22:30:00+05:30"
+  },
+  {
+    "matchNum": 144,
+    "key": "THMSC_M9_MTSBR_MTMILO_Jul27",
+    "gender": "M",
+    "team1": "MTSBR",
+    "team2": "MTMILO",
+    "label": "Match 9: MTSBR v MTMILO",
+    "date": "2026-07-27T23:00:00+05:30"
+  },
+  {
+    "matchNum": 145,
+    "key": "THMSC_M10_MTSUNL_MTMSG_Jul28",
+    "gender": "M",
+    "team1": "MTSUNL",
+    "team2": "MTMSG",
+    "label": "Match 10: MTSUNL v MTMSG",
+    "date": "2026-07-28T23:00:00+05:30"
+  },
+  {
+    "matchNum": 146,
+    "key": "THMSC_M11_MTWLF_MTTRR_Jul29",
+    "gender": "M",
+    "team1": "MTWLF",
+    "team2": "MTTRR",
+    "label": "Match 11: MTWLF v MTTRR",
+    "date": "2026-07-29T19:30:00+05:30"
+  },
+  {
+    "matchNum": 147,
+    "key": "THMSC_M12_MTMILO_MTLSP_Jul29",
+    "gender": "M",
+    "team1": "MTMILO",
+    "team2": "MTLSP",
+    "label": "Match 12: MTMILO v MTLSP",
+    "date": "2026-07-29T23:00:00+05:30"
+  },
+  {
+    "matchNum": 148,
+    "key": "THMSC_M13_MTSBR_MTBPH_Jul30",
+    "gender": "M",
+    "team1": "MTSBR",
+    "team2": "MTBPH",
+    "label": "Match 13: MTSBR v MTBPH",
+    "date": "2026-07-30T23:00:00+05:30"
+  },
+  {
+    "matchNum": 149,
+    "key": "THMSC_M14_MTMSG_MTTRR_Jul31",
+    "gender": "M",
+    "team1": "MTMSG",
+    "team2": "MTTRR",
+    "label": "Match 14: MTMSG v MTTRR",
+    "date": "2026-07-31T23:00:00+05:30"
+  },
+  {
+    "matchNum": 150,
+    "key": "THMSC_M15_MTBPH_MTWLF_Aug01",
+    "gender": "M",
+    "team1": "MTBPH",
+    "team2": "MTWLF",
+    "label": "Match 15: MTBPH v MTWLF",
+    "date": "2026-08-01T19:00:00+05:30"
+  },
+  {
+    "matchNum": 151,
+    "key": "THMSC_M16_MTLSP_MTSBR_Aug01",
+    "gender": "M",
+    "team1": "MTLSP",
+    "team2": "MTSBR",
+    "label": "Match 16: MTLSP v MTSBR",
+    "date": "2026-08-01T22:30:00+05:30"
+  },
+  {
+    "matchNum": 152,
+    "key": "THMSC_M17_MTTRR_MTSUNL_Aug02",
+    "gender": "M",
+    "team1": "MTTRR",
+    "team2": "MTSUNL",
+    "label": "Match 17: MTTRR v MTSUNL",
+    "date": "2026-08-02T19:00:00+05:30"
+  },
+  {
+    "matchNum": 153,
+    "key": "THMSC_M18_MTMILO_MTMSG_Aug02",
+    "gender": "M",
+    "team1": "MTMILO",
+    "team2": "MTMSG",
+    "label": "Match 18: MTMILO v MTMSG",
+    "date": "2026-08-02T22:30:00+05:30"
+  },
+  {
+    "matchNum": 154,
+    "key": "THMSC_M19_MTWLF_MTSBR_Aug03",
+    "gender": "M",
+    "team1": "MTWLF",
+    "team2": "MTSBR",
+    "label": "Match 19: MTWLF v MTSBR",
+    "date": "2026-08-03T23:00:00+05:30"
+  },
+  {
+    "matchNum": 155,
+    "key": "THMSC_M20_MTSUNL_MTLSP_Aug04",
+    "gender": "M",
+    "team1": "MTSUNL",
+    "team2": "MTLSP",
+    "label": "Match 20: MTSUNL v MTLSP",
+    "date": "2026-08-04T23:00:00+05:30"
+  },
+  {
+    "matchNum": 156,
+    "key": "THMSC_M21_MTMSG_MTWLF_Aug05",
+    "gender": "M",
+    "team1": "MTMSG",
+    "team2": "MTWLF",
+    "label": "Match 21: MTMSG v MTWLF",
+    "date": "2026-08-05T19:30:00+05:30"
+  },
+  {
+    "matchNum": 157,
+    "key": "THMSC_M22_MTTRR_MTBPH_Aug05",
+    "gender": "M",
+    "team1": "MTTRR",
+    "team2": "MTBPH",
+    "label": "Match 22: MTTRR v MTBPH",
+    "date": "2026-08-05T23:00:00+05:30"
+  },
+  {
+    "matchNum": 158,
+    "key": "THMSC_M23_MTLSP_MTMILO_Aug06",
+    "gender": "M",
+    "team1": "MTLSP",
+    "team2": "MTMILO",
+    "label": "Match 23: MTLSP v MTMILO",
+    "date": "2026-08-06T23:00:00+05:30"
+  },
+  {
+    "matchNum": 159,
+    "key": "THMSC_M24_MTBPH_MTSUNL_Aug07",
+    "gender": "M",
+    "team1": "MTBPH",
+    "team2": "MTSUNL",
+    "label": "Match 24: MTBPH v MTSUNL",
+    "date": "2026-08-07T23:00:00+05:30"
+  },
+  {
+    "matchNum": 160,
+    "key": "THMSC_M25_MTMILO_MTTRR_Aug08",
+    "gender": "M",
+    "team1": "MTMILO",
+    "team2": "MTTRR",
+    "label": "Match 25: MTMILO v MTTRR",
+    "date": "2026-08-08T19:00:00+05:30"
+  },
+  {
+    "matchNum": 161,
+    "key": "THMSC_M26_MTSBR_MTMSG_Aug08",
+    "gender": "M",
+    "team1": "MTSBR",
+    "team2": "MTMSG",
+    "label": "Match 26: MTSBR v MTMSG",
+    "date": "2026-08-08T22:30:00+05:30"
+  },
+  {
+    "matchNum": 162,
+    "key": "THMSC_M27_MTSUNL_MTWLF_Aug09",
+    "gender": "M",
+    "team1": "MTSUNL",
+    "team2": "MTWLF",
+    "label": "Match 27: MTSUNL v MTWLF",
+    "date": "2026-08-09T19:00:00+05:30"
+  },
+  {
+    "matchNum": 163,
+    "key": "THMSC_M28_MTLSP_MTBPH_Aug09",
+    "gender": "M",
+    "team1": "MTLSP",
+    "team2": "MTBPH",
+    "label": "Match 28: MTLSP v MTBPH",
+    "date": "2026-08-09T22:30:00+05:30"
+  },
+  {
+    "matchNum": 164,
+    "key": "THMSC_M29_MTTRR_MTSBR_Aug10",
+    "gender": "M",
+    "team1": "MTTRR",
+    "team2": "MTSBR",
+    "label": "Match 29: MTTRR v MTSBR",
+    "date": "2026-08-10T23:00:00+05:30"
+  },
+  {
+    "matchNum": 165,
+    "key": "THMSC_M30_MTMSG_MTSUNL_Aug11",
+    "gender": "M",
+    "team1": "MTMSG",
+    "team2": "MTSUNL",
+    "label": "Match 30: MTMSG v MTSUNL",
+    "date": "2026-08-11T23:00:00+05:30"
+  },
+  {
+    "matchNum": 166,
+    "key": "THMSC_M31_MTWLF_MTLSP_Aug12",
+    "gender": "M",
+    "team1": "MTWLF",
+    "team2": "MTLSP",
+    "label": "Match 31: MTWLF v MTLSP",
+    "date": "2026-08-12T19:30:00+05:30"
+  },
+  {
+    "matchNum": 167,
+    "key": "THMSC_M32_MTBPH_MTMILO_Aug12",
+    "gender": "M",
+    "team1": "MTBPH",
+    "team2": "MTMILO",
+    "label": "Match 32: MTBPH v MTMILO",
+    "date": "2026-08-12T23:00:00+05:30"
+  },
+  {
+    "matchNum": 168,
+    "key": "THWSC_W1_WTMILO_WTSUNL_Jul21",
+    "gender": "W",
+    "team1": "WTMILO",
+    "team2": "WTSUNL",
+    "label": "Match 1: WTMILO v WTSUNL",
+    "date": "2026-07-21T19:15:00+05:30"
+  },
+  {
+    "matchNum": 169,
+    "key": "THWSC_W2_WTSBR_WTWLF_Jul22",
+    "gender": "W",
+    "team1": "WTSBR",
+    "team2": "WTWLF",
+    "label": "Match 2: WTSBR v WTWLF",
+    "date": "2026-07-22T19:30:00+05:30"
+  },
+  {
+    "matchNum": 170,
+    "key": "THWSC_W3_WTLSP_WTMSG_Jul23",
+    "gender": "W",
+    "team1": "WTLSP",
+    "team2": "WTMSG",
+    "label": "Match 3: WTLSP v WTMSG",
+    "date": "2026-07-23T19:30:00+05:30"
+  },
+  {
+    "matchNum": 171,
+    "key": "THWSC_W4_WTBPH_WTTRR_Jul24",
+    "gender": "W",
+    "team1": "WTBPH",
+    "team2": "WTTRR",
+    "label": "Match 4: WTBPH v WTTRR",
+    "date": "2026-07-24T19:30:00+05:30"
+  },
+  {
+    "matchNum": 172,
+    "key": "THWSC_W5_WTSUNL_WTSBR_Jul25",
+    "gender": "W",
+    "team1": "WTSUNL",
+    "team2": "WTSBR",
+    "label": "Match 5: WTSUNL v WTSBR",
+    "date": "2026-07-25T15:30:00+05:30"
+  },
+  {
+    "matchNum": 173,
+    "key": "THWSC_W6_WTWLF_WTMILO_Jul25",
+    "gender": "W",
+    "team1": "WTWLF",
+    "team2": "WTMILO",
+    "label": "Match 6: WTWLF v WTMILO",
+    "date": "2026-07-25T19:00:00+05:30"
+  },
+  {
+    "matchNum": 174,
+    "key": "THWSC_W7_WTMSG_WTBPH_Jul26",
+    "gender": "W",
+    "team1": "WTMSG",
+    "team2": "WTBPH",
+    "label": "Match 7: WTMSG v WTBPH",
+    "date": "2026-07-26T15:30:00+05:30"
+  },
+  {
+    "matchNum": 175,
+    "key": "THWSC_W8_WTTRR_WTLSP_Jul26",
+    "gender": "W",
+    "team1": "WTTRR",
+    "team2": "WTLSP",
+    "label": "Match 8: WTTRR v WTLSP",
+    "date": "2026-07-26T19:00:00+05:30"
+  },
+  {
+    "matchNum": 176,
+    "key": "THWSC_W9_WTSBR_WTMILO_Jul27",
+    "gender": "W",
+    "team1": "WTSBR",
+    "team2": "WTMILO",
+    "label": "Match 9: WTSBR v WTMILO",
+    "date": "2026-07-27T19:30:00+05:30"
+  },
+  {
+    "matchNum": 177,
+    "key": "THWSC_W10_WTSUNL_WTMSG_Jul28",
+    "gender": "W",
+    "team1": "WTSUNL",
+    "team2": "WTMSG",
+    "label": "Match 10: WTSUNL v WTMSG",
+    "date": "2026-07-28T19:30:00+05:30"
+  },
+  {
+    "matchNum": 178,
+    "key": "THWSC_W11_WTWLF_WTTRR_Jul29",
+    "gender": "W",
+    "team1": "WTWLF",
+    "team2": "WTTRR",
+    "label": "Match 11: WTWLF v WTTRR",
+    "date": "2026-07-29T16:00:00+05:30"
+  },
+  {
+    "matchNum": 179,
+    "key": "THWSC_W12_WTMILO_WTLSP_Jul29",
+    "gender": "W",
+    "team1": "WTMILO",
+    "team2": "WTLSP",
+    "label": "Match 12: WTMILO v WTLSP",
+    "date": "2026-07-29T19:30:00+05:30"
+  },
+  {
+    "matchNum": 180,
+    "key": "THWSC_W13_WTSBR_WTBPH_Jul30",
+    "gender": "W",
+    "team1": "WTSBR",
+    "team2": "WTBPH",
+    "label": "Match 13: WTSBR v WTBPH",
+    "date": "2026-07-30T19:30:00+05:30"
+  },
+  {
+    "matchNum": 181,
+    "key": "THWSC_W14_WTMSG_WTTRR_Jul31",
+    "gender": "W",
+    "team1": "WTMSG",
+    "team2": "WTTRR",
+    "label": "Match 14: WTMSG v WTTRR",
+    "date": "2026-07-31T19:30:00+05:30"
+  },
+  {
+    "matchNum": 182,
+    "key": "THWSC_W15_WTBPH_WTWLF_Aug01",
+    "gender": "W",
+    "team1": "WTBPH",
+    "team2": "WTWLF",
+    "label": "Match 15: WTBPH v WTWLF",
+    "date": "2026-08-01T15:30:00+05:30"
+  },
+  {
+    "matchNum": 183,
+    "key": "THWSC_W16_WTLSP_WTSBR_Aug01",
+    "gender": "W",
+    "team1": "WTLSP",
+    "team2": "WTSBR",
+    "label": "Match 16: WTLSP v WTSBR",
+    "date": "2026-08-01T19:00:00+05:30"
+  },
+  {
+    "matchNum": 184,
+    "key": "THWSC_W17_WTTRR_WTSUNL_Aug02",
+    "gender": "W",
+    "team1": "WTTRR",
+    "team2": "WTSUNL",
+    "label": "Match 17: WTTRR v WTSUNL",
+    "date": "2026-08-02T15:30:00+05:30"
+  },
+  {
+    "matchNum": 185,
+    "key": "THWSC_W18_WTMILO_WTMSG_Aug02",
+    "gender": "W",
+    "team1": "WTMILO",
+    "team2": "WTMSG",
+    "label": "Match 18: WTMILO v WTMSG",
+    "date": "2026-08-02T19:00:00+05:30"
+  },
+  {
+    "matchNum": 186,
+    "key": "THWSC_W19_WTWLF_WTSBR_Aug03",
+    "gender": "W",
+    "team1": "WTWLF",
+    "team2": "WTSBR",
+    "label": "Match 19: WTWLF v WTSBR",
+    "date": "2026-08-03T19:30:00+05:30"
+  },
+  {
+    "matchNum": 187,
+    "key": "THWSC_W20_WTSUNL_WTLSP_Aug04",
+    "gender": "W",
+    "team1": "WTSUNL",
+    "team2": "WTLSP",
+    "label": "Match 20: WTSUNL v WTLSP",
+    "date": "2026-08-04T19:30:00+05:30"
+  },
+  {
+    "matchNum": 188,
+    "key": "THWSC_W21_WTMSG_WTWLF_Aug05",
+    "gender": "W",
+    "team1": "WTMSG",
+    "team2": "WTWLF",
+    "label": "Match 21: WTMSG v WTWLF",
+    "date": "2026-08-05T16:00:00+05:30"
+  },
+  {
+    "matchNum": 189,
+    "key": "THWSC_W22_WTTRR_WTBPH_Aug05",
+    "gender": "W",
+    "team1": "WTTRR",
+    "team2": "WTBPH",
+    "label": "Match 22: WTTRR v WTBPH",
+    "date": "2026-08-05T19:30:00+05:30"
+  },
+  {
+    "matchNum": 190,
+    "key": "THWSC_W23_WTLSP_WTMILO_Aug06",
+    "gender": "W",
+    "team1": "WTLSP",
+    "team2": "WTMILO",
+    "label": "Match 23: WTLSP v WTMILO",
+    "date": "2026-08-06T19:30:00+05:30"
+  },
+  {
+    "matchNum": 191,
+    "key": "THWSC_W24_WTBPH_WTSUNL_Aug07",
+    "gender": "W",
+    "team1": "WTBPH",
+    "team2": "WTSUNL",
+    "label": "Match 24: WTBPH v WTSUNL",
+    "date": "2026-08-07T19:30:00+05:30"
+  },
+  {
+    "matchNum": 192,
+    "key": "THWSC_W25_WTMILO_WTTRR_Aug08",
+    "gender": "W",
+    "team1": "WTMILO",
+    "team2": "WTTRR",
+    "label": "Match 25: WTMILO v WTTRR",
+    "date": "2026-08-08T15:30:00+05:30"
+  },
+  {
+    "matchNum": 193,
+    "key": "THWSC_W26_WTSBR_WTMSG_Aug08",
+    "gender": "W",
+    "team1": "WTSBR",
+    "team2": "WTMSG",
+    "label": "Match 26: WTSBR v WTMSG",
+    "date": "2026-08-08T19:00:00+05:30"
+  },
+  {
+    "matchNum": 194,
+    "key": "THWSC_W27_WTSUNL_WTWLF_Aug09",
+    "gender": "W",
+    "team1": "WTSUNL",
+    "team2": "WTWLF",
+    "label": "Match 27: WTSUNL v WTWLF",
+    "date": "2026-08-09T15:30:00+05:30"
+  },
+  {
+    "matchNum": 195,
+    "key": "THWSC_W28_WTLSP_WTBPH_Aug09",
+    "gender": "W",
+    "team1": "WTLSP",
+    "team2": "WTBPH",
+    "label": "Match 28: WTLSP v WTBPH",
+    "date": "2026-08-09T19:00:00+05:30"
+  },
+  {
+    "matchNum": 196,
+    "key": "THWSC_W29_WTTRR_WTSBR_Aug10",
+    "gender": "W",
+    "team1": "WTTRR",
+    "team2": "WTSBR",
+    "label": "Match 29: WTTRR v WTSBR",
+    "date": "2026-08-10T19:30:00+05:30"
+  },
+  {
+    "matchNum": 197,
+    "key": "THWSC_W30_WTMSG_WTSUNL_Aug11",
+    "gender": "W",
+    "team1": "WTMSG",
+    "team2": "WTSUNL",
+    "label": "Match 30: WTMSG v WTSUNL",
+    "date": "2026-08-11T19:30:00+05:30"
+  },
+  {
+    "matchNum": 198,
+    "key": "THWSC_W31_WTWLF_WTLSP_Aug12",
+    "gender": "W",
+    "team1": "WTWLF",
+    "team2": "WTLSP",
+    "label": "Match 31: WTWLF v WTLSP",
+    "date": "2026-08-12T16:00:00+05:30"
+  },
+  {
+    "matchNum": 199,
+    "key": "THWSC_W32_WTBPH_WTMILO_Aug12",
+    "gender": "W",
+    "team1": "WTBPH",
+    "team2": "WTMILO",
+    "label": "Match 32: WTBPH v WTMILO",
+    "date": "2026-08-12T19:30:00+05:30"
   }
 ]

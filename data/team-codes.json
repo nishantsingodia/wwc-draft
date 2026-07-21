@@ -134,5 +134,69 @@
   "WI": {
     "flag": "🏏",
     "name": "West Indies"
+  },
+  "MTMILO": {
+    "flag": "🏏",
+    "name": "MI London"
+  },
+  "MTSUNL": {
+    "flag": "🏏",
+    "name": "Sunrisers Leeds"
+  },
+  "MTSBR": {
+    "flag": "🏏",
+    "name": "Southern Brave"
+  },
+  "MTWLF": {
+    "flag": "🏏",
+    "name": "Welsh Fire"
+  },
+  "MTLSP": {
+    "flag": "🏏",
+    "name": "London Spirit"
+  },
+  "MTMSG": {
+    "flag": "🏏",
+    "name": "Manchester Super Giants"
+  },
+  "MTBPH": {
+    "flag": "🏏",
+    "name": "Birmingham Phoenix"
+  },
+  "MTTRR": {
+    "flag": "🏏",
+    "name": "Trent Rockets"
+  },
+  "WTMILO": {
+    "flag": "🏏",
+    "name": "MI London"
+  },
+  "WTSUNL": {
+    "flag": "🏏",
+    "name": "Sunrisers Leeds"
+  },
+  "WTSBR": {
+    "flag": "🏏",
+    "name": "Southern Brave"
+  },
+  "WTWLF": {
+    "flag": "🏏",
+    "name": "Welsh Fire"
+  },
+  "WTLSP": {
+    "flag": "🏏",
+    "name": "London Spirit"
+  },
+  "WTMSG": {
+    "flag": "🏏",
+    "name": "Manchester Super Giants"
+  },
+  "WTBPH": {
+    "flag": "🏏",
+    "name": "Birmingham Phoenix"
+  },
+  "WTTRR": {
+    "flag": "🏏",
+    "name": "Trent Rockets"
   }
 }

@@ -5618,5 +5618,2455 @@
     "team_code": "LPLDS",
     "efppm": 39.2,
     "pid": "slug:vishva-kumara"
+  },
+  {
+    "id": 10382,
+    "name": "Jason Roy",
+    "country": "MI London",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "slug:jason-roy"
+  },
+  {
+    "id": 10383,
+    "name": "Will Jacks",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "MTMILO",
+    "efppm": 50.0,
+    "pid": "9caf69a1"
+  },
+  {
+    "id": 10384,
+    "name": "James Vince",
+    "country": "MI London",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "slug:james-vince"
+  },
+  {
+    "id": 10385,
+    "name": "Nicholas Pooran",
+    "country": "MI London",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "3241e3fd"
+  },
+  {
+    "id": 10386,
+    "name": "Sherfane Rutherford",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTMILO",
+    "efppm": 50.0,
+    "pid": "slug:sherfane-rutherford"
+  },
+  {
+    "id": 10387,
+    "name": "Sam Curran",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTMILO",
+    "efppm": 50.0,
+    "pid": "e94915e6"
+  },
+  {
+    "id": 10388,
+    "name": "Tom Curran",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTMILO",
+    "efppm": 50.0,
+    "pid": "slug:tom-curran"
+  },
+  {
+    "id": 10389,
+    "name": "Rashid Khan",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTMILO",
+    "efppm": 50.0,
+    "pid": "slug:rashid-khan"
+  },
+  {
+    "id": 10390,
+    "name": "Trent Boult",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "a818c1be"
+  },
+  {
+    "id": 10391,
+    "name": "Richard Gleeson",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "slug:richard-gleeson"
+  },
+  {
+    "id": 10392,
+    "name": "Olly Stone",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "slug:olly-stone"
+  },
+  {
+    "id": 10393,
+    "name": "Ollie Pope",
+    "country": "MI London",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "slug:ollie-pope"
+  },
+  {
+    "id": 10394,
+    "name": "Callum Parkinson",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "slug:callum-parkinson"
+  },
+  {
+    "id": 10395,
+    "name": "Nathan Sowter",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTMILO",
+    "efppm": 45.0,
+    "pid": "slug:nathan-sowter"
+  },
+  {
+    "id": 10396,
+    "name": "Ollie Sykes",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "MTMILO",
+    "efppm": 50.0,
+    "pid": "slug:ollie-sykes"
+  },
+  {
+    "id": 10397,
+    "name": "Zak Crawley",
+    "country": "Sunrisers Leeds",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:zak-crawley"
+  },
+  {
+    "id": 10398,
+    "name": "Ryan Rickelton",
+    "country": "Sunrisers Leeds",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "e66732f8"
+  },
+  {
+    "id": 10399,
+    "name": "Harry Brook",
+    "country": "Sunrisers Leeds",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:harry-brook"
+  },
+  {
+    "id": 10400,
+    "name": "Mitchell Marsh",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTSUNL",
+    "efppm": 50.0,
+    "pid": "3d8feaf8"
+  },
+  {
+    "id": 10401,
+    "name": "Dan Lawrence",
+    "country": "Sunrisers Leeds",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:dan-lawrence"
+  },
+  {
+    "id": 10402,
+    "name": "Ed Barnard",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTSUNL",
+    "efppm": 50.0,
+    "pid": "slug:ed-barnard"
+  },
+  {
+    "id": 10403,
+    "name": "Benny Howell",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTSUNL",
+    "efppm": 50.0,
+    "pid": "slug:benny-howell"
+  },
+  {
+    "id": 10404,
+    "name": "Brydon Carse",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:brydon-carse"
+  },
+  {
+    "id": 10405,
+    "name": "Nathan Ellis",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "9eb1455b"
+  },
+  {
+    "id": 10406,
+    "name": "Abrar Ahmed",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:abrar-ahmed"
+  },
+  {
+    "id": 10407,
+    "name": "Matthew Potts",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:matthew-potts"
+  },
+  {
+    "id": 10408,
+    "name": "Tom Alsop",
+    "country": "Sunrisers Leeds",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:tom-alsop"
+  },
+  {
+    "id": 10409,
+    "name": "Reece Topley",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:reece-topley"
+  },
+  {
+    "id": 10410,
+    "name": "Liam Patterson-White",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MTSUNL",
+    "efppm": 50.0,
+    "pid": "slug:liam-patterson-white"
+  },
+  {
+    "id": 10411,
+    "name": "Tom Lawes",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "MTSUNL",
+    "efppm": 50.0,
+    "pid": "slug:tom-lawes"
+  },
+  {
+    "id": 10412,
+    "name": "Jamie Smith",
+    "country": "Southern Brave",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:jamie-smith"
+  },
+  {
+    "id": 10413,
+    "name": "Tristan Stubbs",
+    "country": "Southern Brave",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:tristan-stubbs"
+  },
+  {
+    "id": 10414,
+    "name": "David Miller",
+    "country": "Southern Brave",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:david-miller"
+  },
+  {
+    "id": 10415,
+    "name": "Marcus Stoinis",
+    "country": "Southern Brave",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTSBR",
+    "efppm": 50.0,
+    "pid": "d9273ee7"
+  },
+  {
+    "id": 10416,
+    "name": "Tom Abell",
+    "country": "Southern Brave",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTSBR",
+    "efppm": 50.0,
+    "pid": "slug:tom-abell"
+  },
+  {
+    "id": 10417,
+    "name": "Michael Pepper",
+    "country": "Southern Brave",
+    "role": "WK",
+    "squad_number": 6,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:michael-pepper"
+  },
+  {
+    "id": 10418,
+    "name": "Chris Jordan",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:chris-jordan"
+  },
+  {
+    "id": 10419,
+    "name": "Adil Rashid",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:adil-rashid"
+  },
+  {
+    "id": 10420,
+    "name": "Jofra Archer",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "5574750c"
+  },
+  {
+    "id": 10421,
+    "name": "Luke Wood",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "65b6943c"
+  },
+  {
+    "id": 10422,
+    "name": "Dan Worrall",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:dan-worrall"
+  },
+  {
+    "id": 10423,
+    "name": "Ben McKinney",
+    "country": "Southern Brave",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:ben-mckinney"
+  },
+  {
+    "id": 10424,
+    "name": "Nikhil Chaudhary",
+    "country": "Southern Brave",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTSBR",
+    "efppm": 50.0,
+    "pid": "espn:1079380"
+  },
+  {
+    "id": 10425,
+    "name": "Thomas Rew",
+    "country": "Southern Brave",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:thomas-rew"
+  },
+  {
+    "id": 10426,
+    "name": "Caleb Falconer",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTSBR",
+    "efppm": 45.0,
+    "pid": "slug:caleb-falconer"
+  },
+  {
+    "id": 10427,
+    "name": "Phil Salt",
+    "country": "Welsh Fire",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "3d284ca3"
+  },
+  {
+    "id": 10428,
+    "name": "Matthew Short",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "MTWLF",
+    "efppm": 50.0,
+    "pid": "espn:605575"
+  },
+  {
+    "id": 10429,
+    "name": "Joe Root",
+    "country": "Welsh Fire",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "slug:joe-root"
+  },
+  {
+    "id": 10430,
+    "name": "Rachin Ravindra",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTWLF",
+    "efppm": 50.0,
+    "pid": "ba5e1069"
+  },
+  {
+    "id": 10431,
+    "name": "Tom Kohler-Cadmore",
+    "country": "Welsh Fire",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "slug:tom-kohler-cadmore"
+  },
+  {
+    "id": 10432,
+    "name": "Chris Woakes",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTWLF",
+    "efppm": 50.0,
+    "pid": "slug:chris-woakes"
+  },
+  {
+    "id": 10433,
+    "name": "Marco Jansen",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTWLF",
+    "efppm": 50.0,
+    "pid": "slug:marco-jansen"
+  },
+  {
+    "id": 10434,
+    "name": "Ben Kellaway",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTWLF",
+    "efppm": 50.0,
+    "pid": "slug:ben-kellaway"
+  },
+  {
+    "id": 10435,
+    "name": "Lockie Ferguson",
+    "country": "Welsh Fire",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "slug:lockie-ferguson"
+  },
+  {
+    "id": 10436,
+    "name": "Sam Cook",
+    "country": "Welsh Fire",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "slug:sam-cook"
+  },
+  {
+    "id": 10437,
+    "name": "Jafer Chohan",
+    "country": "Welsh Fire",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "slug:jafer-chohan"
+  },
+  {
+    "id": 10438,
+    "name": "Jordan Cox",
+    "country": "Welsh Fire",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "ff154ecd"
+  },
+  {
+    "id": 10439,
+    "name": "Asa Tribe",
+    "country": "Welsh Fire",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "slug:asa-tribe"
+  },
+  {
+    "id": 10440,
+    "name": "Tom Aspinwall",
+    "country": "Welsh Fire",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTWLF",
+    "efppm": 45.0,
+    "pid": "slug:tom-aspinwall"
+  },
+  {
+    "id": 10441,
+    "name": "Jonny Bairstow",
+    "country": "London Spirit",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "slug:jonny-bairstow"
+  },
+  {
+    "id": 10442,
+    "name": "Dewald Brevis",
+    "country": "London Spirit",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "slug:dewald-brevis"
+  },
+  {
+    "id": 10443,
+    "name": "Liam Livingstone",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTLSP",
+    "efppm": 50.0,
+    "pid": "slug:liam-livingstone"
+  },
+  {
+    "id": 10444,
+    "name": "Lhuan-dre Pretorius",
+    "country": "London Spirit",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "espn:1385640"
+  },
+  {
+    "id": 10445,
+    "name": "Adam Hose",
+    "country": "London Spirit",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "slug:adam-hose"
+  },
+  {
+    "id": 10446,
+    "name": "David Willey",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTLSP",
+    "efppm": 50.0,
+    "pid": "slug:david-willey"
+  },
+  {
+    "id": 10447,
+    "name": "Jamie Overton",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTLSP",
+    "efppm": 50.0,
+    "pid": "slug:jamie-overton"
+  },
+  {
+    "id": 10448,
+    "name": "James Coles",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTLSP",
+    "efppm": 50.0,
+    "pid": "slug:james-coles"
+  },
+  {
+    "id": 10449,
+    "name": "Adam Zampa",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "espn:379504"
+  },
+  {
+    "id": 10450,
+    "name": "Adam Milne",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "350bb1b1"
+  },
+  {
+    "id": 10451,
+    "name": "Tymal Mills",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "slug:tymal-mills"
+  },
+  {
+    "id": 10452,
+    "name": "James Rew",
+    "country": "London Spirit",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "slug:james-rew"
+  },
+  {
+    "id": 10453,
+    "name": "Mason Crane",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "slug:mason-crane"
+  },
+  {
+    "id": 10454,
+    "name": "Matthew Fisher",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTLSP",
+    "efppm": 45.0,
+    "pid": "slug:matthew-fisher"
+  },
+  {
+    "id": 10455,
+    "name": "Jos Buttler",
+    "country": "Manchester Super Giants",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "99b75528"
+  },
+  {
+    "id": 10456,
+    "name": "Aiden Markram",
+    "country": "Manchester Super Giants",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:aiden-markram"
+  },
+  {
+    "id": 10457,
+    "name": "Leus du Plooy",
+    "country": "Manchester Super Giants",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:leus-du-plooy"
+  },
+  {
+    "id": 10458,
+    "name": "Heinrich Klaasen",
+    "country": "Manchester Super Giants",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:heinrich-klaasen"
+  },
+  {
+    "id": 10459,
+    "name": "Liam Dawson",
+    "country": "Manchester Super Giants",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTMSG",
+    "efppm": 50.0,
+    "pid": "4a461c24"
+  },
+  {
+    "id": 10460,
+    "name": "Paul Walter",
+    "country": "Manchester Super Giants",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTMSG",
+    "efppm": 50.0,
+    "pid": "slug:paul-walter"
+  },
+  {
+    "id": 10461,
+    "name": "Gus Atkinson",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:gus-atkinson"
+  },
+  {
+    "id": 10462,
+    "name": "Tom Hartley",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:tom-hartley"
+  },
+  {
+    "id": 10463,
+    "name": "Noor Ahmad",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:noor-ahmad"
+  },
+  {
+    "id": 10464,
+    "name": "Josh Tongue",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:josh-tongue"
+  },
+  {
+    "id": 10465,
+    "name": "Sonny Baker",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "78c12883"
+  },
+  {
+    "id": 10466,
+    "name": "Tim Seifert",
+    "country": "Manchester Super Giants",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "4663bd23"
+  },
+  {
+    "id": 10467,
+    "name": "Max Holden",
+    "country": "Manchester Super Giants",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:max-holden"
+  },
+  {
+    "id": 10468,
+    "name": "Tawanda Muyeye",
+    "country": "Manchester Super Giants",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:tawanda-muyeye"
+  },
+  {
+    "id": 10469,
+    "name": "Tom Moores",
+    "country": "Manchester Super Giants",
+    "role": "WK",
+    "squad_number": 15,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:tom-moores"
+  },
+  {
+    "id": 10470,
+    "name": "George Scrimshaw",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MTMSG",
+    "efppm": 45.0,
+    "pid": "slug:george-scrimshaw"
+  },
+  {
+    "id": 10471,
+    "name": "Will Smeed",
+    "country": "Birmingham Phoenix",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTBPH",
+    "efppm": 45.0,
+    "pid": "slug:will-smeed"
+  },
+  {
+    "id": 10472,
+    "name": "Joe Clarke",
+    "country": "Birmingham Phoenix",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "MTBPH",
+    "efppm": 45.0,
+    "pid": "slug:joe-clarke"
+  },
+  {
+    "id": 10473,
+    "name": "Jacob Bethell",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTBPH",
+    "efppm": 50.0,
+    "pid": "3c55c703"
+  },
+  {
+    "id": 10474,
+    "name": "Laurie Evans",
+    "country": "Birmingham Phoenix",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTBPH",
+    "efppm": 45.0,
+    "pid": "slug:laurie-evans"
+  },
+  {
+    "id": 10475,
+    "name": "Donovan Ferreira",
+    "country": "Birmingham Phoenix",
+    "role": "WK",
+    "squad_number": 5,
+    "team_code": "MTBPH",
+    "efppm": 45.0,
+    "pid": "f0af99a7"
+  },
+  {
+    "id": 10476,
+    "name": "Mitchell Owen",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTBPH",
+    "efppm": 50.0,
+    "pid": "f2c936d7"
+  },
+  {
+    "id": 10477,
+    "name": "Rehan Ahmed",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTBPH",
+    "efppm": 50.0,
+    "pid": "0ecb4de6"
+  },
+  {
+    "id": 10478,
+    "name": "Scott Currie",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTBPH",
+    "efppm": 50.0,
+    "pid": "slug:scott-currie"
+  },
+  {
+    "id": 10479,
+    "name": "Saqib Mahmood",
+    "country": "Birmingham Phoenix",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTBPH",
+    "efppm": 45.0,
+    "pid": "slug:saqib-mahmood"
+  },
+  {
+    "id": 10480,
+    "name": "Mustafizur Rahman",
+    "country": "Birmingham Phoenix",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTBPH",
+    "efppm": 45.0,
+    "pid": "espn:330902"
+  },
+  {
+    "id": 10481,
+    "name": "Usman Tariq",
+    "country": "Birmingham Phoenix",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTBPH",
+    "efppm": 45.0,
+    "pid": "slug:usman-tariq"
+  },
+  {
+    "id": 10482,
+    "name": "Jordan Thompson",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "MTBPH",
+    "efppm": 50.0,
+    "pid": "slug:jordan-thompson"
+  },
+  {
+    "id": 10483,
+    "name": "Chris Wood",
+    "country": "Birmingham Phoenix",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTBPH",
+    "efppm": 45.0,
+    "pid": "slug:chris-wood"
+  },
+  {
+    "id": 10484,
+    "name": "Ethan Brookes",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MTBPH",
+    "efppm": 50.0,
+    "pid": "slug:ethan-brookes"
+  },
+  {
+    "id": 10485,
+    "name": "Finn Allen",
+    "country": "Trent Rockets",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "bf74b130"
+  },
+  {
+    "id": 10486,
+    "name": "Ben Duckett",
+    "country": "Trent Rockets",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:ben-duckett"
+  },
+  {
+    "id": 10487,
+    "name": "Tom Banton",
+    "country": "Trent Rockets",
+    "role": "WK",
+    "squad_number": 3,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "25f7b7d6"
+  },
+  {
+    "id": 10488,
+    "name": "Sam Billings",
+    "country": "Trent Rockets",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:sam-billings"
+  },
+  {
+    "id": 10489,
+    "name": "Tim David",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTTRR",
+    "efppm": 50.0,
+    "pid": "espn:892749"
+  },
+  {
+    "id": 10490,
+    "name": "Lewis Gregory",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTTRR",
+    "efppm": 50.0,
+    "pid": "slug:lewis-gregory"
+  },
+  {
+    "id": 10491,
+    "name": "Dan Mousley",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTTRR",
+    "efppm": 50.0,
+    "pid": "slug:dan-mousley"
+  },
+  {
+    "id": 10492,
+    "name": "Mitchell Santner",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTTRR",
+    "efppm": 50.0,
+    "pid": "e4a0deae"
+  },
+  {
+    "id": 10493,
+    "name": "Craig Overton",
+    "country": "Trent Rockets",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:craig-overton"
+  },
+  {
+    "id": 10494,
+    "name": "Matt Henry",
+    "country": "Trent Rockets",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:matt-henry"
+  },
+  {
+    "id": 10495,
+    "name": "Mohammad Amir",
+    "country": "Trent Rockets",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:mohammad-amir"
+  },
+  {
+    "id": 10496,
+    "name": "Danny Briggs",
+    "country": "Trent Rockets",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:danny-briggs"
+  },
+  {
+    "id": 10497,
+    "name": "Aneurin Donald",
+    "country": "Trent Rockets",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:aneurin-donald"
+  },
+  {
+    "id": 10498,
+    "name": "Brad Currie",
+    "country": "Trent Rockets",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:brad-currie"
+  },
+  {
+    "id": 10499,
+    "name": "Louis Kimber",
+    "country": "Trent Rockets",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTTRR",
+    "efppm": 45.0,
+    "pid": "slug:louis-kimber"
+  },
+  {
+    "id": 10500,
+    "name": "Hayley Matthews",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "WTMILO",
+    "efppm": 50.0,
+    "pid": "d32cf49a"
+  },
+  {
+    "id": 10501,
+    "name": "Danni Wyatt-Hodge",
+    "country": "MI London",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "a139c379"
+  },
+  {
+    "id": 10502,
+    "name": "Amelia Kerr",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WTMILO",
+    "efppm": 50.0,
+    "pid": "7673c908"
+  },
+  {
+    "id": 10503,
+    "name": "Hollie Armitage",
+    "country": "MI London",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:hollie-armitage"
+  },
+  {
+    "id": 10504,
+    "name": "Chinelle Henry",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTMILO",
+    "efppm": 50.0,
+    "pid": "75820733"
+  },
+  {
+    "id": 10505,
+    "name": "Nicola Carey",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTMILO",
+    "efppm": 50.0,
+    "pid": "dff806f4"
+  },
+  {
+    "id": 10506,
+    "name": "Kira Chathli",
+    "country": "MI London",
+    "role": "WK",
+    "squad_number": 7,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:kira-chathli"
+  },
+  {
+    "id": 10507,
+    "name": "Alice Davidson-Richards",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "WTMILO",
+    "efppm": 50.0,
+    "pid": "slug:alice-davidson-richards"
+  },
+  {
+    "id": 10508,
+    "name": "Kirstie Gordon",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "espn:577317"
+  },
+  {
+    "id": 10509,
+    "name": "Tara Norris",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:tara-norris"
+  },
+  {
+    "id": 10510,
+    "name": "Alexa Stonehouse",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:alexa-stonehouse"
+  },
+  {
+    "id": 10511,
+    "name": "Ellie Threlkeld",
+    "country": "MI London",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:ellie-threlkeld"
+  },
+  {
+    "id": 10512,
+    "name": "Alice Monaghan",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:alice-monaghan"
+  },
+  {
+    "id": 10513,
+    "name": "Kalea Moore",
+    "country": "MI London",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "WTMILO",
+    "efppm": 50.0,
+    "pid": "slug:kalea-moore"
+  },
+  {
+    "id": 10514,
+    "name": "Danielle Gregory",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:danielle-gregory"
+  },
+  {
+    "id": 10515,
+    "name": "Kate Coppack",
+    "country": "MI London",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:kate-coppack"
+  },
+  {
+    "id": 10516,
+    "name": "Francesca Sweet",
+    "country": "MI London",
+    "role": "BAT",
+    "squad_number": 17,
+    "team_code": "WTMILO",
+    "efppm": 45.0,
+    "pid": "slug:francesca-sweet"
+  },
+  {
+    "id": 10517,
+    "name": "Phoebe Litchfield",
+    "country": "Sunrisers Leeds",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "4e6ef14f"
+  },
+  {
+    "id": 10518,
+    "name": "Lauren Winfield-Hill",
+    "country": "Sunrisers Leeds",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:lauren-winfield-hill"
+  },
+  {
+    "id": 10519,
+    "name": "Bryony Smith",
+    "country": "Sunrisers Leeds",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:bryony-smith"
+  },
+  {
+    "id": 10520,
+    "name": "Annabel Sutherland",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTSUNL",
+    "efppm": 50.0,
+    "pid": "65d9b6b6"
+  },
+  {
+    "id": 10521,
+    "name": "Deepti Sharma",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTSUNL",
+    "efppm": 50.0,
+    "pid": "espn:597811"
+  },
+  {
+    "id": 10522,
+    "name": "Dani Gibson",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTSUNL",
+    "efppm": 50.0,
+    "pid": "d2763568"
+  },
+  {
+    "id": 10523,
+    "name": "Jess Jonassen",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTSUNL",
+    "efppm": 50.0,
+    "pid": "slug:jess-jonassen"
+  },
+  {
+    "id": 10524,
+    "name": "Kate Cross",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:kate-cross"
+  },
+  {
+    "id": 10525,
+    "name": "Cassidy McCarthy",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:cassidy-mccarthy"
+  },
+  {
+    "id": 10526,
+    "name": "Hannah Baker",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:hannah-baker"
+  },
+  {
+    "id": 10527,
+    "name": "Chloe Skelton",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:chloe-skelton"
+  },
+  {
+    "id": 10528,
+    "name": "Katie Jones",
+    "country": "Sunrisers Leeds",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:katie-jones"
+  },
+  {
+    "id": 10529,
+    "name": "Emily Windsor",
+    "country": "Sunrisers Leeds",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:emily-windsor"
+  },
+  {
+    "id": 10530,
+    "name": "Claudie Cooper",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "WTSUNL",
+    "efppm": 50.0,
+    "pid": "slug:claudie-cooper"
+  },
+  {
+    "id": 10531,
+    "name": "Darcey Carter",
+    "country": "Sunrisers Leeds",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "WTSUNL",
+    "efppm": 50.0,
+    "pid": "c3394c16"
+  },
+  {
+    "id": 10532,
+    "name": "Sophia Turner",
+    "country": "Sunrisers Leeds",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "WTSUNL",
+    "efppm": 45.0,
+    "pid": "slug:sophia-turner"
+  },
+  {
+    "id": 10533,
+    "name": "Laura Wolvaardt",
+    "country": "Southern Brave",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "e60f81c9"
+  },
+  {
+    "id": 10534,
+    "name": "Maia Bouchier",
+    "country": "Southern Brave",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "slug:maia-bouchier"
+  },
+  {
+    "id": 10535,
+    "name": "Jemimah Rodrigues",
+    "country": "Southern Brave",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "cb08b611"
+  },
+  {
+    "id": 10536,
+    "name": "Lizelle Lee",
+    "country": "Southern Brave",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "slug:lizelle-lee"
+  },
+  {
+    "id": 10537,
+    "name": "Sophie Molineux",
+    "country": "Southern Brave",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTSBR",
+    "efppm": 50.0,
+    "pid": "99e23670"
+  },
+  {
+    "id": 10538,
+    "name": "Tilly Corteen-Coleman",
+    "country": "Southern Brave",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "slug:tilly-corteen-coleman"
+  },
+  {
+    "id": 10539,
+    "name": "Phoebe Franklin",
+    "country": "Southern Brave",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTSBR",
+    "efppm": 50.0,
+    "pid": "slug:phoebe-franklin"
+  },
+  {
+    "id": 10540,
+    "name": "Sarah Glenn",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "slug:sarah-glenn"
+  },
+  {
+    "id": 10541,
+    "name": "Issy Wong",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "e5b17517"
+  },
+  {
+    "id": 10542,
+    "name": "Lauren Bell",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "38b4583c"
+  },
+  {
+    "id": 10543,
+    "name": "Jodi Grewcock",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "slug:jodi-grewcock"
+  },
+  {
+    "id": 10544,
+    "name": "Ellie Anderson",
+    "country": "Southern Brave",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "slug:ellie-anderson"
+  },
+  {
+    "id": 10545,
+    "name": "Naomi Dattani",
+    "country": "Southern Brave",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "WTSBR",
+    "efppm": 50.0,
+    "pid": "slug:naomi-dattani"
+  },
+  {
+    "id": 10546,
+    "name": "Rebecca Odgers",
+    "country": "Southern Brave",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "WTSBR",
+    "efppm": 45.0,
+    "pid": "slug:rebecca-odgers"
+  },
+  {
+    "id": 10547,
+    "name": "Katherine Fraser",
+    "country": "Southern Brave",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "WTSBR",
+    "efppm": 50.0,
+    "pid": "a0a65375"
+  },
+  {
+    "id": 10548,
+    "name": "Georgia Voll",
+    "country": "Welsh Fire",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "5c30d455"
+  },
+  {
+    "id": 10549,
+    "name": "Ella McCaughan",
+    "country": "Welsh Fire",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "slug:ella-mccaughan"
+  },
+  {
+    "id": 10550,
+    "name": "Sophie Devine",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WTWLF",
+    "efppm": 50.0,
+    "pid": "de69af96"
+  },
+  {
+    "id": 10551,
+    "name": "Sarah Bryce",
+    "country": "Welsh Fire",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "2ca65aee"
+  },
+  {
+    "id": 10552,
+    "name": "Freya Kemp",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTWLF",
+    "efppm": 50.0,
+    "pid": "abc9f8a4"
+  },
+  {
+    "id": 10553,
+    "name": "Heather Graham",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTWLF",
+    "efppm": 50.0,
+    "pid": "slug:heather-graham"
+  },
+  {
+    "id": 10554,
+    "name": "Georgia Wareham",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTWLF",
+    "efppm": 50.0,
+    "pid": "f0b4e47d"
+  },
+  {
+    "id": 10555,
+    "name": "Emily Arlott",
+    "country": "Welsh Fire",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "slug:emily-arlott"
+  },
+  {
+    "id": 10556,
+    "name": "Sophia Smale",
+    "country": "Welsh Fire",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "slug:sophia-smale"
+  },
+  {
+    "id": 10557,
+    "name": "Grace Potts",
+    "country": "Welsh Fire",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "slug:grace-potts"
+  },
+  {
+    "id": 10558,
+    "name": "Fi Morris",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "WTWLF",
+    "efppm": 50.0,
+    "pid": "slug:fi-morris"
+  },
+  {
+    "id": 10559,
+    "name": "Abi Norgrove",
+    "country": "Welsh Fire",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "slug:abi-norgrove"
+  },
+  {
+    "id": 10560,
+    "name": "Rhianna Southby",
+    "country": "Welsh Fire",
+    "role": "WK",
+    "squad_number": 13,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "slug:rhianna-southby"
+  },
+  {
+    "id": 10561,
+    "name": "Grace Thompson",
+    "country": "Welsh Fire",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "WTWLF",
+    "efppm": 50.0,
+    "pid": "slug:grace-thompson"
+  },
+  {
+    "id": 10562,
+    "name": "Georgia Davis",
+    "country": "Welsh Fire",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "slug:georgia-davis"
+  },
+  {
+    "id": 10563,
+    "name": "Niamh Holland",
+    "country": "Welsh Fire",
+    "role": "BAT",
+    "squad_number": 16,
+    "team_code": "WTWLF",
+    "efppm": 45.0,
+    "pid": "slug:niamh-holland"
+  },
+  {
+    "id": 10564,
+    "name": "Amy Jones",
+    "country": "London Spirit",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "b05e45e4"
+  },
+  {
+    "id": 10565,
+    "name": "Grace Harris",
+    "country": "London Spirit",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "72166006"
+  },
+  {
+    "id": 10566,
+    "name": "Deandra Dottin",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WTLSP",
+    "efppm": 50.0,
+    "pid": "53bee17f"
+  },
+  {
+    "id": 10567,
+    "name": "Marizanne Kapp",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTLSP",
+    "efppm": 50.0,
+    "pid": "63e3b6b3"
+  },
+  {
+    "id": 10568,
+    "name": "Nadine de Klerk",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTLSP",
+    "efppm": 50.0,
+    "pid": "ea544967"
+  },
+  {
+    "id": 10569,
+    "name": "Charlie Dean",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTLSP",
+    "efppm": 50.0,
+    "pid": "c6625a26"
+  },
+  {
+    "id": 10570,
+    "name": "Marie Kelly",
+    "country": "London Spirit",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "slug:marie-kelly"
+  },
+  {
+    "id": 10571,
+    "name": "Sterre Kalis",
+    "country": "London Spirit",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "2b150c6b"
+  },
+  {
+    "id": 10572,
+    "name": "Katie George",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "slug:katie-george"
+  },
+  {
+    "id": 10573,
+    "name": "Lucy Higham",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "slug:lucy-higham"
+  },
+  {
+    "id": 10574,
+    "name": "Charis Pavely",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "WTLSP",
+    "efppm": 50.0,
+    "pid": "slug:charis-pavely"
+  },
+  {
+    "id": 10575,
+    "name": "Seren Smale",
+    "country": "London Spirit",
+    "role": "WK",
+    "squad_number": 12,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "slug:seren-smale"
+  },
+  {
+    "id": 10576,
+    "name": "Hannah Rainey",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "7027d12f"
+  },
+  {
+    "id": 10577,
+    "name": "Josephine Groves",
+    "country": "London Spirit",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "WTLSP",
+    "efppm": 50.0,
+    "pid": "slug:josephine-groves"
+  },
+  {
+    "id": 10578,
+    "name": "Liv Barnes",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "slug:liv-barnes"
+  },
+  {
+    "id": 10579,
+    "name": "Trudy Johnson",
+    "country": "London Spirit",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "WTLSP",
+    "efppm": 45.0,
+    "pid": "slug:trudy-johnson"
+  },
+  {
+    "id": 10580,
+    "name": "Smriti Mandhana",
+    "country": "Manchester Super Giants",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "5d2eda89"
+  },
+  {
+    "id": 10581,
+    "name": "Meg Lanning",
+    "country": "Manchester Super Giants",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:meg-lanning"
+  },
+  {
+    "id": 10582,
+    "name": "Grace Scrivens",
+    "country": "Manchester Super Giants",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WTMSG",
+    "efppm": 50.0,
+    "pid": "slug:grace-scrivens"
+  },
+  {
+    "id": 10583,
+    "name": "Kathryn Bryce",
+    "country": "Manchester Super Giants",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTMSG",
+    "efppm": 50.0,
+    "pid": "f13d3eba"
+  },
+  {
+    "id": 10584,
+    "name": "Richa Ghosh",
+    "country": "Manchester Super Giants",
+    "role": "WK",
+    "squad_number": 5,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "721e0199"
+  },
+  {
+    "id": 10585,
+    "name": "Paige Scholfield",
+    "country": "Manchester Super Giants",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:paige-scholfield"
+  },
+  {
+    "id": 10586,
+    "name": "Mady Villiers",
+    "country": "Manchester Super Giants",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTMSG",
+    "efppm": 50.0,
+    "pid": "slug:mady-villiers"
+  },
+  {
+    "id": 10587,
+    "name": "Maitlan Brown",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:maitlan-brown"
+  },
+  {
+    "id": 10588,
+    "name": "Sophie Ecclestone",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "cdb82f1c"
+  },
+  {
+    "id": 10589,
+    "name": "Grace Ballinger",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:grace-ballinger"
+  },
+  {
+    "id": 10590,
+    "name": "Ryana MacDonald-Gay",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:ryana-macdonald-gay"
+  },
+  {
+    "id": 10591,
+    "name": "Jo Gardner",
+    "country": "Manchester Super Giants",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:jo-gardner"
+  },
+  {
+    "id": 10592,
+    "name": "Rebecca Tyson",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:rebecca-tyson"
+  },
+  {
+    "id": 10593,
+    "name": "Natasha Wraith",
+    "country": "Manchester Super Giants",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:natasha-wraith"
+  },
+  {
+    "id": 10594,
+    "name": "Beth Langston",
+    "country": "Manchester Super Giants",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:beth-langston"
+  },
+  {
+    "id": 10595,
+    "name": "Mia Rogers",
+    "country": "Manchester Super Giants",
+    "role": "WK",
+    "squad_number": 16,
+    "team_code": "WTMSG",
+    "efppm": 45.0,
+    "pid": "slug:mia-rogers"
+  },
+  {
+    "id": 10596,
+    "name": "Tammy Beaumont",
+    "country": "Birmingham Phoenix",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "WTBPH",
+    "efppm": 45.0,
+    "pid": "slug:tammy-beaumont"
+  },
+  {
+    "id": 10597,
+    "name": "Davina Perrin",
+    "country": "Birmingham Phoenix",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTBPH",
+    "efppm": 45.0,
+    "pid": "slug:davina-perrin"
+  },
+  {
+    "id": 10598,
+    "name": "Alice Capsey",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WTBPH",
+    "efppm": 50.0,
+    "pid": "910dd54e"
+  },
+  {
+    "id": 10599,
+    "name": "Ellyse Perry",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTBPH",
+    "efppm": 50.0,
+    "pid": "be150fc8"
+  },
+  {
+    "id": 10600,
+    "name": "Annerie Dercksen",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTBPH",
+    "efppm": 50.0,
+    "pid": "d2b1f515"
+  },
+  {
+    "id": 10601,
+    "name": "Emma Lamb",
+    "country": "Birmingham Phoenix",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "WTBPH",
+    "efppm": 45.0,
+    "pid": "slug:emma-lamb"
+  },
+  {
+    "id": 10602,
+    "name": "Meg Austin",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTBPH",
+    "efppm": 50.0,
+    "pid": "slug:meg-austin"
+  },
+  {
+    "id": 10603,
+    "name": "Alana King",
+    "country": "Birmingham Phoenix",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTBPH",
+    "efppm": 45.0,
+    "pid": "83558266"
+  },
+  {
+    "id": 10604,
+    "name": "Fatima Sana",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "WTBPH",
+    "efppm": 50.0,
+    "pid": "ea9c54de"
+  },
+  {
+    "id": 10605,
+    "name": "Linsey Smith",
+    "country": "Birmingham Phoenix",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTBPH",
+    "efppm": 45.0,
+    "pid": "espn:517577"
+  },
+  {
+    "id": 10606,
+    "name": "Lauren Filer",
+    "country": "Birmingham Phoenix",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTBPH",
+    "efppm": 45.0,
+    "pid": "31adb911"
+  },
+  {
+    "id": 10607,
+    "name": "Eva Gray",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "WTBPH",
+    "efppm": 50.0,
+    "pid": "slug:eva-gray"
+  },
+  {
+    "id": 10608,
+    "name": "Jemima Spence",
+    "country": "Birmingham Phoenix",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WTBPH",
+    "efppm": 45.0,
+    "pid": "slug:jemima-spence"
+  },
+  {
+    "id": 10609,
+    "name": "Esmae MacGregor",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "WTBPH",
+    "efppm": 50.0,
+    "pid": "slug:esmae-macgregor"
+  },
+  {
+    "id": 10610,
+    "name": "Phoebe Brett",
+    "country": "Birmingham Phoenix",
+    "role": "WK",
+    "squad_number": 15,
+    "team_code": "WTBPH",
+    "efppm": 45.0,
+    "pid": "slug:phoebe-brett"
+  },
+  {
+    "id": 10611,
+    "name": "Mary Taylor",
+    "country": "Birmingham Phoenix",
+    "role": "AR",
+    "squad_number": 16,
+    "team_code": "WTBPH",
+    "efppm": 50.0,
+    "pid": "slug:mary-taylor"
+  },
+  {
+    "id": 10612,
+    "name": "Beth Mooney",
+    "country": "Trent Rockets",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "52d1dbc8"
+  },
+  {
+    "id": 10613,
+    "name": "Sophia Dunkley",
+    "country": "Trent Rockets",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "3a9e9cb2"
+  },
+  {
+    "id": 10614,
+    "name": "Nat Sciver-Brunt",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WTTRR",
+    "efppm": 50.0,
+    "pid": "espn:515905"
+  },
+  {
+    "id": 10615,
+    "name": "Ash Gardner",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTTRR",
+    "efppm": 50.0,
+    "pid": "slug:ash-gardner"
+  },
+  {
+    "id": 10616,
+    "name": "Georgia Elwiss",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTTRR",
+    "efppm": 50.0,
+    "pid": "slug:georgia-elwiss"
+  },
+  {
+    "id": 10617,
+    "name": "Kim Garth",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTTRR",
+    "efppm": 50.0,
+    "pid": "espn:418423"
+  },
+  {
+    "id": 10618,
+    "name": "Bess Heath",
+    "country": "Trent Rockets",
+    "role": "WK",
+    "squad_number": 7,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "slug:bess-heath"
+  },
+  {
+    "id": 10619,
+    "name": "Katie Levick",
+    "country": "Trent Rockets",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "slug:katie-levick"
+  },
+  {
+    "id": 10620,
+    "name": "Samantha Bates",
+    "country": "Trent Rockets",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "slug:samantha-bates"
+  },
+  {
+    "id": 10621,
+    "name": "Eve Jones",
+    "country": "Trent Rockets",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "slug:eve-jones"
+  },
+  {
+    "id": 10622,
+    "name": "Millicent Taylor",
+    "country": "Trent Rockets",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "slug:millicent-taylor"
+  },
+  {
+    "id": 10623,
+    "name": "Sophie Luff",
+    "country": "Trent Rockets",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "slug:sophie-luff"
+  },
+  {
+    "id": 10624,
+    "name": "Georgia Adams",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "WTTRR",
+    "efppm": 50.0,
+    "pid": "slug:georgia-adams"
+  },
+  {
+    "id": 10625,
+    "name": "Charley Phillips",
+    "country": "Trent Rockets",
+    "role": "WK",
+    "squad_number": 14,
+    "team_code": "WTTRR",
+    "efppm": 45.0,
+    "pid": "slug:charley-phillips"
+  },
+  {
+    "id": 10626,
+    "name": "Amu Surenkumar",
+    "country": "Trent Rockets",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "WTTRR",
+    "efppm": 50.0,
+    "pid": "slug:amu-surenkumar"
   }
 ]
