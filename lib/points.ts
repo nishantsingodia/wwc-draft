@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 import { fuzzyMatchName, normName } from "./fuzzy-name-match";
-import { TEAM_NAMES, isPidKey, type SheetPlayer } from "./players";
+import { TEAM_NAMES, TEAM_CODE_ALIASES, isPidKey, type SheetPlayer } from "./players";
 // gviz CSV URLs for auto-ingested tours — the tour-sync job appends here so a new
 // tour's points tab self-registers WITHOUT editing the POINTS_CSV_URLS env var.
 import pointsTabs from "@/data/points-tabs.json";
@@ -347,7 +347,10 @@ function tokenMatchesCode(token: string, code: string): boolean {
   if (!t) return false;
   if (t === normName(code)) return true;
   const full = TEAM_NAMES[code];
-  return !!full && t === normName(full);
+  if (full && t === normName(full)) return true;
+  // Bare franchise tokens the sheet uses where the draft namespaces the code (LPL: JK→LPLJK).
+  const aliases = TEAM_CODE_ALIASES[code];
+  return !!aliases && aliases.some((a) => normName(a) === t);
 }
 
 function teamsMatch(toks: string[], c1: string, c2: string): boolean {

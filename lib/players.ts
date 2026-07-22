@@ -35,6 +35,20 @@ export const TEAM_NAMES: Record<string, string> = Object.fromEntries(
   Object.entries(_codes).map(([code, v]) => [code, v.name])
 );
 
+// Sheet team tokens that don't equal our code or its full name. The draft namespaces
+// some franchise codes per-tour to avoid 2-letter collisions (LPLJK, LPLGG…), but the
+// points bot emits the bare franchise short code (JK, GG…) in the LPL tab's Team column
+// and match labels. Map draft code -> the bare token(s) the sheet uses so tokenMatchesCode
+// resolves them. (The Hundred needs no entry — its squad file already uses MTMILO/WTMILO
+// on both sides.) Add here whenever a tour's sheet token differs from the draft code.
+export const TEAM_CODE_ALIASES: Record<string, string[]> = {
+  LPLJK: ["JK"],
+  LPLGG: ["GG"],
+  LPLKR: ["KR"],
+  LPLDS: ["DS"],
+  LPLCK: ["CK"],
+};
+
 // Names in players-raw.json are now canonical announced names.
 // DISPLAY_NAME_MAP is kept only for any legacy stale entries in the DB that
 // haven't been renamed yet; new data goes through fuzzyLookupPoints in points.ts.
