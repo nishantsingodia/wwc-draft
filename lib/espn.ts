@@ -15,6 +15,7 @@ import { TEAM_NAMES } from "./players";
 import { normName } from "./fuzzy-name-match";
 import { resolveEspnPid } from "./registry";
 import espnSeries from "@/data/espn-series.json";
+import { scoreD11, type Perf, type Role, type ScoreFormat } from "./d11-score";
 
 const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/cricket";
 
@@ -166,6 +167,136 @@ async function fetchEspnLineup(match: Match): Promise<EspnLineup | null> {
 
     // Only treat it as a hit if ESPN actually posted at least one side's XI.
     if (xiByTeam.size > 0) return { xiByTeam, lineupMeta };
+  }
+  return null;
+}
+
+// ── LIVE provisional scoring (in-app; the COMPLETED path is untouched) ────────────
+// Fetch the ESPN scorecard for a match and compute a provisional D11 points map keyed
+// the same way the roster joins (registry pid + espn:<id> + name). Used ONLY while a
+// match is live to answer "where do I stand vs my opponent" instantly, with zero
+// cricapi and no bot run. On completion the results route ignores this and reads the
+// bot's reconciled sheet. Numbers here can differ from the final (fielding/dot/lbw
+// detail lags in the live feed) — that's expected and surfaced as "provisional".
+
+// ODI matches are the only non-T20 ruleset; their keys always contain "ODI"
+// (WODI_…, M_NZWI_ODI1_…, M_ENG_IND_ODI1_…). Everything else — T20 AND The Hundred —
+// scores on the T20 ruleset, matching the bot/auction (scoringFormatOf).
+function scoreFormatOf(match: Match): ScoreFormat {
+  return /odi/i.test(match.key) ? "ODI" : "T20";
+}
+
+// ESPN cricket maps a player position to a D11-ish role. Only BOWL matters to the
+// scorer (SR-penalty + duck exclusions); anything unknown scores as a batter (safe).
+function roleFromPosition(abbr: string): Role {
+  const a = (abbr || "").toUpperCase();
+  if (a === "BL" || a === "BOWL") return "BOWL";
+  if (a === "WK") return "WK";
+  if (a === "AR") return "AR";
+  return "BAT";
+}
+
+// Flatten one player's stat lines across both innings periods into name → summed value.
+// Each concrete stat we read (runs, balls, wickets, …) is non-zero in only ONE period
+// (a player bats once, bowls/fields in the other), so summing is the correct total.
+function flattenStats(linescores: unknown): Map<string, number> {
+  const out = new Map<string, number>();
+  for (const period of (linescores as Array<Record<string, unknown>>) ?? []) {
+    for (const sub of (period.linescores as Array<Record<string, unknown>>) ?? []) {
+      const cats =
+        ((sub.statistics as Record<string, unknown>)?.categories as Array<Record<string, unknown>>) ??
+        [];
+      for (const c of cats) {
+        for (const s of (c.stats as Array<Record<string, unknown>>) ?? []) {
+          const name = s.name as string;
+          const v = typeof s.value === "number" ? s.value : Number(s.value);
+          if (name && Number.isFinite(v)) out.set(name, (out.get(name) ?? 0) + v);
+        }
+      }
+    }
+  }
+  return out;
+}
+
+export type LiveScore = {
+  points: Map<string, number>; // (pid | espn:<id> | name) → provisional D11 points
+  anyStats: boolean; // true once at least one player has real bat/bowl figures (play has begun)
+};
+
+const LIVE_TTL_MS = 20_000;
+const _liveCache = new Map<string, { at: number; val: LiveScore | null }>();
+
+export async function getLiveMatchPoints(
+  match: Match,
+  opts?: { fresh?: boolean }
+): Promise<LiveScore | null> {
+  const cached = _liveCache.get(match.key);
+  if (!opts?.fresh && cached && Date.now() - cached.at < LIVE_TTL_MS) return cached.val;
+  const val = await fetchLiveMatchPoints(match);
+  _liveCache.set(match.key, { at: Date.now(), val });
+  return val;
+}
+
+async function fetchLiveMatchPoints(match: Match): Promise<LiveScore | null> {
+  try {
+    return await fetchLiveMatchPointsInner(match);
+  } catch {
+    // The live path is best-effort and additive — never let an ESPN/parse hiccup break
+    // the results page. On any error we return null → the route falls back to the sheet.
+    return null;
+  }
+}
+
+async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null> {
+  const fmt = scoreFormatOf(match);
+  for (const series of SERIES_BY_GENDER[match.gender] ?? []) {
+    const eventId = await findEventId(series, match);
+    if (!eventId) continue;
+    const summary = await espnGet(series, "summary", { event: eventId });
+    if (!summary) continue;
+
+    const points = new Map<string, number>();
+    let anyStats = false;
+    const rosters = (summary.rosters as Array<Record<string, unknown>>) ?? [];
+    for (const team of rosters) {
+      for (const p of (team.roster as Array<Record<string, unknown>>) ?? []) {
+        // Only players actually in the XI (starter, or a sub who came on) are scored.
+        if (!(p.starter || p.subbedIn)) continue;
+        const a = (p.athlete as Record<string, unknown>) ?? {};
+        const nm = ((a.fullName as string) || (a.displayName as string) || "").trim();
+        if (!nm) continue;
+        const g = flattenStats(p.linescores);
+        const get = (k: string) => g.get(k) ?? 0;
+        const bowlWkts = get("wickets") || get("dismissals");
+        const perf: Perf = {
+          played: true,
+          batRuns: get("runs"),
+          batBalls: get("ballsFaced"),
+          bat4s: get("fours"),
+          bat6s: get("sixes"),
+          batDismissed: get("outs") > 0,
+          bowlBalls: get("balls"),
+          bowlRuns: get("conceded"),
+          bowlWickets: bowlWkts,
+          bowlDots: get("dots"),
+          bowlMaidens: get("maidens"),
+          bowlLbwBowled: 0, // live feed doesn't expose the per-bowler lbw/bowled split
+          catches: get("caught"),
+          stumpings: get("stumped"),
+          runOuts: 0, // live feed doesn't reliably attribute run-outs to a fielder
+        };
+        if (perf.batBalls || perf.bowlBalls || perf.catches || perf.stumpings) anyStats = true;
+        const role = roleFromPosition(
+          ((p.position as Record<string, unknown>)?.abbreviation as string) ?? ""
+        );
+        const pts = scoreD11(perf, role, fmt);
+        const regPid = resolveEspnPid(a.id as string | number | undefined, nm);
+        if (regPid) points.set(regPid, pts);
+        if (a.id) points.set(`espn:${a.id}`, pts);
+        points.set(nm, pts);
+      }
+    }
+    if (points.size > 0) return { points, anyStats };
   }
   return null;
 }

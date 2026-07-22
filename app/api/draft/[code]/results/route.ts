@@ -10,7 +10,9 @@ import {
   getMatchPlayerRecon,
   lookupPlayerPoints,
   lookupPlayerRecon,
+  isMatchCompleted,
 } from "@/lib/points";
+import { getLiveMatchPoints } from "@/lib/espn";
 import { getOfficialLineup } from "@/lib/official-lineup";
 import {
   computeEffectiveLineup,
@@ -55,6 +57,19 @@ export async function GET(
     match ? getMatchPlayerRecon(match) : Promise.resolve(new Map<string, string>()),
   ]);
 
+  const nowSec = Math.floor(Date.now() / 1000);
+  const started = nowSec >= contest.matchDeadline;
+  // LIVE provisional scoring: while a match has started but the COMPLETED pipeline hasn't
+  // finalized it, score the H2H from a fresh ESPN scorecard (zero cricapi, no bot run).
+  // Once COMPLETED, we read the bot's reconciled sheet exactly as before — that path is
+  // untouched. `?fresh=1` (the Refresh tap) busts the 20s ESPN cache for an instant pull.
+  const completed = match ? await isMatchCompleted(match) : true;
+  const wantFresh = new URL(request.url).searchParams.get("fresh") === "1";
+  const liveScore =
+    match && started && !completed ? await getLiveMatchPoints(match, { fresh: wantFresh }) : null;
+  const scoringMap = liveScore?.points ?? pointsMap;
+  const pointsSource: "live-espn" | "sheet" = liveScore ? "live-espn" : "sheet";
+
   // BACKUP_INTELLIGENCE eligibility: auto-substitute only once the team is locked
   // (post-deadline, live mode) AND both teams' official XIs are announced. Before
   // that we pass the team through unchanged and never freeze a decision — the user
@@ -62,7 +77,6 @@ export async function GET(
   const t1 = match?.team1 ?? "";
   const t2 = match?.team2 ?? "";
   const announced = !!(t1 && t2 && lineupMeta.get(t1)?.announced && lineupMeta.get(t2)?.announced);
-  const nowSec = Math.floor(Date.now() / 1000);
   const eligible =
     contest.mode === "live" && nowSec >= contest.matchDeadline + LOCK_BUFFER && announced;
 
@@ -122,7 +136,7 @@ export async function GET(
         const p = getPlayerByKey(key);
         const displayName = p?.displayName ?? key;
         // Identity-first: exact match on the stable Player ID, then fuzzy name fallback.
-        const rawPts = lookupPlayerPoints(p?.pid, displayName, p?.name, pointsMap);
+        const rawPts = lookupPlayerPoints(p?.pid, displayName, p?.name, scoringMap);
         const isCap = key === eff.captainKey && !isBackup;
         const isVC = key === eff.viceCaptainKey && !isBackup;
         const multiplier = isCap ? 2 : isVC ? 1.5 : 1;
@@ -164,10 +178,18 @@ export async function GET(
     })
   );
 
-  // Has the match started? Computed server-side (nowSec is the source of "now" here, like
-  // `announced`/`eligible`) so the client can gate the live-refresh button without an
-  // impure Date.now() in render. Re-evaluated on every 30s results poll.
-  const started = nowSec >= contest.matchDeadline;
-
-  return NextResponse.json({ contest, teams, username, announced, matchStatus, started });
+  // `started` + `completed` (computed above off nowSec) let the client pick the refresh
+  // mode: while live it re-fetches this route (?fresh=1) for an instant ESPN pull; once
+  // completed the sheet drives it. `pointsSource` flags when the H2H is provisional/ESPN.
+  return NextResponse.json({
+    contest,
+    teams,
+    username,
+    announced,
+    matchStatus,
+    started,
+    completed,
+    pointsSource,
+    liveProvisional: pointsSource === "live-espn",
+  });
 }

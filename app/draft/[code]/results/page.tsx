@@ -47,6 +47,9 @@ type ResultsData = {
   // Recon status from the bot's "Match Status" column (null on legacy sheets).
   matchStatus: { status: "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED"; flag: string } | null;
   started: boolean; // match has begun (server-computed; gates the live-refresh button)
+  completed: boolean; // the COMPLETED pipeline has finalized this match (sheet drives it)
+  pointsSource: "live-espn" | "sheet";
+  liveProvisional: boolean; // H2H is computed live from ESPN (provisional, in-app, no bot)
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -105,15 +108,30 @@ export default function ResultsPage({
   const [data, setData] = useState<ResultsData | null>(null);
   const [error, setError] = useState("");
   const [tab, setTab] = useState<"h2h" | "detail">("h2h");
+  const [refreshing, setRefreshing] = useState(false);
 
-  const fetchResults = useCallback(async () => {
-    const res = await fetch(`/api/draft/${code}/results`);
-    if (!res.ok) {
-      setError("Failed to load results.");
-      return;
+  const fetchResults = useCallback(
+    async (fresh = false) => {
+      // `fresh` (the manual tap) busts the 20s ESPN cache for an instant live pull.
+      const res = await fetch(`/api/draft/${code}/results${fresh ? "?fresh=1" : ""}`);
+      if (!res.ok) {
+        setError("Failed to load results.");
+        return;
+      }
+      setData(await res.json());
+    },
+    [code]
+  );
+
+  // Live-only instant refresh: re-pull the ESPN scorecard right now (no bot, no cricapi).
+  const refreshLive = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      await fetchResults(true);
+    } finally {
+      setRefreshing(false);
     }
-    setData(await res.json());
-  }, [code]);
+  }, [fetchResults]);
 
   useEffect(() => {
     async function init() {
@@ -162,6 +180,9 @@ export default function ResultsPage({
   const myShare = denom > 0 ? (myTotal / denom) * 100 : 50;
   const isFinal =
     data.matchStatus?.status === "COMPLETED" || data.matchStatus?.status === "COMPLETED_FLAGGED";
+  // Live = started but the COMPLETED pipeline hasn't finalized it. The H2H is then scored
+  // in-app from ESPN (instant, no cricapi/bot); tapping "Refresh" re-pulls that immediately.
+  const live = data.started && !data.completed;
 
   return (
     <main className="min-h-screen bg-ink text-white pb-8">
@@ -172,9 +193,31 @@ export default function ResultsPage({
           <div className="flex-1">
             <h1 className="font-bold">{contest.matchLabel}</h1>
             <p className="text-xs text-mist">
-              {hasPoints ? "Live points — refreshes every 30s" : "Waiting for match to start"}
+              {live && data.liveProvisional
+                ? "Live · provisional (via ESPN) — auto-refreshes every 30s"
+                : live
+                ? "Live — waiting for scores"
+                : hasPoints
+                ? "Refreshes every 30s"
+                : "Waiting for match to start"}
             </p>
           </div>
+          {live && (
+            <button
+              onClick={refreshLive}
+              disabled={refreshing}
+              className={`flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-bold transition ${
+                refreshing
+                  ? "bg-navy border-hair2 text-mist cursor-not-allowed"
+                  : "bg-navy border-gold/50 text-gold hover:brightness-110"
+              }`}
+            >
+              {refreshing && (
+                <span className="h-3 w-3 rounded-full border-2 border-mist/30 border-t-cloud animate-spin" />
+              )}
+              {refreshing ? "…" : "🔄 Refresh"}
+            </button>
+          )}
           <Link href="/lobby" className="text-xs text-mist2 hover:text-cloud">Home</Link>
         </div>
 
