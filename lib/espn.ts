@@ -32,9 +32,12 @@ type EspnLineup = {
   lineupMeta: Map<string, { announced: boolean; toss: string | null }>;
 };
 
-// Team identity that survives "England" vs "England Women" and feed spelling drift.
+// Team identity that survives gender qualifiers (ESPN suffixes "Southern Brave (Men)" /
+// "(Women)" for the Hundred's parallel comps) and feed spelling drift. Strip BOTH "men"
+// and "women" as whole words — stripping only "women" left every men's match unmatched
+// (the men's Hundred showed 0). Mirrors the bot's team_key `_GENDER_QUAL`.
 function teamKey(name: string): string {
-  return normName(name.replace(/women/gi, ""));
+  return normName(name.replace(/\b(?:wo)?men\b/gi, ""));
 }
 
 function dateVariants(iso: string): string[] {
