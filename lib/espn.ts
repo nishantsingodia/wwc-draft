@@ -145,18 +145,22 @@ async function fetchEspnLineup(match: Match): Promise<EspnLineup | null> {
         // ESPN flags the playing XI (and subs that came on) on the roster entry.
         if (!(p.starter || p.subbedIn)) continue;
         const a = (p.athlete as Record<string, unknown>) ?? {};
-        const nm = ((a.fullName as string) || (a.displayName as string) || "").trim();
+        // ESPN's `fullName` is the full LEGAL name the registry doesn't carry; the common
+        // `displayName` is what matches. Key by both so the identity join is robust.
+        const nm = ((a.displayName as string) || (a.fullName as string) || "").trim();
         if (!nm) continue;
+        const full = ((a.fullName as string) || "").trim();
         // Key by THREE things so isPlayerInOfficialXI matches by identity, not a name gamble:
         //   1. the player's stable REGISTRY pid (resolved from ESPN's id, else ESPN's name via
         //      the registry's alias spellings) — matches a slug:/cricsheet_id player whose pid
         //      isn't an espn id and whose ESPN romanization differs from our display name;
         //   2. `espn:<id>` (a player whose registry pid IS the espn id);
         //   3. the raw name (legacy fuzzy fallback for anyone the registry doesn't know yet).
-        const regPid = resolveEspnPid(a.id as string | number | undefined, nm);
+        const regPid = resolveAthletePid(a);
         if (regPid) xi.set(regPid, 0);
         if (a.id) xi.set(`espn:${a.id}`, 0);
         xi.set(nm, 0);
+        if (full && full !== nm) xi.set(full, 0);
       }
 
       if (xi.size > 0) {
@@ -184,6 +188,22 @@ async function fetchEspnLineup(match: Match): Promise<EspnLineup | null> {
 // scores on the T20 ruleset, matching the bot/auction (scoringFormatOf).
 function scoreFormatOf(match: Match): ScoreFormat {
   return /odi/i.test(match.key) ? "ODI" : "T20";
+}
+
+// Resolve an ESPN athlete to our registry pid, trying its name forms in the order that
+// matches the registry's aliases. CRUCIAL: ESPN's `fullName` is the FULL LEGAL name
+// ("Jamie Luke Smith", "Joseph Edward Root") which the registry does NOT carry — the
+// common `displayName` ("Jamie Smith", "Joe Root") is what the aliases hold. Try id first
+// (exact), then displayName, then fullName/shortName as fallbacks.
+function resolveAthletePid(a: Record<string, unknown>): string | null {
+  const id = a.id as string | number | undefined;
+  for (const nm of [a.displayName, a.fullName, a.shortName]) {
+    if (typeof nm === "string" && nm.trim()) {
+      const pid = resolveEspnPid(id, nm.trim());
+      if (pid) return pid;
+    }
+  }
+  return null;
 }
 
 // ESPN cricket maps a player position to a D11-ish role. Only BOWL matters to the
@@ -263,8 +283,8 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         // Only players actually in the XI (starter, or a sub who came on) are scored.
         if (!(p.starter || p.subbedIn)) continue;
         const a = (p.athlete as Record<string, unknown>) ?? {};
-        const nm = ((a.fullName as string) || (a.displayName as string) || "").trim();
-        if (!nm) continue;
+        const disp = ((a.displayName as string) || (a.fullName as string) || "").trim();
+        if (!disp) continue;
         const g = flattenStats(p.linescores);
         const get = (k: string) => g.get(k) ?? 0;
         const bowlWkts = get("wickets") || get("dismissals");
@@ -290,10 +310,12 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
           ((p.position as Record<string, unknown>)?.abbreviation as string) ?? ""
         );
         const pts = scoreD11(perf, role, fmt);
-        const regPid = resolveEspnPid(a.id as string | number | undefined, nm);
+        const regPid = resolveAthletePid(a);
         if (regPid) points.set(regPid, pts);
         if (a.id) points.set(`espn:${a.id}`, pts);
-        points.set(nm, pts);
+        points.set(disp, pts);
+        const full = ((a.fullName as string) || "").trim();
+        if (full && full !== disp) points.set(full, pts);
       }
     }
     if (points.size > 0) return { points, anyStats };

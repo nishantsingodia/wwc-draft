@@ -12,7 +12,7 @@
 // (same mirror discipline as cricket-auction-helper's src/lib/registry/).
 
 import registry from "./registry-players.json";
-import { normName } from "./fuzzy-name-match";
+import { normName, fuzzyMatchName } from "./fuzzy-name-match";
 
 type RegEntry = { aliases?: string[]; espn_id?: string | number | null };
 const players = (registry as { players: Record<string, RegEntry> }).players;
@@ -29,6 +29,8 @@ for (const [pid, e] of Object.entries(players)) {
     if (k && !alias2Pid.has(k)) alias2Pid.set(k, pid);
   }
 }
+// Candidate list for the shared fuzzy matcher (all known alias spellings, normalized once).
+const aliasKeys = [...alias2Pid.keys()];
 
 // ESPN athlete (id + name) -> our stable registry pid, or null if the registry doesn't know
 // this player yet (caller then falls back to fuzzy name as before).
@@ -40,5 +42,12 @@ export function resolveEspnPid(
     const byId = espnId2Pid.get(String(espnId));
     if (byId) return byId;
   }
-  return alias2Pid.get(normName(name)) ?? null;
+  // Exact normalized alias first (fast, unambiguous)…
+  const exact = alias2Pid.get(normName(name));
+  if (exact) return exact;
+  // …then the SHARED cricket-identity fuzzy matcher (surname+initial, hyphen, prefix) — the
+  // same algorithm the points join uses. It returns null on ambiguity, so it won't gamble a
+  // namesake. This catches ESPN spellings the registry doesn't carry verbatim.
+  const m = fuzzyMatchName(name, aliasKeys);
+  return m ? (alias2Pid.get(m) ?? null) : null;
 }
