@@ -4487,7 +4487,7 @@
     "squad_number": 1,
     "team_code": "OENG",
     "efppm": 62.0,
-    "pid": "slug:ben-duckett"
+    "pid": "5f26f677"
   },
   {
     "id": 10269,
@@ -5217,7 +5217,7 @@
     "squad_number": 18,
     "team_code": "LPLKR",
     "efppm": 63.6,
-    "pid": "9a46c4e5"
+    "pid": "slug:dale-phillips"
   },
   {
     "id": 10342,
@@ -5647,7 +5647,7 @@
     "squad_number": 3,
     "team_code": "MTMILO",
     "efppm": 45.0,
-    "pid": "slug:james-vince"
+    "pid": "a15618fe"
   },
   {
     "id": 10385,
@@ -5717,7 +5717,7 @@
     "squad_number": 10,
     "team_code": "MTMILO",
     "efppm": 45.0,
-    "pid": "slug:richard-gleeson"
+    "pid": "402f8494"
   },
   {
     "id": 10392,
@@ -5727,7 +5727,7 @@
     "squad_number": 11,
     "team_code": "MTMILO",
     "efppm": 45.0,
-    "pid": "slug:olly-stone"
+    "pid": "3f659464"
   },
   {
     "id": 10393,
@@ -5757,7 +5757,7 @@
     "squad_number": 14,
     "team_code": "MTMILO",
     "efppm": 45.0,
-    "pid": "slug:nathan-sowter"
+    "pid": "ee0c05c0"
   },
   {
     "id": 10396,
@@ -5777,7 +5777,7 @@
     "squad_number": 1,
     "team_code": "MTSUNL",
     "efppm": 45.0,
-    "pid": "slug:zak-crawley"
+    "pid": "922e1b19"
   },
   {
     "id": 10398,
@@ -5817,7 +5817,7 @@
     "squad_number": 5,
     "team_code": "MTSUNL",
     "efppm": 45.0,
-    "pid": "slug:dan-lawrence"
+    "pid": "4b685e2d"
   },
   {
     "id": 10402,
@@ -5847,7 +5847,7 @@
     "squad_number": 8,
     "team_code": "MTSUNL",
     "efppm": 45.0,
-    "pid": "slug:brydon-carse"
+    "pid": "cad40f5e"
   },
   {
     "id": 10405,
@@ -5867,7 +5867,7 @@
     "squad_number": 10,
     "team_code": "MTSUNL",
     "efppm": 45.0,
-    "pid": "slug:abrar-ahmed"
+    "pid": "abb7c76c"
   },
   {
     "id": 10407,
@@ -5887,7 +5887,7 @@
     "squad_number": 12,
     "team_code": "MTSUNL",
     "efppm": 45.0,
-    "pid": "slug:tom-alsop"
+    "pid": "961b8ff1"
   },
   {
     "id": 10409,
@@ -5897,7 +5897,7 @@
     "squad_number": 13,
     "team_code": "MTSUNL",
     "efppm": 45.0,
-    "pid": "slug:reece-topley"
+    "pid": "8db7f47f"
   },
   {
     "id": 10410,
@@ -5967,7 +5967,7 @@
     "squad_number": 5,
     "team_code": "MTSBR",
     "efppm": 50.0,
-    "pid": "slug:tom-abell"
+    "pid": "ba9258a7"
   },
   {
     "id": 10417,
@@ -5977,7 +5977,7 @@
     "squad_number": 6,
     "team_code": "MTSBR",
     "efppm": 45.0,
-    "pid": "slug:michael-pepper"
+    "pid": "270e4c23"
   },
   {
     "id": 10418,
@@ -6027,7 +6027,7 @@
     "squad_number": 11,
     "team_code": "MTSBR",
     "efppm": 45.0,
-    "pid": "slug:dan-worrall"
+    "pid": "208f22ea"
   },
   {
     "id": 10423,
@@ -6037,7 +6037,7 @@
     "squad_number": 12,
     "team_code": "MTSBR",
     "efppm": 45.0,
-    "pid": "slug:ben-mckinney"
+    "pid": "1db6e336"
   },
   {
     "id": 10424,
@@ -6127,7 +6127,7 @@
     "squad_number": 6,
     "team_code": "MTWLF",
     "efppm": 50.0,
-    "pid": "slug:chris-woakes"
+    "pid": "4c5d73db"
   },
   {
     "id": 10433,
@@ -6207,7 +6207,7 @@
     "squad_number": 14,
     "team_code": "MTWLF",
     "efppm": 45.0,
-    "pid": "slug:tom-aspinwall"
+    "pid": "00b195ae"
   },
   {
     "id": 10441,
@@ -6217,7 +6217,7 @@
     "squad_number": 1,
     "team_code": "MTLSP",
     "efppm": 45.0,
-    "pid": "slug:jonny-bairstow"
+    "pid": "abb83e27"
   },
   {
     "id": 10442,
@@ -6227,7 +6227,7 @@
     "squad_number": 2,
     "team_code": "MTLSP",
     "efppm": 45.0,
-    "pid": "slug:dewald-brevis"
+    "pid": "844e79d1"
   },
   {
     "id": 10443,
@@ -6237,7 +6237,7 @@
     "squad_number": 3,
     "team_code": "MTLSP",
     "efppm": 50.0,
-    "pid": "slug:liam-livingstone"
+    "pid": "50c6bc2b"
   },
   {
     "id": 10444,
@@ -6257,7 +6257,7 @@
     "squad_number": 5,
     "team_code": "MTLSP",
     "efppm": 45.0,
-    "pid": "slug:adam-hose"
+    "pid": "104e88a4"
   },
   {
     "id": 10446,
@@ -6267,7 +6267,7 @@
     "squad_number": 6,
     "team_code": "MTLSP",
     "efppm": 50.0,
-    "pid": "slug:david-willey"
+    "pid": "7f048519"
   },
   {
     "id": 10447,
@@ -6337,7 +6337,7 @@
     "squad_number": 13,
     "team_code": "MTLSP",
     "efppm": 45.0,
-    "pid": "slug:mason-crane"
+    "pid": "f0a0204e"
   },
   {
     "id": 10454,
@@ -6367,7 +6367,7 @@
     "squad_number": 2,
     "team_code": "MTMSG",
     "efppm": 45.0,
-    "pid": "slug:aiden-markram"
+    "pid": "6a26221c"
   },
   {
     "id": 10457,
@@ -6387,7 +6387,7 @@
     "squad_number": 4,
     "team_code": "MTMSG",
     "efppm": 45.0,
-    "pid": "slug:heinrich-klaasen"
+    "pid": "235c2bb6"
   },
   {
     "id": 10459,
@@ -6407,7 +6407,7 @@
     "squad_number": 6,
     "team_code": "MTMSG",
     "efppm": 50.0,
-    "pid": "slug:paul-walter"
+    "pid": "57590dbb"
   },
   {
     "id": 10461,
@@ -6437,7 +6437,7 @@
     "squad_number": 9,
     "team_code": "MTMSG",
     "efppm": 45.0,
-    "pid": "slug:noor-ahmad"
+    "pid": "efc04be7"
   },
   {
     "id": 10464,
@@ -6477,7 +6477,7 @@
     "squad_number": 13,
     "team_code": "MTMSG",
     "efppm": 45.0,
-    "pid": "slug:max-holden"
+    "pid": "d34a2268"
   },
   {
     "id": 10468,
@@ -6487,7 +6487,7 @@
     "squad_number": 14,
     "team_code": "MTMSG",
     "efppm": 45.0,
-    "pid": "slug:tawanda-muyeye"
+    "pid": "10b79140"
   },
   {
     "id": 10469,
@@ -6507,7 +6507,7 @@
     "squad_number": 16,
     "team_code": "MTMSG",
     "efppm": 45.0,
-    "pid": "slug:george-scrimshaw"
+    "pid": "95a06106"
   },
   {
     "id": 10471,
@@ -6517,7 +6517,7 @@
     "squad_number": 1,
     "team_code": "MTBPH",
     "efppm": 45.0,
-    "pid": "slug:will-smeed"
+    "pid": "4e18e961"
   },
   {
     "id": 10472,
@@ -6617,7 +6617,7 @@
     "squad_number": 11,
     "team_code": "MTBPH",
     "efppm": 45.0,
-    "pid": "slug:usman-tariq"
+    "pid": "e94d1dcd"
   },
   {
     "id": 10482,
@@ -6667,7 +6667,7 @@
     "squad_number": 2,
     "team_code": "MTTRR",
     "efppm": 45.0,
-    "pid": "slug:ben-duckett"
+    "pid": "5f26f677"
   },
   {
     "id": 10487,
@@ -6687,7 +6687,7 @@
     "squad_number": 4,
     "team_code": "MTTRR",
     "efppm": 45.0,
-    "pid": "slug:sam-billings"
+    "pid": "c16d4035"
   },
   {
     "id": 10489,
@@ -6707,7 +6707,7 @@
     "squad_number": 6,
     "team_code": "MTTRR",
     "efppm": 50.0,
-    "pid": "slug:lewis-gregory"
+    "pid": "06c2de82"
   },
   {
     "id": 10491,
@@ -6717,7 +6717,7 @@
     "squad_number": 7,
     "team_code": "MTTRR",
     "efppm": 50.0,
-    "pid": "slug:dan-mousley"
+    "pid": "876dbe2d"
   },
   {
     "id": 10492,
@@ -6767,7 +6767,7 @@
     "squad_number": 12,
     "team_code": "MTTRR",
     "efppm": 45.0,
-    "pid": "slug:danny-briggs"
+    "pid": "f3abd0c9"
   },
   {
     "id": 10497,
@@ -6837,7 +6837,7 @@
     "squad_number": 4,
     "team_code": "WTMILO",
     "efppm": 45.0,
-    "pid": "slug:hollie-armitage"
+    "pid": "f05167d2"
   },
   {
     "id": 10504,
@@ -6867,7 +6867,7 @@
     "squad_number": 7,
     "team_code": "WTMILO",
     "efppm": 45.0,
-    "pid": "slug:kira-chathli"
+    "pid": "6ffbf04c"
   },
   {
     "id": 10507,
@@ -6877,7 +6877,7 @@
     "squad_number": 8,
     "team_code": "WTMILO",
     "efppm": 50.0,
-    "pid": "slug:alice-davidson-richards"
+    "pid": "35828bdd"
   },
   {
     "id": 10508,
@@ -6897,7 +6897,7 @@
     "squad_number": 10,
     "team_code": "WTMILO",
     "efppm": 45.0,
-    "pid": "slug:tara-norris"
+    "pid": "8ae7bb3e"
   },
   {
     "id": 10510,
@@ -6907,7 +6907,7 @@
     "squad_number": 11,
     "team_code": "WTMILO",
     "efppm": 45.0,
-    "pid": "slug:alexa-stonehouse"
+    "pid": "c9366237"
   },
   {
     "id": 10511,
@@ -6917,7 +6917,7 @@
     "squad_number": 12,
     "team_code": "WTMILO",
     "efppm": 45.0,
-    "pid": "slug:ellie-threlkeld"
+    "pid": "c66c73f9"
   },
   {
     "id": 10512,
@@ -6927,7 +6927,7 @@
     "squad_number": 13,
     "team_code": "WTMILO",
     "efppm": 45.0,
-    "pid": "slug:alice-monaghan"
+    "pid": "0c694738"
   },
   {
     "id": 10513,
@@ -6947,7 +6947,7 @@
     "squad_number": 15,
     "team_code": "WTMILO",
     "efppm": 45.0,
-    "pid": "slug:danielle-gregory"
+    "pid": "b3ccffff"
   },
   {
     "id": 10515,
@@ -6957,7 +6957,7 @@
     "squad_number": 16,
     "team_code": "WTMILO",
     "efppm": 45.0,
-    "pid": "slug:kate-coppack"
+    "pid": "24596e4d"
   },
   {
     "id": 10516,
@@ -6987,7 +6987,7 @@
     "squad_number": 2,
     "team_code": "WTSUNL",
     "efppm": 45.0,
-    "pid": "slug:lauren-winfield-hill"
+    "pid": "espn:517572"
   },
   {
     "id": 10519,
@@ -6997,7 +6997,7 @@
     "squad_number": 3,
     "team_code": "WTSUNL",
     "efppm": 45.0,
-    "pid": "slug:bryony-smith"
+    "pid": "espn:874277"
   },
   {
     "id": 10520,
@@ -7037,7 +7037,7 @@
     "squad_number": 7,
     "team_code": "WTSUNL",
     "efppm": 50.0,
-    "pid": "slug:jess-jonassen"
+    "pid": "0475a86b"
   },
   {
     "id": 10524,
@@ -7047,7 +7047,7 @@
     "squad_number": 8,
     "team_code": "WTSUNL",
     "efppm": 45.0,
-    "pid": "slug:kate-cross"
+    "pid": "1ade138e"
   },
   {
     "id": 10525,
@@ -7057,7 +7057,7 @@
     "squad_number": 9,
     "team_code": "WTSUNL",
     "efppm": 45.0,
-    "pid": "slug:cassidy-mccarthy"
+    "pid": "espn:1120320"
   },
   {
     "id": 10526,
@@ -7067,7 +7067,7 @@
     "squad_number": 10,
     "team_code": "WTSUNL",
     "efppm": 45.0,
-    "pid": "slug:hannah-baker"
+    "pid": "cefad9fd"
   },
   {
     "id": 10527,
@@ -7097,7 +7097,7 @@
     "squad_number": 13,
     "team_code": "WTSUNL",
     "efppm": 45.0,
-    "pid": "slug:emily-windsor"
+    "pid": "1d7f8759"
   },
   {
     "id": 10530,
@@ -7127,7 +7127,7 @@
     "squad_number": 16,
     "team_code": "WTSUNL",
     "efppm": 45.0,
-    "pid": "slug:sophia-turner"
+    "pid": "espn:1230752"
   },
   {
     "id": 10533,
@@ -7147,7 +7147,7 @@
     "squad_number": 2,
     "team_code": "WTSBR",
     "efppm": 45.0,
-    "pid": "slug:maia-bouchier"
+    "pid": "c2554b59"
   },
   {
     "id": 10535,
@@ -7197,7 +7197,7 @@
     "squad_number": 7,
     "team_code": "WTSBR",
     "efppm": 50.0,
-    "pid": "slug:phoebe-franklin"
+    "pid": "d6a9af83"
   },
   {
     "id": 10540,
@@ -7207,7 +7207,7 @@
     "squad_number": 8,
     "team_code": "WTSBR",
     "efppm": 45.0,
-    "pid": "slug:sarah-glenn"
+    "pid": "b34e0c77"
   },
   {
     "id": 10541,
@@ -7237,7 +7237,7 @@
     "squad_number": 11,
     "team_code": "WTSBR",
     "efppm": 45.0,
-    "pid": "slug:jodi-grewcock"
+    "pid": "92b94582"
   },
   {
     "id": 10544,
@@ -7257,7 +7257,7 @@
     "squad_number": 13,
     "team_code": "WTSBR",
     "efppm": 50.0,
-    "pid": "slug:naomi-dattani"
+    "pid": "13c19f32"
   },
   {
     "id": 10546,
@@ -7297,7 +7297,7 @@
     "squad_number": 2,
     "team_code": "WTWLF",
     "efppm": 45.0,
-    "pid": "slug:ella-mccaughan"
+    "pid": "ed2711ea"
   },
   {
     "id": 10550,
@@ -7357,7 +7357,7 @@
     "squad_number": 8,
     "team_code": "WTWLF",
     "efppm": 45.0,
-    "pid": "slug:emily-arlott"
+    "pid": "78fd864b"
   },
   {
     "id": 10556,
@@ -7367,7 +7367,7 @@
     "squad_number": 9,
     "team_code": "WTWLF",
     "efppm": 45.0,
-    "pid": "slug:sophia-smale"
+    "pid": "c296dba1"
   },
   {
     "id": 10557,
@@ -7377,7 +7377,7 @@
     "squad_number": 10,
     "team_code": "WTWLF",
     "efppm": 45.0,
-    "pid": "slug:grace-potts"
+    "pid": "e3a93585"
   },
   {
     "id": 10558,
@@ -7407,7 +7407,7 @@
     "squad_number": 13,
     "team_code": "WTWLF",
     "efppm": 45.0,
-    "pid": "slug:rhianna-southby"
+    "pid": "bbe1525d"
   },
   {
     "id": 10561,
@@ -7437,7 +7437,7 @@
     "squad_number": 16,
     "team_code": "WTWLF",
     "efppm": 45.0,
-    "pid": "slug:niamh-holland"
+    "pid": "aefd0567"
   },
   {
     "id": 10564,
@@ -7537,7 +7537,7 @@
     "squad_number": 10,
     "team_code": "WTLSP",
     "efppm": 45.0,
-    "pid": "slug:lucy-higham"
+    "pid": "fbd79b9b"
   },
   {
     "id": 10574,
@@ -7547,7 +7547,7 @@
     "squad_number": 11,
     "team_code": "WTLSP",
     "efppm": 50.0,
-    "pid": "slug:charis-pavely"
+    "pid": "907e5f6c"
   },
   {
     "id": 10575,
@@ -7577,7 +7577,7 @@
     "squad_number": 14,
     "team_code": "WTLSP",
     "efppm": 50.0,
-    "pid": "slug:josephine-groves"
+    "pid": "11ff23e3"
   },
   {
     "id": 10578,
@@ -7617,7 +7617,7 @@
     "squad_number": 2,
     "team_code": "WTMSG",
     "efppm": 45.0,
-    "pid": "slug:meg-lanning"
+    "pid": "27e003ce"
   },
   {
     "id": 10582,
@@ -7627,7 +7627,7 @@
     "squad_number": 3,
     "team_code": "WTMSG",
     "efppm": 50.0,
-    "pid": "slug:grace-scrivens"
+    "pid": "7306c48d"
   },
   {
     "id": 10583,
@@ -7657,7 +7657,7 @@
     "squad_number": 6,
     "team_code": "WTMSG",
     "efppm": 45.0,
-    "pid": "slug:paige-scholfield"
+    "pid": "588360ee"
   },
   {
     "id": 10586,
@@ -7667,7 +7667,7 @@
     "squad_number": 7,
     "team_code": "WTMSG",
     "efppm": 50.0,
-    "pid": "slug:mady-villiers"
+    "pid": "cd62f670"
   },
   {
     "id": 10587,
@@ -7697,7 +7697,7 @@
     "squad_number": 10,
     "team_code": "WTMSG",
     "efppm": 45.0,
-    "pid": "slug:grace-ballinger"
+    "pid": "2f485713"
   },
   {
     "id": 10590,
@@ -7707,7 +7707,7 @@
     "squad_number": 11,
     "team_code": "WTMSG",
     "efppm": 45.0,
-    "pid": "slug:ryana-macdonald-gay"
+    "pid": "459a7b0a"
   },
   {
     "id": 10591,
@@ -7727,7 +7727,7 @@
     "squad_number": 13,
     "team_code": "WTMSG",
     "efppm": 45.0,
-    "pid": "slug:rebecca-tyson"
+    "pid": "5c9d5093"
   },
   {
     "id": 10593,
@@ -7737,7 +7737,7 @@
     "squad_number": 14,
     "team_code": "WTMSG",
     "efppm": 45.0,
-    "pid": "slug:natasha-wraith"
+    "pid": "1ec1998e"
   },
   {
     "id": 10594,
@@ -7747,7 +7747,7 @@
     "squad_number": 15,
     "team_code": "WTMSG",
     "efppm": 45.0,
-    "pid": "slug:beth-langston"
+    "pid": "fb192f98"
   },
   {
     "id": 10595,
@@ -7767,7 +7767,7 @@
     "squad_number": 1,
     "team_code": "WTBPH",
     "efppm": 45.0,
-    "pid": "slug:tammy-beaumont"
+    "pid": "b2664905"
   },
   {
     "id": 10597,
@@ -7777,7 +7777,7 @@
     "squad_number": 2,
     "team_code": "WTBPH",
     "efppm": 45.0,
-    "pid": "slug:davina-perrin"
+    "pid": "bfa0fa33"
   },
   {
     "id": 10598,
@@ -7897,7 +7897,7 @@
     "squad_number": 14,
     "team_code": "WTBPH",
     "efppm": 50.0,
-    "pid": "slug:esmae-macgregor"
+    "pid": "c812dfa3"
   },
   {
     "id": 10610,
@@ -7907,7 +7907,7 @@
     "squad_number": 15,
     "team_code": "WTBPH",
     "efppm": 45.0,
-    "pid": "slug:phoebe-brett"
+    "pid": "41117b19"
   },
   {
     "id": 10611,
@@ -7967,7 +7967,7 @@
     "squad_number": 5,
     "team_code": "WTTRR",
     "efppm": 50.0,
-    "pid": "slug:georgia-elwiss"
+    "pid": "287ed3a0"
   },
   {
     "id": 10617,
@@ -7987,7 +7987,7 @@
     "squad_number": 7,
     "team_code": "WTTRR",
     "efppm": 45.0,
-    "pid": "slug:bess-heath"
+    "pid": "3b5a9438"
   },
   {
     "id": 10619,
@@ -7997,7 +7997,7 @@
     "squad_number": 8,
     "team_code": "WTTRR",
     "efppm": 45.0,
-    "pid": "slug:katie-levick"
+    "pid": "8f30d191"
   },
   {
     "id": 10620,
@@ -8037,7 +8037,7 @@
     "squad_number": 12,
     "team_code": "WTTRR",
     "efppm": 45.0,
-    "pid": "slug:sophie-luff"
+    "pid": "e19307f3"
   },
   {
     "id": 10624,
@@ -8047,7 +8047,7 @@
     "squad_number": 13,
     "team_code": "WTTRR",
     "efppm": 50.0,
-    "pid": "slug:georgia-adams"
+    "pid": "7b1f2542"
   },
   {
     "id": 10625,
