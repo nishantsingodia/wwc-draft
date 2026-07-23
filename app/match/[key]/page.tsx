@@ -5,7 +5,8 @@ import { draftContests, contestParticipants, teamSelections, type TeamSelection 
 import { eq, desc, inArray } from "drizzle-orm";
 import Link from "next/link";
 import { getMatchByKey, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
-import { isMatchCompleted, getMatchPointsForMatch } from "@/lib/points";
+import { isMatchCompleted } from "@/lib/points";
+import { getMatchPointsMap } from "@/lib/live-points";
 import { getUserLabel } from "@/lib/users";
 import { getFlag as getTeamFlag } from "@/lib/players";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
@@ -120,7 +121,8 @@ export default async function MatchPage({
   let matchPts = new Map<string, number>();
   try {
     selectionsMap = await getSelectionsMap(myDrafts.map((d) => d.id));
-    if (scored) matchPts = await getMatchPointsForMatch(match);
+    // LIVE → score in-app from ESPN (zero cricapi, no bot run); completed → bot's sheet.
+    if (scored) matchPts = await getMatchPointsMap(match, { live: isLive, fresh: true });
   } catch {
     // sheet/DB unavailable — cards degrade to "awaiting points"
   }

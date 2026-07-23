@@ -10,7 +10,8 @@ import MatchRefresh from "@/components/match-refresh";
 import LobbyTabs from "@/components/lobby-tabs";
 import TransitionLink from "@/components/transition-link";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
-import { getCompletedMatchKeys, getMatchPointsForMatch } from "@/lib/points";
+import { getCompletedMatchKeys } from "@/lib/points";
+import { getMatchPointsMap } from "@/lib/live-points";
 import { getFlag, getPlayerByKey } from "@/lib/players";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
 
@@ -194,17 +195,22 @@ export default async function LobbyPage() {
     .sort((a, b) => b.deadlineTs - a.deadlineTs)
     .map((m) => m.key);
 
-  // Fetch match points for live drafts and completed matches (in parallel)
+  // Fetch match points for live drafts and completed matches (in parallel). LIVE matches
+  // are scored IN-APP from ESPN (getMatchPointsMap → getLiveMatchPoints) — zero cricapi, no
+  // bot run, the same provisional numbers the results page shows; completed matches read the
+  // bot's reconciled sheet. `fresh: true` so the manual "Refresh now" always re-pulls a
+  // current ESPN scorecard rather than a ≤20s-cached one.
   const matchPointsCache = new Map<string, Map<string, number>>();
-  const matchesToFetch = [
-    ...liveMatches.filter((m) => liveDraftMatchKeys.has(m.key)),
-    ...allMatches.filter((m) => myCompletedMatchKeys.includes(m.key)),
-  ];
-  await Promise.all(
-    matchesToFetch.map(async (m) => {
-      matchPointsCache.set(m.key, await getMatchPointsForMatch(m));
-    })
-  );
+  const liveToFetch = liveMatches.filter((m) => liveDraftMatchKeys.has(m.key));
+  const completedToFetch = allMatches.filter((m) => myCompletedMatchKeys.includes(m.key));
+  await Promise.all([
+    ...liveToFetch.map(async (m) => {
+      matchPointsCache.set(m.key, await getMatchPointsMap(m, { live: true, fresh: true }));
+    }),
+    ...completedToFetch.map(async (m) => {
+      matchPointsCache.set(m.key, await getMatchPointsMap(m, { live: false }));
+    }),
+  ]);
 
   // Default tab: prefer Live, then Upcoming, then Completed
   const defaultTab =
