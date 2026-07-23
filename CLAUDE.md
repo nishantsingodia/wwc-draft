@@ -124,6 +124,36 @@ export const TEAM_NAMES: Record<string, string> = {
 };
 ```
 
+### Namespaced franchise codes → you MUST add a `TEAM_CODE_ALIASES` entry
+
+Franchise tours reuse 2-letter short codes (LPL's JK/GG/KR/DS/CK collide with codes from
+other franchise leagues), so the draft **namespaces** them: `players-raw.json` and
+`matches.json` use `LPLJK`, `LPLGG`, … But the points bot writes the **bare** franchise
+code (`JK`, `GG`, …) in the sheet's `Team` column **and** the match labels. Whenever the
+draft code differs from the sheet's Team token, add the mapping to
+[`TEAM_CODE_ALIASES`](lib/players.ts) (draft code → the bare token(s) the sheet uses):
+```typescript
+export const TEAM_CODE_ALIASES: Record<string, string[]> = {
+  LPLJK: ["JK"], LPLGG: ["GG"], LPLKR: ["KR"], LPLDS: ["DS"], LPLCK: ["CK"],
+};
+```
+This ONE table now bridges **both** the points-total matcher (`tokenMatchesCode`) **and**
+the entire lineup path. Every consumer that looks up a sheet-derived map
+(`getLastPlayedXI` / `getMatchXI` / `getLineupMeta` / `getSheetRoster` — all keyed by the
+sheet's bare Team code) by the namespaced draft code goes through the shared
+[`getByTeamCode(map, code)`](lib/players.ts) helper (direct hit wins, alias is the
+fallback, so same-code tours are untouched). So adding the alias entry is **sufficient** —
+you do NOT need to touch each consumer. Miss the entry and the board silently orders LPL by
+the seeded `squad_number` instead of the scorecard's `Bat Order`, In-XI flags / "Lineups
+Out" / auto-subs all go stale, and points still resolve (they have their own alias path) —
+so it looks *almost* right, which is why it's easy to miss.
+
+**Franchise namesakes:** shared-surname squads (two Fernandos / Mendises on one team) rely
+on the pid join. `matchPlayerInXI` is pid-authoritative — a pid'd player absent under their
+pid is OUT, no fuzzy name fallback — so a benched namesake can't steal an XI slot. This
+means the tour's registry pids MUST be stamped (`build_registry.py` → `backfill_draft_pids.py`)
+before the board is trustworthy; a blank/drifted pid drops a player who actually played.
+
 ---
 
 ## Step 4 — Google Sheet (points CSV)
