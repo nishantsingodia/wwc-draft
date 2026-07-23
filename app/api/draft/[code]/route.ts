@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, draftPicks, contestParticipants, teamSelections, draftQueues, UNDO_TTL_SECONDS } from "@/lib/db";
 import { eq, asc, and } from "drizzle-orm";
-import { getPlayersByTeams } from "@/lib/players";
+import { getPlayersByTeams, getByTeamCode } from "@/lib/players";
 import { getMatchByKey } from "@/lib/matches";
 import { currentPicker } from "@/lib/snake-draft";
 import { getSheetRoster, getTourPoints, lookupTourPoints } from "@/lib/points";
@@ -83,8 +83,8 @@ export async function GET(
     : getPlayersByTeams("NZ", "SL", lastXI, sheetRoster);
 
   // Lineup status (Dream11-style "lineups out" + toss), per the two teams.
-  const m1 = lineupMeta.get(t1) ?? { announced: false, toss: null };
-  const m2 = lineupMeta.get(t2) ?? { announced: false, toss: null };
+  const m1 = getByTeamCode(lineupMeta, t1) ?? { announced: false, toss: null };
+  const m2 = getByTeamCode(lineupMeta, t2) ?? { announced: false, toss: null };
   const lineups = {
     announced: m1.announced && m2.announced, // both teams' XIs are official
     toss: m1.toss || m2.toss || null,

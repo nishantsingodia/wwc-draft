@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, teamSelections } from "@/lib/db";
 import { eq } from "drizzle-orm";
-import { getPlayerByKey } from "@/lib/players";
+import { getPlayerByKey, getByTeamCode } from "@/lib/players";
 import { getMatchByKey, LOCK_BUFFER } from "@/lib/matches";
 import {
   getMatchPointsForMatch,
@@ -80,7 +80,11 @@ export async function GET(
   // can still hand-fix their team while lineups trickle in.
   const t1 = match?.team1 ?? "";
   const t2 = match?.team2 ?? "";
-  const announced = !!(t1 && t2 && lineupMeta.get(t1)?.announced && lineupMeta.get(t2)?.announced);
+  const announced = !!(
+    t1 && t2 &&
+    getByTeamCode(lineupMeta, t1)?.announced &&
+    getByTeamCode(lineupMeta, t2)?.announced
+  );
   const eligible =
     contest.mode === "live" && nowSec >= contest.matchDeadline + LOCK_BUFFER && announced;
 

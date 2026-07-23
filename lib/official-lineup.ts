@@ -7,6 +7,7 @@
 
 import { getEspnLineup } from "./espn";
 import { getLastPlayedXI, getLineupMeta, getMatchXI } from "./points";
+import { getByTeamCode } from "./players";
 import { type Match } from "./matches";
 
 export type OfficialLineup = {
@@ -36,7 +37,10 @@ export async function getOfficialLineup(match: Match | undefined): Promise<Offic
   //   2. ESPN's announced XI — only before the sheet has posted this match (live window).
   //   3. The sheet's last-played XI (unchanged) — predicted-display fallback otherwise.
   for (const code of [match.team1, match.team2]) {
-    const fromMatch = matchXI.get(code);
+    // Sheet maps are keyed by the bot's bare Team code; resolve the (possibly-namespaced)
+    // draft code through TEAM_CODE_ALIASES (LPL: draft LPLJK ↔ sheet JK). ESPN maps are
+    // already keyed by our own code, so they take the code directly.
+    const fromMatch = getByTeamCode(matchXI, code);
     const fromEspn = espn?.xiByTeam.get(code);
     if (fromMatch && fromMatch.size > 0) {
       lastXI.set(code, fromMatch);

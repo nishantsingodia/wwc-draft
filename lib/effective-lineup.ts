@@ -11,7 +11,7 @@
 // exactly as results/route.ts already pre-fetches the points map. Membership uses
 // the shared central matcher isPlayerInOfficialXI (pid-first, then fuzzy name).
 
-import { type Player, isPlayerInOfficialXI } from "./players";
+import { type Player, isPlayerInOfficialXI, getByTeamCode } from "./players";
 
 export type PlayerRef = { key: string; name: string; team: string; role: string };
 
@@ -91,7 +91,7 @@ export function computeEffectiveLineup(args: ComputeArgs): EffectiveLineup {
     const p = resolve(key);
     if (!p) return false;
     if (p.teamCode !== inMatchTeams[0] && p.teamCode !== inMatchTeams[1]) return false;
-    return isPlayerInOfficialXI(p, teamXIByTeam.get(p.teamCode));
+    return isPlayerInOfficialXI(p, getByTeamCode(teamXIByTeam, p.teamCode));
   };
 
   // Step 2 — field the top `picksPerUser` PLAYING players, walking by rank. Dead

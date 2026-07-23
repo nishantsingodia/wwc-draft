@@ -49,6 +49,28 @@ export const TEAM_CODE_ALIASES: Record<string, string[]> = {
   LPLCK: ["CK"],
 };
 
+// Look up a SHEET-derived map (getLastPlayedXI / getMatchXI / getLineupMeta /
+// getSheetRoster) by the draft's (possibly-namespaced) team code. Those maps are keyed
+// by the bot's Team-column value, which is the BARE franchise code for tours that
+// namespace their draft codes (LPL: sheet "JK" ↔ draft "LPLJK"). A plain Map.get on the
+// namespaced code therefore MISSES for such tours, so the draft board silently falls back
+// to the hand-seeded squad_number instead of the sheet's real Bat Order (and In-XI flags /
+// "Lineups Out" / auto-subs go stale too). Resolve via TEAM_CODE_ALIASES: direct hit wins,
+// aliases are the fallback — so every other tour (draft code == sheet code) is unaffected.
+export function getByTeamCode<T>(
+  map: Map<string, T> | undefined,
+  code: string
+): T | undefined {
+  if (!map) return undefined;
+  const direct = map.get(code);
+  if (direct !== undefined) return direct;
+  for (const alias of TEAM_CODE_ALIASES[code] ?? []) {
+    const hit = map.get(alias);
+    if (hit !== undefined) return hit;
+  }
+  return undefined;
+}
+
 // Names in players-raw.json are now canonical announced names.
 // DISPLAY_NAME_MAP is kept only for any legacy stale entries in the DB that
 // haven't been renamed yet; new data goes through fuzzyLookupPoints in points.ts.
@@ -238,9 +260,19 @@ export function matchPlayerInXI(
   teamXI: Map<string, number> | undefined
 ): { inXI: boolean; batOrder: number } {
   if (!teamXI || teamXI.size === 0) return { inXI: false, batOrder: 0 };
-  if (player.pid && teamXI.has(player.pid)) {
-    return { inXI: true, batOrder: teamXI.get(player.pid) ?? 0 };
+  // pid is AUTHORITATIVE. The sheet keys the XI by the same registry pid, so a pid'd
+  // player who isn't present under their pid simply didn't feature — do NOT fuzzy-fall
+  // back to name for them. Otherwise a benched namesake steals an XI slot by shared
+  // surname (LPL: "Nuwanidu Fernando" grabbing "Avishka Fernando", "Kusal Mendis"
+  // grabbing another Mendis). Mirrors lookupPlayerPoints' pid rule. A genuine pid
+  // mismatch is a registry drift to fix loud in wwc-points-bot, not to mask here.
+  if (player.pid) {
+    return teamXI.has(player.pid)
+      ? { inXI: true, batOrder: teamXI.get(player.pid) ?? 0 }
+      : { inXI: false, batOrder: 0 };
   }
+  // Only un-pid'd players (legacy / registry-unknown) fall back to fuzzy NAME. Fuzzy
+  // never sees a pid key, so a hash can't be mistaken for a name.
   const matched = fuzzyMatchName(
     player.displayName,
     [...teamXI.keys()].filter((k) => !isPidKey(k))
@@ -282,7 +314,7 @@ export function getPlayersByTeams(
   // a duplicate), then fall back to fuzzy name for un-pid'd rows.
   if (sheetRoster) {
     for (const team of teams) {
-      const sheetTeam = sheetRoster.get(team);
+      const sheetTeam = getByTeamCode(sheetRoster, team);
       if (!sheetTeam) continue;
       const seeded = pool.filter((p) => p.teamCode === team);
       const seededPids = new Set(seeded.map((p) => p.pid).filter(Boolean) as string[]);
@@ -299,7 +331,7 @@ export function getPlayersByTeams(
 
   return pool
     .map((p) => {
-      const teamXI = lastXI?.get(p.teamCode);
+      const teamXI = getByTeamCode(lastXI, p.teamCode);
       let isLikelyXI: boolean;
       let batOrder = 0;
       if (teamXI && teamXI.size > 0) {
