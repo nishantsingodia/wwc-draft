@@ -1573,5 +1573,35 @@
     "team2": "WTMILO",
     "label": "Match 32: WTBPH v WTMILO",
     "date": "2026-08-12T19:30:00+05:30"
+  },
+  {
+    "matchNum": 200,
+    "key": "AUTO_M_ZIM_IND_T20I1_Jul23",
+    "gender": "M",
+    "team1": "MTZIM",
+    "team2": "MTIND",
+    "label": "1st T20I: ZIM v IND",
+    "date": "2026-07-23T16:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 201,
+    "key": "AUTO_M_ZIM_IND_T20I2_Jul25",
+    "gender": "M",
+    "team1": "MTZIM",
+    "team2": "MTIND",
+    "label": "2nd T20I: ZIM v IND",
+    "date": "2026-07-25T16:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 202,
+    "key": "AUTO_M_ZIM_IND_T20I3_Jul26",
+    "gender": "M",
+    "team1": "MTZIM",
+    "team2": "MTIND",
+    "label": "3rd T20I: ZIM v IND",
+    "date": "2026-07-26T16:30:00+05:30",
+    "format": "T20"
   }
 ]

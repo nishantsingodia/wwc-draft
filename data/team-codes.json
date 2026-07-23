@@ -198,5 +198,13 @@
   "WTTRR": {
     "flag": "🏏",
     "name": "Trent Rockets"
+  },
+  "MTZIM": {
+    "flag": "🏏",
+    "name": "Zimbabwe"
+  },
+  "MTIND": {
+    "flag": "🇮🇳",
+    "name": "India"
   }
 }

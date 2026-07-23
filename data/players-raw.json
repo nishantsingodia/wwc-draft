@@ -8068,5 +8068,305 @@
     "team_code": "WTTRR",
     "efppm": 50.0,
     "pid": "slug:amu-surenkumar"
+  },
+  {
+    "id": 10627,
+    "name": "Sikandar Raza",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:sikandar-raza"
+  },
+  {
+    "id": 10628,
+    "name": "Brian Bennett",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "MTZIM",
+    "efppm": 50.0,
+    "pid": "slug:brian-bennett"
+  },
+  {
+    "id": 10629,
+    "name": "Ryan Burl",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTZIM",
+    "efppm": 50.0,
+    "pid": "slug:ryan-burl"
+  },
+  {
+    "id": 10630,
+    "name": "Tanaka Chivanga",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:tanaka-chivanga"
+  },
+  {
+    "id": 10631,
+    "name": "Ben Curran",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:ben-curran"
+  },
+  {
+    "id": 10632,
+    "name": "Brad Evans",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTZIM",
+    "efppm": 50.0,
+    "pid": "slug:brad-evans"
+  },
+  {
+    "id": 10633,
+    "name": "Innocent Kaia",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:innocent-kaia"
+  },
+  {
+    "id": 10634,
+    "name": "Wessly Madhevere",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTZIM",
+    "efppm": 50.0,
+    "pid": "slug:wessly-madhevere"
+  },
+  {
+    "id": 10635,
+    "name": "Tadiwanashe Marumani",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:tadiwanashe-marumani"
+  },
+  {
+    "id": 10636,
+    "name": "Wellington Masakadza",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:wellington-masakadza"
+  },
+  {
+    "id": 10637,
+    "name": "Blessing Muzarabani",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:blessing-muzarabani"
+  },
+  {
+    "id": 10638,
+    "name": "Dion Myers",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:dion-myers"
+  },
+  {
+    "id": 10639,
+    "name": "Richard Ngarava",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:richard-ngarava"
+  },
+  {
+    "id": 10640,
+    "name": "Newman Nyamhuri",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:newman-nyamhuri"
+  },
+  {
+    "id": 10641,
+    "name": "Tafadzwa Tsiga",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTZIM",
+    "efppm": 45.0,
+    "pid": "slug:tafadzwa-tsiga"
+  },
+  {
+    "id": 10642,
+    "name": "Shreyas Iyer",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "espn:642519"
+  },
+  {
+    "id": 10643,
+    "name": "Tilak Varma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "b0482a1d"
+  },
+  {
+    "id": 10644,
+    "name": "Abhishek Sharma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "f29185a1"
+  },
+  {
+    "id": 10645,
+    "name": "Ashok Sharma",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "slug:ashok-sharma"
+  },
+  {
+    "id": 10646,
+    "name": "Harsh Dubey",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "slug:harsh-dubey"
+  },
+  {
+    "id": 10647,
+    "name": "Shivam Dube",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTIND",
+    "efppm": 50.0,
+    "pid": "a4e37e47"
+  },
+  {
+    "id": 10648,
+    "name": "Ishan Kishan",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "752f7486"
+  },
+  {
+    "id": 10649,
+    "name": "Prabhsimran Singh",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "slug:prabhsimran-singh"
+  },
+  {
+    "id": 10650,
+    "name": "Prince Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "80b2fb19"
+  },
+  {
+    "id": 10651,
+    "name": "Ravi Bishnoi",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "df064e1a"
+  },
+  {
+    "id": 10652,
+    "name": "Rinku Singh",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "slug:rinku-singh"
+  },
+  {
+    "id": 10653,
+    "name": "Vaibhav Sooryavanshi",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "slug:vaibhav-sooryavanshi"
+  },
+  {
+    "id": 10654,
+    "name": "Suryansh Shedge",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "970ddd24"
+  },
+  {
+    "id": 10655,
+    "name": "Yash Thakur",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "slug:yash-thakur"
+  },
+  {
+    "id": 10656,
+    "name": "Mayank Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTIND",
+    "efppm": 45.0,
+    "pid": "slug:mayank-yadav"
   }
 ]
