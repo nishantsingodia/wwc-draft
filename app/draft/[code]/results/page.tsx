@@ -50,6 +50,7 @@ type ResultsData = {
   completed: boolean; // the COMPLETED pipeline has finalized this match (sheet drives it)
   pointsSource: "live-espn" | "sheet";
   liveProvisional: boolean; // H2H is computed live from ESPN (provisional, in-app, no bot)
+  liveFreshness: string | null; // "Points updated till 14.3 overs (138/4)" — live only
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -193,7 +194,9 @@ export default function ResultsPage({
           <div className="flex-1">
             <h1 className="font-bold">{contest.matchLabel}</h1>
             <p className="text-xs text-mist">
-              {live && data.liveProvisional
+              {live && data.liveFreshness
+                ? `${data.liveFreshness} · via ESPN (provisional)`
+                : live && data.liveProvisional
                 ? "Live · provisional (via ESPN) — auto-refreshes every 30s"
                 : live
                 ? "Live — waiting for scores"

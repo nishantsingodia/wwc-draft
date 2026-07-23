@@ -14,13 +14,22 @@ import { getLiveMatchPoints } from "@/lib/espn";
 // so calcSelectionPoints + lookupPlayerPoints consume it unchanged. Callers pass `live`
 // (they already know it from their own started/completed split) rather than us re-deriving
 // it, and `fresh: true` to bypass the 20s ESPN cache on an explicit "Refresh now" tap.
+//
+// `freshness` rides along for live matches — a "Points updated till 14.3 overs (138/4)"
+// line the refresh surfaces show so the provisional numbers read as a point-in-time, not a
+// final. Null for completed matches (the sheet is the final) or before the first ball.
+export type MatchPoints = {
+  points: Map<string, number>;
+  freshness: string | null;
+};
+
 export async function getMatchPointsMap(
   match: Match,
   opts: { live: boolean; fresh?: boolean }
-): Promise<Map<string, number>> {
+): Promise<MatchPoints> {
   if (opts.live) {
     const live = await getLiveMatchPoints(match, { fresh: opts.fresh });
-    if (live) return live.points;
+    if (live) return { points: live.points, freshness: live.freshness };
   }
-  return getMatchPointsForMatch(match);
+  return { points: await getMatchPointsForMatch(match), freshness: null };
 }

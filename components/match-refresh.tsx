@@ -9,7 +9,13 @@ import { useRouter } from "next/navigation";
 // simply re-renders the server component (router.refresh()), which re-pulls a fresh ESPN
 // scorecard for every contest on this match. useTransition keeps the spinner up until the
 // refreshed server render commits. Shown only while the match is in progress.
-export default function MatchRefresh({ matchStarted }: { matchStarted: boolean }) {
+export default function MatchRefresh({
+  matchStarted,
+  freshness,
+}: {
+  matchStarted: boolean;
+  freshness?: string | null; // "Points updated till 14.3 overs (138/4)" — from ESPN, live only
+}) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
 
@@ -31,7 +37,9 @@ export default function MatchRefresh({ matchStarted }: { matchStarted: boolean }
         )}
         {pending ? "Refreshing…" : "🔄 Refresh now"}
       </button>
-      <p className="px-1 text-[11px] text-mist2">Live points · provisional (via ESPN)</p>
+      <p className="px-1 text-[11px] text-mist2">
+        {freshness ? `${freshness} · via ESPN` : "Live points · provisional (via ESPN)"}
+      </p>
     </div>
   );
 }

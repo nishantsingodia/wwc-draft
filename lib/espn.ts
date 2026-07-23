@@ -248,9 +248,71 @@ function flattenStats(linescores: unknown): Map<string, number> {
   return out;
 }
 
+// Pull a named numeric stat (e.g. "balls") from a linescore's nested statistics blocks.
+function statValue(ls: Record<string, unknown>, name: string): number | null {
+  const cats = ((ls.statistics as Record<string, unknown>)?.categories as Array<Record<string, unknown>>) ?? [];
+  for (const c of cats) {
+    for (const s of (c.stats as Array<Record<string, unknown>>) ?? []) {
+      if ((s.name as string) === name) {
+        const v = Number((s.value ?? s.displayValue) as string);
+        return Number.isFinite(v) ? v : null;
+      }
+    }
+  }
+  return null;
+}
+
+// Freshness line for the live surfaces: how far the match had progressed when these
+// provisional points were computed, read from the SAME ESPN summary the points come from.
+// → "Points updated till 14.3 overs (138/4)". `overs` is ESPN's cricket-notation figure
+// (14.3 = 14 overs 3 balls); The Hundred's "overs" are 5-ball units so we show balls there.
+// Score-only fallback when overs aren't posted yet — a score is a fine freshness signal too
+// (per Nishant). Null before the first ball (no innings started).
+function buildFreshness(summary: Record<string, unknown>, format: ScoreFormat): string | null {
+  const comp = ((summary.header as Record<string, unknown>)?.competitions as Array<Record<string, unknown>>)?.[0];
+  const competitors = (comp?.competitors as Array<Record<string, unknown>>) ?? [];
+  type Inn = { period: number; runs: number; wickets: number; overs: number; balls: number | null; isCurrent: number };
+  let cur: Inn | null = null;
+  for (const c of competitors) {
+    for (const ls of (c.linescores as Array<Record<string, unknown>>) ?? []) {
+      const runs = Number(ls.runs) || 0;
+      const overs = Number(ls.overs) || 0;
+      const balls = statValue(ls, "balls");
+      if (overs <= 0 && runs <= 0 && (balls ?? 0) <= 0) continue; // innings not started
+      const inn: Inn = {
+        period: Number(ls.period) || 0,
+        runs,
+        wickets: Number(ls.wickets) || 0,
+        overs,
+        balls,
+        isCurrent: ls.isCurrent ? 1 : 0,
+      };
+      // Prefer the current innings, then the later period, then the batting side (max runs
+      // — the non-batting side carries a same-period 0-run linescore for that innings).
+      if (
+        !cur ||
+        inn.isCurrent > cur.isCurrent ||
+        (inn.isCurrent === cur.isCurrent &&
+          (inn.period > cur.period || (inn.period === cur.period && inn.runs > cur.runs)))
+      ) {
+        cur = inn;
+      }
+    }
+  }
+  if (!cur) return null;
+  const score = `${cur.runs}/${cur.wickets}`;
+  if (format === "HUN") {
+    const balls = cur.balls ?? Math.round(cur.overs * 5); // Hundred "overs" = 5-ball units
+    return balls > 0 ? `Points updated · ${score} (${balls} balls)` : `Points updated · ${score}`;
+  }
+  if (cur.overs > 0) return `Points updated till ${cur.overs} overs (${score})`;
+  return `Points updated · ${score}`;
+}
+
 export type LiveScore = {
   points: Map<string, number>; // (pid | espn:<id> | name) → provisional D11 points
   anyStats: boolean; // true once at least one player has real bat/bowl figures (play has begun)
+  freshness: string | null; // "Points updated till 14.3 overs (138/4)" — null pre-first-ball
 };
 
 const LIVE_TTL_MS = 20_000;
@@ -328,7 +390,7 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         if (full && full !== disp) points.set(full, pts);
       }
     }
-    if (points.size > 0) return { points, anyStats };
+    if (points.size > 0) return { points, anyStats, freshness: buildFreshness(summary, fmt) };
   }
   return null;
 }

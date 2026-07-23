@@ -119,10 +119,15 @@ export default async function MatchPage({
   // Points + selections only when the match has started (powers the H2H scorelines).
   let selectionsMap = new Map<number, TeamSelection[]>();
   let matchPts = new Map<string, number>();
+  let liveFreshness: string | null = null;
   try {
     selectionsMap = await getSelectionsMap(myDrafts.map((d) => d.id));
     // LIVE → score in-app from ESPN (zero cricapi, no bot run); completed → bot's sheet.
-    if (scored) matchPts = await getMatchPointsMap(match, { live: isLive, fresh: true });
+    if (scored) {
+      const r = await getMatchPointsMap(match, { live: isLive, fresh: true });
+      matchPts = r.points;
+      liveFreshness = r.freshness;
+    }
   } catch {
     // sheet/DB unavailable — cards degrade to "awaiting points"
   }
@@ -259,7 +264,7 @@ export default async function MatchPage({
 
         {/* Match-level live-points refresh (scores every contest on this match) + quota gauge.
             Shown while the match is in progress. */}
-        {isLive && <MatchRefresh matchStarted />}
+        {isLive && <MatchRefresh matchStarted freshness={liveFreshness} />}
 
         {/* Open drafts to join */}
         {openDrafts.length > 0 && (

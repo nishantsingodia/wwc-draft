@@ -201,14 +201,18 @@ export default async function LobbyPage() {
   // bot's reconciled sheet. `fresh: true` so the manual "Refresh now" always re-pulls a
   // current ESPN scorecard rather than a ≤20s-cached one.
   const matchPointsCache = new Map<string, Map<string, number>>();
+  const matchFreshness = new Map<string, string>(); // live "Points updated till …" per match
   const liveToFetch = liveMatches.filter((m) => liveDraftMatchKeys.has(m.key));
   const completedToFetch = allMatches.filter((m) => myCompletedMatchKeys.includes(m.key));
   await Promise.all([
     ...liveToFetch.map(async (m) => {
-      matchPointsCache.set(m.key, await getMatchPointsMap(m, { live: true, fresh: true }));
+      const r = await getMatchPointsMap(m, { live: true, fresh: true });
+      matchPointsCache.set(m.key, r.points);
+      if (r.freshness) matchFreshness.set(m.key, r.freshness);
     }),
     ...completedToFetch.map(async (m) => {
-      matchPointsCache.set(m.key, await getMatchPointsMap(m, { live: false }));
+      const r = await getMatchPointsMap(m, { live: false });
+      matchPointsCache.set(m.key, r.points);
     }),
   ]);
 
@@ -246,9 +250,9 @@ export default async function LobbyPage() {
                       </div>
                     </div>
 
-                    {/* Match-level live-points refresh + cricapi quota gauge (one bot run
-                        scores every contest on this match). */}
-                    <MatchRefresh matchStarted />
+                    {/* Match-level live-points refresh — in-app ESPN scoring, no cricapi/bot.
+                        Freshness ("Points updated till 14.3 overs (138/4)") sits under it. */}
+                    <MatchRefresh matchStarted freshness={matchFreshness.get(m.key) ?? null} />
 
                     {/* Draft cards */}
                     {myDrafts.map((c) => {

@@ -199,5 +199,8 @@ export async function GET(
     completed,
     pointsSource,
     liveProvisional: pointsSource === "live-espn",
+    // "Points updated till 14.3 overs (138/4)" — how far play had progressed when these
+    // provisional points were read (from the same ESPN summary). Null once completed.
+    liveFreshness: liveScore?.freshness ?? null,
   });
 }
