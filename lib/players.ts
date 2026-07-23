@@ -1,5 +1,6 @@
 import rawPlayers from "@/data/players-raw.json";
 import { fuzzyMatchName } from "./fuzzy-name-match";
+import { resolveEspnPid } from "./registry";
 import teamCodes from "@/data/team-codes.json";
 
 export type Player = {
@@ -308,10 +309,15 @@ export function getPlayersByTeams(
   const teams = [team1, team2];
   const pool: Player[] = ALL_PLAYERS.filter((p) => teams.includes(p.teamCode));
 
-  // Self-heal: merge in any live-feed player for these teams not already present.
-  // Dedupe on the stable pid FIRST (so a canonical sheet name that differs from our
-  // seeded name — e.g. sheet "Tajinder Singh" vs seed "Tajinder Dhillon" — doesn't spawn
-  // a duplicate), then fall back to fuzzy name for un-pid'd rows.
+  // Self-heal: merge in any live-feed player the bot has scored for these teams who isn't
+  // already in the seed — so a mid-tournament addition (e.g. an injury replacement) becomes
+  // draftable/visible automatically, no players-raw.json edit needed.
+  // Dedupe on STABLE IDENTITY first: the sheet's own pid, else the registry pid resolved
+  // from the sheet's name spelling. That second step is what stops a phantom DUPLICATE when
+  // the sheet spells a seeded player differently and the row carries no pid — e.g. sheet
+  // "Milan Priyanath Rathnayake" resolving to the seed's "Milan Ratnayake" (slug:milan-
+  // ratnayake). resolveEspnPid returns null on ambiguity, so it never gambles a namesake.
+  // Fuzzy name is the last-resort dedupe for anyone the registry doesn't know yet.
   if (sheetRoster) {
     for (const team of teams) {
       const sheetTeam = getByTeamCode(sheetRoster, team);
@@ -320,11 +326,12 @@ export function getPlayersByTeams(
       const seededPids = new Set(seeded.map((p) => p.pid).filter(Boolean) as string[]);
       const known = seeded.map((p) => p.displayName);
       for (const [name, { role, pid }] of sheetTeam) {
-        if (pid && seededPids.has(pid)) continue;
+        const identPid = pid || resolveEspnPid(undefined, name) || undefined;
+        if (identPid && seededPids.has(identPid)) continue;
         if (fuzzyMatchName(name, known) !== null) continue;
         pool.push(syntheticPlayer(team, role, name));
         known.push(name);
-        if (pid) seededPids.add(pid);
+        if (identPid) seededPids.add(identPid);
       }
     }
   }
