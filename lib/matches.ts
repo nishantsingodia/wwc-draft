@@ -14,6 +14,9 @@ export type Match = {
   label: string;
   date: string;
   deadlineTs: number;
+  // "ODI" | "T20" (The Hundred scores as T20). Authoritative when present (auto-ingest writes
+  // it); older rows omit it and fall back to a key-regex. Drives ODI-vs-T20 D11 scoring.
+  format?: string;
 };
 
 export function getAllMatches(): Match[] {

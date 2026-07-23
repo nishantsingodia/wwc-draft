@@ -15,7 +15,7 @@ Two-player fantasy cricket draft. Friends pick players from a shared pool in tur
 4. **`lib/players.ts`** — add any new team codes to `TEAM_FLAGS` + `TEAM_NAMES` (both the code AND full name matter — the points matcher uses them).
 5. **wwc-points-bot `tours.json`** — register the tour (cricapi/espn series, `tab`, `gender`, `squads`) so the bot writes its tab (with `Bat Order`).
 6. **`POINTS_CSV_URLS`** env (`.env.local` + Vercel) — append the new tab's gviz URL (`&headers=1`).
-7. **Deploy** (`npx vercel --prod`).
+7. **Verify + Deploy** — `npm run check:tours` (fails loud on unknown codes / missing ESPN series), then `npx vercel --prod`.
 
 What you do NOT need to do anymore (these are automatic/durable now):
 - ❌ Match the bot's match numbers or label format — points match on **teams + date**.
@@ -173,7 +173,7 @@ POINTS_CSV_URLS=<womens export?gid url>,<mlc gviz url>,<mens gviz url>
 
 ### Live lineups come from ESPN — keep `lib/espn.ts` in sync (tour-setup touchpoint)
 
-"🟢 Lineups Out", the ✓ In-XI / ✗ Not-in-XI markers, and BACKUP_INTELLIGENCE's auto-substitution all need the **announced XI**, which the app pulls **directly from ESPN** (`lib/espn.ts` → `getEspnLineup`; the sheet's `getLineupMeta` is only a fallback). ESPN series are chosen by **gender** in `SERIES_BY_GENDER`, which **must stay in sync with the points-bot's `tours.json` `espn_series`**. So when you add a tour the draft app uses, add that tour's ESPN series id to `SERIES_BY_GENDER[gender]` — otherwise the lineup silently falls back to the sheet (which for franchise tours like MLC carries **no** announced-XI rows) and "Lineups Out" never fires. Cross-referenced from the bot's `TOURS.md` step 4.
+"🟢 Lineups Out", the ✓ In-XI / ✗ Not-in-XI markers, BACKUP_INTELLIGENCE's auto-substitution, **and the LIVE-match H2H points** (`getLiveMatchPoints` scores in-app from ESPN via `lib/d11-score.ts`) all need ESPN, resolved by **gender** via `SERIES_BY_GENDER` = **`data/espn-series.json`**, which **must stay in sync with the points-bot's `tours.json` `espn_series`**. **Auto-ingest keeps it in sync** (`tour_sync.apply_to_repos` writes it) — it's only manual for a hand-added tour: add the series id to `data/espn-series.json[gender]`, else lineups fall back to the sheet AND live points show **0** (the 22 Jul Hundred bug). Same for `lib/registry-players.json` (the ESPN→pid mirror `resolveEspnPid` reads) — auto-synced by `tour_sync_finalize`, manual `cp` otherwise; a stale mirror = ESPN players don't join = 0 live points. Run **`npm run check:tours`** after any tour edit — it fails loud on unknown codes / a gender with no series. Cross-referenced from the bot's `TOURS.md`.
 
 ### Sheet not ready yet?
 

@@ -47,9 +47,16 @@ export function lookupPlayerPoints(
   pid: string | undefined,
   displayName: string,
   name: string | undefined,
-  pointsMap: Map<string, number>
+  pointsMap: Map<string, number>,
+  // LIVE-map only: when a pid'd player misses the pid key, allow the shared fuzzy name matcher as
+  // a fallback. The bot's reconciled SHEET must NOT do this (a namesake could steal points), but
+  // the ESPN live map is keyed by name too and only PROVISIONAL — if ESPN romanizes a name so its
+  // pid didn't resolve, this recovers the join (fuzzyMatchName is null-on-ambiguity; trues up on
+  // completion). Default false = the strict, sheet-safe behaviour.
+  liveFallback = false
 ): number | null {
-  if (pid) return pointsMap.has(pid) ? (pointsMap.get(pid) ?? null) : null;
+  if (pid && pointsMap.has(pid)) return pointsMap.get(pid) ?? null;
+  if (pid && !liveFallback) return null;
   return (
     fuzzyLookupPoints(displayName, pointsMap) ??
     (name && name !== displayName ? fuzzyLookupPoints(name, pointsMap) : null)

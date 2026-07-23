@@ -67,8 +67,12 @@ export async function GET(
   const wantFresh = new URL(request.url).searchParams.get("fresh") === "1";
   const liveScore =
     match && started && !completed ? await getLiveMatchPoints(match, { fresh: wantFresh }) : null;
-  const scoringMap = liveScore?.points ?? pointsMap;
-  const pointsSource: "live-espn" | "sheet" = liveScore ? "live-espn" : "sheet";
+  // Use the live ESPN map only once play has actually begun (anyStats). Before the first ball
+  // ESPN posts the XI but no figures, so the live map would show every starter at +4 (as if
+  // scoring started) — stay on the sheet until real bat/bowl numbers appear.
+  const useLive = !!liveScore && liveScore.anyStats;
+  const scoringMap = useLive ? liveScore!.points : pointsMap;
+  const pointsSource: "live-espn" | "sheet" = useLive ? "live-espn" : "sheet";
 
   // BACKUP_INTELLIGENCE eligibility: auto-substitute only once the team is locked
   // (post-deadline, live mode) AND both teams' official XIs are announced. Before
@@ -136,7 +140,7 @@ export async function GET(
         const p = getPlayerByKey(key);
         const displayName = p?.displayName ?? key;
         // Identity-first: exact match on the stable Player ID, then fuzzy name fallback.
-        const rawPts = lookupPlayerPoints(p?.pid, displayName, p?.name, scoringMap);
+        const rawPts = lookupPlayerPoints(p?.pid, displayName, p?.name, scoringMap, useLive);
         const isCap = key === eff.captainKey && !isBackup;
         const isVC = key === eff.viceCaptainKey && !isBackup;
         const multiplier = isCap ? 2 : isVC ? 1.5 : 1;

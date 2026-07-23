@@ -186,10 +186,14 @@ async function fetchEspnLineup(match: Match): Promise<EspnLineup | null> {
 // bot's reconciled sheet. Numbers here can differ from the final (fielding/dot/lbw
 // detail lags in the live feed) — that's expected and surfaced as "provisional".
 
-// ODI matches are the only non-T20 ruleset; their keys always contain "ODI"
-// (WODI_…, M_NZWI_ODI1_…, M_ENG_IND_ODI1_…). Everything else — T20 AND The Hundred —
-// scores on the T20 ruleset, matching the bot/auction (scoringFormatOf).
+// ODI is the only non-T20 ruleset (The Hundred scores as T20, matching the bot/auction).
+// Prefer the explicit match.format (auto-ingest writes it) — authoritative and robust for
+// multi-team ODI events whose keys omit "ODI". Fall back to a key-regex for older rows that
+// predate the format field.
 function scoreFormatOf(match: Match): ScoreFormat {
+  const f = (match.format || "").toUpperCase();
+  if (f === "ODI") return "ODI";
+  if (f === "T20") return "T20";
   return /odi/i.test(match.key) ? "ODI" : "T20";
 }
 
