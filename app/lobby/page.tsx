@@ -12,7 +12,7 @@ import TransitionLink from "@/components/transition-link";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
 import { getCompletedMatchKeys } from "@/lib/points";
 import { getMatchPointsMap } from "@/lib/live-points";
-import { getFlag, getPlayerByKey } from "@/lib/players";
+import { getFlag, getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
 
 async function getUserContests(username: string) {
@@ -243,7 +243,7 @@ export default async function LobbyPage() {
                       <span className="text-lg">{getFlag(m.team1)}{getFlag(m.team2)}</span>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold truncate">{m.label}</span>
+                          <span className="text-sm font-bold truncate">{prettifyMatchLabel(m.label)}</span>
                           <span className="text-xs text-live font-bold shrink-0 flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-live animate-pulse" />In progress</span>
                         </div>
                         <p className="text-[11px] text-mist font-mono">{formatMatchDate(m.date)}</p>
@@ -347,7 +347,7 @@ export default async function LobbyPage() {
                     <div className="flex items-center gap-3">
                       <div className="text-xl">{getFlag(m.team1)}{getFlag(m.team2)}</div>
                       <div>
-                        <p className="font-bold text-sm">{m.label}</p>
+                        <p className="font-bold text-sm">{prettifyMatchLabel(m.label)}</p>
                         <p className="text-xs text-mist font-mono mt-0.5">{formatMatchDate(m.date)}</p>
                       </div>
                     </div>
@@ -403,7 +403,7 @@ export default async function LobbyPage() {
                   <div className="flex items-center gap-2 px-4 py-3 border-b border-hair">
                     <span className="text-lg">{getFlag(match?.team1 ?? "")}{getFlag(match?.team2 ?? "")}</span>
                     <div className="min-w-0">
-                      <span className="text-sm font-semibold block truncate">{match?.label ?? matchKey}</span>
+                      <span className="text-sm font-semibold block truncate">{match ? prettifyMatchLabel(match.label) : matchKey}</span>
                       {match && (
                         <p className="text-[11px] text-mist font-mono">{formatMatchDate(match.date)}</p>
                       )}

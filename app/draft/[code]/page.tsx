@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, use, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
-import { getFlag } from "@/lib/players";
+import { getFlag, prettifyMatchLabel } from "@/lib/players";
 import { getEffectiveState } from "@/lib/effective-state";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import LineupRefresh from "@/components/lineup-refresh";
@@ -574,7 +574,7 @@ export default function DraftBoardPage({
         <div className="flex items-center gap-2 pb-3">
           <Link href="/lobby" className="text-mist hover:text-white text-xl leading-none">←</Link>
           <div className="flex-1 min-w-0">
-            <h1 className="font-bold text-sm truncate">{contest.matchLabel}</h1>
+            <h1 className="font-bold text-sm truncate">{prettifyMatchLabel(contest.matchLabel)}</h1>
             <p className="text-xs text-mist font-mono">{code}</p>
           </div>
 
@@ -1228,7 +1228,7 @@ function OrderRevealScreen({
     <main className="min-h-screen bg-ink text-white flex flex-col items-center justify-center px-6 gap-7 floodlight">
       <div className="text-center space-y-1">
         <p className="text-mist text-xs uppercase tracking-widest">Live Draft</p>
-        <h1 className="font-bold text-lg">{matchLabel}</h1>
+        <h1 className="font-bold text-lg">{prettifyMatchLabel(matchLabel)}</h1>
       </div>
 
       {!revealed ? (
@@ -1348,7 +1348,7 @@ function CoinTossScreen({
     <main className="min-h-screen bg-ink text-white flex flex-col items-center justify-center px-6 gap-8">
       <div className="text-center space-y-1">
         <p className="text-mist text-xs uppercase tracking-widest">Live Draft</p>
-        <h1 className="font-bold text-lg">{matchLabel}</h1>
+        <h1 className="font-bold text-lg">{prettifyMatchLabel(matchLabel)}</h1>
       </div>
 
       <div className="flex gap-6 justify-center">

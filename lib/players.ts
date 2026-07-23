@@ -203,6 +203,23 @@ export function getFlag(teamCode: string): string {
   return TEAM_FLAGS[teamCode] ?? "🏏";
 }
 
+// Full team name for display (falls back to the code). Matching/DB keys still use the
+// raw code — this is display-only.
+export function getTeamName(teamCode: string): string {
+  return TEAM_NAMES[teamCode] ?? teamCode;
+}
+
+// Display-only: rewrite a match label's team CODE tokens to full names
+// ("Match 19: WTWLF v WTSBR" → "Match 19: Welsh Fire v Southern Brave"). The stored
+// label and team codes are untouched (points matching, ESPN team match, and DB keys all
+// rely on them) — this only changes how the title reads. Works identically on a
+// matches.json label and the DB-frozen contest.matchLabel, and is idempotent (a full name
+// contains no all-caps code token, so re-running it is a no-op). Unknown tokens (e.g.
+// "TBD") are left as-is.
+export function prettifyMatchLabel(label: string): string {
+  return label.replace(/[A-Z][A-Z0-9]{1,7}/g, (tok) => TEAM_NAMES[tok] ?? tok);
+}
+
 // All 180 players
 const ALL_PLAYERS: Player[] = (rawPlayers as typeof rawPlayers).map((p) => ({
   id: p.id,

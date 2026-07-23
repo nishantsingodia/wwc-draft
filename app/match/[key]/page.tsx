@@ -8,7 +8,7 @@ import { getMatchByKey, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
 import { isMatchCompleted } from "@/lib/points";
 import { getMatchPointsMap } from "@/lib/live-points";
 import { getUserLabel } from "@/lib/users";
-import { getFlag as getTeamFlag } from "@/lib/players";
+import { getFlag as getTeamFlag, getTeamName, prettifyMatchLabel } from "@/lib/players";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
 import { getEffectiveState } from "@/lib/effective-state";
 import DeleteDraftButton from "@/components/delete-draft-button";
@@ -234,7 +234,7 @@ export default async function MatchPage({
         <div className="flex items-center gap-3">
           <Link href="/lobby" className="text-mist hover:text-white text-xl">←</Link>
           <div className="flex-1">
-            <h1 className="font-bold text-lg">{match.label}</h1>
+            <h1 className="font-bold text-lg">{prettifyMatchLabel(match.label)}</h1>
             <p className="text-xs text-mist">{formatMatchDate(match.date)}</p>
           </div>
         </div>
@@ -249,7 +249,7 @@ export default async function MatchPage({
         }`}>
           <div className="text-3xl">{getTeamFlag(match.team1)}{getTeamFlag(match.team2)}</div>
           <div>
-            <p className="font-bold">{match.team1} vs {match.team2}</p>
+            <p className="font-bold">{getTeamName(match.team1)} vs {getTeamName(match.team2)}</p>
             <p className={`text-sm flex items-center gap-1.5 ${isLive ? "text-red-400" : isCompleted ? "text-emerald-400" : "text-emerald-400"}`}>
               {isLive ? (
                 <><span className="w-2 h-2 rounded-full bg-red-500 animate-pulse inline-block" />Match in progress</>

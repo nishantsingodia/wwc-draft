@@ -3,7 +3,7 @@
 import { useEffect, useState, use, useCallback } from "react";
 import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
-import { getFlag } from "@/lib/players";
+import { getFlag, prettifyMatchLabel } from "@/lib/players";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
 import ChangesBanner from "@/components/changes-banner";
@@ -192,7 +192,7 @@ export default function ResultsPage({
         <div className="flex items-center gap-2">
           <Link href={`/match/${contest.matchKey}`} className="text-mist hover:text-white text-lg">←</Link>
           <div className="flex-1">
-            <h1 className="font-bold">{contest.matchLabel}</h1>
+            <h1 className="font-bold">{prettifyMatchLabel(contest.matchLabel)}</h1>
             <p className="text-xs text-mist">
               {live && data.liveFreshness
                 ? `${data.liveFreshness} · via ESPN (provisional)`

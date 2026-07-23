@@ -3,7 +3,7 @@
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getAllMatches, formatMatchDate } from "@/lib/matches";
-import { getFullSquadByTeams } from "@/lib/players";
+import { getFullSquadByTeams, prettifyMatchLabel } from "@/lib/players";
 import { MAX_ROSTER } from "@/lib/users";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -75,7 +75,7 @@ function CreateDraftForm() {
         {/* Selected match — read only */}
         <div className="bg-[#112347] border border-hair2 rounded-xl px-4 py-3">
           <p className="text-xs text-mist2 uppercase tracking-wider mb-0.5">Match</p>
-          <p className="font-semibold">{match.label}</p>
+          <p className="font-semibold">{prettifyMatchLabel(match.label)}</p>
           <p className="text-sm text-mist">{formatMatchDate(match.date)}</p>
         </div>
 

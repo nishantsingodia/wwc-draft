@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
-import { getFlag } from "@/lib/players";
+import { getFlag, prettifyMatchLabel } from "@/lib/players";
 
 // Coarse tour grouping by team codes present in the match, for a small tag.
 function tourTag(team1: string, team2: string, gender: "W" | "M"): string {
@@ -55,7 +55,7 @@ export default async function SchedulePage() {
                     <div className="text-xl shrink-0">{getFlag(m.team1)}{getFlag(m.team2)}</div>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <p className="font-semibold text-sm truncate">{m.label}</p>
+                        <p className="font-semibold text-sm truncate">{prettifyMatchLabel(m.label)}</p>
                         <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase shrink-0 ${tagColor}`}>
                           {tag}
                         </span>

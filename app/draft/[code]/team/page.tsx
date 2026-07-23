@@ -25,7 +25,7 @@ import { GripVertical } from "lucide-react";
 import PlayerCard from "@/components/player-card";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
-import { getPlayerByKey } from "@/lib/players";
+import { getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
 import { getUserLabel, getUserColor, ALL_USERS } from "@/lib/users";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
@@ -551,7 +551,7 @@ export default function TeamPage({
         <div className="flex items-center gap-2">
           <Link href={`/match/${data.contest.matchKey}`} className="text-mist hover:text-white text-lg">←</Link>
           <div className="flex-1">
-            <h1 className="font-bold">{data.contest.matchLabel}</h1>
+            <h1 className="font-bold">{prettifyMatchLabel(data.contest.matchLabel)}</h1>
             <p className="text-xs text-mist">{countdown}</p>
           </div>
           <Link href={`/draft/${code}/results`} className="text-xs text-gold hover:brightness-110 font-mono">
