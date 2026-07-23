@@ -5130,6 +5130,16 @@
     "pid": "caf69bf7"
   },
   {
+    "id": 10657,
+    "name": "Shaheen Shah Afridi",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "LPLKR",
+    "efppm": 45.0,
+    "pid": "espn:1072470"
+  },
+  {
     "id": 10333,
     "name": "Asitha Fernando",
     "country": "Sri Lanka",
