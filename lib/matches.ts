@@ -14,8 +14,9 @@ export type Match = {
   label: string;
   date: string;
   deadlineTs: number;
-  // "ODI" | "T20" (The Hundred scores as T20). Authoritative when present (auto-ingest writes
-  // it); older rows omit it and fall back to a key-regex. Drives ODI-vs-T20 D11 scoring.
+  // "ODI" | "T20" | "HUN" (The Hundred — its own ruleset, no SR/econ/maiden). Authoritative when
+  // present (auto-ingest writes it); older rows omit it and fall back to a key-regex. Drives which
+  // D11 scorer runs (see scoreFormatOf / d11-score.ts).
   format?: string;
 };
 

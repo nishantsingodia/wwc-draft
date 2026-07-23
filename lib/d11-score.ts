@@ -8,12 +8,14 @@
 // track the eventual final — but they can legitimately differ (fielding/dot/lbw detail
 // lags in the live feed), which is expected and labelled "provisional" in the UI.
 //
-// Format-aware (per Nishant): ODI uses ODI bands; T20 AND The Hundred use the T20
-// ruleset — the SAME mapping the bot/auction use (scoringFormatOf maps everything
-// non-ODI → T20), so live and final stay methodologically consistent.
+// Format-aware (per Nishant): ODI uses ODI bands; T20 uses T20 bands; The Hundred (HUN) has
+// its OWN ruleset — same core scale as T20 but NO strike-rate, NO economy and NO maiden points,
+// and wicket hauls tier from a 2-for (2w+4 / 3w+8 / 4w+12 / 5w+16). Mirrors the bot's
+// _score_hundred + the auction ETL's compute_fantasy_points_hundred, so the live provisional
+// H2H tracks the eventual final.
 
 export type Role = "BAT" | "BOWL" | "AR" | "WK";
-export type ScoreFormat = "ODI" | "T20";
+export type ScoreFormat = "ODI" | "T20" | "HUN";
 
 // One player's match line. Fields we can't read live (lbw/bowled split, run-outs) are
 // simply 0 → their bonus is omitted live and trues up when the bot finalizes.
@@ -50,6 +52,15 @@ const ODI = {
   field: { catch: 8, catch3: 4, stumping: 12, directRunOut: 12, runOut: 6 },
   sr: { minBalls: 20, a140: 6, a120: 4, a100: 2, b40_50: -2, b30_40: -4, below30: -6 },
   econ: { minBalls: 30, b2_5: 6, b2_5_3_5: 4, b3_5_4_5: 2, b7_8: -2, b8_9: -4, a9: -6 },
+  xi: 4,
+} as const;
+
+// The Hundred: same core scale as T20 but NO strike-rate, NO economy, NO maiden; wicket hauls
+// tier from a 2-for. (Mirror of the bot's R_HUN.)
+const HUN = {
+  bat: { perRun: 1, four: 4, six: 6, b25: 4, b50: 8, b75: 12, b100: 16, duck: -2 },
+  bowl: { perWkt: 30, lbwBowled: 8, dot: 1, h2: 4, h3: 8, h4: 12, h5: 16 },
+  field: { catch: 8, catch3: 4, stumping: 12, directRunOut: 12, runOut: 6 },
   xi: 4,
 } as const;
 
@@ -146,8 +157,40 @@ function scoreOdi(p: Perf, role: Role): number {
   return pts + fielding(p, r.field);
 }
 
+function scoreHundred(p: Perf, role: Role): number {
+  const r = HUN;
+  let pts = p.played ? r.xi : 0;
+
+  if (p.batBalls > 0 || p.batRuns > 0) {
+    pts += p.batRuns * r.bat.perRun + p.bat4s * r.bat.four + p.bat6s * r.bat.six;
+    if (p.batRuns >= 100) pts += r.bat.b100;
+    else if (p.batRuns >= 75) pts += r.bat.b75;
+    else if (p.batRuns >= 50) pts += r.bat.b50;
+    else if (p.batRuns >= 25) pts += r.bat.b25;
+    // No strike-rate points in The Hundred.
+  }
+  if (p.batDismissed && p.batRuns === 0 && role !== "BOWL") pts += r.bat.duck;
+
+  if (p.bowlBalls > 0) {
+    pts += p.bowlWickets * r.bowl.perWkt + p.bowlLbwBowled * r.bowl.lbwBowled;
+    pts += p.bowlDots * r.bowl.dot;
+    if (p.bowlWickets >= 5) pts += r.bowl.h5;
+    else if (p.bowlWickets >= 4) pts += r.bowl.h4;
+    else if (p.bowlWickets >= 3) pts += r.bowl.h3;
+    else if (p.bowlWickets >= 2) pts += r.bowl.h2;
+    // No maiden, no economy points in The Hundred.
+  }
+
+  return pts + fielding(p, r.field);
+}
+
 // D11 fantasy points for one player line. Rounds to 1dp (the sheet stores whole/1dp).
 export function scoreD11(perf: Perf, role: Role, format: ScoreFormat): number {
-  const raw = format === "ODI" ? scoreOdi(perf, role) : scoreT20(perf, role);
+  const raw =
+    format === "ODI"
+      ? scoreOdi(perf, role)
+      : format === "HUN"
+        ? scoreHundred(perf, role)
+        : scoreT20(perf, role);
   return Math.round(raw * 10) / 10;
 }

@@ -1005,7 +1005,8 @@
     "team1": "MTMILO",
     "team2": "MTSUNL",
     "label": "Match 1: MTMILO v MTSUNL",
-    "date": "2026-07-21T23:00:00+05:30"
+    "date": "2026-07-21T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 137,
@@ -1014,7 +1015,8 @@
     "team1": "MTSBR",
     "team2": "MTWLF",
     "label": "Match 2: MTSBR v MTWLF",
-    "date": "2026-07-22T23:00:00+05:30"
+    "date": "2026-07-22T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 138,
@@ -1023,7 +1025,8 @@
     "team1": "MTLSP",
     "team2": "MTMSG",
     "label": "Match 3: MTLSP v MTMSG",
-    "date": "2026-07-23T23:00:00+05:30"
+    "date": "2026-07-23T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 139,
@@ -1032,7 +1035,8 @@
     "team1": "MTBPH",
     "team2": "MTTRR",
     "label": "Match 4: MTBPH v MTTRR",
-    "date": "2026-07-24T23:00:00+05:30"
+    "date": "2026-07-24T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 140,
@@ -1041,7 +1045,8 @@
     "team1": "MTSUNL",
     "team2": "MTSBR",
     "label": "Match 5: MTSUNL v MTSBR",
-    "date": "2026-07-25T19:00:00+05:30"
+    "date": "2026-07-25T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 141,
@@ -1050,7 +1055,8 @@
     "team1": "MTWLF",
     "team2": "MTMILO",
     "label": "Match 6: MTWLF v MTMILO",
-    "date": "2026-07-25T22:30:00+05:30"
+    "date": "2026-07-25T22:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 142,
@@ -1059,7 +1065,8 @@
     "team1": "MTMSG",
     "team2": "MTBPH",
     "label": "Match 7: MTMSG v MTBPH",
-    "date": "2026-07-26T19:00:00+05:30"
+    "date": "2026-07-26T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 143,
@@ -1068,7 +1075,8 @@
     "team1": "MTTRR",
     "team2": "MTLSP",
     "label": "Match 8: MTTRR v MTLSP",
-    "date": "2026-07-26T22:30:00+05:30"
+    "date": "2026-07-26T22:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 144,
@@ -1077,7 +1085,8 @@
     "team1": "MTSBR",
     "team2": "MTMILO",
     "label": "Match 9: MTSBR v MTMILO",
-    "date": "2026-07-27T23:00:00+05:30"
+    "date": "2026-07-27T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 145,
@@ -1086,7 +1095,8 @@
     "team1": "MTSUNL",
     "team2": "MTMSG",
     "label": "Match 10: MTSUNL v MTMSG",
-    "date": "2026-07-28T23:00:00+05:30"
+    "date": "2026-07-28T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 146,
@@ -1095,7 +1105,8 @@
     "team1": "MTWLF",
     "team2": "MTTRR",
     "label": "Match 11: MTWLF v MTTRR",
-    "date": "2026-07-29T19:30:00+05:30"
+    "date": "2026-07-29T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 147,
@@ -1104,7 +1115,8 @@
     "team1": "MTMILO",
     "team2": "MTLSP",
     "label": "Match 12: MTMILO v MTLSP",
-    "date": "2026-07-29T23:00:00+05:30"
+    "date": "2026-07-29T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 148,
@@ -1113,7 +1125,8 @@
     "team1": "MTSBR",
     "team2": "MTBPH",
     "label": "Match 13: MTSBR v MTBPH",
-    "date": "2026-07-30T23:00:00+05:30"
+    "date": "2026-07-30T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 149,
@@ -1122,7 +1135,8 @@
     "team1": "MTMSG",
     "team2": "MTTRR",
     "label": "Match 14: MTMSG v MTTRR",
-    "date": "2026-07-31T23:00:00+05:30"
+    "date": "2026-07-31T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 150,
@@ -1131,7 +1145,8 @@
     "team1": "MTBPH",
     "team2": "MTWLF",
     "label": "Match 15: MTBPH v MTWLF",
-    "date": "2026-08-01T19:00:00+05:30"
+    "date": "2026-08-01T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 151,
@@ -1140,7 +1155,8 @@
     "team1": "MTLSP",
     "team2": "MTSBR",
     "label": "Match 16: MTLSP v MTSBR",
-    "date": "2026-08-01T22:30:00+05:30"
+    "date": "2026-08-01T22:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 152,
@@ -1149,7 +1165,8 @@
     "team1": "MTTRR",
     "team2": "MTSUNL",
     "label": "Match 17: MTTRR v MTSUNL",
-    "date": "2026-08-02T19:00:00+05:30"
+    "date": "2026-08-02T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 153,
@@ -1158,7 +1175,8 @@
     "team1": "MTMILO",
     "team2": "MTMSG",
     "label": "Match 18: MTMILO v MTMSG",
-    "date": "2026-08-02T22:30:00+05:30"
+    "date": "2026-08-02T22:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 154,
@@ -1167,7 +1185,8 @@
     "team1": "MTWLF",
     "team2": "MTSBR",
     "label": "Match 19: MTWLF v MTSBR",
-    "date": "2026-08-03T23:00:00+05:30"
+    "date": "2026-08-03T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 155,
@@ -1176,7 +1195,8 @@
     "team1": "MTSUNL",
     "team2": "MTLSP",
     "label": "Match 20: MTSUNL v MTLSP",
-    "date": "2026-08-04T23:00:00+05:30"
+    "date": "2026-08-04T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 156,
@@ -1185,7 +1205,8 @@
     "team1": "MTMSG",
     "team2": "MTWLF",
     "label": "Match 21: MTMSG v MTWLF",
-    "date": "2026-08-05T19:30:00+05:30"
+    "date": "2026-08-05T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 157,
@@ -1194,7 +1215,8 @@
     "team1": "MTTRR",
     "team2": "MTBPH",
     "label": "Match 22: MTTRR v MTBPH",
-    "date": "2026-08-05T23:00:00+05:30"
+    "date": "2026-08-05T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 158,
@@ -1203,7 +1225,8 @@
     "team1": "MTLSP",
     "team2": "MTMILO",
     "label": "Match 23: MTLSP v MTMILO",
-    "date": "2026-08-06T23:00:00+05:30"
+    "date": "2026-08-06T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 159,
@@ -1212,7 +1235,8 @@
     "team1": "MTBPH",
     "team2": "MTSUNL",
     "label": "Match 24: MTBPH v MTSUNL",
-    "date": "2026-08-07T23:00:00+05:30"
+    "date": "2026-08-07T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 160,
@@ -1221,7 +1245,8 @@
     "team1": "MTMILO",
     "team2": "MTTRR",
     "label": "Match 25: MTMILO v MTTRR",
-    "date": "2026-08-08T19:00:00+05:30"
+    "date": "2026-08-08T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 161,
@@ -1230,7 +1255,8 @@
     "team1": "MTSBR",
     "team2": "MTMSG",
     "label": "Match 26: MTSBR v MTMSG",
-    "date": "2026-08-08T22:30:00+05:30"
+    "date": "2026-08-08T22:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 162,
@@ -1239,7 +1265,8 @@
     "team1": "MTSUNL",
     "team2": "MTWLF",
     "label": "Match 27: MTSUNL v MTWLF",
-    "date": "2026-08-09T19:00:00+05:30"
+    "date": "2026-08-09T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 163,
@@ -1248,7 +1275,8 @@
     "team1": "MTLSP",
     "team2": "MTBPH",
     "label": "Match 28: MTLSP v MTBPH",
-    "date": "2026-08-09T22:30:00+05:30"
+    "date": "2026-08-09T22:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 164,
@@ -1257,7 +1285,8 @@
     "team1": "MTTRR",
     "team2": "MTSBR",
     "label": "Match 29: MTTRR v MTSBR",
-    "date": "2026-08-10T23:00:00+05:30"
+    "date": "2026-08-10T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 165,
@@ -1266,7 +1295,8 @@
     "team1": "MTMSG",
     "team2": "MTSUNL",
     "label": "Match 30: MTMSG v MTSUNL",
-    "date": "2026-08-11T23:00:00+05:30"
+    "date": "2026-08-11T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 166,
@@ -1275,7 +1305,8 @@
     "team1": "MTWLF",
     "team2": "MTLSP",
     "label": "Match 31: MTWLF v MTLSP",
-    "date": "2026-08-12T19:30:00+05:30"
+    "date": "2026-08-12T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 167,
@@ -1284,7 +1315,8 @@
     "team1": "MTBPH",
     "team2": "MTMILO",
     "label": "Match 32: MTBPH v MTMILO",
-    "date": "2026-08-12T23:00:00+05:30"
+    "date": "2026-08-12T23:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 168,
@@ -1293,7 +1325,8 @@
     "team1": "WTMILO",
     "team2": "WTSUNL",
     "label": "Match 1: WTMILO v WTSUNL",
-    "date": "2026-07-21T19:15:00+05:30"
+    "date": "2026-07-21T19:15:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 169,
@@ -1302,7 +1335,8 @@
     "team1": "WTSBR",
     "team2": "WTWLF",
     "label": "Match 2: WTSBR v WTWLF",
-    "date": "2026-07-22T19:30:00+05:30"
+    "date": "2026-07-22T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 170,
@@ -1311,7 +1345,8 @@
     "team1": "WTLSP",
     "team2": "WTMSG",
     "label": "Match 3: WTLSP v WTMSG",
-    "date": "2026-07-23T19:30:00+05:30"
+    "date": "2026-07-23T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 171,
@@ -1320,7 +1355,8 @@
     "team1": "WTBPH",
     "team2": "WTTRR",
     "label": "Match 4: WTBPH v WTTRR",
-    "date": "2026-07-24T19:30:00+05:30"
+    "date": "2026-07-24T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 172,
@@ -1329,7 +1365,8 @@
     "team1": "WTSUNL",
     "team2": "WTSBR",
     "label": "Match 5: WTSUNL v WTSBR",
-    "date": "2026-07-25T15:30:00+05:30"
+    "date": "2026-07-25T15:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 173,
@@ -1338,7 +1375,8 @@
     "team1": "WTWLF",
     "team2": "WTMILO",
     "label": "Match 6: WTWLF v WTMILO",
-    "date": "2026-07-25T19:00:00+05:30"
+    "date": "2026-07-25T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 174,
@@ -1347,7 +1385,8 @@
     "team1": "WTMSG",
     "team2": "WTBPH",
     "label": "Match 7: WTMSG v WTBPH",
-    "date": "2026-07-26T15:30:00+05:30"
+    "date": "2026-07-26T15:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 175,
@@ -1356,7 +1395,8 @@
     "team1": "WTTRR",
     "team2": "WTLSP",
     "label": "Match 8: WTTRR v WTLSP",
-    "date": "2026-07-26T19:00:00+05:30"
+    "date": "2026-07-26T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 176,
@@ -1365,7 +1405,8 @@
     "team1": "WTSBR",
     "team2": "WTMILO",
     "label": "Match 9: WTSBR v WTMILO",
-    "date": "2026-07-27T19:30:00+05:30"
+    "date": "2026-07-27T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 177,
@@ -1374,7 +1415,8 @@
     "team1": "WTSUNL",
     "team2": "WTMSG",
     "label": "Match 10: WTSUNL v WTMSG",
-    "date": "2026-07-28T19:30:00+05:30"
+    "date": "2026-07-28T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 178,
@@ -1383,7 +1425,8 @@
     "team1": "WTWLF",
     "team2": "WTTRR",
     "label": "Match 11: WTWLF v WTTRR",
-    "date": "2026-07-29T16:00:00+05:30"
+    "date": "2026-07-29T16:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 179,
@@ -1392,7 +1435,8 @@
     "team1": "WTMILO",
     "team2": "WTLSP",
     "label": "Match 12: WTMILO v WTLSP",
-    "date": "2026-07-29T19:30:00+05:30"
+    "date": "2026-07-29T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 180,
@@ -1401,7 +1445,8 @@
     "team1": "WTSBR",
     "team2": "WTBPH",
     "label": "Match 13: WTSBR v WTBPH",
-    "date": "2026-07-30T19:30:00+05:30"
+    "date": "2026-07-30T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 181,
@@ -1410,7 +1455,8 @@
     "team1": "WTMSG",
     "team2": "WTTRR",
     "label": "Match 14: WTMSG v WTTRR",
-    "date": "2026-07-31T19:30:00+05:30"
+    "date": "2026-07-31T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 182,
@@ -1419,7 +1465,8 @@
     "team1": "WTBPH",
     "team2": "WTWLF",
     "label": "Match 15: WTBPH v WTWLF",
-    "date": "2026-08-01T15:30:00+05:30"
+    "date": "2026-08-01T15:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 183,
@@ -1428,7 +1475,8 @@
     "team1": "WTLSP",
     "team2": "WTSBR",
     "label": "Match 16: WTLSP v WTSBR",
-    "date": "2026-08-01T19:00:00+05:30"
+    "date": "2026-08-01T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 184,
@@ -1437,7 +1485,8 @@
     "team1": "WTTRR",
     "team2": "WTSUNL",
     "label": "Match 17: WTTRR v WTSUNL",
-    "date": "2026-08-02T15:30:00+05:30"
+    "date": "2026-08-02T15:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 185,
@@ -1446,7 +1495,8 @@
     "team1": "WTMILO",
     "team2": "WTMSG",
     "label": "Match 18: WTMILO v WTMSG",
-    "date": "2026-08-02T19:00:00+05:30"
+    "date": "2026-08-02T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 186,
@@ -1455,7 +1505,8 @@
     "team1": "WTWLF",
     "team2": "WTSBR",
     "label": "Match 19: WTWLF v WTSBR",
-    "date": "2026-08-03T19:30:00+05:30"
+    "date": "2026-08-03T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 187,
@@ -1464,7 +1515,8 @@
     "team1": "WTSUNL",
     "team2": "WTLSP",
     "label": "Match 20: WTSUNL v WTLSP",
-    "date": "2026-08-04T19:30:00+05:30"
+    "date": "2026-08-04T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 188,
@@ -1473,7 +1525,8 @@
     "team1": "WTMSG",
     "team2": "WTWLF",
     "label": "Match 21: WTMSG v WTWLF",
-    "date": "2026-08-05T16:00:00+05:30"
+    "date": "2026-08-05T16:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 189,
@@ -1482,7 +1535,8 @@
     "team1": "WTTRR",
     "team2": "WTBPH",
     "label": "Match 22: WTTRR v WTBPH",
-    "date": "2026-08-05T19:30:00+05:30"
+    "date": "2026-08-05T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 190,
@@ -1491,7 +1545,8 @@
     "team1": "WTLSP",
     "team2": "WTMILO",
     "label": "Match 23: WTLSP v WTMILO",
-    "date": "2026-08-06T19:30:00+05:30"
+    "date": "2026-08-06T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 191,
@@ -1500,7 +1555,8 @@
     "team1": "WTBPH",
     "team2": "WTSUNL",
     "label": "Match 24: WTBPH v WTSUNL",
-    "date": "2026-08-07T19:30:00+05:30"
+    "date": "2026-08-07T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 192,
@@ -1509,7 +1565,8 @@
     "team1": "WTMILO",
     "team2": "WTTRR",
     "label": "Match 25: WTMILO v WTTRR",
-    "date": "2026-08-08T15:30:00+05:30"
+    "date": "2026-08-08T15:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 193,
@@ -1518,7 +1575,8 @@
     "team1": "WTSBR",
     "team2": "WTMSG",
     "label": "Match 26: WTSBR v WTMSG",
-    "date": "2026-08-08T19:00:00+05:30"
+    "date": "2026-08-08T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 194,
@@ -1527,7 +1585,8 @@
     "team1": "WTSUNL",
     "team2": "WTWLF",
     "label": "Match 27: WTSUNL v WTWLF",
-    "date": "2026-08-09T15:30:00+05:30"
+    "date": "2026-08-09T15:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 195,
@@ -1536,7 +1595,8 @@
     "team1": "WTLSP",
     "team2": "WTBPH",
     "label": "Match 28: WTLSP v WTBPH",
-    "date": "2026-08-09T19:00:00+05:30"
+    "date": "2026-08-09T19:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 196,
@@ -1545,7 +1605,8 @@
     "team1": "WTTRR",
     "team2": "WTSBR",
     "label": "Match 29: WTTRR v WTSBR",
-    "date": "2026-08-10T19:30:00+05:30"
+    "date": "2026-08-10T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 197,
@@ -1554,7 +1615,8 @@
     "team1": "WTMSG",
     "team2": "WTSUNL",
     "label": "Match 30: WTMSG v WTSUNL",
-    "date": "2026-08-11T19:30:00+05:30"
+    "date": "2026-08-11T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 198,
@@ -1563,7 +1625,8 @@
     "team1": "WTWLF",
     "team2": "WTLSP",
     "label": "Match 31: WTWLF v WTLSP",
-    "date": "2026-08-12T16:00:00+05:30"
+    "date": "2026-08-12T16:00:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 199,
@@ -1572,7 +1635,8 @@
     "team1": "WTBPH",
     "team2": "WTMILO",
     "label": "Match 32: WTBPH v WTMILO",
-    "date": "2026-08-12T19:30:00+05:30"
+    "date": "2026-08-12T19:30:00+05:30",
+    "format": "HUN"
   },
   {
     "matchNum": 200,
