@@ -350,7 +350,7 @@ export default function ResultsPage({
                     {xi.map((p) => (
                       <div key={p.key} className="flex flex-col gap-0.5 px-2.5 py-2 border-t border-hair2/50 first:border-t-0">
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar photo={p.photo} team={p.team} size={18} />
+                          <PlayerAvatar photo={p.photo} team={p.team} size={24} />
                           <span className="text-xs font-medium text-cloud truncate">{p.name}</span>
                         </div>
                         <div className="flex items-center gap-1.5">

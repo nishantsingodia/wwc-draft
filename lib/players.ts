@@ -2,6 +2,7 @@ import rawPlayers from "@/data/players-raw.json";
 import { fuzzyMatchName } from "./fuzzy-name-match";
 import { resolveEspnPid } from "./registry";
 import teamCodes from "@/data/team-codes.json";
+import playerPhotos from "@/data/player-photos.json";
 
 export type Player = {
   id: number;
@@ -201,6 +202,15 @@ function toDisplayName(name: string): string {
 
 export function getFlag(teamCode: string): string {
   return TEAM_FLAGS[teamCode] ?? "🏏";
+}
+
+// Real player headshot (ESPN / Wikimedia Commons) by stable pid — harvested offline into
+// data/player-photos.json (scripts/harvest-photos.ts). Returns null when we found no photo
+// anywhere, so the UI falls back to the team flag. A static pid→URL lookup, so it works for
+// ANY match (live or completed) and any surface — not just the live ESPN path.
+const PLAYER_PHOTOS = playerPhotos as Record<string, string>;
+export function getPlayerPhoto(pid?: string | null): string | null {
+  return (pid && PLAYER_PHOTOS[pid]) || null;
 }
 
 // Full team name for display (falls back to the code). Matching/DB keys still use the

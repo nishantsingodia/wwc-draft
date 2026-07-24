@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, teamSelections } from "@/lib/db";
 import { eq } from "drizzle-orm";
-import { getPlayerByKey, getByTeamCode } from "@/lib/players";
+import { getPlayerByKey, getByTeamCode, getPlayerPhoto } from "@/lib/players";
 import { getMatchByKey, LOCK_BUFFER } from "@/lib/matches";
 import {
   getMatchPointsForMatch,
@@ -155,7 +155,10 @@ export async function GET(
         const displayName = p?.displayName ?? key;
         // Identity-first: exact match on the stable Player ID, then fuzzy name fallback.
         const rawPts = lookupPlayerPoints(p?.pid, displayName, p?.name, scoringMap, useLive);
+        // Harvested static photo (by stable pid — works for live AND completed matches)
+        // first; the live ESPN roster photo is a supplement for anyone not in the static map.
         const photo =
+          getPlayerPhoto(p?.pid) ??
           (p?.pid ? photoMap.get(p.pid) : undefined) ??
           photoMap.get(displayName) ??
           (p?.name ? photoMap.get(p.name) : undefined) ??
