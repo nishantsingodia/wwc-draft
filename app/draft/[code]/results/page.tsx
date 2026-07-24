@@ -19,6 +19,7 @@ type PlayerResult = {
   isBackup: boolean;
   fantasyPoints: number | null;
   rawPoints: number | null;
+  photo?: string | null; // ESPN headshot (live only); null/absent → fall back to the flag
   efppm: number;
   recon?: string | null; // per-player: "⏳ unreconciled" / "⚠ official revision", null when settled
 };
@@ -349,7 +350,7 @@ export default function ResultsPage({
                     {xi.map((p) => (
                       <div key={p.key} className="flex flex-col gap-0.5 px-2.5 py-2 border-t border-hair2/50 first:border-t-0">
                         <div className="flex items-center gap-1.5 min-w-0">
-                          <span className="text-xs shrink-0">{getFlag(p.team)}</span>
+                          <PlayerAvatar photo={p.photo} team={p.team} size={18} />
                           <span className="text-xs font-medium text-cloud truncate">{p.name}</span>
                         </div>
                         <div className="flex items-center gap-1.5">
@@ -425,6 +426,31 @@ export default function ResultsPage({
   );
 }
 
+// Player headshot from ESPN (live matches only). Falls back to the team flag when there's
+// no photo, and — crucially — also on a runtime image error (onError), so a dead URL can
+// never render as a broken image. Plain <img> keeps us off next/image remote-host config.
+function PlayerAvatar({ photo, team, size }: { photo?: string | null; team: string; size: number }) {
+  const [failed, setFailed] = useState(false);
+  if (photo && !failed) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={photo}
+        alt=""
+        loading="lazy"
+        onError={() => setFailed(true)}
+        style={{ width: size, height: size }}
+        className="rounded-full object-cover bg-navy2 ring-1 ring-hair2 shrink-0"
+      />
+    );
+  }
+  return (
+    <span className="shrink-0 leading-none" style={{ fontSize: Math.round(size * 0.85) }}>
+      {getFlag(team)}
+    </span>
+  );
+}
+
 function ordinal(n: number): string {
   const s = ["th", "st", "nd", "rd"];
   const v = n % 100;
@@ -439,7 +465,7 @@ function PlayerRow({ player, isBench = false }: { player: PlayerResult; isBench?
 
   return (
     <div className={`flex items-center gap-2 bg-ink2 rounded-lg px-3 py-2 ${isBench ? "opacity-70" : ""}`}>
-      <span className="text-base">{getFlag(player.team)}</span>
+      <PlayerAvatar photo={player.photo} team={player.team} size={26} />
       <span className={`text-xs font-bold ${ROLE_COLORS[player.role] ?? "text-mist"}`}>
         {player.role}
       </span>

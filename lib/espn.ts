@@ -248,6 +248,14 @@ function flattenStats(linescores: unknown): Map<string, number> {
   return out;
 }
 
+// Small square headshot via ESPN's image combiner (~10KB vs ~280KB for the full PNG); it
+// 404s for a missing id exactly like the original, so the <img> onError→flag fallback still
+// fires. Leaves any non-espncdn href untouched.
+function espnThumb(href: string, size = 96): string {
+  const m = href.match(/^https?:\/\/a\.espncdn\.com(\/.+)$/);
+  return m ? `https://a.espncdn.com/combiner/i?img=${m[1]}&w=${size}&h=${size}` : href;
+}
+
 // Pull a named numeric stat (e.g. "balls") from a linescore's nested statistics blocks.
 function statValue(ls: Record<string, unknown>, name: string): number | null {
   const cats = ((ls.statistics as Record<string, unknown>)?.categories as Array<Record<string, unknown>>) ?? [];
@@ -313,6 +321,7 @@ export type LiveScore = {
   points: Map<string, number>; // (pid | espn:<id> | name) → provisional D11 points
   anyStats: boolean; // true once at least one player has real bat/bowl figures (play has begun)
   freshness: string | null; // "Points updated till 14.3 overs (138/4)" — null pre-first-ball
+  photos: Map<string, string>; // (pid | espn:<id> | name) → ESPN headshot URL (real photos only)
 };
 
 const LIVE_TTL_MS = 20_000;
@@ -348,6 +357,7 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
     if (!summary) continue;
 
     const points = new Map<string, number>();
+    const photos = new Map<string, string>();
     let anyStats = false;
     const rosters = (summary.rosters as Array<Record<string, unknown>>) ?? [];
     for (const team of rosters) {
@@ -388,9 +398,20 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         points.set(disp, pts);
         const full = ((a.fullName as string) || "").trim();
         if (full && full !== disp) points.set(full, pts);
+        // ESPN headshot, keyed the SAME way as points (pid | espn:<id> | name). Skip the
+        // generic silhouette (default-player-logo) so the UI falls back cleanly to the team
+        // flag instead of showing a grey placeholder. Best-effort + additive.
+        const shot = ((a.headshot as Record<string, unknown>)?.href as string) || "";
+        if (shot && !shot.includes("default-player-logo")) {
+          const thumb = espnThumb(shot);
+          if (regPid) photos.set(regPid, thumb);
+          if (a.id) photos.set(`espn:${a.id}`, thumb);
+          photos.set(disp, thumb);
+          if (full && full !== disp) photos.set(full, thumb);
+        }
       }
     }
-    if (points.size > 0) return { points, anyStats, freshness: buildFreshness(summary, fmt) };
+    if (points.size > 0) return { points, anyStats, photos, freshness: buildFreshness(summary, fmt) };
   }
   return null;
 }

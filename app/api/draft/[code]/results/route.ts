@@ -73,6 +73,10 @@ export async function GET(
   const useLive = !!liveScore && liveScore.anyStats;
   const scoringMap = useLive ? liveScore!.points : pointsMap;
   const pointsSource: "live-espn" | "sheet" = useLive ? "live-espn" : "sheet";
+  // Player headshots from the same live ESPN fetch — available once the XI is posted (even
+  // pre-first-ball, so independent of useLive). Keyed like the points map; silhouettes were
+  // already filtered out in lib/espn.ts, so a miss cleanly falls back to the flag in the UI.
+  const photoMap: Map<string, string> = liveScore?.photos ?? new Map();
 
   // BACKUP_INTELLIGENCE eligibility: auto-substitute only once the team is locked
   // (post-deadline, live mode) AND both teams' official XIs are announced. Before
@@ -145,6 +149,11 @@ export async function GET(
         const displayName = p?.displayName ?? key;
         // Identity-first: exact match on the stable Player ID, then fuzzy name fallback.
         const rawPts = lookupPlayerPoints(p?.pid, displayName, p?.name, scoringMap, useLive);
+        const photo =
+          (p?.pid ? photoMap.get(p.pid) : undefined) ??
+          photoMap.get(displayName) ??
+          (p?.name ? photoMap.get(p.name) : undefined) ??
+          null;
         const isCap = key === eff.captainKey && !isBackup;
         const isVC = key === eff.viceCaptainKey && !isBackup;
         const multiplier = isCap ? 2 : isVC ? 1.5 : 1;
@@ -158,6 +167,7 @@ export async function GET(
           isBackup,
           fantasyPoints: rawPts !== null ? rawPts * multiplier : null,
           rawPoints: rawPts,
+          photo,
           efppm: p?.efppm ?? 0,
           // Per-player recon marker ("⏳ unreconciled" / "⚠ official revision"), null when settled.
           recon: lookupPlayerRecon(p?.pid, displayName, p?.name, reconMap),
