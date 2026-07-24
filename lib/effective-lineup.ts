@@ -38,6 +38,10 @@ export type ComputeArgs = {
   resolve: (key: string) => Player | undefined; // = getPlayerByKey
   inMatchTeams: readonly [string, string]; // the two teams in this match
   announced: boolean; // both teams' official XIs are out; false => pass-through
+  // Whether BACKUP_INTELLIGENCE may substitute. Default true. false => Impact
+  // Player tour (LPL): never sub — a non-XI pick may still be the named impact
+  // sub and score, and the owner kept them on purpose. See lib/tour-rules.ts.
+  backupIntelligence?: boolean;
 };
 
 function refOf(key: string, resolve: (k: string) => Player | undefined): PlayerRef {
@@ -67,15 +71,28 @@ export function rankingFromSelection(
 }
 
 export function computeEffectiveLineup(args: ComputeArgs): EffectiveLineup {
-  const { ranking, picksPerUser, teamXIByTeam, resolve, inMatchTeams, announced } =
-    args;
+  const {
+    ranking,
+    picksPerUser,
+    teamXIByTeam,
+    resolve,
+    inMatchTeams,
+    announced,
+    backupIntelligence = true,
+  } = args;
 
   const intendedXi = ranking.slice(0, picksPerUser);
 
-  // Step 0 — guard. Before lineups are out we can't know who's "dead", and
-  // getLastPlayedXI() still holds the PREVIOUS match's XI, so substituting now
-  // would be actively wrong. Pass through today's behaviour: top-N by rank.
-  if (!announced) {
+  // Step 0 — guard / pass-through: field the drafted top-N as-is (no subs, no
+  // armband cascade) in two cases:
+  //   - !announced: lineups aren't out yet, so we can't know who's "dead" — and
+  //     getLastPlayedXI() still holds the PREVIOUS match's XI, so substituting
+  //     now would be actively wrong.
+  //   - backupIntelligence === false: an Impact Player tour (LPL). A drafted
+  //     player who isn't in the walk-out XI may still be the named impact sub
+  //     and score in the 2nd innings, and the owner deliberately kept them
+  //     betting on exactly that — so we must NOT swap them out for a backup.
+  if (!announced || backupIntelligence === false) {
     return {
       xi: intendedXi,
       captainKey: ranking[0] ?? null,

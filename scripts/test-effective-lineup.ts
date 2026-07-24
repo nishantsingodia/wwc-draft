@@ -153,5 +153,28 @@ console.log("BACKUP_INTELLIGENCE engine tests\n");
   check("off-match team: k12 slid in, XI = 11", e.xi.includes("k12") && e.xi.length === 11);
 }
 
+// 9. Impact Player tour (backupIntelligence: false) — k3 is NOT in the official
+// XI, but we must NOT sub them out: they may be the named impact sub. XI stays
+// the drafted top 11 as-is, no changes, C/VC unchanged. Contrast with case 3
+// (same not-playing k3), which subs k12 in when backup intelligence is enabled.
+{
+  const playing = RANKING.filter((k) => k !== "k3");
+  const e = run({ teamXIByTeam: xiFor(playing), backupIntelligence: false });
+  check("impact player: XI = drafted top 11 as-is", JSON.stringify(e.xi) === JSON.stringify(RANKING.slice(0, 11)));
+  check("impact player: k3 kept (not subbed out)", e.xi.includes("k3"));
+  check("impact player: no backup slid in", !e.xi.includes("k12"));
+  check("impact player: no changes recorded", e.changes.length === 0);
+  check("impact player: C=k1, VC=k2 (no cascade)", e.captainKey === "k1" && e.viceCaptainKey === "k2");
+}
+
+// 10. backupIntelligence undefined defaults to enabled (subs happen) — proves
+// the flag is opt-out, so every non-Impact-Player tour is unaffected.
+{
+  const playing = RANKING.filter((k) => k !== "k3");
+  const e = run({ teamXIByTeam: xiFor(playing) }); // flag omitted
+  check("default (flag omitted): k3 subbed out", !e.xi.includes("k3"));
+  check("default (flag omitted): k12 slid in", e.xi.includes("k12"));
+}
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);

@@ -14,6 +14,7 @@ import {
 } from "@/lib/points";
 import { getLiveMatchPoints } from "@/lib/espn";
 import { getOfficialLineup } from "@/lib/official-lineup";
+import { tourRulesFor } from "@/lib/tour-rules";
 import {
   computeEffectiveLineup,
   rankingFromSelection,
@@ -91,6 +92,9 @@ export async function GET(
   );
   const eligible =
     contest.mode === "live" && nowSec >= contest.matchDeadline + LOCK_BUFFER && announced;
+  // Impact Player tours (LPL) disable auto-substitution: a non-XI pick may still
+  // be named the impact sub, so we keep the drafted XI as-is. See lib/tour-rules.ts.
+  const backupIntelligence = match ? tourRulesFor(match).backupIntelligence : true;
 
   const teams = await Promise.all(
     selections.map(async (sel) => {
@@ -122,6 +126,8 @@ export async function GET(
           // Substitute only when fully eligible (locked + announced); otherwise
           // the engine passes through and we don't persist anything.
           announced: eligible,
+          // Impact Player tours never sub (keep the drafted XI as-is).
+          backupIntelligence,
         });
         if (eligible) {
           await db
