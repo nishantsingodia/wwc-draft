@@ -14,7 +14,14 @@
 import registry from "./registry-players.json";
 import { normName, fuzzyMatchName } from "./fuzzy-name-match";
 
-type RegEntry = { aliases?: string[]; espn_id?: string | number | null };
+type RegEntry = {
+  aliases?: string[];
+  espn_id?: string | number | null;
+  // alternate ESPNcricinfo profile ids (key_cricinfo_2/_3) — the SAME person under a duplicate
+  // ESPN page (e.g. Abhishek Sharma 1070183 + 1131614). Index them so a live roster reporting
+  // the alternate id still resolves to the one canonical pid instead of forking.
+  cricinfo_alt?: (string | number)[];
+};
 const players = (registry as { players: Record<string, RegEntry> }).players;
 
 const espnId2Pid = new Map<string, string>();
@@ -22,6 +29,12 @@ const alias2Pid = new Map<string, string>();
 for (const [pid, e] of Object.entries(players)) {
   if (e.espn_id !== null && e.espn_id !== undefined && e.espn_id !== "") {
     espnId2Pid.set(String(e.espn_id), pid);
+  }
+  for (const alt of e.cricinfo_alt ?? []) {
+    if (alt !== null && alt !== undefined && alt !== "") {
+      const k = String(alt);
+      if (!espnId2Pid.has(k)) espnId2Pid.set(k, pid);
+    }
   }
   for (const a of e.aliases ?? []) {
     const k = normName(a);

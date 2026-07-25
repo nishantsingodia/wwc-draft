@@ -4,6 +4,17 @@ import { TEAM_NAMES, TEAM_CODE_ALIASES, isPidKey, type SheetPlayer } from "./pla
 // gviz CSV URLs for auto-ingested tours — the tour-sync job appends here so a new
 // tour's points tab self-registers WITHOUT editing the POINTS_CSV_URLS env var.
 import pointsTabs from "@/data/points-tabs.json";
+// Cricinfo-id migration shim: the sheet's "Player ID" column may still carry pre-migration pids
+// (cricsheet hash / "slug:" / "espn:") until the bot re-emits every row as "ci:<cricinfoId>".
+// pid-map.json maps each old pid -> its new ci: pid, so the join holds through the transition.
+// A value already ci: isn't a key here -> returned unchanged. Permanent + harmless once the sheet
+// is fully ci:. (Mirrors the registry's identity-redirect discipline.)
+import pidMapJson from "@/lib/pid-map.json";
+const PID_REDIRECT = pidMapJson as Record<string, string>;
+function resolvePid(raw: string | undefined): string {
+  const p = (raw ?? "").trim();
+  return PID_REDIRECT[p] ?? p;
+}
 
 const CSV_PATH = process.env.POINTS_CSV_PATH;
 // Synthetic column injected by mergeCsvs to remember which tab (=tour) each row came
@@ -266,7 +277,7 @@ export async function getLastPlayedXI(
     const team = row[teamIdx]?.trim();
     const match = row[matchIdx]?.trim();
     const name = row[nameIdx]?.trim();
-    const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
+    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
     const played = row[playedIdx]?.trim();
     if (!team || !match || !name) continue;
     if (match !== lastMatchPerTeam.get(team)) continue;
@@ -315,7 +326,7 @@ export async function getMatchXI(
     if (row[playedIdx]?.trim() !== "Y") continue;
     const team = row[teamIdx]?.trim();
     const name = row[nameIdx]?.trim();
-    const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
+    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
     if (!team || !name) continue;
     const batOrder = batIdx >= 0 ? parseInt(row[batIdx], 10) || 0 : 0;
     if (!result.has(team)) result.set(team, new Map());
@@ -479,7 +490,7 @@ export async function getMatchPointsForMatch(
   for (const row of rows.slice(1)) {
     if (row[matchIdx]?.trim() !== target) continue;
     const name = row[nameIdx]?.trim();
-    const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
+    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
     const pts = parseFloat(row[ptsIdx]);
     if (isNaN(pts)) continue;
     if (name) result.set(name, pts);
@@ -530,7 +541,7 @@ export async function getTourPoints(
     }
     const pts = parseFloat(row[ptsIdx]);
     if (isNaN(pts)) continue;
-    const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
+    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
     const name = row[nameIdx]?.trim();
     if (pid) add(pid, pts);
     if (name) add(normName(name), pts);
@@ -650,7 +661,7 @@ export async function getMatchPlayerRecon(match: MatchLike): Promise<Map<string,
     const marker = (row[reconIdx] ?? "").trim();
     if (!marker) continue;
     const name = row[nameIdx]?.trim();
-    const pid = pidIdx >= 0 ? row[pidIdx]?.trim() : "";
+    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
     if (pid) out.set(pid, marker);
     if (name) out.set(name, marker);
   }
@@ -723,7 +734,7 @@ export async function getSheetRoster(): Promise<Map<string, Map<string, SheetPla
   for (const row of rows.slice(1)) {
     const team = row[teamIdx]?.trim();
     const name = row[nameIdx]?.trim();
-    const pid = pidIdx >= 0 ? (row[pidIdx]?.trim() ?? "") : "";
+    const pid = resolvePid(pidIdx >= 0 ? (row[pidIdx]?.trim() ?? "") : "");
     if (!team || team === "?" || !name) continue;
     if (name.toLowerCase() === "player not found") continue;
     // Skip cricsheet-initials leftovers ("AC Jayangani", "H Madavi", "RMVD Gunaratne")
