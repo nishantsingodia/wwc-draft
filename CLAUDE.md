@@ -103,7 +103,7 @@ Each entry:
 ```
 
 - `id` — the draft's internal player key (integer). Must be unique. **Never change/remove it** once a draft has started (`draft_picks`/`team_selections` reference it).
-- `pid` — **stable global identity** from the points registry (cricsheet hash / `espn:` / `slug:`). Backfilled by `registry/backfill_draft_pids.py` (wwc-points-bot); do NOT hand-edit. This is what points join on now (the sheet's `Player ID` column) — robust even when the sheet's canonical name differs from `name` (e.g. sheet "Tajinder Singh" vs our "Tajinder Dhillon").
+- `pid` — **stable global identity** from the points registry: **`ci:<cricinfoId>`** (the ESPNcricinfo id; migrated 25 Jul 2026 from the old cricsheet-hash/`espn:`/`slug:` scheme). Backfilled by `registry/backfill_draft_pids.py` (wwc-points-bot); do NOT hand-edit. This is what points join on (the sheet's `Player ID` column) — robust even when the sheet's canonical name differs from `name`. NOTE: during the sheet's transition to `ci:`, `lib/points.ts` runs old sheet pids through a `resolvePid()` shim (`lib/pid-map.json`), so pre-migration rows still join; `lib/registry.ts` also indexes `cricinfo_alt` (`_2/_3`) so a player's alternate ESPN page resolves to the one pid.
 - `name` — **CANONICAL ANNOUNCED NAME only**. Never cricsheet initials (see pitfalls). Source: official squad announcement page or cricinfo player profile.
 - `role` — `"WK"`, `"BAT"`, `"AR"`, or `"BOWL"`.
 - `squad_number` — set per Step 0 research. 1–11 = likely XI, 12+ = bench.
@@ -245,18 +245,22 @@ npx vercel --prod
 ## Identity — the global player registry (PRIMARY; read this first)
 
 Points are joined by a **stable identity (`pid`)**, not by name. The bot
-(wwc-points-bot) maintains ONE global `registry/players.json` (keyed on `cricsheet_id`
-when known) listing every feed spelling of every player, and emits a **`Player ID`**
-column in every points tab. In this app:
-- `players-raw.json` carries `pid` (backfilled by `registry/backfill_draft_pids.py`).
+(wwc-points-bot) maintains ONE global `registry/players.json` keyed on **`ci:<cricinfoId>`**
+(the ESPNcricinfo id; migrated 25 Jul 2026 from cricsheet_id), listing every feed spelling of
+every player, and emits a **`Player ID`** column in every points tab. In this app:
+- `players-raw.json` carries `pid` = `ci:` (backfilled by `registry/backfill_draft_pids.py`).
 - `lib/points.ts` keys its maps by pid (and name); `lib/players.ts` `getPlayersByTeams`
   matches XI membership by `pid` first; `lookupPlayerPoints(pid, …)` looks up by pid first.
+- `lib/points.ts` `resolvePid()` maps a sheet row's pre-migration pid → `ci:` via `lib/pid-map.json`,
+  so historical/transition rows still join. `lib/registry.ts` indexes `cricinfo_alt` (`_2/_3`) so an
+  ESPN roster reporting a player's alternate profile id still resolves to the one canonical pid.
 - `isPidKey()` keeps pid keys out of fuzzy name matching.
-- This fixes the cases names can't: same player, different spelling across feeds
-  (sheet "Tajinder Singh" ↔ our "Tajinder Dhillon" → same `pid` → joined correctly).
+- This fixes the cases names can't: same player, different spelling/split across feeds → same `ci:` → joined.
 
-To add a player's missing spelling: do it ONCE in the registry
-(`wwc-points-bot/registry/manual_aliases.json` → re-run `build_registry.py`), not here.
+To add a player's missing spelling or a missing cricinfo id: do it ONCE in the registry
+(`wwc-points-bot/registry/manual_ci_bridges.json` for a name→cricinfo-id bridge, or `manual_aliases.json`
+for a spelling → re-run `build_registry.py`), not here. Unresolved players auto-appear in the
+"Needs Cricinfo ID" GSheet tab.
 
 ## Fuzzy name matching — the FALLBACK (shared across projects)
 
