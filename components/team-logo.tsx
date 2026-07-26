@@ -29,15 +29,24 @@ export default function TeamLogo({
   let badge: React.ReactNode;
   if (logo && !failed) {
     badge = (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={logo}
-        alt=""
-        loading="lazy"
-        onError={() => setFailed(true)}
+      <span
         style={{ width: size, height: size, borderRadius: radius }}
-        className="object-contain bg-navy2 shrink-0"
-      />
+        className="inline-flex items-center justify-center overflow-hidden bg-navy2 shrink-0"
+      >
+        {/* Scale up ~12% inside an overflow-hidden box so the crest's built-in transparent
+            frame (~4-8% per side) is cropped and the logo fills the box like the badge and
+            flag-ring variants. Without this, padded square crests (e.g. The Hundred's MSG/BPH)
+            render visibly smaller than the box-filling badges next to them. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logo}
+          alt=""
+          loading="lazy"
+          onError={() => setFailed(true)}
+          style={{ width: "112%", height: "112%" }}
+          className="object-contain"
+        />
+      </span>
     );
   } else if (isCountryFlag(getFlag(code))) {
     // Nation: flag inside a brand-coloured ring.
