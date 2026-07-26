@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
+import { getAllMatchDelays } from "@/lib/match-delay";
 import { getFlag, prettifyMatchLabel } from "@/lib/players";
 
 // Coarse tour grouping by team codes present in the match, for a small tag.
@@ -17,7 +18,12 @@ export default async function SchedulePage() {
 
   const now = Math.floor(Date.now() / 1000);
   const all = getAllMatches();
-  const upcoming = all.filter((m) => m.deadlineTs + LOCK_BUFFER > now);
+  // Manual rain/delay overrides keep a delayed match in the upcoming list past its
+  // scheduled (pre-delay) start time.
+  const matchDelays = await getAllMatchDelays();
+  const upcoming = all.filter(
+    (m) => m.deadlineTs + (matchDelays.get(m.key) ?? 0) + LOCK_BUFFER > now
+  );
 
   return (
     <main className="min-h-screen bg-ink text-white">

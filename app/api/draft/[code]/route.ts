@@ -4,6 +4,7 @@ import { getDb, draftContests, draftPicks, contestParticipants, teamSelections, 
 import { eq, asc, and } from "drizzle-orm";
 import { getPlayersByTeams, getByTeamCode } from "@/lib/players";
 import { getMatchByKey } from "@/lib/matches";
+import { getMatchDelay } from "@/lib/match-delay";
 import { currentPicker } from "@/lib/snake-draft";
 import { getSheetRoster, getTourPoints, lookupTourPoints } from "@/lib/points";
 import { getOfficialLineup } from "@/lib/official-lineup";
@@ -65,6 +66,9 @@ export async function GET(
   }
 
   const match = getMatchByKey(contest.matchKey);
+  // Manual rain/delay override: pushed into the deadline the client sees, so every
+  // deadline-driven gate (draft-started redirect, team-lock countdown) extends with it.
+  const matchDelay = await getMatchDelay(contest.matchKey);
   // The two teams in this match — also the tour scope for tour-points (a player's
   // total is summed only over these teams' rows, never other tours in the sheet).
   const t1 = match?.team1 ?? "NZ";
@@ -161,6 +165,7 @@ export async function GET(
     contest: {
       ...contest,
       draftOrder: order,
+      matchDeadline: contest.matchDeadline + matchDelay,
     },
     participants: participants.map((p) => p.user),
     picks,

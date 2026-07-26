@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
 import { getDb, draftContests, teamSelections } from "@/lib/db";
 import { LOCK_BUFFER } from "@/lib/matches";
+import { getMatchDelay } from "@/lib/match-delay";
 import { isKnownUser } from "@/lib/users";
 import { eq, and } from "drizzle-orm";
 
@@ -86,9 +87,11 @@ export async function POST(
   }
 
   // Auto-lock LOCK_BUFFER after match start (see lib/matches.ts) — BOTH live and manual
-  // drafts, so no team (either mode) can be edited once the match is underway.
+  // drafts, so no team (either mode) can be edited once the match is underway. A manual
+  // rain delay pushes this out so a delayed toss doesn't lock teams early.
   const now = Math.floor(Date.now() / 1000);
-  const isLocked = now >= contest.matchDeadline + LOCK_BUFFER;
+  const matchDelay = await getMatchDelay(contest.matchKey);
+  const isLocked = now >= contest.matchDeadline + matchDelay + LOCK_BUFFER;
   if (isLocked) {
     return NextResponse.json(
       { error: "Teams are locked — the match has started." },

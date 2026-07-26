@@ -5,7 +5,9 @@ import { draftContests, contestParticipants, teamSelections, type TeamSelection 
 import { eq, desc, inArray } from "drizzle-orm";
 import Link from "next/link";
 import { getMatchByKey, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
+import { getMatchDelay } from "@/lib/match-delay";
 import { isMatchCompleted } from "@/lib/points";
+import RainDelay from "@/components/rain-delay";
 import { getMatchPointsMap } from "@/lib/live-points";
 import { getUserLabel } from "@/lib/users";
 import { getTeamName, prettifyMatchLabel } from "@/lib/players";
@@ -85,7 +87,11 @@ export default async function MatchPage({
   if (!match) redirect("/lobby");
 
   const now = Math.floor(Date.now() / 1000);
-  const hasStarted = match.deadlineTs + LOCK_BUFFER <= now;
+  // Manual rain/delay override pushes the effective start (and thus lock / "Live" /
+  // scoring) back, so a delayed toss doesn't flip the match to live prematurely.
+  const matchDelay = await getMatchDelay(key);
+  const effDeadlineTs = match.deadlineTs + matchDelay;
+  const hasStarted = effDeadlineTs + LOCK_BUFFER <= now;
 
   let isCompleted = false;
   let drafts: Awaited<ReturnType<typeof getDraftsForMatch>> = [];
@@ -265,6 +271,17 @@ export default async function MatchPage({
             </p>
           </div>
         </div>
+
+        {/* Rain / delay control — push the start (and lock / Live / scoring) back 30 min at a
+            time when a game is delayed. Shown from a few hours before start until the match
+            completes. Any friend can tap it; a delayed toss no longer locks teams early. */}
+        {!isCompleted && now >= match.deadlineTs - 3 * 3600 && (
+          <RainDelay
+            matchKey={key}
+            initialExtraMinutes={Math.round(matchDelay / 60)}
+            scheduledStart={formatMatchDate(match.date)}
+          />
+        )}
 
         {/* Match-level live-points refresh (scores every contest on this match) + quota gauge.
             Shown while the match is in progress. */}

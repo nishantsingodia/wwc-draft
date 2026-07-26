@@ -13,6 +13,7 @@ import {
   isMatchCompleted,
 } from "@/lib/points";
 import { getLiveMatchPoints, type LiveStatus } from "@/lib/espn";
+import { getMatchDelay } from "@/lib/match-delay";
 import { getOfficialLineup } from "@/lib/official-lineup";
 import { tourRulesFor } from "@/lib/tour-rules";
 import {
@@ -59,7 +60,11 @@ export async function GET(
   ]);
 
   const nowSec = Math.floor(Date.now() / 1000);
-  const started = nowSec >= contest.matchDeadline;
+  // Manual rain/delay override extends the effective deadline (team-lock, "started",
+  // BACKUP_INTELLIGENCE eligibility) so a delayed toss doesn't prematurely lock/score.
+  const matchDelay = match ? await getMatchDelay(contest.matchKey) : 0;
+  const effDeadline = contest.matchDeadline + matchDelay;
+  const started = nowSec >= effDeadline;
   // LIVE provisional scoring: while a match has started but the COMPLETED pipeline hasn't
   // finalized it, score the H2H from a fresh ESPN scorecard (zero cricapi, no bot run).
   // Once COMPLETED, we read the bot's reconciled sheet exactly as before — that path is
@@ -91,7 +96,7 @@ export async function GET(
     getByTeamCode(lineupMeta, t2)?.announced
   );
   const eligible =
-    contest.mode === "live" && nowSec >= contest.matchDeadline + LOCK_BUFFER && announced;
+    contest.mode === "live" && nowSec >= effDeadline + LOCK_BUFFER && announced;
   // Impact Player tours (LPL) disable auto-substitution: a non-XI pick may still
   // be named the impact sub, so we keep the drafted XI as-is. See lib/tour-rules.ts.
   const backupIntelligence = match ? tourRulesFor(match).backupIntelligence : true;
@@ -218,7 +223,7 @@ export async function GET(
   // mode: while live it re-fetches this route (?fresh=1) for an instant ESPN pull; once
   // completed the sheet drives it. `pointsSource` flags when the H2H is provisional/ESPN.
   return NextResponse.json({
-    contest,
+    contest: { ...contest, matchDeadline: effDeadline },
     teams,
     username,
     announced,

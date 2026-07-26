@@ -107,6 +107,17 @@ export const draftQueues = sqliteTable(
   (t) => [uniqueIndex("draft_queues_contest_user").on(t.contestId, t.user)]
 );
 
+// Manual rain/delay override, keyed per MATCH (not per contest — a rain delay hits
+// every contest of that match). extra_seconds is ADDED to the match deadline
+// everywhere it gates team-lock / "Live" / scoring, so a delayed toss doesn't
+// prematurely lock teams or start scoring. No row ⇒ 0 delay ⇒ unchanged behaviour.
+export const matchDelays = sqliteTable("match_delays", {
+  matchKey: text("match_key").primaryKey(),
+  extraSeconds: integer("extra_seconds").notNull().default(0),
+  updatedAt: integer("updated_at").notNull(),
+  updatedBy: text("updated_by"),
+});
+
 // Joined participants (track who has joined a contest)
 export const contestParticipants = sqliteTable(
   "contest_participants",
@@ -144,3 +155,4 @@ export type DraftContest = typeof draftContests.$inferSelect;
 export type DraftPick = typeof draftPicks.$inferSelect;
 export type TeamSelection = typeof teamSelections.$inferSelect;
 export type DraftQueue = typeof draftQueues.$inferSelect;
+export type MatchDelay = typeof matchDelays.$inferSelect;

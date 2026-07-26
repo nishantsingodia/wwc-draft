@@ -76,6 +76,16 @@ const DDL = [
     updated_at INTEGER NOT NULL,
     UNIQUE(contest_id, user)
   )`,
+  // Manual rain/delay override, per MATCH (one row per match_key, shared by all its
+  // contests). extra_seconds is added to the match deadline everywhere it gates
+  // team-lock / "live" / scoring, so friends can push the start back 30 min at a
+  // time when a game is delayed. Additive; no row = 0 delay = today's behaviour.
+  `CREATE TABLE IF NOT EXISTS match_delays (
+    match_key TEXT PRIMARY KEY,
+    extra_seconds INTEGER NOT NULL DEFAULT 0,
+    updated_at INTEGER NOT NULL,
+    updated_by TEXT
+  )`,
 ];
 
 // SQLite has no `ADD COLUMN IF NOT EXISTS`, so check the table shape first.

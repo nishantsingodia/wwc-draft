@@ -10,6 +10,7 @@ import MatchRefresh from "@/components/match-refresh";
 import LobbyTabs from "@/components/lobby-tabs";
 import TransitionLink from "@/components/transition-link";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
+import { getAllMatchDelays } from "@/lib/match-delay";
 import { getCompletedMatchKeys } from "@/lib/points";
 import { getMatchPointsMap } from "@/lib/live-points";
 import { getFlag, getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
@@ -124,6 +125,11 @@ export default async function LobbyPage() {
 
   const now = Math.floor(Date.now() / 1000);
   const allMatches = getAllMatches();
+  // Manual rain/delay overrides push a match's effective start back, so a delayed game
+  // stays in Upcoming (not Live) until its real, extended start time.
+  const matchDelays = await getAllMatchDelays();
+  const effDeadline = (m: { key: string; deadlineTs: number }) =>
+    m.deadlineTs + (matchDelays.get(m.key) ?? 0);
 
   let completedMatchKeys = new Set<string>();
   let userContests: Awaited<ReturnType<typeof getUserContests>> = [];
@@ -150,9 +156,9 @@ export default async function LobbyPage() {
   const recentTs = now - RECENT_WINDOW;
 
   // Classify matches — "started" means past lock window (match start + 15 min)
-  const upcomingMatches = allMatches.filter((m) => m.deadlineTs + LOCK_BUFFER > now);
+  const upcomingMatches = allMatches.filter((m) => effDeadline(m) + LOCK_BUFFER > now);
   const startedMatches = allMatches.filter(
-    (m) => m.deadlineTs + LOCK_BUFFER <= now && m.deadlineTs >= recentTs
+    (m) => effDeadline(m) + LOCK_BUFFER <= now && m.deadlineTs >= recentTs
   );
   const liveMatches = startedMatches.filter((m) => !completedMatchKeys.has(m.key));
 
