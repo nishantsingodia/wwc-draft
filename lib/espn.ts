@@ -317,11 +317,114 @@ function buildFreshness(summary: Record<string, unknown>, format: ScoreFormat): 
   return `Points updated · ${score}`;
 }
 
+// Per-player LIVE status derived from the ESPN scorecard + the two teams' innings states.
+// Powers the results-page "cheer" chips (yet-to-bat / yet-to-bowl) and live bat/bowl lines.
+export type LiveStatus = {
+  batting: "OUT" | "NOW" | "NOTOUT" | "YET" | "DNB" | null;
+  bowling: "NOW" | "DONE" | "YET" | "NA" | null;
+  batLine?: string; // "44* (30)" or "30 (22)"
+  bowlLine?: string; // "2/24 (3.2)"
+};
+
+// One row in the live Scorecard tab.
+export type ScorecardBatter = {
+  name: string;
+  team: string;
+  runs: number;
+  balls: number;
+  fours: number;
+  sixes: number;
+  sr: number;
+  out: boolean;
+  notOut: boolean;
+};
+export type ScorecardBowler = {
+  name: string;
+  team: string;
+  overs: string;
+  maidens: number;
+  runs: number;
+  wickets: number;
+  econ: number;
+};
+export type Innings = {
+  teamCode: string;
+  teamName: string;
+  runs: number;
+  wickets: number;
+  overs: string;
+  batting: ScorecardBatter[];
+  bowling: ScorecardBowler[];
+};
+
+// Per-team innings state from the header competitors' linescores.
+// CRUCIAL: `isCurrent` marks the current PERIOD, and BOTH sides carry a linescore for it — the
+// fielding side as a same-period 0-run line (verified against a live ESPN feed). So "has an
+// isCurrent line" is NOT "is batting" — it flags both teams. Instead we identify the batting
+// side of each period as the competitor with the most runs in it (the fielder's line is 0), and:
+//   • the batting side of the CURRENT period → 'batting'
+//   • a team that was the batting side of an EARLIER period → 'batted' (now fielding/done)
+//   • everyone else → 'yet'
+// Teams that don't resolve to one of our two codes are skipped. Best-effort — inside try/catch.
+function inningsStateByTeam(
+  summary: Record<string, unknown>,
+  codeByKey: Map<string, string>
+): Map<string, "batting" | "batted" | "yet"> {
+  const out = new Map<string, "batting" | "batted" | "yet">();
+  const comp = ((summary.header as Record<string, unknown>)?.competitions as Array<Record<string, unknown>>)?.[0];
+  const competitors = (comp?.competitors as Array<Record<string, unknown>>) ?? [];
+
+  type Row = { code: string; period: number; runs: number; overs: number; isCurrent: boolean };
+  const rows: Row[] = [];
+  for (const c of competitors) {
+    const name = ((c.team as Record<string, unknown>)?.displayName as string) ?? "";
+    const code = codeByKey.get(teamKey(name));
+    if (!code) continue;
+    for (const l of (c.linescores as Array<Record<string, unknown>>) ?? []) {
+      rows.push({
+        code,
+        period: Number(l.period) || 0,
+        runs: Number(l.runs) || 0,
+        overs: Number(l.overs) || 0,
+        isCurrent: !!l.isCurrent,
+      });
+    }
+  }
+  if (rows.length === 0) return out;
+  for (const code of new Set(rows.map((r) => r.code))) out.set(code, "yet");
+
+  // Current period = the latest period with any play (runs/overs) or an isCurrent flag.
+  const active = rows.filter((r) => r.isCurrent || r.runs > 0 || r.overs > 0);
+  const curPeriod = Math.max(...(active.length ? active : rows).map((r) => r.period));
+
+  // Batting side of a period = competitor with the most runs (fielder's same-period line is 0).
+  // At an innings' first ball everything is 0 → prefer the isCurrent line; null if truly no play.
+  const battingOf = (period: number): string | null => {
+    const inP = rows.filter((r) => r.period === period);
+    if (inP.length === 0) return null;
+    let best = inP[0];
+    for (const r of inP) {
+      if (r.runs > best.runs || (r.runs === best.runs && r.isCurrent && !best.isCurrent)) best = r;
+    }
+    return best.runs > 0 || best.overs > 0 || best.isCurrent ? best.code : null;
+  };
+
+  for (let p = 1; p < curPeriod; p++) {
+    const b = battingOf(p);
+    if (b) out.set(b, "batted");
+  }
+  const curBat = battingOf(curPeriod);
+  if (curBat) out.set(curBat, "batting"); // overrides 'batted' if the same side bats again
+  return out;
+}
+
 export type LiveScore = {
   points: Map<string, number>; // (pid | espn:<id> | name) → provisional D11 points
   anyStats: boolean; // true once at least one player has real bat/bowl figures (play has begun)
   freshness: string | null; // "Points updated till 14.3 overs (138/4)" — null pre-first-ball
   photos: Map<string, string>; // (pid | espn:<id> | name) → ESPN headshot URL (real photos only)
+  status: Map<string, LiveStatus>; // (pid | espn:<id> | name) → per-player live status (live only)
+  scorecard: Innings[]; // full innings breakdown for the live Scorecard tab
 };
 
 const LIVE_TTL_MS = 20_000;
@@ -358,10 +461,44 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
 
     const points = new Map<string, number>();
     const photos = new Map<string, string>();
+    const status = new Map<string, LiveStatus>();
     let anyStats = false;
+
+    // Team identity for THIS match (mirrors fetchEspnLineup's codeByKey) + each side's innings
+    // state — both feed the per-player live status chips and the Scorecard tab. Best-effort.
+    const codeByKey = new Map<string, string>([
+      [teamKey(TEAM_NAMES[match.team1] ?? match.team1), match.team1],
+      [teamKey(TEAM_NAMES[match.team2] ?? match.team2), match.team2],
+    ]);
+    const stateByTeam = inningsStateByTeam(summary, codeByKey);
+    // Per-player parsed lines, collected in the roster loop, for the Scorecard tab.
+    type PlayerLine = {
+      teamCode: string | undefined;
+      order: number;
+      name: string;
+      runs: number;
+      balls: number;
+      fours: number;
+      sixes: number;
+      outs: number;
+      bowlBalls: number;
+      conceded: number;
+      wickets: number;
+      maidens: number;
+    };
+    const lines: PlayerLine[] = [];
+
     const rosters = (summary.rosters as Array<Record<string, unknown>>) ?? [];
     for (const team of rosters) {
-      for (const p of (team.roster as Array<Record<string, unknown>>) ?? []) {
+      const tname = ((team.team as Record<string, unknown>)?.displayName as string) ?? "";
+      const teamCode = codeByKey.get(teamKey(tname));
+      const myState = teamCode ? stateByTeam.get(teamCode) : undefined;
+      const oppCode =
+        teamCode === match.team1 ? match.team2 : teamCode === match.team2 ? match.team1 : undefined;
+      const oppState = oppCode ? stateByTeam.get(oppCode) : undefined;
+      const roster = (team.roster as Array<Record<string, unknown>>) ?? [];
+      for (let ri = 0; ri < roster.length; ri++) {
+        const p = roster[ri];
         // Only players actually in the XI (starter, or a sub who came on) are scored.
         if (!(p.starter || p.subbedIn)) continue;
         const a = (p.athlete as Record<string, unknown>) ?? {};
@@ -398,6 +535,55 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         points.set(disp, pts);
         const full = ((a.fullName as string) || "").trim();
         if (full && full !== disp) points.set(full, pts);
+
+        // ── Per-player LIVE STATUS (best-effort) — batting/bowling facet + one-line summary,
+        // relative to this player's team state and the opponent's. Keyed the SAME three ways.
+        const outs = get("outs");
+        const ballsFaced = get("ballsFaced");
+        const batRuns = get("runs");
+        const bowlBalls = get("balls");
+        const conceded = get("conceded");
+        let batting: LiveStatus["batting"];
+        if (outs > 0) batting = "OUT";
+        else if (ballsFaced > 0) batting = myState === "batting" ? "NOW" : "NOTOUT";
+        else batting = myState === "batting" || myState === "yet" ? "YET" : "DNB";
+        let bowling: LiveStatus["bowling"];
+        if (bowlBalls > 0) bowling = oppState === "batting" ? "NOW" : "DONE";
+        else if (oppState === "batting" || oppState === "yet") bowling = "YET";
+        else bowling = "NA";
+        const batted = outs > 0 || ballsFaced > 0;
+        const st: LiveStatus = {
+          batting,
+          bowling,
+          batLine: batted
+            ? `${batRuns}${outs === 0 && ballsFaced > 0 ? "*" : ""} (${ballsFaced})`
+            : undefined,
+          bowlLine:
+            bowlBalls > 0
+              ? `${bowlWkts}/${conceded} (${Math.floor(bowlBalls / 6)}.${bowlBalls % 6})`
+              : undefined,
+        };
+        if (regPid) status.set(regPid, st);
+        if (a.id) status.set(`espn:${a.id}`, st);
+        status.set(disp, st);
+        if (full && full !== disp) status.set(full, st);
+
+        // Line for the Scorecard tab (roster order preserved via ri).
+        lines.push({
+          teamCode,
+          order: ri,
+          name: disp,
+          runs: batRuns,
+          balls: ballsFaced,
+          fours: get("fours"),
+          sixes: get("sixes"),
+          outs,
+          bowlBalls,
+          conceded,
+          wickets: bowlWkts,
+          maidens: get("maidens"),
+        });
+
         // ESPN headshot, keyed the SAME way as points (pid | espn:<id> | name). Skip the
         // generic silhouette (default-player-logo) so the UI falls back cleanly to the team
         // flag instead of showing a grey placeholder. Best-effort + additive.
@@ -411,7 +597,88 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         }
       }
     }
-    if (points.size > 0) return { points, anyStats, photos, freshness: buildFreshness(summary, fmt) };
+
+    // ── SCORECARD (best-effort) — innings totals from the competitor linescores (each team's
+    // batting side's current/last line), batting/bowling rows from the per-player lines above.
+    // If an innings can't be confidently attributed we include what we can; any parse hiccup is
+    // caught by the outer try/catch → sheet fallback.
+    const compS = ((summary.header as Record<string, unknown>)?.competitions as Array<Record<string, unknown>>)?.[0];
+    const competitorsS = (compS?.competitors as Array<Record<string, unknown>>) ?? [];
+    type TeamInn = {
+      teamCode: string;
+      teamName: string;
+      runs: number;
+      wickets: number;
+      overs: string;
+      period: number;
+    };
+    const teamInns = new Map<string, TeamInn>();
+    for (const c of competitorsS) {
+      const nm = ((c.team as Record<string, unknown>)?.displayName as string) ?? "";
+      const code = codeByKey.get(teamKey(nm));
+      if (!code) continue;
+      let best: { runs: number; wickets: number; overs: number; period: number } | null = null;
+      for (const ls of (c.linescores as Array<Record<string, unknown>>) ?? []) {
+        const runs = Number(ls.runs) || 0;
+        const overs = Number(ls.overs) || 0;
+        const wickets = Number(ls.wickets) || 0;
+        const period = Number(ls.period) || 0;
+        if (runs <= 0 && overs <= 0) continue;
+        if (!best || runs > best.runs) best = { runs, wickets, overs, period };
+      }
+      if (best) {
+        teamInns.set(code, {
+          teamCode: code,
+          teamName: TEAM_NAMES[code] ?? nm,
+          runs: best.runs,
+          wickets: best.wickets,
+          overs: String(best.overs),
+          period: best.period,
+        });
+      }
+    }
+    const scorecard: Innings[] = [];
+    for (const ti of [...teamInns.values()].sort((a, b) => a.period - b.period)) {
+      const oppCode = ti.teamCode === match.team1 ? match.team2 : match.team1;
+      const batting: ScorecardBatter[] = lines
+        .filter((l) => l.teamCode === ti.teamCode && (l.balls > 0 || l.outs > 0))
+        .sort((a, b) => a.order - b.order)
+        .map((l) => ({
+          name: l.name,
+          team: ti.teamCode,
+          runs: l.runs,
+          balls: l.balls,
+          fours: l.fours,
+          sixes: l.sixes,
+          sr: l.balls > 0 ? (l.runs / l.balls) * 100 : 0,
+          out: l.outs > 0,
+          notOut: l.outs === 0 && l.balls > 0,
+        }));
+      const bowling: ScorecardBowler[] = lines
+        .filter((l) => l.teamCode === oppCode && l.bowlBalls > 0)
+        .sort((a, b) => b.bowlBalls - a.bowlBalls)
+        .map((l) => ({
+          name: l.name,
+          team: oppCode,
+          overs: `${Math.floor(l.bowlBalls / 6)}.${l.bowlBalls % 6}`,
+          maidens: l.maidens,
+          runs: l.conceded,
+          wickets: l.wickets,
+          econ: l.bowlBalls > 0 ? l.conceded / (l.bowlBalls / 6) : 0,
+        }));
+      scorecard.push({
+        teamCode: ti.teamCode,
+        teamName: ti.teamName,
+        runs: ti.runs,
+        wickets: ti.wickets,
+        overs: ti.overs,
+        batting,
+        bowling,
+      });
+    }
+
+    if (points.size > 0)
+      return { points, anyStats, photos, freshness: buildFreshness(summary, fmt), status, scorecard };
   }
   return null;
 }

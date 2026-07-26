@@ -12,7 +12,7 @@ import {
   lookupPlayerRecon,
   isMatchCompleted,
 } from "@/lib/points";
-import { getLiveMatchPoints } from "@/lib/espn";
+import { getLiveMatchPoints, type LiveStatus } from "@/lib/espn";
 import { getOfficialLineup } from "@/lib/official-lineup";
 import { tourRulesFor } from "@/lib/tour-rules";
 import {
@@ -166,6 +166,14 @@ export async function GET(
         const isCap = key === eff.captainKey && !isBackup;
         const isVC = key === eff.viceCaptainKey && !isBackup;
         const multiplier = isCap ? 2 : isVC ? 1.5 : 1;
+        // LIVE per-player status (batting/bowling facet + one-line summary) — only meaningful
+        // while the match is live (liveScore is non-null only then), same fallback chain as
+        // the live points/photos. Null once completed → the results page shows no live chips.
+        const live: LiveStatus | null =
+          liveScore?.status.get(p?.pid ?? "") ??
+          liveScore?.status.get(displayName) ??
+          (p?.name ? liveScore?.status.get(p.name) : undefined) ??
+          null;
         return {
           key,
           name: displayName,
@@ -177,6 +185,7 @@ export async function GET(
           fantasyPoints: rawPts !== null ? rawPts * multiplier : null,
           rawPoints: rawPts,
           photo,
+          live,
           efppm: p?.efppm ?? 0,
           // Per-player recon marker ("⏳ unreconciled" / "⚠ official revision"), null when settled.
           recon: lookupPlayerRecon(p?.pid, displayName, p?.name, reconMap),
@@ -221,5 +230,8 @@ export async function GET(
     // "Points updated till 14.3 overs (138/4)" — how far play had progressed when these
     // provisional points were read (from the same ESPN summary). Null once completed.
     liveFreshness: liveScore?.freshness ?? null,
+    // Full innings breakdown for the live Scorecard tab. Only meaningful while live; null once
+    // completed (liveScore is null → the results page hides the Scorecard tab).
+    scorecard: liveScore?.scorecard ?? null,
   });
 }

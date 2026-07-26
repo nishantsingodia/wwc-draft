@@ -6,8 +6,10 @@ import { getUserLabel, USER_COLORS } from "@/lib/users";
 import { getFlag, prettifyMatchLabel } from "@/lib/players";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
+import type { LiveStatus, Innings } from "@/lib/espn";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
+import TeamLogo from "@/components/team-logo";
 
 type PlayerResult = {
   key: string;
@@ -20,6 +22,7 @@ type PlayerResult = {
   fantasyPoints: number | null;
   rawPoints: number | null;
   photo?: string | null; // ESPN headshot (live only); null/absent → fall back to the flag
+  live?: LiveStatus | null; // per-player live batting/bowling status (live matches only)
   efppm: number;
   recon?: string | null; // per-player: "⏳ unreconciled" / "⚠ official revision", null when settled
 };
@@ -52,6 +55,7 @@ type ResultsData = {
   pointsSource: "live-espn" | "sheet";
   liveProvisional: boolean; // H2H is computed live from ESPN (provisional, in-app, no bot)
   liveFreshness: string | null; // "Points updated till 14.3 overs (138/4)" — live only
+  scorecard?: Innings[] | null; // full innings breakdown for the live Scorecard tab (live only)
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -66,6 +70,175 @@ function calcXITotal(team: TeamResult): number {
   return team.players
     .filter((p) => !p.isBackup)
     .reduce((sum, p) => sum + (p.fantasyPoints ?? 0), 0);
+}
+
+// Is this player one of YOUR "still to come" cheer targets? — role-relevant "yet" state.
+// (BOWL → yet to bowl; BAT/WK → yet to bat; AR → either.)
+function stillToCome(p: PlayerResult): boolean {
+  if (!p.live) return false;
+  if (p.role === "BOWL") return p.live.bowling === "YET";
+  if (p.role === "AR") return p.live.batting === "YET" || p.live.bowling === "YET";
+  return p.live.batting === "YET";
+}
+
+const CHIP_TONES: Record<string, string> = {
+  emerald: "bg-emerald-500/15 text-emerald-300 border-emerald-500/40", // yet to bat (cheer)
+  gold: "bg-gold/15 text-gold border-gold/40", // yet to bowl (cheer)
+  green: "bg-green-500/15 text-green-300 border-green-500/40", // live now
+  muted: "bg-navy2 text-mist border-hair2", // done / not out
+  mutedRed: "bg-red-500/10 text-red-300/80 border-red-500/30", // out
+  faint: "bg-transparent text-mist2 border-hair2/50", // DNB
+};
+
+function Chip({ tone, children }: { tone: keyof typeof CHIP_TONES; children: React.ReactNode }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-0.5 text-[9px] font-semibold px-1.5 py-0.5 rounded border tabular-nums whitespace-nowrap ${
+        CHIP_TONES[tone] ?? CHIP_TONES.muted
+      }`}
+    >
+      {children}
+    </span>
+  );
+}
+
+// Small role-relevant live-status pill. Prefers the "cheer" states (yet to bat / yet to bowl)
+// for all-rounders. Renders nothing for NA/null (nothing meaningful to show).
+function LiveStatusChip({ role, live }: { role: string; live?: LiveStatus | null }) {
+  if (!live) return null;
+  const bat = live.batting;
+  const bowl = live.bowling;
+  let facet: "bat" | "bowl";
+  if (role === "BOWL") facet = "bowl";
+  else if (role === "AR") {
+    if (bat === "YET") facet = "bat";
+    else if (bowl === "YET") facet = "bowl";
+    else if (bat && bat !== "DNB") facet = "bat";
+    else facet = "bowl";
+  } else facet = "bat";
+
+  if (facet === "bat") {
+    switch (bat) {
+      case "YET":
+        return <Chip tone="emerald">🟢 yet to bat</Chip>;
+      case "NOW":
+        return <Chip tone="green">🏏 {live.batLine}</Chip>;
+      case "OUT":
+        return <Chip tone="mutedRed">✅ out {live.batLine}</Chip>;
+      case "NOTOUT":
+        return <Chip tone="muted">✅ {live.batLine}</Chip>;
+      case "DNB":
+        return <Chip tone="faint">– DNB</Chip>;
+      default:
+        return null;
+    }
+  }
+  switch (bowl) {
+    case "YET":
+      return <Chip tone="gold">🎯 yet to bowl</Chip>;
+    case "NOW":
+      return <Chip tone="green">🏏 {live.bowlLine}</Chip>;
+    case "DONE":
+      return <Chip tone="muted">✅ {live.bowlLine}</Chip>;
+    default:
+      return null; // NA / null
+  }
+}
+
+// One innings block for the live Scorecard tab: header + batting table + bowling table.
+// YOUR drafted players are marked with a gold dot (name match, best-effort).
+function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
+  const isMine = (n: string) => mine.has(n.toLowerCase().trim());
+  return (
+    <div className="rounded-xl border border-hair2 bg-ink2 overflow-hidden">
+      <div className="px-3 py-2.5 border-b border-hair2 flex items-center gap-2">
+        <TeamLogo code={innings.teamCode} size={20} />
+        <span className="text-sm font-semibold text-cloud truncate">{innings.teamName}</span>
+        <span className="ml-auto text-sm font-bold text-amber-300 tabular-nums shrink-0">
+          {innings.runs}/{innings.wickets}{" "}
+          <span className="text-mist2 font-normal">({innings.overs})</span>
+        </span>
+      </div>
+
+      {/* Batting */}
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="text-mist2 text-[10px] uppercase tracking-wide">
+              <th className="text-left font-semibold px-3 py-1.5">Batter</th>
+              <th className="text-right font-semibold px-1.5 py-1.5">R</th>
+              <th className="text-right font-semibold px-1.5 py-1.5">B</th>
+              <th className="text-right font-semibold px-1.5 py-1.5">4s</th>
+              <th className="text-right font-semibold px-1.5 py-1.5">6s</th>
+              <th className="text-right font-semibold px-3 py-1.5">SR</th>
+            </tr>
+          </thead>
+          <tbody>
+            {innings.batting.map((b, i) => (
+              <tr key={`${b.name}-${i}`} className="border-t border-hair2/50">
+                <td className="px-3 py-1.5 text-cloud">
+                  <span className="inline-flex items-center gap-1.5 min-w-0">
+                    {isMine(b.name) && <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />}
+                    <span className="truncate">{b.name}</span>
+                    <span className="text-mist2 text-[10px] shrink-0">
+                      {b.out ? "out" : b.notOut ? "not out" : ""}
+                    </span>
+                  </span>
+                </td>
+                <td className="text-right px-1.5 py-1.5 tabular-nums font-semibold text-cloud">{b.runs}</td>
+                <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{b.balls}</td>
+                <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{b.fours}</td>
+                <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{b.sixes}</td>
+                <td className="text-right px-3 py-1.5 tabular-nums text-mist">{b.sr.toFixed(1)}</td>
+              </tr>
+            ))}
+            {innings.batting.length === 0 && (
+              <tr>
+                <td colSpan={6} className="px-3 py-2 text-center text-[11px] text-mist2">
+                  Yet to bat
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Bowling */}
+      {innings.bowling.length > 0 && (
+        <div className="overflow-x-auto border-t border-hair2">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="text-mist2 text-[10px] uppercase tracking-wide">
+                <th className="text-left font-semibold px-3 py-1.5">Bowler</th>
+                <th className="text-right font-semibold px-1.5 py-1.5">O</th>
+                <th className="text-right font-semibold px-1.5 py-1.5">M</th>
+                <th className="text-right font-semibold px-1.5 py-1.5">R</th>
+                <th className="text-right font-semibold px-1.5 py-1.5">W</th>
+                <th className="text-right font-semibold px-3 py-1.5">Econ</th>
+              </tr>
+            </thead>
+            <tbody>
+              {innings.bowling.map((bw, i) => (
+                <tr key={`${bw.name}-${i}`} className="border-t border-hair2/50">
+                  <td className="px-3 py-1.5 text-cloud">
+                    <span className="inline-flex items-center gap-1.5 min-w-0">
+                      {isMine(bw.name) && <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />}
+                      <span className="truncate">{bw.name}</span>
+                    </span>
+                  </td>
+                  <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.overs}</td>
+                  <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.maidens}</td>
+                  <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.runs}</td>
+                  <td className="text-right px-1.5 py-1.5 tabular-nums font-semibold text-cloud">{bw.wickets}</td>
+                  <td className="text-right px-3 py-1.5 tabular-nums text-mist">{bw.econ.toFixed(2)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
 }
 
 // Surfaces the bot's recon status so a provisional/revised result never looks plain-final.
@@ -109,7 +282,7 @@ export default function ResultsPage({
   const { code } = use(params);
   const [data, setData] = useState<ResultsData | null>(null);
   const [error, setError] = useState("");
-  const [tab, setTab] = useState<"h2h" | "detail">("h2h");
+  const [tab, setTab] = useState<"h2h" | "detail" | "scorecard">("h2h");
   const [refreshing, setRefreshing] = useState(false);
 
   const fetchResults = useCallback(
@@ -185,6 +358,19 @@ export default function ResultsPage({
   // Live = started but the COMPLETED pipeline hasn't finalized it. The H2H is then scored
   // in-app from ESPN (instant, no cricapi/bot); tapping "Refresh" re-pulls that immediately.
   const live = data.started && !data.completed;
+
+  // The Scorecard tab is live-only. If the match completes while it's selected, fall back to
+  // Head-to-head so the view never goes blank (the button is hidden once not live).
+  const activeTab = tab === "scorecard" && !live ? "h2h" : tab;
+
+  // "Still to come" cheer summary from YOUR XI's live statuses (live only).
+  const myXI = (myTeam?.players ?? []).filter((p) => !p.isBackup);
+  const battingYet = myXI.filter((p) => p.live?.batting === "YET").length;
+  const bowlingYet = myXI.filter((p) => p.live?.bowling === "YET").length;
+  // Your drafted players (by name, best-effort) — marked with a gold dot in the Scorecard.
+  const mineNames = new Set(
+    (myTeam?.players ?? []).map((p) => p.name.toLowerCase().trim())
+  );
 
   return (
     <main className="min-h-screen bg-ink text-white pb-8">
@@ -298,30 +484,50 @@ export default function ResultsPage({
           </div>
         )}
 
-        {/* Tab switcher — H2H comparison vs the rich single-team breakdown */}
+        {/* Tab switcher — H2H comparison, single-team breakdown, and (live-only) full scorecard */}
         {orderedTeams.length > 0 && (
           <div className="flex bg-ink2 rounded-xl p-1 gap-1">
             <button
               onClick={() => setTab("h2h")}
-              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-colors ${tab === "h2h" ? "bg-ink text-gold" : "text-mist hover:text-cloud"}`}
+              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-colors ${activeTab === "h2h" ? "bg-ink text-gold" : "text-mist hover:text-cloud"}`}
             >
               Head-to-head
             </button>
             <button
               onClick={() => setTab("detail")}
-              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-colors ${tab === "detail" ? "bg-ink text-gold" : "text-mist hover:text-cloud"}`}
+              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-colors ${activeTab === "detail" ? "bg-ink text-gold" : "text-mist hover:text-cloud"}`}
             >
               My XI detail
             </button>
+            {live && (
+              <button
+                onClick={() => setTab("scorecard")}
+                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-colors ${activeTab === "scorecard" ? "bg-ink text-gold" : "text-mist hover:text-cloud"}`}
+              >
+                Scorecard
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Still-to-come cheer strip — your XI's yet-to-bat / yet-to-bowl count (live only) */}
+        {live && (battingYet > 0 || bowlingYet > 0) && (
+          <div className="flex flex-wrap items-center gap-2 rounded-xl border border-gold/40 bg-gradient-to-r from-gold/10 to-ink2 px-3 py-2 text-xs font-semibold">
+            <span className="text-cloud">Still to come</span>
+            <span className="text-mist2">·</span>
+            {battingYet > 0 && <span className="text-emerald-300">🟢 {battingYet} to bat</span>}
+            {battingYet > 0 && bowlingYet > 0 && <span className="text-mist2">·</span>}
+            {bowlingYet > 0 && <span className="text-gold">🎯 {bowlingYet} to bowl</span>}
           </div>
         )}
 
         {/* ── HEAD-TO-HEAD: both XIs side by side, full names, sorted by points ── */}
-        {tab === "h2h" && orderedTeams.length > 0 && (
+        {activeTab === "h2h" && orderedTeams.length > 0 && (
           <div className={orderedTeams.length === 2 ? "grid grid-cols-2 gap-2" : "flex gap-2 overflow-x-auto pb-1"}>
             {orderedTeams.map((team) => {
               const total = calcXITotal(team);
               const isWinner = maxTotal !== null && total === maxTotal && total > 0 && orderedTeams.length > 1;
+              const isMine = team.user === username;
               const color = USER_COLORS[team.user] ?? "bg-gray-500";
               const xi = team.players
                 .filter((p) => !p.isBackup)
@@ -344,25 +550,43 @@ export default function ResultsPage({
                     <p className={`text-xl font-bold tabular-nums mt-1 ${isWinner ? "text-amber-300" : "text-cloud"}`}>
                       {total.toFixed(1)}
                     </p>
+                    {/* Your still-to-come cheer count, per column */}
+                    {live && isMine && (battingYet > 0 || bowlingYet > 0) && (
+                      <p className="mt-0.5 text-[10px] font-semibold text-gold">
+                        {battingYet > 0 && <span className="text-emerald-300">🟢 {battingYet} to bat</span>}
+                        {battingYet > 0 && bowlingYet > 0 && <span className="text-mist2"> · </span>}
+                        {bowlingYet > 0 && <span className="text-gold">🎯 {bowlingYet} to bowl</span>}
+                      </p>
+                    )}
                   </div>
                   {/* Rows — two lines each so full names always read */}
                   <div className="flex flex-col">
-                    {xi.map((p) => (
-                      <div key={p.key} className="flex flex-col gap-0.5 px-2.5 py-2 border-t border-hair2/50 first:border-t-0">
-                        <div className="flex items-center gap-1.5 min-w-0">
-                          <PlayerAvatar photo={p.photo} team={p.team} size={24} />
-                          <span className="text-xs font-medium text-cloud truncate">{p.name}</span>
+                    {xi.map((p) => {
+                      const highlight = live && isMine && stillToCome(p);
+                      return (
+                        <div
+                          key={p.key}
+                          className={`flex flex-col gap-0.5 px-2.5 py-2 border-t border-hair2/50 first:border-t-0 ${
+                            highlight ? "ring-1 ring-inset ring-gold/50 bg-gold/[0.04]" : ""
+                          }`}
+                        >
+                          <div className="flex items-center gap-1.5 min-w-0">
+                            <PlayerAvatar photo={p.photo} team={p.team} size={24} />
+                            <TeamLogo code={p.team} size={16} />
+                            <span className="text-xs font-medium text-cloud truncate">{p.name}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className={`text-[9px] font-bold ${ROLE_COLORS[p.role] ?? "text-mist"}`}>{p.role}</span>
+                            {p.isCaptain && <span className="text-[8px] bg-yellow-500 text-black px-1 rounded font-bold">C</span>}
+                            {p.isViceCaptain && <span className="text-[8px] bg-blue-500 text-white px-1 rounded font-bold">VC</span>}
+                            {live && <LiveStatusChip role={p.role} live={p.live} />}
+                            <span className={`ml-auto text-xs font-bold tabular-nums ${p.fantasyPoints !== null ? "text-amber-300" : "text-mist2"}`}>
+                              {p.fantasyPoints !== null ? p.fantasyPoints.toFixed(1) : "–"}
+                            </span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-1.5">
-                          <span className={`text-[9px] font-bold ${ROLE_COLORS[p.role] ?? "text-mist"}`}>{p.role}</span>
-                          {p.isCaptain && <span className="text-[8px] bg-yellow-500 text-black px-1 rounded font-bold">C</span>}
-                          {p.isViceCaptain && <span className="text-[8px] bg-blue-500 text-white px-1 rounded font-bold">VC</span>}
-                          <span className={`ml-auto text-xs font-bold tabular-nums ${p.fantasyPoints !== null ? "text-amber-300" : "text-mist2"}`}>
-                            {p.fantasyPoints !== null ? p.fantasyPoints.toFixed(1) : "–"}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               );
@@ -371,9 +595,10 @@ export default function ResultsPage({
         )}
 
         {/* ── MY XI DETAIL: the rich single-column breakdown (C/VC math, bench, recon) ── */}
-        {tab === "detail" &&
+        {activeTab === "detail" &&
           orderedTeams.map((team) => {
             const color = USER_COLORS[team.user] ?? "bg-gray-500";
+            const isMine = team.user === username;
             const xi = team.players.filter((p) => !p.isBackup);
             const bench = team.players.filter((p) => p.isBackup);
 
@@ -392,7 +617,12 @@ export default function ResultsPage({
                 {/* XI */}
                 <div className="space-y-1">
                   {xi.map((p) => (
-                    <PlayerRow key={p.key} player={p} />
+                    <PlayerRow
+                      key={p.key}
+                      player={p}
+                      showLive={live}
+                      highlight={!!(live && isMine && stillToCome(p))}
+                    />
                   ))}
                 </div>
 
@@ -401,13 +631,26 @@ export default function ResultsPage({
                   <div className="space-y-1 opacity-60">
                     <p className="text-xs text-mist2 uppercase tracking-wider px-1 pt-1">Bench — not counted</p>
                     {bench.map((p) => (
-                      <PlayerRow key={p.key} player={p} isBench />
+                      <PlayerRow key={p.key} player={p} isBench showLive={live} />
                     ))}
                   </div>
                 )}
               </div>
             );
           })}
+
+        {/* ── SCORECARD (live only): full innings breakdown, your drafted players dotted gold ── */}
+        {activeTab === "scorecard" && live && (
+          <div className="space-y-3">
+            {data.scorecard && data.scorecard.length > 0 ? (
+              data.scorecard.map((inn) => (
+                <Scorecard key={inn.teamCode} innings={inn} mine={mineNames} />
+              ))
+            ) : (
+              <p className="text-center text-mist2 text-sm py-8">Scorecard appears once play begins.</p>
+            )}
+          </div>
+        )}
 
         {teams.length === 0 && (
           <div className="text-center py-12">
@@ -457,15 +700,30 @@ function ordinal(n: number): string {
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
-function PlayerRow({ player, isBench = false }: { player: PlayerResult; isBench?: boolean }) {
+function PlayerRow({
+  player,
+  isBench = false,
+  showLive = false,
+  highlight = false,
+}: {
+  player: PlayerResult;
+  isBench?: boolean;
+  showLive?: boolean; // match is live → render the live status chip
+  highlight?: boolean; // one of YOUR still-to-come players → subtle gold rail
+}) {
   const mult = player.isCaptain ? 2 : player.isViceCaptain ? 1.5 : 1;
   // rawPoints is the base score; fantasyPoints already has mult applied (do NOT re-multiply)
   const raw = player.rawPoints;
   const displayPts = raw !== null ? raw * mult : null;
 
   return (
-    <div className={`flex items-center gap-2 bg-ink2 rounded-lg px-3 py-2 ${isBench ? "opacity-70" : ""}`}>
+    <div
+      className={`flex items-center gap-2 bg-ink2 rounded-lg px-3 py-2 ${isBench ? "opacity-70" : ""} ${
+        highlight ? "ring-1 ring-gold/50 bg-gold/[0.04]" : ""
+      }`}
+    >
       <PlayerAvatar photo={player.photo} team={player.team} size={26} />
+      <TeamLogo code={player.team} size={16} />
       <span className={`text-xs font-bold ${ROLE_COLORS[player.role] ?? "text-mist"}`}>
         {player.role}
       </span>
@@ -494,6 +752,8 @@ function PlayerRow({ player, isBench = false }: { player: PlayerResult; isBench?
           </span>
         )}
       </span>
+      {/* Live batting/bowling status (live matches only). */}
+      {showLive && <LiveStatusChip role={player.role} live={player.live} />}
       {/* For C/VC, show base ×mult = total so the multiplier is visibly ALREADY
           applied (102 ×2 = 204) — never the multiplied value beside a bare "×2",
           which misreads as if it'll be doubled again. */}

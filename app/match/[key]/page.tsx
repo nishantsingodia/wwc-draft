@@ -8,11 +8,12 @@ import { getMatchByKey, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
 import { isMatchCompleted } from "@/lib/points";
 import { getMatchPointsMap } from "@/lib/live-points";
 import { getUserLabel } from "@/lib/users";
-import { getFlag as getTeamFlag, getTeamName, prettifyMatchLabel } from "@/lib/players";
+import { getTeamName, prettifyMatchLabel } from "@/lib/players";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
 import { getEffectiveState } from "@/lib/effective-state";
 import DeleteDraftButton from "@/components/delete-draft-button";
 import MatchRefresh from "@/components/match-refresh";
+import TeamLogo from "@/components/team-logo";
 
 async function getDraftsForMatch(matchKey: string) {
   const db = getDb();
@@ -247,7 +248,10 @@ export default async function MatchPage({
             ? "bg-ink2 border border-hair2"
             : "bg-[#112347] border border-hair2"
         }`}>
-          <div className="text-3xl">{getTeamFlag(match.team1)}{getTeamFlag(match.team2)}</div>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <TeamLogo code={match.team1} size={30} />
+            <TeamLogo code={match.team2} size={30} />
+          </div>
           <div>
             <p className="font-bold">{getTeamName(match.team1)} vs {getTeamName(match.team2)}</p>
             <p className={`text-sm flex items-center gap-1.5 ${isLive ? "text-red-400" : isCompleted ? "text-emerald-400" : "text-emerald-400"}`}>
