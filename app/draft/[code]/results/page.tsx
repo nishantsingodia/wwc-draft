@@ -106,43 +106,41 @@ function Chip({ tone, children }: { tone: keyof typeof CHIP_TONES; children: Rea
 // for all-rounders. Renders nothing for NA/null (nothing meaningful to show).
 function LiveStatusChip({ role, live }: { role: string; live?: LiveStatus | null }) {
   if (!live) return null;
-  const bat = live.batting;
-  const bowl = live.bowling;
-  let facet: "bat" | "bowl";
-  if (role === "BOWL") facet = "bowl";
-  else if (role === "AR") {
-    if (bat === "YET") facet = "bat";
-    else if (bowl === "YET") facet = "bowl";
-    else if (bat && bat !== "DNB") facet = "bat";
-    else facet = "bowl";
-  } else facet = "bat";
+  const { batting: bat, bowling: bowl, batLine, bowlLine } = live;
 
-  if (facet === "bat") {
-    switch (bat) {
-      case "YET":
-        return <Chip tone="emerald">🟢 yet to bat</Chip>;
-      case "NOW":
-        return <Chip tone="green">🏏 {live.batLine}</Chip>;
-      case "OUT":
-        return <Chip tone="mutedRed">✅ out {live.batLine}</Chip>;
-      case "NOTOUT":
-        return <Chip tone="muted">✅ {live.batLine}</Chip>;
-      case "DNB":
-        return <Chip tone="faint">– DNB</Chip>;
-      default:
-        return null;
-    }
+  // Precedence is by what the player is DOING, not by role — this is the fix for an
+  // all-rounder who's bowling being wrongly shown "yet to bat":
+  //   1. ACTIVE now (batting or bowling) always wins.
+  //   2. STILL TO COME (the gold/green "cheer" states). Role picks which matters; for an
+  //      AR, if he's yet to bowl (opponent batting) that's the immediate contribution.
+  //   3. DONE (out / not out / bowled) — muted; prefer the batting result for batters/ARs.
+
+  // 1) Active now
+  if (bowl === "NOW") return <Chip tone="green">🏏 {bowlLine}</Chip>;
+  if (bat === "NOW") return <Chip tone="green">🏏 {batLine}</Chip>;
+
+  // 2) Still to come
+  if (role === "BOWL") {
+    if (bowl === "YET") return <Chip tone="gold">🎯 yet to bowl</Chip>;
+  } else if (role === "AR") {
+    if (bowl === "YET") return <Chip tone="gold">🎯 yet to bowl</Chip>;
+    if (bat === "YET") return <Chip tone="emerald">🟢 yet to bat</Chip>;
+  } else if (bat === "YET") {
+    return <Chip tone="emerald">🟢 yet to bat</Chip>;
   }
-  switch (bowl) {
-    case "YET":
-      return <Chip tone="gold">🎯 yet to bowl</Chip>;
-    case "NOW":
-      return <Chip tone="green">🏏 {live.bowlLine}</Chip>;
-    case "DONE":
-      return <Chip tone="muted">✅ {live.bowlLine}</Chip>;
-    default:
-      return null; // NA / null
-  }
+
+  // 3) Done — show the result they have
+  const batDone =
+    bat === "OUT" ? (
+      <Chip tone="mutedRed">✅ out {batLine}</Chip>
+    ) : bat === "NOTOUT" ? (
+      <Chip tone="muted">✅ {batLine}</Chip>
+    ) : null;
+  const bowlDone = bowl === "DONE" ? <Chip tone="muted">✅ {bowlLine}</Chip> : null;
+  // Bowlers lead with their bowling figures; batters/all-rounders with their batting result.
+  const done = role === "BOWL" ? bowlDone ?? batDone : batDone ?? bowlDone;
+  if (done) return done;
+  return bat === "DNB" ? <Chip tone="faint">– DNB</Chip> : null;
 }
 
 // One innings block for the live Scorecard tab: header + batting table + bowling table.

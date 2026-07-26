@@ -506,7 +506,11 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         if (!disp) continue;
         const g = flattenStats(p.linescores);
         const get = (k: string) => g.get(k) ?? 0;
-        const bowlWkts = get("wickets") || get("dismissals");
+        // BOWLING wickets ONLY. `dismissals` is a FIELDING stat (catches + stumpings the
+        // player took, e.g. a keeper's 3 catches) — NOT their bowling wickets. Counting it
+        // credited a catcher a phantom wicket (verified: Shedge b=18 w=0 dism=1). Catches
+        // are scored separately via `caught`; never fold `dismissals` into bowling wickets.
+        const bowlWkts = get("wickets");
         const perf: Perf = {
           played: true,
           batRuns: get("runs"),

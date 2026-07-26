@@ -13,7 +13,8 @@ import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
 import { getAllMatchDelays } from "@/lib/match-delay";
 import { getCompletedMatchKeys } from "@/lib/points";
 import { getMatchPointsMap } from "@/lib/live-points";
-import { getFlag, getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
+import { getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
+import TeamLogo from "@/components/team-logo";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
 
 async function getUserContests(username: string) {
@@ -244,17 +245,21 @@ export default async function LobbyPage() {
 
                 return (
                   <div key={m.key} className="space-y-2">
-                    {/* Match header */}
-                    <div className="flex items-center gap-2 px-1">
-                      <span className="text-lg">{getFlag(m.team1)}{getFlag(m.team2)}</span>
-                      <div className="min-w-0">
+                    {/* Match header — tappable through to the match hub */}
+                    <Link href={`/match/${m.key}`} className="flex items-center gap-2 px-1 py-1 -mx-1 rounded-lg hover:bg-navy2/40 transition-colors">
+                      <span className="flex items-center gap-1 shrink-0">
+                        <TeamLogo code={m.team1} size={22} />
+                        <TeamLogo code={m.team2} size={22} />
+                      </span>
+                      <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-bold truncate">{prettifyMatchLabel(m.label)}</span>
                           <span className="text-xs text-live font-bold shrink-0 flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-live animate-pulse" />In progress</span>
                         </div>
                         <p className="text-[11px] text-mist font-mono">{formatMatchDate(m.date)}</p>
                       </div>
-                    </div>
+                      <span className="text-mist2 text-sm shrink-0">›</span>
+                    </Link>
 
                     {/* Match-level live-points refresh — in-app ESPN scoring, no cricapi/bot.
                         Freshness ("Points updated till 14.3 overs (138/4)") sits under it. */}
@@ -351,7 +356,10 @@ export default async function LobbyPage() {
                     className="flex items-center justify-between card-stadium rounded-2xl px-4 py-3 hover:brightness-110 transition"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="text-xl">{getFlag(m.team1)}{getFlag(m.team2)}</div>
+                      <div className="flex items-center gap-1">
+                        <TeamLogo code={m.team1} size={24} />
+                        <TeamLogo code={m.team2} size={24} />
+                      </div>
                       <div>
                         <p className="font-bold text-sm">{prettifyMatchLabel(m.label)}</p>
                         <p className="text-xs text-mist font-mono mt-0.5">{formatMatchDate(m.date)}</p>
@@ -405,16 +413,20 @@ export default async function LobbyPage() {
 
               return (
                 <div key={matchKey} className="card-stadium rounded-2xl overflow-hidden">
-                  {/* Match header */}
-                  <div className="flex items-center gap-2 px-4 py-3 border-b border-hair">
-                    <span className="text-lg">{getFlag(match?.team1 ?? "")}{getFlag(match?.team2 ?? "")}</span>
-                    <div className="min-w-0">
+                  {/* Match header — tappable through to the match hub */}
+                  <Link href={`/match/${matchKey}`} className="flex items-center gap-2 px-4 py-3 border-b border-hair hover:bg-navy2/40 transition-colors">
+                    <span className="flex items-center gap-1 shrink-0">
+                      <TeamLogo code={match?.team1 ?? ""} size={20} />
+                      <TeamLogo code={match?.team2 ?? ""} size={20} />
+                    </span>
+                    <div className="min-w-0 flex-1">
                       <span className="text-sm font-semibold block truncate">{match ? prettifyMatchLabel(match.label) : matchKey}</span>
                       {match && (
                         <p className="text-[11px] text-mist font-mono">{formatMatchDate(match.date)}</p>
                       )}
                     </div>
-                  </div>
+                    <span className="text-mist2 text-sm shrink-0">›</span>
+                  </Link>
 
                   {/* Contest rows */}
                   <div className="divide-y divide-hair">
