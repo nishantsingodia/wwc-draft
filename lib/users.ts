@@ -54,3 +54,20 @@ export function getUserLabel(username: string): string {
 export function getUserColor(username: string): string {
   return USER_COLORS[username] ?? "bg-gray-500";
 }
+
+// Real hex colour per member, matching each roster `color` Tailwind class. Used where an
+// inline style / gradient needs an actual colour value (a Tailwind bg-* class can't feed a
+// CSS `background`). Keyed by username and kept explicit so an unusual/renamed Tailwind
+// class can never silently break the lookup.
+export const USER_HEX: Record<string, string> = {
+  nishant: "#3b82f6", // bg-blue-500
+  pushap: "#10b981",  // bg-emerald-500
+  pradeep: "#f59e0b", // bg-amber-500
+  arif: "#a855f7",    // bg-purple-500
+  sharan: "#06b6d4",  // bg-cyan-500
+  mihir: "#ec4899",   // bg-pink-500
+};
+
+export function getUserHex(username: string): string {
+  return USER_HEX[username] ?? "#6b7280";
+}

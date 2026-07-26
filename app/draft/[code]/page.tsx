@@ -3,11 +3,12 @@
 import { useEffect, useState, useCallback, use, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { getUserLabel, USER_COLORS } from "@/lib/users";
-import { getFlag, prettifyMatchLabel } from "@/lib/players";
+import { getUserLabel, USER_COLORS, getUserHex } from "@/lib/users";
+import { getFlag, getTeamName, prettifyMatchLabel } from "@/lib/players";
 import { getEffectiveState } from "@/lib/effective-state";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import LineupRefresh from "@/components/lineup-refresh";
+import TeamLogo from "@/components/team-logo";
 
 type PlayerInPool = {
   key: string;
@@ -92,7 +93,7 @@ const ROLE_FULL: Record<string, string> = {
   BOWL: "Bowlers",
 };
 
-const MAX_QUEUE = 10;
+const MAX_QUEUE = 20;
 
 export default function DraftBoardPage({
   params,
@@ -135,21 +136,9 @@ export default function DraftBoardPage({
   const [quickDraftOn, setQuickDraftOn] = useState(false);
   const [draftQueue, setDraftQueue] = useState<string[]>([]);
   const [savedQueue, setSavedQueue] = useState<string[]>([]);
-  const [qdPulse, setQdPulse] = useState(false);
-  const [showQdTooltip, setShowQdTooltip] = useState(false);
   // True while a queue save is in flight, so a background poll can't clobber the
   // optimistic savedQueue with pre-save server state mid-write.
   const queueSavingRef = useRef(false);
-
-  // Pulse Quick Draft pill on first few sessions
-  useEffect(() => {
-    const count = parseInt(localStorage.getItem("wwc_draft_count") ?? "0");
-    if (count < 4) {
-      setQdPulse(true);
-      const t = setTimeout(() => setQdPulse(false), 3000);
-      return () => clearTimeout(t);
-    }
-  }, []);
 
   const fetchState = useCallback(async () => {
     const res = await fetch(`/api/draft/${code}`, { cache: "no-store" });
@@ -344,12 +333,6 @@ export default function DraftBoardPage({
 
   function handleQdToggle() {
     if (!quickDraftOn) {
-      const tipSeen = localStorage.getItem("wwc_qdraft_tip_seen");
-      if (!tipSeen) {
-        setShowQdTooltip(true);
-        localStorage.setItem("wwc_qdraft_tip_seen", "1");
-        setTimeout(() => setShowQdTooltip(false), 4000);
-      }
       // Re-edit existing queue but strip out already-taken players
       const available = savedQueue.filter((key) => {
         const p = state?.playerPool.find((pl) => pl.key === key);
@@ -452,7 +435,7 @@ export default function DraftBoardPage({
     );
   }
 
-  const { contest, participants, picks, playerPool, currentPicker, isMyTurn, username, totalPicks, pendingUndo, myQueue = [] } = state;
+  const { contest, participants, picks, playerPool, currentPicker, isMyTurn, username, totalPicks, pendingUndo } = state;
 
   // Route by effective state, not raw contest.status: a LIVE/COMPLETED match must
   // land on the scoreboard, never the (locked) team editor. contest.status never
@@ -578,30 +561,6 @@ export default function DraftBoardPage({
             <p className="text-xs text-mist font-mono">{code}</p>
           </div>
 
-          {/* ⚡ Quick Draft toggle */}
-          {isDrafting && (
-            <div className="relative shrink-0">
-              <button
-                onClick={handleQdToggle}
-                className={`text-xs px-2 py-1 rounded-full border transition-all ${
-                  quickDraftOn || savedQueue.length > 0
-                    ? "text-gold border-gold bg-gold/10"
-                    : qdPulse
-                    ? "text-gold border-gold animate-pulse"
-                    : "text-mist border-hair2 hover:border-hair2"
-                }`}
-              >
-                ⚡{savedQueue.length > 0 && !quickDraftOn ? ` ${savedQueue.length}` : " Quick"}
-              </button>
-              {showQdTooltip && (
-                <div className="absolute top-full right-0 mt-2 w-44 bg-navy border border-hair2 rounded-lg px-3 py-2 text-xs text-cloud shadow-xl z-30">
-                  Queue up to {MAX_QUEUE} picks — auto-fired each turn
-                  <div className="absolute -top-1.5 right-4 w-3 h-3 bg-navy border-l border-t border-hair2 rotate-45" />
-                </div>
-              )}
-            </div>
-          )}
-
           <Link href={`/draft/${code}/results`} className="text-xs text-mist hover:text-white shrink-0">
             Results →
           </Link>
@@ -609,13 +568,13 @@ export default function DraftBoardPage({
 
         {isDrafting && team1Code && team2Code && (
           <div className="grid grid-cols-2 divide-x divide-hair2 border-t border-hair2">
-            <div className="text-center py-1.5">
-              <p className="text-base">{getFlag(team1Code)}</p>
-              <p className="text-xs font-bold text-cloud">{team1Code}</p>
+            <div className="flex items-center justify-center gap-1.5 py-1.5 min-w-0">
+              <TeamLogo code={team1Code} size={22} />
+              <p className="text-xs font-bold text-cloud truncate">{getTeamName(team1Code)}</p>
             </div>
-            <div className="text-center py-1.5">
-              <p className="text-base">{getFlag(team2Code)}</p>
-              <p className="text-xs font-bold text-cloud">{team2Code}</p>
+            <div className="flex items-center justify-center gap-1.5 py-1.5 min-w-0">
+              <TeamLogo code={team2Code} size={22} />
+              <p className="text-xs font-bold text-cloud truncate">{getTeamName(team2Code)}</p>
             </div>
           </div>
         )}
@@ -702,76 +661,7 @@ export default function DraftBoardPage({
                   : "bg-navy2 border border-hair2"
               }`}
             >
-              {(myQueue.length > 0 || savedQueue.length > 0) && !quickDraftOn ? (
-                (() => {
-                  // Render the queue exactly as it is STORED ON THE SERVER (myQueue)
-                  // so the user sees the DB's truth, not just local state. Falls
-                  // back to the optimistic savedQueue for the sub-second window
-                  // between saving and the confirming refetch.
-                  const stored = myQueue.length > 0 ? myQueue : savedQueue;
-                  const willFire = stored.filter((k) => {
-                    const p = playerPool.find((pl) => pl.key === k);
-                    return p && !p.takenBy;
-                  }).length;
-                  let firePos = 0;
-                  return (
-                    <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <p className="text-gold text-sm font-semibold">
-                          ⚡ Auto-pick queue · {willFire} will fire
-                        </p>
-                        <div className="flex items-center gap-3">
-                          <button
-                            onClick={handleQdToggle}
-                            className="text-gold/80 hover:text-gold text-xs font-semibold"
-                          >
-                            Edit
-                          </button>
-                          <button
-                            onClick={handleClearQueue}
-                            className="text-mist2 hover:text-cloud text-xs"
-                          >
-                            Clear
-                          </button>
-                        </div>
-                      </div>
-                      <ol className="space-y-1">
-                        {stored.map((k) => {
-                          const p = playerPool.find((pl) => pl.key === k);
-                          const taken = !!p?.takenBy;
-                          const pos = taken ? null : ++firePos;
-                          return (
-                            <li
-                              key={k}
-                              className={`flex items-center gap-2 text-xs ${taken ? "text-mist2/50" : "text-cloud"}`}
-                            >
-                              <span
-                                className={`w-4 text-right font-bold ${taken ? "text-mist2/40" : "text-gold"}`}
-                              >
-                                {taken ? "–" : pos}
-                              </span>
-                              <span className={taken ? "line-through" : ""}>
-                                {p?.displayName ?? k}
-                              </span>
-                              {p?.teamCode && (
-                                <span className="text-mist2/70">{p.teamCode}</span>
-                              )}
-                              {taken && (
-                                <span className="text-mist2/60">
-                                  · {p?.takenBy === username ? "you picked" : "taken"}
-                                </span>
-                              )}
-                            </li>
-                          );
-                        })}
-                      </ol>
-                      <p className="text-mist2/70 text-[11px] mt-2">
-                        ✓ Saved on the server — fires automatically on your turn, even if you close this tab.
-                      </p>
-                    </div>
-                  );
-                })()
-              ) : isMyTurn ? (
+              {isMyTurn ? (
                 <div className="text-center">
                   <p className="text-green-300 font-extrabold text-lg animate-pulse">🚨 YOUR PICK!</p>
                   <p className="text-green-500/70 text-xs mt-0.5">Tap once to select · tap again to confirm</p>
@@ -959,56 +849,70 @@ export default function DraftBoardPage({
         )}
       </div>
 
-      {/* Bottom bar */}
+      {/* Bottom nav — one persistent bar, content driven by queue state */}
       {isDrafting && (
-        quickDraftOn ? (
-          /* Quick Draft bottom bar */
-          <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-gold/50 px-3 py-2 z-20">
-            <div className="max-w-lg mx-auto flex items-center gap-2">
-              <button
-                onClick={() => { setQuickDraftOn(false); setDraftQueue([]); }}
-                className="text-mist hover:text-white text-sm px-2 shrink-0"
-              >
-                ✕
-              </button>
-              <div className="flex-1 min-w-0">
-                {draftQueue.length === 0 ? (
-                  <p className="text-mist2 text-xs">Tap players to queue picks (max {MAX_QUEUE})</p>
-                ) : (
-                  <p className="text-xs text-gold truncate">
-                    {draftQueue.map((key, i) => {
-                      const p = playerPool.find((pl) => pl.key === key);
-                      const surname = p?.displayName.split(" ").pop() ?? "?";
-                      return `${i + 1}.${surname}`;
-                    }).join("  ")}
-                  </p>
-                )}
-              </div>
-              <button
-                onClick={handleSaveQueue}
-                disabled={draftQueue.length === 0}
-                className="shrink-0 bg-gold text-black font-bold text-sm px-3 py-1.5 rounded-lg disabled:opacity-40 transition-opacity"
-              >
-                SAVE ⚡
-              </button>
-            </div>
-          </div>
-        ) : (
-          /* Normal picks counter */
-          <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-hair2 px-4 py-2 z-20">
-            <div className="max-w-lg mx-auto flex items-center justify-between text-xs">
-              <span className="text-mist">
-                You: <span className="text-white font-bold">{myPicks.length}</span>/{contest.picksPerUser + contest.backupsPerUser}
-              </span>
-              {others.map((u) => (
-                <span key={u} className="text-mist">
-                  {getUserLabel(u)}: <span className="text-white font-bold">{theirPicks.filter((p) => p.pickedBy === u).length}</span>
+        <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-hair2 px-3 py-2 z-20">
+          <div className="max-w-lg mx-auto flex items-center gap-2 text-xs">
+            {quickDraftOn ? (
+              /* Editing the queue — pills live on the player cards; this bar is the controls */
+              <>
+                <span className="text-gold font-semibold shrink-0">⚡ {draftQueue.length} set</span>
+                <button
+                  onClick={() => { setDraftQueue([]); handleClearQueue(); }}
+                  className="text-mist hover:text-cloud shrink-0"
+                >
+                  ✕ Clear all
+                </button>
+                <button
+                  onClick={handleSaveQueue}
+                  className="ml-auto shrink-0 bg-gold text-black font-bold px-3 py-1.5 rounded-lg"
+                >
+                  Done
+                </button>
+              </>
+            ) : savedQueue.length > 0 ? (
+              /* Saved queue, not editing */
+              <>
+                <span className="text-mist shrink-0">
+                  You <span className="text-white font-bold">{myPicks.length}</span>/{contest.picksPerUser + contest.backupsPerUser}
                 </span>
-              ))}
-              <Link href={`/draft/${code}/team`} className="text-gold font-semibold">Team →</Link>
-            </div>
+                <span className="text-gold font-semibold shrink-0">⚡ {savedQueue.length} queued</span>
+                <button
+                  onClick={handleQdToggle}
+                  className="text-gold/90 hover:text-gold font-semibold shrink-0"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={handleClearQueue}
+                  className="text-mist hover:text-cloud shrink-0"
+                >
+                  ✕
+                </button>
+                <Link href={`/draft/${code}/team`} className="ml-auto shrink-0 text-gold font-semibold">Team →</Link>
+              </>
+            ) : (
+              /* Default */
+              <>
+                <span className="text-mist shrink-0">
+                  You <span className="text-white font-bold">{myPicks.length}</span>/{contest.picksPerUser + contest.backupsPerUser}
+                </span>
+                {others.map((u) => (
+                  <span key={u} className="text-mist shrink-0">
+                    {getUserLabel(u)} <span className="text-white font-bold">{theirPicks.filter((p) => p.pickedBy === u).length}</span>
+                  </span>
+                ))}
+                <button
+                  onClick={handleQdToggle}
+                  className="ml-auto shrink-0 text-gold font-semibold"
+                >
+                  ⚡ Quick
+                </button>
+                <Link href={`/draft/${code}/team`} className="shrink-0 text-gold font-semibold">Team →</Link>
+              </>
+            )}
           </div>
-        )
+        </div>
       )}
     </main>
   );
@@ -1104,12 +1008,16 @@ function PlayerCard({
       ? USER_COLORS[player.takenBy]
       : "bg-gray-500";
 
+  // Viewer-relative fill for the "selected by whom" wash + left border: YOUR picks are
+  // always green; each opponent shows in their own identity colour.
+  const fill = isOwnPick ? "#22c55e" : getUserHex(player.takenBy ?? "");
+
   const bg = isTaken
     ? "bg-ink2"
     : "bg-ink2 active:bg-navy2";
 
-  const border = isOwnPick
-    ? "border-l-2 border-blue-500"
+  const border = isTaken
+    ? ""
     : isBench
     ? "border-l border-hair2/50"
     : "";
@@ -1142,16 +1050,24 @@ function PlayerCard({
     <>
       <div
         onClick={handleClick}
+        style={isTaken ? { borderLeft: `2px solid ${fill}` } : undefined}
         className={`relative overflow-hidden px-2 py-2.5 flex items-center gap-1.5 transition-colors ${bg} ${border} ${
           isTaken ? "cursor-default" : "cursor-pointer"
-        } ${isBench ? "opacity-70" : ""}`}
+        } ${isTaken ? "opacity-60" : isBench ? "opacity-70" : ""}`}
       >
+        {/* Viewer-relative "selected by" wash on the right half — dimmed, sits behind content */}
+        {isTaken && (
+          <span
+            className="absolute inset-y-0 right-0 w-1/2 pointer-events-none"
+            style={{ background: `linear-gradient(to left, ${fill}66 0%, ${fill}22 55%, transparent 100%)` }}
+          />
+        )}
         {/* Role badge */}
-        <span className={`text-xs font-bold px-1 py-0.5 rounded shrink-0 ${ROLE_COLORS[player.role] ?? "bg-navy2 text-white"}`}>
+        <span className={`relative z-10 text-xs font-bold px-1 py-0.5 rounded shrink-0 ${ROLE_COLORS[player.role] ?? "bg-navy2 text-white"}`}>
           {player.role[0]}
         </span>
         {/* Name + pts */}
-        <div className="flex-1 min-w-0">
+        <div className="relative z-10 flex-1 min-w-0">
           <p className={`text-xs font-semibold truncate leading-tight ${isTaken ? "text-mist2" : "text-white"}`}>
             {player.displayName}
           </p>
@@ -1171,7 +1087,7 @@ function PlayerCard({
         </div>
         {/* "LAST" tag on the opponent's most-recent pick */}
         {isTaken && isLastPick && !isOwnPick && (
-          <span className="text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 border border-gold/40 rounded px-1 py-0.5 shrink-0">
+          <span className="relative z-10 text-[9px] font-bold uppercase tracking-wider text-gold bg-gold/10 border border-gold/40 rounded px-1 py-0.5 shrink-0">
             Last
           </span>
         )}
