@@ -104,56 +104,32 @@ function Chip({ tone, children }: { tone: keyof typeof CHIP_TONES; children: Rea
 }
 
 // Small role-relevant live-status pill. Prefers the "cheer" states (yet to bat / yet to bowl)
-// for all-rounders. Renders nothing for NA/null (nothing meaningful to show).
-function batFacetChip(bat: LiveStatus["batting"], batLine?: string) {
-  switch (bat) {
-    case "NOW": return <Chip tone="green">🏏 {batLine}</Chip>;
-    case "YET": return <Chip tone="emerald">🟢 yet to bat</Chip>;
-    case "OUT": return <Chip tone="mutedRed">✅ out {batLine}</Chip>;
-    case "NOTOUT": return <Chip tone="muted">✅ {batLine}</Chip>;
-    case "DNB": return <Chip tone="faint">– DNB</Chip>;
-    default: return null;
-  }
-}
-function bowlFacetChip(bowl: LiveStatus["bowling"], bowlLine?: string) {
-  switch (bowl) {
-    case "NOW": return <Chip tone="green">🏏 {bowlLine}</Chip>;
-    case "YET": return <Chip tone="gold">🎯 yet to bowl</Chip>;
-    case "DONE": return <Chip tone="muted">✅ {bowlLine}</Chip>;
-    default: return null;
-  }
-}
+// for all-rounders. Renders nothing when nothing meaningful applies.
 function LiveStatusChip({ role, live }: { role: string; live?: LiveStatus | null }) {
   if (!live) return null;
   const { batting: bat, bowling: bowl, batLine, bowlLine } = live;
-  const bowled = bowl === "NOW" || bowl === "DONE"; // has bowled ≥1 ball
+  // Role is used ONLY to decide which segments are relevant — it's never printed (the status
+  // text says what the player is doing). "yet to bat" is meaningful only for players who bat;
+  // "yet to bowl" only for players who bowl.
+  const bats = role === "WK" || role === "BAT" || role === "AR";
+  const bowls = role === "BOWL" || role === "AR";
 
-  // An all-rounder who has bowled shows BOTH facets — batting AND bowling — so you never see
-  // "yet to bat" alone on someone actively contributing with the ball.
-  if (role === "AR" && bowled) {
-    return (
-      <>
-        {batFacetChip(bat, batLine)}
-        {bowlFacetChip(bowl, bowlLine)}
-      </>
-    );
-  }
+  // Batting segment: their score once they've batted, else "yet to bat" (batters only).
+  let batSeg: React.ReactNode = null;
+  if (bat === "NOW") batSeg = <Chip tone="green">🏏 {batLine}</Chip>;
+  else if (bat === "OUT") batSeg = <Chip tone="mutedRed">out {batLine}</Chip>;
+  else if (bat === "NOTOUT") batSeg = <Chip tone="muted">{batLine}</Chip>;
+  else if (bat === "YET" && bats) batSeg = <Chip tone="emerald">🟢 yet to bat</Chip>;
 
-  // Otherwise ONE chip, by what they're DOING: active now > still to come > done.
-  if (bowl === "NOW") return bowlFacetChip("NOW", bowlLine);
-  if (bat === "NOW") return batFacetChip("NOW", batLine);
-  if (role === "BOWL") {
-    if (bowl === "YET") return bowlFacetChip("YET", bowlLine);
-  } else if (role === "AR") {
-    if (bowl === "YET") return bowlFacetChip("YET", bowlLine);
-    if (bat === "YET") return batFacetChip("YET", batLine);
-  } else if (bat === "YET") {
-    return batFacetChip("YET", batLine);
-  }
-  // Done — bowlers lead with figures, batters/all-rounders with their batting result.
-  return role === "BOWL"
-    ? bowlFacetChip(bowl, bowlLine) ?? batFacetChip(bat, batLine)
-    : batFacetChip(bat, batLine) ?? bowlFacetChip(bowl, bowlLine);
+  // Bowling segment: figures once they've bowled, else "yet to bowl" (bowlers only).
+  let bowlSeg: React.ReactNode = null;
+  if (bowl === "NOW") bowlSeg = <Chip tone="green">🏏 {bowlLine}</Chip>;
+  else if (bowl === "DONE") bowlSeg = <Chip tone="muted">{bowlLine}</Chip>;
+  else if (bowl === "YET" && bowls) bowlSeg = <Chip tone="gold">🎯 yet to bowl</Chip>;
+
+  if (!batSeg && !bowlSeg) return null;
+  // Both show when a player has both batted and bowled (a true all-rounder's line).
+  return <>{batSeg}{bowlSeg}</>;
 }
 
 // One innings block for the live Scorecard tab: header + batting table + bowling table.
@@ -597,12 +573,14 @@ export default function ResultsPage({
                               {p.name}
                             </span>
                           </div>
-                          {/* Fixed to a single line so both columns' rows stay the same height. */}
+                          {/* Fixed to a single line so both columns' rows stay the same height.
+                              Live: the status text says what they're doing — no loud role tag.
+                              Non-live (completed): show the role tag since there's no status. */}
                           <div className="flex items-center gap-1.5 flex-nowrap overflow-hidden">
-                            <span className={`text-[9px] font-bold shrink-0 ${ROLE_COLORS[p.role] ?? "text-mist"}`}>{p.role}</span>
+                            {!live && <span className={`text-[9px] font-bold shrink-0 ${ROLE_COLORS[p.role] ?? "text-mist"}`}>{p.role}</span>}
                             {p.isCaptain && <span className="text-[8px] bg-yellow-500 text-black px-1 rounded font-bold shrink-0">C</span>}
                             {p.isViceCaptain && <span className="text-[8px] bg-blue-500 text-white px-1 rounded font-bold shrink-0">VC</span>}
-                            {live && <span className="min-w-0 overflow-hidden"><LiveStatusChip role={p.role} live={p.live} /></span>}
+                            {live && <span className="flex items-center gap-1 min-w-0 overflow-hidden"><LiveStatusChip role={p.role} live={p.live} /></span>}
                             <span className={`ml-auto text-xs font-bold tabular-nums shrink-0 ${p.fantasyPoints !== null ? "text-amber-300" : "text-mist2"}`}>
                               {p.fantasyPoints !== null ? p.fantasyPoints.toFixed(1) : "–"}
                             </span>
@@ -749,9 +727,12 @@ function PlayerRow({
       }`}
     >
       <PlayerAvatar photo={player.photo} team={player.team} size={26} />
-      <span className={`text-xs font-bold ${ROLE_COLORS[player.role] ?? "text-mist"}`}>
-        {player.role}
-      </span>
+      {/* Role tag only when not live — live rows let the status text speak instead. */}
+      {!showLive && (
+        <span className={`text-xs font-bold ${ROLE_COLORS[player.role] ?? "text-mist"}`}>
+          {player.role}
+        </span>
+      )}
       <span className="flex-1 text-sm font-semibold min-w-0 truncate" style={{ color: nameColorHex }}>
         {player.name}
         {player.isCaptain && (
