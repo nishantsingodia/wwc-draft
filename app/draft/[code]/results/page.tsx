@@ -11,6 +11,7 @@ import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
 import TeamLogo from "@/components/team-logo";
 import { teamColorMap } from "@/lib/team-brands";
+import { auctionOwnersFor, tourForTeamCode, type AuctionOwner } from "@/lib/auction-ownership";
 
 type PlayerResult = {
   key: string;
@@ -134,10 +135,34 @@ function LiveStatusChip({ role, live }: { role: string; live?: LiveStatus | null
 
 // One innings block for the live Scorecard tab: header + batting table + bowling table.
 // YOUR drafted players are marked with a gold dot (name match, best-effort).
+// Auction ownership tags for one scorecard player: "Ni1", "Pu2" (short name + auction serial),
+// each in that friend's colour. Empty → renders nothing. This is the "A" layer — draft
+// ownership is the gold name, so no "D" here.
+function AuctionTags({ owners }: { owners: AuctionOwner[] }) {
+  if (owners.length === 0) return null;
+  return (
+    <span className="flex items-center gap-1 mt-0.5">
+      {owners.map((o) => (
+        <span
+          key={`${o.short}-${o.no}`}
+          className="inline-flex items-center gap-0.5 text-[9px] font-bold rounded px-1 py-px border"
+          style={{ color: o.hex, borderColor: `${o.hex}66` }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full" style={{ background: o.hex }} />
+          {o.short}
+          <span className="opacity-70">{o.no}</span>
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
   // On the scorecard, a player's name is white by default and GOLD if YOU drafted them — that
   // gold name IS the "I own this in the draft" signal (no separate dot / draft tag needed).
   const isMine = (n: string) => mine.has(n.toLowerCase().trim());
+  // Auction tour for this match (both innings' teams share it) → per-player "A" owner tags.
+  const tour = tourForTeamCode(innings.teamCode);
   return (
     <div className="rounded-xl border border-hair2 bg-ink2 overflow-hidden">
       <div className="px-3 py-2.5 border-b border-hair2 flex items-center gap-2">
@@ -166,12 +191,13 @@ function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
             {innings.batting.map((b, i) => (
               <tr key={`${b.name}-${i}`} className="border-t border-hair2/50">
                 <td className="px-3 py-1.5 text-cloud">
-                  <span className="inline-flex items-center gap-1.5 min-w-0">
+                  <span className="flex items-center gap-1.5 min-w-0">
                     <span className={`truncate font-semibold ${isMine(b.name) ? "text-gold" : "text-cloud"}`}>{b.name}</span>
                     <span className="text-mist2 text-[10px] shrink-0">
                       {b.out ? "out" : b.notOut ? "not out" : ""}
                     </span>
                   </span>
+                  <AuctionTags owners={auctionOwnersFor(b.pid, tour)} />
                 </td>
                 <td className="text-right px-1.5 py-1.5 tabular-nums font-semibold text-cloud">{b.runs}</td>
                 <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{b.balls}</td>
@@ -209,9 +235,10 @@ function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
               {innings.bowling.map((bw, i) => (
                 <tr key={`${bw.name}-${i}`} className="border-t border-hair2/50">
                   <td className="px-3 py-1.5 text-cloud">
-                    <span className="inline-flex items-center gap-1.5 min-w-0">
+                    <span className="flex items-center gap-1.5 min-w-0">
                       <span className={`truncate font-semibold ${isMine(bw.name) ? "text-gold" : "text-cloud"}`}>{bw.name}</span>
                     </span>
+                    <AuctionTags owners={auctionOwnersFor(bw.pid, tour)} />
                   </td>
                   <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.overs}</td>
                   <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.maidens}</td>

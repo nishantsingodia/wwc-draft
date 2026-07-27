@@ -330,6 +330,7 @@ export type LiveStatus = {
 export type ScorecardBatter = {
   name: string;
   team: string;
+  pid: string | null; // stable ci:<id> → joins auction/draft ownership; null if unresolved
   runs: number;
   balls: number;
   fours: number;
@@ -341,6 +342,7 @@ export type ScorecardBatter = {
 export type ScorecardBowler = {
   name: string;
   team: string;
+  pid: string | null;
   overs: string;
   maidens: number;
   runs: number;
@@ -474,6 +476,7 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
     // Per-player parsed lines, collected in the roster loop, for the Scorecard tab.
     type PlayerLine = {
       teamCode: string | undefined;
+      pid: string | null;
       order: number;
       name: string;
       runs: number;
@@ -575,6 +578,7 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         // Line for the Scorecard tab (roster order preserved via ri).
         lines.push({
           teamCode,
+          pid: regPid ?? null,
           order: ri,
           name: disp,
           runs: batRuns,
@@ -650,6 +654,7 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         .map((l) => ({
           name: l.name,
           team: ti.teamCode,
+          pid: l.pid,
           runs: l.runs,
           balls: l.balls,
           fours: l.fours,
@@ -664,6 +669,7 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         .map((l) => ({
           name: l.name,
           team: oppCode,
+          pid: l.pid,
           overs: `${Math.floor(l.bowlBalls / 6)}.${l.bowlBalls % 6}`,
           maidens: l.maidens,
           runs: l.conceded,
