@@ -10,6 +10,7 @@ import type { LiveStatus, Innings } from "@/lib/espn";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
 import TeamLogo from "@/components/team-logo";
+import { teamColorMap } from "@/lib/team-brands";
 
 type PlayerResult = {
   key: string;
@@ -145,7 +146,15 @@ function LiveStatusChip({ role, live }: { role: string; live?: LiveStatus | null
 
 // One innings block for the live Scorecard tab: header + batting table + bowling table.
 // YOUR drafted players are marked with a gold dot (name match, best-effort).
-function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
+function Scorecard({
+  innings,
+  mine,
+  nameColor,
+}: {
+  innings: Innings;
+  mine: Set<string>;
+  nameColor: (code: string) => string;
+}) {
   const isMine = (n: string) => mine.has(n.toLowerCase().trim());
   return (
     <div className="rounded-xl border border-hair2 bg-ink2 overflow-hidden">
@@ -177,7 +186,7 @@ function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
                 <td className="px-3 py-1.5 text-cloud">
                   <span className="inline-flex items-center gap-1.5 min-w-0">
                     {isMine(b.name) && <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />}
-                    <span className="truncate">{b.name}</span>
+                    <span className="truncate font-semibold" style={{ color: nameColor(b.team) }}>{b.name}</span>
                     <span className="text-mist2 text-[10px] shrink-0">
                       {b.out ? "out" : b.notOut ? "not out" : ""}
                     </span>
@@ -221,7 +230,7 @@ function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
                   <td className="px-3 py-1.5 text-cloud">
                     <span className="inline-flex items-center gap-1.5 min-w-0">
                       {isMine(bw.name) && <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />}
-                      <span className="truncate">{bw.name}</span>
+                      <span className="truncate font-semibold" style={{ color: nameColor(bw.team) }}>{bw.name}</span>
                     </span>
                   </td>
                   <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.overs}</td>
@@ -369,6 +378,12 @@ export default function ResultsPage({
   const mineNames = new Set(
     (myTeam?.players ?? []).map((p) => p.name.toLowerCase().trim())
   );
+  // Team-hued, readable, guaranteed-distinct name colours for the two teams in this match.
+  // Players' team identity reads from the NAME colour, so no per-player logo is needed.
+  const teamColors = teamColorMap(
+    teams.flatMap((t) => t.players.map((p) => p.team)).filter(Boolean)
+  );
+  const nameColor = (code: string) => teamColors.get(code) ?? "#e4e9f2";
 
   return (
     <main className="min-h-screen bg-ink text-white pb-8">
@@ -564,21 +579,27 @@ export default function ResultsPage({
                       return (
                         <div
                           key={p.key}
-                          className={`flex flex-col gap-0.5 px-2.5 py-2 border-t border-hair2/50 first:border-t-0 ${
+                          className={`flex flex-col justify-center gap-0.5 h-[3.25rem] px-2.5 border-t border-hair2/50 first:border-t-0 ${
                             highlight ? "ring-1 ring-inset ring-gold/50 bg-gold/[0.04]" : ""
                           }`}
                         >
+                          {/* Name carries the team identity via colour (no per-player logo). */}
                           <div className="flex items-center gap-1.5 min-w-0">
-                            <PlayerAvatar photo={p.photo} team={p.team} size={24} />
-                            <TeamLogo code={p.team} size={16} />
-                            <span className="text-xs font-medium text-cloud truncate">{p.name}</span>
+                            <PlayerAvatar photo={p.photo} team={p.team} size={22} />
+                            <span
+                              className="text-xs font-semibold truncate"
+                              style={{ color: nameColor(p.team) }}
+                            >
+                              {p.name}
+                            </span>
                           </div>
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className={`text-[9px] font-bold ${ROLE_COLORS[p.role] ?? "text-mist"}`}>{p.role}</span>
-                            {p.isCaptain && <span className="text-[8px] bg-yellow-500 text-black px-1 rounded font-bold">C</span>}
-                            {p.isViceCaptain && <span className="text-[8px] bg-blue-500 text-white px-1 rounded font-bold">VC</span>}
-                            {live && <LiveStatusChip role={p.role} live={p.live} />}
-                            <span className={`ml-auto text-xs font-bold tabular-nums ${p.fantasyPoints !== null ? "text-amber-300" : "text-mist2"}`}>
+                          {/* Fixed to a single line so both columns' rows stay the same height. */}
+                          <div className="flex items-center gap-1.5 flex-nowrap overflow-hidden">
+                            <span className={`text-[9px] font-bold shrink-0 ${ROLE_COLORS[p.role] ?? "text-mist"}`}>{p.role}</span>
+                            {p.isCaptain && <span className="text-[8px] bg-yellow-500 text-black px-1 rounded font-bold shrink-0">C</span>}
+                            {p.isViceCaptain && <span className="text-[8px] bg-blue-500 text-white px-1 rounded font-bold shrink-0">VC</span>}
+                            {live && <span className="min-w-0 overflow-hidden"><LiveStatusChip role={p.role} live={p.live} /></span>}
+                            <span className={`ml-auto text-xs font-bold tabular-nums shrink-0 ${p.fantasyPoints !== null ? "text-amber-300" : "text-mist2"}`}>
                               {p.fantasyPoints !== null ? p.fantasyPoints.toFixed(1) : "–"}
                             </span>
                           </div>
@@ -620,6 +641,7 @@ export default function ResultsPage({
                       player={p}
                       showLive={live}
                       highlight={!!(live && isMine && stillToCome(p))}
+                      nameColorHex={nameColor(p.team)}
                     />
                   ))}
                 </div>
@@ -629,7 +651,7 @@ export default function ResultsPage({
                   <div className="space-y-1 opacity-60">
                     <p className="text-xs text-mist2 uppercase tracking-wider px-1 pt-1">Bench — not counted</p>
                     {bench.map((p) => (
-                      <PlayerRow key={p.key} player={p} isBench showLive={live} />
+                      <PlayerRow key={p.key} player={p} isBench showLive={live} nameColorHex={nameColor(p.team)} />
                     ))}
                   </div>
                 )}
@@ -642,7 +664,7 @@ export default function ResultsPage({
           <div className="space-y-3">
             {data.scorecard && data.scorecard.length > 0 ? (
               data.scorecard.map((inn) => (
-                <Scorecard key={inn.teamCode} innings={inn} mine={mineNames} />
+                <Scorecard key={inn.teamCode} innings={inn} mine={mineNames} nameColor={nameColor} />
               ))
             ) : (
               <p className="text-center text-mist2 text-sm py-8">Scorecard appears once play begins.</p>
@@ -703,11 +725,13 @@ function PlayerRow({
   isBench = false,
   showLive = false,
   highlight = false,
+  nameColorHex = "#e4e9f2",
 }: {
   player: PlayerResult;
   isBench?: boolean;
   showLive?: boolean; // match is live → render the live status chip
   highlight?: boolean; // one of YOUR still-to-come players → subtle gold rail
+  nameColorHex?: string; // team-hued name colour (team identity, no per-player logo)
 }) {
   const mult = player.isCaptain ? 2 : player.isViceCaptain ? 1.5 : 1;
   // rawPoints is the base score; fantasyPoints already has mult applied (do NOT re-multiply)
@@ -721,11 +745,10 @@ function PlayerRow({
       }`}
     >
       <PlayerAvatar photo={player.photo} team={player.team} size={26} />
-      <TeamLogo code={player.team} size={16} />
       <span className={`text-xs font-bold ${ROLE_COLORS[player.role] ?? "text-mist"}`}>
         {player.role}
       </span>
-      <span className="flex-1 text-sm font-medium min-w-0 truncate">
+      <span className="flex-1 text-sm font-semibold min-w-0 truncate" style={{ color: nameColorHex }}>
         {player.name}
         {player.isCaptain && (
           <span className="ml-1 text-xs bg-yellow-500 text-black px-1 rounded font-bold">C</span>

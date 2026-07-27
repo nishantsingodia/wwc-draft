@@ -1,7 +1,7 @@
 "use client";
 
 import { getFlag } from "@/lib/players";
-import { getUserLabel, USER_COLORS } from "@/lib/users";
+import { getUserLabel, USER_COLORS, getUserHex } from "@/lib/users";
 
 type PlayerCardProps = {
   playerKey: string;
@@ -70,15 +70,28 @@ export default function PlayerCard({
 
   const takerColor =
     takenBy && USER_COLORS[takenBy] ? USER_COLORS[takenBy] : "bg-gray-500";
+  // A held player is coloured by WHO holds them — a right-half wash + left rail in that
+  // friend's colour, so every opponent's picks are distinct at a glance (mirrors the board).
+  const takenHex = takenBy ? getUserHex(takenBy) : null;
 
   return (
     <div
       onClick={canClick ? onClick : undefined}
-      className={`relative rounded-xl px-3 py-2 transition-all ${bgClass} ${ringClass} ${
+      style={takenHex ? { borderLeft: `3px solid ${takenHex}` } : undefined}
+      className={`relative overflow-hidden rounded-xl px-3 py-2 transition-all ${bgClass} ${ringClass} ${
         canClick ? "cursor-pointer active:scale-95" : ""
       } ${compact ? "py-2" : "py-3"}`}
     >
-      <div className="flex items-center gap-2">
+      {takenHex && (
+        <span
+          aria-hidden
+          className="absolute inset-y-0 right-0 w-1/2 pointer-events-none"
+          style={{
+            background: `linear-gradient(to left, ${takenHex}66 0%, ${takenHex}22 55%, transparent 100%)`,
+          }}
+        />
+      )}
+      <div className="relative z-10 flex items-center gap-2">
         {/* Flag + role */}
         <span className="text-lg">{getFlag(teamCode)}</span>
         <span
@@ -163,7 +176,7 @@ export default function PlayerCard({
 
       {/* Taken badge */}
       {takenBy && (
-        <div className="mt-1 flex items-center gap-1">
+        <div className="relative z-10 mt-1 flex items-center gap-1">
           <span className={`w-2 h-2 rounded-full ${takerColor}`} />
           <span className="text-xs text-zinc-400">
             {getUserLabel(takenBy)}
@@ -176,7 +189,7 @@ export default function PlayerCard({
           a second corner badge would be a redundant double "C" on one card. */}
       {(isCaptain || isViceCaptain) && !onCaptainClick && !onViceCaptainClick && (
         <span
-          className={`absolute top-1 right-1 text-xs font-bold px-1 rounded ${
+          className={`absolute top-1 right-1 z-10 text-xs font-bold px-1 rounded ${
             isCaptain ? "bg-yellow-500 text-black" : "bg-blue-500 text-white"
           }`}
         >
