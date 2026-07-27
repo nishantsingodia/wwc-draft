@@ -105,56 +105,62 @@ function Chip({ tone, children }: { tone: keyof typeof CHIP_TONES; children: Rea
 
 // Small role-relevant live-status pill. Prefers the "cheer" states (yet to bat / yet to bowl)
 // for all-rounders. Renders nothing for NA/null (nothing meaningful to show).
+function batFacetChip(bat: LiveStatus["batting"], batLine?: string) {
+  switch (bat) {
+    case "NOW": return <Chip tone="green">🏏 {batLine}</Chip>;
+    case "YET": return <Chip tone="emerald">🟢 yet to bat</Chip>;
+    case "OUT": return <Chip tone="mutedRed">✅ out {batLine}</Chip>;
+    case "NOTOUT": return <Chip tone="muted">✅ {batLine}</Chip>;
+    case "DNB": return <Chip tone="faint">– DNB</Chip>;
+    default: return null;
+  }
+}
+function bowlFacetChip(bowl: LiveStatus["bowling"], bowlLine?: string) {
+  switch (bowl) {
+    case "NOW": return <Chip tone="green">🏏 {bowlLine}</Chip>;
+    case "YET": return <Chip tone="gold">🎯 yet to bowl</Chip>;
+    case "DONE": return <Chip tone="muted">✅ {bowlLine}</Chip>;
+    default: return null;
+  }
+}
 function LiveStatusChip({ role, live }: { role: string; live?: LiveStatus | null }) {
   if (!live) return null;
   const { batting: bat, bowling: bowl, batLine, bowlLine } = live;
+  const bowled = bowl === "NOW" || bowl === "DONE"; // has bowled ≥1 ball
 
-  // Precedence is by what the player is DOING, not by role — this is the fix for an
-  // all-rounder who's bowling being wrongly shown "yet to bat":
-  //   1. ACTIVE now (batting or bowling) always wins.
-  //   2. STILL TO COME (the gold/green "cheer" states). Role picks which matters; for an
-  //      AR, if he's yet to bowl (opponent batting) that's the immediate contribution.
-  //   3. DONE (out / not out / bowled) — muted; prefer the batting result for batters/ARs.
-
-  // 1) Active now
-  if (bowl === "NOW") return <Chip tone="green">🏏 {bowlLine}</Chip>;
-  if (bat === "NOW") return <Chip tone="green">🏏 {batLine}</Chip>;
-
-  // 2) Still to come
-  if (role === "BOWL") {
-    if (bowl === "YET") return <Chip tone="gold">🎯 yet to bowl</Chip>;
-  } else if (role === "AR") {
-    if (bowl === "YET") return <Chip tone="gold">🎯 yet to bowl</Chip>;
-    if (bat === "YET") return <Chip tone="emerald">🟢 yet to bat</Chip>;
-  } else if (bat === "YET") {
-    return <Chip tone="emerald">🟢 yet to bat</Chip>;
+  // An all-rounder who has bowled shows BOTH facets — batting AND bowling — so you never see
+  // "yet to bat" alone on someone actively contributing with the ball.
+  if (role === "AR" && bowled) {
+    return (
+      <>
+        {batFacetChip(bat, batLine)}
+        {bowlFacetChip(bowl, bowlLine)}
+      </>
+    );
   }
 
-  // 3) Done — show the result they have
-  const batDone =
-    bat === "OUT" ? (
-      <Chip tone="mutedRed">✅ out {batLine}</Chip>
-    ) : bat === "NOTOUT" ? (
-      <Chip tone="muted">✅ {batLine}</Chip>
-    ) : null;
-  const bowlDone = bowl === "DONE" ? <Chip tone="muted">✅ {bowlLine}</Chip> : null;
-  // Bowlers lead with their bowling figures; batters/all-rounders with their batting result.
-  const done = role === "BOWL" ? bowlDone ?? batDone : batDone ?? bowlDone;
-  if (done) return done;
-  return bat === "DNB" ? <Chip tone="faint">– DNB</Chip> : null;
+  // Otherwise ONE chip, by what they're DOING: active now > still to come > done.
+  if (bowl === "NOW") return bowlFacetChip("NOW", bowlLine);
+  if (bat === "NOW") return batFacetChip("NOW", batLine);
+  if (role === "BOWL") {
+    if (bowl === "YET") return bowlFacetChip("YET", bowlLine);
+  } else if (role === "AR") {
+    if (bowl === "YET") return bowlFacetChip("YET", bowlLine);
+    if (bat === "YET") return batFacetChip("YET", batLine);
+  } else if (bat === "YET") {
+    return batFacetChip("YET", batLine);
+  }
+  // Done — bowlers lead with figures, batters/all-rounders with their batting result.
+  return role === "BOWL"
+    ? bowlFacetChip(bowl, bowlLine) ?? batFacetChip(bat, batLine)
+    : batFacetChip(bat, batLine) ?? bowlFacetChip(bowl, bowlLine);
 }
 
 // One innings block for the live Scorecard tab: header + batting table + bowling table.
 // YOUR drafted players are marked with a gold dot (name match, best-effort).
-function Scorecard({
-  innings,
-  mine,
-  nameColor,
-}: {
-  innings: Innings;
-  mine: Set<string>;
-  nameColor: (code: string) => string;
-}) {
+function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
+  // On the scorecard, a player's name is white by default and GOLD if YOU drafted them — that
+  // gold name IS the "I own this in the draft" signal (no separate dot / draft tag needed).
   const isMine = (n: string) => mine.has(n.toLowerCase().trim());
   return (
     <div className="rounded-xl border border-hair2 bg-ink2 overflow-hidden">
@@ -185,8 +191,7 @@ function Scorecard({
               <tr key={`${b.name}-${i}`} className="border-t border-hair2/50">
                 <td className="px-3 py-1.5 text-cloud">
                   <span className="inline-flex items-center gap-1.5 min-w-0">
-                    {isMine(b.name) && <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />}
-                    <span className="truncate font-semibold" style={{ color: nameColor(b.team) }}>{b.name}</span>
+                    <span className={`truncate font-semibold ${isMine(b.name) ? "text-gold" : "text-cloud"}`}>{b.name}</span>
                     <span className="text-mist2 text-[10px] shrink-0">
                       {b.out ? "out" : b.notOut ? "not out" : ""}
                     </span>
@@ -229,8 +234,7 @@ function Scorecard({
                 <tr key={`${bw.name}-${i}`} className="border-t border-hair2/50">
                   <td className="px-3 py-1.5 text-cloud">
                     <span className="inline-flex items-center gap-1.5 min-w-0">
-                      {isMine(bw.name) && <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />}
-                      <span className="truncate font-semibold" style={{ color: nameColor(bw.team) }}>{bw.name}</span>
+                      <span className={`truncate font-semibold ${isMine(bw.name) ? "text-gold" : "text-cloud"}`}>{bw.name}</span>
                     </span>
                   </td>
                   <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.overs}</td>
@@ -664,7 +668,7 @@ export default function ResultsPage({
           <div className="space-y-3">
             {data.scorecard && data.scorecard.length > 0 ? (
               data.scorecard.map((inn) => (
-                <Scorecard key={inn.teamCode} innings={inn} mine={mineNames} nameColor={nameColor} />
+                <Scorecard key={inn.teamCode} innings={inn} mine={mineNames} />
               ))
             ) : (
               <p className="text-center text-mist2 text-sm py-8">Scorecard appears once play begins.</p>

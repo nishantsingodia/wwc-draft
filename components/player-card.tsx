@@ -21,6 +21,8 @@ type PlayerCardProps = {
   onViceCaptainClick?: () => void;
   compact?: boolean;
   xiStatus?: "in" | "out" | null; // shown only when the official lineup is out
+  viewerUser?: string; // the logged-in user — their holds wash GREEN
+  participantCount?: number; // 2 → the single opponent washes RED; >2 → each their own colour
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -48,6 +50,8 @@ export default function PlayerCard({
   onViceCaptainClick,
   compact = false,
   xiStatus = null,
+  viewerUser,
+  participantCount,
 }: PlayerCardProps) {
   const isTaken = !!takenBy;
   const canClick = !isTaken && isMyTurn && onClick;
@@ -70,9 +74,15 @@ export default function PlayerCard({
 
   const takerColor =
     takenBy && USER_COLORS[takenBy] ? USER_COLORS[takenBy] : "bg-gray-500";
-  // A held player is coloured by WHO holds them — a right-half wash + left rail in that
-  // friend's colour, so every opponent's picks are distinct at a glance (mirrors the board).
-  const takenHex = takenBy ? getUserHex(takenBy) : null;
+  // Viewer-relative wash on a held player: GREEN if the logged-in user holds them, RED for the
+  // single opponent in a 2-player draft, and each friend's own colour once there are >2 of them.
+  const takenHex = !takenBy
+    ? null
+    : takenBy === viewerUser
+    ? "#22c55e"
+    : participantCount === 2
+    ? "#ef4444"
+    : getUserHex(takenBy);
 
   return (
     <div

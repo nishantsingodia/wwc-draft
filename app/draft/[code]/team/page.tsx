@@ -84,6 +84,8 @@ function ManualPool({
   takenBy,
   canAddMore,
   onAdd,
+  viewerUser,
+  participantCount,
 }: {
   pool: { key: string; displayName: string; role: string; teamCode: string; efppm: number; tourPoints: number | null; isLikelyXI: boolean }[];
   selectedSet: Set<string>;
@@ -92,6 +94,8 @@ function ManualPool({
   takenBy: Map<string, string>;
   canAddMore: boolean;
   onAdd: (key: string) => void;
+  viewerUser: string;
+  participantCount: number;
 }) {
   const available = pool.filter((p) => !selectedSet.has(p.key));
   if (available.length === 0) return null;
@@ -112,6 +116,8 @@ function ManualPool({
         takenBy={owner}
         isMyTurn={!taken && canAddMore}
         onClick={!taken && canAddMore ? () => onAdd(p.key) : undefined}
+        viewerUser={viewerUser}
+        participantCount={participantCount}
       />
     );
   };
@@ -702,6 +708,8 @@ export default function TeamPage({
               takenBy={takenByOther}
               canAddMore={ranking.length < ppu + bpu}
               onAdd={addNew}
+              viewerUser={data.username}
+              participantCount={friends.length}
             />
           )}
         </div>
