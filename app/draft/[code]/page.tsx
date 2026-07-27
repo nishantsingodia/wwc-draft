@@ -849,50 +849,61 @@ export default function DraftBoardPage({
         )}
       </div>
 
-      {/* Bottom nav — one persistent bar, content driven by queue state */}
+      {/* Bottom nav — one persistent bar; the ⚡ Quick control is the whole flow:
+          idle → tap to start · editing → pressed (SAVE / Clear) · saved → shows the count,
+          tap to edit again. No separate Edit link, no bare ✕; all CTAs are solid. */}
       {isDrafting && (
-        <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-hair2 px-3 py-2 z-20">
+        <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-hair2 px-3 py-2.5 z-20">
           <div className="max-w-lg mx-auto flex items-center gap-2 text-xs">
             {quickDraftOn ? (
-              /* Editing the queue — pills live on the player cards; this bar is the controls */
+              /* EDITING — number pills live on the player cards; this bar holds the controls */
               <>
-                <span className="text-gold font-semibold shrink-0">⚡ {draftQueue.length} set</span>
+                <span className="text-gold font-extrabold shrink-0">⚡ {draftQueue.length} set</span>
+                <span className="flex-1" />
                 <button
-                  onClick={() => { setDraftQueue([]); handleClearQueue(); }}
-                  className="text-mist hover:text-cloud shrink-0"
+                  onClick={handleQdToggle}
+                  className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 font-extrabold bg-[#a8842a] text-ink border border-gold shadow-[inset_0_2px_5px_rgba(0,0,0,0.45)] shrink-0"
                 >
-                  ✕ Clear all
+                  <span className="w-1.5 h-1.5 rounded-full bg-ink animate-pulse" />
+                  Quick
+                </button>
+                <button
+                  onClick={() => { setDraftQueue([]); handleClearQueue(); setQuickDraftOn(false); }}
+                  className="rounded-full px-3 py-1.5 font-bold bg-red-500/15 text-red-300 border border-red-500/50 shrink-0"
+                >
+                  Clear
                 </button>
                 <button
                   onClick={handleSaveQueue}
-                  className="ml-auto shrink-0 bg-gold text-black font-bold px-3 py-1.5 rounded-lg"
+                  className="rounded-full px-4 py-2 font-black bg-gold text-ink shadow-[0_3px_12px_-4px_rgba(212,175,55,0.7)] shrink-0"
                 >
-                  Done
+                  SAVE
                 </button>
               </>
             ) : savedQueue.length > 0 ? (
-              /* Saved queue, not editing */
+              /* SAVED — Quick becomes the edit entry point (shows the count); Clear is prominent */
               <>
                 <span className="text-mist shrink-0">
                   You <span className="text-white font-bold">{myPicks.length}</span>/{contest.picksPerUser + contest.backupsPerUser}
                 </span>
-                <span className="text-gold font-semibold shrink-0">⚡ {savedQueue.length} queued</span>
+                <span className="flex-1" />
                 <button
                   onClick={handleQdToggle}
-                  className="text-gold/90 hover:text-gold font-semibold shrink-0"
+                  className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 font-extrabold bg-gold text-ink shadow-[0_3px_12px_-4px_rgba(212,175,55,0.7)] shrink-0"
                 >
-                  Edit
+                  ⚡ Quick
+                  <span className="bg-black/20 rounded-full px-1.5 text-[11px] font-black">{savedQueue.length}</span>
                 </button>
                 <button
                   onClick={handleClearQueue}
-                  className="text-mist hover:text-cloud shrink-0"
+                  className="rounded-full px-3 py-1.5 font-bold bg-red-500/15 text-red-300 border border-red-500/50 shrink-0"
                 >
-                  ✕
+                  Clear
                 </button>
-                <Link href={`/draft/${code}/team`} className="ml-auto shrink-0 text-gold font-semibold">Team →</Link>
+                <Link href={`/draft/${code}/team`} className="text-gold font-bold shrink-0">Team →</Link>
               </>
             ) : (
-              /* Default */
+              /* IDLE — a solid, prominent, persistent Quick entry point */
               <>
                 <span className="text-mist shrink-0">
                   You <span className="text-white font-bold">{myPicks.length}</span>/{contest.picksPerUser + contest.backupsPerUser}
@@ -902,13 +913,14 @@ export default function DraftBoardPage({
                     {getUserLabel(u)} <span className="text-white font-bold">{theirPicks.filter((p) => p.pickedBy === u).length}</span>
                   </span>
                 ))}
+                <span className="flex-1" />
                 <button
                   onClick={handleQdToggle}
-                  className="ml-auto shrink-0 text-gold font-semibold"
+                  className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 font-extrabold bg-gold text-ink shadow-[0_3px_12px_-4px_rgba(212,175,55,0.7)] shrink-0"
                 >
                   ⚡ Quick
                 </button>
-                <Link href={`/draft/${code}/team`} className="shrink-0 text-gold font-semibold">Team →</Link>
+                <Link href={`/draft/${code}/team`} className="text-gold font-bold shrink-0">Team →</Link>
               </>
             )}
           </div>
@@ -1099,8 +1111,8 @@ function PlayerCard({
             className={`absolute inset-0 flex items-center justify-center text-xs font-bold tracking-wide transition-all duration-150 ${
               isPending
                 ? isMyTurn
-                  ? "opacity-100 bg-green-500/90 text-black"
-                  : "opacity-100 bg-gold/90 text-black"
+                  ? "opacity-100 bg-green-500 text-black"
+                  : "opacity-100 bg-gold text-black"
                 : "opacity-0 pointer-events-none"
             }`}
           >
