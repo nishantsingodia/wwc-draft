@@ -830,14 +830,14 @@ export default function DraftBoardPage({
                 {renderTeamSection(
                   t1, pendingKey, isMyTurn, handleTap, username,
                   quickDraftOn, getDraftQueuePos, getSavedQueuePos, handleQueueTap,
-                  lastOppPick?.playerKey ?? null
+                  lastOppPick?.playerKey ?? null, participants.length
                 )}
               </div>
               <div className="bg-ink space-y-px">
                 {renderTeamSection(
                   t2, pendingKey, isMyTurn, handleTap, username,
                   quickDraftOn, getDraftQueuePos, getSavedQueuePos, handleQueueTap,
-                  lastOppPick?.playerKey ?? null
+                  lastOppPick?.playerKey ?? null, participants.length
                 )}
               </div>
             </div>
@@ -941,6 +941,7 @@ function renderTeamSection(
   getSavedQueuePos: (key: string) => number | null,
   onQueueTap: (key: string) => void,
   lastPickedKey: string | null,
+  participantCount: number,
 ) {
   if (players.length === 0) {
     return <div className="py-6 text-center text-xs text-mist2">—</div>;
@@ -957,6 +958,7 @@ function renderTeamSection(
           isMyTurn={isMyTurn}
           onTap={onTap}
           username={username}
+          participantCount={participantCount}
           showBarrier={i === xi.length - 1 && bench.length > 0}
           quickDraftOn={quickDraftOn}
           draftQueuePos={getDraftQueuePos(p.key)}
@@ -973,6 +975,7 @@ function renderTeamSection(
           isMyTurn={isMyTurn}
           onTap={onTap}
           username={username}
+          participantCount={participantCount}
           isBench
           quickDraftOn={quickDraftOn}
           draftQueuePos={getDraftQueuePos(p.key)}
@@ -991,6 +994,7 @@ function PlayerCard({
   isMyTurn,
   onTap,
   username,
+  participantCount,
   isBench = false,
   showBarrier = false,
   quickDraftOn = false,
@@ -1004,6 +1008,7 @@ function PlayerCard({
   isMyTurn: boolean;
   onTap: (key: string) => void;
   username: string;
+  participantCount: number;
   isBench?: boolean;
   showBarrier?: boolean;
   quickDraftOn?: boolean;
@@ -1020,12 +1025,17 @@ function PlayerCard({
       ? USER_COLORS[player.takenBy]
       : "bg-gray-500";
 
-  // Fill for the "selected by whom" wash + left border. Each drafter shows in their OWN
-  // identity colour (same as the dot below and the draft-order legend) — including you.
-  // We deliberately do NOT force your own picks to green: one roster member's identity is
-  // emerald (Pushap), so a hardcoded green made your picks and his indistinguishable to
-  // every other viewer. Identity-per-user is viewer-independent and always distinct.
-  const fill = getUserHex(player.takenBy ?? "");
+  // Viewer-relative fill for the "selected by whom" wash + left border:
+  //   • YOUR picks       → green (#22c55e) — instantly recognisable as "mine".
+  //   • the one opponent → red  (#ef4444)  — a distinct, clearly-not-green colour, so a
+  //     two-player draft never collides (Pushap's identity colour is emerald, which is why
+  //     using his identity here made everything look green to the other player).
+  //   • 3+ friends       → each their own identity colour (dots + labels disambiguate).
+  const fill = isOwnPick
+    ? "#22c55e"
+    : participantCount <= 2
+    ? "#ef4444"
+    : getUserHex(player.takenBy ?? "");
 
   const bg = isTaken
     ? "bg-ink2"

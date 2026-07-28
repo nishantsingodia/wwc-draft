@@ -570,14 +570,11 @@ export default function ResultsPage({
                     <p className={`text-xl font-bold tabular-nums mt-1 ${isWinner ? "text-amber-300" : "text-cloud"}`}>
                       {total.toFixed(1)}
                     </p>
-                    {/* Your still-to-come cheer count, per column */}
-                    {live && isMine && (battingYet > 0 || bowlingYet > 0) && (
-                      <p className="mt-0.5 text-[10px] font-semibold text-gold">
-                        {battingYet > 0 && <span className="text-emerald-300">🟢 {battingYet} to bat</span>}
-                        {battingYet > 0 && bowlingYet > 0 && <span className="text-mist2"> · </span>}
-                        {bowlingYet > 0 && <span className="text-gold">🎯 {bowlingYet} to bowl</span>}
-                      </p>
-                    )}
+                    {/* The per-column "still to come" line lived here but only rendered for
+                        YOUR column, making your header taller than the opponent's and
+                        knocking every row below out of alignment. It's already shown in the
+                        "Still to come" strip above both columns, so it's dropped here to keep
+                        both headers — and therefore every player row — the same height. */}
                   </div>
                   {/* Rows — two lines each so full names always read */}
                   <div className="flex flex-col">
@@ -590,9 +587,12 @@ export default function ResultsPage({
                             highlight ? "ring-1 ring-inset ring-gold/50 bg-gold/[0.04]" : ""
                           }`}
                         >
-                          {/* Name carries the team identity via colour (no per-player logo). */}
+                          {/* Name line. The C/VC armband sits right beside the name and is
+                              made bold + coloured so the captain/vice stand out at a glance. */}
                           <div className="flex items-center gap-1.5 min-w-0">
                             <PlayerAvatar photo={p.photo} team={p.team} size={22} />
+                            {p.isCaptain && <span className="text-[10px] leading-none bg-yellow-500 text-black px-1.5 py-0.5 rounded font-extrabold shrink-0">C</span>}
+                            {p.isViceCaptain && <span className="text-[10px] leading-none bg-blue-500 text-white px-1.5 py-0.5 rounded font-extrabold shrink-0">VC</span>}
                             <span
                               className="text-xs font-semibold truncate"
                               style={{ color: nameColor(p.team) }}
@@ -605,8 +605,6 @@ export default function ResultsPage({
                               Non-live (completed): show the role tag since there's no status. */}
                           <div className="flex items-center gap-1.5 flex-nowrap overflow-hidden">
                             {!live && <span className={`text-[9px] font-bold shrink-0 ${ROLE_COLORS[p.role] ?? "text-mist"}`}>{p.role}</span>}
-                            {p.isCaptain && <span className="text-[8px] bg-yellow-500 text-black px-1 rounded font-bold shrink-0">C</span>}
-                            {p.isViceCaptain && <span className="text-[8px] bg-blue-500 text-white px-1 rounded font-bold shrink-0">VC</span>}
                             {live && <span className="flex items-center gap-1 min-w-0 overflow-hidden"><LiveStatusChip role={p.role} live={p.live} /></span>}
                             <span className={`ml-auto text-xs font-bold tabular-nums shrink-0 ${p.fantasyPoints !== null ? "text-amber-300" : "text-mist2"}`}>
                               {p.fantasyPoints !== null ? p.fantasyPoints.toFixed(1) : "–"}
