@@ -83,19 +83,23 @@ function stillToCome(p: PlayerResult): boolean {
   return p.live.batting === "YET";
 }
 
+// Chip tones, tuned for calm hierarchy on the busy live screen: only "batting now" — the
+// one state that's actually happening — gets a filled, bordered box. The waiting states
+// ("yet to bat/bowl") and settled figures recede to plain coloured/muted text, so the eye
+// lands on the points and the live action rather than on a wall of pills.
 const CHIP_TONES: Record<string, string> = {
-  emerald: "bg-emerald-500/15 text-emerald-300 border-emerald-500/40", // yet to bat (cheer)
-  gold: "bg-gold/15 text-gold border-gold/40", // yet to bowl (cheer)
-  green: "bg-green-500/15 text-green-300 border-green-500/40", // live now
-  muted: "bg-navy2 text-mist border-hair2", // done / not out
-  mutedRed: "bg-red-500/10 text-red-300/80 border-red-500/30", // out
-  faint: "bg-transparent text-mist2 border-hair2/50", // DNB
+  emerald: "text-emerald-300/80", // yet to bat — calm waiting state
+  gold: "text-amber-300/70", // yet to bowl — calm waiting state
+  green: "bg-green-500/15 text-green-300 border border-green-500/40", // batting NOW — the one emphasised state
+  muted: "text-mist", // done / not out figures
+  mutedRed: "text-red-300/90", // out
+  faint: "text-mist2", // DNB
 };
 
 function Chip({ tone, children }: { tone: keyof typeof CHIP_TONES; children: React.ReactNode }) {
   return (
     <span
-      className={`inline-flex items-center gap-0.5 text-[9px] font-semibold px-1.5 py-0.5 rounded border tabular-nums whitespace-nowrap ${
+      className={`inline-flex items-center gap-0.5 text-[9px] font-semibold px-1.5 py-0.5 rounded tabular-nums whitespace-nowrap ${
         CHIP_TONES[tone] ?? CHIP_TONES.muted
       }`}
     >
@@ -120,13 +124,13 @@ function LiveStatusChip({ role, live }: { role: string; live?: LiveStatus | null
   if (bat === "NOW") batSeg = <Chip tone="green">🏏 {batLine}</Chip>;
   else if (bat === "OUT") batSeg = <Chip tone="mutedRed">out {batLine}</Chip>;
   else if (bat === "NOTOUT") batSeg = <Chip tone="muted">{batLine}</Chip>;
-  else if (bat === "YET" && bats) batSeg = <Chip tone="emerald">🟢 yet to bat</Chip>;
+  else if (bat === "YET" && bats) batSeg = <Chip tone="emerald">yet to bat</Chip>;
 
   // Bowling segment: figures once they've bowled, else "yet to bowl" (bowlers only).
   let bowlSeg: React.ReactNode = null;
   if (bowl === "NOW") bowlSeg = <Chip tone="green">🏏 {bowlLine}</Chip>;
   else if (bowl === "DONE") bowlSeg = <Chip tone="muted">{bowlLine}</Chip>;
-  else if (bowl === "YET" && bowls) bowlSeg = <Chip tone="gold">🎯 yet to bowl</Chip>;
+  else if (bowl === "YET" && bowls) bowlSeg = <Chip tone="gold">yet to bowl</Chip>;
 
   if (!batSeg && !bowlSeg) return null;
   // Both show when a player has both batted and bowled (a true all-rounder's line).
@@ -583,20 +587,20 @@ export default function ResultsPage({
                       return (
                         <div
                           key={p.key}
-                          className={`flex flex-col justify-center gap-0.5 h-[3.25rem] px-2.5 border-t border-hair2/50 first:border-t-0 ${
+                          style={{ borderLeft: `3px solid ${nameColor(p.team)}` }}
+                          className={`flex flex-col justify-center gap-0.5 h-[3.25rem] pl-2 pr-2.5 border-t border-hair2/50 first:border-t-0 ${
                             highlight ? "ring-1 ring-inset ring-gold/50 bg-gold/[0.04]" : ""
                           }`}
                         >
-                          {/* Name line. The C/VC armband sits right beside the name and is
-                              made bold + coloured so the captain/vice stand out at a glance. */}
+                          {/* Name line. Team identity now reads from the subtle coloured spine
+                              on the row's left edge, so the name itself stays a calm near-white
+                              (loud team-coloured names on every row were the main visual noise).
+                              The C/VC armband sits beside the name, bold, so it still stands out. */}
                           <div className="flex items-center gap-1.5 min-w-0">
                             <PlayerAvatar photo={p.photo} team={p.team} size={22} />
                             {p.isCaptain && <span className="text-[10px] leading-none bg-yellow-500 text-black px-1.5 py-0.5 rounded font-extrabold shrink-0">C</span>}
                             {p.isViceCaptain && <span className="text-[10px] leading-none bg-blue-500 text-white px-1.5 py-0.5 rounded font-extrabold shrink-0">VC</span>}
-                            <span
-                              className="text-xs font-semibold truncate"
-                              style={{ color: nameColor(p.team) }}
-                            >
+                            <span className="text-xs font-semibold truncate text-cloud">
                               {p.name}
                             </span>
                           </div>

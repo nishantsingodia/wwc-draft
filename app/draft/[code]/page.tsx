@@ -1026,16 +1026,17 @@ function PlayerCard({
       : "bg-gray-500";
 
   // Viewer-relative fill for the "selected by whom" wash + left border:
-  //   • YOUR picks       → green (#22c55e) — instantly recognisable as "mine".
-  //   • the one opponent → red  (#ef4444)  — a distinct, clearly-not-green colour, so a
-  //     two-player draft never collides (Pushap's identity colour is emerald, which is why
-  //     using his identity here made everything look green to the other player).
-  //   • 3+ friends       → each their own identity colour (dots + labels disambiguate).
-  const fill = isOwnPick
-    ? "#22c55e"
-    : participantCount <= 2
-    ? "#ef4444"
-    : getUserHex(player.takenBy ?? "");
+  //   • 2-player draft → YOU are green (#22c55e), the one opponent is red (#ef4444). Red is
+  //     deliberately not an identity colour so it never collides with green (Pushap's identity
+  //     is emerald, which is what made everything look green to the other player before).
+  //   • 3+ friends     → everyone (you included) shows in their own identity colour; the dot
+  //     + name label disambiguate, so no need to special-case "you" to green here.
+  const fill =
+    participantCount <= 2
+      ? isOwnPick
+        ? "#22c55e"
+        : "#ef4444"
+      : getUserHex(player.takenBy ?? "");
 
   const bg = isTaken
     ? "bg-ink2"
