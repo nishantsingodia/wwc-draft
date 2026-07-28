@@ -1020,9 +1020,12 @@ function PlayerCard({
       ? USER_COLORS[player.takenBy]
       : "bg-gray-500";
 
-  // Viewer-relative fill for the "selected by whom" wash + left border: YOUR picks are
-  // always green; each opponent shows in their own identity colour.
-  const fill = isOwnPick ? "#22c55e" : getUserHex(player.takenBy ?? "");
+  // Fill for the "selected by whom" wash + left border. Each drafter shows in their OWN
+  // identity colour (same as the dot below and the draft-order legend) — including you.
+  // We deliberately do NOT force your own picks to green: one roster member's identity is
+  // emerald (Pushap), so a hardcoded green made your picks and his indistinguishable to
+  // every other viewer. Identity-per-user is viewer-independent and always distinct.
+  const fill = getUserHex(player.takenBy ?? "");
 
   const bg = isTaken
     ? "bg-ink2"
@@ -1062,16 +1065,17 @@ function PlayerCard({
     <>
       <div
         onClick={handleClick}
-        style={isTaken ? { borderLeft: `2px solid ${fill}` } : undefined}
+        style={isTaken ? { borderLeft: `4px solid ${fill}` } : undefined}
         className={`relative overflow-hidden px-2 py-2.5 flex items-center gap-1.5 transition-colors ${bg} ${border} ${
           isTaken ? "cursor-default" : "cursor-pointer"
         } ${isTaken ? "opacity-60" : isBench ? "opacity-70" : ""}`}
       >
-        {/* Viewer-relative "selected by" wash on the right half — dimmed, sits behind content */}
+        {/* "Selected by" wash on the right ~2/3 — stronger alpha so the identity colour
+            reads clearly on the dark board (the card itself is dimmed to opacity-60). */}
         {isTaken && (
           <span
-            className="absolute inset-y-0 right-0 w-1/2 pointer-events-none"
-            style={{ background: `linear-gradient(to left, ${fill}66 0%, ${fill}22 55%, transparent 100%)` }}
+            className="absolute inset-y-0 right-0 w-2/3 pointer-events-none"
+            style={{ background: `linear-gradient(to left, ${fill}dd 0%, ${fill}66 50%, transparent 100%)` }}
           />
         )}
         {/* Role badge */}

@@ -772,7 +772,7 @@ export default function TeamPage({
 
       {/* Save button */}
       {!isLocked && (
-        <div className="fixed bottom-0 inset-x-0 p-3 bg-ink/95 backdrop-blur border-t border-hair">
+        <div className="fixed bottom-0 inset-x-0 z-40 p-3 bg-ink backdrop-blur border-t border-hair">
           <div className="max-w-lg mx-auto space-y-2">
             {ranking.length < ppu && ranking.length > 0 && (
               <p className="text-yellow-400 text-xs text-center">
