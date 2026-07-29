@@ -3,14 +3,13 @@
 import { useEffect, useState, use, useCallback } from "react";
 import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
-import { getFlag, prettifyMatchLabel } from "@/lib/players";
+import { prettifyMatchLabel } from "@/lib/players";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
 import type { LiveStatus, Innings } from "@/lib/espn";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
 import TeamLogo from "@/components/team-logo";
-import { teamColorMap } from "@/lib/team-brands";
 import { auctionOwnersFor, tourForTeamCode, type AuctionOwner } from "@/lib/auction-ownership";
 
 type PlayerResult = {
@@ -83,13 +82,17 @@ function stillToCome(p: PlayerResult): boolean {
   return p.live.batting === "YET";
 }
 
+// Deliberately quiet. Each column carries ~11 rows and most rows carry two chips, so any
+// saturated tone here multiplies into noise that drowns out the actual points. Only the
+// LIVE-now state keeps a colour — it's the one thing worth looking at mid-match; every
+// other state (out / done / yet / DNB) is greyscale and reads as reference text.
 const CHIP_TONES: Record<string, string> = {
-  emerald: "bg-emerald-500/15 text-emerald-300 border-emerald-500/40", // yet to bat (cheer)
-  gold: "bg-gold/15 text-gold border-gold/40", // yet to bowl (cheer)
-  green: "bg-green-500/15 text-green-300 border-green-500/40", // live now
-  muted: "bg-navy2 text-mist border-hair2", // done / not out
-  mutedRed: "bg-red-500/10 text-red-300/80 border-red-500/30", // out
-  faint: "bg-transparent text-mist2 border-hair2/50", // DNB
+  emerald: "bg-white/[0.03] text-mist2 border-hair2/40", // yet to bat
+  gold: "bg-white/[0.03] text-mist2 border-hair2/40", // yet to bowl
+  green: "bg-emerald-500/10 text-emerald-300/85 border-emerald-500/25", // live now — the one signal
+  muted: "bg-white/[0.03] text-mist border-hair2/40", // done / not out
+  mutedRed: "bg-white/[0.03] text-mist border-hair2/40", // out — being dismissed isn't an alert
+  faint: "bg-transparent text-mist2 border-transparent", // DNB
 };
 
 function Chip({ tone, children }: { tone: keyof typeof CHIP_TONES; children: React.ReactNode }) {
@@ -115,18 +118,23 @@ function LiveStatusChip({ role, live }: { role: string; live?: LiveStatus | null
   const bats = role === "WK" || role === "BAT" || role === "AR";
   const bowls = role === "BOWL" || role === "AR";
 
+  // No emoji in any of these. 🟢 / 🎯 / 🏏 render at a larger optical size than the 9px chip
+  // text, so they were the loudest pixels in the row and repeated ~20 times per screen. The
+  // wording already says what's happening, and a bowling line ("0/39 (4.0)") is unmistakable
+  // against a batting one ("72 (38)").
+
   // Batting segment: their score once they've batted, else "yet to bat" (batters only).
   let batSeg: React.ReactNode = null;
-  if (bat === "NOW") batSeg = <Chip tone="green">🏏 {batLine}</Chip>;
+  if (bat === "NOW") batSeg = <Chip tone="green">{batLine}</Chip>;
   else if (bat === "OUT") batSeg = <Chip tone="mutedRed">out {batLine}</Chip>;
   else if (bat === "NOTOUT") batSeg = <Chip tone="muted">{batLine}</Chip>;
-  else if (bat === "YET" && bats) batSeg = <Chip tone="emerald">🟢 yet to bat</Chip>;
+  else if (bat === "YET" && bats) batSeg = <Chip tone="emerald">yet to bat</Chip>;
 
   // Bowling segment: figures once they've bowled, else "yet to bowl" (bowlers only).
   let bowlSeg: React.ReactNode = null;
-  if (bowl === "NOW") bowlSeg = <Chip tone="green">🏏 {bowlLine}</Chip>;
+  if (bowl === "NOW") bowlSeg = <Chip tone="green">{bowlLine}</Chip>;
   else if (bowl === "DONE") bowlSeg = <Chip tone="muted">{bowlLine}</Chip>;
-  else if (bowl === "YET" && bowls) bowlSeg = <Chip tone="gold">🎯 yet to bowl</Chip>;
+  else if (bowl === "YET" && bowls) bowlSeg = <Chip tone="gold">yet to bowl</Chip>;
 
   if (!batSeg && !bowlSeg) return null;
   // Both show when a player has both batted and bowled (a true all-rounder's line).
@@ -387,10 +395,21 @@ export default function ResultsPage({
   );
   // Team-hued, readable, guaranteed-distinct name colours for the two teams in this match.
   // Players' team identity reads from the NAME colour, so no per-player logo is needed.
-  const teamColors = teamColorMap(
-    teams.flatMap((t) => t.players.map((p) => p.team)).filter(Boolean)
-  );
-  const nameColor = (code: string) => teamColors.get(code) ?? "#e4e9f2";
+  // Only TWO sober tones — near-white and a muted slate-blue — instead of a distinct
+  // saturated hue per team: a match has exactly two sides, so two tones carry the same
+  // information, and the old per-team hues (a bright green vs a bright red, at 0.7 sat)
+  // made every single row shout for attention.
+  // Tones are assigned off the ALPHABETICAL team-code order, NOT first-appearance order:
+  // rows are sorted by points and re-sort as live points land, so first-appearance would
+  // let the two teams swap colours mid-match.
+  const NAME_TONES = ["#e6ebf4", "#8ea6c6"];
+  const teamOrder = [
+    ...new Set(teams.flatMap((t) => t.players.map((p) => p.team)).filter(Boolean)),
+  ].sort();
+  const nameColor = (code: string) => {
+    const i = teamOrder.indexOf(code);
+    return i < 0 ? NAME_TONES[0] : NAME_TONES[i % NAME_TONES.length];
+  };
 
   return (
     <main className="min-h-screen bg-ink text-white pb-8">
@@ -558,14 +577,20 @@ export default function ResultsPage({
                   key={team.user}
                   className={`rounded-xl border overflow-hidden ${orderedTeams.length === 2 ? "" : "min-w-[47%] shrink-0"} ${isWinner ? "border-yellow-400/50 ring-1 ring-yellow-400/20" : "border-hair2"} bg-ink2`}
                 >
-                  {/* Column head */}
-                  <div className={`px-3 py-2.5 border-b border-hair2 ${isWinner ? "bg-yellow-400/[0.06]" : ""}`}>
+                  {/* Column head — FIXED height, not padding-derived. Two things used to make
+                      the leader's header taller than the other's and knock every row below
+                      out of alignment: the per-column "still to come" line (removed earlier),
+                      and the 👑, which is a full-size emoji whose line box is taller than the
+                      12px name text beside it. The crown is now clamped (leading-none at chip
+                      size) AND the header height is pinned, so no future winner-only ornament
+                      can desync the columns again. */}
+                  <div className={`h-[4.25rem] px-3 flex flex-col justify-center border-b border-hair2 ${isWinner ? "bg-yellow-400/[0.06]" : ""}`}>
                     <div className="flex items-center gap-1.5">
                       <span className={`w-2 h-2 rounded-full shrink-0 ${color}`} />
                       <span className="text-xs font-semibold text-cloud truncate">
                         {getUserLabel(team.user)}{team.user === username ? " (you)" : ""}
                       </span>
-                      {isWinner && <span className="ml-auto shrink-0">👑</span>}
+                      {isWinner && <span className="ml-auto shrink-0 text-[13px] leading-none">👑</span>}
                     </div>
                     <p className={`text-xl font-bold tabular-nums mt-1 ${isWinner ? "text-amber-300" : "text-cloud"}`}>
                       {total.toFixed(1)}
@@ -583,14 +608,18 @@ export default function ResultsPage({
                       return (
                         <div
                           key={p.key}
+                          // A full gold ring per still-to-come row meant 7 of 11 rows were
+                          // outlined at once, which reads as an error state rather than a
+                          // cheer cue. Now a single thin inset accent on the left edge —
+                          // inset shadow, not a border, so it adds no layout shift.
                           className={`flex flex-col justify-center gap-0.5 h-[3.25rem] px-2.5 border-t border-hair2/50 first:border-t-0 ${
-                            highlight ? "ring-1 ring-inset ring-gold/50 bg-gold/[0.04]" : ""
+                            highlight ? "bg-gold/[0.03] shadow-[inset_2px_0_0_rgba(212,175,55,0.35)]" : ""
                           }`}
                         >
                           {/* Name line. The C/VC armband sits right beside the name and is
                               made bold + coloured so the captain/vice stand out at a glance. */}
                           <div className="flex items-center gap-1.5 min-w-0">
-                            <PlayerAvatar photo={p.photo} team={p.team} size={22} />
+                            <PlayerAvatar photo={p.photo} size={22} />
                             {p.isCaptain && <span className="text-[10px] leading-none bg-yellow-500 text-black px-1.5 py-0.5 rounded font-extrabold shrink-0">C</span>}
                             {p.isViceCaptain && <span className="text-[10px] leading-none bg-blue-500 text-white px-1.5 py-0.5 rounded font-extrabold shrink-0">VC</span>}
                             <span
@@ -696,10 +725,14 @@ export default function ResultsPage({
   );
 }
 
-// Player headshot from ESPN (live matches only). Falls back to the team flag when there's
-// no photo, and — crucially — also on a runtime image error (onError), so a dead URL can
-// never render as a broken image. Plain <img> keeps us off next/image remote-host config.
-function PlayerAvatar({ photo, team, size }: { photo?: string | null; team: string; size: number }) {
+// Player headshot from ESPN (live matches only). Falls back to a neutral greyscale
+// silhouette when there's no photo, and — crucially — also on a runtime image error
+// (onError), so a dead URL can never render as a broken image. Plain <img> keeps us off
+// next/image remote-host config.
+// The fallback is deliberately NOT the team flag any more: only ~25% of players have a
+// photo, so a column was mostly loud emoji flags sitting at a different optical size and
+// baseline to the round photos — and the team is already carried by the name colour.
+function PlayerAvatar({ photo, size }: { photo?: string | null; size: number }) {
   const [failed, setFailed] = useState(false);
   if (photo && !failed) {
     return (
@@ -714,9 +747,18 @@ function PlayerAvatar({ photo, team, size }: { photo?: string | null; team: stri
       />
     );
   }
+  // Generic avatar: same round footprint/ring as a real headshot so rows never shift when a
+  // photo does exist. The silhouette runs to the bottom of the viewBox and is clipped by the
+  // circle, which is what makes it read as a stock profile picture rather than a floating icon.
   return (
-    <span className="shrink-0 leading-none" style={{ fontSize: Math.round(size * 0.85) }}>
-      {getFlag(team)}
+    <span
+      style={{ width: size, height: size }}
+      className="shrink-0 inline-flex items-end justify-center overflow-hidden rounded-full bg-navy2 ring-1 ring-hair2/60"
+    >
+      <svg viewBox="0 0 24 24" width={size} height={size} aria-hidden style={{ fill: "#5f6b82" }}>
+        <circle cx="12" cy="9" r="4.2" />
+        <path d="M12 14.6c-4.2 0-7.6 2.6-7.6 5.9V24h15.2v-3.5c0-3.3-3.4-5.9-7.6-5.9z" />
+      </svg>
     </span>
   );
 }
@@ -751,7 +793,7 @@ function PlayerRow({
         highlight ? "ring-1 ring-gold/50 bg-gold/[0.04]" : ""
       }`}
     >
-      <PlayerAvatar photo={player.photo} team={player.team} size={26} />
+      <PlayerAvatar photo={player.photo} size={26} />
       {/* Role tag only when not live — live rows let the status text speak instead. */}
       {!showLive && (
         <span className={`text-xs font-bold ${ROLE_COLORS[player.role] ?? "text-mist"}`}>
