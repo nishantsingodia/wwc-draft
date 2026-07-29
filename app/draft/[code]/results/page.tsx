@@ -95,6 +95,32 @@ const CHIP_TONES: Record<string, string> = {
   faint: "bg-transparent text-mist2 border-transparent", // DNB
 };
 
+// The captain and vice-captain are the two rows that decide the contest, and a 10px badge
+// among the other row chrome was too easy to miss. So the WHOLE row is tinted: gold for C,
+// blue for VC — the same two colours their badges already use, so this amplifies the
+// existing language rather than teaching a new one. Deliberately NOT green/orange: green
+// already means "your pick" on the draft board and "batting now" in the status chips, and
+// orange is the fantasy-points number on every single row.
+//
+// Two hues (not two intensities of one) because C vs VC has to be distinguishable at a
+// glance, and low-alpha washes of the same hue on a dark background are not.
+//
+// The left rail + tint are an inset shadow, never a border, so there's no layout shift and
+// the fixed row height that keeps the two columns aligned is untouched.
+const ROW_TONE_C = "bg-gold/[0.14] shadow-[inset_3px_0_0_rgba(212,175,55,0.9)]";
+const ROW_TONE_VC = "bg-blue-500/[0.13] shadow-[inset_3px_0_0_rgba(59,130,246,0.9)]";
+// Still-to-come is a NEUTRAL wash, not gold: it used to be gold, which now belongs to the
+// captain. It's also the weakest cue here on purpose — it's already stated by the row's own
+// "yet to bat" chip and counted in the "Still to come" strip above both columns.
+const ROW_TONE_STC = "bg-white/[0.03]";
+
+// C beats VC beats still-to-come — a captain who's yet to bat reads as the captain.
+function armbandRowTone(p: PlayerResult, stillToComeRow: boolean): string {
+  if (p.isCaptain) return ROW_TONE_C;
+  if (p.isViceCaptain) return ROW_TONE_VC;
+  return stillToComeRow ? ROW_TONE_STC : "";
+}
+
 function Chip({ tone, children }: { tone: keyof typeof CHIP_TONES; children: React.ReactNode }) {
   return (
     <span
@@ -608,19 +634,13 @@ export default function ResultsPage({
                       return (
                         <div
                           key={p.key}
-                          // A full gold ring per still-to-come row meant 7 of 11 rows were
-                          // outlined at once, which reads as an error state rather than a
-                          // cheer cue. Now a single thin inset accent on the left edge —
-                          // inset shadow, not a border, so it adds no layout shift.
-                          className={`flex flex-col justify-center gap-0.5 h-[3.25rem] px-2.5 border-t border-hair2/50 first:border-t-0 ${
-                            highlight ? "bg-gold/[0.03] shadow-[inset_2px_0_0_rgba(212,175,55,0.35)]" : ""
-                          }`}
+                          className={`flex flex-col justify-center gap-0.5 h-[3.25rem] px-2.5 border-t border-hair2/50 first:border-t-0 ${armbandRowTone(p, highlight)}`}
                         >
-                          {/* Name line. The C/VC armband sits right beside the name and is
-                              made bold + coloured so the captain/vice stand out at a glance. */}
+                          {/* Name line. The armband badge stays as the unambiguous label — the
+                              row tint is the thing you spot, the letter is what confirms it. */}
                           <div className="flex items-center gap-1.5 min-w-0">
                             <PlayerAvatar photo={p.photo} size={22} />
-                            {p.isCaptain && <span className="text-[10px] leading-none bg-yellow-500 text-black px-1.5 py-0.5 rounded font-extrabold shrink-0">C</span>}
+                            {p.isCaptain && <span className="text-[10px] leading-none bg-gold text-ink px-1.5 py-0.5 rounded font-extrabold shrink-0">C</span>}
                             {p.isViceCaptain && <span className="text-[10px] leading-none bg-blue-500 text-white px-1.5 py-0.5 rounded font-extrabold shrink-0">VC</span>}
                             <span
                               className="text-xs font-semibold truncate"
@@ -779,7 +799,7 @@ function PlayerRow({
   player: PlayerResult;
   isBench?: boolean;
   showLive?: boolean; // match is live → render the live status chip
-  highlight?: boolean; // one of YOUR still-to-come players → subtle gold rail
+  highlight?: boolean; // one of YOUR still-to-come players → faint neutral wash (see rowTone)
   nameColorHex?: string; // team-hued name colour (team identity, no per-player logo)
 }) {
   const mult = player.isCaptain ? 2 : player.isViceCaptain ? 1.5 : 1;
@@ -787,11 +807,22 @@ function PlayerRow({
   const raw = player.rawPoints;
   const displayPts = raw !== null ? raw * mult : null;
 
+  // Same C/gold, VC/blue, still-to-come/neutral language as the head-to-head columns, so
+  // switching tabs doesn't switch visual vocabulary. Painted entirely with inset shadows
+  // (a 3px left rail plus a full-bleed 100px-spread inset acting as the tint) rather than a
+  // `bg-*` class: this row already carries a solid `bg-ink2`, and two competing background
+  // utilities would resolve by stylesheet order, not by the order written here.
+  const rowTone = player.isCaptain
+    ? "shadow-[inset_3px_0_0_rgba(212,175,55,0.9),inset_0_0_0_100px_rgba(212,175,55,0.11)]"
+    : player.isViceCaptain
+    ? "shadow-[inset_3px_0_0_rgba(59,130,246,0.9),inset_0_0_0_100px_rgba(59,130,246,0.10)]"
+    : highlight
+    ? "shadow-[inset_0_0_0_100px_rgba(255,255,255,0.03)]"
+    : "";
+
   return (
     <div
-      className={`flex items-center gap-2 bg-ink2 rounded-lg px-3 py-2 ${isBench ? "opacity-70" : ""} ${
-        highlight ? "ring-1 ring-gold/50 bg-gold/[0.04]" : ""
-      }`}
+      className={`flex items-center gap-2 bg-ink2 rounded-lg px-3 py-2 ${isBench ? "opacity-70" : ""} ${rowTone}`}
     >
       <PlayerAvatar photo={player.photo} size={26} />
       {/* Role tag only when not live — live rows let the status text speak instead. */}
@@ -803,7 +834,7 @@ function PlayerRow({
       <span className="flex-1 text-sm font-semibold min-w-0 truncate" style={{ color: nameColorHex }}>
         {player.name}
         {player.isCaptain && (
-          <span className="ml-1 text-xs bg-yellow-500 text-black px-1 rounded font-bold">C</span>
+          <span className="ml-1 text-xs bg-gold text-ink px-1 rounded font-bold">C</span>
         )}
         {player.isViceCaptain && (
           <span className="ml-1 text-xs bg-blue-500 text-white px-1 rounded font-bold">VC</span>
