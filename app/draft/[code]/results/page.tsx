@@ -428,7 +428,14 @@ export default function ResultsPage({
   // Tones are assigned off the ALPHABETICAL team-code order, NOT first-appearance order:
   // rows are sorted by points and re-sort as live points land, so first-appearance would
   // let the two teams swap colours mid-match.
-  const NAME_TONES = ["#e6ebf4", "#8ea6c6"];
+  // Near-white vs muted CYAN, not vs a slate-blue. The first attempt paired #e6ebf4 with
+  // #8ea6c6, and on a navy background those both just read as "light" — a lightness-only
+  // difference between two cool greys is not separable at a glance in a dense list.
+  // A hue shift is, so the second tone moves off the grey axis entirely.
+  // Cyan specifically because every warm slot is taken and would fight something: gold is
+  // the captain's row wash, amber is the points number on every row. Cyan also holds up
+  // where it has to sit ON a tint — legible over both the gold C row and the blue VC row.
+  const NAME_TONES = ["#eef3fa", "#6fc3d6"];
   const teamOrder = [
     ...new Set(teams.flatMap((t) => t.players.map((p) => p.team)).filter(Boolean)),
   ].sort();
