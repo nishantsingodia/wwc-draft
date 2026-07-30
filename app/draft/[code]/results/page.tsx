@@ -11,6 +11,16 @@ import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
 import TeamLogo from "@/components/team-logo";
 import { auctionOwnersFor, tourForTeamCode, type AuctionOwner } from "@/lib/auction-ownership";
+import { ReasonChip } from "@/components/settlement-badge";
+import type { AuditReason } from "@/lib/audit-reasons";
+
+type AuditRow = {
+  pid: string; name: string; team: string;
+  settled: number | null; now: number | null; delta: number;
+  reason: AuditReason; orphanCandidate: string | null;
+  provenance: "live" | "seed" | "unknown" | null; l2: string;
+  group: "PENDING" | "CHANGED" | "NO_BASELINE" | "CLEAN"; marker: string;
+};
 
 type PlayerResult = {
   key: string;
@@ -57,6 +67,26 @@ type ResultsData = {
   liveProvisional: boolean; // H2H is computed live from ESPN (provisional, in-app, no bot)
   liveFreshness: string | null; // "Points updated till 14.3 overs (138/4)" — live only
   scorecard?: Innings[] | null; // full innings breakdown for the live Scorecard tab (live only)
+  // Settlement audit (completed only): settled baseline vs what the sheet says now, and WHY it
+  // moved. Null while live — nothing is settled yet, so there is nothing to audit.
+  audit?: {
+    changed: boolean;
+    noBaseline: boolean;
+    pending: AuditRow[];
+    changedRows: AuditRow[];
+    pendingAbsDelta: number;
+    players: {
+      pid: string; name: string; team: string;
+      settled: number | null; now: number | null; delta: number;
+      reason: AuditReason; orphanCandidate: string | null;
+      provenance: "live" | "seed" | "unknown" | null; l2: string;
+    }[];
+    orphans: { name: string; points: number }[];
+    totals: { user: string; settled: number | null; now: number | null; delta: number }[];
+    winnerChanged: boolean;
+    settledWinners: string[];
+    currentWinners: string[];
+  } | null;
 };
 
 const ROLE_COLORS: Record<string, string> = {
@@ -330,7 +360,7 @@ export default function ResultsPage({
   const { code } = use(params);
   const [data, setData] = useState<ResultsData | null>(null);
   const [error, setError] = useState("");
-  const [tab, setTab] = useState<"h2h" | "detail" | "scorecard">("h2h");
+  const [tab, setTab] = useState<"h2h" | "detail" | "scorecard" | "audit">("h2h");
   const [refreshing, setRefreshing] = useState(false);
 
   const fetchResults = useCallback(
@@ -409,7 +439,10 @@ export default function ResultsPage({
 
   // The Scorecard tab is live-only. If the match completes while it's selected, fall back to
   // Head-to-head so the view never goes blank (the button is hidden once not live).
-  const activeTab = tab === "scorecard" && !live ? "h2h" : tab;
+  // Scorecard is live-only; Audit is completed-only. If the match changes state while one of
+  // them is selected, fall back to H2H rather than rendering an empty tab.
+  const activeTab =
+    tab === "scorecard" && !live ? "h2h" : tab === "audit" && !data.audit ? "h2h" : tab;
 
   // "Still to come" cheer summary from YOUR XI's live statuses (live only).
   const myXI = (myTeam?.players ?? []).filter((p) => !p.isBackup);
@@ -579,6 +612,19 @@ export default function ResultsPage({
                 Scorecard
               </button>
             )}
+            {data.audit && (
+              <button
+                onClick={() => setTab("audit")}
+                className={`flex-1 py-2 rounded-lg text-xs font-bold transition-colors ${activeTab === "audit" ? "bg-ink text-gold" : "text-mist hover:text-cloud"}`}
+              >
+                Audit
+                {(data.audit.changed || data.audit.noBaseline) && (
+                  <span className={`ml-1 ${data.audit.changed ? "text-destructive" : "text-mist2"}`}>
+                    {data.audit.changed ? "⚠" : "?"}
+                  </span>
+                )}
+              </button>
+            )}
           </div>
         )}
 
@@ -732,6 +778,189 @@ export default function ResultsPage({
             ) : (
               <p className="text-center text-mist2 text-sm py-8">Scorecard appears once play begins.</p>
             )}
+          </div>
+        )}
+
+
+        {/* ── AUDIT: was this result settled on the same numbers the sheet shows now? ──
+            The points sheet is rewritten in place on every bot run, so a settled result can move
+            without anyone touching it. This tab is the receipt. */}
+        {activeTab === "audit" && data.audit && (
+          <div className="space-y-3">
+            {/* Verdict first — the user's question is "do we need to re-settle?" */}
+            <div
+              className={`rounded-xl border px-3 py-2.5 ${
+                data.audit.winnerChanged
+                  ? "border-destructive/50 bg-destructive/10"
+                  : data.audit.changed
+                    ? "border-gold/50 bg-gold/10"
+                    : data.audit.noBaseline
+                      ? "border-mist2/30 bg-ink2"
+                      : "border-grn/40 bg-grn/10"
+              }`}
+            >
+              <p className="text-sm font-bold">
+                {data.audit.winnerChanged
+                  ? "⚠ The result changed — this contest would settle differently now"
+                  : data.audit.changed
+                    ? "⚠ Points moved since settlement, but the winner is unchanged"
+                    : data.audit.pending.length > 0
+                      ? "⏳ Reconciliation still open — nothing has moved yet"
+                      : data.audit.noBaseline
+                        ? "? No settled baseline recorded for this match"
+                        : "✓ Unchanged since settlement"}
+              </p>
+              {data.audit.pending.length > 0 && (
+                <p className="text-[11px] text-mist mt-1">
+                  {data.audit.pending.length} player
+                  {data.audit.pending.length === 1 ? "" : "s"} awaiting your action
+                  {data.audit.pendingAbsDelta > 0 && (
+                    <> · <span className="text-cloud font-semibold">{data.audit.pendingAbsDelta} pts</span> at stake if applied</>
+                  )}
+                  . Until then the settled value is what you see.
+                </p>
+              )}
+              {data.audit.noBaseline && (
+                <p className="text-[11px] text-mist mt-1">
+                  This match completed before the audit baseline existed, so an unchanged total
+                  here is not proof that nothing moved.
+                </p>
+              )}
+            </div>
+
+            {/* Then/now per user */}
+            <div className="rounded-xl border border-hair bg-ink2 overflow-hidden">
+              <table className="w-full text-xs">
+                <thead>
+                  <tr className="text-mist2 text-[10px] uppercase tracking-wide border-b border-hair">
+                    <th className="text-left font-medium px-3 py-2">Player</th>
+                    <th className="text-right font-medium px-2 py-2">Settled</th>
+                    <th className="text-right font-medium px-2 py-2">Now</th>
+                    <th className="text-right font-medium px-3 py-2">Δ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.audit.totals.map((t) => {
+                    const wasW = data.audit!.settledWinners.includes(t.user);
+                    const isW = data.audit!.currentWinners.includes(t.user);
+                    return (
+                      <tr key={t.user} className="border-b border-hair/50 last:border-0">
+                        <td className="px-3 py-2">
+                          <span className={t.user === username ? "font-semibold text-cloud" : "text-mist"}>
+                            {getUserLabel(t.user)}
+                          </span>
+                          {wasW && !isW && <span className="ml-1 text-[9px] text-destructive">lost 🏆</span>}
+                          {!wasW && isW && <span className="ml-1 text-[9px] text-grn">gained 🏆</span>}
+                        </td>
+                        <td className="px-2 py-2 text-right tabular-nums text-mist">
+                          {t.settled === null ? "—" : Math.round(t.settled * 10) / 10}
+                        </td>
+                        <td className="px-2 py-2 text-right tabular-nums font-semibold">
+                          {t.now === null ? "—" : Math.round(t.now * 10) / 10}
+                        </td>
+                        <td className="px-3 py-2 text-right tabular-nums">
+                          {t.delta === 0 ? (
+                            <span className="text-mist2">—</span>
+                          ) : (
+                            <span className={t.delta < 0 ? "text-destructive font-bold" : "text-grn font-bold"}>
+                              {t.delta < 0 ? "−" : "+"}
+                              {Math.abs(Math.round(t.delta * 10) / 10)}
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* ── Split, because these demand different things from you ──
+                 PENDING  = L2 recon not finished. The bot is HOLDING the settled value, so nothing
+                            has moved. This is a to-do list (approve in Recon Review, or fix the
+                            registry alias).
+                 CHANGED  = L2 recon finished and the number already differs from settlement. This
+                            is the list that decides whether you re-settle. */}
+            {(["PENDING", "CHANGED"] as const).map((grp) => {
+              const rows = grp === "PENDING" ? data.audit!.pending : data.audit!.changedRows;
+              if (rows.length === 0) return null;
+              const pend = grp === "PENDING";
+              return (
+                <div
+                  key={grp}
+                  className={`rounded-xl border p-3 ${pend ? "border-gold/40 bg-gold/5" : "border-destructive/40 bg-destructive/5"}`}
+                >
+                  <p className={`text-[10px] uppercase tracking-wide mb-0.5 font-bold ${pend ? "text-gold" : "text-destructive"}`}>
+                    {pend
+                      ? `⏳ L2 recon pending — action needed (${rows.length})`
+                      : `⚠ L2 recon done — result changed (${rows.length})`}
+                  </p>
+                  <p className="text-[10px] text-mist2 mb-2">
+                    {pend
+                      ? "Settled value is still being shown. It only moves once you approve the revision (or fix the identity)."
+                      : "Reconciliation is complete and these numbers already differ from what this contest was settled on."}
+                  </p>
+                  <ul className="space-y-2">
+                    {rows.map((p) => (
+                      <li key={p.pid} className="text-xs">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <span className="font-medium text-cloud">{p.name}</span>
+                          {p.team && <span className="text-[10px] text-mist2 font-mono">{p.team}</span>}
+                          <span className="font-mono text-mist tabular-nums">
+                            {p.settled === null ? "—" : p.settled}
+                            {" "}
+                            {pend ? "⇢" : "→"}
+                            {" "}
+                            {p.now === null ? "0" : p.now}
+                          </span>
+                          {p.delta !== 0 && (
+                            <span className={p.delta < 0 ? "text-destructive font-bold" : "text-grn font-bold"}>
+                              ({p.delta < 0 ? "−" : "+"}
+                              {Math.abs(p.delta)}
+                              {pend ? " if applied" : ""})
+                            </span>
+                          )}
+                          <ReasonChip reason={p.reason} />
+                        </div>
+                        {p.marker && (
+                          <p className="text-[10px] text-mist2 mt-0.5 font-mono">{p.marker}</p>
+                        )}
+                        {p.orphanCandidate && (
+                          <p className="text-[10px] text-mist2 mt-0.5">
+                            The official card lists{" "}
+                            <span className="font-mono text-destructive">{p.orphanCandidate}</span>, which
+                            resolves to no player id — so these points reach no contest. Fixing the
+                            registry alias recovers them.
+                          </p>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+
+            {data.audit.orphans.length > 0 && (
+              <div className="rounded-xl border border-destructive/40 bg-destructive/5 p-3">
+                <p className="text-[10px] uppercase tracking-wide text-destructive mb-1.5">
+                  Points no contest can see
+                </p>
+                <ul className="text-xs space-y-0.5">
+                  {data.audit.orphans.map((o) => (
+                    <li key={o.name} className="flex items-center gap-2">
+                      <span className="font-mono text-cloud">{o.name}</span>
+                      <span className="text-mist2">no player id</span>
+                      <span className="ml-auto font-bold tabular-nums text-destructive">{o.points} pts</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <p className="text-[10px] text-mist2 text-center">
+              Baseline = each player&apos;s points the first time this match published as completed
+              (bot&apos;s write-once SETTLEMENT AUDIT tab).
+            </p>
           </div>
         )}
 

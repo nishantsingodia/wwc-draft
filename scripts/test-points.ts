@@ -28,7 +28,12 @@ function check(name: string, cond: boolean) {
 
 const M30 = { team1: "AUS", team2: "IND", date: "2026-06-28T00:00:00+05:30", key: "AUS_IND_Jun28" };
 
-// Charani pid 583ce32c, Perry pid be150fc8 (the real Match 30 ids).
+// Charani pid 583ce32c, Perry pid be150fc8 (the real Match 30 ids) — PRE-migration pids, kept
+// deliberately: the sheet carried these before the 25 Jul cricinfo-id migration, so injecting them
+// exercises the `resolvePid` / pid-map.json shim. Lookups therefore assert on the player's CURRENT
+// ci: pid (what players-raw.json carries), which is what the shim is for. Asserting on the raw old
+// pid tested the shim being ABSENT.
+const CHARANI_CI = "ci:1464461";   // 583ce32c -> ci: via lib/pid-map.json
 const H_FULL = ["Match", "Date", "Team", "Player ID", "Full Name", "Played",
   "Fantasy Points", "Match Status", "Recon Flag", "Player Recon"];
 const H_LEGACY = ["Match", "Date", "Team", "Player ID", "Full Name", "Played", "Fantasy Points"];
@@ -66,7 +71,7 @@ async function main() {
   // ── getMatchPointsForMatch: resolves by teams+date, keys by pid AND name ──
   __setPointsCacheForTest(LIVE);
   const pm = await getMatchPointsForMatch(M30);
-  check("match points: Charani by pid", pm.get("583ce32c") === 43);
+  check("match points: Charani by pid (via pid-map shim)", pm.get(CHARANI_CI) === 43);
   check("match points: Perry by name", pm.get("Ellyse Perry") === 79);
 
   // ── THE GATE: scored + LIVE => NOT completed ──
@@ -100,9 +105,9 @@ async function main() {
   // ── PER-PLAYER recon: which players aren't reconciled ──
   __setPointsCacheForTest(LIVE);
   const recon = await getMatchPlayerRecon(M30);
-  check("player recon: Charani flagged by pid", recon.get("583ce32c") === "⏳ unreconciled");
+  check("player recon: Charani flagged by pid (via shim)", recon.get(CHARANI_CI) === "⏳ unreconciled");
   check("player recon: lookup pid-first",
-    lookupPlayerRecon("583ce32c", "Shree Charani", undefined, recon) === "⏳ unreconciled");
+    lookupPlayerRecon(CHARANI_CI, "Shree Charani", undefined, recon) === "⏳ unreconciled");
   __setPointsCacheForTest(COMPLETED);
   check("player recon: empty once completed", (await getMatchPlayerRecon(M30)).size === 0);
   __setPointsCacheForTest(LEGACY);

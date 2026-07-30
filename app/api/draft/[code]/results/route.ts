@@ -11,7 +11,15 @@ import {
   lookupPlayerPoints,
   lookupPlayerRecon,
   isMatchCompleted,
+  getSettledPointsForMatch,
 } from "@/lib/points";
+import {
+  auditMatch,
+  auditContest,
+  type PlayerAudit,
+  type ContestAudit,
+} from "@/lib/settlement-audit";
+import { calcSelectionPoints } from "@/lib/contest-scoring";
 import { getLiveMatchPoints, type LiveStatus } from "@/lib/espn";
 import { getMatchDelay } from "@/lib/match-delay";
 import { getOfficialLineup } from "@/lib/official-lineup";
@@ -219,10 +227,56 @@ export async function GET(
     })
   );
 
+  // ── Settlement audit (completed matches only) ────────────────────────────────────────
+  // The sheet is rewritten in place every bot run, so a settled result can move silently —
+  // cricsheet landing on LPL/the Hundred zeroed players whose official-card spelling didn't
+  // resolve, on matches already badged COMPLETED. Compare the bot's WRITE-ONCE settled baseline
+  // against what this route just scored, using the SAME per-selection scorer for both sides so
+  // "then" and "now" can never drift apart the way the lobby and results totals once did.
+  // Skipped while live: nothing is settled yet, so there is nothing to audit.
+  let audit: {
+    changed: boolean;
+    noBaseline: boolean;
+    /** L2 recon NOT finished — your action outstanding; the shown number is still the settled one. */
+    pending: PlayerAudit[];
+    /** L2 recon finished and the number moved — the re-settle list. */
+    changedRows: PlayerAudit[];
+    pendingAbsDelta: number;
+    players: PlayerAudit[];
+    orphans: { name: string; points: number }[];
+    totals: ContestAudit["totals"];
+    winnerChanged: boolean;
+    settledWinners: string[];
+    currentWinners: string[];
+  } | null = null;
+  if (match && completed) {
+    const [matchAudit, settledPts] = await Promise.all([
+      auditMatch(match),
+      getSettledPointsForMatch(match),
+    ]);
+    const score = (user: string, pts: Map<string, number>) => {
+      const sel = selections.find((s) => s.user === user);
+      return sel ? calcSelectionPoints(sel, contest.picksPerUser, pts) : null;
+    };
+    const ca = auditContest(selections.map((s) => s.user), score, settledPts, pointsMap);
+    audit = {
+      changed: matchAudit.changed,
+      noBaseline: matchAudit.noBaseline,
+      pending: matchAudit.pending,
+      changedRows: matchAudit.changedRows,
+      pendingAbsDelta: matchAudit.pendingAbsDelta,
+      // Only rows worth reading: an unchanged player is noise on this tab.
+      players: matchAudit.players.filter((p) => p.reason !== "UNCHANGED"),
+      orphans: matchAudit.orphans,
+      ...ca,
+    };
+  }
+
   // `started` + `completed` (computed above off nowSec) let the client pick the refresh
   // mode: while live it re-fetches this route (?fresh=1) for an instant ESPN pull; once
   // completed the sheet drives it. `pointsSource` flags when the H2H is provisional/ESPN.
   return NextResponse.json({
+    audit,
     contest: { ...contest, matchDeadline: effDeadline },
     teams,
     username,

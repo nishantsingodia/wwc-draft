@@ -16,6 +16,9 @@ import { getMatchPointsMap } from "@/lib/live-points";
 import { getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
 import TeamLogo from "@/components/team-logo";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
+import { getSettledPointsForMatch } from "@/lib/points";
+import { auditMatch } from "@/lib/settlement-audit";
+import { SettlementBadge } from "@/components/settlement-badge";
 
 async function getUserContests(username: string) {
   const db = getDb();
@@ -208,6 +211,11 @@ export default async function LobbyPage() {
   // bot's reconciled sheet. `fresh: true` so the manual "Refresh now" always re-pulls a
   // current ESPN scorecard rather than a ≤20s-cached one.
   const matchPointsCache = new Map<string, Map<string, number>>();
+  const settledPointsCache = new Map<string, Map<string, number>>();
+  // How many players on a completed match still need a recon decision. Kept separate from the
+  // points delta: a pending revision has NOT moved anything (the bot holds the settled value), so
+  // it must read as "recon open", never as "this result was wrong".
+  const pendingCountCache = new Map<string, number>();
   const matchFreshness = new Map<string, string>(); // live "Points updated till …" per match
   const liveToFetch = liveMatches.filter((m) => liveDraftMatchKeys.has(m.key));
   const completedToFetch = allMatches.filter((m) => myCompletedMatchKeys.includes(m.key));
@@ -220,6 +228,14 @@ export default async function LobbyPage() {
     ...completedToFetch.map(async (m) => {
       const r = await getMatchPointsMap(m, { live: false });
       matchPointsCache.set(m.key, r.points);
+    }),
+    // Settled baseline per completed match, so the Completed tab can flag "this result moved
+    // since we settled" WITHOUT the user opening each contest. One extra cached CSV read.
+    ...completedToFetch.map(async (m) => {
+      settledPointsCache.set(m.key, await getSettledPointsForMatch(m));
+    }),
+    ...completedToFetch.map(async (m) => {
+      pendingCountCache.set(m.key, (await auditMatch(m)).pending.length);
     }),
   ]);
 
@@ -403,13 +419,83 @@ export default async function LobbyPage() {
     </div>
   );
 
+  // How many of the viewer's completed matches have moved since settlement — drives the count on
+  // the "Settlement audit" link so the entry point itself says whether it's worth opening.
+  const pendingMatchCount = myCompletedMatchKeys.filter(
+    (mk) => (pendingCountCache.get(mk) ?? 0) > 0
+  ).length;
+  const movedCount = myCompletedMatchKeys.filter((mk) => {
+    const settled = settledPointsCache.get(mk);
+    if (!settled || settled.size === 0) return false;
+    const pts = matchPointsCache.get(mk) ?? new Map();
+    return (userContestsByMatch.get(mk) ?? []).some((c) => {
+      const sel = (selectionsMap.get(c.id) ?? []).find((sl) => sl.user === username);
+      if (!sel) return false;
+      return calcSelectionPoints(sel, c.picksPerUser, settled) !==
+        calcSelectionPoints(sel, c.picksPerUser, pts);
+    });
+  }).length;
+
   // ── COMPLETED panel ──
   const completedContent = (
     <div className="space-y-3">
+      <Link
+        href="/audit"
+        className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 transition-colors ${
+          movedCount > 0
+            ? "border-destructive/50 bg-destructive/10 hover:bg-destructive/15"
+            : pendingMatchCount > 0
+              ? "border-gold/50 bg-gold/10 hover:bg-gold/15"
+              : "border-hair bg-navy2/40 hover:bg-navy2"
+        }`}
+      >
+        <span className="text-sm">{movedCount > 0 ? "⚠" : pendingMatchCount > 0 ? "⏳" : "🧾"}</span>
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold">Settlement audit</p>
+          <p className="text-[11px] text-mist">
+            {movedCount > 0 ? (
+              <>
+                <span className="text-destructive font-semibold">
+                  {movedCount} changed
+                </span>{" "}
+                after settling up
+                {pendingMatchCount > 0 && (
+                  <> · <span className="text-gold">{pendingMatchCount} recon open</span></>
+                )}
+              </>
+            ) : pendingMatchCount > 0 ? (
+              <>
+                <span className="text-gold font-semibold">
+                  {pendingMatchCount} match{pendingMatchCount === 1 ? "" : "es"} awaiting recon
+                </span>{" "}
+                — nothing has moved yet
+              </>
+            ) : (
+              "Compare what each result was settled on vs the sheet now"
+            )}
+          </p>
+        </div>
+        <span className="text-mist2 text-sm shrink-0">›</span>
+      </Link>
       {myCompletedMatchKeys.map((matchKey) => {
               const match = allMatches.find((m) => m.key === matchKey);
               const matchPts = matchPointsCache.get(matchKey) ?? new Map();
               const contests = userContestsByMatch.get(matchKey) ?? [];
+              // "Has this settled result moved?" — scored with the SAME calcSelectionPoints on
+              // both point maps, so then/now can't drift. A settled baseline may be absent for
+              // matches that completed before the baseline existed; say so rather than implying
+              // "verified unchanged".
+              const settledPts = settledPointsCache.get(matchKey);
+              const mySwing = (contests ?? []).reduce((acc, c) => {
+                if (!settledPts || settledPts.size === 0) return acc;
+                const mySel = (selectionsMap.get(c.id) ?? []).find((sl) => sl.user === username);
+                if (!mySel) return acc;
+                const then = calcSelectionPoints(mySel, c.picksPerUser, settledPts);
+                const nowP = calcSelectionPoints(mySel, c.picksPerUser, matchPts);
+                return acc + ((nowP ?? 0) - (then ?? 0));
+              }, 0);
+              const noSettledBaseline = !settledPts || settledPts.size === 0;
+              const pendingHere = pendingCountCache.get(matchKey) ?? 0;
 
               return (
                 <div key={matchKey} className="card-stadium rounded-2xl overflow-hidden">
@@ -425,6 +511,16 @@ export default async function LobbyPage() {
                         <p className="text-[11px] text-mist font-mono">{formatMatchDate(match.date)}</p>
                       )}
                     </div>
+                    {(mySwing !== 0 || noSettledBaseline || pendingHere > 0) && (
+                      <span className="shrink-0">
+                        <SettlementBadge
+                          delta={mySwing}
+                          noBaseline={noSettledBaseline}
+                          pendingCount={pendingHere}
+                          compact
+                        />
+                      </span>
+                    )}
                     <span className="text-mist2 text-sm shrink-0">›</span>
                   </Link>
 

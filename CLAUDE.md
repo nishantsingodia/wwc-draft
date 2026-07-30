@@ -242,6 +242,24 @@ npx vercel --prod
 
 ---
 
+## Settlement audit — "did this settled result move?" (added 29 Jul 2026)
+The points sheet is rewritten in place on every bot run, so a settled contest can change silently.
+Two LPL matches published `COMPLETED` with an empty flag while a captain's 114-point innings read 0
+(the official card spells him "PWH de Silva" and that row resolved to no pid — and
+`lookupPlayerPoints` deliberately refuses to fuzzy-fall-back for a pid'd player, so the points were
+unreachable).
+- `lib/settlement-audit.ts` diffs the bot's WRITE-ONCE `SETTLEMENT AUDIT` tab against the live sheet.
+  Rows split into **PENDING** (L2 recon still open — the bot is HOLDING the settled value, so nothing
+  has moved; it's a to-do) and **CHANGED** (recon done, number already differs — the re-settle list).
+- Surfaces: `/audit` (roll-up by tour), the **Audit** tab on the results page, and a badge on the
+  lobby Completed tab (gold `⏳ recon open` vs red `⚠ revised −N pts`).
+- Both sides are scored by the SAME `calcSelectionPoints` — do NOT add a separate scorer for the
+  "settled" side (see the two-scoring-paths history in BUGS.md).
+- `lib/audit-reasons.ts` holds the reason codes and is CLIENT-SAFE (no `fs`). The results page is a
+  client component, so anything it renders must import from there, never from `lib/points.ts`.
+- No new env var: the settlement URL is derived from the first `POINTS_CSV_URLS` entry
+  (`SETTLEMENT_CSV_URL` overrides).
+
 ## Identity — the global player registry (PRIMARY; read this first)
 
 Points are joined by a **stable identity (`pid`)**, not by name. The bot

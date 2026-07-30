@@ -346,7 +346,7 @@ export async function getMatchXI(
 // format-independent) and disambiguate the double round-robin (a pair meets
 // twice, weeks apart) by picking the sheet match with the closest date.
 
-type MatchLike = { team1: string; team2: string; date: string };
+export type MatchLike = { team1: string; team2: string; date: string };
 
 // "Match 3 — LAKR v SFU" → ["LAKR","SFU"]; "MLC Final" / knockouts → [] (no " v ")
 function labelTeams(label: string): string[] {
@@ -454,7 +454,7 @@ function tabOfMatch(rows: string[][], match: MatchLike): string | null {
     const lbl = row[mi]?.trim();
     const tab = row[tabIdx]?.trim();
     if (!lbl || !tab) continue;
-    const key = tab + " " + lbl;
+    const key = tab + "\u0000" + lbl;
     if (seen.has(key)) continue;
     seen.add(key);
     if (!teamsMatch(labelTeams(lbl), match.team1, match.team2)) continue;
@@ -664,6 +664,185 @@ export async function getMatchPlayerRecon(match: MatchLike): Promise<Map<string,
     const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
     if (pid) out.set(pid, marker);
     if (name) out.set(name, marker);
+  }
+  return out;
+}
+
+// ── Settlement audit: the frozen "before" the live sheet is diffed against ────────────
+// The points tabs are REWRITTEN in place every bot run, so the numbers a contest was settled
+// on survive nowhere. The bot's WRITE-ONCE "SETTLEMENT AUDIT" tab records each player's points
+// the first time their match published COMPLETED; comparing it to the live sheet is the only
+// way to see that (say) Hasaranga's 114-point captain innings became a 0 when cricsheet landed.
+//
+// Deliberately a SEPARATE fetch, not part of the merged points pool: different schema (its
+// "Settled Points" column would collide with "Fantasy Points" semantics), and it must never
+// influence live scoring.
+const SETTLEMENT_TAB = "SETTLEMENT AUDIT";
+
+// Derive the settlement URL from the first configured points URL (same spreadsheet, different
+// sheet) so no new env var is needed — one less thing to forget on a deploy, and Vercel's
+// encrypted env is awkward to update safely. SETTLEMENT_CSV_URL overrides if ever needed.
+function settlementUrl(): string | null {
+  if (process.env.SETTLEMENT_CSV_URL) return process.env.SETTLEMENT_CSV_URL;
+  const first = csvUrls()[0];
+  if (!first) return null;
+  try {
+    const u = new URL(first);
+    if (!u.searchParams.has("sheet")) {
+      // An export?gid= style URL can't be retargeted by sheet name — rebuild the gviz form.
+      const id = u.pathname.split("/")[3];
+      if (!id) return null;
+      return `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv` +
+        `&sheet=${encodeURIComponent(SETTLEMENT_TAB)}&headers=1`;
+    }
+    u.searchParams.set("sheet", SETTLEMENT_TAB);
+    u.searchParams.set("headers", "1");
+    return u.toString();
+  } catch {
+    return null;
+  }
+}
+
+let _settleCache: { at: number; rows: string[][] } | null = null;
+let _settleInflight: Promise<string[][] | null> | null = null;
+
+async function getSettlementCsv(): Promise<string[][] | null> {
+  if (_settleCache && Date.now() - _settleCache.at < CACHE_TTL_MS) return _settleCache.rows;
+  if (_settleInflight) return _settleInflight;
+  const url = settlementUrl();
+  if (!url) return null;
+  _settleInflight = fetchOne(url)
+    .then((text) => {
+      const rows = text ? parseCsv(text) : null;
+      if (rows) _settleCache = { at: Date.now(), rows };   // cache successes only
+      _settleInflight = null;
+      return rows;
+    })
+    .catch(() => {
+      _settleInflight = null;
+      return null;
+    });
+  return _settleInflight;
+}
+
+// Test seam, mirroring __setPointsCacheForTest.
+export function __setSettlementCacheForTest(rows: string[][] | null): void {
+  _settleCache = rows ? { at: Date.now(), rows } : null;
+  _settleInflight = null;
+}
+
+export type SettledRow = {
+  pid: string;
+  name: string;
+  team: string;
+  tour: string;
+  points: number;
+  status: string;
+  source: string;
+  frozenAt: string;
+  /** 'live' = frozen by a real run at publish time (trustworthy). 'seed' = reconstructed from a
+   *  pre-cricsheet run. 'unknown' = the match completed before the baseline existed and no
+   *  evidence survives, so a zero delta here proves NOTHING and must be labelled as such. */
+  provenance: "live" | "seed" | "unknown";
+};
+
+/** The settled baseline for one match, keyed by BOTH pid and name — the same shape
+ *  getMatchPointsForMatch returns, so `calcSelectionPoints` can score the "before" side with
+ *  the IDENTICAL scorer instead of spawning another scoring path (they always drift). */
+export async function getSettledPointsForMatch(
+  match: MatchLike
+): Promise<Map<string, number>> {
+  const out = new Map<string, number>();
+  for (const r of await getSettledRowsForMatch(match)) {
+    if (r.pid) out.set(r.pid, r.points);
+    if (r.name) out.set(r.name, r.points);
+  }
+  return out;
+}
+
+/** Full settled rows for one match. Matched on the settlement tab's own Match/Date columns via
+ *  the SAME teams+date resolution the points tabs use, so the bot's match renumbering is
+ *  irrelevant here too. */
+export async function getSettledRowsForMatch(match: MatchLike): Promise<SettledRow[]> {
+  const rows = await getSettlementCsv();
+  if (!rows || rows.length < 2) return [];
+  const target = resolveLabel(rows, match);
+  if (!target) return [];
+  const header = rows[0];
+  const mi = headerIdx(header, "Match");
+  const pidIdx = headerIdx(header, "Player ID");
+  const nameIdx = headerIdx(header, "Full Name");
+  const teamIdx = headerIdx(header, "Team");
+  const tourIdx = headerIdx(header, "Tour");
+  const ptsIdx = headerIdx(header, "Settled Points");
+  const stIdx = headerIdx(header, "Settled Status");
+  const srcIdx = headerIdx(header, "Settled Source");
+  const frIdx = headerIdx(header, "Frozen At");
+  const prIdx = headerIdx(header, "Provenance");
+  if (ptsIdx < 0) return [];
+  const out: SettledRow[] = [];
+  for (const row of rows.slice(1)) {
+    if (row[mi]?.trim() !== target) continue;
+    const pts = parseFloat(row[ptsIdx]);
+    const prov = (prIdx >= 0 ? row[prIdx]?.trim() : "") || "live";
+    out.push({
+      pid: resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : ""),
+      name: nameIdx >= 0 ? (row[nameIdx]?.trim() ?? "") : "",
+      team: teamIdx >= 0 ? (row[teamIdx]?.trim() ?? "") : "",
+      tour: tourIdx >= 0 ? (row[tourIdx]?.trim() ?? "") : "",
+      points: isNaN(pts) ? 0 : pts,
+      status: stIdx >= 0 ? (row[stIdx]?.trim() ?? "") : "",
+      source: srcIdx >= 0 ? (row[srcIdx]?.trim() ?? "") : "",
+      frozenAt: frIdx >= 0 ? (row[frIdx]?.trim() ?? "") : "",
+      provenance: prov === "seed" || prov === "unknown" ? prov : "live",
+    });
+  }
+  return out;
+}
+
+export type LiveAuditRow = {
+  pid: string;
+  name: string;
+  team: string;
+  points: number | null;   // null = the row exists but has no points (Played = N)
+  played: boolean;
+  l2: string;              // "L2 Recon" column
+  recon: string;           // "Player Recon" column
+};
+
+/** Every live sheet row for a match, INCLUDING rows whose Player ID is blank. The blank-pid
+ *  rows matter most: they're the official-card lines that resolved to no player, so their
+ *  points cannot reach any contest (lookupPlayerPoints refuses to fuzzy-fall-back for a pid'd
+ *  player). Pairing one against a squad row that dropped to 0 is what identifies an identity
+ *  break rather than a genuine benching. */
+export async function getLiveAuditRows(match: MatchLike): Promise<LiveAuditRow[]> {
+  const rows = await getCsv();
+  if (!rows || rows.length < 2) return [];
+  const target = resolveLabel(rows, match);
+  if (!target) return [];
+  const header = rows[0];
+  const mi = headerIdx(header, "Match");
+  const pidIdx = headerIdx(header, "Player ID");
+  const nameIdx = headerIdx(header, "Full Name");
+  const teamIdx = headerIdx(header, "Team");
+  const ptsIdx = headerIdx(header, "Fantasy Points");
+  const playedIdx = headerIdx(header, "Played");
+  const l2Idx = headerIdx(header, "L2 Recon");
+  const reconIdx = headerIdx(header, "Player Recon");
+  const out: LiveAuditRow[] = [];
+  for (const row of rows.slice(1)) {
+    if (row[mi]?.trim() !== target) continue;
+    const raw = ptsIdx >= 0 ? row[ptsIdx]?.trim() : "";
+    const pts = raw ? parseFloat(raw) : NaN;
+    out.push({
+      pid: resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : ""),
+      name: nameIdx >= 0 ? (row[nameIdx]?.trim() ?? "") : "",
+      team: teamIdx >= 0 ? (row[teamIdx]?.trim() ?? "") : "",
+      points: isNaN(pts) ? null : pts,
+      played: (playedIdx >= 0 ? row[playedIdx]?.trim() : "") === "Y",
+      l2: l2Idx >= 0 ? (row[l2Idx]?.trim() ?? "") : "",
+      recon: reconIdx >= 0 ? (row[reconIdx]?.trim() ?? "") : "",
+    });
   }
   return out;
 }
