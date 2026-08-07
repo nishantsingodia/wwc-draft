@@ -198,17 +198,62 @@ export function __setPointsCacheForTest(rows: string[][] | null): void {
 
 export type MatchStatus = "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED";
 
+// The bot's SECOND axis, independent of MatchStatus. A match is COMPLETED the moment L1 recon is
+// done and stays COMPLETED forever; L2 moves underneath it days later when cricsheet posts. One
+// column can't carry two lifecycles — that's what made COMPLETED_FLAGGED mean "unverified single
+// feed" OR "official revision pending" OR "identity unresolved" with no way to tell which.
+export type ReconState = "L1_OPEN" | "L1_DONE" | "L2_PENDING" | "L2_DONE";
+
+// The sheet writes a human label ("🔵 L2 recon pending"); parse back to the enum. Unknown/absent
+// -> null, so a tour whose tab predates these columns renders exactly as it does today.
+function parseReconState(raw: string): ReconState | null {
+  const s = (raw || "").toUpperCase();
+  if (!s) return null;
+  if (s.includes("L1") && s.includes("OPEN")) return "L1_OPEN";
+  if (s.includes("L1") && s.includes("DONE")) return "L1_DONE";
+  if (s.includes("L2") && s.includes("PENDING")) return "L2_PENDING";
+  if (s.includes("L2") && s.includes("DONE")) return "L2_DONE";
+  return null;
+}
+
+export const RECON_STATE_UI: Record<ReconState, { label: string; tone: "amber" | "green" | "blue" }> = {
+  L1_OPEN: { label: "L1 recon open", tone: "amber" },
+  L1_DONE: { label: "L1 recon done", tone: "green" },
+  L2_PENDING: { label: "L2 recon pending", tone: "blue" },
+  L2_DONE: { label: "L2 recon done", tone: "green" },
+};
+
 // The bot's per-match "Match Status" column (+ human "Recon Flag" reason), as label -> {status,
 // flag}. Returns an EMPTY map when the column is absent (legacy sheets / tabs without recon) —
 // which makes every caller fall back to the legacy numeric-points completion rule (no regression).
 // A match stays LIVE (results hidden) until its L1 recon discrepancies are approved.
-function statusByLabel(rows: string[][]): Map<string, { status: MatchStatus; flag: string }> {
+function statusByLabel(
+  rows: string[][]
+): Map<string, { status: MatchStatus; flag: string; recon: ReconState | null; delta: number }> {
   const header = rows[0];
   const mi = headerIdx(header, "Match");
   const si = headerIdx(header, "Match Status");
   const fi = headerIdx(header, "Recon Flag");
-  const out = new Map<string, { status: MatchStatus; flag: string }>();
+  // Both optional and read BY NAME: a tab written before these columns existed simply has no
+  // recon axis and no delta, and every caller degrades to today's behaviour.
+  const ri = headerIdx(header, "Recon State");
+  const di = headerIdx(header, "Points Delta");
+  const out = new Map<
+    string,
+    { status: MatchStatus; flag: string; recon: ReconState | null; delta: number }
+  >();
   if (si < 0) return out; // column absent -> legacy fallback everywhere
+  // Per-match net delta = the SUM of its players' signed movements, not one player's. A contest
+  // is settled on the team total, so that is the number worth surfacing.
+  const netByLabel = new Map<string, number>();
+  if (di >= 0) {
+    for (const row of rows.slice(1)) {
+      const lbl = row[mi]?.trim();
+      if (!lbl) continue;
+      const d = parseInt((row[di] ?? "").trim(), 10);
+      if (Number.isFinite(d)) netByLabel.set(lbl, (netByLabel.get(lbl) ?? 0) + d);
+    }
+  }
   for (const row of rows.slice(1)) {
     const lbl = row[mi]?.trim();
     if (!lbl || out.has(lbl)) continue;
@@ -216,7 +261,12 @@ function statusByLabel(rows: string[][]): Map<string, { status: MatchStatus; fla
     if (!raw || raw === "SCHEDULED") continue; // not-yet-completed rows carry no completion signal
     const status: MatchStatus =
       raw === "LIVE" ? "LIVE" : raw === "COMPLETED_FLAGGED" ? "COMPLETED_FLAGGED" : "COMPLETED";
-    out.set(lbl, { status, flag: fi >= 0 ? (row[fi] ?? "").trim() : "" });
+    out.set(lbl, {
+      status,
+      flag: fi >= 0 ? (row[fi] ?? "").trim() : "",
+      recon: ri >= 0 ? parseReconState(row[ri] ?? "") : null,
+      delta: netByLabel.get(lbl) ?? 0,
+    });
   }
   return out;
 }
@@ -628,12 +678,13 @@ export async function isMatchCompleted(match: MatchLike): Promise<boolean> {
   return (await getMatchPointsForMatch(match)).size > 0; // legacy: scored => completed
 }
 
-// The bot's per-match status + human flag for one match — drives the results/match-page badges
-// ("⏳ provisional — awaiting recon", "⚠ official revision pending", "⚠ unverified — single
-// feed"). null when the sheet carries no "Match Status" column (legacy).
+// The bot's per-match status + human flag + recon axis for one match — drives the results/match-
+// page badges ("⏳ provisional — awaiting recon", "⚠ official revision pending", "🔵 L2 recon
+// pending · −72 pts"). null when the sheet carries no "Match Status" column (legacy).
+// `recon` is null and `delta` is 0 on tabs written before the Recon State / Points Delta columns.
 export async function getMatchStatusFor(
   match: MatchLike
-): Promise<{ status: MatchStatus; flag: string } | null> {
+): Promise<{ status: MatchStatus; flag: string; recon: ReconState | null; delta: number } | null> {
   const rows = await getCsv();
   if (!rows || rows.length < 2) return null;
   const target = resolveLabel(rows, match);

@@ -210,6 +210,54 @@ async function main() {
   const PAST_M3 = { team1: "MIND", team2: "MENG", date: "2020-01-07T22:00:00+05:30", key: "M3_past" };
   check("started match: own same-day block still resolves", (await getMatchPointsForMatch(PAST_M3)).get("abh") === 90);
 
+  // ── Recon State + Points Delta: the second axis (added 7 Aug 2026) ────────
+  // Both columns are OPTIONAL and read by NAME. A tab written before they existed must render
+  // exactly as it does today — that back-compat is what lets older tours keep working.
+  const H_RECON = ["Match", "Date", "Team", "Player ID", "Full Name", "Played",
+    "Fantasy Points", "Match Status", "Recon Flag", "Player Recon", "Recon State", "Points Delta"];
+  const R = (state: string, d1: string, d2: string): string[][] => [
+    H_RECON,
+    ["Match 9 — MIND v MENG", "2020-02-01", "MIND", "abh", "Abhishek Sharma", "Y", "90",
+     "COMPLETED", "", "", state, d1],
+    ["Match 9 — MIND v MENG", "2020-02-01", "MENG", "brook", "Harry Brook", "Y", "40",
+     "COMPLETED", "", "", state, d2],
+  ];
+  const M9 = { team1: "MIND", team2: "MENG", date: "2020-02-01T22:00:00+05:30", key: "M9" };
+
+  __setPointsCacheForTest(R("\u{1F535} L2 recon pending", "-8", "-64"));
+  const st = await getMatchStatusFor(M9);
+  check("recon state parsed from the human label", st?.recon === "L2_PENDING");
+  // Per-MATCH delta is the SUM across players, not one player's — a contest settles on the team
+  // total, so that is the number worth surfacing.
+  check("points delta sums across the match", st?.delta === -72);
+  check("recon axis is independent of match status", st?.status === "COMPLETED");
+
+  __setPointsCacheForTest(R("\u2705 L1 recon done", "", ""));
+  const st2 = await getMatchStatusFor(M9);
+  check("L1 done parsed", st2?.recon === "L1_DONE");
+  check("no movement => delta 0", st2?.delta === 0);
+
+  __setPointsCacheForTest(R("\u23F3 L1 recon open", "", ""));
+  check("L1 open parsed", (await getMatchStatusFor(M9))?.recon === "L1_OPEN");
+
+  __setPointsCacheForTest(R("\u2705 L2 recon done", "", ""));
+  check("L2 done parsed", (await getMatchStatusFor(M9))?.recon === "L2_DONE");
+
+  // BACK-COMPAT: the same match on a tab with neither column.
+  __setPointsCacheForTest([
+    H_FULL,
+    ["Match 9 — MIND v MENG", "2020-02-01", "MIND", "abh", "Abhishek Sharma", "Y", "90", "COMPLETED", "", ""],
+    ["Match 9 — MIND v MENG", "2020-02-01", "MENG", "brook", "Harry Brook", "Y", "40", "COMPLETED", "", ""],
+  ]);
+  const legacy = await getMatchStatusFor(M9);
+  check("legacy tab: recon null, not a guess", legacy?.recon === null);
+  check("legacy tab: delta 0", legacy?.delta === 0);
+  check("legacy tab: status still resolves", legacy?.status === "COMPLETED");
+
+  __setPointsCacheForTest(R("something the bot has not taught us yet", "", ""));
+  check("unknown state string => null, never a wrong badge",
+        (await getMatchStatusFor(M9))?.recon === null);
+
   __setPointsCacheForTest(null);
   console.log(`\n${pass} passed, ${fail} failed`);
   process.exit(fail === 0 ? 0 : 1);

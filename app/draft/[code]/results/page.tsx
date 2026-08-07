@@ -60,7 +60,9 @@ type ResultsData = {
   username: string;
   announced: boolean; // both teams' official XIs are out
   // Recon status from the bot's "Match Status" column (null on legacy sheets).
-  matchStatus: { status: "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED"; flag: string } | null;
+  matchStatus: { status: "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED"; flag: string;
+      recon?: "L1_OPEN" | "L1_DONE" | "L2_PENDING" | "L2_DONE" | null;
+      delta?: number } | null;
   started: boolean; // match has begun (server-computed; gates the live-refresh button)
   completed: boolean; // the COMPLETED pipeline has finalized this match (sheet drives it)
   pointsSource: "live-espn" | "sheet";
@@ -324,10 +326,41 @@ function ReconBanner({
   ms,
   hasPoints,
 }: {
-  ms: { status: "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED"; flag: string } | null;
+  ms: { status: "LIVE" | "COMPLETED" | "COMPLETED_FLAGGED"; flag: string;
+      recon?: "L1_OPEN" | "L1_DONE" | "L2_PENDING" | "L2_DONE" | null;
+      delta?: number } | null;
   hasPoints: boolean;
 }) {
   if (!ms) return null;
+  // RECON STATE — the second axis. Rendered first because it is the specific, actionable line:
+  // "L2 recon pending · -72 pts" tells you what is open AND what it is worth, where the older
+  // status-derived banners below could only say "something may change". Absent on tours whose tab
+  // predates the Recon State column, in which case the legacy banners are all there is.
+  if (ms.recon === "L2_PENDING") {
+    const d = ms.delta ?? 0;
+    return (
+      <div className="rounded-lg border border-sky-400/60 bg-sky-400/10 px-3 py-2 text-sm text-sky-300">
+        🔵 L2 recon pending — the official scorecard differs from the settled result
+        {d ? (
+          <>
+            {" "}by{" "}
+            <span className={d < 0 ? "font-semibold text-red-300" : "font-semibold text-emerald-300"}>
+              {d > 0 ? "+" : ""}
+              {d} pts
+            </span>
+          </>
+        ) : null}
+        . Approve it in the bot&rsquo;s Recon Review tab to apply.
+      </div>
+    );
+  }
+  if (ms.recon === "L1_OPEN") {
+    return (
+      <div className="rounded-lg border border-amber-400/50 bg-amber-400/10 px-3 py-2 text-sm text-amber-300">
+        ⏳ L1 recon open — feeds disagree or data is missing, so this result is not final yet.
+      </div>
+    );
+  }
   if (ms.status === "COMPLETED_FLAGGED" && ms.flag.includes("revision")) {
     return (
       <div className="rounded-lg border border-red-500/60 bg-red-500/10 px-3 py-2 text-sm text-red-300">
@@ -346,6 +379,18 @@ function ReconBanner({
     return (
       <div className="rounded-lg border border-amber-400/40 bg-amber-400/5 px-3 py-2 text-xs text-amber-200/90">
         ⚠ Unverified — scored from a single source (no cross-check available).
+      </div>
+    );
+  }
+  // The SETTLED states. Deliberately shown rather than left blank: "L1 recon done" is the
+  // difference between "nobody has checked this" and "this was checked and agreed", and only one
+  // of those is worth settling money on. Quiet chip, not a banner — it is reassurance, not an alert.
+  if (ms.recon === "L1_DONE" || ms.recon === "L2_DONE") {
+    const done = ms.recon === "L2_DONE";
+    return (
+      <div className="flex items-center gap-1.5 px-1 text-xs text-emerald-300/80">
+        <span aria-hidden>✅</span>
+        <span>{done ? "L2 recon done — reconciled against the official scorecard" : "L1 recon done — feeds agreed; awaiting the official scorecard"}</span>
       </div>
     );
   }
