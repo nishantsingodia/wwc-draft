@@ -206,5 +206,33 @@
   "MTIND": {
     "flag": "🇮🇳",
     "name": "India"
+  },
+  "MTANT": {
+    "flag": "🏏",
+    "name": "Antigua and Barbuda Falcons"
+  },
+  "MTJAM": {
+    "flag": "🏏",
+    "name": "Jamaica Kingsmen"
+  },
+  "MTSTK": {
+    "flag": "🏏",
+    "name": "St Kitts and Nevis Patriots"
+  },
+  "MTTRI": {
+    "flag": "🏏",
+    "name": "Trinbago Knight Riders"
+  },
+  "MTSTL": {
+    "flag": "🏏",
+    "name": "St Lucia Kings"
+  },
+  "MTBAR": {
+    "flag": "🏏",
+    "name": "Barbados Tridents"
+  },
+  "MTGUY": {
+    "flag": "🏏",
+    "name": "Guyana Amazon Warriors"
   }
 }

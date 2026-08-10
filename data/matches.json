@@ -1667,5 +1667,355 @@
     "label": "3rd T20I: ZIM v IND",
     "date": "2026-07-26T16:30:00+05:30",
     "format": "T20"
+  },
+  {
+    "matchNum": 203,
+    "key": "CPL_M1_MTANT_MTJAM_Aug07",
+    "gender": "M",
+    "team1": "MTANT",
+    "team2": "MTJAM",
+    "label": "Match 1: MTANT v MTJAM",
+    "date": "2026-08-08T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 204,
+    "key": "CPL_M2_MTSTK_MTTRI_Aug08",
+    "gender": "M",
+    "team1": "MTSTK",
+    "team2": "MTTRI",
+    "label": "Match 2: MTSTK v MTTRI",
+    "date": "2026-08-09T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 205,
+    "key": "CPL_M3_MTANT_MTSTL_Aug09",
+    "gender": "M",
+    "team1": "MTANT",
+    "team2": "MTSTL",
+    "label": "Match 3: MTANT v MTSTL",
+    "date": "2026-08-10T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 206,
+    "key": "CPL_M4_MTJAM_MTBAR_Aug11",
+    "gender": "M",
+    "team1": "MTJAM",
+    "team2": "MTBAR",
+    "label": "Match 4: MTJAM v MTBAR",
+    "date": "2026-08-12T03:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 207,
+    "key": "CPL_M5_MTSTL_MTSTK_Aug12",
+    "gender": "M",
+    "team1": "MTSTL",
+    "team2": "MTSTK",
+    "label": "Match 5: MTSTL v MTSTK",
+    "date": "2026-08-13T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 208,
+    "key": "CPL_M6_MTJAM_MTGUY_Aug13",
+    "gender": "M",
+    "team1": "MTJAM",
+    "team2": "MTGUY",
+    "label": "Match 6: MTJAM v MTGUY",
+    "date": "2026-08-14T03:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 209,
+    "key": "CPL_M7_MTSTL_MTANT_Aug14",
+    "gender": "M",
+    "team1": "MTSTL",
+    "team2": "MTANT",
+    "label": "Match 7: MTSTL v MTANT",
+    "date": "2026-08-15T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 210,
+    "key": "CPL_M8_MTJAM_MTTRI_Aug15",
+    "gender": "M",
+    "team1": "MTJAM",
+    "team2": "MTTRI",
+    "label": "Match 8: MTJAM v MTTRI",
+    "date": "2026-08-16T03:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 211,
+    "key": "CPL_M9_MTSTL_MTBAR_Aug16",
+    "gender": "M",
+    "team1": "MTSTL",
+    "team2": "MTBAR",
+    "label": "Match 9: MTSTL v MTBAR",
+    "date": "2026-08-17T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 212,
+    "key": "CPL_M10_MTJAM_MTSTK_Aug18",
+    "gender": "M",
+    "team1": "MTJAM",
+    "team2": "MTSTK",
+    "label": "Match 10: MTJAM v MTSTK",
+    "date": "2026-08-19T03:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 213,
+    "key": "CPL_M11_MTSTL_MTGUY_Aug19",
+    "gender": "M",
+    "team1": "MTSTL",
+    "team2": "MTGUY",
+    "label": "Match 11: MTSTL v MTGUY",
+    "date": "2026-08-20T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 214,
+    "key": "CPL_M12_MTANT_MTSTK_Aug20",
+    "gender": "M",
+    "team1": "MTANT",
+    "team2": "MTSTK",
+    "label": "Match 12: MTANT v MTSTK",
+    "date": "2026-08-21T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 215,
+    "key": "CPL_M13_MTSTL_MTJAM_Aug21",
+    "gender": "M",
+    "team1": "MTSTL",
+    "team2": "MTJAM",
+    "label": "Match 13: MTSTL v MTJAM",
+    "date": "2026-08-22T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 216,
+    "key": "CPL_M14_MTANT_MTTRI_Aug22",
+    "gender": "M",
+    "team1": "MTANT",
+    "team2": "MTTRI",
+    "label": "Match 14: MTANT v MTTRI",
+    "date": "2026-08-23T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 217,
+    "key": "CPL_M15_MTANT_MTGUY_Aug23",
+    "gender": "M",
+    "team1": "MTANT",
+    "team2": "MTGUY",
+    "label": "Match 15: MTANT v MTGUY",
+    "date": "2026-08-24T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 218,
+    "key": "CPL_M16_MTANT_MTBAR_Aug25",
+    "gender": "M",
+    "team1": "MTANT",
+    "team2": "MTBAR",
+    "label": "Match 16: MTANT v MTBAR",
+    "date": "2026-08-26T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 219,
+    "key": "CPL_M17_MTTRI_MTSTL_Aug26",
+    "gender": "M",
+    "team1": "MTTRI",
+    "team2": "MTSTL",
+    "label": "Match 17: MTTRI v MTSTL",
+    "date": "2026-08-27T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 220,
+    "key": "CPL_M18_MTSTK_MTJAM_Aug27",
+    "gender": "M",
+    "team1": "MTSTK",
+    "team2": "MTJAM",
+    "label": "Match 18: MTSTK v MTJAM",
+    "date": "2026-08-28T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 221,
+    "key": "CPL_M19_MTTRI_MTBAR_Aug29",
+    "gender": "M",
+    "team1": "MTTRI",
+    "team2": "MTBAR",
+    "label": "Match 19: MTTRI v MTBAR",
+    "date": "2026-08-29T05:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 222,
+    "key": "CPL_M20_MTTRI_MTJAM_Aug29",
+    "gender": "M",
+    "team1": "MTTRI",
+    "team2": "MTJAM",
+    "label": "Match 20: MTTRI v MTJAM",
+    "date": "2026-08-30T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 223,
+    "key": "CPL_M21_MTSTK_MTANT_Aug30",
+    "gender": "M",
+    "team1": "MTSTK",
+    "team2": "MTANT",
+    "label": "Match 21: MTSTK v MTANT",
+    "date": "2026-08-31T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 224,
+    "key": "CPL_M22_MTTRI_MTGUY_Aug31",
+    "gender": "M",
+    "team1": "MTTRI",
+    "team2": "MTGUY",
+    "label": "Match 22: MTTRI v MTGUY",
+    "date": "2026-09-01T02:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 225,
+    "key": "CPL_M23_MTSTK_MTBAR_Sep01",
+    "gender": "M",
+    "team1": "MTSTK",
+    "team2": "MTBAR",
+    "label": "Match 23: MTSTK v MTBAR",
+    "date": "2026-09-02T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 226,
+    "key": "CPL_M24_MTTRI_MTANT_Sep02",
+    "gender": "M",
+    "team1": "MTTRI",
+    "team2": "MTANT",
+    "label": "Match 24: MTTRI v MTANT",
+    "date": "2026-09-03T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 227,
+    "key": "CPL_M25_MTSTK_MTSTL_Sep03",
+    "gender": "M",
+    "team1": "MTSTK",
+    "team2": "MTSTL",
+    "label": "Match 25: MTSTK v MTSTL",
+    "date": "2026-09-04T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 228,
+    "key": "CPL_M26_MTGUY_MTJAM_Sep04",
+    "gender": "M",
+    "team1": "MTGUY",
+    "team2": "MTJAM",
+    "label": "Match 26: MTGUY v MTJAM",
+    "date": "2026-09-05T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 229,
+    "key": "CPL_M27_MTBAR_MTTRI_Sep06",
+    "gender": "M",
+    "team1": "MTBAR",
+    "team2": "MTTRI",
+    "label": "Match 27: MTBAR v MTTRI",
+    "date": "2026-09-06T05:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 230,
+    "key": "CPL_M28_MTGUY_MTSTK_Sep06",
+    "gender": "M",
+    "team1": "MTGUY",
+    "team2": "MTSTK",
+    "label": "Match 28: MTGUY v MTSTK",
+    "date": "2026-09-06T19:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 231,
+    "key": "CPL_M29_MTBAR_MTSTL_Sep06",
+    "gender": "M",
+    "team1": "MTBAR",
+    "team2": "MTSTL",
+    "label": "Match 29: MTBAR v MTSTL",
+    "date": "2026-09-07T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 232,
+    "key": "CPL_M30_MTGUY_MTANT_Sep08",
+    "gender": "M",
+    "team1": "MTGUY",
+    "team2": "MTANT",
+    "label": "Match 30: MTGUY v MTANT",
+    "date": "2026-09-09T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 233,
+    "key": "CPL_M31_MTGUY_MTSTL_Sep09",
+    "gender": "M",
+    "team1": "MTGUY",
+    "team2": "MTSTL",
+    "label": "Match 31: MTGUY v MTSTL",
+    "date": "2026-09-10T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 234,
+    "key": "CPL_M32_MTBAR_MTSTK_Sep10",
+    "gender": "M",
+    "team1": "MTBAR",
+    "team2": "MTSTK",
+    "label": "Match 32: MTBAR v MTSTK",
+    "date": "2026-09-11T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 235,
+    "key": "CPL_M33_MTGUY_MTTRI_Sep11",
+    "gender": "M",
+    "team1": "MTGUY",
+    "team2": "MTTRI",
+    "label": "Match 33: MTGUY v MTTRI",
+    "date": "2026-09-12T04:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 236,
+    "key": "CPL_M34_MTBAR_MTJAM_Sep13",
+    "gender": "M",
+    "team1": "MTBAR",
+    "team2": "MTJAM",
+    "label": "Match 34: MTBAR v MTJAM",
+    "date": "2026-09-13T05:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 237,
+    "key": "CPL_M35_MTBAR_MTGUY_Sep13",
+    "gender": "M",
+    "team1": "MTBAR",
+    "team2": "MTGUY",
+    "label": "Match 35: MTBAR v MTGUY",
+    "date": "2026-09-14T04:30:00+05:30",
+    "format": "T20"
   }
 ]
