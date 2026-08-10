@@ -205,6 +205,19 @@ POINTS_CSV_URLS=<womens export?gid url>,<mlc gviz url>,<mens gviz url>
 
 "🟢 Lineups Out", the ✓ In-XI / ✗ Not-in-XI markers, BACKUP_INTELLIGENCE's auto-substitution, **and the LIVE-match H2H points** (`getLiveMatchPoints` scores in-app from ESPN via `lib/d11-score.ts`) all need ESPN, resolved by **gender** via `SERIES_BY_GENDER` = **`data/espn-series.json`**, which **must stay in sync with the points-bot's `tours.json` `espn_series`**. **Auto-ingest keeps it in sync** (`tour_sync.apply_to_repos` writes it) — it's only manual for a hand-added tour: add the series id to `data/espn-series.json[gender]`, else lineups fall back to the sheet AND live points show **0** (the 22 Jul Hundred bug). Same for `lib/registry-players.json` (the ESPN→pid mirror `resolveEspnPid` reads) — auto-synced by `tour_sync_finalize`, manual `cp` otherwise; a stale mirror = ESPN players don't join = 0 live points. Run **`npm run check:tours`** after any tour edit — it fails loud on unknown codes / a gender with no series. Cross-referenced from the bot's `TOURS.md`.
 
+#### ⛔ NEVER send a browser User-Agent to ESPN (10 Aug 2026)
+
+`site.api.espn.com` **403s browser-impersonating User-Agents**. Measured: `Mozilla/5.0` → 403, a
+full Chrome UA → 403, `curl/8.7.1` → 200, an honest bot UA → 200. `lib/espn.ts` sent `Mozilla/5.0`
+and `espnGet` returns `null` on `!res.ok`, so the 403 was **indistinguishable from "ESPN has no
+data for this match"** — lineups quietly fell back to the sheet and `getLiveMatchPoints` had no
+source, so live matches read **0**. Nothing errored, nothing logged. Fixed by `ESPN_UA`
+(`lib/espn.ts`); do **not** put "Mozilla" back. Same bug and fix hit 3 files in wwc-points-bot the
+same day (`espn_get`, `build_registry`, `tour_sync`). **If ESPN data ever goes quietly missing,
+check the UA + the response code FIRST** — before suspecting cricapi quota, cricsheet lag or
+identity. Note `site.web.api.espn.com` (search) accepts anything, so tour *discovery* keeps
+working while every fixture/score call returns empty — a very misleading combination.
+
 ### Sheet not ready yet?
 
 All drafts, team selection, and lobby work with no sheet at all. Until a sheet is ready:
