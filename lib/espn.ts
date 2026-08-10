@@ -19,6 +19,12 @@ import { scoreD11, type Perf, type Role, type ScoreFormat } from "./d11-score";
 
 const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/cricket";
 
+// ESPN's WAF 403s browser-impersonating User-Agents on this host: a bare "Mozilla/5.0" is
+// rejected while curl's, a runtime default and an honest bot UA all pass. espnGet returns null
+// on !res.ok, so the 403 presented as "ESPN has no data" — no announced XI (lineups silently
+// fell back to the sheet) and no live H2H points. Do NOT put "Mozilla" back.
+const ESPN_UA = "wwc-draft/1.0 (+https://github.com/nishantsingodia/wwc-draft)";
+
 // ESPN series ids per gender. KEEP IN SYNC with the bot's tours.json `espn_series`.
 // W = Women's T20 World Cup 2026; M = the two men's tours running alongside.
 // ESPN series ids per gender — now in data/espn-series.json (machine-writable for
@@ -60,7 +66,7 @@ async function espnGet(
   const url = `${ESPN_BASE}/${series}/${path}?${qs}`;
   try {
     const res = await fetch(url, {
-      headers: { "User-Agent": "Mozilla/5.0" },
+      headers: { "User-Agent": ESPN_UA },
       // ESPN data is fine to cache briefly at the platform layer.
       next: { revalidate: 30 },
     });
