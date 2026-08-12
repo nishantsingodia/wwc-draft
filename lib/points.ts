@@ -74,12 +74,37 @@ export function lookupPlayerPoints(
   );
 }
 
+// A points tab MUST carry these. gviz answers an UNKNOWN sheet name with HTTP 200 and the
+// spreadsheet's FIRST SHEET (verified: ?sheet=ZZZ_BOGUS returns bytes identical to a real but
+// non-existent tab). Without this check a renamed, deleted or never-created tab is
+// indistinguishable from a healthy one, and its rows get merged into the points pool — the CPL
+// tab was silently feeding 33 rows of a WWC auction-budget board into scoring.
+const REQUIRED_POINTS_COLUMNS = ["Match", "Player ID", "Full Name", "Fantasy Points"];
+
+function looksLikePointsTab(text: string): boolean {
+  const header = (text.split(/\r?\n/, 1)[0] ?? "");
+  return REQUIRED_POINTS_COLUMNS.every((c) => header.includes(`"${c}"`) || header.includes(c));
+}
+
 async function fetchOne(url: string): Promise<string | null> {
   try {
     // no-store so we always read the current sheet; freshness is bounded by the
     // in-process TTL in getCsv (not by Next's fetch cache, which would mask updates).
     const res = await fetch(url, { cache: "no-store" });
-    if (res.ok) return await res.text();
+    if (!res.ok) return null;
+    const text = await res.text();
+    if (!looksLikePointsTab(text)) {
+      // LOUD: a 200 that isn't a points tab means the sheet is missing/renamed and gviz handed
+      // back some other board. Silently merging it is how wrong numbers reach a settlement.
+      const sheet = decodeURIComponent(new URL(url).searchParams.get("sheet") ?? "?");
+      console.error(
+        `[points] tab ${JSON.stringify(sheet)} returned 200 but is NOT a points tab ` +
+        `(header lacks ${REQUIRED_POINTS_COLUMNS.join("/")}). gviz falls back to the first sheet ` +
+        `for an unknown tab name — dropping it instead of merging it into the pool.`
+      );
+      return null;
+    }
+    return text;
   } catch {
     // ignore — one failing tab shouldn't kill the others
   }
