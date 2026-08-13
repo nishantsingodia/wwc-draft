@@ -68,7 +68,7 @@ function CreateDraftForm() {
     <main className="min-h-screen bg-ink text-white">
       <div className="max-w-lg mx-auto px-4 py-8 space-y-6">
         <div className="flex items-center gap-3">
-          <Link href={`/match/${matchKey}`} className="text-mist hover:text-white">←</Link>
+          <Link href="/lobby" className="text-mist hover:text-white">←</Link>
           <h1 className="text-xl font-bold">Create Draft</h1>
         </div>
 

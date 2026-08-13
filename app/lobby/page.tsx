@@ -12,7 +12,10 @@ import TransitionLink from "@/components/transition-link";
 import { getAllMatches, formatMatchDate, LOCK_BUFFER } from "@/lib/matches";
 import { getAllMatchDelays } from "@/lib/match-delay";
 import { getCompletedMatchKeys } from "@/lib/points";
-import { getMatchPointsMap } from "@/lib/live-points";
+import { getMatchPointsMap, getMatchScoreline, type InningsLine } from "@/lib/live-points";
+import LobbyMatch, { type DraftRow } from "@/components/lobby-match";
+import RainDelay from "@/components/rain-delay";
+import { getPendingAmendments } from "@/lib/pending-amendments";
 import { getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
 import TeamLogo from "@/components/team-logo";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
@@ -239,6 +242,77 @@ export default async function LobbyPage() {
     }),
   ]);
 
+  // ── Pending lineup amendments, so an approval waiting on you shows up next to the score
+  // it would change rather than three taps away. One query for every contest on screen.
+  const pendingByContest = await getPendingAmendments(
+    userContests.map((c) => ({ id: c.id, code: c.code, picksPerUser: c.picksPerUser })),
+    participantsMap,
+    selectionsMap,
+    username,
+    now
+  ).catch(() => new Map<number, Awaited<ReturnType<typeof getPendingAmendments>> extends Map<number, infer V> ? V : never>());
+
+  const contestsNeedingMe = new Set(
+    [...pendingByContest.entries()]
+      .filter(([, ps]) => ps.some((p) => p.canApprove))
+      .map(([id]) => id)
+  );
+  const matchesNeedingMe = new Set(
+    userContests.filter((c) => contestsNeedingMe.has(c.id)).map((c) => c.matchKey)
+  );
+
+  // ── Which cards open by default.
+  // One live match ⇒ it opens; several ⇒ the one closest to finishing (started earliest).
+  // A match with an amendment awaiting YOUR approval always opens — that is the whole point
+  // of surfacing it here. Everything else is a one-line row you can tap.
+  const liveOnLobby = liveMatches
+    .filter((m) => liveDraftMatchKeys.has(m.key))
+    .sort((a, b) => b.deadlineTs - a.deadlineTs);
+  const mostAdvancedLive = liveOnLobby.length
+    ? liveOnLobby.reduce((a, b) => (a.deadlineTs <= b.deadlineTs ? a : b)).key
+    : null;
+  const expandedKeys = new Set<string>([
+    ...(mostAdvancedLive ? [mostAdvancedLive] : []),
+    ...matchesNeedingMe,
+  ]);
+
+  // Scorelines cost one ESPN summary each, so fetch them ONLY for cards that render open.
+  const scorelines = new Map<string, InningsLine[]>();
+  await Promise.all(
+    allMatches
+      .filter((m) => expandedKeys.has(m.key))
+      .map(async (m) => {
+        scorelines.set(m.key, await getMatchScoreline(m).catch(() => []));
+      })
+  );
+
+  // Build the per-draft rows a match card renders — the SAME per-user summary the old
+  // lobby cards showed, just assembled once for both tabs.
+  const draftRowsFor = (
+    contests: typeof userContests,
+    matchPts: Map<string, number>
+  ): DraftRow[] =>
+    contests.map((c) => {
+      const sels = selectionsMap.get(c.id) ?? [];
+      const parts = participantsMap.get(c.id) ?? [];
+      return {
+        id: c.id,
+        code: c.code,
+        mode: c.mode,
+        deletable: c.createdBy === username && c.status !== "LOCKED",
+        users: parts.map((u) => {
+          const sel = sels.find((s) => s.user === u);
+          return {
+            user: u,
+            capName: sel?.captainKey ? getPlayerByKey(sel.captainKey)?.displayName ?? "—" : null,
+            vcName: sel?.viceCaptainKey ? getPlayerByKey(sel.viceCaptainKey)?.displayName ?? "—" : null,
+            pts: sel ? calcSelectionPoints(sel, c.picksPerUser, matchPts) : null,
+          };
+        }),
+        pending: pendingByContest.get(c.id) ?? [],
+      };
+    });
+
   // Default tab: prefer Live, then Upcoming, then Completed
   const defaultTab =
     liveDraftMatchKeys.size > 0
@@ -248,105 +322,63 @@ export default async function LobbyPage() {
       : "completed";
 
   // ── LIVE NOW panel ──
+  // One card per match: scoreline, head-to-head, the drafts on it, and the match-level
+  // controls that used to justify a separate /match/[key] page. Nothing here computes a
+  // score — every total is handed in from calcSelectionPoints above.
   const liveContent = (
     <div className="space-y-3">
-      {liveMatches
-        .filter((m) => liveDraftMatchKeys.has(m.key))
-        .sort((a, b) => b.deadlineTs - a.deadlineTs)
-        .map((m) => {
-                const matchPts = matchPointsCache.get(m.key) ?? new Map();
-                const myDrafts = (userContestsByMatch.get(m.key) ?? []).filter(
-                  (c) => c.status !== "COMPLETED"
-                );
-
-                return (
-                  <div key={m.key} className="space-y-2">
-                    {/* Match header — tappable through to the match hub */}
-                    <Link href={`/match/${m.key}`} className="flex items-center gap-2 px-1 py-1 -mx-1 rounded-lg hover:bg-navy2/40 transition-colors">
-                      <span className="flex items-center gap-1 shrink-0">
-                        <TeamLogo code={m.team1} size={22} />
-                        <TeamLogo code={m.team2} size={22} />
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm font-bold truncate">{prettifyMatchLabel(m.label)}</span>
-                          <span className="text-xs text-live font-bold shrink-0 flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-live animate-pulse" />In progress</span>
-                        </div>
-                        <p className="text-[11px] text-mist font-mono">{formatMatchDate(m.date)}</p>
-                      </div>
-                      <span className="text-mist2 text-sm shrink-0">›</span>
+      {liveOnLobby.map((m) => {
+        const matchPts = matchPointsCache.get(m.key) ?? new Map();
+        const myDrafts = (userContestsByMatch.get(m.key) ?? []).filter(
+          (c) => c.status !== "COMPLETED"
+        );
+        const delay = matchDelays.get(m.key) ?? 0;
+        return (
+          <LobbyMatch
+            key={m.key}
+            match={{
+              key: m.key,
+              label: m.label,
+              team1: m.team1,
+              team2: m.team2,
+              dateLabel: formatMatchDate(m.date),
+            }}
+            state="live"
+            freshness={matchFreshness.get(m.key) ?? null}
+            innings={scorelines.get(m.key) ?? []}
+            drafts={draftRowsFor(myDrafts, matchPts)}
+            username={username}
+            defaultOpen={expandedKeys.has(m.key)}
+            actions={
+              <>
+                <MatchRefresh matchStarted freshness={matchFreshness.get(m.key) ?? null} />
+                <RainDelay
+                  matchKey={m.key}
+                  initialExtraMinutes={Math.round(delay / 60)}
+                  scheduledStart={formatMatchDate(m.date)}
+                />
+                <div className="flex flex-wrap gap-2">
+                  {myDrafts.map((c) => (
+                    <Link
+                      key={c.id}
+                      href={`/draft/${c.code}/amend`}
+                      className="text-[11px] rounded-lg border border-hair px-2.5 py-1.5 text-mist hover:text-cloud"
+                    >
+                      ⚖️ Amend {c.code}
                     </Link>
-
-                    {/* Match-level live-points refresh — in-app ESPN scoring, no cricapi/bot.
-                        Freshness ("Points updated till 14.3 overs (138/4)") sits under it. */}
-                    <MatchRefresh matchStarted freshness={matchFreshness.get(m.key) ?? null} />
-
-                    {/* Draft cards */}
-                    {myDrafts.map((c) => {
-                      const sels = selectionsMap.get(c.id) ?? [];
-                      const parts = participantsMap.get(c.id) ?? [];
-                      const isDeletable = c.createdBy === username && c.status !== "LOCKED";
-
-                      // Build per-user summary row
-                      const userRows = parts.map((u) => {
-                        const sel = sels.find((s) => s.user === u);
-                        const capName = sel?.captainKey ? (getPlayerByKey(sel.captainKey)?.displayName ?? "—") : null;
-                        const vcName = sel?.viceCaptainKey ? (getPlayerByKey(sel.viceCaptainKey)?.displayName ?? "—") : null;
-                        const pts = sel ? calcSelectionPoints(sel, c.picksPerUser, matchPts) : null;
-                        return { u, capName, vcName, pts };
-                      });
-
-                      return (
-                        <div
-                          key={c.id}
-                          className="card-stadium rounded-2xl overflow-hidden"
-                        >
-                          {/* Card header */}
-                          <div className="flex items-center gap-2 px-3 pt-2.5 pb-1.5">
-                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide ${c.mode === "live" ? "bg-live/15 text-live border border-live/40" : "bg-navy2 text-mist"}`}>
-                              {c.mode === "live" ? "Live" : "Manual"}
-                            </span>
-                            <span className="text-mist2 font-mono text-xs">{c.code}</span>
-                            <span className="flex-1" />
-                            {isDeletable && <DeleteDraftButton code={c.code} />}
-                          </div>
-
-                          {/* Per-user rows */}
-                          <Link href={`/draft/${c.code}/results`} className="block px-3 pb-3 space-y-1.5">
-                            {userRows.map(({ u, capName, vcName, pts }) => (
-                              <div key={u} className="flex items-center gap-2 text-xs">
-                                <span className="text-mist w-14 shrink-0 font-medium truncate">
-                                  {getUserLabel(u)}{u === username ? " (you)" : ""}
-                                </span>
-                                <div className="flex-1 flex items-center gap-1.5 min-w-0 overflow-hidden">
-                                  {capName ? (
-                                    <>
-                                      <span className="bg-yellow-500 text-black text-[9px] font-bold px-1 rounded shrink-0">C</span>
-                                      <span className="text-cloud truncate">{capName}</span>
-                                      {vcName && (
-                                        <>
-                                          <span className="bg-blue-500 text-white text-[9px] font-bold px-1 rounded shrink-0">VC</span>
-                                          <span className="text-cloud truncate">{vcName}</span>
-                                        </>
-                                      )}
-                                    </>
-                                  ) : (
-                                    <span className="text-mist2">Team not set</span>
-                                  )}
-                                </div>
-                                <span className={`font-bold shrink-0 ${pts !== null ? "text-emerald-400" : "text-mist2"}`}>
-                                  {(pts ?? 0).toFixed(0)}pt
-                                </span>
-                              </div>
-                            ))}
-                            <p className="text-[10px] text-mist2 font-mono pt-0.5">Tap to compare teams →</p>
-                          </Link>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              })}
+                  ))}
+                  <Link
+                    href={`/draft/create?matchKey=${m.key}`}
+                    className="text-[11px] rounded-lg border border-gold/50 px-2.5 py-1.5 text-gold"
+                  >
+                    + Draft for this match
+                  </Link>
+                </div>
+              </>
+            }
+          />
+        );
+      })}
     </div>
   );
 
@@ -367,8 +399,7 @@ export default async function LobbyPage() {
               return (
                 <div key={m.key} className="space-y-1.5">
                   {/* Match header */}
-                  <Link
-                    href={`/match/${m.key}`}
+                  <div
                     className="flex items-center justify-between card-stadium rounded-2xl px-4 py-3 hover:brightness-110 transition"
                   >
                     <div className="flex items-center gap-3">
@@ -382,7 +413,7 @@ export default async function LobbyPage() {
                       </div>
                     </div>
                     <span className="text-gold text-xs font-mono shrink-0 border border-gold/30 rounded-lg px-2.5 py-1.5">Draft →</span>
-                  </Link>
+                  </div>
 
                   {/* User's drafts for this match */}
                   {myDrafts.map((c) => {
@@ -437,6 +468,9 @@ export default async function LobbyPage() {
   }).length;
 
   // ── COMPLETED panel ──
+  // Same card as LIVE — the final scoreline, the head-to-head, the drafts — plus the recon
+  // state, which matters MORE here than live: a completed result can still move under you
+  // when the bot reconciles, and that is exactly what the settlement badge reports.
   const completedContent = (
     <div className="space-y-3">
       <Link
@@ -478,121 +512,78 @@ export default async function LobbyPage() {
         <span className="text-mist2 text-sm shrink-0">›</span>
       </Link>
       {myCompletedMatchKeys.map((matchKey) => {
-              const match = allMatches.find((m) => m.key === matchKey);
-              const matchPts = matchPointsCache.get(matchKey) ?? new Map();
-              const contests = userContestsByMatch.get(matchKey) ?? [];
-              // "Has this settled result moved?" — scored with the SAME calcSelectionPoints on
-              // both point maps, so then/now can't drift. A settled baseline may be absent for
-              // matches that completed before the baseline existed; say so rather than implying
-              // "verified unchanged".
-              const settledPts = settledPointsCache.get(matchKey);
-              const mySwing = (contests ?? []).reduce((acc, c) => {
-                if (!settledPts || settledPts.size === 0) return acc;
-                const mySel = (selectionsMap.get(c.id) ?? []).find((sl) => sl.user === username);
-                if (!mySel) return acc;
-                const then = calcSelectionPoints(mySel, c.picksPerUser, settledPts);
-                const nowP = calcSelectionPoints(mySel, c.picksPerUser, matchPts);
-                return acc + ((nowP ?? 0) - (then ?? 0));
-              }, 0);
-              const noSettledBaseline = !settledPts || settledPts.size === 0;
-              const pendingHere = pendingCountCache.get(matchKey) ?? 0;
+        const match = matchByKey.get(matchKey);
+        if (!match) return null;
+        const contests = userContestsByMatch.get(matchKey) ?? [];
+        const matchPts = matchPointsCache.get(matchKey) ?? new Map();
+        const settledPts = settledPointsCache.get(matchKey);
 
-              return (
-                <div key={matchKey} className="card-stadium rounded-2xl overflow-hidden">
-                  {/* Match header — tappable through to the match hub */}
-                  <Link href={`/match/${matchKey}`} className="flex items-center gap-2 px-4 py-3 border-b border-hair hover:bg-navy2/40 transition-colors">
-                    <span className="flex items-center gap-1 shrink-0">
-                      <TeamLogo code={match?.team1 ?? ""} size={20} />
-                      <TeamLogo code={match?.team2 ?? ""} size={20} />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <span className="text-sm font-semibold block truncate">{match ? prettifyMatchLabel(match.label) : matchKey}</span>
-                      {match && (
-                        <p className="text-[11px] text-mist font-mono">{formatMatchDate(match.date)}</p>
-                      )}
-                    </div>
-                    {(mySwing !== 0 || noSettledBaseline || pendingHere > 0) && (
-                      <span className="shrink-0">
-                        <SettlementBadge
-                          delta={mySwing}
-                          noBaseline={noSettledBaseline}
-                          pendingCount={pendingHere}
-                          compact
-                        />
-                      </span>
-                    )}
-                    <span className="text-mist2 text-sm shrink-0">›</span>
+        // Movement against the WRITE-ONCE settled baseline, for the viewer's own XI only.
+        const mySwing = contests.reduce((acc, c) => {
+          if (!settledPts || settledPts.size === 0) return acc;
+          const mySel = (selectionsMap.get(c.id) ?? []).find((sl) => sl.user === username);
+          if (!mySel) return acc;
+          const then = calcSelectionPoints(mySel, c.picksPerUser, settledPts);
+          const nowP = calcSelectionPoints(mySel, c.picksPerUser, matchPts);
+          return acc + ((nowP ?? 0) - (then ?? 0));
+        }, 0);
+        const noSettledBaseline = !settledPts || settledPts.size === 0;
+        const pendingHere = pendingCountCache.get(matchKey) ?? 0;
+        const hasReconNews = mySwing !== 0 || noSettledBaseline || pendingHere > 0;
+
+        return (
+          <LobbyMatch
+            key={matchKey}
+            match={{
+              key: matchKey,
+              label: match.label,
+              team1: match.team1,
+              team2: match.team2,
+              dateLabel: formatMatchDate(match.date),
+            }}
+            state="completed"
+            freshness={null}
+            innings={scorelines.get(matchKey) ?? []}
+            drafts={draftRowsFor(contests, matchPts)}
+            username={username}
+            defaultOpen={expandedKeys.has(matchKey)}
+            statusChip={
+              hasReconNews ? (
+                <SettlementBadge
+                  delta={mySwing}
+                  noBaseline={noSettledBaseline}
+                  pendingCount={pendingHere}
+                  compact
+                />
+              ) : (
+                <span className="text-[10px] text-mist2">✓ settled</span>
+              )
+            }
+            actions={
+              <div className="flex flex-wrap gap-2">
+                {contests.map((c) => (
+                  <Link
+                    key={c.id}
+                    href={`/draft/${c.code}/amend`}
+                    className="text-[11px] rounded-lg border border-hair px-2.5 py-1.5 text-mist hover:text-cloud"
+                  >
+                    ⚖️ Amend {c.code}
                   </Link>
-
-                  {/* Contest rows */}
-                  <div className="divide-y divide-hair">
-                    {contests.map((c) => {
-                      const sels = selectionsMap.get(c.id) ?? [];
-                      const parts = participantsMap.get(c.id) ?? [];
-
-                      // Calculate points per user
-                      const userSummaries = parts.map((u) => {
-                        const sel = sels.find((s) => s.user === u);
-                        const capName = sel?.captainKey ? (getPlayerByKey(sel.captainKey)?.displayName ?? "—") : null;
-                        const vcName = sel?.viceCaptainKey ? (getPlayerByKey(sel.viceCaptainKey)?.displayName ?? "—") : null;
-                        const pts = sel ? calcSelectionPoints(sel, c.picksPerUser, matchPts) : null;
-                        return { u, capName, vcName, pts };
-                      });
-
-                      const allPts = userSummaries.map((s) => s.pts).filter((p): p is number => p !== null);
-                      const maxPts = allPts.length > 0 ? Math.max(...allPts) : null;
-
-                      return (
-                        <Link key={c.id} href={`/draft/${c.code}/results`} className="block px-4 py-3 hover:bg-navy2/40 transition-colors">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide ${c.mode === "live" ? "bg-live/15 text-live border border-live/40" : "bg-navy2 text-mist"}`}>
-                              {c.mode === "live" ? "Live" : "Manual"}
-                            </span>
-                            <span className="text-mist2 font-mono text-xs">{c.code}</span>
-                            <span className="flex-1" />
-                            <span className="text-xs text-mist2">Results →</span>
-                          </div>
-
-                          <div className="space-y-1.5">
-                            {userSummaries.map(({ u, capName, vcName, pts }) => {
-                              const isWinner = pts !== null && maxPts !== null && pts === maxPts && allPts.length > 1;
-                              return (
-                                <div key={u} className="flex items-center gap-2 text-xs">
-                                  <span className={`w-14 shrink-0 font-medium truncate ${isWinner ? "text-yellow-400" : "text-mist"}`}>
-                                    {getUserLabel(u)}{isWinner ? " 🏆" : ""}
-                                  </span>
-                                  <div className="flex-1 flex items-center gap-1.5 min-w-0 overflow-hidden">
-                                    {capName ? (
-                                      <>
-                                        <span className="bg-yellow-500 text-black text-[9px] font-bold px-1 rounded shrink-0">C</span>
-                                        <span className="text-cloud truncate">{capName}</span>
-                                        {vcName && (
-                                          <>
-                                            <span className="bg-blue-500 text-white text-[9px] font-bold px-1 rounded shrink-0">VC</span>
-                                            <span className="text-cloud truncate">{vcName}</span>
-                                          </>
-                                        )}
-                                      </>
-                                    ) : (
-                                      <span className="text-mist2">No team</span>
-                                    )}
-                                  </div>
-                                  <span className={`font-bold shrink-0 ${isWinner ? "text-yellow-400" : pts !== null ? "text-emerald-400" : "text-mist2"}`}>
-                                    {(pts ?? 0).toFixed(0)}pt
-                                  </span>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
+                ))}
+                <Link
+                  href="/audit"
+                  className="text-[11px] rounded-lg border border-gold/50 px-2.5 py-1.5 text-gold"
+                >
+                  Settlement audit →
+                </Link>
+              </div>
+            }
+          />
+        );
+      })}
     </div>
   );
+
 
   const hasAnyMatches = allMatches.length > 0;
 

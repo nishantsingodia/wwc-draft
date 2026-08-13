@@ -336,9 +336,24 @@ export function matchPlayerInXI(
   // grabbing another Mendis). Mirrors lookupPlayerPoints' pid rule. A genuine pid
   // mismatch is a registry drift to fix loud in wwc-points-bot, not to mask here.
   if (player.pid) {
-    return teamXI.has(player.pid)
-      ? { inXI: true, batOrder: teamXI.get(player.pid) ?? 0 }
-      : { inXI: false, batOrder: 0 };
+    if (teamXI.has(player.pid)) return { inXI: true, batOrder: teamXI.get(player.pid) ?? 0 };
+    // ...BUT ONLY WHEN THE FEED ACTUALLY CARRIES PIDS. "Absent under your pid" is evidence you
+    // didn't play only if the feed pid'd ANYONE. When it pid'd nobody for this team, the absence
+    // is our failure to resolve, not the player's failure to appear — and treating it as the
+    // latter is what silently shrank a CPL contest's XI from 11 to 5, scoring 286 v 645 where a
+    // full XI was ~604 v 791. The XI shrank rather than refilled because BACKUP_INTELLIGENCE
+    // substituted the unresolvable players out and their backups were unresolvable for the same
+    // reason, and that decision is FROZEN into effective_lineup, so it drives the score.
+    //
+    // This is permanent, not a patch for one stale mirror. A DEBUTANT is un-pid'd on the feed by
+    // definition — his cricinfo id only exists once ESPN publishes him — so under the old rule
+    // every debut was a potential XI dropout, in perpetuity.
+    //
+    // The namesake guard is fully preserved where it means something: if the feed pid'd anyone on
+    // this team, a pid'd player missing from it really is out, and no name can rescue him. That is
+    // what stops a benched namesake stealing a slot (LPL's two Fernandos, two Mendises).
+    const feedHasAnyPid = [...teamXI.keys()].some(isPidKey);
+    if (feedHasAnyPid) return { inXI: false, batOrder: 0 };
   }
   // Only un-pid'd players (legacy / registry-unknown) fall back to fuzzy NAME. Fuzzy
   // never sees a pid key, so a hash can't be mistaken for a name.

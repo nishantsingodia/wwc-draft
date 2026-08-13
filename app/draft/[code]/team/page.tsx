@@ -408,7 +408,7 @@ export default function TeamPage({
         setTimeout(() => setSavedToast(null), 2500);
         fetchData();
       } else {
-        router.push(`/match/${data?.contest.matchKey}`);
+        router.push("/lobby");
       }
     } else {
       const err = await res.json().catch(() => ({}));
@@ -555,7 +555,7 @@ export default function TeamPage({
       <div className="max-w-lg mx-auto px-3 pt-4 space-y-5">
         {/* Header */}
         <div className="flex items-center gap-2">
-          <Link href={`/match/${data.contest.matchKey}`} className="text-mist hover:text-white text-lg">←</Link>
+          <Link href="/lobby" className="text-mist hover:text-white text-lg">←</Link>
           <div className="flex-1">
             <h1 className="font-bold">{prettifyMatchLabel(data.contest.matchLabel)}</h1>
             <p className="text-xs text-mist">{countdown}</p>

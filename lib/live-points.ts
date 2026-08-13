@@ -23,6 +23,38 @@ export type MatchPoints = {
   freshness: string | null;
 };
 
+/** One innings as the lobby card shows it — DISPLAY ONLY, never an input to any score. */
+export type InningsLine = {
+  team: string;
+  teamName: string;
+  runs: number;
+  wickets: number;
+  overs: string;
+};
+
+/**
+ * The scoreline strip for a match card ("138/4 · 14.3 ov").
+ *
+ * Read off the same cached ESPN summary the live path already pulls, and used for COMPLETED
+ * matches too — a finished game still has its card there, and the final score is the most
+ * useful thing on a completed row. This is deliberately separate from points: the sheet
+ * stays the only source of a COMPLETED score, and this function's output never reaches
+ * calcSelectionPoints. Empty array when ESPN has nothing, so the strip just doesn't render.
+ *
+ * Call it only for the cards you are actually going to expand — it costs one ESPN summary
+ * per match, and a lobby with twenty completed matches shouldn't pay twenty of them.
+ */
+export async function getMatchScoreline(match: Match): Promise<InningsLine[]> {
+  const live = await getLiveMatchPoints(match);
+  return (live?.scorecard ?? []).map((i) => ({
+    team: i.teamCode,
+    teamName: i.teamName,
+    runs: i.runs,
+    wickets: i.wickets,
+    overs: i.overs,
+  }));
+}
+
 export async function getMatchPointsMap(
   match: Match,
   opts: { live: boolean; fresh?: boolean }

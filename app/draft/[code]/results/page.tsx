@@ -528,7 +528,7 @@ export default function ResultsPage({
       <div className="max-w-lg mx-auto px-3 pt-4 space-y-4">
         {/* Header */}
         <div className="flex items-center gap-2">
-          <Link href={`/match/${contest.matchKey}`} className="text-mist hover:text-white text-lg">←</Link>
+          <Link href="/lobby" className="text-mist hover:text-white text-lg">←</Link>
           <div className="flex-1">
             <h1 className="font-bold">{prettifyMatchLabel(contest.matchLabel)}</h1>
             <p className="text-xs text-mist">

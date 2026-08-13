@@ -54,7 +54,7 @@ export default async function SchedulePage() {
               return (
                 <Link
                   key={m.key}
-                  href={`/match/${m.key}`}
+                  href="/lobby"
                   className="flex items-center justify-between bg-ink2 rounded-xl px-4 py-3 hover:bg-navy transition-colors"
                 >
                   <div className="flex items-center gap-3 min-w-0">
