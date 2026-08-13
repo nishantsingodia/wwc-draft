@@ -264,7 +264,7 @@ function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
                       {b.out ? "out" : b.notOut ? "not out" : ""}
                     </span>
                   </span>
-                  <AuctionTags owners={auctionOwnersFor(b.pid, tour)} />
+                  <AuctionTags owners={auctionOwnersFor(b.pid, tour, b.name)} />
                 </td>
                 <td className="text-right px-1.5 py-1.5 tabular-nums font-semibold text-cloud">{b.runs}</td>
                 <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{b.balls}</td>
@@ -305,7 +305,7 @@ function Scorecard({ innings, mine }: { innings: Innings; mine: Set<string> }) {
                     <span className="flex items-center gap-1.5 min-w-0">
                       <span className={`truncate font-semibold ${isMine(bw.name) ? "text-gold" : "text-cloud"}`}>{bw.name}</span>
                     </span>
-                    <AuctionTags owners={auctionOwnersFor(bw.pid, tour)} />
+                    <AuctionTags owners={auctionOwnersFor(bw.pid, tour, bw.name)} />
                   </td>
                   <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.overs}</td>
                   <td className="text-right px-1.5 py-1.5 tabular-nums text-mist">{bw.maidens}</td>
