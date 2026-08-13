@@ -54,6 +54,19 @@ export function resolveEspnPid(
   if (espnId !== null && espnId !== undefined) {
     const byId = espnId2Pid.get(String(espnId));
     if (byId) return byId;
+    // CONSTRUCT IT. ESPN's athlete.id IS the cricinfo id, so `ci:<athlete.id>` is the pid by
+    // definition — no lookup, no name, nothing to be ambiguous about. The registry lookup above
+    // still runs FIRST because it is the only thing that resolves an ALTERNATE ESPN profile
+    // (cricinfo_alt _2/_3) back to the player's canonical id; this is purely its fallback.
+    //
+    // Why it matters: a DEBUTANT cannot be in the mirror — his id does not exist until ESPN
+    // publishes him — and the mirror also goes stale whenever build_registry is run by hand. Both
+    // used to drop straight through to fuzzy NAME matching, which is the one route this project
+    // forbids for identity, and a null from it made matchPlayerInXI judge a player who PLAYED as
+    // not-in-XI. That is how a CPL contest's XI shrank from 11 to 5 and scored 286 v 645.
+    // Constructing the id removes the dependence on both the mirror and the name entirely.
+    const s = String(espnId).trim();
+    if (/^[1-9][0-9]*$/.test(s)) return `ci:${s}`;
   }
   // Exact normalized alias first (fast, unambiguous)…
   const exact = alias2Pid.get(normName(name));
