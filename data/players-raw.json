@@ -9107,7 +9107,7 @@
     "squad_number": 15,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "uncapped:dexter-sween"
+    "pid": "ci:1199306"
   },
   {
     "id": 10731,
@@ -9267,7 +9267,7 @@
     "squad_number": 13,
     "team_code": "MTSTL",
     "efppm": 50.0,
-    "pid": "uncapped:darren-nedd"
+    "pid": "ci:1108828"
   },
   {
     "id": 10747,
@@ -9287,7 +9287,7 @@
     "squad_number": 15,
     "team_code": "MTSTL",
     "efppm": 45.0,
-    "pid": "uncapped:kamil-pooran"
+    "pid": "ci:556531"
   },
   {
     "id": 10749,
@@ -9347,7 +9347,7 @@
     "squad_number": 3,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "uncapped:zachary-carter"
+    "pid": "ci:1500753"
   },
   {
     "id": 10755,
