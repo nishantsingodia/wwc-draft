@@ -4337,7 +4337,7 @@
     "squad_number": 1,
     "team_code": "OIND",
     "efppm": 72.0,
-    "pid": "slug:rohit-sharma"
+    "pid": "ci:34102"
   },
   {
     "id": 10254,
@@ -4347,7 +4347,7 @@
     "squad_number": 2,
     "team_code": "OIND",
     "efppm": 75.0,
-    "pid": "slug:shubman-gill"
+    "pid": "ci:1070173"
   },
   {
     "id": 10255,
@@ -4357,7 +4357,7 @@
     "squad_number": 3,
     "team_code": "OIND",
     "efppm": 78.0,
-    "pid": "slug:virat-kohli"
+    "pid": "ci:253802"
   },
   {
     "id": 10256,
@@ -4377,7 +4377,7 @@
     "squad_number": 5,
     "team_code": "OIND",
     "efppm": 68.0,
-    "pid": "slug:kl-rahul"
+    "pid": "ci:422108"
   },
   {
     "id": 10258,
@@ -4427,7 +4427,7 @@
     "squad_number": 10,
     "team_code": "OIND",
     "efppm": 72.0,
-    "pid": "slug:kuldeep-yadav"
+    "pid": "ci:559235"
   },
   {
     "id": 10263,
@@ -4437,7 +4437,7 @@
     "squad_number": 11,
     "team_code": "OIND",
     "efppm": 75.0,
-    "pid": "slug:jasprit-bumrah"
+    "pid": "ci:625383"
   },
   {
     "id": 10264,
@@ -4467,7 +4467,7 @@
     "squad_number": 14,
     "team_code": "OIND",
     "efppm": 28.0,
-    "pid": "slug:gurnoor-brar"
+    "pid": "ci:1287033"
   },
   {
     "id": 10267,
@@ -8397,7 +8397,7 @@
     "squad_number": 2,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "slug:fabian-allen"
+    "pid": "ci:670013"
   },
   {
     "id": 10660,
@@ -8407,7 +8407,7 @@
     "squad_number": 3,
     "team_code": "MTANT",
     "efppm": 50.0,
-    "pid": "slug:rahkeem-cornwall"
+    "pid": "ci:494581"
   },
   {
     "id": 10661,
@@ -8417,7 +8417,7 @@
     "squad_number": 4,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "slug:karima-gore"
+    "pid": "ci:1139028"
   },
   {
     "id": 10662,
@@ -8437,7 +8437,7 @@
     "squad_number": 6,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "slug:joshua-james"
+    "pid": "uncapped:joshua-james"
   },
   {
     "id": 10664,
@@ -8477,7 +8477,7 @@
     "squad_number": 10,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "slug:evin-lewis"
+    "pid": "ci:431901"
   },
   {
     "id": 10668,
@@ -8487,7 +8487,7 @@
     "squad_number": 11,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "slug:anderson-mahase"
+    "pid": "uncapped:anderson-mahase"
   },
   {
     "id": 10669,
@@ -8517,7 +8517,7 @@
     "squad_number": 14,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "slug:anderson-phillip"
+    "pid": "uncapped:anderson-phillip"
   },
   {
     "id": 10672,
@@ -8537,7 +8537,7 @@
     "squad_number": 16,
     "team_code": "MTANT",
     "efppm": 50.0,
-    "pid": "slug:shadab-khan"
+    "pid": "ci:922943"
   },
   {
     "id": 10674,
@@ -8547,7 +8547,7 @@
     "squad_number": 17,
     "team_code": "MTANT",
     "efppm": 50.0,
-    "pid": "slug:shamar-springer"
+    "pid": "ci:820689"
   },
   {
     "id": 10675,
@@ -8557,7 +8557,7 @@
     "squad_number": 18,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "slug:sufyan-moqim"
+    "pid": "uncapped:sufyan-moqim"
   },
   {
     "id": 10676,
@@ -8577,7 +8577,7 @@
     "squad_number": 20,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "slug:usama-mir"
+    "pid": "ci:647667"
   },
   {
     "id": 10678,
@@ -8597,7 +8597,7 @@
     "squad_number": 2,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:jediah-blades"
+    "pid": "ci:1403089"
   },
   {
     "id": 10680,
@@ -8637,7 +8637,7 @@
     "squad_number": 6,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:hunain-shah"
+    "pid": "ci:1331347"
   },
   {
     "id": 10684,
@@ -8657,7 +8657,7 @@
     "squad_number": 8,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:maaz-sadaqat"
+    "pid": "ci:1244154"
   },
   {
     "id": 10686,
@@ -8667,7 +8667,7 @@
     "squad_number": 9,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:kirk-mckenzie"
+    "pid": "ci:1209196"
   },
   {
     "id": 10687,
@@ -8677,7 +8677,7 @@
     "squad_number": 10,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:romaine-morris"
+    "pid": "uncapped:romaine-morris"
   },
   {
     "id": 10688,
@@ -8687,7 +8687,7 @@
     "squad_number": 11,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:shaqkere-parris"
+    "pid": "ci:1294447"
   },
   {
     "id": 10689,
@@ -8707,7 +8707,7 @@
     "squad_number": 13,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:kelvin-pitman"
+    "pid": "ci:1323740"
   },
   {
     "id": 10691,
@@ -8717,7 +8717,7 @@
     "squad_number": 14,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:jeavor-royal"
+    "pid": "ci:1078697"
   },
   {
     "id": 10692,
@@ -8737,7 +8737,7 @@
     "squad_number": 16,
     "team_code": "MTJAM",
     "efppm": 50.0,
-    "pid": "slug:saim-ayub"
+    "pid": "ci:1161031"
   },
   {
     "id": 10694,
@@ -8757,7 +8757,7 @@
     "squad_number": 18,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:odean-smith"
+    "pid": "uncapped:odean-smith"
   },
   {
     "id": 10696,
@@ -8767,7 +8767,7 @@
     "squad_number": 19,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:tayyab-arif"
+    "pid": "uncapped:tayyab-arif"
   },
   {
     "id": 10697,
@@ -8777,7 +8777,7 @@
     "squad_number": 20,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "slug:usman-khan"
+    "pid": "uncapped:usman-khan"
   },
   {
     "id": 10698,
@@ -8797,7 +8797,7 @@
     "squad_number": 2,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:alick-athanaze"
+    "pid": "ci:1078692"
   },
   {
     "id": 10700,
@@ -8807,7 +8807,7 @@
     "squad_number": 3,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:navin-bidaisee"
+    "pid": "ci:1342547"
   },
   {
     "id": 10701,
@@ -8817,7 +8817,7 @@
     "squad_number": 4,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:johnson-charles"
+    "pid": "ci:333066"
   },
   {
     "id": 10702,
@@ -8857,7 +8857,7 @@
     "squad_number": 8,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:jeremiah-louis"
+    "pid": "uncapped:jeremiah-louis"
   },
   {
     "id": 10706,
@@ -8867,7 +8867,7 @@
     "squad_number": 9,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:mikyle-louis"
+    "pid": "uncapped:mikyle-louis"
   },
   {
     "id": 10707,
@@ -8877,7 +8877,7 @@
     "squad_number": 10,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:obed-mccoy"
+    "pid": "ci:906783"
   },
   {
     "id": 10708,
@@ -8887,7 +8887,7 @@
     "squad_number": 11,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:kyle-mayers"
+    "pid": "ci:348056"
   },
   {
     "id": 10709,
@@ -8897,7 +8897,7 @@
     "squad_number": 12,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:micah-mckenzie"
+    "pid": "uncapped:micah-mckenzie"
   },
   {
     "id": 10710,
@@ -8907,7 +8907,7 @@
     "squad_number": 13,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:naseem-shah"
+    "pid": "ci:1158088"
   },
   {
     "id": 10711,
@@ -8917,7 +8917,7 @@
     "squad_number": 14,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:ashmead-nedd"
+    "pid": "ci:1131647"
   },
   {
     "id": 10712,
@@ -8947,7 +8947,7 @@
     "squad_number": 17,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:waqar-salamkheil"
+    "pid": "ci:1108490"
   },
   {
     "id": 10715,
@@ -8957,7 +8957,7 @@
     "squad_number": 18,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "slug:kevin-wickham"
+    "pid": "ci:1295903"
   },
   {
     "id": 10716,
@@ -8987,7 +8987,7 @@
     "squad_number": 3,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "slug:joshua-da-silva"
+    "pid": "ci:1168667"
   },
   {
     "id": 10719,
@@ -9007,7 +9007,7 @@
     "squad_number": 5,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "slug:dominic-drakes"
+    "pid": "ci:906749"
   },
   {
     "id": 10721,
@@ -9017,7 +9017,7 @@
     "squad_number": 6,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "slug:nathan-edward"
+    "pid": "uncapped:nathan-edward"
   },
   {
     "id": 10722,
@@ -9027,7 +9027,7 @@
     "squad_number": 7,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "slug:jyd-goolie"
+    "pid": "ci:914455"
   },
   {
     "id": 10723,
@@ -9057,7 +9057,7 @@
     "squad_number": 10,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "slug:terrance-hinds"
+    "pid": "ci:1152714"
   },
   {
     "id": 10726,
@@ -9107,7 +9107,7 @@
     "squad_number": 15,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "slug:dexter-sween"
+    "pid": "uncapped:dexter-sween"
   },
   {
     "id": 10731,
@@ -9117,7 +9117,7 @@
     "squad_number": 16,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "slug:abdul-raheem-toppin"
+    "pid": "uncapped:abdul-raheem-toppin"
   },
   {
     "id": 10732,
@@ -9157,7 +9157,7 @@
     "squad_number": 2,
     "team_code": "MTSTL",
     "efppm": 45.0,
-    "pid": "slug:jewel-andrew"
+    "pid": "ci:1394273"
   },
   {
     "id": 10736,
@@ -9187,7 +9187,7 @@
     "squad_number": 5,
     "team_code": "MTSTL",
     "efppm": 45.0,
-    "pid": "slug:joshua-bishop"
+    "pid": "ci:1078693"
   },
   {
     "id": 10739,
@@ -9197,7 +9197,7 @@
     "squad_number": 6,
     "team_code": "MTSTL",
     "efppm": 45.0,
-    "pid": "slug:mckenny-clarke"
+    "pid": "ci:1275937"
   },
   {
     "id": 10740,
@@ -9217,7 +9217,7 @@
     "squad_number": 8,
     "team_code": "MTSTL",
     "efppm": 45.0,
-    "pid": "slug:keon-gaston"
+    "pid": "ci:1460142"
   },
   {
     "id": 10742,
@@ -9227,7 +9227,7 @@
     "squad_number": 9,
     "team_code": "MTSTL",
     "efppm": 50.0,
-    "pid": "slug:amari-goodridge"
+    "pid": "uncapped:amari-goodridge"
   },
   {
     "id": 10743,
@@ -9247,7 +9247,7 @@
     "squad_number": 11,
     "team_code": "MTSTL",
     "efppm": 45.0,
-    "pid": "slug:johann-jeremiah"
+    "pid": "ci:1342552"
   },
   {
     "id": 10745,
@@ -9257,7 +9257,7 @@
     "squad_number": 12,
     "team_code": "MTSTL",
     "efppm": 45.0,
-    "pid": "slug:damion-joachim"
+    "pid": "uncapped:damion-joachim"
   },
   {
     "id": 10746,
@@ -9267,7 +9267,7 @@
     "squad_number": 13,
     "team_code": "MTSTL",
     "efppm": 50.0,
-    "pid": "slug:darren-nedd"
+    "pid": "uncapped:darren-nedd"
   },
   {
     "id": 10747,
@@ -9287,7 +9287,7 @@
     "squad_number": 15,
     "team_code": "MTSTL",
     "efppm": 45.0,
-    "pid": "slug:kamil-pooran"
+    "pid": "uncapped:kamil-pooran"
   },
   {
     "id": 10749,
@@ -9327,7 +9327,7 @@
     "squad_number": 1,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "slug:chris-green"
+    "pid": "ci:787073"
   },
   {
     "id": 10753,
@@ -9337,7 +9337,7 @@
     "squad_number": 2,
     "team_code": "MTBAR",
     "efppm": 50.0,
-    "pid": "slug:kadeem-alleyne"
+    "pid": "ci:1264431"
   },
   {
     "id": 10754,
@@ -9347,7 +9347,7 @@
     "squad_number": 3,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "slug:zachary-carter"
+    "pid": "uncapped:zachary-carter"
   },
   {
     "id": 10755,
@@ -9367,7 +9367,7 @@
     "squad_number": 5,
     "team_code": "MTBAR",
     "efppm": 50.0,
-    "pid": "slug:shadrack-descarte"
+    "pid": "ci:1342699"
   },
   {
     "id": 10757,
@@ -9377,7 +9377,7 @@
     "squad_number": 6,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "slug:kofi-james"
+    "pid": "uncapped:kofi-james"
   },
   {
     "id": 10758,
@@ -9387,7 +9387,7 @@
     "squad_number": 7,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "slug:brandon-king"
+    "pid": "ci:670035"
   },
   {
     "id": 10759,
@@ -9397,7 +9397,7 @@
     "squad_number": 8,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "slug:johann-layne"
+    "pid": "ci:1275943"
   },
   {
     "id": 10760,
@@ -9407,7 +9407,7 @@
     "squad_number": 9,
     "team_code": "MTBAR",
     "efppm": 50.0,
-    "pid": "slug:george-linde"
+    "pid": "ci:481875"
   },
   {
     "id": 10761,
@@ -9417,7 +9417,7 @@
     "squad_number": 10,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "slug:zishan-motara"
+    "pid": "ci:1420097"
   },
   {
     "id": 10762,
@@ -9447,7 +9447,7 @@
     "squad_number": 13,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "slug:jakeem-pollard"
+    "pid": "uncapped:jakeem-pollard"
   },
   {
     "id": 10765,
@@ -9477,7 +9477,7 @@
     "squad_number": 16,
     "team_code": "MTBAR",
     "efppm": 45.0,
-    "pid": "slug:ramon-simmonds"
+    "pid": "ci:1209197"
   },
   {
     "id": 10768,
@@ -9487,7 +9487,7 @@
     "squad_number": 1,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:imran-tahir"
+    "pid": "ci:40618"
   },
   {
     "id": 10769,
@@ -9497,7 +9497,7 @@
     "squad_number": 2,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:ronaldo-alimohamed"
+    "pid": "uncapped:ronaldo-alimohamed"
   },
   {
     "id": 10770,
@@ -9507,7 +9507,7 @@
     "squad_number": 3,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:mavendra-dindyal"
+    "pid": "uncapped:mavendra-dindyal"
   },
   {
     "id": 10771,
@@ -9547,7 +9547,7 @@
     "squad_number": 7,
     "team_code": "MTGUY",
     "efppm": 50.0,
-    "pid": "slug:mohammad-nabi"
+    "pid": "ci:25913"
   },
   {
     "id": 10775,
@@ -9557,7 +9557,7 @@
     "squad_number": 8,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:matthew-nandu"
+    "pid": "ci:1195686"
   },
   {
     "id": 10776,
@@ -9567,7 +9567,7 @@
     "squad_number": 9,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:veerasammy-permaul"
+    "pid": "ci:274921"
   },
   {
     "id": 10777,
@@ -9577,7 +9577,7 @@
     "squad_number": 10,
     "team_code": "MTGUY",
     "efppm": 50.0,
-    "pid": "slug:glenn-phillips"
+    "pid": "uncapped:glenn-phillips"
   },
   {
     "id": 10778,
@@ -9587,7 +9587,7 @@
     "squad_number": 11,
     "team_code": "MTGUY",
     "efppm": 50.0,
-    "pid": "slug:khary-pierre"
+    "pid": "ci:581160"
   },
   {
     "id": 10779,
@@ -9597,7 +9597,7 @@
     "squad_number": 12,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:dwaine-pretorius"
+    "pid": "uncapped:dwaine-pretorius"
   },
   {
     "id": 10780,
@@ -9607,7 +9607,7 @@
     "squad_number": 13,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:rahmanullah-gurbaz"
+    "pid": "ci:974087"
   },
   {
     "id": 10781,
@@ -9617,7 +9617,7 @@
     "squad_number": 14,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:quentin-sampson"
+    "pid": "ci:1342550"
   },
   {
     "id": 10782,
@@ -9637,7 +9637,7 @@
     "squad_number": 16,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "slug:isai-thorne"
+    "pid": "uncapped:isai-thorne"
   },
   {
     "id": 10784,
@@ -9647,6 +9647,6 @@
     "squad_number": 17,
     "team_code": "MTGUY",
     "efppm": 50.0,
-    "pid": "slug:jonathan-van-lange"
+    "pid": "uncapped:jonathan-van-lange"
   }
 ]
