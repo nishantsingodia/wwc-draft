@@ -47,11 +47,23 @@ check(
   looksLikePointsTab('"Match","Date","Team","Full Name","Fantasy Points"') === false
 );
 
-// The manifest must not carry a tab the bot will never write.
+// CPL is EXPECTED in the manifest as of 13 Aug 2026. It was removed on 6 Aug because a tour with
+// no cricapi_series went unscored, so its tab was never written and gviz answered the unknown sheet
+// name with the spreadsheet's FIRST SHEET — the draft merged a WWC auction-budget board into its
+// points pool. The bot now scores ESPN-only tours (espn_match_list), so the tab IS written and
+// withholding it would mean CPL points are computed and never read by anyone.
 const tabs: string[] = require("../data/points-tabs.json");
 check(
-  "points-tabs.json has no CPL tab (no cricapi_series -> never written)",
-  !tabs.some((u) => u.toUpperCase().includes("CARIBBEAN"))
+  "points-tabs.json carries the CPL tab (ESPN-only tours are scored since 13 Aug 2026)",
+  tabs.some((u) => u.toUpperCase().includes("CARIBBEAN"))
+);
+
+// The property that makes registering a tab SAFE even before the bot has written it: a gviz 200
+// carrying some other sheet is rejected on schema, so the worst case is a loud drop, not a poisoned
+// pool. This is the real defence — the manifest contents are just a hint.
+check(
+  "an auction-budget board served in place of a points tab is rejected",
+  looksLikePointsTab('"Franchise","Purse","EF = 10k","1st : 27.5k","Sophie Devine"') === false
 );
 
 console.log(`\n${pass} passed, ${fail} failed`);
