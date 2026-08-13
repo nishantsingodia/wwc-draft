@@ -184,6 +184,93 @@ async function fetchEspnLineup(match: Match): Promise<EspnLineup | null> {
   return null;
 }
 
+// ── public: the FULL match roster (XI + named subs/bench) ─────────────────────────
+// getEspnLineup answers "who is in the XI" as an identity-keyed membership map, which is
+// all the substitution engine needs. The lineup-amendment screen needs the other half:
+// the actual ROSTER as a list of people — name, role, team, whether they're starting, and
+// each one's stable registry pid — so a LATE SQUAD ADDITION who was never in
+// players-raw.json (and has no sheet row yet, so the self-heal roster can't see them
+// either) can be picked and scored properly instead of being stood in for by a dummy.
+export type EspnRosterEntry = {
+  espnId: string | null;
+  /** Stable registry pid (ci:<cricinfoId> / slug: / cricsheet hash), null if unknown. */
+  pid: string | null;
+  name: string;
+  role: Role;
+  starter: boolean;
+  photo: string | null;
+};
+export type EspnMatchRoster = Map<string, EspnRosterEntry[]>; // teamCode -> roster
+
+const ROSTER_TTL_MS = 60_000;
+const _rosterCache = new Map<string, { at: number; val: EspnMatchRoster | null }>();
+
+export async function getEspnMatchRoster(
+  match: Match,
+  opts?: { fresh?: boolean }
+): Promise<EspnMatchRoster | null> {
+  const cached = _rosterCache.get(match.key);
+  if (!opts?.fresh && cached && Date.now() - cached.at < ROSTER_TTL_MS) return cached.val;
+  let val: EspnMatchRoster | null = null;
+  try {
+    val = await fetchEspnMatchRoster(match);
+  } catch {
+    // Best-effort like every other ESPN path: a parse hiccup must not break the screen.
+    val = null;
+  }
+  _rosterCache.set(match.key, { at: Date.now(), val });
+  return val;
+}
+
+async function fetchEspnMatchRoster(match: Match): Promise<EspnMatchRoster | null> {
+  for (const series of SERIES_BY_GENDER[match.gender] ?? []) {
+    const eventId = await findEventId(series, match);
+    if (!eventId) continue;
+    const summary = await espnGet(series, "summary", { event: eventId });
+    if (!summary) continue;
+
+    const codeByKey = new Map<string, string>([
+      [teamKey(TEAM_NAMES[match.team1] ?? match.team1), match.team1],
+      [teamKey(TEAM_NAMES[match.team2] ?? match.team2), match.team2],
+    ]);
+
+    const out: EspnMatchRoster = new Map();
+    for (const team of (summary.rosters as Array<Record<string, unknown>>) ?? []) {
+      const tname = ((team.team as Record<string, unknown>)?.displayName as string) ?? "";
+      const code = codeByKey.get(teamKey(tname));
+      if (!code) continue;
+
+      const entries: EspnRosterEntry[] = [];
+      const seen = new Set<string>();
+      for (const p of (team.roster as Array<Record<string, unknown>>) ?? []) {
+        const a = (p.athlete as Record<string, unknown>) ?? {};
+        const name = ((a.displayName as string) || (a.fullName as string) || "").trim();
+        if (!name || seen.has(name)) continue;
+        seen.add(name);
+        const href = (a.headshot as Record<string, unknown>)?.href as string | undefined;
+        entries.push({
+          espnId: a.id ? String(a.id) : null,
+          pid: resolveAthletePid(a),
+          name,
+          role: roleFromPosition(
+            ((p.position as Record<string, unknown>)?.abbreviation as string) ?? ""
+          ),
+          // `subbedIn` players came on later but did feature — count them as starting so
+          // the screen shows them under "playing", exactly as getEspnLineup's XI does.
+          starter: !!(p.starter || p.subbedIn),
+          // ESPN serves a generic silhouette for players with no photo; keep it — the UI
+          // falls back to the flag on a 404 either way, and this is a picker not a scorer.
+          photo: href ? espnThumb(href) : null,
+        });
+      }
+      if (entries.length > 0) out.set(code, entries);
+    }
+
+    if (out.size > 0) return out;
+  }
+  return null;
+}
+
 // ── LIVE provisional scoring (in-app; the COMPLETED path is untouched) ────────────
 // Fetch the ESPN scorecard for a match and compute a provisional D11 points map keyed
 // the same way the roster joins (registry pid + espn:<id> + name). Used ONLY while a

@@ -22,7 +22,12 @@ export type Change =
   | { type: "captain"; out: PlayerRef | null; in: PlayerRef }
   | { type: "vice"; out: PlayerRef | null; in: PlayerRef }
   // a slot/role couldn't be filled (squad ran out of playing players)
-  | { type: "warning"; subjectKey: string | null; message: string };
+  | { type: "warning"; subjectKey: string | null; message: string }
+  // This lineup was SET BY PEOPLE, not by this engine — an approved post-lock
+  // amendment (lib/amendments.ts). computeEffectiveLineup never emits it; it exists
+  // so the disclosure banner can say "the friends agreed this" instead of
+  // mislabelling a human decision as an auto-substitution.
+  | { type: "amendment"; reason: string; by: string; approvedBy: string[] };
 
 export type EffectiveLineup = {
   xi: string[];

@@ -118,6 +118,53 @@ export const matchDelays = sqliteTable("match_delays", {
   updatedBy: text("updated_by"),
 });
 
+// ── Lineup amendments (post-lock, approval-gated) ─────────────────────────────
+// Once a match is LIVE or COMPLETED the team is locked and the effective XI is
+// frozen — deliberately, so nobody edits their side after seeing the score. But two
+// honest situations still need a fix after lock:
+//   1. A LATE SQUAD ADDITION nobody could draft (not in players-raw.json, no sheet
+//      row yet). The owner drafted a dummy stand-in; the dummy scores nothing and
+//      the real player's points are unreachable. -> `replacements`.
+//   2. A ranking/armband that's simply wrong on the record (mis-drag, C and VC the
+//      wrong way round) and both sides agree it was.        -> `ranking`.
+// Both are the SAME reviewable request: the resulting full priority ranking plus the
+// list of stand-in -> real swaps. Every OTHER stakeholder in the contest must approve
+// before a single number moves, and the request carries the exact points delta it
+// would cause, so approving is an informed act rather than a favour.
+export const lineupAmendments = sqliteTable("lineup_amendments", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  contestId: integer("contest_id").notNull(),
+  /** Whose squad this amends. */
+  user: text("user").notNull(),
+  /** Who filed it (== user, except in manual mode where one person enters both teams). */
+  requestedBy: text("requested_by").notNull(),
+  /** JSON string[] — the proposed full ranking (index 0 = Captain, 1 = Vice). */
+  ranking: text("ranking").notNull(),
+  /** JSON {outKey,inKey,inName,inTeam,inRole,inPid}[] — stand-in -> real player swaps. */
+  replacements: text("replacements").notNull().default("[]"),
+  /** Free-text justification shown to the approvers. Required — this is a record. */
+  reason: text("reason").notNull().default(""),
+  /** Points swing this would cause, as measured when it was filed. Display only. */
+  pointsDelta: integer("points_delta"),
+  status: text("status", {
+    enum: ["PENDING", "APPROVED", "REJECTED", "CANCELLED"],
+  })
+    .notNull()
+    .default("PENDING"),
+  /** JSON string[] — usernames who have approved so far. */
+  approvals: text("approvals").notNull().default("[]"),
+  /** Who rejected (null unless status = REJECTED). */
+  resolvedBy: text("resolved_by"),
+  createdAt: integer("created_at").notNull(),
+  resolvedAt: integer("resolved_at"),
+});
+
+// A pending amendment older than this is ignored (treated as expired) so a squad is
+// never permanently stuck behind an unresponsive friend. Far longer than the undo
+// handshake: an amendment is a post-match correction, not an in-draft interruption,
+// and the people involved may not open the app again until the next evening.
+export const AMENDMENT_TTL_SECONDS = 86400; // 24 h
+
 // Joined participants (track who has joined a contest)
 export const contestParticipants = sqliteTable(
   "contest_participants",
@@ -156,3 +203,4 @@ export type DraftPick = typeof draftPicks.$inferSelect;
 export type TeamSelection = typeof teamSelections.$inferSelect;
 export type DraftQueue = typeof draftQueues.$inferSelect;
 export type MatchDelay = typeof matchDelays.$inferSelect;
+export type LineupAmendment = typeof lineupAmendments.$inferSelect;

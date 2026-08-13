@@ -118,17 +118,23 @@ export async function GET(
 
       // Effective XI = top picksPerUser PLAYING by rank, with C/VC cascaded. Serve
       // the frozen decision once computed; otherwise compute (and freeze if eligible).
+      const frozenChanges: Change[] = sel.effectiveChanges
+        ? (JSON.parse(sel.effectiveChanges) as Change[])
+        : [];
+      // A lineup set by an APPROVED AMENDMENT is authoritative on its own — it was
+      // decided by people and signed off by everyone with a stake, so it doesn't need
+      // the `eligible` gate (which is false for every manual-mode contest, and flips
+      // false again if a lineup un-announces). Serving it unconditionally is what makes
+      // "we score exactly what was approved" true rather than usually true.
+      const byAmendment = frozenChanges.some((c) => c.type === "amendment");
       let eff: EffectiveLineup;
-      if (eligible && sel.effectiveComputedAt && sel.effectiveLineup) {
+      if ((eligible || byAmendment) && sel.effectiveComputedAt && sel.effectiveLineup) {
         const fz = JSON.parse(sel.effectiveLineup) as {
           xi: string[];
           captainKey: string | null;
           viceCaptainKey: string | null;
         };
-        const changes = sel.effectiveChanges
-          ? (JSON.parse(sel.effectiveChanges) as Change[])
-          : [];
-        eff = { ...fz, changes };
+        eff = { ...fz, changes: frozenChanges };
       } else {
         eff = computeEffectiveLineup({
           ranking,

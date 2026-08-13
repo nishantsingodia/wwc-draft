@@ -9,6 +9,7 @@ import type { Change } from "@/lib/effective-lineup";
 import type { LiveStatus, Innings } from "@/lib/espn";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
+import AmendBanner from "@/components/amend-banner";
 import TeamLogo from "@/components/team-logo";
 import { auctionOwnersFor, tourForTeamCode, type AuctionOwner } from "@/lib/auction-ownership";
 import { ReasonChip } from "@/components/settlement-badge";
@@ -633,6 +634,10 @@ export default function ResultsPage({
             )}
           </div>
         )}
+
+        {/* Post-lock lineup amendments: an approval waiting on you, or the way in to swap a
+            stand-in for a late squad addition. Renders nothing until the match has started. */}
+        <AmendBanner code={code} />
 
         {/* Tab switcher — H2H comparison, single-team breakdown, and (live-only) full scorecard */}
         {orderedTeams.length > 0 && (

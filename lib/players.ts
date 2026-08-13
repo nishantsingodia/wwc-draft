@@ -17,10 +17,13 @@ export type Player = {
   efppm: number; // expected fantasy points per match (tour projection)
 };
 
-// A points-sheet key is a registry pid (cricsheet hash, "espn:N", or "slug:..."),
-// not a player name. Used to keep fuzzy NAME matching from ever seeing a pid key.
+// A points-sheet key is a registry pid ("ci:N" — the ESPNcricinfo id and the primary
+// scheme since the 25 Jul 2026 migration — or a legacy cricsheet hash / "espn:N" /
+// "slug:..."), not a player name. Used to keep fuzzy NAME matching from ever seeing a
+// pid key. `ci:` MUST be listed: without it every ci: key leaked into the fuzzy NAME
+// candidate pool, which is the pool the matcher is allowed to guess from.
 export function isPidKey(k: string): boolean {
-  return /^(espn:|slug:)/.test(k) || /^[0-9a-f]{8}$/.test(k);
+  return /^(ci:|espn:|slug:)/.test(k) || /^[0-9a-f]{8}$/.test(k);
 }
 
 // One player as seen in the points sheet's self-healing roster (getSheetRoster).
@@ -253,18 +256,56 @@ export type PlayerPool = Player & { isLikelyXI: boolean };
 // ── Self-healing roster (synthetic players) ───────────────────────────────────
 // Players who appear in the live feed but aren't in players-raw.json are added to
 // the pool on the fly with a self-describing key, so they're draftable and resolve
-// everywhere (pick/team/results) without any hand-editing. Format: "s|TEAM|ROLE|Name".
+// everywhere (pick/team/results) without any hand-editing. Two formats:
+//   "s|TEAM|ROLE|Name"      — NAME-only. Points join by fuzzy name (the legacy
+//                             self-heal path, fed by the sheet roster).
+//   "x|PID|TEAM|ROLE|Name"  — IDENTITY-carrying. Used when we resolved the player
+//                             to a stable REGISTRY pid (ci:<cricinfoId>) — e.g. a
+//                             late squad addition picked off the live ESPN roster
+//                             via the lineup-amendment flow. Points then join on
+//                             the pid exactly like a seeded player.
+// The key is self-describing (no DB row, no players-raw.json edit) so it resolves
+// on every surface through getPlayerByKey alone.
 const SYNTH_PREFIX = "s|";
+const EXT_PREFIX = "x|";
 
 export function makeSyntheticKey(team: string, role: string, name: string): string {
   return `${SYNTH_PREFIX}${team}|${role}|${name}`;
 }
 
-function syntheticPlayer(team: string, role: string, name: string, squadNumber = 99): Player {
+// Key for a player we know by stable identity but who isn't in players-raw.json.
+// Pass a pid in the scheme the points sheet actually uses — `ci:<cricinfoId>`. ESPN's
+// athlete id IS the cricinfo id, so `ci:<espnAthleteId>` is valid even for a player the
+// registry hasn't been built for yet. NEVER pass a bare `espn:<id>` (the wrong prefix):
+// lookupPlayerPoints treats any pid as authoritative and refuses to fall back to fuzzy
+// name, so a key the sheet doesn't use would score a hard 0 on the completed path.
+export function makeExternalKey(
+  pid: string,
+  team: string,
+  role: string,
+  name: string
+): string {
+  return `${EXT_PREFIX}${pid}|${team}|${role}|${name}`;
+}
+
+// True for any key that isn't a seeded players-raw.json id — i.e. a player carried
+// entirely by their key. Used by the UI to badge "added from the live roster".
+export function isOffSeedKey(key: string): boolean {
+  return key.startsWith(SYNTH_PREFIX) || key.startsWith(EXT_PREFIX);
+}
+
+function syntheticPlayer(
+  team: string,
+  role: string,
+  name: string,
+  squadNumber = 99,
+  pid?: string
+): Player {
   const r = (["WK", "BAT", "AR", "BOWL"].includes(role) ? role : "BAT") as Player["role"];
   return {
     id: 0,
-    key: makeSyntheticKey(team, r, name),
+    key: pid ? makeExternalKey(pid, team, r, name) : makeSyntheticKey(team, r, name),
+    pid,
     name,
     displayName: name,
     country: "",
@@ -396,6 +437,14 @@ export function getPlayerByKey(key: string): Player | undefined {
     const role = parts[2] ?? "BAT";
     const name = parts.slice(3).join("|");
     return name ? syntheticPlayer(team, role, name) : undefined;
+  }
+  if (key.startsWith(EXT_PREFIX)) {
+    const parts = key.split("|"); // ["x", pid, team, role, ...nameParts]
+    const pid = parts[1] ?? "";
+    const team = parts[2] ?? "";
+    const role = parts[3] ?? "BAT";
+    const name = parts.slice(4).join("|");
+    return pid && name ? syntheticPlayer(team, role, name, 99, pid) : undefined;
   }
   return ALL_PLAYERS.find((p) => p.key === key);
 }

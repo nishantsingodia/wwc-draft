@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "migrate": "npx tsx scripts/migrate.ts",
-    "test": "tsx scripts/test-effective-lineup.ts && tsx scripts/test-points.ts && tsx scripts/test-d11-score.ts && tsx scripts/test-settlement-audit.ts && tsx scripts/test-points-tab-guard.ts",
-    "test:integration": "rm -f db/test.db && TURSO_DATABASE_URL=file:db/test.db tsx scripts/migrate.ts && TURSO_DATABASE_URL=file:db/test.db tsx scripts/test-results-integration.ts",
+    "test": "tsx scripts/test-effective-lineup.ts && tsx scripts/test-points.ts && tsx scripts/test-d11-score.ts && tsx scripts/test-settlement-audit.ts && tsx scripts/test-points-tab-guard.ts && tsx scripts/test-amendments.ts",
+    "test:integration": "rm -f db/test.db && TURSO_DATABASE_URL=file:db/test.db tsx scripts/migrate.ts && TURSO_DATABASE_URL=file:db/test.db tsx scripts/test-results-integration.ts && TURSO_DATABASE_URL=file:db/test.db tsx scripts/test-amend-integration.ts",
     "check:tours": "tsx scripts/check-tours.ts"
   },
   "dependencies": {

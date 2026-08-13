@@ -86,6 +86,24 @@ const DDL = [
     updated_at INTEGER NOT NULL,
     updated_by TEXT
   )`,
+  // Post-lock, approval-gated lineup amendments (re-rank / swap C-VC / replace a
+  // dummy stand-in with the real late addition). Additive: no rows = today's
+  // behaviour, and a locked team stays locked until every other stakeholder approves.
+  `CREATE TABLE IF NOT EXISTS lineup_amendments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    contest_id INTEGER NOT NULL,
+    user TEXT NOT NULL,
+    requested_by TEXT NOT NULL,
+    ranking TEXT NOT NULL,
+    replacements TEXT NOT NULL DEFAULT '[]',
+    reason TEXT NOT NULL DEFAULT '',
+    points_delta INTEGER,
+    status TEXT NOT NULL DEFAULT 'PENDING',
+    approvals TEXT NOT NULL DEFAULT '[]',
+    resolved_by TEXT,
+    created_at INTEGER NOT NULL,
+    resolved_at INTEGER
+  )`,
 ];
 
 // SQLite has no `ADD COLUMN IF NOT EXISTS`, so check the table shape first.
@@ -134,6 +152,14 @@ async function migrate() {
   await addColumnIfMissing("team_selections", "effective_lineup", "TEXT");
   await addColumnIfMissing("team_selections", "effective_changes", "TEXT");
   await addColumnIfMissing("team_selections", "effective_computed_at", "INTEGER");
+
+  // One PENDING amendment per (contest, user) at a time — a second request would
+  // race the first and make "what am I approving?" unanswerable. Partial index so
+  // resolved rows (the audit trail) are unconstrained.
+  await client.execute(
+    "CREATE UNIQUE INDEX IF NOT EXISTS lineup_amendments_pending ON lineup_amendments(contest_id, user) WHERE status = 'PENDING'"
+  );
+  console.log("✓ unique index lineup_amendments_pending");
 
   console.log("Migration complete.");
   client.close();
