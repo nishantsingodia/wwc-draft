@@ -2,6 +2,25 @@
 
 import { Fragment, use, useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  KeyboardSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+  useSortable,
+  arrayMove,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { GripVertical } from "lucide-react";
 import { getFlag, getPlayerByKey, prettifyMatchLabel, getTeamName } from "@/lib/players";
 import { getUserLabel } from "@/lib/users";
 
@@ -127,6 +146,24 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
   const [pickingFor, setPickingFor] = useState<string | null>(null);
   const [reason, setReason] = useState("");
 
+  // Drag-to-reorder, identical to the team page: PointerSensor covers mouse + touch,
+  // and only the grip handle carries the listeners so the ⇄ / ↺ buttons stay tappable
+  // and the page still scrolls normally on a phone.
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
+
+  function handleDragEnd(event: DragEndEvent) {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+    setRanking((r) => {
+      const from = r.indexOf(String(active.id));
+      const to = r.indexOf(String(over.id));
+      return from < 0 || to < 0 ? r : arrayMove(r, from, to);
+    });
+  }
+
   const load = useCallback(
     async (keepDraft = false) => {
       const res = await fetch(`/api/draft/${code}/amend`);
@@ -219,13 +256,6 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
     return rosterByKey.get(key)?.team ?? getPlayerByKey(key)?.teamCode ?? "";
   }
 
-  function move(i: number, dir: -1 | 1) {
-    const j = i + dir;
-    if (j < 0 || j >= ranking.length) return;
-    const next = [...ranking];
-    [next[i], next[j]] = [next[j], next[i]];
-    setRanking(next);
-  }
   function moveTo(key: string, target: number) {
     const rest = ranking.filter((k) => k !== key);
     setRanking([...rest.slice(0, target), key, ...rest.slice(target)]);
@@ -371,104 +401,59 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
               </p>
             </div>
 
-            <div className="space-y-1">
-              {ranking.map((key, i) => {
-                const replaced = replacements.find((r) => r.inKey === key);
-                const rp = rosterByKey.get(key);
-                return (
-                  <Fragment key={key}>
-                    <div
-                      className={`rounded-xl border px-2.5 py-2 flex items-center gap-2 ${
-                        replaced
-                          ? "bg-emerald-950/60 border-emerald-500/50"
-                          : i < ppu
-                            ? "bg-navy border-hair"
-                            : "bg-ink2 border-hair"
-                      }`}
-                    >
-                      <span
-                        className={`w-6 text-center text-xs font-mono font-bold shrink-0 ${
-                          i === 0 ? "text-yellow-400" : i === 1 ? "text-blue-400" : "text-mist2"
-                        }`}
-                      >
-                        {i === 0 ? "C" : i === 1 ? "VC" : i + 1}
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm text-cloud truncate">
-                          {nameOf(key)}
-                          {rp?.inXI === false && (
-                            <span className="ml-1.5 text-[10px] text-live">✗ not in XI</span>
-                          )}
-                          {settlesByKey.get(key) === "broken" && (
-                            <span
-                              className="ml-1.5 text-[10px] text-amber-400"
-                              title="Does not resolve in the settled points sheet — will score 0 once the match completes."
-                            >
-                              ⚠ won&apos;t settle
-                            </span>
-                          )}
-                        </p>
-                        <p className="text-[10px] text-mist2">
-                          <span className={ROLE_TONE[roleOf(key)] ?? "text-mist2"}>{roleOf(key)}</span>
-                          {" · "}
-                          {getFlag(teamOf(key))} {teamOf(key)}
-                          {replaced && (
-                            <span className="text-emerald-400"> · replaces {nameOf(replaced.outKey)}</span>
-                          )}
-                        </p>
-                      </div>
-                      <span className="text-xs font-mono text-cloud w-12 text-right shrink-0">
-                        {fmt(pointsByKey.get(key))}
-                      </span>
-                      <div className="flex items-center gap-0.5 shrink-0">
-                        <IconBtn label="Move up" onClick={() => move(i, -1)} disabled={i === 0}>↑</IconBtn>
-                        <IconBtn label="Move down" onClick={() => move(i, 1)} disabled={i === ranking.length - 1}>↓</IconBtn>
-                        {replaced ? (
-                          <IconBtn label="Undo replacement" onClick={() => undoReplacement(key)}>↺</IconBtn>
-                        ) : (
-                          <IconBtn
-                            label="Replace with a player from the match roster"
-                            onClick={() => setPickingFor(pickingFor === key ? null : key)}
-                            active={pickingFor === key}
-                          >
-                            ⇄
-                          </IconBtn>
-                        )}
-                      </div>
-                    </div>
-
-                    {i < 2 && (
-                      <div className="flex gap-1 pl-8 pb-0.5">
-                        {i !== 0 && (
-                          <button
-                            type="button"
-                            onClick={() => moveTo(key, 0)}
-                            className="text-[10px] text-yellow-400/80 hover:text-yellow-300"
-                          >
-                            make captain
-                          </button>
-                        )}
-                      </div>
-                    )}
-
-                    {i === ppu - 1 && ranking.length > ppu && (
-                      <div className="flex items-center gap-2 py-1.5 px-1">
-                        <div className="flex-1 h-px bg-navy2" />
-                        <p className="text-[10px] text-mist2 uppercase tracking-widest whitespace-nowrap">
-                          ↑ top {ppu} = the XI
-                        </p>
-                        <div className="flex-1 h-px bg-navy2" />
-                      </div>
-                    )}
-                  </Fragment>
-                );
-              })}
-            </div>
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              modifiers={[restrictToVerticalAxis]}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext items={ranking} strategy={verticalListSortingStrategy}>
+                <div className="space-y-1">
+                  {ranking.map((key, i) => (
+                    <Fragment key={key}>
+                      <SortableSquadRow
+                        id={key}
+                        index={i}
+                        ppu={ppu}
+                        name={nameOf(key)}
+                        role={roleOf(key)}
+                        team={teamOf(key)}
+                        points={pointsByKey.get(key) ?? null}
+                        inXI={rosterByKey.get(key)?.inXI ?? null}
+                        settles={settlesByKey.get(key)}
+                        replacedName={
+                          (() => {
+                            const r = replacements.find((x) => x.inKey === key);
+                            return r ? nameOf(r.outKey) : null;
+                          })()
+                        }
+                        picking={pickingFor === key}
+                        onReplace={() => setPickingFor(pickingFor === key ? null : key)}
+                        onUndoReplace={() => undoReplacement(key)}
+                        onCaptain={() => moveTo(key, 0)}
+                        onVice={() => moveTo(key, 1)}
+                      />
+                      {i === ppu - 1 && ranking.length > ppu && (
+                        <div className="flex items-center gap-2 py-1.5 px-1">
+                          <div className="flex-1 h-px bg-navy2" />
+                          <p className="text-[10px] text-mist2 uppercase tracking-widest whitespace-nowrap">
+                            ↑ top {ppu} = the XI
+                          </p>
+                          <div className="flex-1 h-px bg-navy2" />
+                        </div>
+                      )}
+                    </Fragment>
+                  ))}
+                </div>
+              </SortableContext>
+            </DndContext>
 
             {ranking.length > 2 && (
               <p className="text-[10px] text-mist2 px-1">
-                Rank 1 is Captain (×2), rank 2 is Vice (×1.5) — moving someone to the top is how you
-                change the armband. ⇄ swaps a stand-in for the real player.
+                Drag the ⠿ handle to re-rank. Rank 1 is Captain (×2), rank 2 is Vice (×1.5) — or tap{" "}
+                <span className="text-yellow-400 font-bold">C</span> /{" "}
+                <span className="text-blue-400 font-bold">VC</span> to promote anyone straight to the
+                top. ⇄ swaps a stand-in for the real player.
               </p>
             )}
 
@@ -617,8 +602,17 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
                         {p.draftedBy && <span> · drafted by {getUserLabel(p.draftedBy)}</span>}
                       </p>
                     </div>
-                    <span className="text-xs font-mono text-cloud w-12 text-right shrink-0">
-                      {fmt(p.points)}
+                    <span className="text-xs font-mono w-14 text-right shrink-0">
+                      {p.points === null && p.inXI && data.open ? (
+                        <span
+                          className="text-[9px] text-amber-400"
+                          title="Featured, but the points sheet has no row for them yet."
+                        >
+                          not scored
+                        </span>
+                      ) : (
+                        <span className="text-cloud">{data.open ? fmt(p.points) : ""}</span>
+                      )}
                     </span>
                   </button>
                 );
@@ -628,6 +622,131 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
         </section>
       </div>
     </main>
+  );
+}
+
+// One draggable row of the squad. Module scope (not nested in AmendPage) so its
+// useSortable hook keeps a stable identity across re-renders. Only the grip carries the
+// drag listeners — the C/VC/⇄ buttons stay tappable and the page still scrolls on touch.
+function SortableSquadRow({
+  id,
+  index,
+  ppu,
+  name,
+  role,
+  team,
+  points,
+  inXI,
+  settles,
+  replacedName,
+  picking,
+  onReplace,
+  onUndoReplace,
+  onCaptain,
+  onVice,
+}: {
+  id: string;
+  index: number;
+  ppu: number;
+  name: string;
+  role: string;
+  team: string;
+  points: number | null;
+  inXI: boolean | null;
+  settles?: Settles;
+  replacedName: string | null;
+  picking: boolean;
+  onReplace: () => void;
+  onUndoReplace: () => void;
+  onCaptain: () => void;
+  onVice: () => void;
+}) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+    useSortable({ id });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 20 : undefined,
+  };
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={`rounded-xl border px-2 py-2 flex items-center gap-2 ${
+        isDragging ? "relative opacity-90 border-gold" : ""
+      } ${
+        replacedName
+          ? "bg-emerald-950/60 border-emerald-500/50"
+          : index < ppu
+            ? "bg-navy border-hair"
+            : "bg-ink2 border-hair"
+      }`}
+    >
+      <span
+        className={`w-6 text-center text-xs font-mono font-bold shrink-0 ${
+          index === 0 ? "text-yellow-400" : index === 1 ? "text-blue-400" : "text-mist2"
+        }`}
+      >
+        {index === 0 ? "C" : index === 1 ? "VC" : index + 1}
+      </span>
+
+      <div className="min-w-0 flex-1">
+        <p className="text-sm text-cloud truncate">
+          {name}
+          {inXI === false && <span className="ml-1.5 text-[10px] text-live">✗ not in XI</span>}
+          {/* Played, but the points sheet has no row for them — the bot hasn't scored
+              them. Say that, rather than showing a bare dash that reads as "zero". */}
+          {inXI === true && points === null && (
+            <span className="ml-1.5 text-[10px] text-amber-400" title="This player featured but the points sheet has no row for them yet — the bot hasn't scored them.">
+              not scored yet
+            </span>
+          )}
+          {settles === "broken" && inXI !== true && (
+            <span className="ml-1.5 text-[10px] text-amber-400">⚠ won&apos;t settle</span>
+          )}
+        </p>
+        <p className="text-[10px] text-mist2 truncate">
+          <span className={ROLE_TONE[role] ?? "text-mist2"}>{role}</span>
+          {" · "}
+          {getFlag(team)} {team}
+          {replacedName && <span className="text-emerald-400"> · replaces {replacedName}</span>}
+        </p>
+      </div>
+
+      <span className="text-xs font-mono text-cloud w-11 text-right shrink-0">{fmt(points)}</span>
+
+      <div className="flex items-center gap-0.5 shrink-0">
+        {index !== 0 && (
+          <IconBtn label={`Make ${name} captain`} onClick={onCaptain}>
+            <span className="text-[10px] font-bold text-yellow-400">C</span>
+          </IconBtn>
+        )}
+        {index !== 1 && (
+          <IconBtn label={`Make ${name} vice-captain`} onClick={onVice}>
+            <span className="text-[9px] font-bold text-blue-400">VC</span>
+          </IconBtn>
+        )}
+        {replacedName ? (
+          <IconBtn label="Undo replacement" onClick={onUndoReplace}>↺</IconBtn>
+        ) : (
+          <IconBtn
+            label="Replace with a player from the match roster"
+            onClick={onReplace}
+            active={picking}
+          >
+            ⇄
+          </IconBtn>
+        )}
+        <button
+          {...attributes}
+          {...listeners}
+          aria-label={`Drag ${name} to re-rank`}
+          className="shrink-0 h-8 w-7 grid place-items-center rounded-lg bg-navy hover:bg-navy2 text-mist cursor-grab active:cursor-grabbing touch-none"
+        >
+          <GripVertical className="w-4 h-4" />
+        </button>
+      </div>
+    </div>
   );
 }
 

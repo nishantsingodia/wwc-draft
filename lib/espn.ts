@@ -80,12 +80,13 @@ async function espnGet(
 // Find the ESPN event id for a match by team pair (date-tolerant ±1 day).
 async function findEventId(
   series: string,
-  match: Match
+  match: Match,
+  dates: string[] = dateVariants(match.date)
 ): Promise<string | null> {
   const want = [teamKey(TEAM_NAMES[match.team1] ?? match.team1), teamKey(TEAM_NAMES[match.team2] ?? match.team2)]
     .sort()
     .join("|");
-  for (const d of dateVariants(match.date)) {
+  for (const d of dates) {
     const sb = await espnGet(series, "scoreboard", { dates: d });
     const events = (sb?.events as Array<Record<string, unknown>>) ?? [];
     for (const e of events) {
@@ -103,6 +104,71 @@ async function findEventId(
   return null;
 }
 
+// ── resolving a match to its ESPN event: the app's slowest single operation ───────
+//
+// Every ESPN read (announced XI, full roster, live scorecard) first has to answer "which
+// ESPN event is this match?" — and the honest way to ask is to scan the gender's series
+// list. That list is now 9 ids for men, and the old scan was SEQUENTIAL over series × 3
+// date variants: up to 27 round-trips, measured at ~15s cold, on the critical path of the
+// results page, the match hub and the lobby. It also ran three times per request, once per
+// consumer, because nothing remembered the answer.
+//
+// Two changes, no behaviour difference:
+//   1. Try the EXACT date across every series CONCURRENTLY, and only fall back to ±1 day
+//      (the US/IST calendar skew) if nothing hits. The exact date is right almost always,
+//      so the common case is one parallel round of fetches instead of up to 27 serial ones.
+//   2. Remember the resolved (series, eventId) per match key for the life of the process.
+//      An event id never changes once assigned, so this is a permanent fact, and all three
+//      consumers now share one resolution instead of racing to recompute it.
+type EspnEvent = { series: string; eventId: string };
+const _eventCache = new Map<string, EspnEvent | null>();
+const _eventInflight = new Map<string, Promise<EspnEvent | null>>();
+
+async function resolveEvent(match: Match): Promise<EspnEvent | null> {
+  const hit = _eventCache.get(match.key);
+  // A cached MISS is not cached permanently — a fixture ESPN hasn't posted yet must
+  // still resolve later — so only a positive hit short-circuits.
+  if (hit) return hit;
+  const inflight = _eventInflight.get(match.key);
+  if (inflight) return inflight;
+
+  const run = (async (): Promise<EspnEvent | null> => {
+    const series = SERIES_BY_GENDER[match.gender] ?? [];
+    const [exact, ...nearby] = dateVariants(match.date);
+    for (const dates of [[exact], nearby]) {
+      if (dates.length === 0) continue;
+      const found = await Promise.all(
+        series.map(async (s) => {
+          const eventId = await findEventId(s, match, dates);
+          return eventId ? { series: s, eventId } : null;
+        })
+      );
+      // Keep the series list's own priority order rather than whichever fetch won the race.
+      const first = found.find(Boolean) ?? null;
+      if (first) {
+        _eventCache.set(match.key, first);
+        return first;
+      }
+    }
+    _eventCache.set(match.key, null);
+    return null;
+  })();
+
+  _eventInflight.set(match.key, run);
+  try {
+    return await run;
+  } finally {
+    _eventInflight.delete(match.key);
+  }
+}
+
+/** The ESPN summary payload for a match — one resolution, one fetch, shared by all readers. */
+async function matchSummary(match: Match): Promise<Record<string, unknown> | null> {
+  const ev = await resolveEvent(match);
+  if (!ev) return null;
+  return espnGet(ev.series, "summary", { event: ev.eventId });
+}
+
 // ── public: official XI for a match, straight from ESPN (null if unavailable) ──
 const CACHE_TTL_MS = 60_000;
 const _cache = new Map<string, { at: number; val: EspnLineup | null }>();
@@ -117,13 +183,9 @@ export async function getEspnLineup(match: Match): Promise<EspnLineup | null> {
 }
 
 async function fetchEspnLineup(match: Match): Promise<EspnLineup | null> {
-  const seriesCandidates = SERIES_BY_GENDER[match.gender] ?? [];
-  for (const series of seriesCandidates) {
-    const eventId = await findEventId(series, match);
-    if (!eventId) continue;
-
-    const summary = await espnGet(series, "summary", { event: eventId });
-    if (!summary) continue;
+  const summary = await matchSummary(match);
+  if (!summary) return null;
+  {
 
     // Toss text (single, applies to both sides).
     let toss: string | null = null;
@@ -223,12 +285,9 @@ export async function getEspnMatchRoster(
 }
 
 async function fetchEspnMatchRoster(match: Match): Promise<EspnMatchRoster | null> {
-  for (const series of SERIES_BY_GENDER[match.gender] ?? []) {
-    const eventId = await findEventId(series, match);
-    if (!eventId) continue;
-    const summary = await espnGet(series, "summary", { event: eventId });
-    if (!summary) continue;
-
+  const summary = await matchSummary(match);
+  if (!summary) return null;
+  {
     const codeByKey = new Map<string, string>([
       [teamKey(TEAM_NAMES[match.team1] ?? match.team1), match.team1],
       [teamKey(TEAM_NAMES[match.team2] ?? match.team2), match.team2],
@@ -548,11 +607,9 @@ async function fetchLiveMatchPoints(match: Match): Promise<LiveScore | null> {
 
 async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null> {
   const fmt = scoreFormatOf(match);
-  for (const series of SERIES_BY_GENDER[match.gender] ?? []) {
-    const eventId = await findEventId(series, match);
-    if (!eventId) continue;
-    const summary = await espnGet(series, "summary", { event: eventId });
-    if (!summary) continue;
+  const summary = await matchSummary(match);
+  if (!summary) return null;
+  {
 
     const points = new Map<string, number>();
     const photos = new Map<string, string>();
