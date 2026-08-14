@@ -198,6 +198,24 @@ check(
   approversFor(["nishant"], ["nishant"], "nishant").length === 0
 );
 
+// The property that makes "anyone may amend anyone's team" safe: when you file for
+// SOMEONE ELSE, that someone else is an approver. A change to a person's team can never
+// apply without that person agreeing to it, whoever proposed it.
+{
+  const owner = "pushap";
+  const filer = "nishant";
+  const approvers = approversFor([filer, owner], [filer, owner], filer);
+  check("filing for another player puts THEM in the approver set", approvers.includes(owner));
+  check("the filer never approves their own request", !approvers.includes(filer));
+}
+{
+  // Six-player contest: filing for one friend still needs everybody else, including them.
+  const roster = ["nishant", "pushap", "pradeep", "arif", "sharan", "mihir"];
+  const approvers = approversFor(roster, roster, "nishant");
+  check("N-player: every other stakeholder approves", approvers.length === 5);
+  check("N-player: the target owner is among them", approvers.includes("mihir"));
+}
+
 console.log("approvedLineup — score exactly what was approved");
 
 {

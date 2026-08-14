@@ -16,6 +16,7 @@ import { getMatchPointsMap, getMatchScoreline, type InningsLine } from "@/lib/li
 import LobbyMatch, { type DraftRow } from "@/components/lobby-match";
 import RainDelay from "@/components/rain-delay";
 import { getPendingAmendments } from "@/lib/pending-amendments";
+import PendingApprovals from "@/components/pending-approvals";
 import { getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
 import TeamLogo from "@/components/team-logo";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
@@ -251,6 +252,18 @@ export default async function LobbyPage() {
     username,
     now
   ).catch(() => new Map<number, Awaited<ReturnType<typeof getPendingAmendments>> extends Map<number, infer V> ? V : never>());
+
+  // Everything waiting on ME, across every match — the bulk-approval banner's input.
+  const approvalQueue = userContests.flatMap((c) =>
+    (pendingByContest.get(c.id) ?? [])
+      .filter((p) => p.canApprove)
+      .map((p) => ({
+        ...p,
+        matchLabel: prettifyMatchLabel(
+          allMatches.find((m) => m.key === c.matchKey)?.label ?? c.matchLabel
+        ),
+      }))
+  );
 
   const contestsNeedingMe = new Set(
     [...pendingByContest.entries()]
@@ -604,7 +617,8 @@ export default async function LobbyPage() {
 
         {hasAnyMatches ? (
           <LobbyTabs
-            defaultTab={defaultTab}
+            banner={<PendingApprovals items={approvalQueue} />}
+          defaultTab={defaultTab}
             upcomingCount={upcomingMatches.length}
             liveCount={liveDraftMatchKeys.size}
             completedCount={myCompletedMatchKeys.length}

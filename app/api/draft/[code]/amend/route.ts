@@ -154,13 +154,18 @@ export async function GET(
     })),
   };
 
+  const stakeholders = new Set([
+    ...participants.map((p) => p.user),
+    ...selections.map((s) => s.user),
+  ]);
+
   const squads = selections.map((sel) => {
     const ranking = currentRanking(sel);
     return {
       user: sel.user,
       ranking: ranking.map((key) => playerView(key, ctx)),
       points: currentPoints(sel, ctx),
-      editable: canEdit(contest.mode, username, sel.user),
+      editable: canEdit(username, stakeholders, sel.user),
       // Anyone already in this squad whose points won't settle — surfaced on the owner's
       // own screen, not just to the approver.
       warnings: ranking
@@ -236,9 +241,10 @@ export async function POST(
     if (!isKnownUser(targetUser)) {
       return NextResponse.json({ error: "Unknown user" }, { status: 400 });
     }
-    if (!canEdit(contest.mode, username, targetUser)) {
+    const stakeholders = new Set([...participantUsers, ...selectionUsers]);
+    if (!canEdit(username, stakeholders, targetUser)) {
       return NextResponse.json(
-        { error: "You can only amend your own team" },
+        { error: "You're not part of this contest" },
         { status: 403 }
       );
     }
@@ -449,9 +455,23 @@ export async function POST(
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
-/** In live mode you amend only your own team; manual mode mirrors the team route. */
-function canEdit(mode: string, username: string, owner: string): boolean {
-  return owner === username || mode === "manual";
+/**
+ * Who may FILE an amendment for whose team: any stakeholder in the contest, for anybody's
+ * team including their own.
+ *
+ * That sounds permissive and isn't, because filing is not changing. An amendment for someone
+ * else's team lists its owner among the approvers (approversFor excludes only the requester),
+ * so it cannot apply until the owner themselves agrees to it. What this buys is the case the
+ * feature exists for: you spot that your opponent drafted a stand-in for a late addition and
+ * their score is wrong. Making them file it themselves helps nobody — you can see the problem,
+ * they may not, and either way they still have to say yes.
+ */
+function canEdit(
+  username: string,
+  stakeholders: Set<string>,
+  owner: string
+): boolean {
+  return stakeholders.has(username) && stakeholders.has(owner);
 }
 
 function isLive(a: LineupAmendment, now: number): boolean {

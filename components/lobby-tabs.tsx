@@ -8,6 +8,7 @@ export default function LobbyTabs({
   upcoming,
   live,
   completed,
+  banner,
   upcomingCount,
   liveCount,
   completedCount,
@@ -16,6 +17,8 @@ export default function LobbyTabs({
   upcoming: ReactNode;
   live: ReactNode;
   completed: ReactNode;
+  /** Pinned directly under the tab bar, above every panel — it is not about one tab. */
+  banner?: ReactNode;
   upcomingCount: number;
   liveCount: number;
   completedCount: number;
@@ -64,6 +67,8 @@ export default function LobbyTabs({
           );
         })}
       </div>
+
+      {banner}
 
       {/* Panels */}
       <div role="tabpanel">

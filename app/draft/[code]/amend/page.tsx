@@ -173,7 +173,12 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
       }
       const d: AmendData = await res.json();
       setData(d);
-      const mine = d.squads.find((s) => s.editable) ?? d.squads[0];
+      // Every squad is editable now (the owner has to approve either way), so default to
+      // your OWN team — amending someone else's is the deliberate case, not the accident.
+      const mine =
+        d.squads.find((s) => s.user === d.username) ??
+        d.squads.find((s) => s.editable) ??
+        d.squads[0];
       if (!keepDraft) {
         setEditUser(mine?.user ?? null);
         setRanking(mine?.ranking.map((p) => p.key) ?? []);
@@ -380,9 +385,17 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
                       }`}
                     >
                       {getUserLabel(s.user)}
+                      {s.user === data.username ? " (you)" : ""}
                     </button>
                   ))}
               </div>
+            )}
+
+            {squad.user !== data.username && (
+              <p className="rounded-xl bg-navy border border-gold/40 px-3 py-2 text-[11px] text-cloud">
+                You&apos;re proposing a change to <b>{getUserLabel(squad.user)}</b>&apos;s team.
+                It can&apos;t apply until {getUserLabel(squad.user)} approves it themselves.
+              </p>
             )}
 
             <div className="flex items-baseline justify-between px-1">
@@ -469,12 +482,11 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
             {dirty && (
               <div className="rounded-xl bg-ink2 border border-gold/40 p-3 space-y-2">
                 <p className="text-xs text-cloud font-semibold">
-                  {(() => {
-                    const others = data.squads.filter((s) => s.user !== squad.user).length;
-                    return others > 0
+                  {squad.user !== data.username
+                    ? `${getUserLabel(squad.user)} has to approve this — it's their team.`
+                    : data.squads.length > 1
                       ? "This needs the other players' approval before anything moves."
-                      : "Nobody else has a stake here — this applies immediately.";
-                  })()}
+                      : "Nobody else has a stake here — this applies immediately."}
                 </p>
                 <textarea
                   value={reason}
