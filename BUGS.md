@@ -158,3 +158,27 @@ Each match label in the output must have an exact corresponding entry in `matche
 **Fix:** C/VC rows now render `base ×mult = total` (`102.0 ×2 = 204.0`) — multiplier visibly already applied, the emphasised number is the contribution. `app/draft/[code]/results/page.tsx`.
 
 **Rule: never show a multiplied points value next to a bare "×N". Show `base ×mult = total` (or just the total). The sheet stores RAW points only — multipliers are applied + displayed in the app (see CLAUDE.md "Never double-apply C/VC multipliers").**
+
+---
+
+## 9. One player, TWO rows for one match — and five different reductions of them
+
+**What broke:** The bot writes one row per (match, **squad slot**), and auto-add appended a slot that already existed, so ONE performance got emitted twice. Measured on the live sheet 14 Aug 2026: **18 duplicate (Match, Player ID) keys, 3 players.** The app then reduced that pair FIVE different ways:
+
+| path | reduction | feeds |
+|---|---|---|
+| `getMatchPointsForMatch` | last-wins | contest totals — lobby, match hub, results, amend, audit "now" |
+| `getTourPoints` | **SUM** | draft-board tour points |
+| `settlement-audit` `liveByPid` | max-wins | `/audit` + results Audit tab |
+| `getMatchXI` / `getLastPlayedXI` | first-wins | XI membership / Bat Order |
+| `statusByLabel` net delta | SUM | lobby "⚠ revised −N pts" badge |
+
+So Jane Maguire (`ci:1229018`, "Match 1 — OIRE v OWI": identical stats scored `Role=BOWL` → **2** and `Role=AR` → **−1**, the AR row taking the ODI duck penalty a bowler is exempt from) read **−1** on the results page and **2** on the Audit tab *on the same screen*; her single 46-point WWC match read **92** on the draft board; and Ash Gardner's empty partner rows — which carry the negation of their twin's score in `Points Delta` — reported a **−181** revision on a match where nothing had moved.
+
+Worse, last-wins is **row-order dependent**: the sheet is rewritten in place on every bot run, so a re-run that merely reordered two rows would move a settled number with no data change. The largest scored row with a duplicate partner today is 181 — a 177-pt (354 as captain) swing waiting on the order of two lines in a CSV.
+
+**Also:** `settlement-audit` compared with `(prev.points ?? -1)`, scoring an ABSENCE as the literal value −1 — so a blank partner row outranked any genuinely negative score, zeroing it and inventing a `SCORER_FIX` delta nothing on the sheet caused.
+
+**Fix:** ONE reduction, `pickDupRow` in `lib/points.ts`, called by all five: **highest `Fantasy Points` wins; a row with no points ranks −Infinity so it can never win.** SUM is never right (two rows are one performance); first/last-wins are order-dependent; MAX is the one order-independent pick that also handles the blank-slot shape with the same comparison. `getTourPoints` now reduces per match, then sums across matches. Duplicates are logged once per key and surfaced on `/audit` + the results Audit tab. Pinned by `scripts/test-dup-rows.ts` (28 checks, run both row orders).
+
+**Rule: a (match, player) key must be reduced in exactly ONE place. Never add a second reduction of sheet rows — import `pickDupRow`. And an absence (`null`) is never a value: don't `?? 0` or `?? -1` it into a comparison.**

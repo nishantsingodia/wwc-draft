@@ -85,6 +85,7 @@ type ResultsData = {
       provenance: "live" | "seed" | "unknown" | null; l2: string;
     }[];
     orphans: { name: string; points: number }[];
+    duplicates: { pid: string; name: string; kept: number | null; values: (number | null)[] }[];
     totals: { user: string; settled: number | null; now: number | null; delta: number }[];
     winnerChanged: boolean;
     settledWinners: string[];
@@ -989,6 +990,32 @@ export default function ResultsPage({
                 </div>
               );
             })}
+
+            {data.audit.duplicates.length > 0 && (
+              <div className="rounded-xl border border-amber-500/40 bg-amber-500/5 p-3">
+                <p className="text-[10px] uppercase tracking-wide text-amber-500 mb-1.5">
+                  Duplicate rows — one score was chosen
+                </p>
+                <ul className="text-xs space-y-0.5">
+                  {data.audit.duplicates.map((d) => (
+                    <li key={d.pid} className="flex items-center gap-2">
+                      <span className="font-mono text-cloud">{d.name}</span>
+                      <span className="text-mist2">
+                        {d.values.map((v) => (v === null ? "—" : v)).join(" / ")}
+                      </span>
+                      <span className="ml-auto font-bold tabular-nums text-cloud">
+                        {d.kept === null ? "—" : d.kept} pts
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-[10px] text-mist2 mt-1.5">
+                  The sheet holds this player twice for this match (one performance written under two
+                  squad slots). Every screen now keeps the highest-scoring row, and a row with no
+                  points never wins — but the bot should stop writing the second row.
+                </p>
+              </div>
+            )}
 
             {data.audit.orphans.length > 0 && (
               <div className="rounded-xl border border-destructive/40 bg-destructive/5 p-3">

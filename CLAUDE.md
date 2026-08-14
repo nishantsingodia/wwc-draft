@@ -273,6 +273,17 @@ unreachable).
 - No new env var: the settlement URL is derived from the first `POINTS_CSV_URLS` entry
   (`SETTLEMENT_CSV_URL` overrides).
 
+## ONE row per (match, player) — never add a second reduction (14 Aug 2026)
+The bot writes one row per (match, **squad slot**), so a player can hold TWO rows for one match
+(18 such keys on the live sheet; one performance emitted under two roles scored 2 and −1). Five app
+paths reduced that pair five different ways, so the results page and the Audit tab printed different
+numbers **on the same screen**. There is now ONE rule, [`pickDupRow`](lib/points.ts): **the highest
+`Fantasy Points` wins, and a row with no points ranks −Infinity so an ABSENCE can never win.**
+`getMatchPointsForMatch`, `getTourPoints` (reduce per match, then sum across matches), `getMatchXI`
+/ `getLastPlayedXI` (bat order comes off the winning row) and `settlement-audit`'s `liveByPid` all
+call it. Duplicates are logged and shown on `/audit` + the results Audit tab — never silently
+absorbed. Reducing rows anywhere else re-creates the divergence; see BUGS.md #9.
+
 ## Identity — the global player registry (PRIMARY; read this first)
 
 Points are joined by a **stable identity (`pid`)**, not by name. The bot

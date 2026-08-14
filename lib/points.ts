@@ -16,6 +16,83 @@ function resolvePid(raw: string | undefined): string {
   return PID_REDIRECT[p] ?? p;
 }
 
+// ── ONE row per (match, player) — the single reduction ───────────────────────────────────────
+// The bot writes one row per (match, SQUAD SLOT), so a player can hold TWO rows for one match:
+// auto-add appended a slot that already existed and ONE performance got emitted twice. Measured
+// on the live sheet 14 Aug 2026 — 18 such keys, 3 players, two shapes:
+//   • 16 keys = a scored `Played=Y` row + a bare `Played=N` slot row with NO stat columns at all
+//     (Vishva Kumara ci:784375 ×8 LPL, Ash Gardner ci:858809 ×8 Hundred W — her 181 sits beside
+//     an empty partner row).
+//   • 1 key  = two genuinely scored rows: Jane Maguire ci:1229018, "Match 1 — OIRE v OWI",
+//     byte-identical stats (0 off 3, 6-0-62-0) scored twice — Role=BOWL → 2 and Role=AR → −1,
+//     the AR row taking the ODI duck penalty (Pts Bat −3) that the BOWL role is exempt from.
+//   • 1 key  = two identical scored rows (46/46, WWC "Match 27 — WI v IRE").
+//
+// FIVE app paths reduced that pair five different ways — last-wins (contest totals), SUM (draft
+// board), max-wins (audit), first-wins (bat order), plus the summed `Points Delta` — so the
+// results page printed −1 while the Audit tab beside it printed 2 for the same player, and her
+// 46-point WWC match read 92 on the board.
+//
+// ONE rule now, everywhere, via pickDupRow: the row with the HIGHEST `Fantasy Points` wins, and a
+// row with NO points ranks below every row that has any.
+//   – SUM is never right: two rows are ONE performance, not two.
+//   – first/last-wins are ROW-ORDER dependent — the bot rewrites the sheet in place every run, so
+//     a re-run that merely reorders rows would move a settled number with no data change. Money
+//     must not depend on CSV row order.
+//   – MAX is the one order-independent pick that also settles the blank-slot shape with the same
+//     comparison, because an ABSENCE IS NOT A VALUE: rank a pointless row −Infinity and it can
+//     never beat a real score (ranking it 0 would have zeroed 16 live scores; ranking it −1, as
+//     settlement-audit did, silently beat any genuinely negative row).
+// A duplicate is never silently absorbed: pickDupRow logs each one once per process and
+// auditMatch carries them into /audit + the results Audit tab.
+const _dupWarned = new Set<string>();
+function dupRank(pts: number | null): number {
+  return pts === null ? -Infinity : pts;
+}
+
+/**
+ * THE reduction. Given every sheet row claiming one (match, player) key, return the single row
+ * that represents it. Highest Fantasy Points wins; a row with no points loses to any row that has
+ * some; `tie` (default 0) breaks an exact points tie deterministically instead of falling back to
+ * row order. `warn` is off for name keys — two rows sharing a NAME in one match can be two real
+ * namesakes, whereas two rows sharing a PID is always a bot-side duplicate slot.
+ */
+export function pickDupRow<R>(
+  key: string,
+  group: R[],
+  ptsOf: (r: R) => number | null,
+  tieOf: (r: R) => number = () => 0,
+  warn = true
+): R {
+  let best = group[0];
+  for (const r of group.slice(1)) {
+    const [a, b] = [dupRank(ptsOf(r)), dupRank(ptsOf(best))];
+    if (a > b || (a === b && tieOf(r) > tieOf(best))) best = r;
+  }
+  if (group.length > 1 && warn && !_dupWarned.has(key)) {
+    _dupWarned.add(key);
+    console.warn(
+      `[points] DUPLICATE (match,player) ${key}: ${group.length} rows ` +
+      `[${group.map((r) => ptsOf(r) ?? "—").join(" / ")}] -> keeping ${ptsOf(best) ?? "—"}. ` +
+      `One performance emitted under two squad slots — fix it in the bot, not here.`
+    );
+  }
+  return best;
+}
+
+/** Bucket rows by every identity key they claim (a row is usually in both a pid and a name group). */
+function groupRows<R>(rows: R[], keysOf: (r: R) => string[]): Map<string, R[]> {
+  const out = new Map<string, R[]>();
+  for (const r of rows) {
+    for (const k of keysOf(r)) {
+      const cur = out.get(k);
+      if (cur) cur.push(r);
+      else out.set(k, [r]);
+    }
+  }
+  return out;
+}
+
 const CSV_PATH = process.env.POINTS_CSV_PATH;
 // Synthetic column injected by mergeCsvs to remember which tab (=tour) each row came
 // from. Consumed by the tour-cumulative reads to scope to a single tour (team codes
@@ -213,6 +290,14 @@ function headerIdx(header: string[], col: string): number {
   return header.indexOf(col);
 }
 
+// A row's Fantasy Points, or null when the cell is blank / non-numeric. null is an ABSENCE and is
+// kept distinct from 0 all the way through: the bot's empty squad-slot rows carry no stat columns
+// at all, and reading one as a zero is how a real score gets erased.
+function rowPoints(row: string[], ptsIdx: number): number | null {
+  const v = parseFloat(ptsIdx >= 0 ? row[ptsIdx] : "");
+  return isNaN(v) ? null : v;
+}
+
 // Test-only: inject parsed CSV rows so the lookup/gate logic can be exercised offline (no
 // network/file/cache). CSV_PATH is captured at module load, so swapping env wouldn't work —
 // this seam sets the cache directly. Never called in production.
@@ -270,13 +355,34 @@ function statusByLabel(
   if (si < 0) return out; // column absent -> legacy fallback everywhere
   // Per-match net delta = the SUM of its players' signed movements, not one player's. A contest
   // is settled on the team total, so that is the number worth surfacing.
+  //
+  // ONE row per (match, player) here too, or the badge is a fiction: each empty duplicate slot row
+  // carries the negation of its twin's score in this column (Ash Gardner's blank partner rows read
+  // "Points Delta −181, −141, −62 …" while she never moved), so summing raw rows reported a
+  // −181-pt revision on a match nothing had happened to. Reduced with the same pickDupRow, keyed
+  // by ONE identity per row (pid, else name) — the delta is per ROW, so unlike the points maps it
+  // must not be counted once under a pid key and again under a name key.
   const netByLabel = new Map<string, number>();
+  const deltaOf = (row: string[]) => {
+    const d = parseInt((row[di] ?? "").trim(), 10);
+    return Number.isFinite(d) ? d : 0;
+  };
   if (di >= 0) {
-    for (const row of rows.slice(1)) {
-      const lbl = row[mi]?.trim();
-      if (!lbl) continue;
-      const d = parseInt((row[di] ?? "").trim(), 10);
-      if (Number.isFinite(d)) netByLabel.set(lbl, (netByLabel.get(lbl) ?? 0) + d);
+    const pi = headerIdx(header, "Player ID");
+    const ni = headerIdx(header, "Full Name");
+    const fp = headerIdx(header, "Fantasy Points");
+    const pts = (row: string[]) => rowPoints(row, fp);
+    const byKey = groupRows(
+      rows.slice(1).filter((row) => row[mi]?.trim()).map((row, i) => ({ row, i })),
+      ({ row, i }) => {
+        const id = resolvePid(pi >= 0 ? row[pi]?.trim() : "") || (ni >= 0 ? row[ni]?.trim() : "") || `#${i}`;
+        return [row[mi].trim() + "\u0000" + id];
+      }
+    );
+    for (const [lk, group] of byKey) {
+      const lbl = lk.slice(0, lk.indexOf("\u0000"));
+      const row = pickDupRow(`delta ${lk.replace("\u0000", " ")}`, group.map((g) => g.row), pts, undefined, false);
+      netByLabel.set(lbl, (netByLabel.get(lbl) ?? 0) + deltaOf(row));
     }
   }
   for (const row of rows.slice(1)) {
@@ -338,33 +444,57 @@ export async function getLastPlayedXI(
     lastMatchPerTeam.set(team, match_);
   }
 
-  // Membership = rows with Played=Y for the team's last match. Keyed by BOTH the
-  // canonical name AND the stable Player ID, so a player whose stats the feed split
-  // across two spellings collapses to one XI entry (no "last row wins" bat-order bug),
-  // and consumers can match by pid. Keep the first real (>0) bat order seen.
-  const setBat = (m: Map<string, number>, k: string, bat: number) => {
-    if (!k) return;
-    const cur = m.get(k);
-    if (cur === undefined || (cur === 0 && bat > 0)) m.set(k, bat);
-  };
-  for (const row of rows.slice(1)) {
-    if (!inScope(row)) continue;
-    const team = row[teamIdx]?.trim();
-    const match = row[matchIdx]?.trim();
-    const name = row[nameIdx]?.trim();
-    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
-    const played = row[playedIdx]?.trim();
-    if (!team || !match || !name) continue;
-    if (match !== lastMatchPerTeam.get(team)) continue;
-    if (played !== "Y") continue;
-    const batOrder = batIdx >= 0 ? parseInt(row[batIdx], 10) || 0 : 0;
-    if (!result.has(team)) result.set(team, new Map());
-    const m = result.get(team)!;
-    setBat(m, name, batOrder);
-    if (pid) setBat(m, pid, batOrder);
-  }
+  // Membership = rows with Played=Y for the team's last match.
+  return xiFromRows(
+    "last XI",
+    rows.slice(1).filter((row) => {
+      if (!inScope(row)) return false;
+      const team = row[teamIdx]?.trim();
+      const match_ = row[matchIdx]?.trim();
+      if (!team || !match_ || match_ !== lastMatchPerTeam.get(team)) return false;
+      return row[playedIdx]?.trim() === "Y";
+    }),
+    { team: teamIdx, name: nameIdx, pid: pidIdx, bat: batIdx, pts: headerIdx(header, "Fantasy Points") }
+  );
+}
 
-  return result;
+/**
+ * XI membership + batting order from already-filtered rows (ONE match, Played=Y), keyed per team by
+ * BOTH canonical name AND stable Player ID — so a player whose stats a feed split across two
+ * spellings collapses to one XI entry, and consumers can match by pid.
+ *
+ * A player holding two rows for the match is reduced by the SAME pickDupRow as their points, so the
+ * bat order shown can't come from a different row than the score shown. (It used to be "first row
+ * wins, a 0 upgradeable by a real position" — order-dependent, and a fourth reduction of the same
+ * key.) The 0-upgrade survives as the tie-break: on equal points a real position beats a DNB 0.
+ */
+function xiFromRows(
+  where: string,
+  rows: string[][],
+  idx: { team: number; name: number; pid: number; bat: number; pts: number }
+): Map<string, Map<string, number>> {
+  const batOf = (row: string[]) => (idx.bat >= 0 ? parseInt(row[idx.bat], 10) || 0 : 0);
+  const pts = (row: string[]) => rowPoints(row, idx.pts);
+  const byKey = groupRows(rows, (row) => {
+    const team = row[idx.team]?.trim();
+    const name = idx.name >= 0 ? row[idx.name]?.trim() : "";
+    const pid = resolvePid(idx.pid >= 0 ? row[idx.pid]?.trim() : "");
+    if (!team || !name) return [];
+    return [name, pid].filter(Boolean).map((k) => team + "\u0000" + k);
+  });
+  const out = new Map<string, Map<string, number>>();
+  for (const [tk, group] of byKey) {
+    const cut = tk.indexOf("\u0000");
+    const [team, key] = [tk.slice(0, cut), tk.slice(cut + 1)];
+    // Warn key deliberately omits the team, so for getMatchXI it is the SAME string the points
+    // path uses ("<label> <pid>") and one duplicate logs one line, not one per surface.
+    const row = pickDupRow(
+      `${where} ${key}`, group, pts, (r) => (batOf(r) > 0 ? 1 : 0), isPidKey(key)
+    );
+    if (!out.has(team)) out.set(team, new Map());
+    out.get(team)!.set(key, batOf(row));
+  }
+  return out;
 }
 
 // The XI for ONE specific match (the contest's match), from the sheet's Played=Y rows for
@@ -391,25 +521,13 @@ export async function getMatchXI(
   const playedIdx = headerIdx(header, "Played");
   const batIdx = headerIdx(header, "Bat Order");
 
-  const setBat = (m: Map<string, number>, k: string, bat: number) => {
-    if (!k) return;
-    const cur = m.get(k);
-    if (cur === undefined || (cur === 0 && bat > 0)) m.set(k, bat);
-  };
-  for (const row of rows.slice(1)) {
-    if (row[matchIdx]?.trim() !== target) continue;
-    if (row[playedIdx]?.trim() !== "Y") continue;
-    const team = row[teamIdx]?.trim();
-    const name = row[nameIdx]?.trim();
-    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
-    if (!team || !name) continue;
-    const batOrder = batIdx >= 0 ? parseInt(row[batIdx], 10) || 0 : 0;
-    if (!result.has(team)) result.set(team, new Map());
-    const m = result.get(team)!;
-    setBat(m, name, batOrder);
-    if (pid) setBat(m, pid, batOrder);
-  }
-  return result;
+  return xiFromRows(
+    target,
+    rows.slice(1).filter(
+      (row) => row[matchIdx]?.trim() === target && row[playedIdx]?.trim() === "Y"
+    ),
+    { team: teamIdx, name: nameIdx, pid: pidIdx, bat: batIdx, pts: headerIdx(header, "Fantasy Points") }
+  );
 }
 
 // ── Match identification (teams + date, NOT the "Match N" label) ──────────────
@@ -561,15 +679,21 @@ export async function getMatchPointsForMatch(
 
   // Keyed by BOTH the stable Player ID and the canonical name. Callers look up by the
   // player's pid first (exact identity), then fall back to fuzzy name for un-pid'd rows.
+  // A key holding more than one row goes through pickDupRow — the ONE reduction (see the top of
+  // this file). This map is what settles contests, so it was the one that most needed to stop
+  // depending on which of the two rows the bot happened to write last.
+  const pts = (row: string[]) => rowPoints(row, ptsIdx);
+  const byKey = groupRows(
+    rows.slice(1).filter((row) => row[matchIdx]?.trim() === target),
+    (row) => [resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : ""), nameIdx >= 0 ? row[nameIdx]?.trim() : ""]
+      .filter(Boolean)
+  );
   const result = new Map<string, number>();
-  for (const row of rows.slice(1)) {
-    if (row[matchIdx]?.trim() !== target) continue;
-    const name = row[nameIdx]?.trim();
-    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
-    const pts = parseFloat(row[ptsIdx]);
-    if (isNaN(pts)) continue;
-    if (name) result.set(name, pts);
-    if (pid) result.set(pid, pts);
+  for (const [key, group] of byKey) {
+    const v = pts(pickDupRow(`${target} ${key}`, group, pts, undefined, isPidKey(key)));
+    // Every row for this player is blank => they have NO points, which is not a 0. Leaving the
+    // key out keeps lookupPlayerPoints returning null so the UI renders "—", not "0.0".
+    if (v !== null) result.set(key, v);
   }
   return result;
 }
@@ -603,23 +727,41 @@ export async function getTourPoints(
   const nameIdx = headerIdx(header, "Full Name");
   const pidIdx = headerIdx(header, "Player ID"); // -1 on older sheets
   const ptsIdx = headerIdx(header, "Fantasy Points");
+  const matchIdx = headerIdx(header, "Match");
   const tabIdx = headerIdx(header, TAB_COL);
   const wantTab = match ? tabOfMatch(rows, match) : null;
   const add = (k: string, v: number) => k && result.set(k, (result.get(k) ?? 0) + v);
-  for (const row of rows.slice(1)) {
+  const inScope = (row: string[]) => {
     // Tour scope: prefer the match's own tab; else fall back to team-code scoping.
-    if (wantTab != null) {
-      if (row[tabIdx]?.trim() !== wantTab) continue;
-    } else if (teamIdx >= 0) {
+    if (wantTab != null) return row[tabIdx]?.trim() === wantTab;
+    if (teamIdx >= 0) {
       const team = row[teamIdx]?.trim() ?? "";
-      if (!(tokenMatchesCode(team, team1) || tokenMatchesCode(team, team2))) continue;
+      return tokenMatchesCode(team, team1) || tokenMatchesCode(team, team2);
     }
-    const pts = parseFloat(row[ptsIdx]);
-    if (isNaN(pts)) continue;
-    const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
-    const name = row[nameIdx]?.trim();
-    if (pid) add(pid, pts);
-    if (name) add(normName(name), pts);
+    return true;
+  };
+  // Sum ONE value PER MATCH per player, not one per row. Summing rows double-counted a duplicate
+  // slot: Jane Maguire's single 46-point WWC match (two identical rows) read 92 on the draft
+  // board — 100% inflation on the number a drafter picks on. The per-match reduction is the same
+  // pickDupRow used for contest totals, so the board and the contest can't disagree.
+  const pts = (row: string[]) => rowPoints(row, ptsIdx);
+  // Group key = "<match label>\0<identity>" (a label holds spaces and " — "; \0 cannot appear).
+  // No Match column, or a blank label cell (legacy / test-injected rows) => each row keys
+  // uniquely, i.e. the plain SUM this function did before: nothing but a real duplicate moves.
+  const byMatchKey = groupRows(
+    rows.slice(1).filter(inScope).map((row, i) => ({ row, i })),
+    ({ row, i }) => {
+      const lbl = (matchIdx >= 0 ? row[matchIdx]?.trim() : "") || `#${i}`;
+      const pid = resolvePid(pidIdx >= 0 ? row[pidIdx]?.trim() : "");
+      const name = nameIdx >= 0 ? row[nameIdx]?.trim() : "";
+      return [pid, name ? normName(name) : ""].filter(Boolean).map((k) => lbl + "\u0000" + k);
+    }
+  );
+  for (const [mk, group] of byMatchKey) {
+    const cut = mk.indexOf("\u0000");
+    const [lbl, key] = [mk.slice(0, cut), mk.slice(cut + 1)];
+    const v = pts(pickDupRow(`${lbl} ${key}`, group.map((g) => g.row), pts, undefined, isPidKey(key)));
+    if (v !== null) add(key, v);
   }
   return result;
 }

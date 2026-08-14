@@ -250,6 +250,8 @@ export async function GET(
     pendingAbsDelta: number;
     players: PlayerAudit[];
     orphans: { name: string; points: number }[];
+    /** (match,player) keys the sheet holds twice — the app CHOSE one row; say so. */
+    duplicates: { pid: string; name: string; kept: number | null; values: (number | null)[] }[];
     totals: ContestAudit["totals"];
     winnerChanged: boolean;
     settledWinners: string[];
@@ -274,6 +276,7 @@ export async function GET(
       // Only rows worth reading: an unchanged player is noise on this tab.
       players: matchAudit.players.filter((p) => p.reason !== "UNCHANGED"),
       orphans: matchAudit.orphans,
+      duplicates: matchAudit.duplicates,
       ...ca,
     };
   }

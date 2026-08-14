@@ -348,6 +348,22 @@ export default async function AuditPage() {
                               </li>
                             ))}
                           </ul>
+                          {r.audit.duplicates.length > 0 && (
+                            <p className="mt-2 text-[10px] text-mist2">
+                              {r.audit.duplicates.length} duplicate sheet row
+                              {r.audit.duplicates.length === 1 ? "" : "s"} —{" "}
+                              {r.audit.duplicates
+                                .map(
+                                  (d) =>
+                                    `${d.name} [${d.values
+                                      .map((v) => (v === null ? "—" : v))
+                                      .join(" / ")}] → kept ${d.kept === null ? "—" : d.kept}`
+                                )
+                                .join("; ")}
+                              . One performance written under two squad slots; every screen keeps the
+                              highest-scoring row.
+                            </p>
+                          )}
                           {pend && r.audit.orphans.length > 0 && (
                             <p className="mt-2 text-[10px] text-mist2">
                               {r.audit.orphans.length} official-card row

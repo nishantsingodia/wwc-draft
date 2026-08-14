@@ -4,6 +4,7 @@ import {
   getSettledRowsForMatch,
   getSettledPointsForMatch,
   getMatchPointsForMatch,
+  pickDupRow,
   type LiveAuditRow,
   type SettledRow,
 } from "@/lib/points";
@@ -80,6 +81,10 @@ export type MatchAudit = {
   changedRows: PlayerAudit[];
   /** Official-card rows carrying points that no contest can ever see. */
   orphans: { name: string; points: number }[];
+  /** (match, player) keys the sheet holds TWICE. The app now reduces them one way everywhere
+   *  (highest score wins, an absent value never wins) — this is the list of numbers that had to be
+   *  CHOSEN, so a settled total is never quietly decided by which row the bot wrote last. */
+  duplicates: { pid: string; name: string; kept: number | null; values: (number | null)[] }[];
   /** Absolute points at stake in `pending` (potential, not yet applied). */
   pendingAbsDelta: number;
   /** Absolute points already moved in `changedRows` (real). */
@@ -166,11 +171,36 @@ export async function auditMatch(match: MatchLike & { key: string; label: string
   // A pid can appear on MORE THAN ONE live row for the same match (LPL Match 6 carries Vishva
   // Kumara twice — once scored, once a blank Played=N row). Last-wins would let the blank row
   // erase a real score and manufacture a phantom "−38". Prefer the row that actually has points.
+  //
+  // This was the ONLY path that guarded duplicates, and it did so with its own rule — hence the
+  // Audit tab printing 2 for Jane Maguire while the results page beside it printed −1. It now
+  // calls the SAME pickDupRow as every points map (lib/points.ts), so the audit can no longer
+  // disagree with the thing it is auditing.
+  //
+  // It also scored an ABSENCE as the literal value −1: `(prev.points ?? -1) < (r.points ?? -1)`
+  // means a blank partner row (null) ranked ABOVE any genuinely negative score, so a real −3 lost
+  // to an empty slot → the player read 0, and the audit invented a delta with a SCORER_FIX reason
+  // that nothing on the sheet caused. pickDupRow ranks a pointless row −Infinity instead.
   const liveByPid = new Map<string, LiveAuditRow>();
+  const duplicates: MatchAudit["duplicates"] = [];
+  const byPid = new Map<string, LiveAuditRow[]>();
   for (const r of liveRows) {
     if (!r.pid) continue;
-    const prev = liveByPid.get(r.pid);
-    if (!prev || (prev.points ?? -1) < (r.points ?? -1)) liveByPid.set(r.pid, r);
+    byPid.set(r.pid, [...(byPid.get(r.pid) ?? []), r]);
+  }
+  for (const [pid, group] of byPid) {
+    const kept = pickDupRow(`${match.label} ${pid}`, group, (r) => r.points);
+    liveByPid.set(pid, kept);
+    // Surface it rather than absorb it: two rows for one (match, player) is a bot-side slot bug,
+    // and the reader deserves to know a number was CHOSEN between two candidates.
+    if (group.length > 1) {
+      duplicates.push({
+        pid,
+        name: kept.name || pid,
+        kept: kept.points,
+        values: group.map((r) => r.points),
+      });
+    }
   }
 
   // Official-card rows that resolved to NO player id AND carry points — the smoking gun for an
@@ -262,6 +292,7 @@ export async function auditMatch(match: MatchLike & { key: string; label: string
     pending,
     changedRows,
     orphans: orphans.map((o) => ({ name: o.name, points: o.points ?? 0 })),
+    duplicates,
     pendingAbsDelta: pending.reduce((a, p) => a + Math.abs(p.delta), 0),
     totalAbsDelta: changedRows.reduce((a, p) => a + Math.abs(p.delta), 0),
   };
