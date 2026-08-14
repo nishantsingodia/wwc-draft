@@ -275,17 +275,16 @@ export default async function LobbyPage() {
   );
 
   // ── Which cards open by default.
-  // One live match ⇒ it opens; several ⇒ the one closest to finishing (started earliest).
-  // A match with an amendment awaiting YOUR approval always opens — that is the whole point
-  // of surfacing it here. Everything else is a one-line row you can tap.
+  // EVERY live match opens. This used to open only the one closest to finishing and collapse
+  // the rest, which optimised for a screen that doesn't exist: a card is only on this tab if
+  // YOU have a running draft on it, so there are one or two, not ten — and the whole reason to
+  // open the Live tab is to read those scores. Collapsing them meant a tap to see the thing you
+  // came for. A completed match still opens only when an amendment is waiting on YOUR approval.
   const liveOnLobby = liveMatches
     .filter((m) => liveDraftMatchKeys.has(m.key))
     .sort((a, b) => b.deadlineTs - a.deadlineTs);
-  const mostAdvancedLive = liveOnLobby.length
-    ? liveOnLobby.reduce((a, b) => (a.deadlineTs <= b.deadlineTs ? a : b)).key
-    : null;
   const expandedKeys = new Set<string>([
-    ...(mostAdvancedLive ? [mostAdvancedLive] : []),
+    ...liveOnLobby.map((m) => m.key),
     ...matchesNeedingMe,
   ]);
 
