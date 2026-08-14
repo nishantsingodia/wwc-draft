@@ -182,3 +182,51 @@ Worse, last-wins is **row-order dependent**: the sheet is rewritten in place on 
 **Fix:** ONE reduction, `pickDupRow` in `lib/points.ts`, called by all five: **highest `Fantasy Points` wins; a row with no points ranks −Infinity so it can never win.** SUM is never right (two rows are one performance); first/last-wins are order-dependent; MAX is the one order-independent pick that also handles the blank-slot shape with the same comparison. `getTourPoints` now reduces per match, then sums across matches. Duplicates are logged once per key and surfaced on `/audit` + the results Audit tab. Pinned by `scripts/test-dup-rows.ts` (28 checks, run both row orders).
 
 **Rule: a (match, player) key must be reduced in exactly ONE place. Never add a second reduction of sheet rows — import `pickDupRow`. And an absence (`null`) is never a value: don't `?? 0` or `?? -1` it into a comparison.**
+
+## 10. The in-app LIVE scorer read the batting card but never its dismissals — 35 FP/match short
+
+**What broke:** `lib/espn.ts` built every live `Perf` with `bowlLbwBowled: 0` ("live feed doesn't
+expose the per-bowler lbw/bowled split") and `runOuts: 0` ("live feed doesn't reliably attribute
+run-outs"). Both comments were wrong. Both facts sit structured and id-anchored in the **same
+`summary` payload the file already downloads** for the XI, the photos and the scorecard tab, at
+`rosters[].roster[].linescores[].statistics.batting.outDetails` — `{ dismissalCard: "bowled",
+bowler: { id } }` and `{ dismissalCard: "run out", fielders: [{ athlete: { id } }] }`. They were
+never read. Separately, `directRunOut: 12` was declared in all three rule tables in
+`lib/d11-score.ts` and referenced by **nothing** (3 declarations, 0 reads), so every direct hit
+paid the assisted rate of 6.
+
+**Measured** — the real bot scorer vs the real app scorer over 99 cached ESPN events, 2236 player
+rows joined on ESPN athlete id (never on name), bot minus app:
+
+| what | FP | /match | share |
+|---|---|---|---|
+| `bowlLbwBowled` hard-coded 0 (+8 a wicket) | **+2424** | +24.5 | 69.8% |
+| `runOuts` hard-coded 0, paid at the assisted 6 | **+876** | +8.9 | 25.2% |
+| `directRunOuts` declared but never read (the 12 − 6 uplift) | **+228** | +2.3 | 6.6% |
+| everything else (ESPN dots, and rows where the **bot** is wrong) | −56 | −0.6 | −1.6% |
+| **total** | **+3472** | **+35.1** | |
+
+≈20 FP per side, **doubled on a captain** — the number friends form expectations on while a match
+is in play. ODI was worst (+62/match), T20 +37, The Hundred +31.
+
+**Why nobody caught it:** the scorer could not be run without the network, so nothing exercised it.
+`fetchLiveMatchPointsInner` did the fetch and the scoring in one function.
+
+**Fix:** `collectDismissalCredits(summary)` — one pass over every batter's own scorecard line
+before anyone is scored, keyed by ESPN athlete id (which IS the cricinfo id). Every listed fielder
+is credited a run-out; a lone fielder additionally gets the direct-hit flag — the exact mirror of
+the bot's `field += dro*12 + (runouts-dro)*6`. `directRunOuts` is now a **required** field on
+`Perf`, so a caller that forgets it is a compile error, not a silent zero. `liveScoreFromSummary`
+is split out as a pure function of the payload so it can be replayed offline
+(`scripts/test-espn-dismissals.ts`, 18 checks on fixtures trimmed from real responses).
+After the fix: **87 of 99 matches land exactly on the bot's settled total**, mean residual
+−0.6 FP/match, and `(lbwBowled, runOuts, directRunOuts)` agree with the bot on **2236/2236 rows**
+— derived from a completely different payload (the bot reads `playbyplay`).
+
+**Do NOT try to source run-outs from `playbyplay`.** Its `dismissal.fielder` is always empty on a
+run out (bot-measured 0/19 over 24 LPL events) and the text never names the fielders — which is
+exactly why the bot reads them from `summary` too. And this app must never fetch `playbyplay` at
+all: paginated commentary is the known 15-hour-hang hazard.
+
+**Rule: before writing "the live feed doesn't have X", grep the payload you already downloaded.
+And a constant declared in a rule table with no reader is a bug, not decoration.**

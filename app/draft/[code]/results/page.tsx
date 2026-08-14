@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
 import { prettifyMatchLabel } from "@/lib/players";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
+import { LIVE_SOURCE_LABEL, LIVE_GAP_NOTE } from "@/lib/live-label";
 import type { Change } from "@/lib/effective-lineup";
 import type { LiveStatus, Innings } from "@/lib/espn";
 import ChangesBanner from "@/components/changes-banner";
@@ -536,13 +537,19 @@ export default function ResultsPage({
               {live && data.liveFreshness
                 ? `${data.liveFreshness} · via ESPN (provisional)`
                 : live && data.liveProvisional
-                ? "Live · provisional (via ESPN) — auto-refreshes every 30s"
+                ? `${LIVE_SOURCE_LABEL} — auto-refreshes every 30s`
                 : live
                 ? "Live — waiting for scores"
                 : hasPoints
                 ? "Refreshes every 30s"
                 : "Waiting for match to start"}
             </p>
+            {/* Say WHAT is still missing, not just "provisional". A friend watching this form an
+                expectation deserves to know which parts of the card are in the number and which
+                are not — the label used to hide a ~35 FP/match shortfall behind one word. */}
+            {live && data.liveProvisional && (
+              <p className="mt-0.5 text-[11px] leading-snug text-mist2">{LIVE_GAP_NOTE}</p>
+            )}
           </div>
           {live && (
             <button

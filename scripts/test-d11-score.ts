@@ -21,7 +21,7 @@ function perf(over: Partial<Perf>): Perf {
     played: true,
     batRuns: 0, batBalls: 0, bat4s: 0, bat6s: 0, batDismissed: false,
     bowlBalls: 0, bowlRuns: 0, bowlWickets: 0, bowlDots: 0, bowlMaidens: 0, bowlLbwBowled: 0,
-    catches: 0, stumpings: 0, runOuts: 0,
+    catches: 0, stumpings: 0, runOuts: 0, directRunOuts: 0,
     ...over,
   };
 }
@@ -51,6 +51,27 @@ check("no balls -> bowling scores 0 (only XI)", scoreD11(perf({ bowlWickets: 4, 
 
 // Gleeson (Hundred Men M1): 4 wkts / 9 dots / 25 in ~20 balls -> 120 + 9 + 12 (4-wkt haul) + XI 4 = 145.
 check("Gleeson real case = 145", scoreD11(perf({ bowlWickets: 4, bowlDots: 9, bowlRuns: 25, bowlBalls: 20 }), "BOWL", "HUN") === 145);
+
+// ── run-outs: direct 12 / assisted 6 ─────────────────────────────────────────────────────
+// `directRunOut: 12` sat in all three rule tables with ZERO readers, so every direct hit paid
+// the assisted 6. Worth +228 FP / 37 rows over the 99-event replay corpus. These pin the split
+// in each of the three rulesets — the field values are identical across ODI/T20/HUN, so a
+// future edit that drops the read in one scorer only will fail here.
+console.log("\nrun-out split (direct 12 / assisted 6):");
+for (const fmt of ["T20", "ODI", "HUN"] as const) {
+  const base = fmt === "ODI" ? 4 : 4; // XI bonus, same in all three
+  check(`${fmt}: one direct hit = XI + 12`, scoreD11(perf({ runOuts: 1, directRunOuts: 1 }), "BAT", fmt) === base + 12);
+  check(`${fmt}: one assisted = XI + 6`, scoreD11(perf({ runOuts: 1, directRunOuts: 0 }), "BAT", fmt) === base + 6);
+  check(`${fmt}: 2 run-outs, 1 direct = XI + 18`, scoreD11(perf({ runOuts: 2, directRunOuts: 1 }), "BAT", fmt) === base + 18);
+}
+// Lizelle Lee, Hundred W ev1521201: two direct hits, nothing with bat or ball. Read 40.0 live
+// (2 × the assisted 6 + …), settles at 64.0.
+check("HUN: two direct hits = XI + 24", scoreD11(perf({ runOuts: 2, directRunOuts: 2 }), "WK", "HUN") === 4 + 24);
+// Fielding is additive to everything else — the split must not disturb catches/stumpings.
+check("catches + a direct hit compose", scoreD11(perf({ catches: 2, runOuts: 1, directRunOuts: 1 }), "BAT", "T20") === 4 + 16 + 12);
+// Shamar Joseph, CPL ev1534184: 3 wkts / 24 balls / 30 runs / 6 dots, two of them bowled.
+// Live read 78.0 before the fix (lbwBowled hard-coded 0); settles at 94.0.
+check("lbw/bowled bonus is +8 a wicket", scoreD11(perf({ bowlWickets: 3, bowlBalls: 24, bowlRuns: 30, bowlDots: 6, bowlLbwBowled: 2 }), "BOWL", "T20") - scoreD11(perf({ bowlWickets: 3, bowlBalls: 24, bowlRuns: 30, bowlDots: 6 }), "BOWL", "T20") === 16);
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

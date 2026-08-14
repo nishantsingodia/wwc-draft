@@ -205,6 +205,22 @@ POINTS_CSV_URLS=<womens export?gid url>,<mlc gviz url>,<mens gviz url>
 
 "🟢 Lineups Out", the ✓ In-XI / ✗ Not-in-XI markers, BACKUP_INTELLIGENCE's auto-substitution, **and the LIVE-match H2H points** (`getLiveMatchPoints` scores in-app from ESPN via `lib/d11-score.ts`) all need ESPN, resolved by **gender** via `SERIES_BY_GENDER` = **`data/espn-series.json`**, which **must stay in sync with the points-bot's `tours.json` `espn_series`**. **Auto-ingest keeps it in sync** (`tour_sync.apply_to_repos` writes it) — it's only manual for a hand-added tour: add the series id to `data/espn-series.json[gender]`, else lineups fall back to the sheet AND live points show **0** (the 22 Jul Hundred bug). Same for `lib/registry-players.json` (the ESPN→pid mirror `resolveEspnPid` reads) — auto-synced by `tour_sync_finalize`, manual `cp` otherwise; a stale mirror = ESPN players don't join = 0 live points. Run **`npm run check:tours`** after any tour edit — it fails loud on unknown codes / a gender with no series. Cross-referenced from the bot's `TOURS.md`.
 
+#### The live H2H scores the WHOLE card, dismissals included (14 Aug 2026)
+
+`summary` carries each batter's own scorecard line at `…linescores[].statistics.batting.outDetails`
+— `dismissalCard` + `bowler.id` + `fielders[].athlete.id`. `collectDismissalCredits` (`lib/espn.ts`)
+reads it once per match to award the **+8 lbw/bowled** bonus and **run-outs (direct 12 / assisted
+6)**. Before this landed both were hard-coded `0` and the live H2H ran **35 FP/match short** (≈20
+a side, doubled on a captain); after it, 87 of 99 replayed matches land exactly on the bot's
+settled total. See BUGS.md #10. Two consequences for future edits:
+- `liveScoreFromSummary(summary, match)` is a **pure** function — score any cached payload offline;
+  `scripts/test-espn-dismissals.ts` does exactly that. Keep the fetch out of it.
+- **Never fetch `playbyplay` from this app** (paginated commentary = the 15-hour-hang hazard), and
+  don't try to get run-out fielders from it anyway: its `dismissal.fielder` is always empty on a
+  run out. `summary` is the only source, and it is already downloaded.
+- What the live number still omits is named to the user in `lib/live-label.ts` — ONE constant, used
+  by both the results header and the match-hub refresh strip. Change the wording there, not inline.
+
 #### ⛔ NEVER send a browser User-Agent to ESPN (10 Aug 2026)
 
 `site.api.espn.com` **403s browser-impersonating User-Agents**. Measured: `Mozilla/5.0` → 403, a

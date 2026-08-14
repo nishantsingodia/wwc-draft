@@ -5,8 +5,24 @@
 // live H2H a friend sees while a match is in play, computed from an ESPN scorecard we
 // fetch on demand. It mirrors the canonical auction scorer
 // (cricket-auction-helper/src/lib/fantasy-points/{calculator,rules}.ts) so live numbers
-// track the eventual final — but they can legitimately differ (fielding/dot/lbw detail
-// lags in the live feed), which is expected and labelled "provisional" in the UI.
+// track the eventual final — but they can legitimately differ (dot/maiden detail lags in
+// the live feed), which is expected and labelled "provisional" in the UI.
+//
+// ⚠ 14 Aug 2026 — THE LIVE H2H WAS SHORT BY 41.3 FP/MATCH AND THE COMMENT ABOVE SAID SO
+// APPROVINGLY. Measured over 38 cached ESPN events (Hundred M 10 / Hundred W 8 / LPL 10 /
+// CPL 5 / NZ-WI ODI 5), bot minus app: +1571 FP total = +41.3/match ≈ +20 per SIDE, and
+// DOUBLE that on a captain. Of it, 1096 FP (70%) was the +8 lbw/bowled bowling bonus, 492 FP
+// (31%) was run-out fielding, and −17 was everything else. None of it was a feed limitation:
+// both sit structured and id-anchored in the SAME `summary` payload lib/espn.ts already
+// downloads, under `…statistics.batting.outDetails`. They were simply never read. Two of this
+// codebase's standing bug classes at once:
+//   • WRITTEN BUT NEVER READ — `directRunOut: 12` was declared in all three rule tables below
+//     and referenced by NOTHING (3 declarations, 0 reads), so every direct hit paid the
+//     assisted rate of 6. Worth 96 FP / 15 rows on the same corpus.
+//   • AN ABSENCE PRESENTING AS A VALUE — `bowlLbwBowled` and `runOuts` were hard-coded 0 in
+//     lib/espn.ts, which is indistinguishable from "this bowler bowled nobody".
+// `directRunOuts` is now a REQUIRED field on Perf on purpose: a caller that forgets it is a
+// compile error, not a silent zero.
 //
 // Format-aware (per Nishant): ODI uses ODI bands; T20 uses T20 bands; The Hundred (HUN) has
 // its OWN ruleset — same core scale as T20 but NO strike-rate, NO economy and NO maiden points,
@@ -17,8 +33,9 @@
 export type Role = "BAT" | "BOWL" | "AR" | "WK";
 export type ScoreFormat = "ODI" | "T20" | "HUN";
 
-// One player's match line. Fields we can't read live (lbw/bowled split, run-outs) are
-// simply 0 → their bonus is omitted live and trues up when the bot finalizes.
+// One player's match line. Everything here IS readable live from the ESPN summary; what still
+// lags is the exactness of `bowlDots`/`bowlMaidens` (ESPN's own per-bowler counters, which the
+// bot recomputes from the ball-by-ball) — see lib/espn.ts LIVE_PROVISIONAL_GAP.
 export type Perf = {
   played: boolean;
   batRuns: number;
@@ -31,10 +48,11 @@ export type Perf = {
   bowlWickets: number;
   bowlDots: number;
   bowlMaidens: number;
-  bowlLbwBowled: number; // wickets via lbw/bowled — 0 from the live feed (not exposed per-bowler)
+  bowlLbwBowled: number; // wickets via lbw/bowled (+8 each) — outDetails.dismissalCard + bowler.id
   catches: number;
   stumpings: number;
-  runOuts: number; // total run-outs credited (live feed rarely attributes these → usually 0)
+  runOuts: number; // TOTAL run-out credits (direct + assisted) — outDetails.fielders[]
+  directRunOuts: number; // …of which unassisted (fielders[].length === 1). Paid 12; the rest 6.
 };
 
 const T20 = {
@@ -68,8 +86,13 @@ function fielding(p: Perf, f: typeof T20.field): number {
   let x = p.catches * f.catch;
   if (p.catches >= 3) x += f.catch3;
   x += p.stumpings * f.stumping;
-  // Live feed doesn't split direct vs assisted run-outs → credit the assisted rate (safe).
-  x += p.runOuts * f.runOut;
+  // Direct hits pay 12, assisted 6 — the exact mirror of the bot's settling line
+  //   field += p["dro"]*R["dro"] + (p["runouts"] - p["dro"])*R["ro"]   (wc_fps_to_csv.py:1551)
+  // ESPN lists every fielder involved, so `directRunOuts` is "fielders[].length === 1" and can
+  // never exceed `runOuts` — they are counted in the SAME pass (lib/espn.ts
+  // collectDismissalCredits). Deliberately no clamp: if that invariant ever broke, a negative
+  // assisted term is a visible wrong number, and this file's history is of silent zeros.
+  x += p.directRunOuts * f.directRunOut + (p.runOuts - p.directRunOuts) * f.runOut;
   return x;
 }
 

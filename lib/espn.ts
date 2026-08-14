@@ -378,12 +378,21 @@ function roleFromPosition(abbr: string): Role {
   return "BAT";
 }
 
+// A super over is period 3+, and Dream11 awards NO points for it — the bot drops those
+// deliveries in parse_espn and in espn_batting_card. Measured over the 139 cached summary
+// payloads on disk: 4603 roster linescores, ALL of them period 1 or 2, so this is worth 0 FP
+// today and exists so the two readers below cannot disagree about which balls count. A missing
+// `period` stays IN (Number(undefined)||0 = 0), because dropping a line we can't date would be
+// this file's own bug class — an absence deciding a value.
+const SCORING_PERIODS = 2;
+
 // Flatten one player's stat lines across both innings periods into name → summed value.
 // Each concrete stat we read (runs, balls, wickets, …) is non-zero in only ONE period
 // (a player bats once, bowls/fields in the other), so summing is the correct total.
 function flattenStats(linescores: unknown): Map<string, number> {
   const out = new Map<string, number>();
   for (const period of (linescores as Array<Record<string, unknown>>) ?? []) {
+    if ((Number(period.period) || 0) > SCORING_PERIODS) continue;
     for (const sub of (period.linescores as Array<Record<string, unknown>>) ?? []) {
       const cats =
         ((sub.statistics as Record<string, unknown>)?.categories as Array<Record<string, unknown>>) ??
@@ -393,6 +402,92 @@ function flattenStats(linescores: unknown): Map<string, number> {
           const name = s.name as string;
           const v = typeof s.value === "number" ? s.value : Number(s.value);
           if (name && Number.isFinite(v)) out.set(name, (out.get(name) ?? 0) + v);
+        }
+      }
+    }
+  }
+  return out;
+}
+
+// ── DISMISSAL CREDITS: the +8 lbw/bowled bonus and run-out fielding ──────────────────────
+//
+// WHAT WENT WRONG. Until 14 Aug 2026 this file hard-coded `bowlLbwBowled: 0` and `runOuts: 0`
+// with the comment "live feed doesn't expose" / "doesn't reliably attribute". That was false,
+// and it cost the live H2H **41.3 FP per match** — measured bot-minus-app over 38 cached ESPN
+// events, 857 rows joined on athlete id: +1096 FP lbw/bowled, +492 FP run-outs, ≈20 per SIDE,
+// doubled on a captain. Friends were forming expectations on a number ~20 points light.
+//
+// Both facts are RIGHT HERE, structured and id-anchored, in the `summary` payload this file
+// already downloads for the XI and the scorecard:
+//   rosters[].roster[].linescores[].statistics.batting.outDetails
+//     { "bowler": {"id": "677081"}, "dismissalCard": "bowled", "fielders": [] }
+//     { "dismissalCard": "run out", "fielders": [{"athlete": {"id": "670031"}, …}] }
+// So this costs ZERO extra requests — no new endpoint, no new round-trip.
+//
+// ⛔ THE ONE THING THAT IS GENUINELY UNAVAILABLE is the same fact from `playbyplay`: its
+// `dismissal.fielder` is ALWAYS EMPTY on a run out (bot-measured 0/19 over 24 LPL events) and
+// neither shortText nor text names the fielders. That is exactly why the bot reads run-outs
+// from `summary` too (espn_runouts, wc_fps_to_csv.py:1014). And `playbyplay` must NEVER be
+// fetched from this app anyway — paginated commentary is the known 15-hour-hang hazard.
+//
+// MEASURED on the 139 cached summaries (1656 batting lines): dismissalCard vocabulary is
+// c 836 / not out 350 / bowled 240 / run out 99 / lbw 84 / st 39 / retired out 4 /
+// retired not out 4 — ESPN's SCORECARD abbreviations ("c", "st"), NOT playbyplay's spelled-out
+// "caught"/"stumped"; do not reuse that vocabulary here. 324/324 lbw+bowled lines carry
+// `bowler.id`, and 324/324 of those ids are in the scored XI. All 99 run-outs carry a non-empty
+// `fielders[]` (42 with one fielder = direct hit, 54 with two, 3 with three); 157/159 fielder
+// ids are in the scored XI, the other 2 being substitute fielders we cannot score.
+//
+// Catches and stumpings are NOT taken from here — they already come from the per-player
+// `caught`/`stumped` counters and those were verified correct.
+type DismissalCredits = { lbwBowled: number; runOuts: number; directRunOuts: number };
+const NO_CREDITS: DismissalCredits = { lbwBowled: 0, runOuts: 0, directRunOuts: 0 };
+
+export function collectDismissalCredits(
+  summary: Record<string, unknown>
+): Map<string, DismissalCredits> {
+  const out = new Map<string, DismissalCredits>();
+  const credit = (id: string): DismissalCredits => {
+    let c = out.get(id);
+    if (!c) {
+      c = { lbwBowled: 0, runOuts: 0, directRunOuts: 0 };
+      out.set(id, c);
+    }
+    return c;
+  };
+  for (const team of (summary.rosters as Array<Record<string, unknown>>) ?? []) {
+    for (const p of (team.roster as Array<Record<string, unknown>>) ?? []) {
+      // Each batter's OWN scorecard line — no striker/non-striker ambiguity, which is the trap
+      // in the ball-by-ball (there a run-out is attached to whoever was on strike).
+      for (const ls of (p.linescores as Array<Record<string, unknown>>) ?? []) {
+        if ((Number(ls.period) || 0) > SCORING_PERIODS) continue;
+        const bat = (ls.statistics as Record<string, unknown>)?.batting as
+          | Record<string, unknown>
+          | undefined;
+        const det = bat?.outDetails as Record<string, unknown> | undefined;
+        if (!det) continue;
+        const card = ((det.dismissalCard as string) ?? "").trim().toLowerCase();
+        // "leg before wicket" has never been observed on THIS field (84/84 lbw lines say "lbw");
+        // it is the spelling the *playbyplay* uses, and it is accepted here only so a feed that
+        // switched vocabulary would lose no points silently. Everything else — "c", "st",
+        // "retired out" — must NOT land here: those are scored from the fielding counters.
+        if (card === "bowled" || card === "lbw" || card === "leg before wicket") {
+          const bowlerId = String(((det.bowler as Record<string, unknown>)?.id as string) ?? "");
+          if (bowlerId) credit(bowlerId).lbwBowled += 1;
+        } else if (card === "run out") {
+          const ids: string[] = [];
+          for (const f of (det.fielders as Array<Record<string, unknown>>) ?? []) {
+            const id = String((((f.athlete as Record<string, unknown>) ?? {}).id as string) ?? "");
+            if (id) ids.push(id);
+          }
+          // Bot's rule (wc_fps_to_csv.py:1451-1460), mirrored exactly: EVERY listed fielder gets
+          // a run-out credit, and a lone fielder additionally gets the direct-hit flag. So a
+          // two-man run-out pays 6+6, a direct hit pays 12 to one player.
+          for (const id of ids) {
+            const c = credit(id);
+            c.runOuts += 1;
+            if (ids.length === 1) c.directRunOuts += 1;
+          }
         }
       }
     }
@@ -606,9 +701,24 @@ async function fetchLiveMatchPoints(match: Match): Promise<LiveScore | null> {
 }
 
 async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null> {
-  const fmt = scoreFormatOf(match);
   const summary = await matchSummary(match);
   if (!summary) return null;
+  return liveScoreFromSummary(summary, match);
+}
+
+/**
+ * The whole live scorer as a PURE function of an ESPN `summary` payload.
+ *
+ * Split out from the fetch on 14 Aug 2026 so it can be replayed offline against cached
+ * payloads — the 41.3 FP/match shortfall this file carried for weeks was invisible precisely
+ * because nothing could exercise the scorer without the network. scripts/test-espn-dismissals.ts
+ * drives it from checked-in fixtures.
+ */
+export function liveScoreFromSummary(
+  summary: Record<string, unknown>,
+  match: Match
+): LiveScore | null {
+  const fmt = scoreFormatOf(match);
   {
 
     const points = new Map<string, number>();
@@ -623,6 +733,11 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
       [teamKey(TEAM_NAMES[match.team2] ?? match.team2), match.team2],
     ]);
     const stateByTeam = inningsStateByTeam(summary, codeByKey);
+    // ONE pass over every batter's scorecard line, before scoring anyone: a bowler's lbw/bowled
+    // bonus and a fielder's run-out credit are both facts about SOMEONE ELSE'S dismissal, so
+    // they cannot be read from the credited player's own stat line. Keyed by ESPN athlete id,
+    // which IS the cricinfo id — never by name.
+    const credits = collectDismissalCredits(summary);
     // Per-player parsed lines, collected in the roster loop, for the Scorecard tab.
     type PlayerLine = {
       teamCode: string | undefined;
@@ -664,6 +779,10 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
         // credited a catcher a phantom wicket (verified: Shedge b=18 w=0 dism=1). Catches
         // are scored separately via `caught`; never fold `dismissals` into bowling wickets.
         const bowlWkts = get("wickets");
+        // A player with no dismissal credit is genuinely a zero here (nobody he bowled was lbw
+        // or bowled, he was in no run-out) — unlike the hard-coded 0s this replaced, which said
+        // the same thing about players who had five of them.
+        const cred = credits.get(String(a.id ?? "")) ?? NO_CREDITS;
         const perf: Perf = {
           played: true,
           batRuns: get("runs"),
@@ -676,12 +795,17 @@ async function fetchLiveMatchPointsInner(match: Match): Promise<LiveScore | null
           bowlWickets: bowlWkts,
           bowlDots: get("dots"),
           bowlMaidens: get("maidens"),
-          bowlLbwBowled: 0, // live feed doesn't expose the per-bowler lbw/bowled split
+          bowlLbwBowled: cred.lbwBowled,
           catches: get("caught"),
           stumpings: get("stumped"),
-          runOuts: 0, // live feed doesn't reliably attribute run-outs to a fielder
+          runOuts: cred.runOuts,
+          directRunOuts: cred.directRunOuts,
         };
-        if (perf.batBalls || perf.bowlBalls || perf.catches || perf.stumpings) anyStats = true;
+        // Run-outs count as "play has begun" too: Lizelle Lee (Hundred W ev1521201) finished
+        // with two direct hits and NOTHING with bat or ball — 24 FP that the old test would
+        // have called no stats at all.
+        if (perf.batBalls || perf.bowlBalls || perf.catches || perf.stumpings || perf.runOuts)
+          anyStats = true;
         const role = roleFromPosition(
           ((p.position as Record<string, unknown>)?.abbreviation as string) ?? ""
         );
