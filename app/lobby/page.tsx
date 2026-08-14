@@ -43,6 +43,55 @@ async function getUserContests(username: string) {
   return all.filter((c) => ids.has(c.id) || c.createdBy === username);
 }
 
+/**
+ * Drafts someone ELSE opened that you can still join — the lobby's only view of a contest you
+ * are not already in. Everything else on this page is scoped to `getUserContests`, i.e. rows
+ * you participate in or created, so an opponent's WAITING draft was invisible: they'd create
+ * one, and you'd have no way to find it short of them reading you the code. The old
+ * /match/[key] hub listed these under "Open Drafts"; retiring it moved the list into the
+ * lobby match card's "···" sheet, which the Upcoming panel never renders — so the surface
+ * disappeared entirely rather than moving.
+ *
+ * Joinability mirrors POST /api/draft/[code]/join EXACTLY, so the lobby cannot advertise a
+ * seat the API will refuse:
+ *   • WAITING            — live mode only while seats remain (manual is uncapped there)
+ *   • manual TEAM_SELECT — the second drafter is still admitted as a participant
+ * DRAFTING is deliberately NOT joinable: the old hub offered it, but the join route falls
+ * through and adds nobody, so that row was always a dead end.
+ */
+async function getOpenContests(username: string, matchKeys: Set<string>) {
+  if (matchKeys.size === 0) return [];
+  const db = getDb();
+  const recent = await db
+    .select()
+    .from(draftContests)
+    .orderBy(desc(draftContests.createdAt))
+    .limit(50);
+
+  const candidates = recent.filter(
+    (c) =>
+      matchKeys.has(c.matchKey) &&
+      (c.status === "WAITING" || (c.mode === "manual" && c.status === "TEAM_SELECT"))
+  );
+  if (candidates.length === 0) return [];
+
+  const rows = await db
+    .select()
+    .from(contestParticipants)
+    .where(inArray(contestParticipants.contestId, candidates.map((c) => c.id)));
+
+  const seatsByContest = new Map<number, string[]>();
+  for (const r of rows) seatsByContest.set(r.contestId, [...(seatsByContest.get(r.contestId) ?? []), r.user]);
+
+  return candidates
+    .map((c) => ({ contest: c, seats: seatsByContest.get(c.id) ?? [] }))
+    .filter(({ contest, seats }) => {
+      if (seats.includes(username) || contest.createdBy === username) return false;
+      // Capacity is enforced on live drafts only — same asymmetry as the join route.
+      return contest.mode !== "live" || seats.length < (contest.maxPlayers ?? 2);
+    });
+}
+
 async function getSelectionsForContests(ids: number[]): Promise<Map<number, TeamSelection[]>> {
   if (ids.length === 0) return new Map();
   const db = getDb();
@@ -172,6 +221,14 @@ export default async function LobbyPage() {
 
   const upcomingMatchKeys = new Set(upcomingMatches.map((m) => m.key));
   const liveMatchKeys = new Set(liveMatches.map((m) => m.key));
+
+  // Open drafts are scoped to UPCOMING matches: `upcomingMatches` is exactly the still-joinable
+  // window (start + LOCK_BUFFER), so a draft on a locked match can never be offered here.
+  const openContests = await getOpenContests(username, upcomingMatchKeys).catch(() => []);
+  const openByMatch = new Map<string, typeof openContests>();
+  for (const o of openContests) {
+    openByMatch.set(o.contest.matchKey, [...(openByMatch.get(o.contest.matchKey) ?? []), o]);
+  }
 
   // Group user contests by match key
   const userContestsByMatch = new Map<string, typeof userContests>();
@@ -405,7 +462,9 @@ export default async function LobbyPage() {
         </div>
       )}
 
-      {upcomingMatches.slice(0, 8).map((m) => {
+      {upcomingMatches
+        .filter((m, i) => i < 8 || openByMatch.has(m.key) || upcomingDraftsByMatch.has(m.key))
+        .map((m) => {
               const myDrafts = upcomingDraftsByMatch.get(m.key) ?? [];
               // A knockout whose teams aren't decided yet has no player pool, so it lists as a
               // fixture only — /draft/create would bounce it straight back to "select a match".
@@ -481,6 +540,34 @@ export default async function LobbyPage() {
                       </div>
                     );
                   })}
+
+                  {/* Drafts someone else opened on this match that you can still join. Styled
+                      apart from your own (emerald, "Join") so the two never read as one list —
+                      one is a contest you're in, the other an invitation. */}
+                  {(openByMatch.get(m.key) ?? []).map(({ contest: c, seats }) => (
+                    <TransitionLink
+                      key={c.id}
+                      href={`/draft/${c.code}`}
+                      className="ml-4 flex items-center gap-2 rounded-xl border border-emerald-400/40 bg-gradient-to-br from-emerald-400/10 to-navy2 px-3 py-2.5"
+                    >
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wide ${c.mode === "live" ? "bg-live/15 text-live border border-live/40" : "bg-navy2 text-mist"}`}>
+                            {c.mode === "live" ? "Live" : "Manual"}
+                          </span>
+                          <span className="text-mist2 font-mono text-xs">{c.code}</span>
+                        </div>
+                        <p className="text-sm font-bold text-emerald-400">
+                          {getUserLabel(c.createdBy ?? "Someone")} is waiting for you
+                        </p>
+                        <p className="text-[11px] text-mist2 font-mono mt-0.5">
+                          {seats.length}/{c.maxPlayers ?? 2} joined
+                          {seats.length > 0 && ` · ${seats.map(getUserLabel).join(", ")}`}
+                        </p>
+                      </div>
+                      <span className="shrink-0 rounded-full bg-emerald-400 text-ink font-bold text-xs px-3 py-2">Join</span>
+                    </TransitionLink>
+                  ))}
                 </div>
               );
             })}
