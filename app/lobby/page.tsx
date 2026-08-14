@@ -408,25 +408,50 @@ export default async function LobbyPage() {
 
       {upcomingMatches.slice(0, 8).map((m) => {
               const myDrafts = upcomingDraftsByMatch.get(m.key) ?? [];
+              // A knockout whose teams aren't decided yet has no player pool, so it lists as a
+              // fixture only — /draft/create would bounce it straight back to "select a match".
+              const draftable = m.team1 !== "TBD" && m.team2 !== "TBD";
+
+              const header = (
+                <>
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1">
+                      <TeamLogo code={m.team1} size={24} />
+                      <TeamLogo code={m.team2} size={24} />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm">{prettifyMatchLabel(m.label)}</p>
+                      <p className="text-xs text-mist font-mono mt-0.5">{formatMatchDate(m.date)}</p>
+                    </div>
+                  </div>
+                  {draftable ? (
+                    <span className="text-gold text-xs font-mono shrink-0 border border-gold/30 rounded-lg px-2.5 py-1.5">Draft →</span>
+                  ) : (
+                    <span className="text-mist2 text-xs font-mono shrink-0 border border-hair rounded-lg px-2.5 py-1.5">Teams TBD</span>
+                  )}
+                </>
+              );
 
               return (
                 <div key={m.key} className="space-y-1.5">
-                  {/* Match header */}
-                  <div
-                    className="flex items-center justify-between card-stadium rounded-2xl px-4 py-3 hover:brightness-110 transition"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1">
-                        <TeamLogo code={m.team1} size={24} />
-                        <TeamLogo code={m.team2} size={24} />
-                      </div>
-                      <div>
-                        <p className="font-bold text-sm">{prettifyMatchLabel(m.label)}</p>
-                        <p className="text-xs text-mist font-mono mt-0.5">{formatMatchDate(m.date)}</p>
-                      </div>
+                  {/* Match header — the whole card opens draft creation for this match. It was a
+                      <Link> until ed959af turned it into a plain <div>, which left the "Draft →"
+                      chip inert and the lobby with NO way to start a draft on an upcoming match
+                      (the Live tab's "+ Draft for this match" was the only entry point left).
+                      It points at /draft/create, not /match/[key] — that hub is retired and now
+                      just redirects back to /lobby. */}
+                  {draftable ? (
+                    <TransitionLink
+                      href={`/draft/create?matchKey=${m.key}`}
+                      className="flex items-center justify-between card-stadium rounded-2xl px-4 py-3 hover:brightness-110 transition"
+                    >
+                      {header}
+                    </TransitionLink>
+                  ) : (
+                    <div className="flex items-center justify-between card-stadium rounded-2xl px-4 py-3 opacity-70">
+                      {header}
                     </div>
-                    <span className="text-gold text-xs font-mono shrink-0 border border-gold/30 rounded-lg px-2.5 py-1.5">Draft →</span>
-                  </div>
+                  )}
 
                   {/* User's drafts for this match */}
                   {myDrafts.map((c) => {

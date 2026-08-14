@@ -2017,5 +2017,45 @@
     "label": "Match 35: MTBAR v MTGUY",
     "date": "2026-09-14T04:30:00+05:30",
     "format": "T20"
+  },
+  {
+    "matchNum": 238,
+    "key": "THMSC_M33_MTMSG_MTSUNL_Aug14",
+    "gender": "M",
+    "team1": "MTMSG",
+    "team2": "MTSUNL",
+    "label": "Eliminator: MTMSG v MTSUNL",
+    "date": "2026-08-14T22:30:00+05:30",
+    "format": "HUN"
+  },
+  {
+    "matchNum": 239,
+    "key": "THMSC_M34_FINAL_Aug16",
+    "gender": "M",
+    "team1": "TBD",
+    "team2": "TBD",
+    "label": "The Hundred Men's Final",
+    "date": "2026-08-16T22:30:00+05:30",
+    "format": "HUN"
+  },
+  {
+    "matchNum": 240,
+    "key": "THWSC_W33_WTSBR_WTSUNL_Aug14",
+    "gender": "W",
+    "team1": "WTSBR",
+    "team2": "WTSUNL",
+    "label": "Eliminator: WTSBR v WTSUNL",
+    "date": "2026-08-14T18:45:00+05:30",
+    "format": "HUN"
+  },
+  {
+    "matchNum": 241,
+    "key": "THWSC_W34_FINAL_Aug16",
+    "gender": "W",
+    "team1": "TBD",
+    "team2": "TBD",
+    "label": "The Hundred Women's Final",
+    "date": "2026-08-16T18:45:00+05:30",
+    "format": "HUN"
   }
 ]
