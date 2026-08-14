@@ -1,0 +1,15 @@
+# `vercel --prod` uploads the WORKING TREE, and `next build` type-checks everything it
+# finds. That means any scratch script a session leaves lying around becomes a build
+# input — and one written with a hardcoded local path ("/Users/…/data/points-tabs.json")
+# fails the deploy with an error about a file that exists perfectly well on the laptop.
+# It cost a production deploy on 14 Aug. Nothing below is imported by the app, so none of
+# it belongs in a build.
+#
+# NOTE: adding this file makes Vercel stop consulting .gitignore for uploads, so anything
+# that must not ship needs to be listed HERE too. node_modules and .git are always excluded.
+scripts
+db
+docs
+*.tsbuildinfo
+.next
+.vercel
