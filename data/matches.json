@@ -2032,8 +2032,8 @@
     "matchNum": 239,
     "key": "THMSC_M34_FINAL_Aug16",
     "gender": "M",
-    "team1": "TBD",
-    "team2": "TBD",
+    "team1": "MTMSG",
+    "team2": "MTTRR",
     "label": "The Hundred Men's Final",
     "date": "2026-08-16T22:30:00+05:30",
     "format": "HUN"
@@ -2052,8 +2052,8 @@
     "matchNum": 241,
     "key": "THWSC_W34_FINAL_Aug16",
     "gender": "W",
-    "team1": "TBD",
-    "team2": "TBD",
+    "team1": "WTSUNL",
+    "team2": "WTTRR",
     "label": "The Hundred Women's Final",
     "date": "2026-08-16T18:45:00+05:30",
     "format": "HUN"
