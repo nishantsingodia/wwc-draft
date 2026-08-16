@@ -230,3 +230,64 @@ all: paginated commentary is the known 15-hour-hang hazard.
 
 **Rule: before writing "the live feed doesn't have X", grep the payload you already downloaded.
 And a constant declared in a rule table with no reader is a bug, not decoration.**
+
+---
+
+## 11. One live map, two answers — the lobby's H2H dropped every player it couldn't join by pid
+
+**What broke:** `lookupPlayerPoints` takes a `liveFallback` flag. On the provisional ESPN map a
+pid miss MAY fall back to the shared fuzzy name matcher — that map is keyed by name as well as
+pid, and the whole number is provisional. On the bot's settled sheet it must NOT, because a
+namesake would steal settled points ("Smit Patel" grabbing "Sunny Patel", §5). The results route
+passed it. `calcSelectionPoints` — the ONE scorer behind the lobby cards, the match-hub head-to-
+head, `/audit` and every amendment preview — passed four arguments and silently took the `= false`
+default. Same match, same map, the same second, two different totals, and the LOWER one was on the
+lobby, which is the screen friends actually stare at while a match is in play.
+
+On the amendment screen it was visible on one card: `playerView` passed the flag, so the player's
+row read `Shafali Verma 117` while the team total that was supposed to include her did not.
+
+**Measured** (replaying `liveScoreFromSummary` over 170 cached ESPN summaries, at 6ac9b40):
+
+| | |
+|---|---|
+| pool players the live map HAD and the strict lookup dropped to 0 | **46** |
+| FP invisible to the lobby / match hub | **2384 = 14.0 per match** |
+| real selections in the prod DB whose total moved | **15** |
+
+```
+IND v NED     contest ZLHXQJ   674   → 1007    Shafali Verma 222 (vice ×1.5)
+BAN v IND     contest R5P7J3   523   → 757     Shafali Verma 117 (captain ×2)
+ZIM v IND T3  contest 9B8YHM   762   → 940
+NZ v SL       contest HJHTEU   387.5 → 485.5
+Hundred M23   contest 6T8SQY   400   → 438     Matthew Fisher 38
+LPL DS v GG   contest G9CH9A   655   → 707     Vishva Kumara 52
+```
+
+**Root cause:** every one is an IDENTITY fork, never a scoring error. The pool's pid comes from
+the bot's registry; the live map's is `ci:<ESPN athlete id>` by construction (`lib/registry.ts`
+builds it from `athlete.id`, which IS the cricinfo id). When the two disagree — Shafali Verma pool
+`ci:597821` vs ESPN 1182523, Matthew Fisher `ci:1129635` vs 639080, Rinku Singh `ci:1463383` vs
+723105 — the pid key misses, and a strict lookup returns `null`, which `calcSelectionPoints` adds
+as nothing. **An absence presenting as a value:** "I can't join this person" rendered as "he
+scored 0". Correcting the seeds is the real fix and belongs in the bot's **Needs Cricinfo ID** tab
+— and it moves: while this was being measured, `6ac9b40` corrected five (Gus Atkinson, Shai Hope,
+Glenn Phillips, Mavendra Dindyal, Dwaine Pretorius) and the figure fell from 20.6 to 14.0 FP/match
+on the same corpus. It will never reach zero: a debutant has no seed at all.
+
+**Fix:** the MAP carries the fact instead of the caller. `lib/live-map.ts` is a `WeakSet`;
+`lib/espn.ts` tags the map at construction (not on the way out — every `return` path hands out the
+same object); `lookupPlayerPoints`'s flag became optional and defaults to `isLivePointsMap(map)`.
+Passing the flag at all eight call sites is the fix that decays; this one cannot be forgotten.
+`false` explicitly still forces strict, which is what the settled-sheet calls do.
+
+**Also fixed in the same place:** `getMatchPointsMap` returned the live map on `if (live)`, while
+the results route gates on `live.anyStats`. ESPN posts the XI ~30 min before the first ball and the
+scorer returns a map for it in which every starter carries the bare +4 in-XI point — so between
+the deadline and the first ball the lobby card showed 44 a side as a real scoreline while the
+results page for the same contest still showed the sheet. Points before the first ball are not a
+small error, they are a fiction. Same gate now.
+
+**Rule: a flag that says "which kind of thing is this" belongs ON the thing, not in every call.
+And when two surfaces score the same match, they must share the scorer AND its arguments — §10's
+sibling: two paths, one map, two answers.**

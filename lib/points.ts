@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
 import { fuzzyMatchName, normName } from "./fuzzy-name-match";
 import { TEAM_NAMES, TEAM_CODE_ALIASES, isPidKey, type SheetPlayer } from "./players";
+import { isLivePointsMap } from "./live-map";
 // gviz CSV URLs for auto-ingested tours — the tour-sync job appends here so a new
 // tour's points tab self-registers WITHOUT editing the POINTS_CSV_URLS env var.
 import pointsTabs from "@/data/points-tabs.json";
@@ -140,11 +141,21 @@ export function lookupPlayerPoints(
   // a fallback. The bot's reconciled SHEET must NOT do this (a namesake could steal points), but
   // the ESPN live map is keyed by name too and only PROVISIONAL — if ESPN romanizes a name so its
   // pid didn't resolve, this recovers the join (fuzzyMatchName is null-on-ambiguity; trues up on
-  // completion). Default false = the strict, sheet-safe behaviour.
-  liveFallback = false
+  // completion).
+  //
+  // ⚠ OMITTED NOW MEANS "ASK THE MAP", NOT "false" (16 Aug 2026). The old `= false` default was
+  // an ABSENCE PRESENTING AS A VALUE by another door: a caller that simply didn't know about the
+  // flag got the strict behaviour applied to a LIVE map, and a live pid miss reads as "he scored
+  // 0" rather than "I couldn't join him". calcSelectionPoints — lobby cards, match-hub H2H,
+  // /audit, every amendment preview — was exactly that caller, and it cost 20.6 FP/match of live
+  // points across 170 replayed ESPN summaries (lib/live-map.ts carries the full measurement).
+  // Pass `false` explicitly to force strict on a map that IS live; that stays available and is
+  // what the settled-sheet call sites do for clarity.
+  liveFallback?: boolean
 ): number | null {
+  const useFallback = liveFallback ?? isLivePointsMap(pointsMap);
   if (pid && pointsMap.has(pid)) return pointsMap.get(pid) ?? null;
-  if (pid && !liveFallback) return null;
+  if (pid && !useFallback) return null;
   return (
     fuzzyLookupPoints(displayName, pointsMap) ??
     (name && name !== displayName ? fuzzyLookupPoints(name, pointsMap) : null)

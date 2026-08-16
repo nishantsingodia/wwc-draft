@@ -61,7 +61,14 @@ export async function getMatchPointsMap(
 ): Promise<MatchPoints> {
   if (opts.live) {
     const live = await getLiveMatchPoints(match, { fresh: opts.fresh });
-    if (live) return { points: live.points, freshness: live.freshness };
+    // `anyStats`, not just "ESPN answered" — the SAME gate the results route applies
+    // (app/api/draft/[code]/results/route.ts `useLive`). ESPN posts the XI ~30 min before the
+    // first ball, and liveScoreFromSummary returns a map as soon as it has one, in which every
+    // starter carries the bare +4 in-XI point and nothing else. Without this gate the lobby card
+    // and the match hub read that as a real scoreline (11 × 4 = 44 a side, or 46 with a captain)
+    // while the results page for the same contest, at the same second, still showed the sheet.
+    // Points before the first ball are not a small error, they are a fiction.
+    if (live?.anyStats) return { points: live.points, freshness: live.freshness };
   }
   return { points: await getMatchPointsForMatch(match), freshness: null };
 }

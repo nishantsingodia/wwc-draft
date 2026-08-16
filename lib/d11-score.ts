@@ -24,6 +24,17 @@
 // `directRunOuts` is now a REQUIRED field on Perf on purpose: a caller that forgets it is a
 // compile error, not a silent zero.
 //
+// RE-VERIFIED 16 Aug 2026 on a fresh, larger corpus — 183 ESPN summaries fetched today, 170
+// scored, 85 of them diffable against the settled sheet (1874 player rows, joined on athlete id).
+// The two omissions above were worth **33.5 FP/match** here (lbw/bowled 22.0 = 66%, run-outs at
+// the assisted 6 9.2 = 27%, the unread direct-hit uplift 2.3 = 7%; the /match figure is corpus-
+// dependent, the shares are not). Everything the two omissions do NOT explain totals
+// **−0.47 FP/match** — the app now reads slightly HIGH, not short. Per bucket (sheet minus app,
+// over the 85): XI 0.00, bat −0.11, SR −0.02, bowl −0.04, econ −0.02, field −0.28. 1839/1874 rows
+// and 65/85 matches land EXACTLY. So there is no third omission hiding in this file, and the
+// remaining live under-report was never arithmetic — it was the CONSUMER dropping a player it
+// could not join by pid (lib/live-map.ts, BUGS.md §11).
+//
 // Format-aware (per Nishant): ODI uses ODI bands; T20 uses T20 bands; The Hundred (HUN) has
 // its OWN ruleset — same core scale as T20 but NO strike-rate, NO economy and NO maiden points,
 // and wicket hauls tier from a 2-for (2w+4 / 3w+8 / 4w+12 / 5w+16). Mirrors the bot's
@@ -87,7 +98,9 @@ function fielding(p: Perf, f: typeof T20.field): number {
   if (p.catches >= 3) x += f.catch3;
   x += p.stumpings * f.stumping;
   // Direct hits pay 12, assisted 6 — the exact mirror of the bot's settling line
-  //   field += p["dro"]*R["dro"] + (p["runouts"] - p["dro"])*R["ro"]   (wc_fps_to_csv.py:1551)
+  //   field += p["dro"]*R["dro"] + (p["runouts"] - p["dro"])*R["ro"]
+  // (wc_fps_to_csv.py:1592, and :1625/:1669 for the other two rulesets — re-verified 16 Aug 2026;
+  // the old ":1551" anchor had drifted. Check the anchor, don't trust it.)
   // ESPN lists every fielder involved, so `directRunOuts` is "fielders[].length === 1" and can
   // never exceed `runOuts` — they are counted in the SAME pass (lib/espn.ts
   // collectDismissalCredits). Deliberately no clamp: if that invariant ever broke, a negative

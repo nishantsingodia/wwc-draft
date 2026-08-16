@@ -16,6 +16,7 @@ import { normName } from "./fuzzy-name-match";
 import { resolveEspnPid } from "./registry";
 import espnSeries from "@/data/espn-series.json";
 import { scoreD11, type Perf, type Role, type ScoreFormat } from "./d11-score";
+import { markLivePointsMap } from "./live-map";
 
 const ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/cricket";
 
@@ -427,8 +428,9 @@ function flattenStats(linescores: unknown): Map<string, number> {
 // ⛔ THE ONE THING THAT IS GENUINELY UNAVAILABLE is the same fact from `playbyplay`: its
 // `dismissal.fielder` is ALWAYS EMPTY on a run out (bot-measured 0/19 over 24 LPL events) and
 // neither shortText nor text names the fielders. That is exactly why the bot reads run-outs
-// from `summary` too (espn_runouts, wc_fps_to_csv.py:1014). And `playbyplay` must NEVER be
-// fetched from this app anyway — paginated commentary is the known 15-hour-hang hazard.
+// from `summary` too (espn_runouts, wc_fps_to_csv.py:1055 — re-verified 16 Aug 2026, the old
+// ":1014" anchor had drifted). And `playbyplay` must NEVER be fetched from this app anyway —
+// paginated commentary is the known 15-hour-hang hazard.
 //
 // MEASURED on the 139 cached summaries (1656 batting lines): dismissalCard vocabulary is
 // c 836 / not out 350 / bowled 240 / run out 99 / lbw 84 / st 39 / retired out 4 /
@@ -480,7 +482,8 @@ export function collectDismissalCredits(
             const id = String((((f.athlete as Record<string, unknown>) ?? {}).id as string) ?? "");
             if (id) ids.push(id);
           }
-          // Bot's rule (wc_fps_to_csv.py:1451-1460), mirrored exactly: EVERY listed fielder gets
+          // Bot's rule (wc_fps_to_csv.py:1492-1500 — re-verified 16 Aug 2026, the old
+          // ":1451-1460" anchor had drifted), mirrored exactly: EVERY listed fielder gets
           // a run-out credit, and a lone fielder additionally gets the direct-hit flag. So a
           // two-man run-out pays 6+6, a direct hit pays 12 to one player.
           for (const id of ids) {
@@ -721,7 +724,10 @@ export function liveScoreFromSummary(
   const fmt = scoreFormatOf(match);
   {
 
-    const points = new Map<string, number>();
+    // Tagged AT CONSTRUCTION, not on the way out: every `return` path below hands this same
+    // object to a caller, and a tag applied at one of them is a tag the other paths lose.
+    // The tag is what tells lookupPlayerPoints it may use the name fallback (lib/live-map.ts).
+    const points = markLivePointsMap(new Map<string, number>());
     const photos = new Map<string, string>();
     const status = new Map<string, LiveStatus>();
     let anyStats = false;
