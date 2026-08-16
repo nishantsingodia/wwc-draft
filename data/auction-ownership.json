@@ -1,5 +1,389 @@
 {
 "byPid": {
+"ci:1099224": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1213979": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:571911": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1194959": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1263691": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:698315": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:766809": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1104697": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:643885": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1333415": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+],
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:330902": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:256956": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:310525": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:297433": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1385640": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:403902": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1070665": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:525992": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
+"ci:1231590": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:510530": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:308251": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:379504": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:450860": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:459257": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:639080": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
 "ci:298438": {
 "The Hundred Men 2026": [
 {
@@ -69,6 +453,28 @@
 "short": "Ar",
 "name": "Arif",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:662973": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -92,16 +498,6 @@
 "no": 1,
 "short": "Ar",
 "name": "Arif",
-"isMe": false
-}
-]
-},
-"ci:662973": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
 "isMe": false
 },
 {
@@ -176,6 +572,22 @@
 }
 ]
 },
+"ci:747315": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
 "ci:887207": {
 "The Hundred Men 2026": [
 {
@@ -186,8 +598,22 @@
 }
 ]
 },
-"ci:747315": {
+"ci:625964": {
 "The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+],
+"CPL 2026": [
 {
 "no": 1,
 "short": "Ar",
@@ -266,10 +692,16 @@
 }
 ]
 },
-"ci:909225": {
+"ci:1191192": {
 "The Hundred Men 2026": [
 {
 "no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
@@ -306,6 +738,20 @@
 "name": "Pushap",
 "isMe": false
 }
+],
+"CPL 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
 ]
 },
 "ci:857975": {
@@ -324,12 +770,22 @@
 }
 ]
 },
-"ci:1191192": {
+"ci:909225": {
 "The Hundred Men 2026": [
 {
 "no": 1,
-"short": "Sh",
-"name": "Sharan",
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1096092": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
 "isMe": false
 },
 {
@@ -340,7 +796,81 @@
 }
 ]
 },
-"ci:625964": {
+"ci:772293": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1280097": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:595978": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:321777": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:325012": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1079380": {
 "The Hundred Men 2026": [
 {
 "no": 1,
@@ -358,8 +888,94 @@
 "CPL 2026": [
 {
 "no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:288992": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:244497": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:669855": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:573170": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:272450": {
+"The Hundred Men 2026": [
+{
+"no": 1,
 "short": "Ar",
 "name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
 "isMe": false
 }
 ]
@@ -397,22 +1013,6 @@
 ]
 },
 "ci:911707": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:272450": {
 "The Hundred Men 2026": [
 {
 "no": 1,
@@ -498,384 +1098,6 @@
 "no": 2,
 "short": "Pu",
 "name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1099224": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:571911": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1194959": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:256956": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:698315": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1213979": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1263691": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:1104697": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:643885": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:330902": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1333415": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-],
-"CPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:766809": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:310525": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:297433": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1070665": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:403902": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:1385640": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:525992": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-}
-]
-},
-"ci:308251": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:510530": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:1231590": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:379504": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:450860": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:459257": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:639080": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
 "isMe": false
 }
 ]
@@ -1040,176 +1262,6 @@
 }
 ]
 },
-"ci:1096092": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:595978": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:321777": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:325012": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:772293": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:288992": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:244497": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:669855": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:573170": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1280097": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1079380": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
 "ci:669365": {
 "The Hundred Men 2026": [
 {
@@ -1274,22 +1326,12 @@
 }
 ]
 },
-"ci:470633": {
+"ci:1112537": {
 "The Hundred Men 2026": [
 {
 "no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-}
-]
-},
-"ci:247235": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
+"short": "Sh",
+"name": "Sharan",
 "isMe": false
 },
 {
@@ -1300,12 +1342,38 @@
 }
 ]
 },
+"ci:470633": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
 "ci:696401": {
 "The Hundred Men 2026": [
 {
 "no": 1,
 "short": "Sh",
 "name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:247235": {
+"The Hundred Men 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
 "isMe": false
 },
 {
@@ -1358,22 +1426,6 @@
 }
 ]
 },
-"ci:1112537": {
-"The Hundred Men 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
 "ci:1195664": {
 "The Hundred Men 2026": [
 {
@@ -1397,166 +1449,6 @@
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
-}
-]
-},
-"ci:784369": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1075863": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:921509": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:342619": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:56143": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1152427": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1186658": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:538506": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:221140": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:793007": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
 }
 ]
 },
@@ -1725,6 +1617,12 @@
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -1735,408 +1633,6 @@
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
-}
-]
-},
-"ci:1161050": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1364325": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:300631": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-],
-"CPL 2026": [
-{
-"no": 1,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-}
-]
-},
-"ci:784379": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-],
-"CPL 2026": [
-{
-"no": 1,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-}
-]
-},
-"ci:49764": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:477021": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:8917": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-],
-"CPL 2026": [
-{
-"no": 1,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-}
-]
-},
-"ci:1072470": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:786925": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:955235": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:721041": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1027867": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:326637": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:784367": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-],
-"CPL 2026": [
-{
-"no": 1,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-}
-]
-},
-"ci:348148": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:437316": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-],
-"CPL 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-}
-]
-},
-"ci:623695": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:826689": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-}
-]
-},
-"ci:1306214": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1153149": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:629063": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:772361": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:1203669": {
-"LPL 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
 }
 ]
 },
@@ -2174,6 +1670,20 @@
 },
 "ci:269280": {
 "LPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+],
+"CPL 2026": [
 {
 "no": 1,
 "short": "Pr",
@@ -2257,6 +1767,12 @@
 "short": "Mi",
 "name": "Mihir",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -2264,6 +1780,22 @@
 "LPL 2026": [
 {
 "no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:974175": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
@@ -2302,7 +1834,55 @@
 }
 ]
 },
-"ci:974175": {
+"ci:1027867": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:772361": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:326637": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:784367": {
 "LPL 2026": [
 {
 "no": 1,
@@ -2310,6 +1890,584 @@
 "name": "Nishant",
 "isMe": true
 },
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+],
+"CPL 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:348148": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:437316": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+],
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:623695": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:826689": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:1306214": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1203669": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1153149": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:629063": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:784369": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1075863": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:921509": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:342619": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:56143": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1152427": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1186658": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"auc:traveen mathews": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:538506": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:221140": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:793007": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1161050": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1364325": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:300631": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+],
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
+},
+"ci:784379": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+],
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:49764": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:477021": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:8917": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+],
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1072470": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:786925": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:955235": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:721041": {
+"LPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"auc:sharujan shanmuganathan": {
+"LPL 2026": [
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:596436": {
+"LPL 2026": [
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:784375": {
+"LPL 2026": [
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:693975": {
+"LPL 2026": [
 {
 "no": 2,
 "short": "Ni",
@@ -2348,8 +2506,110 @@
 }
 ]
 },
-"ci:693975": {
-"LPL 2026": [
+"ci:297074": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:1277200": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:1187120": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:275487": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:749957": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
+"ci:1163087": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:1144886": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
 {
 "no": 2,
 "short": "Ni",
@@ -2358,8 +2618,158 @@
 }
 ]
 },
-"ci:596436": {
-"LPL 2026": [
+"ci:944393": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:517577": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1146129": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:1008089": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:515874": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:381268": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
+"ci:774311": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:351836": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
+},
+"ci:355349": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:939249": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
 {
 "no": 2,
 "short": "Ni",
@@ -2368,13 +2778,61 @@
 }
 ]
 },
-"ci:784375": {
-"LPL 2026": [
+"ci:1039421": {
+"The Hundred Women 2026": [
 {
-"no": 2,
+"no": 1,
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:879369": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
+},
+"ci:874201": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:1486611": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -2442,19 +2900,19 @@
 }
 ]
 },
-"ci:474190": {
+"ci:515876": {
 "The Hundred Women 2026": [
 {
 "no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 },
 {
 "no": 2,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -2474,35 +2932,19 @@
 }
 ]
 },
-"ci:1007307": {
+"ci:474190": {
 "The Hundred Women 2026": [
 {
 "no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:515876": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
 }
 ]
 },
@@ -2534,6 +2976,22 @@
 "no": 2,
 "short": "Sh",
 "name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:1007307": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
 "isMe": false
 }
 ]
@@ -2724,6 +3182,182 @@
 }
 ]
 },
+"ci:922481": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
+"ci:483484": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
+"ci:1022077": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
+},
+"ci:883405": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:944373": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1146661": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1427057": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:885837": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1146066": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:878025": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1184176": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
 "ci:1176132": {
 "The Hundred Women 2026": [
 {
@@ -2868,326 +3502,6 @@
 }
 ]
 },
-"ci:297074": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-}
-]
-},
-"ci:1277200": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:1187120": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:275487": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-}
-]
-},
-"ci:1163087": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-}
-]
-},
-"ci:749957": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-}
-]
-},
-"ci:944393": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:1144886": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:517577": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1146129": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:1008089": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:515874": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:381268": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-}
-]
-},
-"ci:355349": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:351836": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-}
-]
-},
-"ci:939249": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:1039421": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:774311": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-}
-]
-},
-"ci:879369": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-}
-]
-},
-"ci:874201": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-}
-]
-},
 "ci:381258": {
 "The Hundred Women 2026": [
 {
@@ -3252,6 +3566,22 @@
 }
 ]
 },
+"ci:469879": {
+"The Hundred Women 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
 "ci:418423": {
 "The Hundred Women 2026": [
 {
@@ -3291,182 +3621,6 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
-}
-]
-},
-"ci:469879": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-}
-]
-},
-"ci:922481": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-}
-]
-},
-"ci:1022077": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-}
-]
-},
-"ci:883405": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:483484": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Mi",
-"name": "Mihir",
-"isMe": false
-}
-]
-},
-"ci:944373": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1427057": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:885837": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-}
-]
-},
-"ci:1146066": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Pr",
-"name": "Pradeep",
-"isMe": false
-}
-]
-},
-"ci:878025": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-},
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:1184176": {
-"The Hundred Women 2026": [
-{
-"no": 1,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
-},
-{
-"no": 2,
-"short": "Pu",
-"name": "Pushap",
-"isMe": false
 }
 ]
 },
@@ -3614,24 +3768,58 @@
 }
 ]
 },
-"ci:1486611": {
+"ci:1469030": {
 "The Hundred Women 2026": [
 {
-"no": 1,
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"auc:jemima spence": {
+"The Hundred Women 2026": [
+{
+"no": 2,
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
 }
 ]
 },
-"ci:1146661": {
+"ci:652939": {
 "The Hundred Women 2026": [
 {
-"no": 1,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
+"no": 2,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
 },
+"ci:1340525": {
+"The Hundred Women 2026": [
+{
+"no": 2,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
+},
+"auc:liv barnes": {
+"The Hundred Women 2026": [
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1185628": {
+"The Hundred Women 2026": [
 {
 "no": 2,
 "short": "Ni",
@@ -3650,22 +3838,22 @@
 }
 ]
 },
-"ci:1185628": {
-"The Hundred Women 2026": [
-{
-"no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
 "ci:877447": {
 "The Hundred Women 2026": [
 {
 "no": 2,
 "short": "Ar",
 "name": "Arif",
+"isMe": false
+}
+]
+},
+"ci:914657": {
+"The Hundred Women 2026": [
+{
+"no": 2,
+"short": "Mi",
+"name": "Mihir",
 "isMe": false
 }
 ]
@@ -3690,27 +3878,17 @@
 }
 ]
 },
-"ci:1469030": {
+"auc:sophia turner": {
 "The Hundred Women 2026": [
 {
 "no": 2,
-"short": "Ni",
-"name": "Nishant",
-"isMe": true
-}
-]
-},
-"ci:652939": {
-"The Hundred Women 2026": [
-{
-"no": 2,
-"short": "Ar",
-"name": "Arif",
+"short": "Pr",
+"name": "Pradeep",
 "isMe": false
 }
 ]
 },
-"ci:1340525": {
+"ci:916037": {
 "The Hundred Women 2026": [
 {
 "no": 2,
@@ -3730,32 +3908,12 @@
 }
 ]
 },
-"ci:916037": {
-"The Hundred Women 2026": [
-{
-"no": 2,
-"short": "Ar",
-"name": "Arif",
-"isMe": false
-}
-]
-},
 "ci:54565": {
 "The Hundred Women 2026": [
 {
 "no": 2,
 "short": "Pr",
 "name": "Pradeep",
-"isMe": false
-}
-]
-},
-"ci:914657": {
-"The Hundred Women 2026": [
-{
-"no": 2,
-"short": "Mi",
-"name": "Mihir",
 "isMe": false
 }
 ]
@@ -3787,6 +3945,12 @@
 "short": "Pr",
 "name": "Pradeep",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -3797,6 +3961,38 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1139028": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
+},
+"ci:494581": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -3807,6 +4003,28 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:820689": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -3814,6 +4032,12 @@
 "CPL 2026": [
 {
 "no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
@@ -3827,6 +4051,12 @@
 "short": "Mi",
 "name": "Mihir",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -3836,6 +4066,70 @@
 "no": 1,
 "short": "Mi",
 "name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1329697": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:332937": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:1398125": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1079860": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
 "isMe": false
 }
 ]
@@ -3847,6 +4141,12 @@
 "short": "Pr",
 "name": "Pradeep",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -3857,6 +4157,28 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1264431": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -3864,6 +4186,12 @@
 "CPL 2026": [
 {
 "no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
@@ -3877,6 +4205,12 @@
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -3887,10 +4221,74 @@
 "short": "Mi",
 "name": "Mihir",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"auc:zachary carter": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
 "ci:1209197": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1275943": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
+},
+"ci:481875": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"auc:jakeem pollard": {
 "CPL 2026": [
 {
 "no": 1,
@@ -3907,6 +4305,12 @@
 "short": "Pr",
 "name": "Pradeep",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -3916,6 +4320,12 @@
 "no": 1,
 "short": "Sh",
 "name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
 "isMe": false
 }
 ]
@@ -3927,6 +4337,12 @@
 "short": "Sh",
 "name": "Sharan",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -3937,6 +4353,12 @@
 "short": "Sh",
 "name": "Sharan",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -3947,6 +4369,12 @@
 "short": "Sh",
 "name": "Sharan",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -3957,6 +4385,28 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1342550": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -3967,6 +4417,12 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -3977,10 +4433,106 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:581160": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:274921": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+}
+]
+},
+"ci:327830": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"auc:jonathan van lange": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:647771": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
 "ci:820677": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Mi",
+"name": "Mihir",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1294447": {
 "CPL 2026": [
 {
 "no": 1,
@@ -3997,6 +4549,12 @@
 "short": "Ar",
 "name": "Arif",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -4007,6 +4565,12 @@
 "short": "Sh",
 "name": "Sharan",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -4014,6 +4578,12 @@
 "CPL 2026": [
 {
 "no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
@@ -4027,6 +4597,12 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -4040,27 +4616,33 @@
 }
 ]
 },
-"ci:333066": {
+"ci:1331347": {
 "CPL 2026": [
 {
 "no": 1,
-"short": "Pr",
-"name": "Pradeep",
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1403089": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
 "isMe": false
 }
 ]
 },
-"ci:348056": {
-"CPL 2026": [
-{
-"no": 1,
-"short": "Sh",
-"name": "Sharan",
-"isMe": false
-}
-]
-},
-"ci:391485": {
+"ci:1161031": {
 "CPL 2026": [
 {
 "no": 1,
@@ -4070,10 +4652,84 @@
 }
 ]
 },
-"ci:1108490": {
+"ci:1123428": {
 "CPL 2026": [
 {
 "no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1244154": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"auc:tayyab arif": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"auc:vitel lawes": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1078697": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:333066": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
@@ -4087,6 +4743,144 @@
 "short": "Mi",
 "name": "Mihir",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1078692": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:348056": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:391485": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1131647": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+}
+]
+},
+"ci:1158088": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:906783": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1342547": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1108490": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1078695": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
 }
 ]
 },
@@ -4097,6 +4891,12 @@
 "short": "Mi",
 "name": "Mihir",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -4107,6 +4907,12 @@
 "short": "Pr",
 "name": "Pradeep",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -4114,6 +4920,12 @@
 "CPL 2026": [
 {
 "no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
@@ -4127,6 +4939,48 @@
 "short": "Ni",
 "name": "Nishant",
 "isMe": true
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1275937": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+}
+]
+},
+"ci:334621": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Sh",
+"name": "Sharan",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1460142": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -4137,6 +4991,12 @@
 "short": "Pr",
 "name": "Pradeep",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -4147,6 +5007,28 @@
 "short": "Mi",
 "name": "Mihir",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:595267": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -4154,6 +5036,12 @@
 "CPL 2026": [
 {
 "no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
@@ -4167,6 +5055,12 @@
 "short": "Sh",
 "name": "Sharan",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
 }
 ]
 },
@@ -4174,6 +5068,12 @@
 "CPL 2026": [
 {
 "no": 1,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+},
+{
+"no": 2,
 "short": "Pu",
 "name": "Pushap",
 "isMe": false
@@ -4187,6 +5087,12 @@
 "short": "Mi",
 "name": "Mihir",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 },
@@ -4197,12 +5103,164 @@
 "short": "Pr",
 "name": "Pradeep",
 "isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1275939": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ar",
+"name": "Arif",
+"isMe": false
+}
+]
+},
+"ci:914455": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Pr",
+"name": "Pradeep",
+"isMe": false
+},
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1194775": {
+"CPL 2026": [
+{
+"no": 1,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1290929": {
+"CPL 2026": [
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:398513": {
+"CPL 2026": [
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:485379": {
+"CPL 2026": [
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"auc:kamil pooran": {
+"CPL 2026": [
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
+}
+]
+},
+"ci:1078693": {
+"CPL 2026": [
+{
+"no": 2,
+"short": "Pu",
+"name": "Pushap",
+"isMe": false
+}
+]
+},
+"ci:1152714": {
+"CPL 2026": [
+{
+"no": 2,
+"short": "Ni",
+"name": "Nishant",
+"isMe": true
 }
 ]
 }
 },
 "byName": {
 "The Hundred Men 2026": {
+"wcf smeed": "ci:1099224",
+"si:smeed|w": "ci:1099224",
+"mj owen": "ci:1213979",
+"si:owen|m": "ci:1213979",
+"jm clarke": "ci:571911",
+"si:clarke|j": "ci:571911",
+"jg bethell": "ci:1194959",
+"si:bethell|j": "ci:1194959",
+"rehan ahmed": "ci:1263691",
+"si:ahmed|r": "ci:1263691",
+"d ferreira": "ci:698315",
+"si:ferreira|d": "ci:698315",
+"ja thompson": "ci:766809",
+"si:thompson|j": "ci:766809",
+"sw currie": "ci:1104697",
+"si:currie|s": "ci:1104697",
+"s mahmood": "ci:643885",
+"si:mahmood|s": "ci:643885",
+"usman tariq": "ci:1333415",
+"si:tariq|u": "ci:1333415",
+"mustafizur rahman": "ci:330902",
+"si:rahman|m": "ci:330902",
+"lj evans": "ci:256956",
+"si:evans|l": "ci:256956",
+"cp wood": "ci:310525",
+"si:wood|c": "ci:310525",
+"jm bairstow": "ci:297433",
+"si:bairstow|j": "ci:297433",
+"lg pretorius": "ci:1385640",
+"si:pretorius|l": "ci:1385640",
+"ls livingstone": "ci:403902",
+"si:livingstone|l": "ci:403902",
+"d brevis": "ci:1070665",
+"si:brevis|d": "ci:1070665",
+"aj hose": "ci:525992",
+"si:hose|a": "ci:525992",
+"jm coles": "ci:1231590",
+"si:coles|j": "ci:1231590",
+"j overton": "ci:510530",
+"si:overton|j": "ci:510530",
+"dj willey": "ci:308251",
+"si:willey|d": "ci:308251",
+"a zampa": "ci:379504",
+"si:zampa|a": "ci:379504",
+"af milne": "ci:450860",
+"si:milne|a": "ci:450860",
+"ts mills": "ci:459257",
+"si:mills|t": "ci:459257",
+"md fisher": "ci:639080",
+"si:fisher|m": "ci:639080",
 "jj roy": "ci:298438",
 "si:roy|j": "ci:298438",
 "wg jacks": "ci:897549",
@@ -4211,10 +5269,10 @@
 "si:vince|j": "ci:296597",
 "n pooran": "ci:604302",
 "si:pooran|n": "ci:604302",
-"se rutherford": "ci:914541",
-"si:rutherford|s": "ci:914541",
 "sm curran": "ci:662973",
 "si:curran|s": "ci:662973",
+"se rutherford": "ci:914541",
+"si:rutherford|s": "ci:914541",
 "tk curran": "ci:550235",
 "si:curran|t": "ci:550235",
 "rashid khan": "ci:793463",
@@ -4223,10 +5281,12 @@
 "si:boult|t": "ci:277912",
 "rj gleeson": "ci:473191",
 "si:gleeson|r": "ci:473191",
-"oj pope": "ci:887207",
-"si:pope|o": "ci:887207",
 "na sowter": "ci:747315",
 "si:sowter|n": "ci:747315",
+"oj pope": "ci:887207",
+"si:pope|o": "ci:887207",
+"tl seifert": "ci:625964",
+"si:seifert|t": "ci:625964",
 "jc buttler": "ci:308967",
 "si:buttler|j": "ci:308967",
 "ak markram": "ci:600498",
@@ -4235,26 +5295,46 @@
 "si:klaasen|h": "ci:436757",
 "la dawson": "ci:211855",
 "si:dawson|l": "ci:211855",
-"pi walter": "ci:909225",
-"si:walter|p": "ci:909225",
+"s baker": "ci:1191192",
+"si:baker|s": "ci:1191192",
 "aap atkinson": "ci:1039481",
 "si:atkinson|a": "ci:1039481",
 "noor ahmad": "ci:1182529",
 "si:ahmad|n": "ci:1182529",
 "jc tongue": "ci:857975",
 "si:tongue|j": "ci:857975",
-"s baker": "ci:1191192",
-"si:baker|s": "ci:1191192",
-"tl seifert": "ci:625964",
-"si:seifert|t": "ci:625964",
+"pi walter": "ci:909225",
+"si:walter|p": "ci:909225",
+"jl smith": "ci:1096092",
+"si:smith|j": "ci:1096092",
+"ms pepper": "ci:772293",
+"si:pepper|m": "ci:772293",
+"bs mckinney": "ci:1280097",
+"si:mckinney|b": "ci:1280097",
+"t stubbs": "ci:595978",
+"si:stubbs|t": "ci:595978",
+"da miller": "ci:321777",
+"si:miller|d": "ci:321777",
+"mp stoinis": "ci:325012",
+"si:stoinis|m": "ci:325012",
+"nikhil chaudhary": "ci:1079380",
+"si:chaudhary|n": "ci:1079380",
+"cj jordan": "ci:288992",
+"si:jordan|c": "ci:288992",
+"au rashid": "ci:244497",
+"si:rashid|a": "ci:244497",
+"jc archer": "ci:669855",
+"si:archer|j": "ci:669855",
+"l wood": "ci:573170",
+"si:wood|l": "ci:573170",
+"mr marsh": "ci:272450",
+"si:marsh|m": "ci:272450",
 "z crawley": "ci:665053",
 "si:crawley|z": "ci:665053",
 "rd rickelton": "ci:605661",
 "si:rickelton|r": "ci:605661",
 "hc brook": "ci:911707",
 "si:brook|h": "ci:911707",
-"mr marsh": "ci:272450",
-"si:marsh|m": "ci:272450",
 "dw lawrence": "ci:641423",
 "si:lawrence|d": "ci:641423",
 "bac howell": "ci:211748",
@@ -4265,56 +5345,6 @@
 "si:ellis|n": "ci:826915",
 "abrar ahmed": "ci:734459",
 "si:ahmed|a": "ci:734459",
-"wcf smeed": "ci:1099224",
-"si:smeed|w": "ci:1099224",
-"jm clarke": "ci:571911",
-"si:clarke|j": "ci:571911",
-"jg bethell": "ci:1194959",
-"si:bethell|j": "ci:1194959",
-"lj evans": "ci:256956",
-"si:evans|l": "ci:256956",
-"d ferreira": "ci:698315",
-"si:ferreira|d": "ci:698315",
-"mj owen": "ci:1213979",
-"si:owen|m": "ci:1213979",
-"rehan ahmed": "ci:1263691",
-"si:ahmed|r": "ci:1263691",
-"sw currie": "ci:1104697",
-"si:currie|s": "ci:1104697",
-"s mahmood": "ci:643885",
-"si:mahmood|s": "ci:643885",
-"mustafizur rahman": "ci:330902",
-"si:rahman|m": "ci:330902",
-"usman tariq": "ci:1333415",
-"si:tariq|u": "ci:1333415",
-"ja thompson": "ci:766809",
-"si:thompson|j": "ci:766809",
-"cp wood": "ci:310525",
-"si:wood|c": "ci:310525",
-"jm bairstow": "ci:297433",
-"si:bairstow|j": "ci:297433",
-"d brevis": "ci:1070665",
-"si:brevis|d": "ci:1070665",
-"ls livingstone": "ci:403902",
-"si:livingstone|l": "ci:403902",
-"lg pretorius": "ci:1385640",
-"si:pretorius|l": "ci:1385640",
-"aj hose": "ci:525992",
-"si:hose|a": "ci:525992",
-"dj willey": "ci:308251",
-"si:willey|d": "ci:308251",
-"j overton": "ci:510530",
-"si:overton|j": "ci:510530",
-"jm coles": "ci:1231590",
-"si:coles|j": "ci:1231590",
-"a zampa": "ci:379504",
-"si:zampa|a": "ci:379504",
-"af milne": "ci:450860",
-"si:milne|a": "ci:450860",
-"ts mills": "ci:459257",
-"si:mills|t": "ci:459257",
-"md fisher": "ci:639080",
-"si:fisher|m": "ci:639080",
 "fh allen": "ci:959759",
 "si:allen|f": "ci:959759",
 "bm duckett": "ci:521637",
@@ -4335,28 +5365,6 @@
 "si:henry|m": "ci:506612",
 "mohammad amir": "ci:290948",
 "si:amir|m": "ci:290948",
-"jl smith": "ci:1096092",
-"si:smith|j": "ci:1096092",
-"t stubbs": "ci:595978",
-"si:stubbs|t": "ci:595978",
-"da miller": "ci:321777",
-"si:miller|d": "ci:321777",
-"mp stoinis": "ci:325012",
-"si:stoinis|m": "ci:325012",
-"ms pepper": "ci:772293",
-"si:pepper|m": "ci:772293",
-"cj jordan": "ci:288992",
-"si:jordan|c": "ci:288992",
-"au rashid": "ci:244497",
-"si:rashid|a": "ci:244497",
-"jc archer": "ci:669855",
-"si:archer|j": "ci:669855",
-"l wood": "ci:573170",
-"si:wood|l": "ci:573170",
-"bs mckinney": "ci:1280097",
-"si:mckinney|b": "ci:1280097",
-"nikhil chaudhary": "ci:1079380",
-"si:chaudhary|n": "ci:1079380",
 "pd salt": "ci:669365",
 "si:salt|p": "ci:669365",
 "mw short": "ci:605575",
@@ -4365,150 +5373,250 @@
 "si:root|j": "ci:303669",
 "r ravindra": "ci:959767",
 "si:ravindra|r": "ci:959767",
+"jm cox": "ci:1112537",
+"si:cox|j": "ci:1112537",
 "t kohlercadmore": "ci:470633",
 "si:kohlercadmore|t": "ci:470633",
-"cr woakes": "ci:247235",
-"si:woakes|c": "ci:247235",
 "m jansen": "ci:696401",
 "si:jansen|m": "ci:696401",
+"cr woakes": "ci:247235",
+"si:woakes|c": "ci:247235",
 "lh ferguson": "ci:493773",
 "si:ferguson|l": "ci:493773",
 "sj cook": "ci:772061",
 "si:cook|s": "ci:772061",
 "ja chohan": "ci:1152986",
 "si:chohan|j": "ci:1152986",
-"jm cox": "ci:1112537",
-"si:cox|j": "ci:1112537",
 "am tribe": "ci:1195664",
 "si:tribe|a": "ci:1195664",
 "rjw topley": "ci:461632",
 "si:topley|r": "ci:461632"
 },
 "LPL 2026": {
-"wia fernando": "ci:784369",
-"si:fernando|w": "ci:784369",
-"k mishara": "ci:1075863",
-"si:mishara|k": "ci:1075863",
-"ibrahim zadran": "ci:921509",
-"si:zadran|i": "ci:921509",
-"pbb rajapaksa": "ci:342619",
-"si:rajapaksa|p": "ci:342619",
-"shakib al hasan": "ci:56143",
-"si:hasan|s": "ci:56143",
-"dn wellalage": "ci:1152427",
-"si:wellalage|d": "ci:1152427",
-"c wickramasinghe": "ci:1186658",
-"si:wickramasinghe|c": "ci:1186658",
-"taskin ahmed": "ci:538506",
-"si:ahmed|t": "ci:538506",
-"d wiese": "ci:221140",
-"si:wiese|d": "ci:221140",
-"d madushanka": "ci:793007",
-"si:madushanka|d": "ci:793007",
 "bkg mendis": "ci:629074",
 "si:mendis|b": "ci:629074",
-"s samarawickrama": "ci:629076",
+"kusal mendis": "ci:629074",
+"sadeera samarawickrama": "ci:629076",
 "si:samarawickrama|s": "ci:629076",
+"s samarawickrama": "ci:629076",
 "kamindu mendis": "ci:784373",
-"si:mendis|k": "ci:784373",
-"br mcdermott": "ci:603410",
+"ben mcdermott": "ci:603410",
 "si:mcdermott|b": "ci:603410",
-"j liyanage": "ci:681681",
+"br mcdermott": "ci:603410",
+"janith liyanage": "ci:681681",
 "si:liyanage|j": "ci:681681",
+"j liyanage": "ci:681681",
 "jds neesham": "ci:355269",
 "si:neesham|j": "ci:355269",
+"jimmy neesham": "ci:355269",
 "kth ratnayake": "ci:950405",
 "si:ratnayake|k": "ci:950405",
+"milan ratnayake": "ci:950405",
+"si:ratnayake|m": "ci:950405",
 "hasan mahmud": "ci:926629",
 "si:mahmud|h": "ci:926629",
 "jdf vandersay": "ci:370040",
 "si:vandersay|j": "ci:370040",
+"jeffrey vandersay": "ci:370040",
 "mujeeb ur rahman": "ci:974109",
 "si:rahman|m": "ci:974109",
-"b fernando": "ci:629080",
+"binura fernando": "ci:629080",
 "si:fernando|b": "ci:629080",
-"sediqullah atal": "ci:1161050",
-"si:atal|s": "ci:1161050",
-"vs halambage": "ci:1364325",
-"si:halambage|v": "ci:1364325",
-"mdkj perera": "ci:300631",
-"si:perera|m": "ci:300631",
-"wanindu hasaranga": "ci:784379",
-"si:hasaranga|w": "ci:784379",
-"ad mathews": "ci:49764",
-"si:mathews|a": "ci:49764",
-"v shankar": "ci:477021",
-"si:shankar|v": "ci:477021",
-"mm ali": "ci:8917",
-"si:ali|m": "ci:8917",
-"shaheen shah afridi": "ci:1072470",
-"si:afridi|s": "ci:1072470",
-"am fernando": "ci:786925",
-"si:fernando|a": "ci:786925",
-"n thushara": "ci:955235",
-"si:thushara|n": "ci:955235",
-"madi hemantha": "ci:721041",
-"si:hemantha|m": "ci:721041",
-"l croospulle": "ci:1027867",
-"si:croospulle|l": "ci:1027867",
-"ca lynn": "ci:326637",
-"si:lynn|c": "ci:326637",
-"kic asalanka": "ci:784367",
-"si:asalanka|k": "ci:784367",
-"mohammad nawaz": "ci:348148",
-"si:nawaz|m": "ci:348148",
-"md shanaka": "ci:437316",
-"si:shanaka|m": "ci:437316",
-"c karunaratne": "ci:623695",
-"si:karunaratne|c": "ci:623695",
-"pm liyanagamage": "ci:826689",
-"si:liyanagamage|p": "ci:826689",
-"e malinga": "ci:1306214",
-"si:malinga|e": "ci:1306214",
-"v viyaskanth": "ci:1153149",
-"si:viyaskanth|v": "ci:1153149",
-"mehedi hasan miraz": "ci:629063",
-"si:miraz|m": "ci:629063",
-"sb harper": "ci:772361",
-"si:harper|s": "ci:772361",
-"akif javed": "ci:1203669",
-"si:javed|a": "ci:1203669",
+"b fernando": "ci:629080",
 "sahibzada farhan": "ci:647785",
 "si:farhan|s": "ci:647785",
-"n dickwella": "ci:429754",
+"niroshan dickwella": "ci:429754",
 "si:dickwella|n": "ci:429754",
-"rr hendricks": "ci:269280",
+"n dickwella": "ci:429754",
+"reeza hendricks": "ci:269280",
 "si:hendricks|r": "ci:269280",
+"rr hendricks": "ci:269280",
 "ld chandimal": "ci:300628",
 "si:chandimal|l": "ci:300628",
+"dinesh chandimal": "ci:300628",
+"si:chandimal|d": "ci:300628",
 "p rathnayake": "ci:1171180",
 "si:rathnayake|p": "ci:1171180",
-"rtm mendis": "ci:629084",
+"pavan rathnayake": "ci:1171180",
+"ramesh mendis": "ci:629084",
 "si:mendis|r": "ci:629084",
+"rtm mendis": "ci:629084",
 "m theekshana": "ci:1138316",
 "si:theekshana|m": "ci:1138316",
-"a dananjaya": "ci:574178",
+"maheesh theekshana": "ci:1138316",
+"akila dananjaya": "ci:574178",
 "si:dananjaya|a": "ci:574178",
+"a dananjaya": "ci:574178",
+"fazalhaq farooqi": "ci:974175",
+"si:farooqi|f": "ci:974175",
 "dushmantha chameera": "ci:552152",
 "si:chameera|d": "ci:552152",
 "mohammad wasim": "ci:1185538",
 "si:wasim|m": "ci:1185538",
-"fazalhaq farooqi": "ci:974175",
-"si:farooqi|f": "ci:974175",
-"lb williams": "ci:379887",
-"si:williams|l": "ci:379887",
-"lu igalagamage": "ci:704693",
-"si:igalagamage|l": "ci:704693",
-"m lakshan": "ci:985497",
-"si:lakshan|m": "ci:985497",
+"l croospulle": "ci:1027867",
+"si:croospulle|l": "ci:1027867",
+"lasith croospulle": "ci:1027867",
+"sam harper": "ci:772361",
+"si:harper|s": "ci:772361",
+"sb harper": "ci:772361",
+"chris lynn": "ci:326637",
+"si:lynn|c": "ci:326637",
+"ca lynn": "ci:326637",
+"kic asalanka": "ci:784367",
+"si:asalanka|k": "ci:784367",
+"charith asalanka": "ci:784367",
+"si:asalanka|c": "ci:784367",
+"mohammad nawaz": "ci:348148",
+"si:nawaz|m": "ci:348148",
+"md shanaka": "ci:437316",
+"si:shanaka|m": "ci:437316",
+"dasun shanaka": "ci:437316",
+"si:shanaka|d": "ci:437316",
+"chamika karunaratne": "ci:623695",
+"si:karunaratne|c": "ci:623695",
+"c karunaratne": "ci:623695",
+"pm liyanagamage": "ci:826689",
+"si:liyanagamage|p": "ci:826689",
+"pramod madushan": "ci:826689",
+"si:madushan|p": "ci:826689",
+"eshan malinga": "ci:1306214",
+"si:malinga|e": "ci:1306214",
+"e malinga": "ci:1306214",
+"akif javed": "ci:1203669",
+"si:javed|a": "ci:1203669",
+"vijayakanth viyaskanth": "ci:1153149",
+"si:viyaskanth|v": "ci:1153149",
+"v viyaskanth": "ci:1153149",
+"mehidy hasan miraz": "ci:629063",
+"si:miraz|m": "ci:629063",
+"mehedi hasan miraz": "ci:629063",
+"wia fernando": "ci:784369",
+"si:fernando|w": "ci:784369",
+"avishka fernando": "ci:784369",
+"k mishara": "ci:1075863",
+"si:mishara|k": "ci:1075863",
+"kamil mishara": "ci:1075863",
+"ibrahim zadran": "ci:921509",
+"si:zadran|i": "ci:921509",
+"pbb rajapaksa": "ci:342619",
+"si:rajapaksa|p": "ci:342619",
+"bhanuka rajapaksa": "ci:342619",
+"si:rajapaksa|b": "ci:342619",
+"shakib al hasan": "ci:56143",
+"si:hasan|s": "ci:56143",
+"dn wellalage": "ci:1152427",
+"si:wellalage|d": "ci:1152427",
+"dunith wellalage": "ci:1152427",
+"chamindu wickramasinghe": "ci:1186658",
+"si:wickramasinghe|c": "ci:1186658",
+"c wickramasinghe": "ci:1186658",
+"traveen mathews": "auc:traveen mathews",
+"si:mathews|t": "auc:traveen mathews",
+"taskin ahmed": "ci:538506",
+"si:ahmed|t": "ci:538506",
+"d wiese": "ci:221140",
+"si:wiese|d": "ci:221140",
+"david wiese": "ci:221140",
+"d madushanka": "ci:793007",
+"si:madushanka|d": "ci:793007",
+"dilshan madushanka": "ci:793007",
+"sediqullah atal": "ci:1161050",
+"si:atal|s": "ci:1161050",
+"vishen halambage": "ci:1364325",
+"si:halambage|v": "ci:1364325",
+"vs halambage": "ci:1364325",
+"mdkj perera": "ci:300631",
+"si:perera|m": "ci:300631",
+"kusal perera": "ci:300631",
+"si:perera|k": "ci:300631",
+"wanindu hasaranga": "ci:784379",
+"si:hasaranga|w": "ci:784379",
+"angelo mathews": "ci:49764",
+"si:mathews|a": "ci:49764",
+"ad mathews": "ci:49764",
+"vijay shankar": "ci:477021",
+"si:shankar|v": "ci:477021",
+"v shankar": "ci:477021",
+"mm ali": "ci:8917",
+"si:ali|m": "ci:8917",
+"moeen ali": "ci:8917",
+"shaheen shah afridi": "ci:1072470",
+"si:afridi|s": "ci:1072470",
+"asitha fernando": "ci:786925",
+"am fernando": "ci:786925",
+"n thushara": "ci:955235",
+"si:thushara|n": "ci:955235",
+"nuwan thushara": "ci:955235",
+"madi hemantha": "ci:721041",
+"si:hemantha|m": "ci:721041",
+"dushan hemantha": "ci:721041",
+"si:hemantha|d": "ci:721041",
+"sharujan shanmuganathan": "auc:sharujan shanmuganathan",
+"si:shanmuganathan|s": "auc:sharujan shanmuganathan",
+"marques ackerman": "ci:596436",
+"si:ackerman|m": "ci:596436",
+"mj ackerman": "ci:596436",
+"vishva kumara": "ci:784375",
+"si:kumara|v": "ci:784375",
+"cbrls kumara": "ci:784375",
+"si:kumara|c": "ci:784375",
 "ssd arachchige": "ci:693975",
 "si:arachchige|s": "ci:693975",
-"mj ackerman": "ci:596436",
-"si:ackerman|m": "ci:596436",
-"cbrls kumara": "ci:784375",
-"si:kumara|c": "ci:784375"
+"sahan arachchige": "ci:693975",
+"lizaad williams": "ci:379887",
+"si:williams|l": "ci:379887",
+"lb williams": "ci:379887",
+"lahiru udara": "ci:704693",
+"si:udara|l": "ci:704693",
+"lu igalagamage": "ci:704693",
+"si:igalagamage|l": "ci:704693",
+"muditha lakshan": "ci:985497",
+"si:lakshan|m": "ci:985497",
+"m lakshan": "ci:985497"
 },
 "The Hundred Women 2026": {
+"tt beaumont": "ci:297074",
+"si:beaumont|t": "ci:297074",
+"d perrin": "ci:1277200",
+"si:perrin|d": "ci:1277200",
+"a capsey": "ci:1187120",
+"si:capsey|a": "ci:1187120",
+"ea perry": "ci:275487",
+"si:perry|e": "ci:275487",
+"el lamb": "ci:749957",
+"si:lamb|e": "ci:749957",
+"a dercksen": "ci:1163087",
+"si:dercksen|a": "ci:1163087",
+"fatima sana": "ci:1144886",
+"si:sana|f": "ci:1144886",
+"a king": "ci:944393",
+"si:king|a": "ci:944393",
+"lcn smith": "ci:517577",
+"si:smith|l": "ci:517577",
+"l filer": "ci:1146129",
+"si:filer|l": "ci:1146129",
+"e gray": "ci:1008089",
+"si:gray|e": "ci:1008089",
+"ae jones": "ci:515874",
+"si:jones|a": "ci:515874",
+"gm harris": "ci:381268",
+"si:harris|g": "ci:381268",
+"sl kalis": "ci:774311",
+"si:kalis|s": "ci:774311",
+"m kapp": "ci:351836",
+"si:kapp|m": "ci:351836",
+"djs dottin": "ci:355349",
+"si:dottin|d": "ci:355349",
+"n de klerk": "ci:939249",
+"si:klerk|n": "ci:939249",
+"ce dean": "ci:1039421",
+"si:dean|c": "ci:1039421",
+"kl george": "ci:879369",
+"si:george|k": "ci:879369",
+"lf higham": "ci:874201",
+"si:higham|l": "ci:874201",
+"oj barnes": "ci:1486611",
+"si:barnes|o": "ci:1486611",
 "hk matthews": "ci:474308",
 "si:matthews|h": "ci:474308",
 "dn wyatt": "ci:254168",
@@ -4517,18 +5625,18 @@
 "si:kerr|a": "ci:803971",
 "hj armitage": "ci:715351",
 "si:armitage|h": "ci:715351",
-"ca henry": "ci:474190",
-"si:henry|c": "ci:474190",
-"nj carey": "ci:381217",
-"si:carey|n": "ci:381217",
-"km chathli": "ci:1007307",
-"si:chathli|k": "ci:1007307",
 "an davidsonrichards": "ci:515876",
 "si:davidsonrichards|a": "ci:515876",
+"nj carey": "ci:381217",
+"si:carey|n": "ci:381217",
+"ca henry": "ci:474190",
+"si:henry|c": "ci:474190",
 "kl gordon": "ci:577317",
 "si:gordon|k": "ci:577317",
 "tg norris": "ci:872217",
 "si:norris|t": "ci:872217",
+"km chathli": "ci:1007307",
+"si:chathli|k": "ci:1007307",
 "s mandhana": "ci:597806",
 "si:mandhana|s": "ci:597806",
 "mm lanning": "ci:329336",
@@ -4553,6 +5661,28 @@
 "si:macdonaldgay|r": "ci:1187119",
 "r tyson": "ci:874219",
 "si:tyson|r": "ci:874219",
+"l wolvaardt": "ci:922481",
+"si:wolvaardt|l": "ci:922481",
+"l lee": "ci:483484",
+"si:lee|l": "ci:483484",
+"me bouchier": "ci:1022077",
+"si:bouchier|m": "ci:1022077",
+"ji rodrigues": "ci:883405",
+"si:rodrigues|j": "ci:883405",
+"s molineux": "ci:944373",
+"si:molineux|s": "ci:944373",
+"k fraser": "ci:1146661",
+"si:fraser|k": "ci:1146661",
+"mr corteencoleman": "ci:1427057",
+"si:corteencoleman|m": "ci:1427057",
+"s glenn": "ci:885837",
+"si:glenn|s": "ci:885837",
+"iecm wong": "ci:1146066",
+"si:wong|i": "ci:1146066",
+"lk bell": "ci:878025",
+"si:bell|l": "ci:878025",
+"j grewcock": "ci:1184176",
+"si:grewcock|j": "ci:1184176",
 "p litchfield": "ci:1176132",
 "si:litchfield|p": "ci:1176132",
 "l winfield": "ci:517572",
@@ -4571,46 +5701,6 @@
 "si:cross|k": "ci:297085",
 "hl baker": "ci:1184099",
 "si:baker|h": "ci:1184099",
-"tt beaumont": "ci:297074",
-"si:beaumont|t": "ci:297074",
-"d perrin": "ci:1277200",
-"si:perrin|d": "ci:1277200",
-"a capsey": "ci:1187120",
-"si:capsey|a": "ci:1187120",
-"ea perry": "ci:275487",
-"si:perry|e": "ci:275487",
-"a dercksen": "ci:1163087",
-"si:dercksen|a": "ci:1163087",
-"el lamb": "ci:749957",
-"si:lamb|e": "ci:749957",
-"a king": "ci:944393",
-"si:king|a": "ci:944393",
-"fatima sana": "ci:1144886",
-"si:sana|f": "ci:1144886",
-"lcn smith": "ci:517577",
-"si:smith|l": "ci:517577",
-"l filer": "ci:1146129",
-"si:filer|l": "ci:1146129",
-"e gray": "ci:1008089",
-"si:gray|e": "ci:1008089",
-"ae jones": "ci:515874",
-"si:jones|a": "ci:515874",
-"gm harris": "ci:381268",
-"si:harris|g": "ci:381268",
-"djs dottin": "ci:355349",
-"si:dottin|d": "ci:355349",
-"m kapp": "ci:351836",
-"si:kapp|m": "ci:351836",
-"n de klerk": "ci:939249",
-"si:klerk|n": "ci:939249",
-"ce dean": "ci:1039421",
-"si:dean|c": "ci:1039421",
-"sl kalis": "ci:774311",
-"si:kalis|s": "ci:774311",
-"kl george": "ci:879369",
-"si:george|k": "ci:879369",
-"lf higham": "ci:874201",
-"si:higham|l": "ci:874201",
 "bl mooney": "ci:381258",
 "si:mooney|b": "ci:381258",
 "sir dunkley": "ci:885815",
@@ -4619,33 +5709,13 @@
 "si:sciver|n": "ci:515905",
 "a gardner": "ci:858809",
 "si:gardner|a": "ci:858809",
+"gl adams": "ci:469879",
+"si:adams|g": "ci:469879",
 "kj garth": "ci:418423",
 "si:garth|k": "ci:418423",
 "ka levick": "ci:515904",
 "si:levick|k": "ci:515904",
 "sl bates": "ci:537440",
-"gl adams": "ci:469879",
-"si:adams|g": "ci:469879",
-"l wolvaardt": "ci:922481",
-"si:wolvaardt|l": "ci:922481",
-"me bouchier": "ci:1022077",
-"si:bouchier|m": "ci:1022077",
-"ji rodrigues": "ci:883405",
-"si:rodrigues|j": "ci:883405",
-"l lee": "ci:483484",
-"si:lee|l": "ci:483484",
-"s molineux": "ci:944373",
-"si:molineux|s": "ci:944373",
-"mr corteencoleman": "ci:1427057",
-"si:corteencoleman|m": "ci:1427057",
-"s glenn": "ci:885837",
-"si:glenn|s": "ci:885837",
-"iecm wong": "ci:1146066",
-"si:wong|i": "ci:1146066",
-"lk bell": "ci:878025",
-"si:bell|l": "ci:878025",
-"j grewcock": "ci:1184176",
-"si:grewcock|j": "ci:1184176",
 "g voll": "ci:1215360",
 "si:voll|g": "ci:1215360",
 "sfm devine": "ci:231740",
@@ -4664,145 +5734,322 @@
 "si:smale|s": "ci:1314806",
 "g potts": "ci:1146043",
 "si:potts|g": "ci:1146043",
-"oj barnes": "ci:1486611",
-"si:barnes|o": "ci:1486611",
-"k fraser": "ci:1146661",
-"si:fraser|k": "ci:1146661",
-"a stonehouse": "ci:1267948",
-"si:stonehouse|a": "ci:1267948",
-"k moore": "ci:1185628",
-"si:moore|k": "ci:1185628",
-"j gardner": "ci:877447",
-"si:gardner|j": "ci:877447",
-"cm mccarthy": "ci:1120320",
-"si:mccarthy|c": "ci:1120320",
-"dem carter": "ci:1352119",
-"si:carter|d": "ci:1352119",
 "pj brett": "ci:1469030",
 "si:brett|p": "ci:1469030",
+"jemima spence": "auc:jemima spence",
+"si:spence|j": "auc:jemima spence",
 "m kelly": "ci:652939",
 "si:kelly|m": "ci:652939",
 "c pavely": "ci:1340525",
 "si:pavely|c": "ci:1340525",
-"ga elwiss": "ci:297036",
-"si:elwiss|g": "ci:297036",
-"bam heath": "ci:916037",
-"si:heath|b": "ci:916037",
-"sw bates": "ci:54565",
+"liv barnes": "auc:liv barnes",
+"si:barnes|l": "auc:liv barnes",
+"k moore": "ci:1185628",
+"si:moore|k": "ci:1185628",
+"a stonehouse": "ci:1267948",
+"si:stonehouse|a": "ci:1267948",
+"j gardner": "ci:877447",
+"si:gardner|j": "ci:877447",
 "pa franklin": "ci:914657",
 "si:franklin|p": "ci:914657",
+"cm mccarthy": "ci:1120320",
+"si:mccarthy|c": "ci:1120320",
+"dem carter": "ci:1352119",
+"si:carter|d": "ci:1352119",
+"sophia turner": "auc:sophia turner",
+"si:turner|s": "auc:sophia turner",
+"bam heath": "ci:916037",
+"si:heath|b": "ci:916037",
+"ga elwiss": "ci:297036",
+"si:elwiss|g": "ci:297036",
+"sw bates": "ci:54565",
 "em mccaughan": "ci:1146700",
 "si:mccaughan|e": "ci:1146700",
 "fmk morris": "ci:580662",
 "si:morris|f": "ci:580662"
 },
 "CPL 2026": {
-"e lewis": "ci:431901",
+"evin lewis": "ci:431901",
 "si:lewis|e": "ci:431901",
+"e lewis": "ci:431901",
 "mdkj perera": "ci:300631",
 "si:perera|m": "ci:300631",
+"kusal perera": "ci:300631",
+"si:perera|k": "ci:300631",
 "aa jangoo": "ci:820681",
 "si:jangoo|a": "ci:820681",
+"amir jangoo": "ci:820681",
 "mm ali": "ci:8917",
 "si:ali|m": "ci:8917",
-"fa allen": "ci:670013",
+"moeen ali": "ci:8917",
+"k gore": "ci:1139028",
+"si:gore|k": "ci:1139028",
+"karima gore": "ci:1139028",
+"rrs cornwall": "ci:494581",
+"si:cornwall|r": "ci:494581",
+"rahkeem cornwall": "ci:494581",
+"fabian allen": "ci:670013",
 "si:allen|f": "ci:670013",
+"fa allen": "ci:670013",
+"shamar springer": "ci:820689",
+"si:springer|s": "ci:820689",
+"sk springer": "ci:820689",
 "shadab khan": "ci:922943",
 "si:khan|s": "ci:922943",
 "as joseph": "ci:670031",
 "si:joseph|a": "ci:670031",
-"jnt seales": "ci:1199304",
+"alzarri joseph": "ci:670031",
+"jayden seales": "ci:1199304",
 "si:seales|j": "ci:1199304",
-"q de kock": "ci:379143",
+"jnt seales": "ci:1199304",
+"sufiyan muqeem": "ci:1329697",
+"si:muqeem|s": "ci:1329697",
+"sufyan moqim": "ci:1329697",
+"si:moqim|s": "ci:1329697",
+"jn hamilton": "ci:332937",
+"si:hamilton|j": "ci:332937",
+"jahmar hamilton": "ci:332937",
+"hassan nawaz": "ci:1398125",
+"si:nawaz|h": "ci:1398125",
+"tajinder singh": "ci:1079860",
+"si:singh|t": "ci:1079860",
+"quinton de kock": "ci:379143",
 "si:kock|q": "ci:379143",
-"ba king": "ci:670035",
+"q de kock": "ci:379143",
+"brandon king": "ci:670035",
 "si:king|b": "ci:670035",
-"se rutherford": "ci:914541",
+"ba king": "ci:670035",
+"k alleyne": "ci:1264431",
+"si:alleyne|k": "ci:1264431",
+"kadeem alleyne": "ci:1264431",
+"sherfane rutherford": "ci:914541",
 "si:rutherford|s": "ci:914541",
+"se rutherford": "ci:914541",
 "dr sams": "ci:826901",
 "si:sams|d": "ci:826901",
+"daniel sams": "ci:826901",
 "cj green": "ci:787073",
 "si:green|c": "ci:787073",
-"g motie": "ci:670045",
+"chris green": "ci:787073",
+"gudakesh motie": "ci:670045",
 "si:motie|g": "ci:670045",
+"g motie": "ci:670045",
 "mujeeb ur rahman": "ci:974109",
 "si:rahman|m": "ci:974109",
-"rr simmonds": "ci:1209197",
+"zachary carter": "auc:zachary carter",
+"si:carter|z": "auc:zachary carter",
+"ramon simmonds": "ci:1209197",
 "si:simmonds|r": "ci:1209197",
+"rr simmonds": "ci:1209197",
+"johann layne": "ci:1275943",
+"si:layne|j": "ci:1275943",
+"j layne": "ci:1275943",
+"george linde": "ci:481875",
+"si:linde|g": "ci:481875",
+"gf linde": "ci:481875",
+"jakeem pollard": "auc:jakeem pollard",
+"si:pollard|j": "auc:jakeem pollard",
 "rahmanullah gurbaz": "ci:974087",
 "si:gurbaz|r": "ci:974087",
-"sd hope": "ci:581379",
+"shai hope": "ci:581379",
 "si:hope|s": "ci:581379",
-"gd phillips": "ci:823509",
+"sd hope": "ci:581379",
+"glenn phillips": "ci:823509",
 "si:phillips|g": "ci:823509",
+"gd phillips": "ci:823509",
 "so hetmyer": "ci:670025",
 "si:hetmyer|s": "ci:670025",
+"shimron hetmyer": "ci:670025",
 "mohammad nabi": "ci:25913",
 "si:nabi|m": "ci:25913",
-"r shepherd": "ci:677077",
+"romario shepherd": "ci:677077",
 "si:shepherd|r": "ci:677077",
+"r shepherd": "ci:677077",
+"q sampson": "ci:1342550",
+"si:sampson|q": "ci:1342550",
+"quentin sampson": "ci:1342550",
 "imran tahir": "ci:40618",
 "si:tahir|i": "ci:40618",
 "s joseph": "ci:1356971",
 "si:joseph|s": "ci:1356971",
-"ku carty": "ci:820677",
+"shamar joseph": "ci:1356971",
+"khary pierre": "ci:581160",
+"si:pierre|k": "ci:581160",
+"k pierre": "ci:581160",
+"veerasammy permaul": "ci:274921",
+"si:permaul|v": "ci:274921",
+"v permaul": "ci:274921",
+"d pretorius": "ci:327830",
+"si:pretorius|d": "ci:327830",
+"dwaine pretorius": "ci:327830",
+"jonathan van lange": "auc:jonathan van lange",
+"si:lange|j": "auc:jonathan van lange",
+"shayan jahangir": "ci:647771",
+"si:jahangir|s": "ci:647771",
+"keacy carty": "ci:820677",
 "si:carty|k": "ci:820677",
+"ku carty": "ci:820677",
+"sd parris": "ci:1294447",
+"si:parris|s": "ci:1294447",
+"shaqkere parris": "ci:1294447",
 "r powell": "ci:820351",
 "si:powell|r": "ci:820351",
-"ad russell": "ci:276298",
+"rovman powell": "ci:820351",
+"andre russell": "ci:276298",
 "si:russell|a": "ci:276298",
-"kma paul": "ci:677081",
+"ad russell": "ci:276298",
+"keemo paul": "ci:677081",
 "si:paul|k": "ci:677081",
+"kma paul": "ci:677081",
 "hassan khan": "ci:959789",
 "si:khan|h": "ci:959789",
-"of smith": "ci:820691",
+"odean smith": "ci:820691",
 "si:smith|o": "ci:820691",
+"of smith": "ci:820691",
+"hunain shah": "ci:1331347",
+"si:shah|h": "ci:1331347",
+"jediah blades": "ci:1403089",
+"si:blades|j": "ci:1403089",
+"j blades": "ci:1403089",
+"saim ayub": "ci:1161031",
+"si:ayub|s": "ci:1161031",
+"usman khan": "ci:1123428",
+"si:khan|u": "ci:1123428",
+"maaz sadaqat": "ci:1244154",
+"si:sadaqat|m": "ci:1244154",
+"reeza hendricks": "ci:269280",
+"si:hendricks|r": "ci:269280",
+"rr hendricks": "ci:269280",
+"tayyab arif": "auc:tayyab arif",
+"si:arif|t": "auc:tayyab arif",
+"vitel lawes": "auc:vitel lawes",
+"si:lawes|v": "auc:vitel lawes",
+"j royal": "ci:1078697",
+"si:royal|j": "ci:1078697",
+"jeavor royal": "ci:1078697",
 "j charles": "ci:333066",
 "si:charles|j": "ci:333066",
-"kr mayers": "ci:348056",
-"si:mayers|k": "ci:348056",
-"md shanaka": "ci:437316",
-"si:shanaka|m": "ci:437316",
-"jo holder": "ci:391485",
-"si:holder|j": "ci:391485",
-"wanindu hasaranga": "ci:784379",
-"si:hasaranga|w": "ci:784379",
-"waqar salamkheil": "ci:1108490",
-"si:salamkheil|w": "ci:1108490",
+"johnson charles": "ci:333066",
 "ads fletcher": "ci:51862",
 "si:fletcher|a": "ci:51862",
-"tl seifert": "ci:625964",
+"andre fletcher": "ci:51862",
+"a athanaze": "ci:1078692",
+"si:athanaze|a": "ci:1078692",
+"alick athanaze": "ci:1078692",
+"kr mayers": "ci:348056",
+"si:mayers|k": "ci:348056",
+"kyle mayers": "ci:348056",
+"md shanaka": "ci:437316",
+"si:shanaka|m": "ci:437316",
+"dasun shanaka": "ci:437316",
+"si:shanaka|d": "ci:437316",
+"jo holder": "ci:391485",
+"si:holder|j": "ci:391485",
+"jason holder": "ci:391485",
+"wanindu hasaranga": "ci:784379",
+"si:hasaranga|w": "ci:784379",
+"ashmead nedd": "ci:1131647",
+"si:nedd|a": "ci:1131647",
+"ar nedd": "ci:1131647",
+"naseem shah": "ci:1158088",
+"si:shah|n": "ci:1158088",
+"oc mccoy": "ci:906783",
+"si:mccoy|o": "ci:906783",
+"obed mccoy": "ci:906783",
+"n bidaisee": "ci:1342547",
+"si:bidaisee|n": "ci:1342547",
+"navin bidaisee": "ci:1342547",
+"waqar salamkheil": "ci:1108490",
+"si:salamkheil|w": "ci:1108490",
+"m louis": "ci:1078695",
+"si:louis|m": "ci:1078695",
+"mikyle louis": "ci:1078695",
+"nikhil chaudhary": "ci:1079380",
+"si:chaudhary|n": "ci:1079380",
+"tim seifert": "ci:625964",
 "si:seifert|t": "ci:625964",
-"awj auguste": "ci:1275056",
+"tl seifert": "ci:625964",
+"ackeem auguste": "ci:1275056",
 "si:auguste|a": "ci:1275056",
+"awj auguste": "ci:1275056",
 "kic asalanka": "ci:784367",
 "si:asalanka|k": "ci:784367",
+"charith asalanka": "ci:784367",
+"si:asalanka|c": "ci:784367",
 "j andrew": "ci:1394273",
 "si:andrew|j": "ci:1394273",
-"rl chase": "ci:391832",
+"jewel andrew": "ci:1394273",
+"roston chase": "ci:391832",
 "si:chase|r": "ci:391832",
+"rl chase": "ci:391832",
 "mw forde": "ci:1209190",
 "si:forde|m": "ci:1209190",
+"matthew forde": "ci:1209190",
+"noor ahmad": "ci:1182529",
+"si:ahmad|n": "ci:1182529",
 "m theekshana": "ci:1138316",
 "si:theekshana|m": "ci:1138316",
-"c munro": "ci:232359",
+"maheesh theekshana": "ci:1138316",
+"mckenny clarke": "ci:1275937",
+"si:clarke|m": "ci:1275937",
+"m clarke": "ci:1275937",
+"shadley van schalkwyk": "ci:334621",
+"si:schalkwyk|s": "ci:334621",
+"sc van schalkwyk": "ci:334621",
+"k gaston": "ci:1460142",
+"si:gaston|k": "ci:1460142",
+"keon gaston": "ci:1460142",
+"colin munro": "ci:232359",
 "si:munro|c": "ci:232359",
-"ad hales": "ci:249866",
+"c munro": "ci:232359",
+"alex hales": "ci:249866",
 "si:hales|a": "ci:249866",
+"ad hales": "ci:249866",
+"matthew breetzke": "ci:595267",
+"si:breetzke|m": "ci:595267",
+"mp breetzke": "ci:595267",
 "n pooran": "ci:604302",
 "si:pooran|n": "ci:604302",
+"nicholas pooran": "ci:604302",
 "ka pollard": "ci:230559",
 "si:pollard|k": "ci:230559",
+"kieron pollard": "ci:230559",
 "jp greaves": "ci:510823",
 "si:greaves|j": "ci:510823",
+"justin greaves": "ci:510823",
 "aj hosein": "ci:530812",
 "si:hosein|a": "ci:530812",
-"sp narine": "ci:230558",
+"akeal hosein": "ci:530812",
+"sunil narine": "ci:230558",
 "si:narine|s": "ci:230558",
+"sp narine": "ci:230558",
 "dc drakes": "ci:906749",
 "si:drakes|d": "ci:906749",
+"dominic drakes": "ci:906749",
 "usman tariq": "ci:1333415",
-"si:tariq|u": "ci:1333415"
+"si:tariq|u": "ci:1333415",
+"nathan edward": "ci:1275939",
+"si:edward|n": "ci:1275939",
+"n edward": "ci:1275939",
+"jyd goolie": "ci:914455",
+"si:goolie|j": "ci:914455",
+"ju goolie": "ci:914455",
+"amshi de silva": "ci:1194775",
+"si:silva|a": "ci:1194775",
+"tb robinson": "ci:1290929",
+"si:robinson|t": "ci:1290929",
+"sn netravalkar": "ci:398513",
+"si:netravalkar|s": "ci:398513",
+"ags gous": "ci:485379",
+"si:gous|a": "ci:485379",
+"kamil pooran": "auc:kamil pooran",
+"si:pooran|k": "auc:kamil pooran",
+"joshua bishop": "ci:1078693",
+"si:bishop|j": "ci:1078693",
+"j bishop": "ci:1078693",
+"terrance hinds": "ci:1152714",
+"si:hinds|t": "ci:1152714",
+"t hinds": "ci:1152714"
 }
 }
 }
