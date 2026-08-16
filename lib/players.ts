@@ -23,7 +23,13 @@ export type Player = {
 // pid key. `ci:` MUST be listed: without it every ci: key leaked into the fuzzy NAME
 // candidate pool, which is the pool the matcher is allowed to guess from.
 export function isPidKey(k: string): boolean {
-  return /^(ci:|espn:|slug:)/.test(k) || /^[0-9a-f]{8}$/.test(k);
+  // `uncapped:` and `cs:` were MISSING. Both are pid namespaces the bot emits, so leaving them out
+  // meant those keys were treated as NAMES: they leaked into the fuzzy candidate pool (where a
+  // slug like "uncapped:glenn-phillips" can surname-match a real player) and they did not count
+  // toward matchPlayerInXI's feedHasAnyPid test, so a feed that HAD pid'd everyone could still be
+  // read as "pid'd nobody" and fall back to names. Both failure modes point the same way: an
+  // identity key being mistaken for a person's name, which is the one thing this app must never do.
+  return /^(ci:|espn:|slug:|uncapped:|cs:)/.test(k) || /^[0-9a-f]{8}$/.test(k);
 }
 
 // One player as seen in the points sheet's self-healing roster (getSheetRoster).

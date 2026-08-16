@@ -4217,7 +4217,7 @@
     "squad_number": 4,
     "team_code": "MWI",
     "efppm": 78.9,
-    "pid": "ci:443150"
+    "pid": "ci:581379"
   },
   {
     "id": 10242,
@@ -4577,7 +4577,7 @@
     "squad_number": 10,
     "team_code": "OENG",
     "efppm": 55.0,
-    "pid": "ci:1126982"
+    "pid": "ci:1039481"
   },
   {
     "id": 10278,
@@ -6427,7 +6427,7 @@
     "squad_number": 7,
     "team_code": "MTMSG",
     "efppm": 45.0,
-    "pid": "ci:1126982"
+    "pid": "ci:1039481"
   },
   {
     "id": 10462,
@@ -9507,7 +9507,7 @@
     "squad_number": 3,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "uncapped:mavendra-dindyal"
+    "pid": "ci:1394274"
   },
   {
     "id": 10771,
@@ -9527,7 +9527,7 @@
     "squad_number": 5,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "ci:443150"
+    "pid": "ci:581379"
   },
   {
     "id": 10773,
@@ -9577,7 +9577,7 @@
     "squad_number": 10,
     "team_code": "MTGUY",
     "efppm": 50.0,
-    "pid": "uncapped:glenn-phillips"
+    "pid": "ci:823509"
   },
   {
     "id": 10778,
@@ -9597,7 +9597,7 @@
     "squad_number": 12,
     "team_code": "MTGUY",
     "efppm": 45.0,
-    "pid": "uncapped:dwaine-pretorius"
+    "pid": "ci:327830"
   },
   {
     "id": 10780,
