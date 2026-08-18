@@ -107,7 +107,7 @@
    "draft_id": 1077,
    "auction_id": null,
    "cricbuzz_id": "11098",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 10
   },
   "ci:54172": {
    "aliases": [
@@ -266,7 +266,7 @@
    "draft_id": 852,
    "auction_id": 852,
    "cricbuzz_id": "9989",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:1215360": {
    "aliases": [
@@ -302,7 +302,7 @@
    "draft_id": 2481,
    "auction_id": 2481,
    "cricbuzz_id": "15636",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 10
   },
   "ci:275487": {
    "aliases": [
@@ -356,7 +356,7 @@
    "draft_id": 1132,
    "auction_id": 1132,
    "cricbuzz_id": "11989",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:1071705": {
    "aliases": [
@@ -374,7 +374,7 @@
    "draft_id": 2482,
    "auction_id": 2482,
    "cricbuzz_id": "12211",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 10
   },
   "ci:944373": {
    "aliases": [
@@ -392,7 +392,7 @@
    "draft_id": 2594,
    "auction_id": 2594,
    "cricbuzz_id": "12011",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:946057": {
    "aliases": [
@@ -462,7 +462,9 @@
    "espn_id": "381268",
    "display": "Grace Harris",
    "draft_id": 2484,
-   "auction_id": 2484
+   "auction_id": 2484,
+   "cricbuzz_id": "11101",
+   "cricbuzz_tier": 8
   },
   "ci:381217": {
    "aliases": [
@@ -500,7 +502,7 @@
    "draft_id": 7308,
    "auction_id": 7308,
    "cricbuzz_id": "9476",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:1343643": {
    "aliases": [
@@ -534,7 +536,7 @@
    "draft_id": 840,
    "auction_id": 840,
    "cricbuzz_id": "13024",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:254168": {
    "aliases": [
@@ -572,7 +574,7 @@
    "draft_id": 837,
    "auction_id": null,
    "cricbuzz_id": "9419",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 6
   },
   "ci:1187120": {
    "aliases": [
@@ -701,7 +703,7 @@
    "draft_id": 2489,
    "auction_id": 2489,
    "cricbuzz_id": "13812",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:517577": {
    "aliases": [
@@ -740,11 +742,12 @@
    "draft_id": 4265,
    "auction_id": 4265,
    "cricbuzz_id": "13034",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:1146066": {
    "aliases": [
     "iecm wong",
+    "isabelle eleanor chih ming wong",
     "issy wong"
    ],
    "tours": [
@@ -758,12 +761,13 @@
    "draft_id": 4340,
    "auction_id": 4340,
    "cricbuzz_id": "15332",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:1146129": {
    "aliases": [
     "l filer",
-    "lauren filer"
+    "lauren filer",
+    "lauren louise filer"
    ],
    "tours": [
     "Women's T20 WC 2026",
@@ -793,7 +797,7 @@
    "draft_id": 7310,
    "auction_id": 7310,
    "cricbuzz_id": "1428744",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:600731": {
    "aliases": [
@@ -825,7 +829,7 @@
    "draft_id": 1431,
    "auction_id": 1431,
    "cricbuzz_id": "11374",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:351836": {
    "aliases": [
@@ -2911,7 +2915,7 @@
    "draft_id": 10001,
    "auction_id": 276,
    "cricbuzz_id": "6250",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:662235": {
    "aliases": [
@@ -2978,7 +2982,7 @@
    "draft_id": 10005,
    "auction_id": 248,
    "cricbuzz_id": "13169",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:1079380": {
    "aliases": [
@@ -3046,7 +3050,7 @@
    "draft_id": 10009,
    "auction_id": 369,
    "cricbuzz_id": "15480",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:1123718": {
    "aliases": [
@@ -3231,7 +3235,7 @@
    "draft_id": 10021,
    "auction_id": 1532,
    "cricbuzz_id": "13223",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 5
   },
   "ci:1161044": {
    "aliases": [
@@ -3396,7 +3400,7 @@
    "draft_id": 10032,
    "auction_id": 2973,
    "cricbuzz_id": "8534",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:605661": {
    "aliases": [
@@ -3415,7 +3419,7 @@
    "draft_id": 10033,
    "auction_id": 214,
    "cricbuzz_id": "13070",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:379143": {
    "aliases": [
@@ -3433,7 +3437,7 @@
    "draft_id": 10034,
    "auction_id": 70,
    "cricbuzz_id": "8520",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:604302": {
    "aliases": [
@@ -3452,7 +3456,7 @@
    "draft_id": 10035,
    "auction_id": 156,
    "cricbuzz_id": "9406",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:1159641": {
    "aliases": [
@@ -3484,7 +3488,9 @@
    "espn_id": "230559",
    "display": "Kieron Pollard",
    "draft_id": 10037,
-   "auction_id": 73
+   "auction_id": 73,
+   "cricbuzz_id": "657",
+   "cricbuzz_tier": 1
   },
   "ci:277662": {
    "aliases": [
@@ -3595,7 +3601,9 @@
    "espn_id": "677077",
    "display": "Romario Shepherd",
    "draft_id": 10044,
-   "auction_id": 247
+   "auction_id": 247,
+   "cricbuzz_id": "13646",
+   "cricbuzz_tier": 1
   },
   "ci:1326798": {
    "aliases": [
@@ -3643,7 +3651,7 @@
    "draft_id": 10676,
    "auction_id": 7641,
    "cricbuzz_id": "12332",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:1403162": {
    "aliases": [
@@ -3709,7 +3717,7 @@
    "draft_id": 10052,
    "auction_id": 2436,
    "cricbuzz_id": "11959",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:267192": {
    "aliases": [
@@ -4085,7 +4093,7 @@
    "draft_id": 10076,
    "auction_id": 745,
    "cricbuzz_id": "8435",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:267724": {
    "aliases": [
@@ -4257,7 +4265,7 @@
    "draft_id": 10087,
    "auction_id": 1694,
    "cricbuzz_id": "11172",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:605575": {
    "aliases": [
@@ -4292,7 +4300,9 @@
    "espn_id": "1385640",
    "display": "Lhuan-dre Pretorius",
    "draft_id": 10089,
-   "auction_id": 7271
+   "auction_id": 7271,
+   "cricbuzz_id": "50545",
+   "cricbuzz_tier": 8
   },
   "ci:1070997": {
    "aliases": [
@@ -4339,7 +4349,7 @@
    "draft_id": 10092,
    "auction_id": 3110,
    "cricbuzz_id": "11189",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:26421": {
    "aliases": [
@@ -4507,7 +4517,7 @@
    "draft_id": 10105,
    "auction_id": 558,
    "cricbuzz_id": "9443",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 10
   },
   "ci:595267": {
    "aliases": [
@@ -4526,7 +4536,7 @@
    "draft_id": 10106,
    "auction_id": 739,
    "cricbuzz_id": "13089",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:1290929": {
    "aliases": [
@@ -4561,7 +4571,9 @@
    "espn_id": "670025",
    "display": "Shimron Hetmyer",
    "draft_id": 10108,
-   "auction_id": 85
+   "auction_id": 85,
+   "cricbuzz_id": "9789",
+   "cricbuzz_tier": 1
   },
   "ci:325012": {
    "aliases": [
@@ -4676,7 +4688,7 @@
    "draft_id": 10116,
    "auction_id": 7269,
    "cricbuzz_id": "8422",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 12
   },
   "ci:698143": {
    "aliases": [
@@ -4726,7 +4738,7 @@
    "draft_id": 10119,
    "auction_id": 3350,
    "cricbuzz_id": "18155",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 3
   },
   "ci:726989": {
    "aliases": [
@@ -4787,7 +4799,7 @@
    "draft_id": 10123,
    "auction_id": 555,
    "cricbuzz_id": "6734",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:446499": {
    "aliases": [
@@ -4820,7 +4832,7 @@
    "draft_id": 10125,
    "auction_id": 508,
    "cricbuzz_id": "8085",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:922967": {
    "aliases": [
@@ -4854,7 +4866,7 @@
    "draft_id": 10127,
    "auction_id": null,
    "cricbuzz_id": "13748",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:276298": {
    "aliases": [
@@ -4873,7 +4885,7 @@
    "draft_id": 10128,
    "auction_id": 44,
    "cricbuzz_id": "7736",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:230558": {
    "aliases": [
@@ -4891,7 +4903,7 @@
    "draft_id": 10129,
    "auction_id": null,
    "cricbuzz_id": "2276",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:334621": {
    "aliases": [
@@ -4911,7 +4923,7 @@
    "draft_id": 10130,
    "auction_id": 3351,
    "cricbuzz_id": "2245",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 6
   },
   "ci:391485": {
    "aliases": [
@@ -4977,7 +4989,7 @@
    "draft_id": 10135,
    "auction_id": null,
    "cricbuzz_id": "11445",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:1194795": {
    "aliases": [
@@ -5169,7 +5181,7 @@
    "draft_id": 10144,
    "auction_id": 2051,
    "cricbuzz_id": "6245",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 7
   },
   "ci:1489419": {
    "aliases": [
@@ -5758,7 +5770,7 @@
    "draft_id": 10399,
    "auction_id": 401,
    "cricbuzz_id": "12201",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:669365": {
    "aliases": [
@@ -5796,7 +5808,7 @@
    "draft_id": 10455,
    "auction_id": 208,
    "cricbuzz_id": "2258",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:877051": {
    "aliases": [
@@ -5866,7 +5878,9 @@
    "espn_id": "897549",
    "display": "Will Jacks",
    "draft_id": 10383,
-   "auction_id": 380
+   "auction_id": 380,
+   "cricbuzz_id": "12258",
+   "cricbuzz_tier": 8
   },
   "ci:662973": {
    "aliases": [
@@ -5904,7 +5918,7 @@
    "draft_id": 10459,
    "auction_id": 1889,
    "cricbuzz_id": "6639",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 10
   },
   "ci:1263691": {
    "aliases": [
@@ -6012,7 +6026,7 @@
    "draft_id": 10464,
    "auction_id": null,
    "cricbuzz_id": "12747",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 10
   },
   "ci:573170": {
    "aliases": [
@@ -6048,7 +6062,7 @@
    "draft_id": 10465,
    "auction_id": 6729,
    "cricbuzz_id": "20031",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:1229023": {
    "aliases": [
@@ -6204,7 +6218,7 @@
    "draft_id": 10228,
    "auction_id": null,
    "cricbuzz_id": "9551",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 4
   },
   "ci:502714": {
    "aliases": [
@@ -6223,7 +6237,7 @@
    "draft_id": 10229,
    "auction_id": 217,
    "cricbuzz_id": "10100",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:959771": {
    "aliases": [
@@ -6381,7 +6395,7 @@
    "draft_id": 10239,
    "auction_id": 1687,
    "cricbuzz_id": "11217",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:1275056": {
    "aliases": [
@@ -6400,7 +6414,7 @@
    "draft_id": 10240,
    "auction_id": 1686,
    "cricbuzz_id": "23271",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:443150": {
    "aliases": [
@@ -6434,7 +6448,7 @@
    "draft_id": 10243,
    "auction_id": 1892,
    "cricbuzz_id": "11543",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:510823": {
    "aliases": [
@@ -6469,7 +6483,7 @@
    "draft_id": 10245,
    "auction_id": null,
    "cricbuzz_id": "11214",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:670045": {
    "aliases": [
@@ -6487,7 +6501,7 @@
    "draft_id": 10246,
    "auction_id": 1893,
    "cricbuzz_id": "9793",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:670031": {
    "aliases": [
@@ -6505,7 +6519,7 @@
    "draft_id": 10247,
    "auction_id": null,
    "cricbuzz_id": "11220",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:1199304": {
    "aliases": [
@@ -6524,7 +6538,7 @@
    "draft_id": 10248,
    "auction_id": 4282,
    "cricbuzz_id": "15817",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:820681": {
    "aliases": [
@@ -6541,7 +6555,9 @@
    "espn_id": "820681",
    "display": "Amir Jangoo",
    "draft_id": 10249,
-   "auction_id": 1685
+   "auction_id": 1685,
+   "cricbuzz_id": "12674",
+   "cricbuzz_tier": 1
   },
   "ci:1209190": {
    "aliases": [
@@ -6560,7 +6576,7 @@
    "draft_id": 10250,
    "auction_id": 4280,
    "cricbuzz_id": "15809",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:1356971": {
    "aliases": [
@@ -6575,7 +6591,9 @@
    "espn_id": "1356971",
    "display": "Shamar Joseph",
    "draft_id": 10251,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "50458",
+   "cricbuzz_tier": 1
   },
   "ci:1500757": {
    "aliases": [
@@ -6593,7 +6611,7 @@
    "draft_id": 10252,
    "auction_id": null,
    "cricbuzz_id": "1467499",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 3
   },
   "ci:784369": {
    "aliases": [
@@ -6610,7 +6628,7 @@
    "draft_id": 10284,
    "auction_id": 1386,
    "cricbuzz_id": "10939",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:1075863": {
    "aliases": [
@@ -6627,7 +6645,7 @@
    "draft_id": 10285,
    "auction_id": 2468,
    "cricbuzz_id": "13886",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 10
   },
   "ci:921509": {
    "aliases": [
@@ -6643,7 +6661,7 @@
    "draft_id": 10286,
    "auction_id": 8650,
    "cricbuzz_id": "12173",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 6
   },
   "ci:342619": {
    "aliases": [
@@ -6660,7 +6678,7 @@
    "draft_id": 10287,
    "auction_id": 548,
    "cricbuzz_id": "7869",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 8
   },
   "ci:56143": {
    "aliases": [
@@ -6676,7 +6694,7 @@
    "draft_id": 10288,
    "auction_id": 290,
    "cricbuzz_id": "544",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 9
   },
   "ci:1152427": {
    "aliases": [
@@ -6694,7 +6712,7 @@
    "draft_id": 10289,
    "auction_id": 2470,
    "cricbuzz_id": "14251",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 10
   },
   "ci:1186658": {
    "aliases": [
@@ -6711,7 +6729,7 @@
    "draft_id": 10290,
    "auction_id": 774,
    "cricbuzz_id": "15116",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 10
   },
   "ci:1282477": {
    "aliases": [
@@ -6728,7 +6746,7 @@
    "draft_id": 10291,
    "auction_id": 8712,
    "cricbuzz_id": "22661",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:221140": {
    "aliases": [
@@ -6776,7 +6794,7 @@
    "draft_id": 10295,
    "auction_id": 2253,
    "cricbuzz_id": "15067",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:1126045": {
    "aliases": [
@@ -6840,7 +6858,7 @@
    "draft_id": 10299,
    "auction_id": 1145,
    "cricbuzz_id": "12247",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 4
   },
   "ci:379887": {
    "aliases": [
@@ -6858,7 +6876,7 @@
    "draft_id": 10300,
    "auction_id": 718,
    "cricbuzz_id": "8531",
-   "cricbuzz_tier": 4
+   "cricbuzz_tier": 7
   },
   "ci:1074333": {
    "aliases": [
@@ -6875,7 +6893,7 @@
    "draft_id": 10301,
    "auction_id": 8715,
    "cricbuzz_id": "13187",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:801817": {
    "aliases": [
@@ -6894,7 +6912,7 @@
    "draft_id": 10302,
    "auction_id": 8567,
    "cricbuzz_id": "14574",
-   "cricbuzz_tier": 3
+   "cricbuzz_tier": 5
   },
   "ci:1439495": {
    "aliases": [
@@ -6908,7 +6926,9 @@
    "espn_id": "1439495",
    "display": "Praveen Manisha",
    "draft_id": 10303,
-   "auction_id": 8716
+   "auction_id": 8716,
+   "cricbuzz_id": "1427857",
+   "cricbuzz_tier": 1
   },
   "ci:1393938": {
    "aliases": [
@@ -6958,7 +6978,7 @@
    "draft_id": 10306,
    "auction_id": 1388,
    "cricbuzz_id": "9495",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 10
   },
   "ci:784373": {
    "aliases": [
@@ -6974,7 +6994,7 @@
    "draft_id": 10307,
    "auction_id": 563,
    "cricbuzz_id": "10940",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 10
   },
   "ci:603410": {
    "aliases": [
@@ -6992,7 +7012,7 @@
    "draft_id": 10308,
    "auction_id": 2975,
    "cricbuzz_id": "9453",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:681681": {
    "aliases": [
@@ -7009,7 +7029,7 @@
    "draft_id": 10309,
    "auction_id": 3185,
    "cricbuzz_id": "13694",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:355269": {
    "aliases": [
@@ -7028,7 +7048,7 @@
    "draft_id": 10310,
    "auction_id": 261,
    "cricbuzz_id": "8983",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:1070229": {
    "aliases": [
@@ -7047,7 +7067,7 @@
    "draft_id": 10311,
    "auction_id": 8646,
    "cricbuzz_id": "39678",
-   "cricbuzz_tier": 3
+   "cricbuzz_tier": 5
   },
   "ci:926629": {
    "aliases": [
@@ -7095,7 +7115,7 @@
    "draft_id": 10314,
    "auction_id": null,
    "cricbuzz_id": "12071",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 11
   },
   "ci:629080": {
    "aliases": [
@@ -7112,7 +7132,7 @@
    "draft_id": 10315,
    "auction_id": 8718,
    "cricbuzz_id": "9498",
-   "cricbuzz_tier": 3
+   "cricbuzz_tier": 4
   },
   "ci:596097": {
    "aliases": [
@@ -7130,7 +7150,7 @@
    "draft_id": 10316,
    "auction_id": 5026,
    "cricbuzz_id": "14797",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:794713": {
    "aliases": [
@@ -7162,7 +7182,7 @@
    "draft_id": 10318,
    "auction_id": 2022,
    "cricbuzz_id": "18847",
-   "cricbuzz_tier": 4
+   "cricbuzz_tier": 7
   },
   "ci:931015": {
    "aliases": [
@@ -7180,7 +7200,7 @@
    "draft_id": 10319,
    "auction_id": 8621,
    "cricbuzz_id": "35747",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:1210287": {
    "aliases": [
@@ -7216,7 +7236,7 @@
    "draft_id": 10321,
    "auction_id": 8637,
    "cricbuzz_id": "22656",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 8
   },
   "ci:954003": {
    "aliases": [
@@ -7247,7 +7267,7 @@
    "draft_id": 10323,
    "auction_id": 8647,
    "cricbuzz_id": "22666",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 8
   },
   "ci:1161050": {
    "aliases": [
@@ -7299,7 +7319,7 @@
    "draft_id": 10326,
    "auction_id": 682,
    "cricbuzz_id": "8116",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 8
   },
   "ci:784379": {
    "aliases": [
@@ -7317,7 +7337,7 @@
    "draft_id": 10327,
    "auction_id": null,
    "cricbuzz_id": "10926",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 10
   },
   "ci:49764": {
    "aliases": [
@@ -7335,7 +7355,7 @@
    "draft_id": 10328,
    "auction_id": 297,
    "cricbuzz_id": "1629",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 8
   },
   "ci:477021": {
    "aliases": [
@@ -7352,7 +7372,7 @@
    "draft_id": 10329,
    "auction_id": 405,
    "cricbuzz_id": "8204",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:8917": {
    "aliases": [
@@ -7371,7 +7391,7 @@
    "draft_id": 10330,
    "auction_id": 32,
    "cricbuzz_id": "6692",
-   "cricbuzz_tier": 9
+   "cricbuzz_tier": 12
   },
   "ci:1253695": {
    "aliases": [
@@ -7387,7 +7407,7 @@
    "draft_id": 10331,
    "auction_id": 8721,
    "cricbuzz_id": "1468866",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 4
   },
   "ci:826901": {
    "aliases": [
@@ -7406,7 +7426,7 @@
    "draft_id": 10332,
    "auction_id": 255,
    "cricbuzz_id": "13162",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:786925": {
    "aliases": [
@@ -7424,7 +7444,7 @@
    "draft_id": 10333,
    "auction_id": 8722,
    "cricbuzz_id": "10938",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 8
   },
   "ci:1364328": {
    "aliases": [
@@ -7441,7 +7461,7 @@
    "draft_id": 10334,
    "auction_id": 8658,
    "cricbuzz_id": "52768",
-   "cricbuzz_tier": 3
+   "cricbuzz_tier": 4
   },
   "ci:955235": {
    "aliases": [
@@ -7458,7 +7478,7 @@
    "draft_id": 10335,
    "auction_id": 321,
    "cricbuzz_id": "18509",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:712219": {
    "aliases": [
@@ -7472,7 +7492,9 @@
    "espn_id": "712219",
    "display": "Zahir Khan",
    "draft_id": 10336,
-   "auction_id": 8723
+   "auction_id": 8723,
+   "cricbuzz_id": "10828",
+   "cricbuzz_tier": 3
   },
   "ci:949473": {
    "aliases": [
@@ -7506,7 +7528,7 @@
    "draft_id": 10338,
    "auction_id": 8724,
    "cricbuzz_id": "15586",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:721041": {
    "aliases": [
@@ -7523,7 +7545,7 @@
    "draft_id": 10339,
    "auction_id": 2471,
    "cricbuzz_id": "35640",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 7
   },
   "ci:985497": {
    "aliases": [
@@ -7555,9 +7577,11 @@
    "cricinfo_id": "823509",
    "cricsheet_id": "9a46c4e5",
    "espn_id": "823509",
-   "display": "Dale Phillips",
+   "display": "Glenn Phillips",
    "draft_id": 10777,
-   "auction_id": 402
+   "auction_id": 402,
+   "cricbuzz_id": "10693",
+   "cricbuzz_tier": 1
   },
   "ci:1329936": {
    "aliases": [
@@ -7639,7 +7663,7 @@
    "draft_id": 10347,
    "auction_id": 772,
    "cricbuzz_id": "10934",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 14
   },
   "ci:348148": {
    "aliases": [
@@ -7655,7 +7679,7 @@
    "draft_id": 10348,
    "auction_id": 2020,
    "cricbuzz_id": "8367",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 11
   },
   "ci:623695": {
    "aliases": [
@@ -7672,7 +7696,7 @@
    "draft_id": 10350,
    "auction_id": 1390,
    "cricbuzz_id": "9500",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 11
   },
   "ci:1364326": {
    "aliases": [
@@ -7688,7 +7712,7 @@
    "draft_id": 10351,
    "auction_id": 8726,
    "cricbuzz_id": "52757",
-   "cricbuzz_tier": 4
+   "cricbuzz_tier": 6
   },
   "ci:826689": {
    "aliases": [
@@ -7722,7 +7746,7 @@
    "draft_id": 10353,
    "auction_id": 243,
    "cricbuzz_id": "46926",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 10
   },
   "ci:1153149": {
    "aliases": [
@@ -7774,7 +7798,7 @@
    "draft_id": 10356,
    "auction_id": 8728,
    "cricbuzz_id": "10979",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 11
   },
   "ci:633660": {
    "aliases": [
@@ -7788,7 +7812,9 @@
    "espn_id": "633660",
    "display": "Virandeep Singh",
    "draft_id": 10357,
-   "auction_id": 1984
+   "auction_id": 1984,
+   "cricbuzz_id": "12163",
+   "cricbuzz_tier": 1
   },
   "ci:1203669": {
    "aliases": [
@@ -7804,7 +7830,7 @@
    "draft_id": 10358,
    "auction_id": null,
    "cricbuzz_id": "15751",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 11
   },
   "ci:499594": {
    "aliases": [
@@ -7837,7 +7863,7 @@
    "draft_id": 10360,
    "auction_id": 8471,
    "cricbuzz_id": "14022",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:950405": {
    "aliases": [
@@ -7855,7 +7881,7 @@
    "draft_id": 10361,
    "auction_id": 8730,
    "cricbuzz_id": "18515",
-   "cricbuzz_tier": 4
+   "cricbuzz_tier": 7
   },
   "ci:1175296": {
    "aliases": [
@@ -7873,7 +7899,7 @@
    "draft_id": 10362,
    "auction_id": 8635,
    "cricbuzz_id": "15667",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 6
   },
   "ci:1437704": {
    "aliases": [
@@ -7903,7 +7929,7 @@
    "draft_id": 10364,
    "auction_id": 2800,
    "cricbuzz_id": "13625",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 7
   },
   "ci:429754": {
    "aliases": [
@@ -7939,7 +7965,7 @@
    "draft_id": 10366,
    "auction_id": 779,
    "cricbuzz_id": "9491",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 12
   },
   "ci:1171180": {
    "aliases": [
@@ -7956,7 +7982,7 @@
    "draft_id": 10368,
    "auction_id": 2469,
    "cricbuzz_id": "15081",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 8
   },
   "ci:596436": {
    "aliases": [
@@ -7991,7 +8017,7 @@
    "draft_id": 10370,
    "auction_id": 773,
    "cricbuzz_id": "9502",
-   "cricbuzz_tier": 3
+   "cricbuzz_tier": 4
   },
   "ci:1379076": {
    "aliases": [
@@ -8005,7 +8031,9 @@
    "espn_id": "1379076",
    "display": "Gayana Weerasinghe",
    "draft_id": 10371,
-   "auction_id": 8733
+   "auction_id": 8733,
+   "cricbuzz_id": "1427871",
+   "cricbuzz_tier": 1
   },
   "ci:1138316": {
    "aliases": [
@@ -8024,7 +8052,7 @@
    "draft_id": 10372,
    "auction_id": 36,
    "cricbuzz_id": "18504",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 11
   },
   "ci:574178": {
    "aliases": [
@@ -8073,7 +8101,7 @@
    "draft_id": 10375,
    "auction_id": 527,
    "cricbuzz_id": "8030",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 8
   },
   "ci:1185538": {
    "aliases": [
@@ -8089,7 +8117,7 @@
    "draft_id": 10376,
    "auction_id": 2021,
    "cricbuzz_id": "15040",
-   "cricbuzz_tier": 3
+   "cricbuzz_tier": 4
   },
   "ci:974175": {
    "aliases": [
@@ -8174,7 +8202,7 @@
    "draft_id": 10341,
    "auction_id": 9812,
    "cricbuzz_id": "11176",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 9
   },
   "ci:298438": {
    "aliases": [
@@ -8353,7 +8381,7 @@
    "draft_id": 10397,
    "auction_id": 7948,
    "cricbuzz_id": "12770",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:641423": {
    "aliases": [
@@ -8370,7 +8398,7 @@
    "draft_id": 10401,
    "auction_id": 7914,
    "cricbuzz_id": "10385",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:578769": {
    "aliases": [
@@ -8419,7 +8447,7 @@
    "draft_id": 10404,
    "auction_id": 1890,
    "cricbuzz_id": "11436",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 7
   },
   "ci:734459": {
    "aliases": [
@@ -8435,7 +8463,7 @@
    "draft_id": 10406,
    "auction_id": 3564,
    "cricbuzz_id": "12555",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:1027781": {
    "aliases": [
@@ -8451,7 +8479,7 @@
    "draft_id": 10407,
    "auction_id": null,
    "cricbuzz_id": "12777",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:602155": {
    "aliases": [
@@ -8501,7 +8529,7 @@
    "draft_id": 10410,
    "auction_id": null,
    "cricbuzz_id": "12259",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:1264775": {
    "aliases": [
@@ -8517,7 +8545,7 @@
    "draft_id": 10411,
    "auction_id": null,
    "cricbuzz_id": "27438",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 3
   },
   "ci:1096092": {
    "aliases": [
@@ -8986,7 +9014,7 @@
    "draft_id": 10457,
    "auction_id": null,
    "cricbuzz_id": "11398",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 8
   },
   "ci:436757": {
    "aliases": [
@@ -9003,7 +9031,7 @@
    "draft_id": 10458,
    "auction_id": 6,
    "cricbuzz_id": "10209",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 8
   },
   "ci:909225": {
    "aliases": [
@@ -9020,7 +9048,7 @@
    "draft_id": 10460,
    "auction_id": 7882,
    "cricbuzz_id": "11527",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 5
   },
   "ci:1126982": {
    "aliases": [],
@@ -9063,7 +9091,7 @@
    "draft_id": 10463,
    "auction_id": 408,
    "cricbuzz_id": "15452",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 10
   },
   "ci:641387": {
    "aliases": [
@@ -9206,7 +9234,7 @@
    "draft_id": 10481,
    "auction_id": 2806,
    "cricbuzz_id": "55799",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:766809": {
    "aliases": [
@@ -9269,7 +9297,7 @@
    "draft_id": 10486,
    "auction_id": 1888,
    "cricbuzz_id": "8502",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:297628": {
    "aliases": [
@@ -9286,7 +9314,7 @@
    "draft_id": 10488,
    "auction_id": 407,
    "cricbuzz_id": "7990",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:362201": {
    "aliases": [
@@ -9303,7 +9331,7 @@
    "draft_id": 10490,
    "auction_id": 3187,
    "cricbuzz_id": "7854",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:1172968": {
    "aliases": [
@@ -9334,7 +9362,7 @@
    "draft_id": 10493,
    "auction_id": null,
    "cricbuzz_id": "8511",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:506612": {
    "aliases": [
@@ -9366,7 +9394,7 @@
    "draft_id": 10495,
    "auction_id": null,
    "cricbuzz_id": "1917",
-   "cricbuzz_tier": 5
+   "cricbuzz_tier": 6
   },
   "ci:310107": {
    "aliases": [
@@ -9397,7 +9425,7 @@
    "draft_id": 10497,
    "auction_id": null,
    "cricbuzz_id": "10026",
-   "cricbuzz_tier": 4
+   "cricbuzz_tier": 5
   },
   "ci:1000791": {
    "aliases": [
@@ -9483,6 +9511,7 @@
   },
   "ci:872217": {
    "aliases": [
+    "tara g norris",
     "tara norris",
     "tg norris"
    ],
@@ -9626,7 +9655,7 @@
    "draft_id": 10518,
    "auction_id": null,
    "cricbuzz_id": "9420",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:874277": {
    "aliases": [
@@ -9643,7 +9672,7 @@
    "draft_id": 10519,
    "auction_id": null,
    "cricbuzz_id": "13023",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 10
   },
   "ci:374936": {
    "aliases": [
@@ -9661,7 +9690,7 @@
    "draft_id": 10523,
    "auction_id": 851,
    "cricbuzz_id": "9537",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 10
   },
   "ci:297085": {
    "aliases": [
@@ -9679,7 +9708,7 @@
    "draft_id": 10524,
    "auction_id": 1131,
    "cricbuzz_id": "9773",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:1120320": {
    "aliases": [
@@ -9696,7 +9725,7 @@
    "draft_id": 10525,
    "auction_id": null,
    "cricbuzz_id": "47336",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 10
   },
   "ci:1184099": {
    "aliases": [
@@ -9714,7 +9743,7 @@
    "draft_id": 10526,
    "auction_id": 7919,
    "cricbuzz_id": "20057",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 9
   },
   "ci:1146032": {
    "aliases": [
@@ -9792,6 +9821,7 @@
   "ci:1022077": {
    "aliases": [
     "maia bouchier",
+    "maia emily bouchier",
     "me bouchier"
    ],
    "tours": [
@@ -9804,7 +9834,7 @@
    "draft_id": 10534,
    "auction_id": 2486,
    "cricbuzz_id": "13811",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:483484": {
    "aliases": [
@@ -9820,11 +9850,12 @@
    "draft_id": 10536,
    "auction_id": null,
    "cricbuzz_id": "9653",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:914657": {
    "aliases": [
     "pa franklin",
+    "phoebe antonia franklin",
     "phoebe franklin"
    ],
    "tours": [
@@ -9854,7 +9885,7 @@
    "draft_id": 10540,
    "auction_id": 843,
    "cricbuzz_id": "13009",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:1184176": {
    "aliases": [
@@ -9871,7 +9902,7 @@
    "draft_id": 10543,
    "auction_id": 7964,
    "cricbuzz_id": "1428674",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:1185631": {
    "aliases": [
@@ -9890,6 +9921,7 @@
   "ci:885851": {
    "aliases": [
     "naomi dattani",
+    "naomi dilip dattani",
     "nd dattani"
    ],
    "tours": [
@@ -9902,7 +9934,7 @@
    "draft_id": 10545,
    "auction_id": 7968,
    "cricbuzz_id": "13029",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:1146005": {
    "aliases": [
@@ -9920,6 +9952,7 @@
   },
   "ci:1146700": {
    "aliases": [
+    "ella may mccaughan",
     "ella mccaughan",
     "em mccaughan"
    ],
@@ -9954,7 +9987,9 @@
   "ci:874293": {
    "aliases": [
     "el arlott",
-    "emily arlott"
+    "em arlott",
+    "emily arlott",
+    "emily louise arlott"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -9970,6 +10005,7 @@
   },
   "ci:1314806": {
    "aliases": [
+    "sophia ann elizabeth smale",
     "sophia smale"
    ],
    "tours": [
@@ -9987,6 +10023,7 @@
   "ci:1146043": {
    "aliases": [
     "g potts",
+    "grace elizabeth ann potts",
     "grace potts"
    ],
    "tours": [
@@ -10017,7 +10054,8 @@
   },
   "ci:1184162": {
    "aliases": [
-    "abi norgrove"
+    "abi norgrove",
+    "abigale em norgrove"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10034,6 +10072,7 @@
   "ci:1021721": {
    "aliases": [
     "r southby",
+    "rhianna mae southby",
     "rhianna southby"
    ],
    "tours": [
@@ -10050,6 +10089,7 @@
   },
   "ci:1469034": {
    "aliases": [
+    "grace jane thompson",
     "grace thompson"
    ],
    "tours": [
@@ -10081,6 +10121,7 @@
   "ci:1184165": {
    "aliases": [
     "n holland",
+    "niamh fiona holland",
     "niamh holland"
    ],
    "tours": [
@@ -10113,7 +10154,8 @@
   },
   "ci:879369": {
    "aliases": [
-    "katie george"
+    "katie george",
+    "katie louise george"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10130,6 +10172,7 @@
   "ci:874201": {
    "aliases": [
     "lf higham",
+    "lucy florence higham",
     "lucy higham"
    ],
    "tours": [
@@ -10180,7 +10223,9 @@
   "ci:1184988": {
    "aliases": [
     "j groves",
-    "josephine groves"
+    "josephine groves",
+    "josephine paige groves",
+    "josie groves"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10227,6 +10272,7 @@
   "ci:329336": {
    "aliases": [
     "meg lanning",
+    "meghann moira lanning",
     "mm lanning"
    ],
    "tours": [
@@ -10260,6 +10306,7 @@
   },
   "ci:743647": {
    "aliases": [
+    "paige jamie scholfield",
     "paige scholfield",
     "pj scholfield"
    ],
@@ -10277,6 +10324,7 @@
   },
   "ci:874173": {
    "aliases": [
+    "mady kate villiers",
     "mady villiers",
     "mk villiers"
    ],
@@ -10294,7 +10342,8 @@
   },
   "ci:1061621": {
    "aliases": [
-    "maitlan brown"
+    "maitlan brown",
+    "maitlan joy brown"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10328,6 +10377,7 @@
   "ci:1187119": {
    "aliases": [
     "r macdonald gay",
+    "ryana lucelle macdonald gay",
     "ryana macdonald gay"
    ],
    "tours": [
@@ -10344,7 +10394,8 @@
   },
   "ci:877447": {
    "aliases": [
-    "jo gardner"
+    "jo gardner",
+    "joanne gardner"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10360,6 +10411,7 @@
   },
   "ci:874219": {
    "aliases": [
+    "bex tyson",
     "r tyson",
     "rebecca tyson"
    ],
@@ -10378,6 +10430,7 @@
   "ci:1032417": {
    "aliases": [
     "naj wraith",
+    "natasha agnes jessica wraith",
     "natasha wraith"
    ],
    "tours": [
@@ -10393,7 +10446,8 @@
   "ci:469888": {
    "aliases": [
     "ba langston",
-    "beth langston"
+    "beth langston",
+    "bethany alicia langston"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10422,6 +10476,7 @@
   "ci:297074": {
    "aliases": [
     "tammy beaumont",
+    "tamsin tilley beaumont",
     "tt beaumont"
    ],
    "tours": [
@@ -10439,7 +10494,8 @@
   "ci:1277200": {
    "aliases": [
     "d perrin",
-    "davina perrin"
+    "davina perrin",
+    "davina sarah tamanda perrin"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10455,7 +10511,8 @@
   },
   "ci:749957": {
    "aliases": [
-    "emma lamb"
+    "emma lamb",
+    "emma louise lamb"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10501,6 +10558,7 @@
   },
   "ci:1334186": {
    "aliases": [
+    "jemima emma maxwell spence",
     "jemima spence"
    ],
    "tours": [
@@ -10518,6 +10576,7 @@
   "ci:1380353": {
    "aliases": [
     "ei macgregor",
+    "esmae isabel macgregor",
     "esmae macgregor"
    ],
    "tours": [
@@ -10533,6 +10592,7 @@
   "ci:1469030": {
    "aliases": [
     "phoebe brett",
+    "phoebe julianna brett",
     "pj brett"
    ],
    "tours": [
@@ -10549,6 +10609,7 @@
   },
   "ci:1335840": {
    "aliases": [
+    "mary louise latham taylor",
     "mary taylor"
    ],
    "tours": [
@@ -10564,6 +10625,7 @@
   "ci:297036": {
    "aliases": [
     "ga elwiss",
+    "georgia amanda elwiss",
     "georgia elwiss"
    ],
    "tours": [
@@ -10576,11 +10638,12 @@
    "draft_id": 10616,
    "auction_id": 6241,
    "cricbuzz_id": "9143",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 7
   },
   "ci:916037": {
    "aliases": [
     "bam heath",
+    "bess alice may heath",
     "bess heath"
    ],
    "tours": [
@@ -10598,6 +10661,7 @@
   "ci:515904": {
    "aliases": [
     "ka levick",
+    "katie ann levick",
     "katie levick"
    ],
    "tours": [
@@ -10614,7 +10678,8 @@
   },
   "ci:537440": {
    "aliases": [
-    "samantha bates"
+    "samantha bates",
+    "samantha lee bates"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10626,10 +10691,12 @@
    "draft_id": 10620,
    "auction_id": null,
    "cricbuzz_id": "12063",
-   "cricbuzz_tier": 8
+   "cricbuzz_tier": 9
   },
   "ci:858807": {
    "aliases": [
+    "emma jones",
+    "emma wing sum jones",
     "eve jones"
    ],
    "tours": [
@@ -10659,7 +10726,8 @@
   "ci:515901": {
    "aliases": [
     "sn luff",
-    "sophie luff"
+    "sophie luff",
+    "sophie natasha luff"
    ],
    "tours": [
     "The Hundred Women's Competition 2026"
@@ -10676,6 +10744,7 @@
   "ci:469879": {
    "aliases": [
     "georgia adams",
+    "georgia louise adams",
     "gl adams"
    ],
    "tours": [
@@ -10688,10 +10757,11 @@
    "draft_id": 10624,
    "auction_id": 7062,
    "cricbuzz_id": "13017",
-   "cricbuzz_tier": 7
+   "cricbuzz_tier": 8
   },
   "ci:1482630": {
    "aliases": [
+    "charley nicola phillips",
     "charley phillips"
    ],
    "tours": [
@@ -10704,7 +10774,7 @@
    "draft_id": 10625,
    "auction_id": null,
    "cricbuzz_id": "1458529",
-   "cricbuzz_tier": 6
+   "cricbuzz_tier": 7
   },
   "ci:1385349": {
    "aliases": [
@@ -10735,7 +10805,7 @@
    "draft_id": 10657,
    "auction_id": null,
    "cricbuzz_id": "12160",
-   "cricbuzz_tier": 4
+   "cricbuzz_tier": 7
   },
   "ci:299572": {
    "aliases": [
@@ -10752,7 +10822,7 @@
    "draft_id": 10627,
    "auction_id": null,
    "cricbuzz_id": "9354",
-   "cricbuzz_tier": 3
+   "cricbuzz_tier": 5
   },
   "ci:1071484": {
    "aliases": [
@@ -11067,7 +11137,7 @@
    "draft_id": 10659,
    "auction_id": null,
    "cricbuzz_id": "9785",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:494581": {
    "aliases": [
@@ -11084,7 +11154,7 @@
    "draft_id": 10660,
    "auction_id": null,
    "cricbuzz_id": "9394",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:1139028": {
    "aliases": [
@@ -11127,7 +11197,7 @@
    "draft_id": 10667,
    "auction_id": null,
    "cricbuzz_id": "8579",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "uncapped:anderson-mahase": {
    "aliases": [
@@ -11180,7 +11250,7 @@
    "draft_id": 10674,
    "auction_id": null,
    "cricbuzz_id": "11223",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "uncapped:sufyan-moqim": {
    "aliases": [
@@ -11223,7 +11293,7 @@
    "draft_id": 10679,
    "auction_id": null,
    "cricbuzz_id": "1429041",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:1331347": {
    "aliases": [
@@ -11239,7 +11309,7 @@
    "draft_id": 10683,
    "auction_id": null,
    "cricbuzz_id": "55092",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:1244154": {
    "aliases": [
@@ -11268,7 +11338,9 @@
    "cricsheet_id": "2b8f219a",
    "espn_id": "1209196",
    "draft_id": 10686,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "15814",
+   "cricbuzz_tier": 2
   },
   "uncapped:romaine-morris": {
    "aliases": [
@@ -11338,17 +11410,6 @@
    "cricsheet_id": "33609a8c",
    "espn_id": "1161031",
    "draft_id": 10693,
-   "auction_id": null
-  },
-  "uncapped:odean-smith": {
-   "aliases": [
-    "odean smith"
-   ],
-   "tours": [
-    "Caribbean Premier League 2026"
-   ],
-   "display": "Odean Smith",
-   "draft_id": 10695,
    "auction_id": null
   },
   "uncapped:tayyab-arif": {
@@ -11585,17 +11646,6 @@
    "cricbuzz_id": "13750",
    "cricbuzz_tier": 1
   },
-  "uncapped:nathan-edward": {
-   "aliases": [
-    "nathan edward"
-   ],
-   "tours": [
-    "Caribbean Premier League 2026"
-   ],
-   "display": "Nathan Edward",
-   "draft_id": 10721,
-   "auction_id": null
-  },
   "ci:914455": {
    "aliases": [
     "jyd goolie",
@@ -11611,7 +11661,7 @@
    "draft_id": 10722,
    "auction_id": null,
    "cricbuzz_id": "11211",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:1152714": {
    "aliases": [
@@ -11627,7 +11677,7 @@
    "draft_id": 10725,
    "auction_id": null,
    "cricbuzz_id": "13958",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "uncapped:abdul-raheem-toppin": {
    "aliases": [
@@ -11654,7 +11704,7 @@
    "draft_id": 10735,
    "auction_id": null,
    "cricbuzz_id": "54287",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 3
   },
   "ci:1078693": {
    "aliases": [
@@ -11670,7 +11720,7 @@
    "draft_id": 10738,
    "auction_id": null,
    "cricbuzz_id": "15063",
-   "cricbuzz_tier": 2
+   "cricbuzz_tier": 4
   },
   "ci:1275937": {
    "aliases": [
@@ -11725,7 +11775,9 @@
    "cricsheet_id": "71a110dd",
    "espn_id": "1342552",
    "draft_id": 10744,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "1428447",
+   "cricbuzz_tier": 1
   },
   "uncapped:damion-joachim": {
    "aliases": [
@@ -11753,7 +11805,7 @@
    "draft_id": 10752,
    "auction_id": null,
    "cricbuzz_id": "10162",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:1264431": {
    "aliases": [
@@ -11809,7 +11861,7 @@
    "draft_id": 10758,
    "auction_id": null,
    "cricbuzz_id": "9791",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:1275943": {
    "aliases": [
@@ -11879,7 +11931,7 @@
    "draft_id": 10767,
    "auction_id": null,
    "cricbuzz_id": "15818",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:40618": {
    "aliases": [
@@ -11893,7 +11945,9 @@
    "cricsheet_id": "acee4cc4",
    "espn_id": "40618",
    "draft_id": 10768,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "6667",
+   "cricbuzz_tier": 1
   },
   "uncapped:ronaldo-alimohamed": {
    "aliases": [
@@ -11918,7 +11972,9 @@
    "cricsheet_id": "62af8546",
    "espn_id": "25913",
    "draft_id": 10774,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "3007",
+   "cricbuzz_tier": 1
   },
   "ci:1195686": {
    "aliases": [
@@ -11960,7 +12016,9 @@
    "cricsheet_id": "a61bcb94",
    "espn_id": "581160",
    "draft_id": 10778,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "12678",
+   "cricbuzz_tier": 1
   },
   "ci:974087": {
    "aliases": [
@@ -11988,7 +12046,9 @@
    "cricsheet_id": "238ce998",
    "espn_id": "1342550",
    "draft_id": 10781,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "1456809",
+   "cricbuzz_tier": 1
   },
   "uncapped:isai-thorne": {
    "aliases": [
@@ -12040,7 +12100,7 @@
    "draft_id": 10746,
    "auction_id": null,
    "cricbuzz_id": "1477847",
-   "cricbuzz_tier": 1
+   "cricbuzz_tier": 2
   },
   "ci:556531": {
    "aliases": [
@@ -12087,7 +12147,9 @@
    "auction_id": null,
    "cricinfo_id": "1394274",
    "cricsheet_id": null,
-   "espn_id": "1394274"
+   "espn_id": "1394274",
+   "cricbuzz_id": "54290",
+   "cricbuzz_tier": 1
   },
   "ci:327830": {
    "aliases": [
@@ -12101,7 +12163,9 @@
    "auction_id": null,
    "cricinfo_id": "327830",
    "cricsheet_id": "11614d87",
-   "espn_id": "327830"
+   "espn_id": "327830",
+   "cricbuzz_id": "8651",
+   "cricbuzz_tier": 1
   },
   "ci:581379": {
    "aliases": [
@@ -12116,7 +12180,9 @@
    "cricsheet_id": "1fc6ef83",
    "espn_id": "581379",
    "draft_id": 10772,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "10384",
+   "cricbuzz_tier": 1
   },
   "ci:1039481": {
    "aliases": [
@@ -12132,7 +12198,42 @@
    "cricsheet_id": "70d57519",
    "espn_id": "1039481",
    "draft_id": 10461,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "13681",
+   "cricbuzz_tier": 9
+  },
+  "ci:820691": {
+   "aliases": [
+    "odean fabian smith",
+    "odean smith"
+   ],
+   "tours": [
+    "Caribbean Premier League 2026"
+   ],
+   "display": "Odean Smith",
+   "draft_id": 10695,
+   "auction_id": null,
+   "cricinfo_id": "820691",
+   "cricsheet_id": "23cca426",
+   "espn_id": "820691",
+   "cricbuzz_id": "11215",
+   "cricbuzz_tier": 1
+  },
+  "ci:1275939": {
+   "aliases": [
+    "nathan edward"
+   ],
+   "tours": [
+    "Caribbean Premier League 2026"
+   ],
+   "display": "Nathan Edward",
+   "draft_id": 10721,
+   "auction_id": null,
+   "cricinfo_id": "1275939",
+   "cricsheet_id": "267468de",
+   "espn_id": "1275939",
+   "cricbuzz_id": "23891",
+   "cricbuzz_tier": 1
   }
  }
 }
