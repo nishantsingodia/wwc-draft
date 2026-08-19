@@ -2057,5 +2057,38 @@
     "label": "The Hundred Women's Final",
     "date": "2026-08-16T18:45:00+05:30",
     "format": "HUN"
+  },
+  {
+    "matchNum": 242,
+    "key": "M_ENG_PAK_TEST1",
+    "gender": "M",
+    "team1": "TENG",
+    "team2": "TPAK",
+    "label": "1st Test — England v Pakistan",
+    "date": "2026-08-19T15:30:00+05:30",
+    "format": "TEST",
+    "venue": "Headingley, Leeds"
+  },
+  {
+    "matchNum": 243,
+    "key": "M_ENG_PAK_TEST2",
+    "gender": "M",
+    "team1": "TENG",
+    "team2": "TPAK",
+    "label": "2nd Test — England v Pakistan",
+    "date": "2026-08-27T15:30:00+05:30",
+    "format": "TEST",
+    "venue": "Lord's, London"
+  },
+  {
+    "matchNum": 244,
+    "key": "M_ENG_PAK_TEST3",
+    "gender": "M",
+    "team1": "TENG",
+    "team2": "TPAK",
+    "label": "3rd Test — England v Pakistan",
+    "date": "2026-09-09T15:30:00+05:30",
+    "format": "TEST",
+    "venue": "Edgbaston, Birmingham"
   }
 ]

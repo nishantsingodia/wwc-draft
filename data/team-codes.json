@@ -234,5 +234,13 @@
   "MTGUY": {
     "flag": "🏏",
     "name": "Guyana Amazon Warriors"
+  },
+  "TENG": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name": "England"
+  },
+  "TPAK": {
+    "flag": "🇵🇰",
+    "name": "Pakistan"
   }
 }
