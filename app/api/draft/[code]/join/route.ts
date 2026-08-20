@@ -36,8 +36,20 @@ export async function POST(
   }
 
   if (contest.status !== "WAITING") {
-    // For manual drafts in TEAM_SELECT, still let the second user join as a participant
+    // For manual drafts in TEAM_SELECT, still let a friend join as a participant — but only
+    // into a FREE seat. Manual drafts used to be uncapped here because their roster was
+    // implicit (roster order) and joining was the only way anyone but the creator got seated.
+    // Now the creator names everyone at creation, so an uncapped join would seat an
+    // uninvited 5th person on a 4-friend draft and grow the team list to match.
     if (contest.mode === "manual" && contest.status === "TEAM_SELECT") {
+      const seated = await db
+        .select()
+        .from(contestParticipants)
+        .where(eq(contestParticipants.contestId, contest.id));
+      const hasSeat = seated.some((p) => p.user === username);
+      if (!hasSeat && seated.length >= (contest.maxPlayers ?? 2)) {
+        return NextResponse.json({ error: "This draft is full" }, { status: 403 });
+      }
       try {
         await db.insert(contestParticipants).values({
           contestId: contest.id,
@@ -54,14 +66,14 @@ export async function POST(
   const maxPlayers = contest.maxPlayers ?? 2;
   const now = Math.floor(Date.now() / 1000);
 
-  // Capacity (live only): never seat more than maxPlayers. Re-joining a seat you
+  // Capacity: never seat more than maxPlayers, in EITHER mode. Re-joining a seat you
   // already hold is always fine — this only blocks a brand-new joiner once full.
   const existing = await db
     .select()
     .from(contestParticipants)
     .where(eq(contestParticipants.contestId, contest.id));
   const alreadyIn = existing.some((p) => p.user === username);
-  if (contest.mode === "live" && !alreadyIn && existing.length >= maxPlayers) {
+  if (!alreadyIn && existing.length >= maxPlayers) {
     return NextResponse.json({ error: "This draft is full" }, { status: 403 });
   }
 

@@ -87,8 +87,11 @@ async function getOpenContests(username: string, matchKeys: Set<string>) {
     .map((c) => ({ contest: c, seats: seatsByContest.get(c.id) ?? [] }))
     .filter(({ contest, seats }) => {
       if (seats.includes(username) || contest.createdBy === username) return false;
-      // Capacity is enforced on live drafts only — same asymmetry as the join route.
-      return contest.mode !== "live" || seats.length < (contest.maxPlayers ?? 2);
+      // Capacity, both modes — mirrors the join route, which would now refuse a full
+      // manual draft too. A manual draft made by the friend picker comes out already
+      // full, so it simply stops being advertised; a legacy one seated only by its
+      // creator still has room, which keeps the old "join by code" escape hatch alive.
+      return seats.length < (contest.maxPlayers ?? 2);
     });
 }
 
