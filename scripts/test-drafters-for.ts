@@ -59,6 +59,24 @@ check(
   new Set(overlap).size === overlap.length
 );
 
+// ── a manual draft created by the friend PICKER: everyone is seated up front, so the
+//    chosen set must come back EXACTLY — no roster padding, no roster-order substitution.
+//    This is the contract POST /api/draft relies on when it seats seatedUsers. ──
+const picked = [u1, ALL_USERS[1], ALL_USERS[4], ALL_USERS[5]]; // you, Pushap, Sharan, Mihir
+check(
+  "a picked 4-some comes back exactly, in the order chosen",
+  eq(draftersFor("manual", picked, picked.length), picked)
+);
+check(
+  "picking non-adjacent roster members does NOT pull in the ones between them",
+  !draftersFor("manual", picked, picked.length).includes(ALL_USERS[2])
+);
+const pickedPair = [u1, ALL_USERS[5]]; // you + Mihir only
+check(
+  "a 2-person pick skipping five roster slots is expressible",
+  eq(draftersFor("manual", pickedPair, 2), pickedPair)
+);
+
 // ── live: participants are authoritative once the seats fill ──
 check(
   "live draft with 2 joined uses participants",

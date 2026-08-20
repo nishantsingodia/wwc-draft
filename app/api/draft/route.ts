@@ -4,7 +4,7 @@ import { getDb, draftContests, contestParticipants } from "@/lib/db";
 import { generateCode } from "@/lib/generate-code";
 import { getMatchByKey } from "@/lib/matches";
 import { getFullSquadByTeams } from "@/lib/players";
-import { MAX_ROSTER } from "@/lib/users";
+import { MAX_ROSTER, isKnownUser } from "@/lib/users";
 import { eq } from "drizzle-orm";
 
 export async function POST(request: NextRequest) {
@@ -15,7 +15,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { matchKey, picksPerUser, backupsPerUser, mode, maxPlayers } = await request.json();
+  const { matchKey, picksPerUser, backupsPerUser, mode, maxPlayers, drafters } =
+    await request.json();
 
   const match = getMatchByKey(matchKey);
   if (!match) {
@@ -32,8 +33,42 @@ export async function POST(request: NextRequest) {
   const resolvedPicks = Number.isFinite(ppuNum) && ppuNum >= 1 ? Math.floor(ppuNum) : 11;
   const resolvedBackups = Number.isFinite(bpuNum) && bpuNum >= 0 ? Math.floor(bpuNum) : 4;
   // Clamp drafters to [2, roster size]. Default 2 = the legacy head-to-head draft.
-  const resolvedMax =
+  const clampedMax =
     Number.isFinite(mpNum) && mpNum >= 2 ? Math.min(MAX_ROSTER, Math.floor(mpNum)) : 2;
+
+  // WHICH friends are playing — manual mode only. Nobody joins a manual draft, so the
+  // creator names them here and we seat them all up front; a live draft's roster is
+  // whoever turns up with their own login code, and seating them from a client payload
+  // would put people in a contest they never opted into.
+  //
+  // Never trust the list: every name must be on the roster, duplicates collapse, and the
+  // creator is always in it (the client locks their own toggle, but the API is the one
+  // that has to hold). maxPlayers then FOLLOWS the roster rather than being sent
+  // alongside it, so the seat count and the seated people can't disagree.
+  let seatedUsers: string[] = [username];
+  let resolvedMax = clampedMax;
+  if (mode === "manual") {
+    if (drafters !== undefined) {
+      if (!Array.isArray(drafters) || drafters.some((u) => typeof u !== "string")) {
+        return NextResponse.json({ error: "Invalid drafters" }, { status: 400 });
+      }
+      const unknown = (drafters as string[]).filter((u) => !isKnownUser(u));
+      if (unknown.length > 0) {
+        return NextResponse.json(
+          { error: `Not on the roster: ${unknown.join(", ")}` },
+          { status: 400 }
+        );
+      }
+      seatedUsers = [...new Set([username, ...(drafters as string[])])];
+      if (seatedUsers.length < 2) {
+        return NextResponse.json(
+          { error: "Pick at least one friend to draft against." },
+          { status: 400 }
+        );
+      }
+      resolvedMax = Math.min(MAX_ROSTER, seatedUsers.length);
+    }
+  }
 
   // The pool invariant — a live *exclusive* draft can't deal more unique players
   // than the two squads hold. Validate server-side too (never trust the client);
@@ -73,17 +108,26 @@ export async function POST(request: NextRequest) {
       createdAt: now,
     });
 
-    // Add creator to participants immediately so the draft appears in their lobby
+    // Seat everyone immediately so the draft appears in their lobby. For a live draft that's
+    // just the creator (the rest join themselves); for a manual draft it's every friend named
+    // above, which is what makes the draft visible to all of them from the moment it exists
+    // rather than only once their team has been entered.
     const [contest] = await db
       .select()
       .from(draftContests)
       .where(eq(draftContests.code, code));
     if (contest) {
-      await db.insert(contestParticipants).values({
-        contestId: contest.id,
-        user: username,
-        joinedAt: now,
-      });
+      for (const user of seatedUsers) {
+        try {
+          await db.insert(contestParticipants).values({
+            contestId: contest.id,
+            user,
+            joinedAt: now,
+          });
+        } catch {
+          // Unique constraint — already seated, fine
+        }
+      }
     }
 
     return NextResponse.json({ code, matchLabel: match.label });
