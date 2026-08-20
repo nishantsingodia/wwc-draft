@@ -26,7 +26,7 @@ import PlayerCard from "@/components/player-card";
 import ChangesBanner from "@/components/changes-banner";
 import LineupRefresh from "@/components/lineup-refresh";
 import { getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
-import { getUserLabel, getUserColor, ALL_USERS } from "@/lib/users";
+import { getUserLabel, getUserColor, draftersFor } from "@/lib/users";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
 import type { Change } from "@/lib/effective-lineup";
 
@@ -323,8 +323,7 @@ export default function TeamPage({
     // teams, so we seed all of them; live mode still seeds every friend but only
     // the current user's is editable. A user with no saved team but live picks is
     // seeded from those picks (draft order).
-    const friendList =
-      d.participants.length >= 2 ? d.participants : ALL_USERS.slice(0, d.contest.maxPlayers ?? 2);
+    const friendList = draftersFor(d.contest.mode, d.participants, d.contest.maxPlayers);
     const seeded: Record<string, string[]> = {};
     for (const u of friendList) {
       const sel = d.allSelections.find((s) => s.user === u);
@@ -470,11 +469,8 @@ export default function TeamPage({
   const bpu = data.contest.backupsPerUser;
   const selectedSet = new Set(ranking);
 
-  // The drafters. For a live draft all N are participants; for a manual draft only
-  // the creator is a participant, but one person can build every team, so fall back
-  // to the first maxPlayers of the roster.
-  const friends =
-    data.participants.length >= 2 ? data.participants : ALL_USERS.slice(0, data.contest.maxPlayers ?? 2);
+  // The drafters — one rule for both seeding (above) and rendering, in lib/users.ts.
+  const friends = draftersFor(data.contest.mode, data.participants, data.contest.maxPlayers);
 
   // Frozen post-lock substitution log for MY team (written by the results route
   // once lineups are out). Only meaningful when viewing your own team.

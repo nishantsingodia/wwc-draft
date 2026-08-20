@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth";
-import { getDb, draftContests, teamSelections } from "@/lib/db";
+import { getDb, draftContests, teamSelections, contestParticipants } from "@/lib/db";
 import { LOCK_BUFFER } from "@/lib/matches";
 import { getMatchDelay } from "@/lib/match-delay";
 import { isKnownUser } from "@/lib/users";
@@ -141,6 +141,26 @@ export async function POST(
       submittedAt: now2,
       isLocked,
     });
+  }
+
+  // Entering the OTHER friend's team is what makes them a drafter on this contest, so seat
+  // them here. Until now only create/join wrote contest_participants, and manual mode has no
+  // join step — one person enters both XIs from the WhatsApp draft. The lobby is
+  // participant-scoped in both directions (getUserContests filters the row out, draftRowsFor
+  // builds one row per participant), so the second team was invisible: absent from THEIR
+  // lobby entirely, and missing from the creator's card — no opponent, no head-to-head. The
+  // team_selections row existed the whole time and results/ scored it fine; only the lobby
+  // couldn't see it. Insert-if-absent, same as the join route.
+  if (writeUser !== username) {
+    try {
+      await db.insert(contestParticipants).values({
+        contestId: contest.id,
+        user: writeUser,
+        joinedAt: now2,
+      });
+    } catch {
+      // Unique constraint — already a participant, fine
+    }
   }
 
   // Lock contest if deadline passed

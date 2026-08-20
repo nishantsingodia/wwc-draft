@@ -108,20 +108,23 @@ function CreateDraftForm() {
             </div>
           </div>
 
-          {/* Friends — how many drafters (live only; manual is one entry point) */}
-          {mode === "live" && (
-            <div className="space-y-2">
-              <label className="text-sm text-mist uppercase tracking-wider">Friends drafting</label>
-              <div className="flex items-center gap-2">
-                <button type="button" onClick={() => setMaxPlayers((v) => Math.max(2, v - 1))}
-                  className="w-8 h-8 bg-navy rounded-lg text-lg font-bold">−</button>
-                <span className="w-8 text-center text-xl font-bold">{maxPlayers}</span>
-                <button type="button" onClick={() => setMaxPlayers((v) => Math.min(MAX_ROSTER, v + 1))}
-                  className="w-8 h-8 bg-navy rounded-lg text-lg font-bold">+</button>
-                <span className="text-xs text-mist2 ml-1">2–{MAX_ROSTER} players</span>
-              </div>
+          {/* Friends — how many drafters. Manual mode needs this as much as live: one person
+              enters every team, so the count is what decides how many team slots the entry
+              page offers. Hiding it here pinned every manual draft to 2 (the maxPlayers
+              default), which made a 6-friend WhatsApp draft impossible to record. */}
+          <div className="space-y-2">
+            <label className="text-sm text-mist uppercase tracking-wider">
+              {mode === "manual" ? "Friends playing" : "Friends drafting"}
+            </label>
+            <div className="flex items-center gap-2">
+              <button type="button" onClick={() => setMaxPlayers((v) => Math.max(2, v - 1))}
+                className="w-8 h-8 bg-navy rounded-lg text-lg font-bold">−</button>
+              <span className="w-8 text-center text-xl font-bold">{maxPlayers}</span>
+              <button type="button" onClick={() => setMaxPlayers((v) => Math.min(MAX_ROSTER, v + 1))}
+                className="w-8 h-8 bg-navy rounded-lg text-lg font-bold">+</button>
+              <span className="text-xs text-mist2 ml-1">2–{MAX_ROSTER} players</span>
             </div>
-          )}
+          </div>
 
           {/* Team size */}
           <div className="grid grid-cols-2 gap-4">

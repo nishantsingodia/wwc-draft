@@ -39,6 +39,32 @@ export function isKnownUser(u: string): boolean {
   return ALL_USERS.includes(u);
 }
 
+/**
+ * Who a contest's team-entry surfaces should offer a slot for.
+ *
+ * MANUAL mode: one person enters every friend's team, so the list is the ROSTER up to
+ * `maxPlayers` — never the seated participants. Entering someone's team now seats them
+ * (see app/api/draft/[code]/team/route.ts), so keying off participants would SHRINK the
+ * list as teams get filled in: seat 2 of 6 and friends 3–6 become unreachable. Anyone
+ * already seated is unioned in first, so a participant can never be dropped even if the
+ * roster order or `maxPlayers` changes under a live contest.
+ *
+ * LIVE mode: everyone joins, so participants are authoritative — with the pre-join
+ * roster fallback kept for a contest whose seats aren't all taken yet.
+ */
+export function draftersFor(
+  mode: "live" | "manual",
+  participants: string[],
+  maxPlayers: number | null | undefined
+): string[] {
+  const seats = maxPlayers ?? 2;
+  if (mode === "manual") {
+    const union = [...new Set([...participants, ...ALL_USERS])];
+    return union.slice(0, Math.max(seats, participants.length));
+  }
+  return participants.length >= 2 ? participants : ALL_USERS.slice(0, seats);
+}
+
 export const USER_COLORS: Record<string, string> = Object.fromEntries(
   ROSTER.map((m) => [m.username, m.color])
 );
