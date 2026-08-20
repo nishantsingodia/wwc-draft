@@ -42,7 +42,7 @@
 // H2H tracks the eventual final.
 
 export type Role = "BAT" | "BOWL" | "AR" | "WK";
-export type ScoreFormat = "ODI" | "T20" | "HUN";
+export type ScoreFormat = "ODI" | "T20" | "HUN" | "TEST";
 
 // One player's match line. Everything here IS readable live from the ESPN summary; what still
 // lags is the exactness of `bowlDots`/`bowlMaidens` (ESPN's own per-bowler counters, which the
@@ -64,6 +64,10 @@ export type Perf = {
   stumpings: number;
   runOuts: number; // TOTAL run-out credits (direct + assisted) — outDetails.fielders[]
   directRunOuts: number; // …of which unassisted (fielders[].length === 1). Paid 12; the rest 6.
+  // RED BALL ONLY. One entry per innings this player appeared in, because Dream11's Test milestone
+  // and wicket-haul tiers are evaluated INSIDE an innings — see scoreTest. Absent/undefined for
+  // every white-ball format, where a player bats once and the match line IS the innings line.
+  innings?: Perf[];
 };
 
 const T20 = {
@@ -84,6 +88,19 @@ const ODI = {
   xi: 4,
 } as const;
 
+// TEST (red ball). Mirror of the bot's R_TEST and the auction ETL's compute_fantasy_points_test,
+// confirmed against the live Dream11 Test page: NO strike-rate, NO economy, NO maiden, NO dot-ball
+// and NO 3-catch award, so it is a pure per-event scorer. Wicket is +20 — LOWER than T20's 25 and
+// ODI's 30, because a Test yields ~20 wickets — while batting milestones run two tiers deeper.
+// Duck is -4 and the page names the roles explicitly: Batter, Wicket-Keeper, All-Rounder.
+const TEST = {
+  bat: { perRun: 1, four: 4, six: 6, b25: 4, b50: 8, b75: 12, b100: 16, b125: 20, b150: 24, duck: -4 },
+  bowl: { perWkt: 20, lbwBowled: 8, h4: 4, h5: 8, h6: 12 },
+  // No catch3: Test awards no 3-catch bonus, which is what lets fielding be read off the match line.
+  field: { catch: 8, catch3: 0, stumping: 12, directRunOut: 12, runOut: 6 },
+  xi: 4,
+} as const;
+
 // The Hundred: same core scale as T20 but NO strike-rate, NO economy, NO maiden; wicket hauls
 // tier from a 2-for. (Mirror of the bot's R_HUN.)
 const HUN = {
@@ -93,7 +110,18 @@ const HUN = {
   xi: 4,
 } as const;
 
-function fielding(p: Perf, f: typeof T20.field): number {
+// Structural, not `typeof T20.field`: that pins catch3 to the literal 4, and Test awards NO 3-catch
+// bonus (catch3: 0). Widening the parameter is the honest fix — the alternative is giving Test a
+// fake 4 and gating it at the call site, i.e. hiding a rule difference inside a type.
+type FieldRules = {
+  readonly catch: number;
+  readonly catch3: number;
+  readonly stumping: number;
+  readonly directRunOut: number;
+  readonly runOut: number;
+};
+
+function fielding(p: Perf, f: FieldRules): number {
   let x = p.catches * f.catch;
   if (p.catches >= 3) x += f.catch3;
   x += p.stumpings * f.stumping;
@@ -220,6 +248,64 @@ function scoreHundred(p: Perf, role: Role): number {
   return pts + fielding(p, r.field);
 }
 
+// One INNINGS of a Test. Excludes the +4 announced-XI award, which is per match, and excludes
+// fielding — see scoreTest for why both are added once at match level.
+function scoreTestInnings(p: Perf, role: Role): number {
+  const r = TEST;
+  let pts = 0;
+  if (p.batBalls > 0 || p.batRuns > 0) {
+    pts += p.batRuns * r.bat.perRun + p.bat4s * r.bat.four + p.bat6s * r.bat.six;
+    // HIGHEST TIER ONLY: "Any player scoring 150 Runs will only get points for that."
+    if (p.batRuns >= 150) pts += r.bat.b150;
+    else if (p.batRuns >= 125) pts += r.bat.b125;
+    else if (p.batRuns >= 100) pts += r.bat.b100;
+    else if (p.batRuns >= 75) pts += r.bat.b75;
+    else if (p.batRuns >= 50) pts += r.bat.b50;
+    else if (p.batRuns >= 25) pts += r.bat.b25;
+  }
+  // Outside the runs/balls gate so a 0-off-0 run-out still takes the duck.
+  if (p.batDismissed && p.batRuns === 0 && (role === "BAT" || role === "WK" || role === "AR")) {
+    pts += r.bat.duck;
+  }
+  if (p.bowlBalls > 0 || p.bowlWickets > 0) {
+    // lbwBowled is deliberately NOT here: it is a flat +8 per wicket with no tier, so it is added
+    // ONCE at match level in scoreTest — exactly like fielding. ESPN reports the credit per
+    // dismissal rather than per innings, so there is no per-innings figure to read, and counting
+    // the match total inside each innings would multiply it by the number of innings.
+    pts += p.bowlWickets * r.bowl.perWkt;
+    if (p.bowlWickets >= 6) pts += r.bowl.h6;
+    else if (p.bowlWickets >= 5) pts += r.bowl.h5;
+    else if (p.bowlWickets >= 4) pts += r.bowl.h4;
+    // No dot, no maiden, no economy in Test.
+  }
+  return pts;
+}
+
+/**
+ * TEST: sum the PER-INNINGS scores, then add the untiered parts once.
+ *
+ * Scoring off the match aggregate is a different, wrong number, because the milestone and haul tiers
+ * live inside an innings: 40 and 40 is two 25-bonuses (+8), not a 75-bonus (+12); 3-for + 3-for earns
+ * no haul where an aggregate 6-for earns +12; and a first-innings duck survives instead of being
+ * forgiven by a second-innings score.
+ *
+ * Fielding and the XI bonus are added ONCE from the match line: Test has no 3-catch bonus, so
+ * fielding is untiered and identical read either way, and ESPN reports catches/run-outs per
+ * dismissal rather than per innings.
+ *
+ * FALLBACK: with no `innings` array this scores the match line as a single innings — exact for a
+ * one-innings appearance, and wrong only in tier distribution. lib/espn.ts marks such a match
+ * provisional rather than letting it pass as reconciled.
+ */
+function scoreTest(p: Perf, role: Role): number {
+  const inns = p.innings && p.innings.length ? p.innings : [p];
+  let pts = inns.reduce((s, ip) => s + scoreTestInnings(ip, role), 0);
+  // Untiered, so read once off the match line: the +4 XI award, the lbw/bowled bonus, and fielding.
+  if (p.played) pts += TEST.xi;
+  pts += p.bowlLbwBowled * TEST.bowl.lbwBowled;
+  return pts + fielding(p, TEST.field);
+}
+
 // D11 fantasy points for one player line. Rounds to 1dp (the sheet stores whole/1dp).
 export function scoreD11(perf: Perf, role: Role, format: ScoreFormat): number {
   const raw =
@@ -227,6 +313,8 @@ export function scoreD11(perf: Perf, role: Role, format: ScoreFormat): number {
       ? scoreOdi(perf, role)
       : format === "HUN"
         ? scoreHundred(perf, role)
-        : scoreT20(perf, role);
+        : format === "TEST"
+          ? scoreTest(perf, role)
+          : scoreT20(perf, role);
   return Math.round(raw * 10) / 10;
 }

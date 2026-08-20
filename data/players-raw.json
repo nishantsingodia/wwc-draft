@@ -9667,7 +9667,7 @@
     "squad_number": 2,
     "team_code": "TENG",
     "efppm": 99.9,
-    "pid": "slug:emilio-gay",
+    "pid": "ci:1148593",
     "cricsheet_id": "aa710a58"
   },
   {
@@ -9728,7 +9728,7 @@
     "squad_number": 8,
     "team_code": "TENG",
     "efppm": 148.6,
-    "pid": "slug:gus-atkinson",
+    "pid": "ci:1039481",
     "cricsheet_id": "70d57519"
   },
   {
@@ -9759,7 +9759,7 @@
     "squad_number": 11,
     "team_code": "TENG",
     "efppm": 86.5,
-    "pid": "slug:shoaib-bashir",
+    "pid": "ci:1334872",
     "cricsheet_id": "e36e9dd3"
   },
   {
@@ -9790,7 +9790,7 @@
     "squad_number": 14,
     "team_code": "TENG",
     "efppm": 123.5,
-    "pid": "slug:ollie-robinson",
+    "pid": "ci:527776",
     "cricsheet_id": "0f3ee070"
   },
   {
@@ -9801,7 +9801,7 @@
     "squad_number": 15,
     "team_code": "TENG",
     "efppm": 113.3,
-    "pid": "slug:matthew-fisher",
+    "pid": "ci:639080",
     "cricsheet_id": "8f2dfebf"
   },
   {
@@ -9812,7 +9812,7 @@
     "squad_number": 1,
     "team_code": "TPAK",
     "efppm": 106.1,
-    "pid": "slug:abdullah-shafique",
+    "pid": "ci:922941",
     "cricsheet_id": "fc2fffb5"
   },
   {
@@ -9823,7 +9823,7 @@
     "squad_number": 2,
     "team_code": "TPAK",
     "efppm": 118.0,
-    "pid": "slug:imam-ul-haq",
+    "pid": "ci:568276",
     "cricsheet_id": "40c041ea"
   },
   {
@@ -9834,7 +9834,7 @@
     "squad_number": 3,
     "team_code": "TPAK",
     "efppm": 110.9,
-    "pid": "slug:shan-masood",
+    "pid": "ci:233901",
     "cricsheet_id": "6843a783"
   },
   {
@@ -9845,7 +9845,7 @@
     "squad_number": 4,
     "team_code": "TPAK",
     "efppm": 123.2,
-    "pid": "slug:babar-azam",
+    "pid": "ci:348144",
     "cricsheet_id": "8a75e999"
   },
   {
@@ -9856,7 +9856,7 @@
     "squad_number": 5,
     "team_code": "TPAK",
     "efppm": 105.6,
-    "pid": "slug:saud-shakeel",
+    "pid": "ci:652687",
     "cricsheet_id": "d07c1b2f"
   },
   {
@@ -9867,7 +9867,7 @@
     "squad_number": 6,
     "team_code": "TPAK",
     "efppm": 129.4,
-    "pid": "slug:mohammad-rizwan",
+    "pid": "ci:323389",
     "cricsheet_id": "2f26ac1a"
   },
   {
@@ -9878,7 +9878,7 @@
     "squad_number": 7,
     "team_code": "TPAK",
     "efppm": 123.9,
-    "pid": "slug:salman-ali-agha",
+    "pid": "ci:623977",
     "cricsheet_id": "89c16049"
   },
   {
@@ -9889,7 +9889,7 @@
     "squad_number": 8,
     "team_code": "TPAK",
     "efppm": 175.4,
-    "pid": "slug:sajid-khan",
+    "pid": "ci:1062812",
     "cricsheet_id": "bbc192a4"
   },
   {
@@ -9900,7 +9900,7 @@
     "squad_number": 9,
     "team_code": "TPAK",
     "efppm": 138.8,
-    "pid": "slug:mohammad-abbas",
+    "pid": "ci:389666",
     "cricsheet_id": "a089f93f"
   },
   {
@@ -9911,7 +9911,7 @@
     "squad_number": 10,
     "team_code": "TPAK",
     "efppm": 98.6,
-    "pid": "slug:ali-usman",
+    "pid": "ci:681099",
     "cricsheet_id": "bb194908"
   },
   {
@@ -9922,7 +9922,7 @@
     "squad_number": 11,
     "team_code": "TPAK",
     "efppm": 124.4,
-    "pid": "slug:khurram-shahzad",
+    "pid": "ci:1159495",
     "cricsheet_id": "27c5715d"
   },
   {
@@ -9933,7 +9933,7 @@
     "squad_number": 12,
     "team_code": "TPAK",
     "efppm": 98.8,
-    "pid": "slug:azan-awais",
+    "pid": "ci:1339355",
     "cricsheet_id": "89f1d2d6"
   },
   {
@@ -9944,7 +9944,7 @@
     "squad_number": 13,
     "team_code": "TPAK",
     "efppm": 100.8,
-    "pid": "slug:awais-zafar",
+    "pid": "ci:1161029",
     "cricsheet_id": "dbb23cba"
   },
   {
@@ -9955,7 +9955,7 @@
     "squad_number": 14,
     "team_code": "TPAK",
     "efppm": 130.7,
-    "pid": "slug:aamir-jamal",
+    "pid": "ci:793441",
     "cricsheet_id": "a8e54ef4"
   },
   {
@@ -9966,7 +9966,7 @@
     "squad_number": 15,
     "team_code": "TPAK",
     "efppm": 73.7,
-    "pid": "slug:mohammad-ali",
+    "pid": "ci:1158175",
     "cricsheet_id": "a86a37ab"
   },
   {
@@ -9977,7 +9977,7 @@
     "squad_number": 16,
     "team_code": "TPAK",
     "efppm": 80.6,
-    "pid": "slug:ubaid-shah",
+    "pid": "ci:1404712",
     "cricsheet_id": "cc535250"
   },
   {
@@ -9988,7 +9988,7 @@
     "squad_number": 17,
     "team_code": "TPAK",
     "efppm": 111.0,
-    "pid": "slug:ghazi-ghori",
+    "pid": "ci:1295902",
     "cricsheet_id": "28b61a48"
   }
 ]

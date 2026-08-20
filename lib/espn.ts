@@ -347,9 +347,13 @@ function scoreFormatOf(match: Match): ScoreFormat {
   const f = (match.format || "").toUpperCase();
   if (f === "ODI") return "ODI";
   if (f === "HUN") return "HUN";
+  if (f === "TEST") return "TEST";
   if (f === "T20") return "T20";
   if (/odi/i.test(match.key)) return "ODI";
   if (/^THM|^THW/i.test(match.key)) return "HUN";
+  // Red ball must be recognised by key too, because the fall-through below is T20 — an unrecognised
+  // Test would be scored with T20 rules (wicket +25, dot balls, SR/econ bands) and nothing would say so.
+  if (/_TEST\d*$/i.test(match.key)) return "TEST";
   return "T20";
 }
 
@@ -386,14 +390,54 @@ function roleFromPosition(abbr: string): Role {
 // `period` stays IN (Number(undefined)||0 = 0), because dropping a line we can't date would be
 // this file's own bug class — an absence deciding a value.
 const SCORING_PERIODS = 2;
+// RED BALL: periods 3 and 4 are the SECOND innings of each side, not a super over, so a Test must
+// read up to 4. Keeping the white-ball cap at 2 is what still excludes super-overs there (D11 awards
+// no super-over points). Both readers below take this from the same helper so they cannot disagree.
+const TEST_SCORING_PERIODS = 4;
+const scoringPeriodsFor = (fmt: ScoreFormat) =>
+  fmt === "TEST" ? TEST_SCORING_PERIODS : SCORING_PERIODS;
+
+/**
+ * PER-INNINGS stats for red ball: period number → that innings' stat map.
+ *
+ * flattenStats SUMS across periods on the stated assumption that "a player bats once and bowls in
+ * the other" — true in white ball, FALSE in a Test, where he bats twice and bowls twice. Summing
+ * destroys exactly the distribution Dream11's Test milestone and haul tiers are evaluated on, so
+ * red ball needs the periods kept apart.
+ */
+function statsByPeriod(
+  linescores: unknown,
+  maxPeriod: number
+): Map<number, Map<string, number>> {
+  const out = new Map<number, Map<string, number>>();
+  for (const period of (linescores as Array<Record<string, unknown>>) ?? []) {
+    const per = Number(period.period) || 0;
+    if (per > maxPeriod) continue;
+    const m = out.get(per) ?? new Map<string, number>();
+    for (const sub of (period.linescores as Array<Record<string, unknown>>) ?? []) {
+      const cats =
+        ((sub.statistics as Record<string, unknown>)?.categories as Array<Record<string, unknown>>) ??
+        [];
+      for (const c of cats) {
+        for (const st of (c.stats as Array<Record<string, unknown>>) ?? []) {
+          const name = st.name as string;
+          const v = typeof st.value === "number" ? st.value : Number(st.value);
+          if (name && Number.isFinite(v)) m.set(name, (m.get(name) ?? 0) + v);
+        }
+      }
+    }
+    out.set(per, m);
+  }
+  return out;
+}
 
 // Flatten one player's stat lines across both innings periods into name → summed value.
 // Each concrete stat we read (runs, balls, wickets, …) is non-zero in only ONE period
 // (a player bats once, bowls/fields in the other), so summing is the correct total.
-function flattenStats(linescores: unknown): Map<string, number> {
+function flattenStats(linescores: unknown, maxPeriod = SCORING_PERIODS): Map<string, number> {
   const out = new Map<string, number>();
   for (const period of (linescores as Array<Record<string, unknown>>) ?? []) {
-    if ((Number(period.period) || 0) > SCORING_PERIODS) continue;
+    if ((Number(period.period) || 0) > maxPeriod) continue;
     for (const sub of (period.linescores as Array<Record<string, unknown>>) ?? []) {
       const cats =
         ((sub.statistics as Record<string, unknown>)?.categories as Array<Record<string, unknown>>) ??
@@ -778,7 +822,8 @@ export function liveScoreFromSummary(
         const a = (p.athlete as Record<string, unknown>) ?? {};
         const disp = ((a.displayName as string) || (a.fullName as string) || "").trim();
         if (!disp) continue;
-        const g = flattenStats(p.linescores);
+        const maxPer = scoringPeriodsFor(fmt);
+        const g = flattenStats(p.linescores, maxPer);
         const get = (k: string) => g.get(k) ?? 0;
         // BOWLING wickets ONLY. `dismissals` is a FIELDING stat (catches + stumpings the
         // player took, e.g. a keeper's 3 catches) — NOT their bowling wickets. Counting it
@@ -807,6 +852,45 @@ export function liveScoreFromSummary(
           runOuts: cred.runOuts,
           directRunOuts: cred.directRunOuts,
         };
+        // RED BALL: attach the per-innings split so scoreTest can evaluate the milestone and haul
+        // tiers inside each innings. Batting/bowling counters come from that innings' own stat map;
+        // fielding and the lbw/bowled credit stay on the match line, which is where scoreTest reads
+        // them (fielding is untiered in Test, and ESPN reports dismissal credits per dismissal, not
+        // per innings). Only innings the player actually appeared in are kept.
+        if (fmt === "TEST") {
+          const byPer = statsByPeriod(p.linescores, maxPer);
+          const splits: Perf[] = [];
+          for (const per of [...byPer.keys()].sort((a, b) => a - b)) {
+            const m = byPer.get(per)!;
+            const gv = (k: string) => m.get(k) ?? 0;
+            const appeared =
+              gv("runs") > 0 || gv("ballsFaced") > 0 || gv("balls") > 0 ||
+              gv("wickets") > 0 || gv("outs") > 0;
+            if (!appeared) continue;
+            splits.push({
+              ...perf,
+              batRuns: gv("runs"),
+              batBalls: gv("ballsFaced"),
+              bat4s: gv("fours"),
+              bat6s: gv("sixes"),
+              batDismissed: gv("outs") > 0,
+              bowlBalls: gv("balls"),
+              bowlRuns: gv("conceded"),
+              bowlWickets: gv("wickets"),
+              bowlDots: gv("dots"),
+              bowlMaidens: gv("maidens"),
+              // Zeroed inside the split: these are added once at match level by scoreTest, so
+              // leaving them populated here would multiply them by the number of innings.
+              bowlLbwBowled: 0,
+              catches: 0,
+              stumpings: 0,
+              runOuts: 0,
+              directRunOuts: 0,
+              innings: undefined,
+            });
+          }
+          if (splits.length) perf.innings = splits;
+        }
         // Run-outs count as "play has begun" too: Lizelle Lee (Hundred W ev1521201) finished
         // with two direct hits and NOTHING with bat or ball — 24 FP that the old test would
         // have called no stats at all.
