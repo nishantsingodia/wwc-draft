@@ -8437,7 +8437,7 @@
     "squad_number": 6,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "uncapped:joshua-james"
+    "pid": "ci:1209191"
   },
   {
     "id": 10664,
@@ -8578,6 +8578,16 @@
     "team_code": "MTANT",
     "efppm": 45.0,
     "pid": "ci:647667"
+  },
+  {
+    "id": 10817,
+    "name": "Hasan Nawaz",
+    "country": "Antigua and Barbuda Falcons",
+    "role": "BAT",
+    "squad_number": 21,
+    "team_code": "MTANT",
+    "efppm": 45.0,
+    "pid": "ci:1398125"
   },
   {
     "id": 10678,
@@ -8777,7 +8787,7 @@
     "squad_number": 20,
     "team_code": "MTJAM",
     "efppm": 45.0,
-    "pid": "uncapped:usman-khan"
+    "pid": "ci:1123428"
   },
   {
     "id": 10698,
@@ -8867,7 +8877,7 @@
     "squad_number": 9,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "uncapped:mikyle-louis"
+    "pid": "ci:1078695"
   },
   {
     "id": 10707,
@@ -9227,7 +9237,7 @@
     "squad_number": 9,
     "team_code": "MTSTL",
     "efppm": 50.0,
-    "pid": "uncapped:amari-goodridge"
+    "pid": "ci:1342545"
   },
   {
     "id": 10743,
@@ -9318,6 +9328,36 @@
     "team_code": "MTSTL",
     "efppm": 50.0,
     "pid": "ci:334621"
+  },
+  {
+    "id": 10820,
+    "name": "John Campbell",
+    "country": "St Lucia Kings",
+    "role": "BAT",
+    "squad_number": 19,
+    "team_code": "MTSTL",
+    "efppm": 45.0,
+    "pid": "ci:348026"
+  },
+  {
+    "id": 10821,
+    "name": "Khari Campbell",
+    "country": "St Lucia Kings",
+    "role": "AR",
+    "squad_number": 20,
+    "team_code": "MTSTL",
+    "efppm": 50.0,
+    "pid": "ci:1443401"
+  },
+  {
+    "id": 10822,
+    "name": "Obus Pienaar",
+    "country": "St Lucia Kings",
+    "role": "AR",
+    "squad_number": 21,
+    "team_code": "MTSTL",
+    "efppm": 50.0,
+    "pid": "ci:328160"
   },
   {
     "id": 10752,
@@ -9478,6 +9518,26 @@
     "team_code": "MTBAR",
     "efppm": 45.0,
     "pid": "ci:1209197"
+  },
+  {
+    "id": 10818,
+    "name": "Kevlon Anderson",
+    "country": "Barbados Tridents",
+    "role": "BAT",
+    "squad_number": 17,
+    "team_code": "MTBAR",
+    "efppm": 45.0,
+    "pid": "ci:1209188"
+  },
+  {
+    "id": 10819,
+    "name": "Rivaldo Clarke",
+    "country": "Barbados Tridents",
+    "role": "WK",
+    "squad_number": 18,
+    "team_code": "MTBAR",
+    "efppm": 45.0,
+    "pid": "ci:1275938"
   },
   {
     "id": 10768,
@@ -9801,7 +9861,7 @@
     "squad_number": 15,
     "team_code": "TENG",
     "efppm": 113.3,
-    "pid": "ci:639080",
+    "pid": "ci:1129635",
     "cricsheet_id": "8f2dfebf"
   },
   {

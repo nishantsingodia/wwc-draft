@@ -56,6 +56,24 @@ if (low.length) {
   for (const r of low) console.log(`   ${r.c}: ${(r.cov * 100).toFixed(0)}%  e.g. ${r.miss.slice(0, 3).join(", ")}`);
 }
 
+// 4. REPORT seeded players on a PLACEHOLDER pid. `uncapped:` / `cs:` / `slug:` is an identity WE
+// invented for a player with no cricinfo anchor, so no live feed can ever emit it: their XI
+// membership falls back to an exact-name match (see matchPlayerInXI / isFeedComparablePid) and
+// their points join by name. That works, but it is the fragile path — a feed respelling drops
+// them. CPL 2026 had 18 such players and 4 of them were judged not-in-XI in matches they played.
+// Anchor them in wwc-points-bot: registry/manual_ci_bridges.json -> build_registry.py ->
+// backfill_draft_pids.py. `npm run check:seed` says which ones the feed already has an id for.
+const placeholders: Record<string, string[]> = {};
+for (const p of players) {
+  if (p.pid && !/^(ci:|espn:)/.test(p.pid)) (placeholders[p.team_code] ??= []).push(p.name);
+}
+const phTeams = Object.entries(placeholders).sort((a, b) => b[1].length - a[1].length);
+if (phTeams.length) {
+  const total = phTeams.reduce((n, [, v]) => n + v.length, 0);
+  console.log(`ℹ️  identity: ${total} seeded player(s) on a PLACEHOLDER pid (name-matched, not identity-matched):`);
+  for (const [c, names] of phTeams) console.log(`   ${c}: ${names.join(", ")}`);
+}
+
 if (fail.length) {
   console.error(`\n❌ check:tours FAILED — ${fail.length} blocker(s):`);
   for (const f of fail) console.error(`   - ${f}`);

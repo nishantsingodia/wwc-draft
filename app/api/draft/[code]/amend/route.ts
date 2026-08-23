@@ -403,6 +403,16 @@ export async function POST(
     if (!approvals.includes(username)) approvals.push(username);
 
     if (approvers.every((u) => approvals.includes(u))) {
+      // Persist the FINAL approver before applying. `approvals.push` above is in-memory only, and
+      // the write below this branch never runs on the last approval — so applyAmendment read the
+      // stale row and recorded `approvedBy: []` on every amendment this app has ever applied. The
+      // disclosure banner exists to say "the friends agreed this"; without the names it says the
+      // opposite of the truth.
+      await db
+        .update(lineupAmendments)
+        .set({ approvals: JSON.stringify(approvals) })
+        .where(eq(lineupAmendments.id, amendment.id));
+      amendment.approvals = JSON.stringify(approvals);
       // Re-validate at APPLY time. Between request and approval another amendment may
       // have landed on this squad, so the "current" it was built against can be stale —
       // applying a ranking that no longer describes this squad would silently drop or

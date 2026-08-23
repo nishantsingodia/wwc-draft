@@ -267,7 +267,24 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
   }
   function chooseReplacement(inKey: string) {
     const outKey = pickingFor;
-    if (!outKey) return;
+    if (!outKey || inKey === outKey) return;
+    // ALREADY IN THIS SQUAD => this is a PROMOTION, not a replacement. Slot them into the rank
+    // being vacated and let the displaced player shift down.
+    //
+    // This used to be a dead-end: the picker disabled every row already in the squad, with
+    // nothing saying why and no hint that dragging was the way. So the one move you most want
+    // after lineups drop — a backup who IS playing takes the slot of a starter who isn't — read
+    // as "the app won't let me". It cost a real contest: CPL Match 14, Joshua James sat on the
+    // bench with 81 points while two non-playing starters held XI slots, and the note filed with
+    // that amendment says "Also joshua james IN, but app not allowing".
+    //
+    // A pure re-order needs no `replacements` entry — validateAmendment accepts the same squad in
+    // a different order, and only ADDED players are checked against the taken set.
+    if (ranking.includes(inKey)) {
+      moveTo(inKey, ranking.indexOf(outKey));
+      setPickingFor(null);
+      return;
+    }
     setReplacements((prev) => [...prev.filter((r) => r.outKey !== outKey), { outKey, inKey }]);
     setRanking((prev) => prev.map((k) => (k === outKey ? inKey : k)));
     setPickingFor(null);
@@ -543,7 +560,9 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
 
           {pickingFor && (
             <p className="rounded-xl bg-gold/10 border border-gold/40 px-3 py-2 text-xs text-gold">
-              Choose the real player to replace <strong>{nameOf(pickingFor)}</strong>.
+              Choose who takes <strong>{nameOf(pickingFor)}</strong>&apos;s slot. Someone already in
+              this squad is <strong>promoted</strong> into it; anyone else <strong>replaces</strong>{" "}
+              them.
             </p>
           )}
           {!data.roster.espnAvailable && (
@@ -561,7 +580,10 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
               {t.players.map((p) => {
                 const mine = ranking.includes(p.key);
                 const blocked = takenElsewhere.has(p.key);
-                const selectable = !!pickingFor && !mine && !blocked;
+                // `mine` is selectable now — tapping promotes them into the slot (see
+                // chooseReplacement). Only a player on someone ELSE's squad, or the row being
+                // replaced, stays disabled.
+                const selectable = !!pickingFor && !blocked && p.key !== pickingFor;
                 return (
                   <button
                     key={p.key}
@@ -612,6 +634,9 @@ export default function AmendPage({ params }: { params: Promise<{ code: string }
                       <p className="text-[10px] text-mist2">
                         <span className={ROLE_TONE[p.role] ?? "text-mist2"}>{p.role}</span>
                         {p.draftedBy && <span> · drafted by {getUserLabel(p.draftedBy)}</span>}
+                        {mine && pickingFor && p.key !== pickingFor && (
+                          <span className="text-gold"> · already yours — tap to promote</span>
+                        )}
                       </p>
                     </div>
                     <span className="text-xs font-mono w-14 text-right shrink-0">

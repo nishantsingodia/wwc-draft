@@ -1,5 +1,5 @@
 import rawPlayers from "@/data/players-raw.json";
-import { fuzzyMatchName } from "./fuzzy-name-match";
+import { fuzzyMatchName, normName } from "./fuzzy-name-match";
 import { resolveEspnPid } from "./registry";
 import teamCodes from "@/data/team-codes.json";
 import playerPhotos from "@/data/player-photos.json";
@@ -30,6 +30,19 @@ export function isPidKey(k: string): boolean {
   // read as "pid'd nobody" and fall back to names. Both failure modes point the same way: an
   // identity key being mistaken for a person's name, which is the one thing this app must never do.
   return /^(ci:|espn:|slug:|uncapped:|cs:)/.test(k) || /^[0-9a-f]{8}$/.test(k);
+}
+
+// Can a LIVE FEED ever report this pid? Only the cricinfo-anchored schemes. resolveEspnPid
+// (lib/registry.ts) turns an ESPN athlete into `ci:<athleteId>` — minting it from the id when
+// the registry mirror doesn't know the player — and lib/espn.ts additionally keys the XI map by
+// `espn:<athleteId>`. Everything else (`uncapped:`, `cs:`, `slug:`, a legacy cricsheet hash) is a
+// placeholder WE invented for a player with no cricinfo id, so no feed can ever emit it.
+//
+// This is the difference between "the feed says he didn't play" and "we never gave him an identity
+// the feed could confirm". Only the first is evidence. See matchPlayerInXI, which is what turned
+// the second into a verdict and cost four CPL players their XI slots.
+export function isFeedComparablePid(pid: string): boolean {
+  return /^(ci:|espn:)/.test(pid);
 }
 
 // One player as seen in the points sheet's self-healing roster (getSheetRoster).
@@ -358,8 +371,42 @@ export function matchPlayerInXI(
     // The namesake guard is fully preserved where it means something: if the feed pid'd anyone on
     // this team, a pid'd player missing from it really is out, and no name can rescue him. That is
     // what stops a benched namesake stealing a slot (LPL's two Fernandos, two Mendises).
-    const feedHasAnyPid = [...teamXI.keys()].some(isPidKey);
-    if (feedHasAnyPid) return { inXI: false, batOrder: 0 };
+    //
+    // ...AND ONLY WHEN OUR OWN PID IS ONE A FEED CAN EVEN CARRY. An ESPN-derived XI map is keyed
+    // by `ci:<athleteId>` / `espn:<athleteId>` (lib/espn.ts, via resolveEspnPid, which MINTS
+    // `ci:<id>` from the athlete id) plus raw names. A `uncapped:` / `cs:` / `slug:` pid is a
+    // PLACEHOLDER we invented for a player with no cricinfo anchor, so it can never appear as a
+    // key in that map — by construction, not by accident. Reading its absence as "he didn't play"
+    // is therefore a category error: it is our own placeholder failing to be a cricinfo id, not
+    // evidence about the player.
+    //
+    // MEASURED, CPL 2026 (23 Aug): 4 seeded players sat on placeholder pids while ESPN carried
+    // their real ids — Joshua James uncapped: vs ci:1209191, Usman Khan vs ci:1123428, Mikyle
+    // Louis vs ci:1078695, Amari Goodridge vs ci:1342545. Each played, each was judged not-in-XI,
+    // so BACKUP_INTELLIGENCE refused to promote them and they scored nothing. 14 more CPL players
+    // are still on placeholder pids, and every tour the points bot does not score (no
+    // cricapi_series ⇒ no registry build ⇒ placeholders never anchored) generates more.
+    //
+    // The namesake guard stays exactly where it was designed to bite: LPL's two Fernandos and two
+    // Mendises are both `ci:`, so for them a pid miss is still final and no name can rescue them.
+    if (isFeedComparablePid(player.pid)) {
+      const feedHasAnyPid = [...teamXI.keys()].some(isPidKey);
+      if (feedHasAnyPid) return { inXI: false, batOrder: 0 };
+    } else {
+      // Placeholder pid: fall back to the name, but ONLY on an EXACT normalized match — never
+      // the full fuzzy ladder. fuzzyMatchName's last rule matches on SURNAME ALONE, with no
+      // initial, so in this very tour "Jeremiah Louis" (uncapped) would have stolen the slot of
+      // his MTSTK squadmate "Mikyle Louis" (ci:) whenever Mikyle played and he didn't. ESPN keys
+      // the map by both displayName and fullName, so exact is enough for the real case while a
+      // same-surname squadmate can never win it.
+      const want = normName(player.displayName);
+      for (const k of teamXI.keys()) {
+        if (!isPidKey(k) && normName(k) === want) {
+          return { inXI: true, batOrder: teamXI.get(k) ?? 0 };
+        }
+      }
+      return { inXI: false, batOrder: 0 };
+    }
   }
   // Only un-pid'd players (legacy / registry-unknown) fall back to fuzzy NAME. Fuzzy
   // never sees a pid key, so a hash can't be mistaken for a name.
@@ -418,7 +465,14 @@ export function getPlayersByTeams(
         const identPid = pid || resolveEspnPid(undefined, name) || undefined;
         if (identPid && seededPids.has(identPid)) continue;
         if (fuzzyMatchName(name, known) !== null) continue;
-        pool.push(syntheticPlayer(team, role, name));
+        // Carry the identity we just resolved. This used to push a pid-LESS synthetic even
+        // though the sheet handed us a Player ID, so a self-healed player joined points and XI
+        // membership by fuzzy NAME only — under the sheet's spelling, which for a newcomer is the
+        // full LEGAL name. CPL 2026 drafted three players that way: "Kevlon Alston Anderson",
+        // "Rivaldo A Clarke", "Khari Campbell" as a BOWL. You cannot find those by searching the
+        // name you know, which is what "I can't see him" actually looks like. With the pid the key
+        // becomes `x|<pid>|…` and points/XI join on identity exactly like a seeded player.
+        pool.push(syntheticPlayer(team, role, name, 99, identPid));
         known.push(name);
         if (identPid) seededPids.add(identPid);
       }
