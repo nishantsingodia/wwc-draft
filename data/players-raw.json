@@ -4161,13 +4161,14 @@
   },
   {
     "id": 10236,
-    "name": "Matthew Fisher",
+    "name": "Matthew John Fisher",
     "country": "New Zealand",
     "role": "BOWL",
     "squad_number": 15,
     "team_code": "MNZ",
     "efppm": 0,
-    "pid": "ci:1129635"
+    "pid": "ci:1129635",
+    "cricsheet_id": "7068c81e"
   },
   {
     "id": 10237,
@@ -6351,13 +6352,14 @@
   },
   {
     "id": 10454,
-    "name": "Matthew Fisher",
+    "name": "Matthew David Fisher",
     "country": "London Spirit",
     "role": "BOWL",
     "squad_number": 14,
     "team_code": "MTLSP",
     "efppm": 45.0,
-    "pid": "ci:1129635"
+    "pid": "ci:639080",
+    "cricsheet_id": "8f2dfebf"
   },
   {
     "id": 10455,
@@ -9855,13 +9857,13 @@
   },
   {
     "id": 10799,
-    "name": "Matthew Fisher",
+    "name": "Matthew David Fisher",
     "country": "England",
     "role": "BOWL",
     "squad_number": 15,
     "team_code": "TENG",
     "efppm": 113.3,
-    "pid": "ci:1129635",
+    "pid": "ci:639080",
     "cricsheet_id": "8f2dfebf"
   },
   {
