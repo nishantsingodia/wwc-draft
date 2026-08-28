@@ -242,5 +242,29 @@
   "TPAK": {
     "flag": "🇵🇰",
     "name": "Pakistan"
+  },
+  "MTROT": {
+    "flag": "🏏",
+    "name": "Rotterdam Dockers"
+  },
+  "MTAMS": {
+    "flag": "🏏",
+    "name": "Amsterdam Flames"
+  },
+  "MTBEL": {
+    "flag": "🏏",
+    "name": "Belfast Wolves"
+  },
+  "MTDUB": {
+    "flag": "🏏",
+    "name": "Dublin Guardians"
+  },
+  "MTEDI": {
+    "flag": "🏏",
+    "name": "Edinburgh Castle Rockers"
+  },
+  "MTGLA": {
+    "flag": "🏏",
+    "name": "Glasgow Cosmic"
   }
 }

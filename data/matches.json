@@ -2090,5 +2090,305 @@
     "date": "2026-09-09T15:30:00+05:30",
     "format": "TEST",
     "venue": "Edgbaston, Birmingham"
+  },
+  {
+    "matchNum": 245,
+    "key": "ETPL_M1_MTROT_MTAMS_Aug26",
+    "gender": "M",
+    "team1": "MTROT",
+    "team2": "MTAMS",
+    "label": "Match 1: MTROT v MTAMS",
+    "date": "2026-08-26T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 246,
+    "key": "ETPL_M2_MTBEL_MTDUB_Aug27",
+    "gender": "M",
+    "team1": "MTBEL",
+    "team2": "MTDUB",
+    "label": "Match 2: MTBEL v MTDUB",
+    "date": "2026-08-27T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 247,
+    "key": "ETPL_M3_MTEDI_MTGLA_Aug27",
+    "gender": "M",
+    "team1": "MTEDI",
+    "team2": "MTGLA",
+    "label": "Match 3: MTEDI v MTGLA",
+    "date": "2026-08-27T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 248,
+    "key": "ETPL_M4_MTAMS_MTEDI_Aug28",
+    "gender": "M",
+    "team1": "MTAMS",
+    "team2": "MTEDI",
+    "label": "Match 4: MTAMS v MTEDI",
+    "date": "2026-08-28T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 249,
+    "key": "ETPL_M5_MTGLA_MTDUB_Aug29",
+    "gender": "M",
+    "team1": "MTGLA",
+    "team2": "MTDUB",
+    "label": "Match 5: MTGLA v MTDUB",
+    "date": "2026-08-29T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 250,
+    "key": "ETPL_M6_MTROT_MTBEL_Aug29",
+    "gender": "M",
+    "team1": "MTROT",
+    "team2": "MTBEL",
+    "label": "Match 6: MTROT v MTBEL",
+    "date": "2026-08-29T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 251,
+    "key": "ETPL_M7_MTAMS_MTBEL_Aug30",
+    "gender": "M",
+    "team1": "MTAMS",
+    "team2": "MTBEL",
+    "label": "Match 7: MTAMS v MTBEL",
+    "date": "2026-08-30T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 252,
+    "key": "ETPL_M8_MTEDI_MTDUB_Aug30",
+    "gender": "M",
+    "team1": "MTEDI",
+    "team2": "MTDUB",
+    "label": "Match 8: MTEDI v MTDUB",
+    "date": "2026-08-30T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 253,
+    "key": "ETPL_M9_MTGLA_MTROT_Sep01",
+    "gender": "M",
+    "team1": "MTGLA",
+    "team2": "MTROT",
+    "label": "Match 9: MTGLA v MTROT",
+    "date": "2026-09-01T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 254,
+    "key": "ETPL_M10_MTDUB_MTROT_Sep02",
+    "gender": "M",
+    "team1": "MTDUB",
+    "team2": "MTROT",
+    "label": "Match 10: MTDUB v MTROT",
+    "date": "2026-09-02T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 255,
+    "key": "ETPL_M11_MTBEL_MTEDI_Sep02",
+    "gender": "M",
+    "team1": "MTBEL",
+    "team2": "MTEDI",
+    "label": "Match 11: MTBEL v MTEDI",
+    "date": "2026-09-02T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 256,
+    "key": "ETPL_M12_MTAMS_MTGLA_Sep03",
+    "gender": "M",
+    "team1": "MTAMS",
+    "team2": "MTGLA",
+    "label": "Match 12: MTAMS v MTGLA",
+    "date": "2026-09-03T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 257,
+    "key": "ETPL_M13_MTGLA_MTBEL_Sep04",
+    "gender": "M",
+    "team1": "MTGLA",
+    "team2": "MTBEL",
+    "label": "Match 13: MTGLA v MTBEL",
+    "date": "2026-09-04T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 258,
+    "key": "ETPL_M14_MTROT_MTEDI_Sep05",
+    "gender": "M",
+    "team1": "MTROT",
+    "team2": "MTEDI",
+    "label": "Match 14: MTROT v MTEDI",
+    "date": "2026-09-05T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 259,
+    "key": "ETPL_M15_MTDUB_MTAMS_Sep05",
+    "gender": "M",
+    "team1": "MTDUB",
+    "team2": "MTAMS",
+    "label": "Match 15: MTDUB v MTAMS",
+    "date": "2026-09-05T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 260,
+    "key": "ETPL_M16_MTGLA_MTEDI_Sep06",
+    "gender": "M",
+    "team1": "MTGLA",
+    "team2": "MTEDI",
+    "label": "Match 16: MTGLA v MTEDI",
+    "date": "2026-09-06T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 261,
+    "key": "ETPL_M17_MTAMS_MTROT_Sep06",
+    "gender": "M",
+    "team1": "MTAMS",
+    "team2": "MTROT",
+    "label": "Match 17: MTAMS v MTROT",
+    "date": "2026-09-06T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 262,
+    "key": "ETPL_M18_MTDUB_MTBEL_Sep09",
+    "gender": "M",
+    "team1": "MTDUB",
+    "team2": "MTBEL",
+    "label": "Match 18: MTDUB v MTBEL",
+    "date": "2026-09-09T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 263,
+    "key": "ETPL_M19_MTROT_MTGLA_Sep10",
+    "gender": "M",
+    "team1": "MTROT",
+    "team2": "MTGLA",
+    "label": "Match 19: MTROT v MTGLA",
+    "date": "2026-09-10T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 264,
+    "key": "ETPL_M20_MTBEL_MTAMS_Sep10",
+    "gender": "M",
+    "team1": "MTBEL",
+    "team2": "MTAMS",
+    "label": "Match 20: MTBEL v MTAMS",
+    "date": "2026-09-10T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 265,
+    "key": "ETPL_M21_MTDUB_MTEDI_Sep11",
+    "gender": "M",
+    "team1": "MTDUB",
+    "team2": "MTEDI",
+    "label": "Match 21: MTDUB v MTEDI",
+    "date": "2026-09-11T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 266,
+    "key": "ETPL_M22_MTBEL_MTROT_Sep12",
+    "gender": "M",
+    "team1": "MTBEL",
+    "team2": "MTROT",
+    "label": "Match 22: MTBEL v MTROT",
+    "date": "2026-09-12T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 267,
+    "key": "ETPL_M23_MTDUB_MTGLA_Sep12",
+    "gender": "M",
+    "team1": "MTDUB",
+    "team2": "MTGLA",
+    "label": "Match 23: MTDUB v MTGLA",
+    "date": "2026-09-12T19:05:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 268,
+    "key": "ETPL_M24_MTEDI_MTAMS_Sep13",
+    "gender": "M",
+    "team1": "MTEDI",
+    "team2": "MTAMS",
+    "label": "Match 24: MTEDI v MTAMS",
+    "date": "2026-09-13T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 269,
+    "key": "ETPL_M25_MTBEL_MTGLA_Sep13",
+    "gender": "M",
+    "team1": "MTBEL",
+    "team2": "MTGLA",
+    "label": "Match 25: MTBEL v MTGLA",
+    "date": "2026-09-13T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 270,
+    "key": "ETPL_M26_MTAMS_MTDUB_Sep15",
+    "gender": "M",
+    "team1": "MTAMS",
+    "team2": "MTDUB",
+    "label": "Match 26: MTAMS v MTDUB",
+    "date": "2026-09-15T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 271,
+    "key": "ETPL_M27_MTEDI_MTROT_Sep15",
+    "gender": "M",
+    "team1": "MTEDI",
+    "team2": "MTROT",
+    "label": "Match 27: MTEDI v MTROT",
+    "date": "2026-09-15T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 272,
+    "key": "ETPL_M28_MTGLA_MTAMS_Sep16",
+    "gender": "M",
+    "team1": "MTGLA",
+    "team2": "MTAMS",
+    "label": "Match 28: MTGLA v MTAMS",
+    "date": "2026-09-16T18:45:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 273,
+    "key": "ETPL_M29_MTEDI_MTBEL_Sep17",
+    "gender": "M",
+    "team1": "MTEDI",
+    "team2": "MTBEL",
+    "label": "Match 29: MTEDI v MTBEL",
+    "date": "2026-09-17T15:00:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 274,
+    "key": "ETPL_M30_MTROT_MTDUB_Sep17",
+    "gender": "M",
+    "team1": "MTROT",
+    "team2": "MTDUB",
+    "label": "Match 30: MTROT v MTDUB",
+    "date": "2026-09-17T18:45:00+05:30",
+    "format": "T20"
   }
 ]

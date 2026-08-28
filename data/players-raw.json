@@ -10052,5 +10052,995 @@
     "efppm": 111.0,
     "pid": "ci:1295902",
     "cricsheet_id": "28b61a48"
+  },
+  {
+    "id": 10823,
+    "name": "Faf du Plessis",
+    "country": "Rotterdam Dockers",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:44828"
+  },
+  {
+    "id": 10824,
+    "name": "Jasper Davidson",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "uncapped:jasper-davidson"
+  },
+  {
+    "id": 10825,
+    "name": "Aneurin Donald",
+    "country": "Rotterdam Dockers",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:562281"
+  },
+  {
+    "id": 10826,
+    "name": "Heinrich Klaasen",
+    "country": "Rotterdam Dockers",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:436757"
+  },
+  {
+    "id": 10827,
+    "name": "Ryan Klein",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "uncapped:ryan-klein"
+  },
+  {
+    "id": 10828,
+    "name": "Sandeep Lamichhane",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:960361"
+  },
+  {
+    "id": 10829,
+    "name": "Michael Levitt",
+    "country": "Rotterdam Dockers",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:1071504"
+  },
+  {
+    "id": 10830,
+    "name": "Ben McDermott",
+    "country": "Rotterdam Dockers",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:603410"
+  },
+  {
+    "id": 10831,
+    "name": "Ben Manenti",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:1065115"
+  },
+  {
+    "id": 10832,
+    "name": "Jai Moondra",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:1448923"
+  },
+  {
+    "id": 10833,
+    "name": "Anrich Nortje",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:481979"
+  },
+  {
+    "id": 10834,
+    "name": "Shubham Ranjane",
+    "country": "Rotterdam Dockers",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "MTROT",
+    "efppm": 50.0,
+    "pid": "ci:554701"
+  },
+  {
+    "id": 10835,
+    "name": "Saqib Zulfiqar",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:526481"
+  },
+  {
+    "id": 10836,
+    "name": "Logan van Beek",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:440522"
+  },
+  {
+    "id": 10837,
+    "name": "Roelof van der Merwe",
+    "country": "Rotterdam Dockers",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:47850"
+  },
+  {
+    "id": 10838,
+    "name": "Vikramjit Singh",
+    "country": "Rotterdam Dockers",
+    "role": "BAT",
+    "squad_number": 16,
+    "team_code": "MTROT",
+    "efppm": 45.0,
+    "pid": "ci:1153767"
+  },
+  {
+    "id": 10839,
+    "name": "David Wiese",
+    "country": "Rotterdam Dockers",
+    "role": "AR",
+    "squad_number": 17,
+    "team_code": "MTROT",
+    "efppm": 50.0,
+    "pid": "ci:221140"
+  },
+  {
+    "id": 10840,
+    "name": "Scott Edwards",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:1127317"
+  },
+  {
+    "id": 10841,
+    "name": "Ali Hasan",
+    "country": "Amsterdam Flames",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:1323418"
+  },
+  {
+    "id": 10842,
+    "name": "Michael Bracewell",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:326968"
+  },
+  {
+    "id": 10843,
+    "name": "Curtis Campher",
+    "country": "Amsterdam Flames",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTAMS",
+    "efppm": 50.0,
+    "pid": "ci:595921"
+  },
+  {
+    "id": 10844,
+    "name": "Tim David",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:892749"
+  },
+  {
+    "id": 10845,
+    "name": "Bas de Leede",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:1036191"
+  },
+  {
+    "id": 10846,
+    "name": "Aryan Dutt",
+    "country": "Amsterdam Flames",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:1195672"
+  },
+  {
+    "id": 10847,
+    "name": "Richard Gleeson",
+    "country": "Amsterdam Flames",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:473191"
+  },
+  {
+    "id": 10848,
+    "name": "Kyle Klein",
+    "country": "Amsterdam Flames",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:1195670"
+  },
+  {
+    "id": 10849,
+    "name": "Jordan Neill",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "uncapped:jordan-neill"
+  },
+  {
+    "id": 10850,
+    "name": "Max O'Dowd",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:643197"
+  },
+  {
+    "id": 10851,
+    "name": "David Payne",
+    "country": "Amsterdam Flames",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:362710"
+  },
+  {
+    "id": 10852,
+    "name": "Tim Pringle",
+    "country": "Amsterdam Flames",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTAMS",
+    "efppm": 50.0,
+    "pid": "ci:1193548"
+  },
+  {
+    "id": 10853,
+    "name": "Ajinkya Rahane",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:277916"
+  },
+  {
+    "id": 10854,
+    "name": "Yuvraj Samra",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:1419054"
+  },
+  {
+    "id": 10855,
+    "name": "Steven Smith",
+    "country": "Amsterdam Flames",
+    "role": "BAT",
+    "squad_number": 16,
+    "team_code": "MTAMS",
+    "efppm": 45.0,
+    "pid": "ci:267192"
+  },
+  {
+    "id": 10856,
+    "name": "Glenn Maxwell",
+    "country": "Belfast Wolves",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:325026"
+  },
+  {
+    "id": 10857,
+    "name": "Mark Adair",
+    "country": "Belfast Wolves",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:526441"
+  },
+  {
+    "id": 10858,
+    "name": "Mark Chapman",
+    "country": "Belfast Wolves",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTBEL",
+    "efppm": 50.0,
+    "pid": "ci:438563"
+  },
+  {
+    "id": 10859,
+    "name": "Devon Conway",
+    "country": "Belfast Wolves",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:379140"
+  },
+  {
+    "id": 10860,
+    "name": "Gavin Hoey",
+    "country": "Belfast Wolves",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:1195662"
+  },
+  {
+    "id": 10861,
+    "name": "Matthew Humphreys",
+    "country": "Belfast Wolves",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:1263361"
+  },
+  {
+    "id": 10862,
+    "name": "Chris Jordan",
+    "country": "Belfast Wolves",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:288992"
+  },
+  {
+    "id": 10863,
+    "name": "Crishan Kalugamage",
+    "country": "Belfast Wolves",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:1118836"
+  },
+  {
+    "id": 10864,
+    "name": "Fred Klaassen",
+    "country": "Belfast Wolves",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:1104703"
+  },
+  {
+    "id": 10865,
+    "name": "Harry Manenti",
+    "country": "Belfast Wolves",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MTBEL",
+    "efppm": 50.0,
+    "pid": "uncapped:harry-manenti"
+  },
+  {
+    "id": 10866,
+    "name": "David Miller",
+    "country": "Belfast Wolves",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:321777"
+  },
+  {
+    "id": 10867,
+    "name": "Saurabh Netravalkar",
+    "country": "Belfast Wolves",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:398513"
+  },
+  {
+    "id": 10868,
+    "name": "Alex Roy",
+    "country": "Belfast Wolves",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTBEL",
+    "efppm": 50.0,
+    "pid": "uncapped:alex-roy"
+  },
+  {
+    "id": 10869,
+    "name": "Paul Stirling",
+    "country": "Belfast Wolves",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:303427"
+  },
+  {
+    "id": 10870,
+    "name": "Tim Tector",
+    "country": "Belfast Wolves",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:1195143"
+  },
+  {
+    "id": 10871,
+    "name": "Lorcan Tucker",
+    "country": "Belfast Wolves",
+    "role": "BAT",
+    "squad_number": 16,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:928057"
+  },
+  {
+    "id": 10872,
+    "name": "Zainullah Ihsan",
+    "country": "Belfast Wolves",
+    "role": "BOWL",
+    "squad_number": 17,
+    "team_code": "MTBEL",
+    "efppm": 45.0,
+    "pid": "ci:1452277"
+  },
+  {
+    "id": 10873,
+    "name": "Ravichandran Ashwin",
+    "country": "Dublin Guardians",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:26421"
+  },
+  {
+    "id": 10874,
+    "name": "Ben Calitz",
+    "country": "Dublin Guardians",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:1193295"
+  },
+  {
+    "id": 10875,
+    "name": "Noah Croes",
+    "country": "Dublin Guardians",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:1191381"
+  },
+  {
+    "id": 10876,
+    "name": "George Dockrell",
+    "country": "Dublin Guardians",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTDUB",
+    "efppm": 50.0,
+    "pid": "ci:348034"
+  },
+  {
+    "id": 10877,
+    "name": "Chris Greaves",
+    "country": "Dublin Guardians",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "uncapped:chris-greaves"
+  },
+  {
+    "id": 10878,
+    "name": "Harmeet Singh",
+    "country": "Dublin Guardians",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:422847"
+  },
+  {
+    "id": 10879,
+    "name": "Peter Hatzoglou",
+    "country": "Dublin Guardians",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:1191384"
+  },
+  {
+    "id": 10880,
+    "name": "Matt Hollard",
+    "country": "Dublin Guardians",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:1490554"
+  },
+  {
+    "id": 10881,
+    "name": "Sanjay Krishnamurthi",
+    "country": "Dublin Guardians",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MTDUB",
+    "efppm": 50.0,
+    "pid": "ci:1277627"
+  },
+  {
+    "id": 10882,
+    "name": "Josh Little",
+    "country": "Dublin Guardians",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:928067"
+  },
+  {
+    "id": 10883,
+    "name": "Daryl Mitchell",
+    "country": "Dublin Guardians",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:381743"
+  },
+  {
+    "id": 10884,
+    "name": "Muhammad Waseem",
+    "country": "Dublin Guardians",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:1241277"
+  },
+  {
+    "id": 10885,
+    "name": "Vijay Shankar",
+    "country": "Dublin Guardians",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTDUB",
+    "efppm": 50.0,
+    "pid": "ci:477021"
+  },
+  {
+    "id": 10886,
+    "name": "Harry Tector",
+    "country": "Dublin Guardians",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:961407"
+  },
+  {
+    "id": 10887,
+    "name": "James Vince",
+    "country": "Dublin Guardians",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:296597"
+  },
+  {
+    "id": 10888,
+    "name": "Chris Wood",
+    "country": "Dublin Guardians",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "ci:310525"
+  },
+  {
+    "id": 10889,
+    "name": "Craig Young",
+    "country": "Dublin Guardians",
+    "role": "BOWL",
+    "squad_number": 17,
+    "team_code": "MTDUB",
+    "efppm": 45.0,
+    "pid": "uncapped:craig-young"
+  },
+  {
+    "id": 10890,
+    "name": "Mitchell Santner",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:502714"
+  },
+  {
+    "id": 10891,
+    "name": "Ross Adair",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:468573"
+  },
+  {
+    "id": 10892,
+    "name": "Trent Boult",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:277912"
+  },
+  {
+    "id": 10893,
+    "name": "Tom Curran",
+    "country": "Edinburgh Castle Rockers",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTEDI",
+    "efppm": 50.0,
+    "pid": "ci:550235"
+  },
+  {
+    "id": 10894,
+    "name": "Gareth Delany",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:1099379"
+  },
+  {
+    "id": 10895,
+    "name": "Laurie Evans",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:256956"
+  },
+  {
+    "id": 10896,
+    "name": "Andries Gous",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:485379"
+  },
+  {
+    "id": 10897,
+    "name": "Jack Jarvis",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:1278263"
+  },
+  {
+    "id": 10898,
+    "name": "Ollie Jones",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "uncapped:ollie-jones"
+  },
+  {
+    "id": 10899,
+    "name": "Finlay McCreath",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:964085"
+  },
+  {
+    "id": 10900,
+    "name": "Brandon McMullen",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:949473"
+  },
+  {
+    "id": 10901,
+    "name": "Safyaan Sharif",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "uncapped:safyaan-sharif"
+  },
+  {
+    "id": 10902,
+    "name": "JJ Smuts",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:280490"
+  },
+  {
+    "id": 10903,
+    "name": "Sean Solia",
+    "country": "Edinburgh Castle Rockers",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MTEDI",
+    "efppm": 50.0,
+    "pid": "ci:707109"
+  },
+  {
+    "id": 10904,
+    "name": "Andrew Tye",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:459508"
+  },
+  {
+    "id": 10905,
+    "name": "Rushil Ugarkar",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:1441684"
+  },
+  {
+    "id": 10906,
+    "name": "Mark Watt",
+    "country": "Edinburgh Castle Rockers",
+    "role": "BOWL",
+    "squad_number": 17,
+    "team_code": "MTEDI",
+    "efppm": 45.0,
+    "pid": "ci:659081"
+  },
+  {
+    "id": 10907,
+    "name": "Ali Khan",
+    "country": "Glasgow Cosmic",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:927119"
+  },
+  {
+    "id": 10908,
+    "name": "Richie Berrington",
+    "country": "Glasgow Cosmic",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:25490"
+  },
+  {
+    "id": 10909,
+    "name": "Matthew Cross",
+    "country": "Glasgow Cosmic",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:417268"
+  },
+  {
+    "id": 10910,
+    "name": "Brad Currie",
+    "country": "Glasgow Cosmic",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:1000791"
+  },
+  {
+    "id": 10911,
+    "name": "Oliver Davidson",
+    "country": "Glasgow Cosmic",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "uncapped:oliver-davidson"
+  },
+  {
+    "id": 10912,
+    "name": "Moises Henriques",
+    "country": "Glasgow Cosmic",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTGLA",
+    "efppm": 50.0,
+    "pid": "ci:5961"
+  },
+  {
+    "id": 10913,
+    "name": "Michael Leask",
+    "country": "Glasgow Cosmic",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTGLA",
+    "efppm": 50.0,
+    "pid": "ci:414966"
+  },
+  {
+    "id": 10914,
+    "name": "Liam Livingstone",
+    "country": "Glasgow Cosmic",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:403902"
+  },
+  {
+    "id": 10915,
+    "name": "Keshav Maharaj",
+    "country": "Glasgow Cosmic",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:267724"
+  },
+  {
+    "id": 10916,
+    "name": "George Munsey",
+    "country": "Glasgow Cosmic",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "uncapped:george-munsey"
+  },
+  {
+    "id": 10917,
+    "name": "Liam Naylor",
+    "country": "Glasgow Cosmic",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "MTGLA",
+    "efppm": 50.0,
+    "pid": "ci:1195683"
+  },
+  {
+    "id": 10918,
+    "name": "James Neesham",
+    "country": "Glasgow Cosmic",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:355269"
+  },
+  {
+    "id": 10919,
+    "name": "Lungi Ngidi",
+    "country": "Glasgow Cosmic",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:542023"
+  },
+  {
+    "id": 10920,
+    "name": "Jason Roy",
+    "country": "Glasgow Cosmic",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:298438"
+  },
+  {
+    "id": 10921,
+    "name": "Paul van Meekeren",
+    "country": "Glasgow Cosmic",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTGLA",
+    "efppm": 45.0,
+    "pid": "ci:348109"
   }
 ]
