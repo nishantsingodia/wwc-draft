@@ -182,9 +182,16 @@ function getDraftStatusLine(
   }
 }
 
-export default async function LobbyPage() {
+export default async function LobbyPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ completed?: string }>;
+}) {
   const username = await getSession();
   if (!username) redirect("/");
+
+  // ?completed=all opens the whole COMPLETED_WINDOW; the default renders only the newest few.
+  const showAllCompleted = (await searchParams).completed === "all";
 
   const now = Math.floor(Date.now() / 1000);
   const allMatches = getAllMatches();
@@ -276,40 +283,6 @@ export default async function LobbyPage() {
     .sort((a, b) => b.deadlineTs - a.deadlineTs)
     .map((m) => m.key);
 
-  // Fetch match points for live drafts and completed matches (in parallel). LIVE matches
-  // are scored IN-APP from ESPN (getMatchPointsMap → getLiveMatchPoints) — zero cricapi, no
-  // bot run, the same provisional numbers the results page shows; completed matches read the
-  // bot's reconciled sheet. `fresh: true` so the manual "Refresh now" always re-pulls a
-  // current ESPN scorecard rather than a ≤20s-cached one.
-  const matchPointsCache = new Map<string, Map<string, number>>();
-  const settledPointsCache = new Map<string, Map<string, number>>();
-  // How many players on a completed match still need a recon decision. Kept separate from the
-  // points delta: a pending revision has NOT moved anything (the bot holds the settled value), so
-  // it must read as "recon open", never as "this result was wrong".
-  const pendingCountCache = new Map<string, number>();
-  const matchFreshness = new Map<string, string>(); // live "Points updated till …" per match
-  const liveToFetch = liveMatches.filter((m) => liveDraftMatchKeys.has(m.key));
-  const completedToFetch = allMatches.filter((m) => myCompletedMatchKeys.includes(m.key));
-  await Promise.all([
-    ...liveToFetch.map(async (m) => {
-      const r = await getMatchPointsMap(m, { live: true, fresh: true });
-      matchPointsCache.set(m.key, r.points);
-      if (r.freshness) matchFreshness.set(m.key, r.freshness);
-    }),
-    ...completedToFetch.map(async (m) => {
-      const r = await getMatchPointsMap(m, { live: false });
-      matchPointsCache.set(m.key, r.points);
-    }),
-    // Settled baseline per completed match, so the Completed tab can flag "this result moved
-    // since we settled" WITHOUT the user opening each contest. One extra cached CSV read.
-    ...completedToFetch.map(async (m) => {
-      settledPointsCache.set(m.key, await getSettledPointsForMatch(m));
-    }),
-    ...completedToFetch.map(async (m) => {
-      pendingCountCache.set(m.key, (await auditMatch(m)).pending.length);
-    }),
-  ]);
-
   // ── Pending lineup amendments, so an approval waiting on you shows up next to the score
   // it would change rather than three taps away. One query for every contest on screen.
   const pendingByContest = await getPendingAmendments(
@@ -340,6 +313,57 @@ export default async function LobbyPage() {
   const matchesNeedingMe = new Set(
     userContests.filter((c) => contestsNeedingMe.has(c.id)).map((c) => c.matchKey)
   );
+
+  // The Completed tab is the only unbounded list on this page: 90 days of a busy league is 145
+  // matches, and EACH one costs a points read, a settled-baseline read and an audit scan, which
+  // put ~600KB and several seconds on every lobby load. Render the newest few and leave the rest
+  // behind ?completed=all — the window itself stays 90 days, so nothing became unreachable.
+  // A match with an amendment waiting on YOUR approval renders regardless of age (same rule the
+  // Upcoming panel uses): a control that silently disappears is worse than a long list.
+  const COMPLETED_PREVIEW = 10;
+  const visibleCompletedKeys = showAllCompleted
+    ? myCompletedMatchKeys
+    : myCompletedMatchKeys.filter((k, i) => i < COMPLETED_PREVIEW || matchesNeedingMe.has(k));
+  const hiddenCompletedCount = myCompletedMatchKeys.length - visibleCompletedKeys.length;
+  // The recon counts below are only as wide as what we actually read, so the copy has to say so
+  // rather than let a scoped "0 changed" read as "nothing moved in 90 days".
+  const countsScoped = hiddenCompletedCount > 0;
+  const visibleCompletedSet = new Set(visibleCompletedKeys);
+
+  // Fetch match points for live drafts and completed matches (in parallel). LIVE matches
+  // are scored IN-APP from ESPN (getMatchPointsMap → getLiveMatchPoints) — zero cricapi, no
+  // bot run, the same provisional numbers the results page shows; completed matches read the
+  // bot's reconciled sheet. `fresh: true` so the manual "Refresh now" always re-pulls a
+  // current ESPN scorecard rather than a ≤20s-cached one.
+  const matchPointsCache = new Map<string, Map<string, number>>();
+  const settledPointsCache = new Map<string, Map<string, number>>();
+  // How many players on a completed match still need a recon decision. Kept separate from the
+  // points delta: a pending revision has NOT moved anything (the bot holds the settled value), so
+  // it must read as "recon open", never as "this result was wrong".
+  const pendingCountCache = new Map<string, number>();
+  const matchFreshness = new Map<string, string>(); // live "Points updated till …" per match
+  const liveToFetch = liveMatches.filter((m) => liveDraftMatchKeys.has(m.key));
+  const completedToFetch = allMatches.filter((m) => visibleCompletedSet.has(m.key));
+  await Promise.all([
+    ...liveToFetch.map(async (m) => {
+      const r = await getMatchPointsMap(m, { live: true, fresh: true });
+      matchPointsCache.set(m.key, r.points);
+      if (r.freshness) matchFreshness.set(m.key, r.freshness);
+    }),
+    ...completedToFetch.map(async (m) => {
+      const r = await getMatchPointsMap(m, { live: false });
+      matchPointsCache.set(m.key, r.points);
+    }),
+    // Settled baseline per completed match, so the Completed tab can flag "this result moved
+    // since we settled" WITHOUT the user opening each contest. One extra cached CSV read.
+    ...completedToFetch.map(async (m) => {
+      settledPointsCache.set(m.key, await getSettledPointsForMatch(m));
+    }),
+    ...completedToFetch.map(async (m) => {
+      pendingCountCache.set(m.key, (await auditMatch(m)).pending.length);
+    }),
+  ]);
+
 
   // ── Which cards open by default.
   // EVERY live match opens. This used to open only the one closest to finishing and collapse
@@ -393,8 +417,11 @@ export default async function LobbyPage() {
     });
 
   // Default tab: prefer Live, then Upcoming, then Completed
-  const defaultTab =
-    liveDraftMatchKeys.size > 0
+  // ?completed=all is a request to look at history, so honour it over the Live/Upcoming default —
+  // otherwise "show older" navigates you to a different tab than the one you clicked on.
+  const defaultTab = showAllCompleted
+    ? "completed"
+    : liveDraftMatchKeys.size > 0
       ? "live"
       : upcomingMatches.length > 0
       ? "upcoming"
@@ -586,10 +613,10 @@ export default async function LobbyPage() {
 
   // How many of the viewer's completed matches have moved since settlement — drives the count on
   // the "Settlement audit" link so the entry point itself says whether it's worth opening.
-  const pendingMatchCount = myCompletedMatchKeys.filter(
+  const pendingMatchCount = visibleCompletedKeys.filter(
     (mk) => (pendingCountCache.get(mk) ?? 0) > 0
   ).length;
-  const movedCount = myCompletedMatchKeys.filter((mk) => {
+  const movedCount = visibleCompletedKeys.filter((mk) => {
     const settled = settledPointsCache.get(mk);
     if (!settled || settled.size === 0) return false;
     const pts = matchPointsCache.get(mk) ?? new Map();
@@ -630,6 +657,9 @@ export default async function LobbyPage() {
                 {pendingMatchCount > 0 && (
                   <> · <span className="text-gold">{pendingMatchCount} recon open</span></>
                 )}
+                {countsScoped && (
+                  <> · <span className="text-mist2">newest {visibleCompletedKeys.length} checked</span></>
+                )}
               </>
             ) : pendingMatchCount > 0 ? (
               <>
@@ -637,6 +667,14 @@ export default async function LobbyPage() {
                   {pendingMatchCount} match{pendingMatchCount === 1 ? "" : "es"} awaiting recon
                 </span>{" "}
                 — nothing has moved yet
+                {countsScoped && (
+                  <> · <span className="text-mist2">newest {visibleCompletedKeys.length} checked</span></>
+                )}
+              </>
+            ) : countsScoped ? (
+              <>
+                Newest {visibleCompletedKeys.length} look settled — audit all{" "}
+                {myCompletedMatchKeys.length}
               </>
             ) : (
               "Compare what each result was settled on vs the sheet now"
@@ -645,7 +683,7 @@ export default async function LobbyPage() {
         </div>
         <span className="text-mist2 text-sm shrink-0">›</span>
       </Link>
-      {myCompletedMatchKeys.map((matchKey) => {
+      {visibleCompletedKeys.map((matchKey) => {
         const match = matchByKey.get(matchKey);
         if (!match) return null;
         const contests = userContestsByMatch.get(matchKey) ?? [];
@@ -715,6 +753,25 @@ export default async function LobbyPage() {
           />
         );
       })}
+
+      {hiddenCompletedCount > 0 && (
+        <Link
+          href="/lobby?completed=all"
+          className="block rounded-xl border border-hair bg-navy2/40 px-3 py-2.5 text-center text-xs text-mist hover:bg-navy2 hover:text-cloud transition-colors"
+        >
+          Show {hiddenCompletedCount} older{" "}
+          {hiddenCompletedCount === 1 ? "match" : "matches"} →
+        </Link>
+      )}
+
+      {showAllCompleted && myCompletedMatchKeys.length > COMPLETED_PREVIEW && (
+        <Link
+          href="/lobby"
+          className="block rounded-xl border border-hair bg-navy2/40 px-3 py-2.5 text-center text-xs text-mist hover:bg-navy2 hover:text-cloud transition-colors"
+        >
+          ← Show only the newest {COMPLETED_PREVIEW}
+        </Link>
+      )}
     </div>
   );
 
