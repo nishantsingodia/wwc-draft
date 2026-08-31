@@ -211,14 +211,18 @@ export default async function LobbyPage() {
     // DB or sheet not available
   }
 
-  // Only surface recently-started matches in Live/Completed (last ~18 days)
-  const RECENT_WINDOW = 18 * 24 * 60 * 60;
-  const recentTs = now - RECENT_WINDOW;
+  // Only surface recently-started matches in Live/Completed. Two windows on purpose: Live stays
+  // tight (~18 days) so a match the bot never scored can't park there forever, while Completed
+  // keeps a full season of history (~90 days).
+  const LIVE_WINDOW = 18 * 24 * 60 * 60;
+  const COMPLETED_WINDOW = 90 * 24 * 60 * 60;
+  const liveRecentTs = now - LIVE_WINDOW;
+  const completedRecentTs = now - COMPLETED_WINDOW;
 
   // Classify matches — "started" means past lock window (match start + 15 min)
   const upcomingMatches = allMatches.filter((m) => effDeadline(m) + LOCK_BUFFER > now);
   const startedMatches = allMatches.filter(
-    (m) => effDeadline(m) + LOCK_BUFFER <= now && m.deadlineTs >= recentTs
+    (m) => effDeadline(m) + LOCK_BUFFER <= now && m.deadlineTs >= liveRecentTs
   );
   const liveMatches = startedMatches.filter((m) => !completedMatchKeys.has(m.key));
 
@@ -265,7 +269,7 @@ export default async function LobbyPage() {
   const myCompletedMatchKeys = [...completedMatchKeys]
     .filter((key) => userContestsByMatch.has(key))
     .map((key) => matchByKey.get(key))
-    .filter((m): m is NonNullable<typeof m> => !!m && m.deadlineTs >= recentTs)
+    .filter((m): m is NonNullable<typeof m> => !!m && m.deadlineTs >= completedRecentTs)
     .sort((a, b) => b.deadlineTs - a.deadlineTs)
     .map((m) => m.key);
 
