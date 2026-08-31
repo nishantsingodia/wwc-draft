@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { getDb, draftContests, contestParticipants, teamSelections, type DraftContest, type TeamSelection } from "@/lib/db";
-import { eq, desc, inArray } from "drizzle-orm";
+import { eq, or, desc, inArray } from "drizzle-orm";
 import Link from "next/link";
 import { getUserLabel } from "@/lib/users";
 import LogoutButton from "@/components/logout-button";
@@ -26,21 +26,24 @@ import { SettlementBadge } from "@/components/settlement-badge";
 
 async function getUserContests(username: string) {
   const db = getDb();
-  const participated = await db
-    .select({ contestId: contestParticipants.contestId })
+
+  // Scope the row cap to THIS user's contests, in SQL. The old shape took the newest 50 rows
+  // GLOBALLY and filtered to the viewer afterwards, which had two bad consequences: a busy month
+  // of other people's drafts could crowd yours out of the lobby entirely, and it hard-capped how
+  // far back the Completed tab could ever reach — one league's worth of August ate all 50 rows,
+  // so COMPLETED_WINDOW below was dead code past ~4 weeks no matter how wide it was set.
+  // Subquery rather than a JS id list so the bound-parameter count stays fixed.
+  const mine = db
+    .select({ id: contestParticipants.contestId })
     .from(contestParticipants)
     .where(eq(contestParticipants.user, username));
 
-  const ids = new Set(participated.map((p) => p.contestId));
-  if (ids.size === 0) return [];
-
-  const all = await db
+  return db
     .select()
     .from(draftContests)
+    .where(or(inArray(draftContests.id, mine), eq(draftContests.createdBy, username)))
     .orderBy(desc(draftContests.createdAt))
-    .limit(50);
-
-  return all.filter((c) => ids.has(c.id) || c.createdBy === username);
+    .limit(400);
 }
 
 /**
