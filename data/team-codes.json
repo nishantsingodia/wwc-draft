@@ -266,5 +266,17 @@
   "MTGLA": {
     "flag": "🏏",
     "name": "Glasgow Cosmic"
+  },
+  "MTNAM": {
+    "flag": "🏏",
+    "name": "Namibia"
+  },
+  "MTSOU": {
+    "flag": "🇿🇦",
+    "name": "South Africa"
+  },
+  "MTZIM2": {
+    "flag": "🏏",
+    "name": "Zimbabwe"
   }
 }

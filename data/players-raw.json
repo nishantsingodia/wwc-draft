@@ -5628,7 +5628,7 @@
     "squad_number": 18,
     "team_code": "LPLDS",
     "efppm": 39.2,
-    "pid": "ci:784375"
+    "pid": "ci:1364327"
   },
   {
     "id": 10382,
@@ -8559,7 +8559,7 @@
     "squad_number": 18,
     "team_code": "MTANT",
     "efppm": 45.0,
-    "pid": "uncapped:sufyan-moqim"
+    "pid": "ci:1329697"
   },
   {
     "id": 10676,
@@ -8869,7 +8869,7 @@
     "squad_number": 8,
     "team_code": "MTSTK",
     "efppm": 45.0,
-    "pid": "uncapped:jeremiah-louis"
+    "pid": "ci:775421"
   },
   {
     "id": 10706,
@@ -9129,7 +9129,7 @@
     "squad_number": 16,
     "team_code": "MTTRI",
     "efppm": 45.0,
-    "pid": "uncapped:abdul-raheem-toppin"
+    "pid": "ci:1511916"
   },
   {
     "id": 10732,
@@ -10101,7 +10101,7 @@
     "squad_number": 5,
     "team_code": "MTROT",
     "efppm": 45.0,
-    "pid": "uncapped:ryan-klein"
+    "pid": "ci:594996"
   },
   {
     "id": 10828,
@@ -10321,7 +10321,7 @@
     "squad_number": 10,
     "team_code": "MTAMS",
     "efppm": 45.0,
-    "pid": "uncapped:jordan-neill"
+    "pid": "ci:1394079"
   },
   {
     "id": 10850,
@@ -10481,7 +10481,7 @@
     "squad_number": 10,
     "team_code": "MTBEL",
     "efppm": 50.0,
-    "pid": "uncapped:harry-manenti"
+    "pid": "ci:1323417"
   },
   {
     "id": 10866,
@@ -11042,5 +11042,445 @@
     "team_code": "MTGLA",
     "efppm": 45.0,
     "pid": "ci:348109"
+  },
+  {
+    "id": 10922,
+    "name": "Gerhard Erasmus",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MTNAM",
+    "efppm": 50.0,
+    "pid": "uncapped:gerhard-erasmus"
+  },
+  {
+    "id": 10923,
+    "name": "Jan Balt",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:1178066"
+  },
+  {
+    "id": 10924,
+    "name": "Jack Brassell",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:1310415"
+  },
+  {
+    "id": 10925,
+    "name": "Jan Frylinck",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTNAM",
+    "efppm": 50.0,
+    "pid": "ci:482478"
+  },
+  {
+    "id": 10926,
+    "name": "Zane Green",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:596664"
+  },
+  {
+    "id": 10927,
+    "name": "Max Heingo",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:1495161"
+  },
+  {
+    "id": 10928,
+    "name": "Malan Kruger",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:574638"
+  },
+  {
+    "id": 10929,
+    "name": "Jan Nicol Loftie-Eaton",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:1071473"
+  },
+  {
+    "id": 10930,
+    "name": "Bernard Scholtz",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:330223"
+  },
+  {
+    "id": 10931,
+    "name": "JJ Smit",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:553821"
+  },
+  {
+    "id": 10932,
+    "name": "Waldo Smith",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "MTNAM",
+    "efppm": 50.0,
+    "pid": "ci:1532519"
+  },
+  {
+    "id": 10933,
+    "name": "Louren Steenkamp",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:596087"
+  },
+  {
+    "id": 10934,
+    "name": "Junior Taanyanda",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTNAM",
+    "efppm": 50.0,
+    "pid": "ci:1542041"
+  },
+  {
+    "id": 10935,
+    "name": "Ruben Trumpelmann",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:698317"
+  },
+  {
+    "id": 10936,
+    "name": "Michael van Lingen",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTNAM",
+    "efppm": 45.0,
+    "pid": "ci:833777"
+  },
+  {
+    "id": 10937,
+    "name": "Alexander Busing-Volschenk",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 16,
+    "team_code": "MTNAM",
+    "efppm": 50.0,
+    "pid": "ci:1234278"
+  },
+  {
+    "id": 10938,
+    "name": "Bjorn Fortuin",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:553249"
+  },
+  {
+    "id": 10939,
+    "name": "Eathan Bosch",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:698343"
+  },
+  {
+    "id": 10940,
+    "name": "Dewald Brevis",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:1070665"
+  },
+  {
+    "id": 10941,
+    "name": "Tony de Zorzi",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:697183"
+  },
+  {
+    "id": 10942,
+    "name": "Connor Esterhuizen",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:1070997"
+  },
+  {
+    "id": 10943,
+    "name": "Rubin Hermann",
+    "country": "South Africa",
+    "role": "WK",
+    "squad_number": 6,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:596097"
+  },
+  {
+    "id": 10944,
+    "name": "Jordan Hermann",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:1255248"
+  },
+  {
+    "id": 10945,
+    "name": "Duan Jansen",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:595954"
+  },
+  {
+    "id": 10946,
+    "name": "Kwena Maphaka",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:1294342"
+  },
+  {
+    "id": 10947,
+    "name": "Nqobani Mokoena",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:1414819"
+  },
+  {
+    "id": 10948,
+    "name": "Nqabayomzi Peter",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:946483"
+  },
+  {
+    "id": 10949,
+    "name": "Lhuan-dre Pretorius",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTSOU",
+    "efppm": 45.0,
+    "pid": "ci:1385640"
+  },
+  {
+    "id": 10950,
+    "name": "Prenelan Subrayen",
+    "country": "South Africa",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTSOU",
+    "efppm": 50.0,
+    "pid": "ci:437438"
+  },
+  {
+    "id": 10951,
+    "name": "Sikandar Raza",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:299572"
+  },
+  {
+    "id": 10952,
+    "name": "Brian Bennett",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "MTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:1071484"
+  },
+  {
+    "id": 10953,
+    "name": "Ryan Burl",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:495964"
+  },
+  {
+    "id": 10954,
+    "name": "Graeme Cremer",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "uncapped:graeme-cremer"
+  },
+  {
+    "id": 10955,
+    "name": "Ben Curran",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:910695"
+  },
+  {
+    "id": 10956,
+    "name": "Brad Evans",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:696127"
+  },
+  {
+    "id": 10957,
+    "name": "Innocent Kaia",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:465327"
+  },
+  {
+    "id": 10958,
+    "name": "Wessly Madhevere",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:938959"
+  },
+  {
+    "id": 10959,
+    "name": "Tadiwanashe Marumani",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:946507"
+  },
+  {
+    "id": 10960,
+    "name": "Wellington Masakadza",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:571703"
+  },
+  {
+    "id": 10961,
+    "name": "Kundai Matigimu",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "uncapped:kundai-matigimu"
+  },
+  {
+    "id": 10962,
+    "name": "Blessing Muzarabani",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:827051"
+  },
+  {
+    "id": 10963,
+    "name": "Dion Myers",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:946517"
+  },
+  {
+    "id": 10964,
+    "name": "Newman Nyamhuri",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1409283"
+  },
+  {
+    "id": 10965,
+    "name": "Tafadzwa Tsiga",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:722321"
   }
 ]

@@ -2390,5 +2390,65 @@
     "label": "Match 30: MTROT v MTDUB",
     "date": "2026-09-17T18:45:00+05:30",
     "format": "T20"
+  },
+  {
+    "matchNum": 275,
+    "key": "NTITS_M1_MTNAM_MTSOU_Aug28",
+    "gender": "M",
+    "team1": "MTNAM",
+    "team2": "MTSOU",
+    "label": "Match 1: MTNAM v MTSOU",
+    "date": "2026-08-28T17:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 276,
+    "key": "NTITS_M2_MTSOU_MTZIM2_Aug29",
+    "gender": "M",
+    "team1": "MTSOU",
+    "team2": "MTZIM2",
+    "label": "Match 2: MTSOU v MTZIM2",
+    "date": "2026-08-29T17:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 277,
+    "key": "NTITS_M3_MTNAM_MTZIM2_Aug31",
+    "gender": "M",
+    "team1": "MTNAM",
+    "team2": "MTZIM2",
+    "label": "Match 3: MTNAM v MTZIM2",
+    "date": "2026-08-31T17:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 278,
+    "key": "NTITS_M4_MTSOU_MTZIM2_Sep01",
+    "gender": "M",
+    "team1": "MTSOU",
+    "team2": "MTZIM2",
+    "label": "Match 4: MTSOU v MTZIM2",
+    "date": "2026-09-01T17:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 279,
+    "key": "NTITS_M5_MTNAM_MTZIM2_Sep03",
+    "gender": "M",
+    "team1": "MTNAM",
+    "team2": "MTZIM2",
+    "label": "Match 5: MTNAM v MTZIM2",
+    "date": "2026-09-03T17:30:00+05:30",
+    "format": "T20"
+  },
+  {
+    "matchNum": 280,
+    "key": "NTITS_M6_MTNAM_MTSOU_Sep04",
+    "gender": "M",
+    "team1": "MTNAM",
+    "team2": "MTSOU",
+    "label": "Match 6: MTNAM v MTSOU",
+    "date": "2026-09-04T17:30:00+05:30",
+    "format": "T20"
   }
 ]
