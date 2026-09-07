@@ -7,6 +7,8 @@ import DeleteDraftButton from "@/components/delete-draft-button";
 import { getUserLabel } from "@/lib/users";
 import { prettifyMatchLabel, getTeamName } from "@/lib/players";
 import type { InningsLine } from "@/lib/live-points";
+import type { Payout } from "@/lib/payout";
+import { PayoutChip, PayoutStrip, PickChip } from "@/components/payout-badges";
 
 /**
  * One match on the lobby, live or completed — everything that used to need a trip to
@@ -26,6 +28,9 @@ export type DraftRow = {
   deletable: boolean;
   users: { user: string; capName: string | null; vcName: string | null; pts: number | null }[];
   pending: PendingSummary[];
+  /** Who picked first + which multiplier this contest earned. Per CONTEST — first pick is a
+   *  property of the draft, not of the match, so a match with two drafts has two of these. */
+  payout: Payout;
 };
 
 export default function LobbyMatch({
@@ -38,6 +43,7 @@ export default function LobbyMatch({
   defaultOpen,
   statusChip,
   actions,
+  payoutProvisional,
 }: {
   match: { key: string; label: string; team1: string; team2: string; dateLabel: string };
   state: "live" | "completed";
@@ -50,8 +56,19 @@ export default function LobbyMatch({
   statusChip?: ReactNode;
   /** Match-level controls for the "···" sheet. */
   actions?: ReactNode;
+  /** This result can still move (recon open, or it already moved since settlement) — so the
+   *  multiplier it earned is not final either, and every badge says so. */
+  payoutProvisional?: boolean;
 }) {
   const isLive = state === "live";
+
+  // Multipliers are a COMPLETED-match idea and are computed per contest. When the match carries
+  // exactly one draft (152 of 162 of them) that contest owns the card, so its badge can headline
+  // the collapsed row and its first-pick chip can sit in the head-to-head. With two or more, a
+  // single headline would be ambiguous about WHICH draft paid, so the badges move down onto each
+  // draft's own row instead.
+  const solo = !isLive && drafts.length === 1 ? drafts[0].payout : null;
+  const soloMultiplier = solo && solo.multiplier !== 1 ? solo : null;
 
   // Head-to-head across every draft on this match: your best total vs the best of anyone
   // else. With one draft (the normal case) that is simply you vs your opponent.
@@ -87,6 +104,9 @@ export default function LobbyMatch({
       tone={state}
       defaultOpen={defaultOpen}
       actions={actions}
+      accent={
+        soloMultiplier ? (soloMultiplier.multiplier === 2 ? "strong" : "soft") : undefined
+      }
       header={
         <>
           <span className="flex items-center gap-1 shrink-0">
@@ -112,12 +132,20 @@ export default function LobbyMatch({
       }
       collapsedRight={
         verdict ? (
-          <span
-            className={`shrink-0 text-[11px] font-bold ${
-              margin! > 0 ? "text-emerald-400" : margin! < 0 ? "text-live" : "text-mist"
-            }`}
-          >
-            {verdict}
+          <span className="shrink-0 flex items-center gap-1.5">
+            {soloMultiplier && (
+              <PayoutChip
+                multiplier={soloMultiplier.multiplier}
+                provisional={payoutProvisional}
+              />
+            )}
+            <span
+              className={`text-[11px] font-bold ${
+                margin! > 0 ? "text-emerald-400" : margin! < 0 ? "text-live" : "text-mist"
+              }`}
+            >
+              {verdict}
+            </span>
           </span>
         ) : null
       }
@@ -144,11 +172,17 @@ export default function LobbyMatch({
         <div className="px-3 pb-2.5">
           <div className="flex justify-between items-end gap-2">
             <div>
-              <p className="text-[10px] text-gold">{getUserLabel(username)} (you)</p>
+              <p className="text-[10px] text-gold flex items-center gap-1.5">
+                {getUserLabel(username)} (you)
+                {solo?.firstPick && <PickChip first={solo.firstPick === username} />}
+              </p>
               <p className="text-xl font-extrabold tabular-nums text-amber-300">{mine.toFixed(1)}</p>
             </div>
             <div className="text-right">
-              <p className="text-[10px] text-mist">{getUserLabel(leader[0])}</p>
+              <p className="text-[10px] text-mist flex items-center gap-1.5 justify-end">
+                {solo?.firstPick && <PickChip first={solo.firstPick === leader[0]} />}
+                {getUserLabel(leader[0])}
+              </p>
               <p className="text-xl font-extrabold tabular-nums text-mist">{leader[1].toFixed(1)}</p>
             </div>
           </div>
@@ -166,6 +200,15 @@ export default function LobbyMatch({
           >
             {verdict}
           </p>
+          {soloMultiplier && (
+            <div className="mt-1.5">
+              <PayoutStrip
+                payout={soloMultiplier}
+                viewer={username}
+                provisional={payoutProvisional}
+              />
+            </div>
+          )}
         </div>
       )}
 
@@ -197,6 +240,10 @@ export default function LobbyMatch({
                 {d.mode === "live" ? "Live" : "Manual"}
               </span>
               <span className="text-mist2 font-mono text-xs">{d.code}</span>
+              {/* Only when the H2H above can't carry it — see `solo` at the top. */}
+              {!isLive && !solo && d.payout.multiplier !== 1 && (
+                <PayoutChip multiplier={d.payout.multiplier} provisional={payoutProvisional} />
+              )}
               <span className="flex-1" />
               {d.deletable && <DeleteDraftButton code={d.code} />}
             </div>
@@ -207,6 +254,7 @@ export default function LobbyMatch({
                     {getUserLabel(user)}
                     {user === username ? " (you)" : ""}
                   </span>
+                  {!isLive && !solo && d.payout.firstPick === user && <PickChip first compact />}
                   <div className="flex-1 flex items-center gap-1.5 min-w-0 overflow-hidden">
                     {capName ? (
                       <>

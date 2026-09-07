@@ -22,6 +22,7 @@ export default function MatchCard({
   actions,
   defaultOpen = false,
   tone = "live",
+  accent,
 }: {
   /** Crests + title + status line. Always visible, and the tap target for expanding. */
   header: ReactNode;
@@ -33,16 +34,27 @@ export default function MatchCard({
   actions?: ReactNode;
   defaultOpen?: boolean;
   tone?: "live" | "completed";
+  /**
+   * Lifts the card's edge to gold so a result worth finding is visible while scrolling past a
+   * season of them, without opening anything. "strong" adds the glow; "soft" is edge only.
+   * Overrides `tone`'s border — the ONE thing allowed to, and only ever for money.
+   */
+  accent?: "strong" | "soft";
 }) {
   const [open, setOpen] = useState(defaultOpen);
   const [sheet, setSheet] = useState(false);
 
+  const edge =
+    accent === "strong"
+      ? "border-gold/40 glow-gold"
+      : accent === "soft"
+        ? "border-gold/25"
+        : "border-hair";
+
   return (
     <div
-      className={`rounded-2xl border overflow-hidden ${
-        tone === "live"
-          ? "border-hair bg-gradient-to-b from-navy to-ink2"
-          : "border-hair bg-ink2"
+      className={`rounded-2xl border overflow-hidden ${edge} ${
+        tone === "live" ? "bg-gradient-to-b from-navy to-ink2" : "bg-ink2"
       }`}
     >
       <div className="flex items-center gap-2 px-3 py-2.5">

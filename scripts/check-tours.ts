@@ -7,6 +7,7 @@
  * the app actually does. Hard failures are the unambiguous breakers behind the LPL/Hundred saga:
  *   1. a match team code the roster/TEAM_NAMES doesn't know   (→ match never attaches)
  *   2. a gender in play with an EMPTY ESPN series list         (→ live XI + live points can't resolve)
+ *   3. a match with no `tour` slug                             (→ falls out of the lobby's tour filter)
  * Identity resolution is REPORTED (not gated): the real live join resolves by ESPN id first, which
  * this roster-only view can't see, so a low name-only number is the fallback tail, not a break.
  */
@@ -16,7 +17,7 @@ import espnSeries from "../data/espn-series.json";
 import { TEAM_NAMES } from "../lib/players";
 import { resolveEspnPid } from "../lib/registry";
 
-type M = { team1: string; team2: string; gender: string; key: string };
+type M = { team1: string; team2: string; gender: string; key: string; tour?: string };
 const ms = matches as M[];
 const players = roster as Array<{ name: string; pid?: string; team_code: string }>;
 const series = espnSeries as Record<string, string[]>;
@@ -38,7 +39,20 @@ for (const g of gendersUsed) {
   if (!(series[g]?.length)) fail.push(`gender "${g}" is used by matches but data/espn-series.json["${g}"] is empty — live XI + live points can't resolve`);
 }
 
-// 3. REPORT identity resolution per team (name-only path; informational).
+// 3. every match must carry a `tour` slug. Without one it falls back to a DERIVED slug in
+// lib/tours.ts, which is fine for a franchise league or a bilateral but shatters a multi-team
+// event into one bucket per fixture — so an un-stamped match shows up in the lobby's tour
+// filter as its own bogus one-match "tour". tour_sync.py stamps this at ingest; a hand-added
+// fixture needs `npx tsx scripts/backfill-tours.ts` (idempotent — it only fills blanks).
+const untoured = ms.filter((m) => !m.tour);
+if (untoured.length) {
+  fail.push(
+    `${untoured.length} match(es) have no "tour" slug in matches.json ` +
+      `(e.g. ${untoured.slice(0, 3).map((m) => m.key).join(", ")}) — run: npx tsx scripts/backfill-tours.ts`
+  );
+}
+
+// 4. REPORT identity resolution per team (name-only path; informational).
 const byTeam: Record<string, { t: number; r: number; miss: string[] }> = {};
 for (const p of players) {
   if (!p.pid) continue;
@@ -56,7 +70,7 @@ if (low.length) {
   for (const r of low) console.log(`   ${r.c}: ${(r.cov * 100).toFixed(0)}%  e.g. ${r.miss.slice(0, 3).join(", ")}`);
 }
 
-// 4. REPORT seeded players on a PLACEHOLDER pid. `uncapped:` / `cs:` / `slug:` is an identity WE
+// 5. REPORT seeded players on a PLACEHOLDER pid. `uncapped:` / `cs:` / `slug:` is an identity WE
 // invented for a player with no cricinfo anchor, so no live feed can ever emit it: their XI
 // membership falls back to an exact-name match (see matchPlayerInXI / isFeedComparablePid) and
 // their points join by name. That works, but it is the fragile path — a feed respelling drops

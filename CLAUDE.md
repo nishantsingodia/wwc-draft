@@ -74,7 +74,8 @@ Each entry:
   "team1": "ENG",
   "team2": "SL",
   "label": "Match 1: ENG v SL",
-  "date": "2026-06-12T23:00:00+05:30"
+  "date": "2026-06-12T23:00:00+05:30",
+  "tour": "wwc-2026"
 }
 ```
 
@@ -83,6 +84,7 @@ Each entry:
 - `label` — **display only** (shown in lobby/match pages). Use `"Match N: TEAM1 v TEAM2"` for readability, but it has NO role in points matching (that's teams+date — see Step 4). Don't waste time syncing it to the bot's numbering.
 - `team1` / `team2` — team codes. These ARE used for points matching (resolved against the sheet's team tokens), so they must be correct and registered in `lib/players.ts`.
 - `date` — ISO 8601 with IST offset (`+05:30`). The toss/lock time. Lobby flips Upcoming → Live at `date + 15 min` (the `LOCK_BUFFER` editing grace window). Also used (loosely, ±1 day) to disambiguate points lookup.
+- `tour` — the tour's slug, driving the lobby's Completed-tab filter. **`tour_sync.py` writes it at ingest**; a HAND-added fixture needs `npx tsx scripts/backfill-tours.ts` (idempotent — only fills blanks), and `npm run check:tours` fails loud on a gap. It has to be stamped rather than derived: a franchise league is recoverable from its key prefix and a bilateral from its namespaced team codes, but a multi-team event isn't — deriving the WWC's 33 unprefixed keys shatters it into 33 one-match "tours". Display names live in `lib/tours.ts`; an unregistered slug still filters correctly (it just wears a humanized version of itself), so adding it there is optional polish.
 - Knockouts: use `"TBD"` for teams until confirmed, then update just `team1`/`team2`. Note: knockout rows can't be points-matched until real teams are filled in (no team pair to match on).
 
 ---

@@ -20,6 +20,8 @@ import PendingApprovals from "@/components/pending-approvals";
 import { getPlayerByKey, prettifyMatchLabel } from "@/lib/players";
 import TeamLogo from "@/components/team-logo";
 import { calcSelectionPoints } from "@/lib/contest-scoring";
+import { computePayout } from "@/lib/payout";
+import { tourFacets, tourOf } from "@/lib/tours";
 import { getSettledPointsForMatch } from "@/lib/points";
 import { auditMatch } from "@/lib/settlement-audit";
 import { SettlementBadge } from "@/components/settlement-badge";
@@ -185,13 +187,19 @@ function getDraftStatusLine(
 export default async function LobbyPage({
   searchParams,
 }: {
-  searchParams: Promise<{ completed?: string }>;
+  searchParams: Promise<{ completed?: string; tour?: string }>;
 }) {
   const username = await getSession();
   if (!username) redirect("/");
 
   // ?completed=all opens the whole COMPLETED_WINDOW; the default renders only the newest few.
-  const showAllCompleted = (await searchParams).completed === "all";
+  // ?tour=<slug> narrows the Completed tab to one tour. Both are server params rather than
+  // client state because the preview cap and the per-match points reads below both key off the
+  // FILTERED list — filtering after the fact would either cap the wrong ten or fetch all ninety
+  // days up front.
+  const { completed: completedParam, tour: tourParam } = await searchParams;
+  const showAllCompleted = completedParam === "all";
+  const tourFilter = tourParam || null;
 
   const now = Math.floor(Date.now() / 1000);
   const allMatches = getAllMatches();
@@ -276,11 +284,18 @@ export default async function LobbyPage({
 
   // Completed: matches with user drafts, within the recent window, newest first
   const matchByKey = new Map(allMatches.map((m) => [m.key, m]));
-  const myCompletedMatchKeys = [...completedMatchKeys]
+  const myCompletedMatches = [...completedMatchKeys]
     .filter((key) => userContestsByMatch.has(key))
     .map((key) => matchByKey.get(key))
     .filter((m): m is NonNullable<typeof m> => !!m && m.deadlineTs >= completedRecentTs)
-    .sort((a, b) => b.deadlineTs - a.deadlineTs)
+    .sort((a, b) => b.deadlineTs - a.deadlineTs);
+  // Facets come off the UNFILTERED list so the counts are true rather than true-of-what-fits,
+  // and so the chip you're standing on doesn't vanish when it's the only one left.
+  const tourChips = tourFacets(myCompletedMatches);
+  // An unknown ?tour= would silently empty the tab, so fall back to All rather than lie.
+  const activeTour = tourChips.some((t) => t.slug === tourFilter) ? tourFilter : null;
+  const myCompletedMatchKeys = myCompletedMatches
+    .filter((m) => !activeTour || tourOf(m).slug === activeTour)
     .map((m) => m.key);
 
   // ── Pending lineup amendments, so an approval waiting on you shows up next to the score
@@ -398,28 +413,36 @@ export default async function LobbyPage({
     contests.map((c) => {
       const sels = selectionsMap.get(c.id) ?? [];
       const parts = participantsMap.get(c.id) ?? [];
+      const users = parts.map((u) => {
+        const sel = sels.find((s) => s.user === u);
+        return {
+          user: u,
+          capName: sel?.captainKey ? getPlayerByKey(sel.captainKey)?.displayName ?? "—" : null,
+          vcName: sel?.viceCaptainKey ? getPlayerByKey(sel.viceCaptainKey)?.displayName ?? "—" : null,
+          pts: sel ? calcSelectionPoints(sel, c.picksPerUser, matchPts) : null,
+        };
+      });
       return {
         id: c.id,
         code: c.code,
         mode: c.mode,
         deletable: c.createdBy === username && c.status !== "LOCKED",
-        users: parts.map((u) => {
-          const sel = sels.find((s) => s.user === u);
-          return {
-            user: u,
-            capName: sel?.captainKey ? getPlayerByKey(sel.captainKey)?.displayName ?? "—" : null,
-            vcName: sel?.viceCaptainKey ? getPlayerByKey(sel.viceCaptainKey)?.displayName ?? "—" : null,
-            pts: sel ? calcSelectionPoints(sel, c.picksPerUser, matchPts) : null,
-          };
-        }),
+        users,
         pending: pendingByContest.get(c.id) ?? [],
+        // Fed the SAME per-user totals the rows render, so the badge and the numbers under it
+        // can never disagree. LobbyMatch renders it on completed cards only.
+        payout: computePayout({
+          mode: c.mode,
+          draftOrder: c.draftOrder,
+          totals: users.map(({ user, pts }) => ({ user, pts })),
+        }),
       };
     });
 
   // Default tab: prefer Live, then Upcoming, then Completed
   // ?completed=all is a request to look at history, so honour it over the Live/Upcoming default —
   // otherwise "show older" navigates you to a different tab than the one you clicked on.
-  const defaultTab = showAllCompleted
+  const defaultTab = showAllCompleted || activeTour
     ? "completed"
     : liveDraftMatchKeys.size > 0
       ? "live"
@@ -632,8 +655,51 @@ export default async function LobbyPage({
   // Same card as LIVE — the final scoreline, the head-to-head, the drafts — plus the recon
   // state, which matters MORE here than live: a completed result can still move under you
   // when the bot reconciles, and that is exactly what the settlement badge reports.
+  // Preserves the tour you're standing in when following "show older" / "show newest".
+  const completedHref = (opts: { all?: boolean; tour?: string | null }) => {
+    const q = new URLSearchParams();
+    if (opts.all) q.set("completed", "all");
+    const t = opts.tour === undefined ? activeTour : opts.tour;
+    if (t) q.set("tour", t);
+    return q.size ? `/lobby?${q}` : "/lobby";
+  };
+
   const completedContent = (
     <div className="space-y-3">
+      {/* Tour filter. Deliberately NOT the gold segmented control the tab bar above uses — a
+          second one would compete for the same job. Only tours you actually have drafts in
+          appear, most-recent tour first. */}
+      {tourChips.length > 1 && (
+        <div className="-mx-4 px-4 flex gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {[
+            { slug: null, short: "All", label: "Every tour", count: myCompletedMatches.length },
+            ...tourChips,
+          ].map(
+            (t) => {
+              const on = t.slug === activeTour;
+              return (
+                <Link
+                  key={t.slug ?? "all"}
+                  href={completedHref({ all: showAllCompleted, tour: t.slug })}
+                  title={t.label}
+                  className={`inline-flex items-center gap-1.5 shrink-0 min-h-10 px-3.5 rounded-full border text-[11px] whitespace-nowrap transition-colors ${
+                    on
+                      ? "border-gold/50 bg-gold/15 text-gold font-bold"
+                      : "border-hair bg-navy2/40 text-mist font-semibold hover:text-cloud"
+                  }`}
+                >
+                  <span>{t.short}</span>
+                  <span
+                    className={`font-mono tabular-nums ${on ? "text-gold/65" : "text-mist2"}`}
+                  >
+                    {t.count}
+                  </span>
+                </Link>
+              );
+            }
+          )}
+        </div>
+      )}
       <Link
         href="/audit"
         className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 transition-colors ${
@@ -719,6 +785,9 @@ export default async function LobbyPage({
             drafts={draftRowsFor(contests, matchPts)}
             username={username}
             defaultOpen={expandedKeys.has(matchKey)}
+            // A multiplier read off points that can still move is not final either — same signal
+            // the settlement badge beside it uses, so the two can't tell different stories.
+            payoutProvisional={hasReconNews}
             statusChip={
               hasReconNews ? (
                 <SettlementBadge
@@ -756,7 +825,7 @@ export default async function LobbyPage({
 
       {hiddenCompletedCount > 0 && (
         <Link
-          href="/lobby?completed=all"
+          href={completedHref({ all: true })}
           className="block rounded-xl border border-hair bg-navy2/40 px-3 py-2.5 text-center text-xs text-mist hover:bg-navy2 hover:text-cloud transition-colors"
         >
           Show {hiddenCompletedCount} older{" "}
@@ -766,7 +835,7 @@ export default async function LobbyPage({
 
       {showAllCompleted && myCompletedMatchKeys.length > COMPLETED_PREVIEW && (
         <Link
-          href="/lobby"
+          href={completedHref({})}
           className="block rounded-xl border border-hair bg-navy2/40 px-3 py-2.5 text-center text-xs text-mist hover:bg-navy2 hover:text-cloud transition-colors"
         >
           ← Show only the newest {COMPLETED_PREVIEW}

@@ -15,6 +15,8 @@ import TeamLogo from "@/components/team-logo";
 import { auctionOwnersFor, tourForTeamCode, type AuctionOwner } from "@/lib/auction-ownership";
 import { ReasonChip } from "@/components/settlement-badge";
 import type { AuditReason } from "@/lib/audit-reasons";
+import { computePayout } from "@/lib/payout";
+import { PayoutStrip, PickChip } from "@/components/payout-badges";
 
 type AuditRow = {
   pid: string; name: string; team: string;
@@ -57,6 +59,11 @@ type ResultsData = {
     matchLabel: string;
     matchDeadline: number;
     status: string;
+    // Both come straight off the contest row the route already returns whole. They drive the
+    // first-pick chip and the winnings multiplier — see lib/payout.ts for why manual mode's
+    // draftOrder is NOT a toss result.
+    mode: "live" | "manual";
+    draftOrder: string | null;
   };
   teams: TeamResult[];
   username: string;
@@ -481,6 +488,17 @@ export default function ResultsPage({
   const myShare = denom > 0 ? (myTotal / denom) * 100 : 50;
   const isFinal =
     data.matchStatus?.status === "COMPLETED" || data.matchStatus?.status === "COMPLETED_FLAGGED";
+
+  // Winnings multiplier — final matches only. Fed the same `calcXITotal` numbers the hero
+  // prints, so the badge can never disagree with the two totals above it. The first-pick chip
+  // rides along even at 1×: it explains the rule that didn't fire.
+  const payout = computePayout({
+    mode: contest.mode,
+    draftOrder: contest.draftOrder,
+    totals: orderedTeams.map((t) => ({ user: t.user, pts: hasPoints ? calcXITotal(t) : null })),
+  });
+  // An unsettled or moved result can still change, so the multiplier it earned isn't final.
+  const payoutProvisional = !!data.audit && (data.audit.changed || data.audit.pending.length > 0);
   // Live = started but the COMPLETED pipeline hasn't finalized it. The H2H is then scored
   // in-app from ESPN (instant, no cricapi/bot); tapping "Refresh" re-pulls that immediately.
   const live = data.started && !data.completed;
@@ -593,6 +611,11 @@ export default function ResultsPage({
                     <p className="text-xs text-mist font-medium truncate">
                       <span className="text-gold">{getUserLabel(username)}</span> (you)
                     </p>
+                    {isFinal && payout.firstPick && (
+                      <span className="inline-flex mt-0.5 mb-0.5">
+                        <PickChip first={payout.firstPick === username} />
+                      </span>
+                    )}
                     <p className={`text-3xl font-bold tabular-nums ${myTotal >= topOpp.total ? "text-amber-300" : "text-cloud"}`}>
                       {myTotal.toFixed(1)}
                     </p>
@@ -600,6 +623,11 @@ export default function ResultsPage({
                   <span className="text-mist2 text-xs font-bold pb-2">vs</span>
                   <div className="min-w-0 text-right">
                     <p className="text-xs text-mist font-medium truncate">{getUserLabel(topOpp.team.user)}</p>
+                    {isFinal && payout.firstPick && (
+                      <span className="inline-flex mt-0.5 mb-0.5">
+                        <PickChip first={payout.firstPick === topOpp.team.user} />
+                      </span>
+                    )}
                     <p className={`text-3xl font-bold tabular-nums ${topOpp.total > myTotal ? "text-amber-300" : "text-cloud"}`}>
                       {topOpp.total.toFixed(1)}
                     </p>
@@ -628,6 +656,16 @@ export default function ResultsPage({
                     ? `${isFinal ? "Lost" : "▼ Behind"} by ${(-leadMargin!).toFixed(1)} pts`
                     : isFinal ? "● Tied" : "● Level"}
                 </p>
+                {isFinal && payout.multiplier !== 1 && (
+                  <div className="mt-2.5">
+                    <PayoutStrip
+                      payout={payout}
+                      viewer={username}
+                      provisional={payoutProvisional}
+                      size="lg"
+                    />
+                  </div>
+                )}
               </>
             ) : (
               // Solo (no opponent submitted): just your total.

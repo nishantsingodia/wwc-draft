@@ -18,6 +18,9 @@ export type Match = {
   // present (auto-ingest writes it); older rows omit it and fall back to a key-regex. Drives which
   // D11 scorer runs (see scoreFormatOf / d11-score.ts).
   format?: string;
+  // Tour slug ("cpl-2026"), written by tour_sync at ingest. Names live in lib/tours.ts; an
+  // un-stamped row falls back to a derived slug there and is flagged by `npm run check:tours`.
+  tour?: string;
 };
 
 export function getAllMatches(): Match[] {
