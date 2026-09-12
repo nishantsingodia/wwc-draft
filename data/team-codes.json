@@ -278,5 +278,21 @@
   "MTZIM2": {
     "flag": "🏏",
     "name": "Zimbabwe"
+  },
+  "WTBAR": {
+    "flag": "🏏",
+    "name": "Barbados Tridents"
+  },
+  "WTTKR": {
+    "flag": "🏏",
+    "name": "Trinbago Knight Riders"
+  },
+  "WTGUY": {
+    "flag": "🏏",
+    "name": "Guyana Amazon Warriors"
+  },
+  "WTJAM": {
+    "flag": "🏏",
+    "name": "Jamaica Empress"
   }
 }

@@ -2706,5 +2706,71 @@
     "date": "2026-09-04T17:30:00+05:30",
     "format": "T20",
     "tour": "namibia-t20i-tri-series-2026"
+  },
+  {
+    "matchNum": 281,
+    "key": "WSCPL_W1_WTBAR_WTTKR_Sep05",
+    "gender": "W",
+    "team1": "WTBAR",
+    "team2": "WTTKR",
+    "label": "Match 1: WTBAR v WTTKR",
+    "date": "2026-09-06T00:30:00+05:30",
+    "format": "T20",
+    "tour": "womens-caribbean-premier-league-2026"
+  },
+  {
+    "matchNum": 282,
+    "key": "WSCPL_W2_WTGUY_WTJAM_Sep06",
+    "gender": "W",
+    "team1": "WTGUY",
+    "team2": "WTJAM",
+    "label": "Match 2: WTGUY v WTJAM",
+    "date": "2026-09-06T19:30:00+05:30",
+    "format": "T20",
+    "tour": "womens-caribbean-premier-league-2026"
+  },
+  {
+    "matchNum": 283,
+    "key": "WSCPL_W3_WTJAM_WTTKR_Sep10",
+    "gender": "W",
+    "team1": "WTJAM",
+    "team2": "WTTKR",
+    "label": "Match 3: WTJAM v WTTKR",
+    "date": "2026-09-10T19:30:00+05:30",
+    "format": "T20",
+    "tour": "womens-caribbean-premier-league-2026"
+  },
+  {
+    "matchNum": 284,
+    "key": "WSCPL_W4_WTGUY_WTTKR_Sep12",
+    "gender": "W",
+    "team1": "WTGUY",
+    "team2": "WTTKR",
+    "label": "Match 4: WTGUY v WTTKR",
+    "date": "2026-09-12T19:30:00+05:30",
+    "format": "T20",
+    "tour": "womens-caribbean-premier-league-2026"
+  },
+  {
+    "matchNum": 285,
+    "key": "WSCPL_W5_WTBAR_WTJAM_Sep12",
+    "gender": "W",
+    "team1": "WTBAR",
+    "team2": "WTJAM",
+    "label": "Match 5: WTBAR v WTJAM",
+    "date": "2026-09-13T00:30:00+05:30",
+    "format": "T20",
+    "tour": "womens-caribbean-premier-league-2026"
+  },
+  {
+    "matchNum": 286,
+    "key": "WSCPL_W6_WTBAR_WTGUY_Sep13",
+    "gender": "W",
+    "team1": "WTBAR",
+    "team2": "WTGUY",
+    "label": "Match 6: WTBAR v WTGUY",
+    "date": "2026-09-13T23:30:00+05:30",
+    "format": "T20",
+    "tour": "womens-caribbean-premier-league-2026"
   }
 ]

@@ -39,6 +39,12 @@ const TOURS: Record<string, { label: string; short: string }> = {
   "zim-ind-t20i-2026": { label: "India in Zimbabwe, T20Is", short: "ZIM v IND" },
   "eng-pak-test-2026": { label: "England v Pakistan, Tests", short: "ENG v PAK" },
   "namibia-t20i-tri-series-2026": { label: "Namibia T20I Tri-Series 2026", short: "NAM Tri" },
+  // Slug is tour_sync's, from ESPN's league name. Unregistered it chips as "Womens…", which reads
+  // as nothing — this is the one-line polish the header comment describes.
+  "womens-caribbean-premier-league-2026": {
+    label: "Women's Caribbean Premier League 2026",
+    short: "WCPL",
+  },
 };
 
 // Key prefix -> slug, for tours whose matches all share one. This is ALSO what the backfill

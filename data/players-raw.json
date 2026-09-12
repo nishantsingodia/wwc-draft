@@ -11482,5 +11482,595 @@
     "team_code": "MTZIM2",
     "efppm": 45.0,
     "pid": "ci:722321"
+  },
+  {
+    "id": 10966,
+    "name": "Hayley Matthews",
+    "country": "Barbados Tridents",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "WTBAR",
+    "efppm": 50.0,
+    "pid": "ci:474308"
+  },
+  {
+    "id": 10967,
+    "name": "Suzie Bates",
+    "country": "Barbados Tridents",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:54565"
+  },
+  {
+    "id": 10968,
+    "name": "Qiana Joseph",
+    "country": "Barbados Tridents",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:769485"
+  },
+  {
+    "id": 10969,
+    "name": "Kiran Navgire",
+    "country": "Barbados Tridents",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:1289983"
+  },
+  {
+    "id": 10970,
+    "name": "Maddy Green",
+    "country": "Barbados Tridents",
+    "role": "WK",
+    "squad_number": 5,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:438265"
+  },
+  {
+    "id": 10971,
+    "name": "Shabika Gajnabi",
+    "country": "Barbados Tridents",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:1199630"
+  },
+  {
+    "id": 10972,
+    "name": "Pooja Vastrakar",
+    "country": "Barbados Tridents",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTBAR",
+    "efppm": 50.0,
+    "pid": "ci:883413"
+  },
+  {
+    "id": 10973,
+    "name": "Afy Fletcher",
+    "country": "Barbados Tridents",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:355351"
+  },
+  {
+    "id": 10974,
+    "name": "Cherry-Ann Fraser",
+    "country": "Barbados Tridents",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "uncapped:cherry-ann-fraser"
+  },
+  {
+    "id": 10975,
+    "name": "Shawnisha Hector",
+    "country": "Barbados Tridents",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:1204928"
+  },
+  {
+    "id": 10976,
+    "name": "Mandy Mangru",
+    "country": "Barbados Tridents",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:907733"
+  },
+  {
+    "id": 10977,
+    "name": "Naijanni Cumberbatch",
+    "country": "Barbados Tridents",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "ci:1352171"
+  },
+  {
+    "id": 10978,
+    "name": "Asabi Callender",
+    "country": "Barbados Tridents",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "WTBAR",
+    "efppm": 50.0,
+    "pid": "uncapped:asabi-callender"
+  },
+  {
+    "id": 10979,
+    "name": "Amrita Ramtahal",
+    "country": "Barbados Tridents",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "WTBAR",
+    "efppm": 45.0,
+    "pid": "uncapped:amrita-ramtahal"
+  },
+  {
+    "id": 10980,
+    "name": "Deandra Dottin",
+    "country": "Trinbago Knight Riders",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "WTTKR",
+    "efppm": 50.0,
+    "pid": "ci:355349"
+  },
+  {
+    "id": 10981,
+    "name": "Yastika Bhatia",
+    "country": "Trinbago Knight Riders",
+    "role": "WK",
+    "squad_number": 2,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:960715"
+  },
+  {
+    "id": 10982,
+    "name": "Laura Harris",
+    "country": "Trinbago Knight Riders",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:951163"
+  },
+  {
+    "id": 10983,
+    "name": "Marizanne Kapp",
+    "country": "Trinbago Knight Riders",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTTKR",
+    "efppm": 50.0,
+    "pid": "ci:351836"
+  },
+  {
+    "id": 10984,
+    "name": "Jannillea Glasgow",
+    "country": "Trinbago Knight Riders",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:1268602"
+  },
+  {
+    "id": 10985,
+    "name": "Steffi Soogrim",
+    "country": "Trinbago Knight Riders",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:1268282"
+  },
+  {
+    "id": 10986,
+    "name": "Karishma Ramharack",
+    "country": "Trinbago Knight Riders",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:769517"
+  },
+  {
+    "id": 10987,
+    "name": "Shikha Pandey",
+    "country": "Trinbago Knight Riders",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:442145"
+  },
+  {
+    "id": 10988,
+    "name": "Samara Ramnath",
+    "country": "Trinbago Knight Riders",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:310961"
+  },
+  {
+    "id": 10989,
+    "name": "Jahzara Claxton",
+    "country": "Trinbago Knight Riders",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:1352172"
+  },
+  {
+    "id": 10990,
+    "name": "Madeline Penna",
+    "country": "Trinbago Knight Riders",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "ci:1201476"
+  },
+  {
+    "id": 10991,
+    "name": "Brianna Harricharan",
+    "country": "Trinbago Knight Riders",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "uncapped:brianna-harricharan"
+  },
+  {
+    "id": 10992,
+    "name": "Earnisha Fontaine",
+    "country": "Trinbago Knight Riders",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "uncapped:earnisha-fontaine"
+  },
+  {
+    "id": 10993,
+    "name": "Amelia Khan",
+    "country": "Trinbago Knight Riders",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "uncapped:amelia-khan"
+  },
+  {
+    "id": 10994,
+    "name": "Sainavi Kambapalli",
+    "country": "Trinbago Knight Riders",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WTTKR",
+    "efppm": 45.0,
+    "pid": "uncapped:sainavi-kambapalli"
+  },
+  {
+    "id": 10995,
+    "name": "Tazmin Brits",
+    "country": "Guyana Amazon Warriors",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:600731"
+  },
+  {
+    "id": 10996,
+    "name": "Realeanna Grimmond",
+    "country": "Guyana Amazon Warriors",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:1352170"
+  },
+  {
+    "id": 10997,
+    "name": "Shemaine Campbelle",
+    "country": "Guyana Amazon Warriors",
+    "role": "WK",
+    "squad_number": 3,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:424631"
+  },
+  {
+    "id": 10998,
+    "name": "Chloe Tryon",
+    "country": "Guyana Amazon Warriors",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTGUY",
+    "efppm": 50.0,
+    "pid": "ci:453370"
+  },
+  {
+    "id": 10999,
+    "name": "Nadine de Klerk",
+    "country": "Guyana Amazon Warriors",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTGUY",
+    "efppm": 50.0,
+    "pid": "ci:939249"
+  },
+  {
+    "id": 11000,
+    "name": "Chedean Nation",
+    "country": "Guyana Amazon Warriors",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:355355"
+  },
+  {
+    "id": 11001,
+    "name": "Ashmini Munisar",
+    "country": "Guyana Amazon Warriors",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:1352168"
+  },
+  {
+    "id": 11002,
+    "name": "Sheneta Grimmond",
+    "country": "Guyana Amazon Warriors",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:909779"
+  },
+  {
+    "id": 11003,
+    "name": "Shamilia Connell",
+    "country": "Guyana Amazon Warriors",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:474191"
+  },
+  {
+    "id": 11004,
+    "name": "Shabnim Ismail",
+    "country": "Guyana Amazon Warriors",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:276997"
+  },
+  {
+    "id": 11005,
+    "name": "Erin Burns",
+    "country": "Guyana Amazon Warriors",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:275447"
+  },
+  {
+    "id": 11006,
+    "name": "Tilleya Madramootoo",
+    "country": "Guyana Amazon Warriors",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "uncapped:tilleya-madramootoo"
+  },
+  {
+    "id": 11007,
+    "name": "Reniece Boyce",
+    "country": "Guyana Amazon Warriors",
+    "role": "WK",
+    "squad_number": 13,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "uncapped:reniece-boyce"
+  },
+  {
+    "id": 11008,
+    "name": "Latoya Williams",
+    "country": "Guyana Amazon Warriors",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "WTGUY",
+    "efppm": 50.0,
+    "pid": "uncapped:latoya-williams"
+  },
+  {
+    "id": 11009,
+    "name": "Eboni Brathwaite",
+    "country": "Guyana Amazon Warriors",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "WTGUY",
+    "efppm": 45.0,
+    "pid": "ci:1526007"
+  },
+  {
+    "id": 11010,
+    "name": "Amy Hunter",
+    "country": "Jamaica Empress",
+    "role": "WK",
+    "squad_number": 1,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "ci:1229014"
+  },
+  {
+    "id": 11011,
+    "name": "Meg Lanning",
+    "country": "Jamaica Empress",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "ci:329336"
+  },
+  {
+    "id": 11012,
+    "name": "Stafanie Taylor",
+    "country": "Jamaica Empress",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WTJAM",
+    "efppm": 50.0,
+    "pid": "ci:355359"
+  },
+  {
+    "id": 11013,
+    "name": "Rashada Williams",
+    "country": "Jamaica Empress",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "ci:769427"
+  },
+  {
+    "id": 11014,
+    "name": "Chinelle Henry",
+    "country": "Jamaica Empress",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTJAM",
+    "efppm": 50.0,
+    "pid": "ci:474190"
+  },
+  {
+    "id": 11015,
+    "name": "Zaida James",
+    "country": "Jamaica Empress",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTJAM",
+    "efppm": 50.0,
+    "pid": "ci:1268281"
+  },
+  {
+    "id": 11016,
+    "name": "Aaliyah Alleyne",
+    "country": "Jamaica Empress",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTJAM",
+    "efppm": 50.0,
+    "pid": "ci:661441"
+  },
+  {
+    "id": 11017,
+    "name": "Rosemary Mair",
+    "country": "Jamaica Empress",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "ci:701751"
+  },
+  {
+    "id": 11018,
+    "name": "Nonkululeko Mlaba",
+    "country": "Jamaica Empress",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "ci:971203"
+  },
+  {
+    "id": 11019,
+    "name": "Kate Wilmott",
+    "country": "Jamaica Empress",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "uncapped:kate-wilmott"
+  },
+  {
+    "id": 11020,
+    "name": "Syeda Aroob Shah",
+    "country": "Jamaica Empress",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "ci:1204960"
+  },
+  {
+    "id": 11021,
+    "name": "Shriya Jairam",
+    "country": "Jamaica Empress",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "uncapped:shriya-jairam"
+  },
+  {
+    "id": 11022,
+    "name": "Djenaba Joseph",
+    "country": "Jamaica Empress",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "ci:1349230"
+  },
+  {
+    "id": 11023,
+    "name": "Celina Whyte",
+    "country": "Jamaica Empress",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "uncapped:celina-whyte"
+  },
+  {
+    "id": 11024,
+    "name": "Abigail Bryce",
+    "country": "Jamaica Empress",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "WTJAM",
+    "efppm": 45.0,
+    "pid": "ci:1469056"
   }
 ]
