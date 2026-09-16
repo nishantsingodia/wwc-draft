@@ -2772,5 +2772,38 @@
     "date": "2026-09-13T23:30:00+05:30",
     "format": "T20",
     "tour": "womens-caribbean-premier-league-2026"
+  },
+  {
+    "matchNum": 287,
+    "key": "CPL_M36_MTBAR_MTJAM_Sep16",
+    "gender": "M",
+    "team1": "MTBAR",
+    "team2": "MTJAM",
+    "label": "Eliminator: MTBAR v MTJAM",
+    "date": "2026-09-17T04:30:00+05:30",
+    "format": "T20",
+    "tour": "cpl-2026"
+  },
+  {
+    "matchNum": 288,
+    "key": "CPL_M37_MTANT_MTGUY_Sep18",
+    "gender": "M",
+    "team1": "MTANT",
+    "team2": "MTGUY",
+    "label": "Qualifier 1: MTANT v MTGUY",
+    "date": "2026-09-18T05:30:00+05:30",
+    "format": "T20",
+    "tour": "cpl-2026"
+  },
+  {
+    "matchNum": 289,
+    "key": "WSCPL_W7_WTBAR_WTGUY_Sep16",
+    "gender": "W",
+    "team1": "WTBAR",
+    "team2": "WTGUY",
+    "label": "Playoff: WTBAR v WTGUY",
+    "date": "2026-09-16T19:30:00+05:30",
+    "format": "T20",
+    "tour": "womens-caribbean-premier-league-2026"
   }
 ]
