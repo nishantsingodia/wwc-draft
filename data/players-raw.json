@@ -12072,5 +12072,965 @@
     "team_code": "WTJAM",
     "efppm": 45.0,
     "pid": "ci:1469056"
+  },
+  {
+    "id": 11025,
+    "name": "Harry Brook",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:911707"
+  },
+  {
+    "id": 11026,
+    "name": "Rehan Ahmed",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:1263691"
+  },
+  {
+    "id": 11027,
+    "name": "Jofra Archer",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:669855"
+  },
+  {
+    "id": 11028,
+    "name": "Gus Atkinson",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:1039481"
+  },
+  {
+    "id": 11029,
+    "name": "Sonny Baker",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:1191192"
+  },
+  {
+    "id": 11030,
+    "name": "Tom Banton",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:877051"
+  },
+  {
+    "id": 11031,
+    "name": "Jos Buttler",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:308967"
+  },
+  {
+    "id": 11032,
+    "name": "Jordan Cox",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:1112537"
+  },
+  {
+    "id": 11033,
+    "name": "Henry Crocombe",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:1143809"
+  },
+  {
+    "id": 11034,
+    "name": "Liam Dawson",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MOENG",
+    "efppm": 50.0,
+    "pid": "ci:211855"
+  },
+  {
+    "id": 11035,
+    "name": "Ben Duckett",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:521637"
+  },
+  {
+    "id": 11036,
+    "name": "Will Jacks",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:897549"
+  },
+  {
+    "id": 11037,
+    "name": "Jamie Overton",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:510530"
+  },
+  {
+    "id": 11038,
+    "name": "Adil Rashid",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:244497"
+  },
+  {
+    "id": 11039,
+    "name": "Joe Root",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:303669"
+  },
+  {
+    "id": 11040,
+    "name": "Josh Tongue",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MOENG",
+    "efppm": 45.0,
+    "pid": "ci:857975"
+  },
+  {
+    "id": 11041,
+    "name": "Kusal Mendis",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:629074"
+  },
+  {
+    "id": 11042,
+    "name": "Charith Asalanka",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:784367"
+  },
+  {
+    "id": 11043,
+    "name": "Dushmantha Chameera",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:552152"
+  },
+  {
+    "id": 11044,
+    "name": "Sachindu Colombage",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:1175296"
+  },
+  {
+    "id": 11045,
+    "name": "Asitha Fernando",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:786925"
+  },
+  {
+    "id": 11046,
+    "name": "Wanindu Hasaranga",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MOSRI",
+    "efppm": 50.0,
+    "pid": "ci:784379"
+  },
+  {
+    "id": 11047,
+    "name": "Janith Liyanage",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:681681"
+  },
+  {
+    "id": 11048,
+    "name": "Dilshan Madushanka",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:793007"
+  },
+  {
+    "id": 11049,
+    "name": "Eshan Malinga",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:1306214"
+  },
+  {
+    "id": 11050,
+    "name": "Kamindu Mendis",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MOSRI",
+    "efppm": 50.0,
+    "pid": "ci:784373"
+  },
+  {
+    "id": 11051,
+    "name": "Kamil Mishara",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:1075863"
+  },
+  {
+    "id": 11052,
+    "name": "Pathum Nissanka",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:1028655"
+  },
+  {
+    "id": 11053,
+    "name": "Pavan Rathnayake",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:1171180"
+  },
+  {
+    "id": 11054,
+    "name": "Dasun Shanaka",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MOSRI",
+    "efppm": 50.0,
+    "pid": "ci:437316"
+  },
+  {
+    "id": 11055,
+    "name": "Maheesh Theekshana",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:1138316"
+  },
+  {
+    "id": 11056,
+    "name": "Dunith Wellalage",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MOSRI",
+    "efppm": 45.0,
+    "pid": "ci:1152427"
+  },
+  {
+    "id": 11057,
+    "name": "Kusal Mendis",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:629074"
+  },
+  {
+    "id": 11058,
+    "name": "Charith Asalanka",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:784367"
+  },
+  {
+    "id": 11059,
+    "name": "Dushmantha Chameera",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:552152"
+  },
+  {
+    "id": 11060,
+    "name": "Sachindu Colombage",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:1175296"
+  },
+  {
+    "id": 11061,
+    "name": "Asitha Fernando",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:786925"
+  },
+  {
+    "id": 11062,
+    "name": "Wanindu Hasaranga",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTSRI",
+    "efppm": 50.0,
+    "pid": "ci:784379"
+  },
+  {
+    "id": 11063,
+    "name": "Janith Liyanage",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:681681"
+  },
+  {
+    "id": 11064,
+    "name": "Dilshan Madushanka",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:793007"
+  },
+  {
+    "id": 11065,
+    "name": "Eshan Malinga",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:1306214"
+  },
+  {
+    "id": 11066,
+    "name": "Kamindu Mendis",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MTSRI",
+    "efppm": 50.0,
+    "pid": "ci:784373"
+  },
+  {
+    "id": 11067,
+    "name": "Kamil Mishara",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:1075863"
+  },
+  {
+    "id": 11068,
+    "name": "Pathum Nissanka",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:1028655"
+  },
+  {
+    "id": 11069,
+    "name": "Pavan Rathnayake",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:1171180"
+  },
+  {
+    "id": 11070,
+    "name": "Dasun Shanaka",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MTSRI",
+    "efppm": 50.0,
+    "pid": "ci:437316"
+  },
+  {
+    "id": 11071,
+    "name": "Maheesh Theekshana",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:1138316"
+  },
+  {
+    "id": 11072,
+    "name": "Dunith Wellalage",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MTSRI",
+    "efppm": 45.0,
+    "pid": "ci:1152427"
+  },
+  {
+    "id": 11073,
+    "name": "Harry Brook",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:911707"
+  },
+  {
+    "id": 11074,
+    "name": "Rehan Ahmed",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:1263691"
+  },
+  {
+    "id": 11075,
+    "name": "Jofra Archer",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:669855"
+  },
+  {
+    "id": 11076,
+    "name": "Gus Atkinson",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:1039481"
+  },
+  {
+    "id": 11077,
+    "name": "Sonny Baker",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:1191192"
+  },
+  {
+    "id": 11078,
+    "name": "Tom Banton",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:877051"
+  },
+  {
+    "id": 11079,
+    "name": "Jos Buttler",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:308967"
+  },
+  {
+    "id": 11080,
+    "name": "Jordan Cox",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:1112537"
+  },
+  {
+    "id": 11081,
+    "name": "Henry Crocombe",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:1143809"
+  },
+  {
+    "id": 11082,
+    "name": "Liam Dawson",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MTENG",
+    "efppm": 50.0,
+    "pid": "ci:211855"
+  },
+  {
+    "id": 11083,
+    "name": "Ben Duckett",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:521637"
+  },
+  {
+    "id": 11084,
+    "name": "Will Jacks",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:897549"
+  },
+  {
+    "id": 11085,
+    "name": "Jamie Overton",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:510530"
+  },
+  {
+    "id": 11086,
+    "name": "Adil Rashid",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:244497"
+  },
+  {
+    "id": 11087,
+    "name": "Joe Root",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:303669"
+  },
+  {
+    "id": 11088,
+    "name": "Josh Tongue",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MTENG",
+    "efppm": 45.0,
+    "pid": "ci:857975"
+  },
+  {
+    "id": 11089,
+    "name": "Temba Bavuma",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:372116"
+  },
+  {
+    "id": 11090,
+    "name": "Corbin Bosch",
+    "country": "South Africa",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "MOSOU",
+    "efppm": 50.0,
+    "pid": "ci:594322"
+  },
+  {
+    "id": 11091,
+    "name": "Matthew Breetzke",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:595267"
+  },
+  {
+    "id": 11092,
+    "name": "Gerald Coetzee",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "uncapped:gerald-coetzee"
+  },
+  {
+    "id": 11093,
+    "name": "Quinton de Kock",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:379143"
+  },
+  {
+    "id": 11094,
+    "name": "Tony de Zorzi",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:697183"
+  },
+  {
+    "id": 11095,
+    "name": "Bjorn Fortuin",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:553249"
+  },
+  {
+    "id": 11096,
+    "name": "Duan Jansen",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:595954"
+  },
+  {
+    "id": 11097,
+    "name": "Marco Jansen",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:696401"
+  },
+  {
+    "id": 11098,
+    "name": "Keshav Maharaj",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:267724"
+  },
+  {
+    "id": 11099,
+    "name": "Kwena Maphaka",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:1294342"
+  },
+  {
+    "id": 11100,
+    "name": "Aiden Markram",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:600498"
+  },
+  {
+    "id": 11101,
+    "name": "David Miller",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:321777"
+  },
+  {
+    "id": 11102,
+    "name": "Ryan Rickelton",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:605661"
+  },
+  {
+    "id": 11103,
+    "name": "Tristan Stubbs",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MOSOU",
+    "efppm": 45.0,
+    "pid": "ci:595978"
+  },
+  {
+    "id": 11104,
+    "name": "Mitchell Marsh",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:272450"
+  },
+  {
+    "id": 11105,
+    "name": "Xavier Bartlett",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:1050545"
+  },
+  {
+    "id": 11106,
+    "name": "Alex Carey",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "uncapped:alex-carey"
+  },
+  {
+    "id": 11107,
+    "name": "Cooper Connolly",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:1210488"
+  },
+  {
+    "id": 11108,
+    "name": "Pat Cummins",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:489889"
+  },
+  {
+    "id": 11109,
+    "name": "Joel Davies",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:1295851"
+  },
+  {
+    "id": 11110,
+    "name": "Nathan Ellis",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:826915"
+  },
+  {
+    "id": 11111,
+    "name": "Cameron Green",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:1076713"
+  },
+  {
+    "id": 11112,
+    "name": "Josh Hazlewood",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:288284"
+  },
+  {
+    "id": 11113,
+    "name": "Travis Head",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:530011"
+  },
+  {
+    "id": 11114,
+    "name": "Josh Inglis",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:662235"
+  },
+  {
+    "id": 11116,
+    "name": "Oliver Peake",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:1418371"
+  },
+  {
+    "id": 11117,
+    "name": "Matt Renshaw",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:722303"
+  },
+  {
+    "id": 11119,
+    "name": "Mitchell Starc",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:311592"
+  },
+  {
+    "id": 11120,
+    "name": "Adam Zampa",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 17,
+    "team_code": "MOAUS",
+    "efppm": 45.0,
+    "pid": "ci:379504"
+  },
+  {
+    "id": 11121,
+    "name": "Jack Edwards",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 18,
+    "team_code": "MOAUS",
+    "efppm": 40.0,
+    "pid": "ci:1088610"
+  },
+  {
+    "id": 11122,
+    "name": "Nqobani Mokoena",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MOSOU",
+    "efppm": 40.0,
+    "pid": "ci:1414819"
   }
 ]

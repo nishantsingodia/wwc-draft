@@ -294,5 +294,29 @@
   "WTJAM": {
     "flag": "🏏",
     "name": "Jamaica Empress"
+  },
+  "MOENG": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name": "England"
+  },
+  "MOSRI": {
+    "flag": "🇱🇰",
+    "name": "Sri Lanka"
+  },
+  "MTSRI": {
+    "flag": "🇱🇰",
+    "name": "Sri Lanka"
+  },
+  "MTENG": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name": "England"
+  },
+  "MOSOU": {
+    "flag": "🇿🇦",
+    "name": "South Africa"
+  },
+  "MOAUS": {
+    "flag": "🇦🇺",
+    "name": "Australia"
   }
 }

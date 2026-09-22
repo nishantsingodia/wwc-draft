@@ -2805,5 +2805,104 @@
     "date": "2026-09-16T19:30:00+05:30",
     "format": "T20",
     "tour": "womens-caribbean-premier-league-2026"
+  },
+  {
+    "matchNum": 290,
+    "key": "AUTO_M_ENG_SRI_ODI1_Sep22",
+    "gender": "M",
+    "team1": "MOENG",
+    "team2": "MOSRI",
+    "label": "1st ODI: ENG v SRI",
+    "date": "2026-09-22T17:00:00+05:30",
+    "format": "ODI",
+    "tour": "sri-lanka-tour-of-england-2026-odi"
+  },
+  {
+    "matchNum": 291,
+    "key": "AUTO_M_ENG_SRI_ODI2_Sep24",
+    "gender": "M",
+    "team1": "MOENG",
+    "team2": "MOSRI",
+    "label": "2nd ODI: ENG v SRI",
+    "date": "2026-09-24T17:00:00+05:30",
+    "format": "ODI",
+    "tour": "sri-lanka-tour-of-england-2026-odi"
+  },
+  {
+    "matchNum": 292,
+    "key": "AUTO_M_ENG_SRI_ODI3_Sep27",
+    "gender": "M",
+    "team1": "MOENG",
+    "team2": "MOSRI",
+    "label": "3rd ODI: ENG v SRI",
+    "date": "2026-09-27T15:00:00+05:30",
+    "format": "ODI",
+    "tour": "sri-lanka-tour-of-england-2026-odi"
+  },
+  {
+    "matchNum": 293,
+    "key": "AUTO_M_ENG_SRI_T20I1_Sep15",
+    "gender": "M",
+    "team1": "MTENG",
+    "team2": "MTSRI",
+    "label": "1st T20I: ENG v SRI",
+    "date": "2026-09-15T23:00:00+05:30",
+    "format": "T20",
+    "tour": "sri-lanka-tour-of-england-2026-t20i"
+  },
+  {
+    "matchNum": 294,
+    "key": "AUTO_M_ENG_SRI_T20I2_Sep17",
+    "gender": "M",
+    "team1": "MTENG",
+    "team2": "MTSRI",
+    "label": "2nd T20I: ENG v SRI",
+    "date": "2026-09-17T23:00:00+05:30",
+    "format": "T20",
+    "tour": "sri-lanka-tour-of-england-2026-t20i"
+  },
+  {
+    "matchNum": 295,
+    "key": "AUTO_M_ENG_SRI_T20I3_Sep19",
+    "gender": "M",
+    "team1": "MTENG",
+    "team2": "MTSRI",
+    "label": "3rd T20I: ENG v SRI",
+    "date": "2026-09-19T19:00:00+05:30",
+    "format": "T20",
+    "tour": "sri-lanka-tour-of-england-2026-t20i"
+  },
+  {
+    "matchNum": 296,
+    "key": "AUTO_M_SOU_AUS_ODI1_Sep24",
+    "gender": "M",
+    "team1": "MOSOU",
+    "team2": "MOAUS",
+    "label": "1st ODI: SOU v AUS",
+    "date": "2026-09-24T13:30:00+05:30",
+    "format": "ODI",
+    "tour": "australia-tour-of-south-africa-2026-27-odi"
+  },
+  {
+    "matchNum": 297,
+    "key": "AUTO_M_SOU_AUS_ODI2_Sep27",
+    "gender": "M",
+    "team1": "MOSOU",
+    "team2": "MOAUS",
+    "label": "2nd ODI: SOU v AUS",
+    "date": "2026-09-27T13:30:00+05:30",
+    "format": "ODI",
+    "tour": "australia-tour-of-south-africa-2026-27-odi"
+  },
+  {
+    "matchNum": 298,
+    "key": "AUTO_M_SOU_AUS_ODI3_Sep30",
+    "gender": "M",
+    "team1": "MOSOU",
+    "team2": "MOAUS",
+    "label": "3rd ODI: SOU v AUS",
+    "date": "2026-09-30T17:00:00+05:30",
+    "format": "ODI",
+    "tour": "australia-tour-of-south-africa-2026-27-odi"
   }
 ]
