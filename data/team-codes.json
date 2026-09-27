@@ -318,5 +318,37 @@
   "MOAUS": {
     "flag": "🇦🇺",
     "name": "Australia"
+  },
+  "WOZIM": {
+    "flag": "🏏",
+    "name": "Zimbabwe Women"
+  },
+  "WOWES": {
+    "flag": "🏏",
+    "name": "West Indies Women"
+  },
+  "WTZIM": {
+    "flag": "🏏",
+    "name": "Zimbabwe Women"
+  },
+  "WTWES": {
+    "flag": "🏏",
+    "name": "West Indies Women"
+  },
+  "MOIND": {
+    "flag": "🇮🇳",
+    "name": "India"
+  },
+  "MOWES": {
+    "flag": "🏏",
+    "name": "West Indies"
+  },
+  "MTIND2": {
+    "flag": "🇮🇳",
+    "name": "India"
+  },
+  "MTWES": {
+    "flag": "🏏",
+    "name": "West Indies"
   }
 }

@@ -2904,5 +2904,159 @@
     "date": "2026-09-30T17:00:00+05:30",
     "format": "ODI",
     "tour": "australia-tour-of-south-africa-2026-27-odi"
+  },
+  {
+    "matchNum": 299,
+    "key": "AUTO_W_ZIM_WES_ODI1_Sep24",
+    "gender": "W",
+    "team1": "WOZIM",
+    "team2": "WOWES",
+    "label": "1st ODI: ZIM v WES",
+    "date": "2026-09-24T13:00:00+05:30",
+    "format": "ODI",
+    "tour": "west-indies-women-tour-of-zimbabwe-2026-odi"
+  },
+  {
+    "matchNum": 300,
+    "key": "AUTO_W_ZIM_WES_ODI2_Sep27",
+    "gender": "W",
+    "team1": "WOZIM",
+    "team2": "WOWES",
+    "label": "2nd ODI: ZIM v WES",
+    "date": "2026-09-27T13:00:00+05:30",
+    "format": "ODI",
+    "tour": "west-indies-women-tour-of-zimbabwe-2026-odi"
+  },
+  {
+    "matchNum": 301,
+    "key": "AUTO_W_ZIM_WES_ODI3_Sep30",
+    "gender": "W",
+    "team1": "WOZIM",
+    "team2": "WOWES",
+    "label": "3rd ODI: ZIM v WES",
+    "date": "2026-09-30T13:00:00+05:30",
+    "format": "ODI",
+    "tour": "west-indies-women-tour-of-zimbabwe-2026-odi"
+  },
+  {
+    "matchNum": 302,
+    "key": "AUTO_W_ZIM_WES_T20I1_Oct03",
+    "gender": "W",
+    "team1": "WTZIM",
+    "team2": "WTWES",
+    "label": "1st T20I: ZIM v WES",
+    "date": "2026-10-03T16:30:00+05:30",
+    "format": "T20",
+    "tour": "west-indies-women-tour-of-zimbabwe-2026-t20i"
+  },
+  {
+    "matchNum": 303,
+    "key": "AUTO_W_ZIM_WES_T20I2_Oct05",
+    "gender": "W",
+    "team1": "WTZIM",
+    "team2": "WTWES",
+    "label": "2nd T20I: ZIM v WES",
+    "date": "2026-10-05T15:30:00+05:30",
+    "format": "T20",
+    "tour": "west-indies-women-tour-of-zimbabwe-2026-t20i"
+  },
+  {
+    "matchNum": 304,
+    "key": "AUTO_W_ZIM_WES_T20I3_Oct07",
+    "gender": "W",
+    "team1": "WTZIM",
+    "team2": "WTWES",
+    "label": "3rd T20I: ZIM v WES",
+    "date": "2026-10-07T15:30:00+05:30",
+    "format": "T20",
+    "tour": "west-indies-women-tour-of-zimbabwe-2026-t20i"
+  },
+  {
+    "matchNum": 305,
+    "key": "AUTO_M_IND_WES_ODI1_Sep27",
+    "gender": "M",
+    "team1": "MOIND",
+    "team2": "MOWES",
+    "label": "1st ODI: IND v WES",
+    "date": "2026-09-27T14:00:00+05:30",
+    "format": "ODI",
+    "tour": "west-indies-tour-of-india-2026-odi"
+  },
+  {
+    "matchNum": 306,
+    "key": "AUTO_M_IND_WES_ODI2_Sep30",
+    "gender": "M",
+    "team1": "MOIND",
+    "team2": "MOWES",
+    "label": "2nd ODI: IND v WES",
+    "date": "2026-09-30T14:00:00+05:30",
+    "format": "ODI",
+    "tour": "west-indies-tour-of-india-2026-odi"
+  },
+  {
+    "matchNum": 307,
+    "key": "AUTO_M_IND_WES_ODI3_Oct03",
+    "gender": "M",
+    "team1": "MOIND",
+    "team2": "MOWES",
+    "label": "3rd ODI: IND v WES",
+    "date": "2026-10-03T14:00:00+05:30",
+    "format": "ODI",
+    "tour": "west-indies-tour-of-india-2026-odi"
+  },
+  {
+    "matchNum": 308,
+    "key": "AUTO_M_IND_WES_T20I1_Oct06",
+    "gender": "M",
+    "team1": "MTIND2",
+    "team2": "MTWES",
+    "label": "1st T20I: IND v WES",
+    "date": "2026-10-06T19:00:00+05:30",
+    "format": "T20",
+    "tour": "west-indies-tour-of-india-2026-t20i"
+  },
+  {
+    "matchNum": 309,
+    "key": "AUTO_M_IND_WES_T20I2_Oct09",
+    "gender": "M",
+    "team1": "MTIND2",
+    "team2": "MTWES",
+    "label": "2nd T20I: IND v WES",
+    "date": "2026-10-09T19:00:00+05:30",
+    "format": "T20",
+    "tour": "west-indies-tour-of-india-2026-t20i"
+  },
+  {
+    "matchNum": 310,
+    "key": "AUTO_M_IND_WES_T20I3_Oct11",
+    "gender": "M",
+    "team1": "MTIND2",
+    "team2": "MTWES",
+    "label": "3rd T20I: IND v WES",
+    "date": "2026-10-11T19:00:00+05:30",
+    "format": "T20",
+    "tour": "west-indies-tour-of-india-2026-t20i"
+  },
+  {
+    "matchNum": 311,
+    "key": "AUTO_M_IND_WES_T20I4_Oct14",
+    "gender": "M",
+    "team1": "MTIND2",
+    "team2": "MTWES",
+    "label": "4th T20I: IND v WES",
+    "date": "2026-10-14T19:00:00+05:30",
+    "format": "T20",
+    "tour": "west-indies-tour-of-india-2026-t20i"
+  },
+  {
+    "matchNum": 312,
+    "key": "AUTO_M_IND_WES_T20I5_Oct17",
+    "gender": "M",
+    "team1": "MTIND2",
+    "team2": "MTWES",
+    "label": "5th T20I: IND v WES",
+    "date": "2026-10-17T19:00:00+05:30",
+    "format": "T20",
+    "tour": "west-indies-tour-of-india-2026-t20i"
   }
 ]
