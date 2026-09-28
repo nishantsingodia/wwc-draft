@@ -350,5 +350,29 @@
   "MTWES": {
     "flag": "🏏",
     "name": "West Indies"
+  },
+  "MTMAL": {
+    "flag": "🏏",
+    "name": "Malaysia"
+  },
+  "MTNEP": {
+    "flag": "🏏",
+    "name": "Nepal"
+  },
+  "MTPAK": {
+    "flag": "🇵🇰",
+    "name": "Pakistan"
+  },
+  "MTIND3": {
+    "flag": "🇮🇳",
+    "name": "India"
+  },
+  "MTSRI2": {
+    "flag": "🇱🇰",
+    "name": "Sri Lanka"
+  },
+  "MTBAN": {
+    "flag": "🇧🇩",
+    "name": "Bangladesh"
   }
 }

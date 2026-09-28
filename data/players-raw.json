@@ -14232,5 +14232,895 @@
     "team_code": "MTWES",
     "efppm": 45.0,
     "pid": "ci:914541"
+  },
+  {
+    "id": 11243,
+    "name": "Ainool Hafizs",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:701227"
+  },
+  {
+    "id": 11244,
+    "name": "Amir Khan",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:1021021"
+  },
+  {
+    "id": 11245,
+    "name": "Aslam Khan",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:1037535"
+  },
+  {
+    "id": 11246,
+    "name": "Azri Azhar",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:1448905"
+  },
+  {
+    "id": 11247,
+    "name": "Muhamad Syahadat",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:453266"
+  },
+  {
+    "id": 11248,
+    "name": "Muhammad Haziq Aiman",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:1495256"
+  },
+  {
+    "id": 11249,
+    "name": "Muhammad Akram",
+    "country": "Malaysia",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTMAL",
+    "efppm": 50.0,
+    "pid": "ci:1515147"
+  },
+  {
+    "id": 11250,
+    "name": "Muhammad Amir",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:1021025"
+  },
+  {
+    "id": 11251,
+    "name": "Muhammad Wafiq",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:568452"
+  },
+  {
+    "id": 11252,
+    "name": "Sharvin Muniandy",
+    "country": "Malaysia",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:633638"
+  },
+  {
+    "id": 11253,
+    "name": "Pavandeep Singh",
+    "country": "Malaysia",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:633641"
+  },
+  {
+    "id": 11254,
+    "name": "Rahim Khan",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:1037533"
+  },
+  {
+    "id": 11255,
+    "name": "Syed Aziz",
+    "country": "Malaysia",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:868003"
+  },
+  {
+    "id": 11256,
+    "name": "Vijay Unni",
+    "country": "Malaysia",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTMAL",
+    "efppm": 45.0,
+    "pid": "ci:1090866"
+  },
+  {
+    "id": 11257,
+    "name": "Virandeep Singh",
+    "country": "Malaysia",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "MTMAL",
+    "efppm": 50.0,
+    "pid": "ci:633660"
+  },
+  {
+    "id": 11258,
+    "name": "Dipendra Singh Airee",
+    "country": "Nepal",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MTNEP",
+    "efppm": 50.0,
+    "pid": "ci:794707"
+  },
+  {
+    "id": 11259,
+    "name": "Aarif Sheikh",
+    "country": "Nepal",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:701217"
+  },
+  {
+    "id": 11260,
+    "name": "Aasif Sheikh",
+    "country": "Nepal",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:701217"
+  },
+  {
+    "id": 11261,
+    "name": "Kushal Bhurtel",
+    "country": "Nepal",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:794713"
+  },
+  {
+    "id": 11262,
+    "name": "Gulsan Jha",
+    "country": "Nepal",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTNEP",
+    "efppm": 50.0,
+    "pid": "ci:1253822"
+  },
+  {
+    "id": 11263,
+    "name": "Sundeep Jora",
+    "country": "Nepal",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:1161022"
+  },
+  {
+    "id": 11264,
+    "name": "Karan KC",
+    "country": "Nepal",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTNEP",
+    "efppm": 50.0,
+    "pid": "ci:800675"
+  },
+  {
+    "id": 11265,
+    "name": "Kushal Malla",
+    "country": "Nepal",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:1141934"
+  },
+  {
+    "id": 11266,
+    "name": "Sandeep Lamichhane",
+    "country": "Nepal",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:960361"
+  },
+  {
+    "id": 11267,
+    "name": "Lokesh Bam",
+    "country": "Nepal",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:1090625"
+  },
+  {
+    "id": 11268,
+    "name": "Sher Malla",
+    "country": "Nepal",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "uncapped:sher-malla"
+  },
+  {
+    "id": 11269,
+    "name": "Rohit Paudel",
+    "country": "Nepal",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:1072488"
+  },
+  {
+    "id": 11270,
+    "name": "Lalit Rajbanshi",
+    "country": "Nepal",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:913853"
+  },
+  {
+    "id": 11271,
+    "name": "Sompal Kami",
+    "country": "Nepal",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "ci:701215"
+  },
+  {
+    "id": 11272,
+    "name": "Nandan Yadav",
+    "country": "Nepal",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTNEP",
+    "efppm": 45.0,
+    "pid": "uncapped:nandan-yadav"
+  },
+  {
+    "id": 11273,
+    "name": "Sahibzada Farhan",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:647785"
+  },
+  {
+    "id": 11274,
+    "name": "Abdul Samad",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1073106"
+  },
+  {
+    "id": 11275,
+    "name": "Abrar Ahmed",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:734459"
+  },
+  {
+    "id": 11276,
+    "name": "Ahmed Daniyal",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1249564"
+  },
+  {
+    "id": 11277,
+    "name": "Akif Javed",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1203669"
+  },
+  {
+    "id": 11278,
+    "name": "Ali Raza",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "uncapped:ali-raza"
+  },
+  {
+    "id": 11279,
+    "name": "Arafat Minhas",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTPAK",
+    "efppm": 50.0,
+    "pid": "ci:1332783"
+  },
+  {
+    "id": 11280,
+    "name": "Haider Ali",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1168651"
+  },
+  {
+    "id": 11281,
+    "name": "Hasan Nawaz",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1398125"
+  },
+  {
+    "id": 11282,
+    "name": "Maaz Sadaqat",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1244154"
+  },
+  {
+    "id": 11283,
+    "name": "Mohammad Wasim",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1185538"
+  },
+  {
+    "id": 11284,
+    "name": "Saad Masood",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "MTPAK",
+    "efppm": 50.0,
+    "pid": "ci:1339104"
+  },
+  {
+    "id": 11285,
+    "name": "Saim Ayub",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTPAK",
+    "efppm": 50.0,
+    "pid": "ci:1161031"
+  },
+  {
+    "id": 11286,
+    "name": "Sufyan Moqim",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1329697"
+  },
+  {
+    "id": 11287,
+    "name": "Usman Khan",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTPAK",
+    "efppm": 45.0,
+    "pid": "ci:1123428"
+  },
+  {
+    "id": 11288,
+    "name": "Shreyas Iyer",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:642519"
+  },
+  {
+    "id": 11289,
+    "name": "Tilak Varma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:1170265"
+  },
+  {
+    "id": 11290,
+    "name": "Abhishek Sharma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:1070183"
+  },
+  {
+    "id": 11291,
+    "name": "Arshdeep Singh",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:1125976"
+  },
+  {
+    "id": 11292,
+    "name": "Jasprit Bumrah",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:625383"
+  },
+  {
+    "id": 11293,
+    "name": "Shivam Dube",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTIND3",
+    "efppm": 50.0,
+    "pid": "ci:714451"
+  },
+  {
+    "id": 11294,
+    "name": "Ishan Kishan",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:720471"
+  },
+  {
+    "id": 11295,
+    "name": "Vipraj Nigam",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:1449074"
+  },
+  {
+    "id": 11296,
+    "name": "Axar Patel",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MTIND3",
+    "efppm": 50.0,
+    "pid": "ci:554691"
+  },
+  {
+    "id": 11297,
+    "name": "Ravi Bishnoi",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:1175441"
+  },
+  {
+    "id": 11298,
+    "name": "Sanju Samson",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:425943"
+  },
+  {
+    "id": 11299,
+    "name": "Vaibhav Sooryavanshi",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:1408688"
+  },
+  {
+    "id": 11300,
+    "name": "Yash Thakur",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:1070196"
+  },
+  {
+    "id": 11301,
+    "name": "Washington Sundar",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTIND3",
+    "efppm": 45.0,
+    "pid": "ci:719715"
+  },
+  {
+    "id": 11302,
+    "name": "Sahan Arachchige",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:693975"
+  },
+  {
+    "id": 11303,
+    "name": "Ashen Bandara",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "uncapped:ashen-bandara"
+  },
+  {
+    "id": 11304,
+    "name": "Lasith Croospulle",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:1027867"
+  },
+  {
+    "id": 11305,
+    "name": "Sohan de Livera",
+    "country": "Sri Lanka",
+    "role": "WK",
+    "squad_number": 4,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "uncapped:sohan-de-livera"
+  },
+  {
+    "id": 11306,
+    "name": "Niroshan Dickwella",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:429754"
+  },
+  {
+    "id": 11307,
+    "name": "Binura Fernando",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:629080"
+  },
+  {
+    "id": 11308,
+    "name": "Nuwanidu Fernando",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:1074333"
+  },
+  {
+    "id": 11309,
+    "name": "Dushan Hemantha",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTSRI2",
+    "efppm": 50.0,
+    "pid": "ci:721041"
+  },
+  {
+    "id": 11310,
+    "name": "Chamika Karunaratne",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:623695"
+  },
+  {
+    "id": 11311,
+    "name": "Tharindu Ratnayake",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:950405"
+  },
+  {
+    "id": 11312,
+    "name": "Wanuja Sahan",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "MTSRI2",
+    "efppm": 50.0,
+    "pid": "ci:1282476"
+  },
+  {
+    "id": 11313,
+    "name": "Garuka Sanketh",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:1364328"
+  },
+  {
+    "id": 11314,
+    "name": "Sineth Jayawardena",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "uncapped:sineth-jayawardena"
+  },
+  {
+    "id": 11315,
+    "name": "Nuwan Thushara",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:955235"
+  },
+  {
+    "id": 11316,
+    "name": "Vijayakanth Viyaskanth",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTSRI2",
+    "efppm": 45.0,
+    "pid": "ci:1153149"
+  },
+  {
+    "id": 11317,
+    "name": "Litton Das",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:536936"
+  },
+  {
+    "id": 11318,
+    "name": "Towhid Hridoy",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:990031"
+  },
+  {
+    "id": 11319,
+    "name": "Al Islam",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "uncapped:al-islam"
+  },
+  {
+    "id": 11320,
+    "name": "Hasan Mahmud",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:926629"
+  },
+  {
+    "id": 11321,
+    "name": "Mahedi Hasan",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTBAN",
+    "efppm": 50.0,
+    "pid": "ci:833087"
+  },
+  {
+    "id": 11322,
+    "name": "Mosaddek Hossain",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTBAN",
+    "efppm": 50.0,
+    "pid": "ci:550133"
+  },
+  {
+    "id": 11323,
+    "name": "Mustafizur Rahman",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:330902"
+  },
+  {
+    "id": 11324,
+    "name": "Nasum Ahmed",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:348049"
+  },
+  {
+    "id": 11325,
+    "name": "Najmul Hossain Shanto",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "uncapped:najmul-hossain-shanto"
+  },
+  {
+    "id": 11326,
+    "name": "Parvez Hossain Emon",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:1139511"
+  },
+  {
+    "id": 11327,
+    "name": "Rishad Hossain",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "MTBAN",
+    "efppm": 50.0,
+    "pid": "ci:1139523"
+  },
+  {
+    "id": 11328,
+    "name": "Saif Hassan",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "MTBAN",
+    "efppm": 50.0,
+    "pid": "ci:821749"
+  },
+  {
+    "id": 11329,
+    "name": "Shoriful Islam",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:990039"
+  },
+  {
+    "id": 11330,
+    "name": "Tanzid Hasan",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:990023"
+  },
+  {
+    "id": 11331,
+    "name": "Yasir Ali",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTBAN",
+    "efppm": 45.0,
+    "pid": "ci:629059"
   }
 ]

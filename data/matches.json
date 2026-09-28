@@ -3058,5 +3058,27 @@
     "date": "2026-10-17T19:00:00+05:30",
     "format": "T20",
     "tour": "west-indies-tour-of-india-2026-t20i"
+  },
+  {
+    "matchNum": 313,
+    "key": "AG_M1_MTNEP_MTSRI2_Sep29",
+    "gender": "M",
+    "team1": "MTNEP",
+    "team2": "MTSRI2",
+    "label": "Match 1: MTNEP v MTSRI2",
+    "date": "2026-09-29T05:30:00+05:30",
+    "format": "T20",
+    "tour": "asian-games-2026"
+  },
+  {
+    "matchNum": 314,
+    "key": "AG_M2_MTBAN_MTMAL_Sep29",
+    "gender": "M",
+    "team1": "MTBAN",
+    "team2": "MTMAL",
+    "label": "Match 2: MTBAN v MTMAL",
+    "date": "2026-09-29T10:30:00+05:30",
+    "format": "T20",
+    "tour": "asian-games-2026"
   }
 ]
