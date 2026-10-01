@@ -15122,5 +15122,285 @@
     "team_code": "MTBAN",
     "efppm": 45.0,
     "pid": "ci:629059"
+  },
+  {
+    "id": 11332,
+    "name": "Tahlia McGrath",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "WOAUS",
+    "efppm": 50.0,
+    "pid": "ci:381311"
+  },
+  {
+    "id": 11333,
+    "name": "Ashleigh Gardner",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "WOAUS",
+    "efppm": 50.0,
+    "pid": "ci:858809"
+  },
+  {
+    "id": 11334,
+    "name": "Nicola Carey",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "WOAUS",
+    "efppm": 45.0,
+    "pid": "ci:381217"
+  },
+  {
+    "id": 11335,
+    "name": "Kim Garth",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WOAUS",
+    "efppm": 50.0,
+    "pid": "ci:418423"
+  },
+  {
+    "id": 11336,
+    "name": "Alana King",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "WOAUS",
+    "efppm": 45.0,
+    "pid": "ci:944393"
+  },
+  {
+    "id": 11337,
+    "name": "Phoebe Litchfield",
+    "country": "Australia Women",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "WOAUS",
+    "efppm": 45.0,
+    "pid": "ci:1176132"
+  },
+  {
+    "id": 11338,
+    "name": "Beth Mooney",
+    "country": "Australia Women",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "WOAUS",
+    "efppm": 45.0,
+    "pid": "ci:381258"
+  },
+  {
+    "id": 11339,
+    "name": "Ellyse Perry",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "WOAUS",
+    "efppm": 50.0,
+    "pid": "ci:275487"
+  },
+  {
+    "id": 11340,
+    "name": "Megan Schutt",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WOAUS",
+    "efppm": 45.0,
+    "pid": "ci:420314"
+  },
+  {
+    "id": 11341,
+    "name": "Annabel Sutherland",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "WOAUS",
+    "efppm": 50.0,
+    "pid": "ci:1071705"
+  },
+  {
+    "id": 11342,
+    "name": "Georgia Voll",
+    "country": "Australia Women",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "WOAUS",
+    "efppm": 45.0,
+    "pid": "ci:1215360"
+  },
+  {
+    "id": 11343,
+    "name": "Georgia Wareham",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "WOAUS",
+    "efppm": 45.0,
+    "pid": "ci:946057"
+  },
+  {
+    "id": 11344,
+    "name": "Nahida Akter",
+    "country": "Bangladesh Women",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:924183"
+  },
+  {
+    "id": 11345,
+    "name": "Dilara Akter",
+    "country": "Bangladesh Women",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:1346729"
+  },
+  {
+    "id": 11346,
+    "name": "Disha Biswas",
+    "country": "Bangladesh Women",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WOBAN",
+    "efppm": 50.0,
+    "pid": "uncapped:disha-biswas"
+  },
+  {
+    "id": 11347,
+    "name": "Fargana Hoque",
+    "country": "Bangladesh Women",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:486995"
+  },
+  {
+    "id": 11348,
+    "name": "Habiba Islam",
+    "country": "Bangladesh Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:1429513"
+  },
+  {
+    "id": 11349,
+    "name": "Marufa Akter",
+    "country": "Bangladesh Women",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:1332561"
+  },
+  {
+    "id": 11350,
+    "name": "Sobhana Mostary",
+    "country": "Bangladesh Women",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:1145089"
+  },
+  {
+    "id": 11351,
+    "name": "Murshida Khatun",
+    "country": "Bangladesh Women",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:1080264"
+  },
+  {
+    "id": 11352,
+    "name": "Nigar Sultana",
+    "country": "Bangladesh Women",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:924177"
+  },
+  {
+    "id": 11353,
+    "name": "Rabeya Khan",
+    "country": "Bangladesh Women",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "WOBAN",
+    "efppm": 50.0,
+    "pid": "ci:1204964"
+  },
+  {
+    "id": 11354,
+    "name": "Ritu Moni",
+    "country": "Bangladesh Women",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "WOBAN",
+    "efppm": 50.0,
+    "pid": "ci:478808"
+  },
+  {
+    "id": 11355,
+    "name": "Sanjida Akter Meghla",
+    "country": "Bangladesh Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:1205142"
+  },
+  {
+    "id": 11356,
+    "name": "Sarmin Sultana",
+    "country": "Bangladesh Women",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "uncapped:sarmin-sultana"
+  },
+  {
+    "id": 11357,
+    "name": "Sharmin Akhter",
+    "country": "Bangladesh Women",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:535868"
+  },
+  {
+    "id": 11358,
+    "name": "Shorna Akter",
+    "country": "Bangladesh Women",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "WOBAN",
+    "efppm": 50.0,
+    "pid": "ci:1352206"
+  },
+  {
+    "id": 11359,
+    "name": "Sultana Khatun",
+    "country": "Bangladesh Women",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "WOBAN",
+    "efppm": 45.0,
+    "pid": "ci:1371855"
   }
 ]

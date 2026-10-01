@@ -374,5 +374,13 @@
   "MTBAN": {
     "flag": "🇧🇩",
     "name": "Bangladesh"
+  },
+  "WOAUS": {
+    "flag": "🏏",
+    "name": "Australia Women"
+  },
+  "WOBAN": {
+    "flag": "🏏",
+    "name": "Bangladesh Women"
   }
 }

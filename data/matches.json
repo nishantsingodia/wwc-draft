@@ -3080,5 +3080,38 @@
     "date": "2026-09-29T10:30:00+05:30",
     "format": "T20",
     "tour": "asian-games-2026"
+  },
+  {
+    "matchNum": 315,
+    "key": "AUTO_W_AUS_BAN_ODI1_Oct09",
+    "gender": "W",
+    "team1": "WOAUS",
+    "team2": "WOBAN",
+    "label": "1st ODI: AUS v BAN",
+    "date": "2026-10-09T09:20:00+05:30",
+    "format": "ODI",
+    "tour": "bangladesh-women-tour-of-australia-2026-odi"
+  },
+  {
+    "matchNum": 316,
+    "key": "AUTO_W_AUS_BAN_ODI2_Oct11",
+    "gender": "W",
+    "team1": "WOAUS",
+    "team2": "WOBAN",
+    "label": "2nd ODI: AUS v BAN",
+    "date": "2026-10-11T09:20:00+05:30",
+    "format": "ODI",
+    "tour": "bangladesh-women-tour-of-australia-2026-odi"
+  },
+  {
+    "matchNum": 317,
+    "key": "AUTO_W_AUS_BAN_ODI3_Oct14",
+    "gender": "W",
+    "team1": "WOAUS",
+    "team2": "WOBAN",
+    "label": "3rd ODI: AUS v BAN",
+    "date": "2026-10-14T09:20:00+05:30",
+    "format": "ODI",
+    "tour": "bangladesh-women-tour-of-australia-2026-odi"
   }
 ]
