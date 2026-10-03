@@ -87,10 +87,9 @@ export default function AmendBanner({ code }: { code: string }) {
   return (
     <Link
       href={`/draft/${code}/amend`}
-      className="block rounded-xl border border-hair bg-ink2 px-3 py-2 text-[11px] text-mist hover:text-cloud"
+      className="block truncate rounded-xl border border-hair bg-ink2 px-3 py-2 text-[11px] text-mist hover:text-cloud"
     >
-      Someone in the XI a late addition you couldn&apos;t draft? See everyone playing and swap a
-      stand-in for the real player — <span className="text-gold">amend lineup →</span>
+      Late addition in the XI? <span className="text-gold">Amend lineup →</span>
     </Link>
   );
 }

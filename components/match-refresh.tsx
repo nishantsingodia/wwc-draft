@@ -2,7 +2,8 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { LIVE_SOURCE_LABEL, LIVE_GAP_NOTE } from "@/lib/live-label";
+import { LIVE_SOURCE_LABEL } from "@/lib/live-label";
+import LiveGapNote from "@/components/live-gap-note";
 
 // Match-level "Refresh now" for a LIVE match. Points are scored IN-APP from the ESPN
 // scorecard (the same provisional scoring the results page uses via lib/d11-score +
@@ -42,7 +43,7 @@ export default function MatchRefresh({
         {freshness ? `${freshness} · via ESPN` : LIVE_SOURCE_LABEL}
       </p>
       {/* Same wording as the results header, from the same constant — see lib/live-label.ts. */}
-      <p className="px-1 text-[11px] leading-snug text-mist2">{LIVE_GAP_NOTE}</p>
+      <LiveGapNote className="px-1" />
     </div>
   );
 }

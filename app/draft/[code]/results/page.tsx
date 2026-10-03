@@ -5,7 +5,8 @@ import Link from "next/link";
 import { getUserLabel, USER_COLORS } from "@/lib/users";
 import { prettifyMatchLabel } from "@/lib/players";
 import { LOCK_BUFFER } from "@/lib/lock-buffer";
-import { LIVE_SOURCE_LABEL, LIVE_GAP_NOTE } from "@/lib/live-label";
+import { LIVE_SOURCE_LABEL } from "@/lib/live-label";
+import LiveGapNote from "@/components/live-gap-note";
 import type { Change } from "@/lib/effective-lineup";
 import type { LiveStatus, Innings } from "@/lib/espn";
 import ChangesBanner from "@/components/changes-banner";
@@ -566,7 +567,7 @@ export default function ResultsPage({
                 expectation deserves to know which parts of the card are in the number and which
                 are not — the label used to hide a ~35 FP/match shortfall behind one word. */}
             {live && data.liveProvisional && (
-              <p className="mt-0.5 text-[11px] leading-snug text-mist2">{LIVE_GAP_NOTE}</p>
+              <LiveGapNote className="mt-0.5" />
             )}
           </div>
           {live && (
