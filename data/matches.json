@@ -3113,5 +3113,16 @@
     "date": "2026-10-14T09:20:00+05:30",
     "format": "ODI",
     "tour": "bangladesh-women-tour-of-australia-2026-odi"
+  },
+  {
+    "matchNum": 318,
+    "key": "AG_FINAL_MTIND3_MTPAK_Oct3",
+    "gender": "M",
+    "team1": "MTIND3",
+    "team2": "MTPAK",
+    "label": "Gold Medal Final: MTIND3 v MTPAK",
+    "date": "2026-10-03T10:00:00+05:30",
+    "format": "T20",
+    "tour": "asian-games-2026"
   }
 ]
