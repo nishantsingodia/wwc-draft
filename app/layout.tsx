@@ -21,6 +21,9 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
+  // iOS 26 Safari: without cover, fixed bottom-0 bars get stranded mid-screen
+  // when the floating toolbar collapses. Bars pad themselves with safe-area insets.
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

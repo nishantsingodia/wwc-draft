@@ -602,7 +602,7 @@ export default function DraftBoardPage({
         )}
       </div>
 
-      <div className="px-3 pt-3 pb-24 space-y-3 max-w-lg mx-auto">
+      <div className="px-3 pt-3 pb-[calc(6rem+env(safe-area-inset-bottom))] space-y-3 max-w-lg mx-auto">
         {/* Refresh the lineup while drafting — manual + auto-check at roundlock.
             When the official XI posts, the pool below flips from "Likely XI" to
             the real Playing XI so you draft on live info. */}
@@ -853,7 +853,7 @@ export default function DraftBoardPage({
           idle → tap to start · editing → pressed (SAVE / Clear) · saved → shows the count,
           tap to edit again. No separate Edit link, no bare ✕; all CTAs are solid. */}
       {isDrafting && (
-        <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-hair2 px-3 py-2.5 z-20">
+        <div className="fixed bottom-0 inset-x-0 bg-navy border-t border-hair2 px-3 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] z-20">
           <div className="max-w-lg mx-auto flex items-center gap-2 text-xs">
             {quickDraftOn ? (
               /* EDITING — number pills live on the player cards; this bar holds the controls */

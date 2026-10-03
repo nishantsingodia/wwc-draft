@@ -540,7 +540,7 @@ export default function TeamPage({
   }
 
   return (
-    <main className="min-h-screen bg-ink text-white pb-28">
+    <main className="min-h-screen bg-ink text-white pb-[calc(7rem+env(safe-area-inset-bottom))]">
       {savedToast && (
         <div className="fixed top-3 inset-x-0 z-30 flex justify-center px-3 pointer-events-none">
           <div className="rounded-full bg-emerald-600 text-white text-sm font-semibold px-4 py-2 shadow-lg">
@@ -768,7 +768,7 @@ export default function TeamPage({
 
       {/* Save button */}
       {!isLocked && (
-        <div className="fixed bottom-0 inset-x-0 z-40 p-3 bg-ink backdrop-blur border-t border-hair">
+        <div className="fixed bottom-0 inset-x-0 z-40 px-3 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] bg-ink backdrop-blur border-t border-hair">
           <div className="max-w-lg mx-auto space-y-2">
             {ranking.length < ppu && ranking.length > 0 && (
               <p className="text-yellow-400 text-xs text-center">
