@@ -13151,7 +13151,7 @@
     "squad_number": 12,
     "team_code": "WOZIM",
     "efppm": 50.0,
-    "pid": "uncapped:christine-mutasa"
+    "pid": "ci:1306917"
   },
   {
     "id": 11135,
@@ -13330,306 +13330,6 @@
     "role": "AR",
     "squad_number": 15,
     "team_code": "WOWES",
-    "efppm": 50.0,
-    "pid": "ci:1268281"
-  },
-  {
-    "id": 11153,
-    "name": "Josephine Nkomo",
-    "country": "Zimbabwe Women",
-    "role": "AR",
-    "squad_number": 1,
-    "team_code": "WTZIM",
-    "efppm": 50.0,
-    "pid": "ci:638256"
-  },
-  {
-    "id": 11154,
-    "name": "Beloved Biza",
-    "country": "Zimbabwe Women",
-    "role": "AR",
-    "squad_number": 2,
-    "team_code": "WTZIM",
-    "efppm": 50.0,
-    "pid": "ci:1302686"
-  },
-  {
-    "id": 11155,
-    "name": "Olinder Chare",
-    "country": "Zimbabwe Women",
-    "role": "BOWL",
-    "squad_number": 3,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:1302697"
-  },
-  {
-    "id": 11156,
-    "name": "Kudzai Chigora",
-    "country": "Zimbabwe Women",
-    "role": "BOWL",
-    "squad_number": 4,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:1302575"
-  },
-  {
-    "id": 11157,
-    "name": "Chiedza Dhururu",
-    "country": "Zimbabwe Women",
-    "role": "WK",
-    "squad_number": 5,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:1094714"
-  },
-  {
-    "id": 11158,
-    "name": "Nyasha Gwanzura",
-    "country": "Zimbabwe Women",
-    "role": "AR",
-    "squad_number": 6,
-    "team_code": "WTZIM",
-    "efppm": 50.0,
-    "pid": "ci:922491"
-  },
-  {
-    "id": 11159,
-    "name": "Tendai Makusha",
-    "country": "Zimbabwe Women",
-    "role": "BOWL",
-    "squad_number": 7,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:1446941"
-  },
-  {
-    "id": 11160,
-    "name": "Michelle Mavunga",
-    "country": "Zimbabwe Women",
-    "role": "BOWL",
-    "squad_number": 8,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:1273947"
-  },
-  {
-    "id": 11161,
-    "name": "Sharne Mayers",
-    "country": "Zimbabwe Women",
-    "role": "BAT",
-    "squad_number": 9,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:317144"
-  },
-  {
-    "id": 11162,
-    "name": "Chipo Mugeri-Tiripano",
-    "country": "Zimbabwe Women",
-    "role": "AR",
-    "squad_number": 10,
-    "team_code": "WTZIM",
-    "efppm": 50.0,
-    "pid": "ci:317148"
-  },
-  {
-    "id": 11163,
-    "name": "Modester Mupachikwa",
-    "country": "Zimbabwe Women",
-    "role": "BAT",
-    "squad_number": 11,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:538591"
-  },
-  {
-    "id": 11164,
-    "name": "Christine Mutasa",
-    "country": "Zimbabwe Women",
-    "role": "AR",
-    "squad_number": 12,
-    "team_code": "WTZIM",
-    "efppm": 50.0,
-    "pid": "uncapped:christine-mutasa"
-  },
-  {
-    "id": 11165,
-    "name": "Kelis Ndhlovu",
-    "country": "Zimbabwe Women",
-    "role": "AR",
-    "squad_number": 13,
-    "team_code": "WTZIM",
-    "efppm": 50.0,
-    "pid": "ci:1250707"
-  },
-  {
-    "id": 11166,
-    "name": "Loryn Phiri",
-    "country": "Zimbabwe Women",
-    "role": "BOWL",
-    "squad_number": 14,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:1135025"
-  },
-  {
-    "id": 11167,
-    "name": "Nomvelo Sibanda",
-    "country": "Zimbabwe Women",
-    "role": "BOWL",
-    "squad_number": 15,
-    "team_code": "WTZIM",
-    "efppm": 45.0,
-    "pid": "ci:1080012"
-  },
-  {
-    "id": 11168,
-    "name": "Hayley Matthews",
-    "country": "West Indies Women",
-    "role": "AR",
-    "squad_number": 1,
-    "team_code": "WTWES",
-    "efppm": 50.0,
-    "pid": "ci:474308"
-  },
-  {
-    "id": 11169,
-    "name": "Aaliyah Alleyne",
-    "country": "West Indies Women",
-    "role": "BOWL",
-    "squad_number": 2,
-    "team_code": "WTWES",
-    "efppm": 45.0,
-    "pid": "ci:661441"
-  },
-  {
-    "id": 11170,
-    "name": "Eboni Brathwaite",
-    "country": "West Indies Women",
-    "role": "BAT",
-    "squad_number": 3,
-    "team_code": "WTWES",
-    "efppm": 45.0,
-    "pid": "ci:1526007"
-  },
-  {
-    "id": 11171,
-    "name": "Shemaine Campbelle",
-    "country": "West Indies Women",
-    "role": "BAT",
-    "squad_number": 4,
-    "team_code": "WTWES",
-    "efppm": 45.0,
-    "pid": "ci:424631"
-  },
-  {
-    "id": 11172,
-    "name": "Jahzara Claxton",
-    "country": "West Indies Women",
-    "role": "AR",
-    "squad_number": 5,
-    "team_code": "WTWES",
-    "efppm": 50.0,
-    "pid": "ci:1352172"
-  },
-  {
-    "id": 11173,
-    "name": "Afy Fletcher",
-    "country": "West Indies Women",
-    "role": "BOWL",
-    "squad_number": 6,
-    "team_code": "WTWES",
-    "efppm": 45.0,
-    "pid": "ci:355351"
-  },
-  {
-    "id": 11174,
-    "name": "Jannillea Glasgow",
-    "country": "West Indies Women",
-    "role": "AR",
-    "squad_number": 7,
-    "team_code": "WTWES",
-    "efppm": 50.0,
-    "pid": "ci:1268602"
-  },
-  {
-    "id": 11175,
-    "name": "Realeanna Grimmond",
-    "country": "West Indies Women",
-    "role": "AR",
-    "squad_number": 8,
-    "team_code": "WTWES",
-    "efppm": 50.0,
-    "pid": "ci:1352170"
-  },
-  {
-    "id": 11176,
-    "name": "Shawnisha Hector",
-    "country": "West Indies Women",
-    "role": "BAT",
-    "squad_number": 9,
-    "team_code": "WTWES",
-    "efppm": 45.0,
-    "pid": "ci:1204928"
-  },
-  {
-    "id": 11177,
-    "name": "Chinelle Henry",
-    "country": "West Indies Women",
-    "role": "AR",
-    "squad_number": 10,
-    "team_code": "WTWES",
-    "efppm": 50.0,
-    "pid": "ci:474190"
-  },
-  {
-    "id": 11178,
-    "name": "Mandy Mangru",
-    "country": "West Indies Women",
-    "role": "WK",
-    "squad_number": 11,
-    "team_code": "WTWES",
-    "efppm": 45.0,
-    "pid": "ci:907733"
-  },
-  {
-    "id": 11179,
-    "name": "Ashmini Munisar",
-    "country": "West Indies Women",
-    "role": "AR",
-    "squad_number": 12,
-    "team_code": "WTWES",
-    "efppm": 50.0,
-    "pid": "ci:1352168"
-  },
-  {
-    "id": 11180,
-    "name": "Karishma Ramharack",
-    "country": "West Indies Women",
-    "role": "BOWL",
-    "squad_number": 13,
-    "team_code": "WTWES",
-    "efppm": 45.0,
-    "pid": "ci:769517"
-  },
-  {
-    "id": 11181,
-    "name": "Stafanie Taylor",
-    "country": "West Indies Women",
-    "role": "BAT",
-    "squad_number": 14,
-    "team_code": "WTWES",
-    "efppm": 45.0,
-    "pid": "ci:355359"
-  },
-  {
-    "id": 11182,
-    "name": "Zaida James",
-    "country": "West Indies Women",
-    "role": "AR",
-    "squad_number": 15,
-    "team_code": "WTWES",
     "efppm": 50.0,
     "pid": "ci:1268281"
   },
@@ -13930,306 +13630,6 @@
     "role": "BAT",
     "squad_number": 15,
     "team_code": "MOWES",
-    "efppm": 45.0,
-    "pid": "ci:914541"
-  },
-  {
-    "id": 11213,
-    "name": "Shubman Gill",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 1,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:1070173"
-  },
-  {
-    "id": 11214,
-    "name": "KL Rahul",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 2,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:422108"
-  },
-  {
-    "id": 11215,
-    "name": "Auqib Nabi",
-    "country": "India",
-    "role": "BOWL",
-    "squad_number": 3,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "uncapped:auqib-nabi"
-  },
-  {
-    "id": 11216,
-    "name": "Ruturaj Gaikwad",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 4,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:1060380"
-  },
-  {
-    "id": 11217,
-    "name": "Gurnoor Brar",
-    "country": "India",
-    "role": "BOWL",
-    "squad_number": 5,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:1287033"
-  },
-  {
-    "id": 11218,
-    "name": "Ravindra Jadeja",
-    "country": "India",
-    "role": "AR",
-    "squad_number": 6,
-    "team_code": "MTIND2",
-    "efppm": 50.0,
-    "pid": "ci:234675"
-  },
-  {
-    "id": 11219,
-    "name": "Yashasvi Jaiswal",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 7,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:1151278"
-  },
-  {
-    "id": 11220,
-    "name": "Dhruv Jurel",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 8,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:1175488"
-  },
-  {
-    "id": 11221,
-    "name": "Virat Kohli",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 9,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:253802"
-  },
-  {
-    "id": 11222,
-    "name": "Kuldeep Yadav",
-    "country": "India",
-    "role": "BOWL",
-    "squad_number": 10,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:559235"
-  },
-  {
-    "id": 11223,
-    "name": "Mohammed Siraj",
-    "country": "India",
-    "role": "BOWL",
-    "squad_number": 11,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:940973"
-  },
-  {
-    "id": 11224,
-    "name": "Naman Dhir",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 12,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:1287032"
-  },
-  {
-    "id": 11225,
-    "name": "Nitish Kumar Reddy",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 13,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:1175496"
-  },
-  {
-    "id": 11226,
-    "name": "Prasidh Krishna",
-    "country": "India",
-    "role": "BOWL",
-    "squad_number": 14,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:917159"
-  },
-  {
-    "id": 11227,
-    "name": "Rohit Sharma",
-    "country": "India",
-    "role": "BAT",
-    "squad_number": 15,
-    "team_code": "MTIND2",
-    "efppm": 45.0,
-    "pid": "ci:34102"
-  },
-  {
-    "id": 11228,
-    "name": "Shai Hope",
-    "country": "West Indies",
-    "role": "BAT",
-    "squad_number": 1,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:581379"
-  },
-  {
-    "id": 11229,
-    "name": "Jewel Andrew",
-    "country": "West Indies",
-    "role": "BAT",
-    "squad_number": 2,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:1394273"
-  },
-  {
-    "id": 11230,
-    "name": "John Campbell",
-    "country": "West Indies",
-    "role": "BAT",
-    "squad_number": 3,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:348026"
-  },
-  {
-    "id": 11231,
-    "name": "Keacy Carty",
-    "country": "West Indies",
-    "role": "BAT",
-    "squad_number": 4,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:820677"
-  },
-  {
-    "id": 11232,
-    "name": "Roston Chase",
-    "country": "West Indies",
-    "role": "AR",
-    "squad_number": 5,
-    "team_code": "MTWES",
-    "efppm": 50.0,
-    "pid": "ci:391832"
-  },
-  {
-    "id": 11233,
-    "name": "Matthew Forde",
-    "country": "West Indies",
-    "role": "BOWL",
-    "squad_number": 6,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:1209190"
-  },
-  {
-    "id": 11234,
-    "name": "Justin Greaves",
-    "country": "West Indies",
-    "role": "AR",
-    "squad_number": 7,
-    "team_code": "MTWES",
-    "efppm": 50.0,
-    "pid": "ci:510823"
-  },
-  {
-    "id": 11235,
-    "name": "Amir Jangoo",
-    "country": "West Indies",
-    "role": "BAT",
-    "squad_number": 8,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:820681"
-  },
-  {
-    "id": 11236,
-    "name": "Jayden Seales",
-    "country": "West Indies",
-    "role": "BOWL",
-    "squad_number": 9,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:1199304"
-  },
-  {
-    "id": 11237,
-    "name": "Alzarri Joseph",
-    "country": "West Indies",
-    "role": "BOWL",
-    "squad_number": 10,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:670031"
-  },
-  {
-    "id": 11238,
-    "name": "Shamar Joseph",
-    "country": "West Indies",
-    "role": "BOWL",
-    "squad_number": 11,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:1356971"
-  },
-  {
-    "id": 11239,
-    "name": "Vitel Lawes",
-    "country": "West Indies",
-    "role": "BOWL",
-    "squad_number": 12,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:1500757"
-  },
-  {
-    "id": 11240,
-    "name": "Gudakesh Motie",
-    "country": "West Indies",
-    "role": "BOWL",
-    "squad_number": 13,
-    "team_code": "MTWES",
-    "efppm": 45.0,
-    "pid": "ci:670045"
-  },
-  {
-    "id": 11241,
-    "name": "Keemo Paul",
-    "country": "West Indies",
-    "role": "AR",
-    "squad_number": 14,
-    "team_code": "MTWES",
-    "efppm": 50.0,
-    "pid": "ci:677081"
-  },
-  {
-    "id": 11242,
-    "name": "Sherfane Rutherford",
-    "country": "West Indies",
-    "role": "BAT",
-    "squad_number": 15,
-    "team_code": "MTWES",
     "efppm": 45.0,
     "pid": "ci:914541"
   },
@@ -15402,5 +14802,605 @@
     "team_code": "WOBAN",
     "efppm": 45.0,
     "pid": "ci:1371855"
+  },
+  {
+    "id": 11360,
+    "name": "Shreyas Iyer",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:642519"
+  },
+  {
+    "id": 11361,
+    "name": "Tilak Varma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1170265"
+  },
+  {
+    "id": 11362,
+    "name": "Abhishek Sharma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1070183"
+  },
+  {
+    "id": 11363,
+    "name": "Arshdeep Singh",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1125976"
+  },
+  {
+    "id": 11364,
+    "name": "Shivam Dube",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTIND2",
+    "efppm": 50.0,
+    "pid": "ci:714451"
+  },
+  {
+    "id": 11365,
+    "name": "Ishan Kishan",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:720471"
+  },
+  {
+    "id": 11366,
+    "name": "Kuldeep Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:559235"
+  },
+  {
+    "id": 11367,
+    "name": "Naman Dhir",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1287032"
+  },
+  {
+    "id": 11368,
+    "name": "Nitish Kumar Reddy",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1175496"
+  },
+  {
+    "id": 11369,
+    "name": "Axar Patel",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MTIND2",
+    "efppm": 50.0,
+    "pid": "ci:554691"
+  },
+  {
+    "id": 11370,
+    "name": "Prince Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1350768"
+  },
+  {
+    "id": 11371,
+    "name": "Ravi Bishnoi",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1175441"
+  },
+  {
+    "id": 11372,
+    "name": "Sanju Samson",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:425943"
+  },
+  {
+    "id": 11373,
+    "name": "Vaibhav Sooryavanshi",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1408688"
+  },
+  {
+    "id": 11374,
+    "name": "Mayank Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTIND2",
+    "efppm": 45.0,
+    "pid": "ci:1292563"
+  },
+  {
+    "id": 11375,
+    "name": "Shai Hope",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:581379"
+  },
+  {
+    "id": 11376,
+    "name": "Jewel Andrew",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:1394273"
+  },
+  {
+    "id": 11377,
+    "name": "Roston Chase",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTWES",
+    "efppm": 50.0,
+    "pid": "ci:391832"
+  },
+  {
+    "id": 11378,
+    "name": "Matthew Forde",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:1209190"
+  },
+  {
+    "id": 11379,
+    "name": "Shimron Hetmyer",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:670025"
+  },
+  {
+    "id": 11380,
+    "name": "Akeal Hosein",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:530812"
+  },
+  {
+    "id": 11381,
+    "name": "Amir Jangoo",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:820681"
+  },
+  {
+    "id": 11382,
+    "name": "Shamar Joseph",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:1356971"
+  },
+  {
+    "id": 11383,
+    "name": "Gudakesh Motie",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:670045"
+  },
+  {
+    "id": 11384,
+    "name": "Keemo Paul",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MTWES",
+    "efppm": 50.0,
+    "pid": "ci:677081"
+  },
+  {
+    "id": 11385,
+    "name": "Kamil Pooran",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:556531"
+  },
+  {
+    "id": 11386,
+    "name": "Rovman Powell",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:820351"
+  },
+  {
+    "id": 11387,
+    "name": "Sherfane Rutherford",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:914541"
+  },
+  {
+    "id": 11388,
+    "name": "Quentin Sampson",
+    "country": "West Indies",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:1342550"
+  },
+  {
+    "id": 11389,
+    "name": "Romario Shepherd",
+    "country": "West Indies",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTWES",
+    "efppm": 45.0,
+    "pid": "ci:677077"
+  },
+  {
+    "id": 11390,
+    "name": "Shamar Springer",
+    "country": "West Indies",
+    "role": "AR",
+    "squad_number": 16,
+    "team_code": "MTWES",
+    "efppm": 50.0,
+    "pid": "ci:820689"
+  },
+  {
+    "id": 11391,
+    "name": "Josephine Nkomo",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "WTZIM",
+    "efppm": 50.0,
+    "pid": "ci:638256"
+  },
+  {
+    "id": 11392,
+    "name": "Beloved Biza",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "WTZIM",
+    "efppm": 50.0,
+    "pid": "ci:1302686"
+  },
+  {
+    "id": 11393,
+    "name": "Olinder Chare",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:1302697"
+  },
+  {
+    "id": 11394,
+    "name": "Francisca Chipare",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:1119417"
+  },
+  {
+    "id": 11395,
+    "name": "Chiedza Dhururu",
+    "country": "Zimbabwe Women",
+    "role": "WK",
+    "squad_number": 5,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:1094714"
+  },
+  {
+    "id": 11396,
+    "name": "Nyasha Gwanzura",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTZIM",
+    "efppm": 50.0,
+    "pid": "ci:922491"
+  },
+  {
+    "id": 11397,
+    "name": "Tendai Makusha",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:1446941"
+  },
+  {
+    "id": 11398,
+    "name": "Michelle Mavunga",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:1273947"
+  },
+  {
+    "id": 11399,
+    "name": "Sharne Mayers",
+    "country": "Zimbabwe Women",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:317144"
+  },
+  {
+    "id": 11400,
+    "name": "Chipo Mugeri-Tiripano",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "WTZIM",
+    "efppm": 50.0,
+    "pid": "ci:317148"
+  },
+  {
+    "id": 11401,
+    "name": "Modester Mupachikwa",
+    "country": "Zimbabwe Women",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:538591"
+  },
+  {
+    "id": 11402,
+    "name": "Christine Mutasa",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "WTZIM",
+    "efppm": 50.0,
+    "pid": "ci:1306917"
+  },
+  {
+    "id": 11403,
+    "name": "Kelis Ndhlovu",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "WTZIM",
+    "efppm": 50.0,
+    "pid": "ci:1250707"
+  },
+  {
+    "id": 11404,
+    "name": "Loryn Phiri",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:1135025"
+  },
+  {
+    "id": 11405,
+    "name": "Nomvelo Sibanda",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WTZIM",
+    "efppm": 45.0,
+    "pid": "ci:1080012"
+  },
+  {
+    "id": 11406,
+    "name": "Aaliyah Alleyne",
+    "country": "West Indies Women",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "WTWES",
+    "efppm": 45.0,
+    "pid": "ci:661441"
+  },
+  {
+    "id": 11407,
+    "name": "Eboni Brathwaite",
+    "country": "West Indies Women",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "WTWES",
+    "efppm": 45.0,
+    "pid": "ci:1526007"
+  },
+  {
+    "id": 11408,
+    "name": "Shemaine Campbelle",
+    "country": "West Indies Women",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "WTWES",
+    "efppm": 45.0,
+    "pid": "ci:424631"
+  },
+  {
+    "id": 11409,
+    "name": "Jahzara Claxton",
+    "country": "West Indies Women",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTWES",
+    "efppm": 50.0,
+    "pid": "ci:1352172"
+  },
+  {
+    "id": 11410,
+    "name": "Afy Fletcher",
+    "country": "West Indies Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "WTWES",
+    "efppm": 45.0,
+    "pid": "ci:355351"
+  },
+  {
+    "id": 11411,
+    "name": "Jannillea Glasgow",
+    "country": "West Indies Women",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTWES",
+    "efppm": 50.0,
+    "pid": "ci:1268602"
+  },
+  {
+    "id": 11412,
+    "name": "Realeanna Grimmond",
+    "country": "West Indies Women",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTWES",
+    "efppm": 50.0,
+    "pid": "ci:1352170"
+  },
+  {
+    "id": 11413,
+    "name": "Shawnisha Hector",
+    "country": "West Indies Women",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "WTWES",
+    "efppm": 45.0,
+    "pid": "ci:1204928"
+  },
+  {
+    "id": 11414,
+    "name": "Chinelle Henry",
+    "country": "West Indies Women",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "WTWES",
+    "efppm": 50.0,
+    "pid": "ci:474190"
+  },
+  {
+    "id": 11415,
+    "name": "Mandy Mangru",
+    "country": "West Indies Women",
+    "role": "WK",
+    "squad_number": 10,
+    "team_code": "WTWES",
+    "efppm": 45.0,
+    "pid": "ci:907733"
+  },
+  {
+    "id": 11416,
+    "name": "Ashmini Munisar",
+    "country": "West Indies Women",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "WTWES",
+    "efppm": 50.0,
+    "pid": "ci:1352168"
+  },
+  {
+    "id": 11417,
+    "name": "Karishma Ramharack",
+    "country": "West Indies Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "WTWES",
+    "efppm": 45.0,
+    "pid": "ci:769517"
+  },
+  {
+    "id": 11418,
+    "name": "Stafanie Taylor",
+    "country": "West Indies Women",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WTWES",
+    "efppm": 45.0,
+    "pid": "ci:355359"
+  },
+  {
+    "id": 11419,
+    "name": "Zaida James",
+    "country": "West Indies Women",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "WTWES",
+    "efppm": 50.0,
+    "pid": "ci:1268281"
   }
 ]
