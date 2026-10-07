@@ -15402,5 +15402,305 @@
     "team_code": "WTWES",
     "efppm": 50.0,
     "pid": "ci:1268281"
+  },
+  {
+    "id": 11420,
+    "name": "Sahibzada Farhan",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:647785"
+  },
+  {
+    "id": 11421,
+    "name": "Abdul Samad",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:1073106"
+  },
+  {
+    "id": 11422,
+    "name": "Abrar Ahmed",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:734459"
+  },
+  {
+    "id": 11423,
+    "name": "Arafat Minhas",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTPAK2",
+    "efppm": 50.0,
+    "pid": "ci:1332783"
+  },
+  {
+    "id": 11424,
+    "name": "Fakhar Zaman",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:512191"
+  },
+  {
+    "id": 11425,
+    "name": "Hasan Nawaz",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:1398125"
+  },
+  {
+    "id": 11426,
+    "name": "Khawaja Nafay",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:1329699"
+  },
+  {
+    "id": 11427,
+    "name": "Maaz Sadaqat",
+    "country": "Pakistan",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:1244154"
+  },
+  {
+    "id": 11428,
+    "name": "Mohammad Imran",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MTPAK2",
+    "efppm": 50.0,
+    "pid": "ci:429981"
+  },
+  {
+    "id": 11429,
+    "name": "Naseem Shah",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:1158088"
+  },
+  {
+    "id": 11430,
+    "name": "Razaullah",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:1510715"
+  },
+  {
+    "id": 11431,
+    "name": "Saim Ayub",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "MTPAK2",
+    "efppm": 50.0,
+    "pid": "ci:1161031"
+  },
+  {
+    "id": 11432,
+    "name": "Salman Mirza",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:1252522"
+  },
+  {
+    "id": 11433,
+    "name": "Shadab Khan",
+    "country": "Pakistan",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MTPAK2",
+    "efppm": 50.0,
+    "pid": "ci:922943"
+  },
+  {
+    "id": 11434,
+    "name": "Sufyan Moqim",
+    "country": "Pakistan",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTPAK2",
+    "efppm": 45.0,
+    "pid": "ci:1329697"
+  },
+  {
+    "id": 11435,
+    "name": "Kusal Mendis",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:629074"
+  },
+  {
+    "id": 11436,
+    "name": "Sahan Arachchige",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:693975"
+  },
+  {
+    "id": 11437,
+    "name": "Dushmantha Chameera",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:552152"
+  },
+  {
+    "id": 11438,
+    "name": "Binura Fernando",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:629080"
+  },
+  {
+    "id": 11439,
+    "name": "Lahiru Udara",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:704693"
+  },
+  {
+    "id": 11440,
+    "name": "Eshan Malinga",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:1306214"
+  },
+  {
+    "id": 11441,
+    "name": "Kamindu Mendis",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTSRI3",
+    "efppm": 50.0,
+    "pid": "ci:784373"
+  },
+  {
+    "id": 11442,
+    "name": "Kamil Mishara",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:1075863"
+  },
+  {
+    "id": 11443,
+    "name": "Dasun Shanaka",
+    "country": "Sri Lanka",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MTSRI3",
+    "efppm": 50.0,
+    "pid": "ci:437316"
+  },
+  {
+    "id": 11444,
+    "name": "Sineth Jayawardena",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "uncapped:sineth-jayawardena"
+  },
+  {
+    "id": 11445,
+    "name": "Maheesh Theekshana",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:1138316"
+  },
+  {
+    "id": 11446,
+    "name": "Nuwan Thushara",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:955235"
+  },
+  {
+    "id": 11447,
+    "name": "Vijayakanth Viyaskanth",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:1153149"
+  },
+  {
+    "id": 11448,
+    "name": "Dunith Wellalage",
+    "country": "Sri Lanka",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:1152427"
+  },
+  {
+    "id": 11449,
+    "name": "Chamindu Wickramasinghe",
+    "country": "Sri Lanka",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTSRI3",
+    "efppm": 45.0,
+    "pid": "ci:1186658"
   }
 ]

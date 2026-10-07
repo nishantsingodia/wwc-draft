@@ -382,5 +382,13 @@
   "WOBAN": {
     "flag": "🏏",
     "name": "Bangladesh Women"
+  },
+  "MTPAK2": {
+    "flag": "🇵🇰",
+    "name": "Pakistan"
+  },
+  "MTSRI3": {
+    "flag": "🇱🇰",
+    "name": "Sri Lanka"
   }
 }

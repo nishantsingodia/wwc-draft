@@ -3124,5 +3124,38 @@
     "date": "2026-10-03T10:00:00+05:30",
     "format": "T20",
     "tour": "asian-games-2026"
+  },
+  {
+    "matchNum": 319,
+    "key": "AUTO_M_PAK_SRI_T20I1_Oct09",
+    "gender": "M",
+    "team1": "MTPAK2",
+    "team2": "MTSRI3",
+    "label": "1st T20I: PAK v SRI",
+    "date": "2026-10-09T20:30:00+05:30",
+    "format": "T20",
+    "tour": "sri-lanka-tour-of-pakistan-2026-t20i"
+  },
+  {
+    "matchNum": 320,
+    "key": "AUTO_M_PAK_SRI_T20I2_Oct11",
+    "gender": "M",
+    "team1": "MTPAK2",
+    "team2": "MTSRI3",
+    "label": "2nd T20I: PAK v SRI",
+    "date": "2026-10-11T20:30:00+05:30",
+    "format": "T20",
+    "tour": "sri-lanka-tour-of-pakistan-2026-t20i"
+  },
+  {
+    "matchNum": 321,
+    "key": "AUTO_M_PAK_SRI_T20I3_Oct13",
+    "gender": "M",
+    "team1": "MTPAK2",
+    "team2": "MTSRI3",
+    "label": "3rd T20I: PAK v SRI",
+    "date": "2026-10-13T20:30:00+05:30",
+    "format": "T20",
+    "tour": "sri-lanka-tour-of-pakistan-2026-t20i"
   }
 ]
