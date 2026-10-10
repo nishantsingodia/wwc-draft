@@ -15702,5 +15702,305 @@
     "team_code": "MTSRI3",
     "efppm": 45.0,
     "pid": "ci:1186658"
+  },
+  {
+    "id": 11450,
+    "name": "Smriti Mandhana",
+    "country": "India Women",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:597806"
+  },
+  {
+    "id": 11451,
+    "name": "Shafali Verma",
+    "country": "India Women",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "WTIND",
+    "efppm": 50.0,
+    "pid": "ci:597821"
+  },
+  {
+    "id": 11452,
+    "name": "Richa Ghosh",
+    "country": "India Women",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:1212830"
+  },
+  {
+    "id": 11453,
+    "name": "Kranti Gaud",
+    "country": "India Women",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:1464471"
+  },
+  {
+    "id": 11454,
+    "name": "Jintimani Kalita",
+    "country": "India Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "uncapped:jintimani-kalita"
+  },
+  {
+    "id": 11455,
+    "name": "Gunalan Kamalini",
+    "country": "India Women",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:1427355"
+  },
+  {
+    "id": 11456,
+    "name": "Harmanpreet Kaur",
+    "country": "India Women",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:372317"
+  },
+  {
+    "id": 11457,
+    "name": "Minnu Mani",
+    "country": "India Women",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:960949"
+  },
+  {
+    "id": 11458,
+    "name": "Niki Prasad",
+    "country": "India Women",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "uncapped:niki-prasad"
+  },
+  {
+    "id": 11459,
+    "name": "Prema Rawat",
+    "country": "India Women",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:1464463"
+  },
+  {
+    "id": 11460,
+    "name": "Arundhati Reddy",
+    "country": "India Women",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:54172"
+  },
+  {
+    "id": 11461,
+    "name": "Anushka Sharma",
+    "country": "India Women",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "WTIND",
+    "efppm": 50.0,
+    "pid": "uncapped:anushka-sharma"
+  },
+  {
+    "id": 11462,
+    "name": "Deepti Sharma",
+    "country": "India Women",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "WTIND",
+    "efppm": 50.0,
+    "pid": "ci:597811"
+  },
+  {
+    "id": 11463,
+    "name": "Nandani Sharma",
+    "country": "India Women",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:1289676"
+  },
+  {
+    "id": 11464,
+    "name": "Shree Charani",
+    "country": "India Women",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WTIND",
+    "efppm": 45.0,
+    "pid": "ci:1464461"
+  },
+  {
+    "id": 11465,
+    "name": "Josephine Nkomo",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "WTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:638256"
+  },
+  {
+    "id": 11466,
+    "name": "Beloved Biza",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "WTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:1302686"
+  },
+  {
+    "id": 11467,
+    "name": "Olinder Chare",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1302697"
+  },
+  {
+    "id": 11468,
+    "name": "Kudzai Chigora",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1302575"
+  },
+  {
+    "id": 11469,
+    "name": "Francisca Chipare",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1119417"
+  },
+  {
+    "id": 11470,
+    "name": "Chiedza Dhururu",
+    "country": "Zimbabwe Women",
+    "role": "WK",
+    "squad_number": 6,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1094714"
+  },
+  {
+    "id": 11471,
+    "name": "Nyasha Gwanzura",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "WTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:922491"
+  },
+  {
+    "id": 11472,
+    "name": "Tendai Makusha",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1446941"
+  },
+  {
+    "id": 11473,
+    "name": "Michelle Mavunga",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1273947"
+  },
+  {
+    "id": 11474,
+    "name": "Sharne Mayers",
+    "country": "Zimbabwe Women",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:317144"
+  },
+  {
+    "id": 11475,
+    "name": "Chipo Mugeri-Tiripano",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "WTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:317148"
+  },
+  {
+    "id": 11476,
+    "name": "Modester Mupachikwa",
+    "country": "Zimbabwe Women",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:538591"
+  },
+  {
+    "id": 11477,
+    "name": "Kelis Ndhlovu",
+    "country": "Zimbabwe Women",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "WTZIM2",
+    "efppm": 50.0,
+    "pid": "ci:1250707"
+  },
+  {
+    "id": 11478,
+    "name": "Loryn Phiri",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1135025"
+  },
+  {
+    "id": 11479,
+    "name": "Nomvelo Sibanda",
+    "country": "Zimbabwe Women",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "WTZIM2",
+    "efppm": 45.0,
+    "pid": "ci:1080012"
   }
 ]

@@ -3157,5 +3157,38 @@
     "date": "2026-10-13T20:30:00+05:30",
     "format": "T20",
     "tour": "sri-lanka-tour-of-pakistan-2026-t20i"
+  },
+  {
+    "matchNum": 322,
+    "key": "AUTO_W_IND_ZIM_T20I1_Oct16",
+    "gender": "W",
+    "team1": "WTIND",
+    "team2": "WTZIM2",
+    "label": "1st T20I: IND v ZIM",
+    "date": "2026-10-16T19:00:00+05:30",
+    "format": "T20",
+    "tour": "zimbabwe-women-tour-of-india-2026-t20i"
+  },
+  {
+    "matchNum": 323,
+    "key": "AUTO_W_IND_ZIM_T20I2_Oct18",
+    "gender": "W",
+    "team1": "WTIND",
+    "team2": "WTZIM2",
+    "label": "2nd T20I: IND v ZIM",
+    "date": "2026-10-18T19:00:00+05:30",
+    "format": "T20",
+    "tour": "zimbabwe-women-tour-of-india-2026-t20i"
+  },
+  {
+    "matchNum": 324,
+    "key": "AUTO_W_IND_ZIM_T20I3_Oct20",
+    "gender": "W",
+    "team1": "WTIND",
+    "team2": "WTZIM2",
+    "label": "3rd T20I: IND v ZIM",
+    "date": "2026-10-20T19:00:00+05:30",
+    "format": "T20",
+    "tour": "zimbabwe-women-tour-of-india-2026-t20i"
   }
 ]

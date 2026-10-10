@@ -390,5 +390,13 @@
   "MTSRI3": {
     "flag": "🇱🇰",
     "name": "Sri Lanka"
+  },
+  "WTIND": {
+    "flag": "🏏",
+    "name": "India Women"
+  },
+  "WTZIM2": {
+    "flag": "🏏",
+    "name": "Zimbabwe Women"
   }
 }
