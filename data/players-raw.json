@@ -16002,5 +16002,295 @@
     "team_code": "WTZIM2",
     "efppm": 45.0,
     "pid": "ci:1080012"
+  },
+  {
+    "id": 11480,
+    "name": "Sophie Molineux",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "WTAUS",
+    "efppm": 45.0,
+    "pid": "ci:944373"
+  },
+  {
+    "id": 11481,
+    "name": "Ashleigh Gardner",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "WTAUS",
+    "efppm": 50.0,
+    "pid": "ci:858809"
+  },
+  {
+    "id": 11482,
+    "name": "Tahlia McGrath",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "WTAUS",
+    "efppm": 50.0,
+    "pid": "ci:381311"
+  },
+  {
+    "id": 11483,
+    "name": "Nicola Carey",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "WTAUS",
+    "efppm": 45.0,
+    "pid": "ci:381217"
+  },
+  {
+    "id": 11484,
+    "name": "Kim Garth",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "WTAUS",
+    "efppm": 50.0,
+    "pid": "ci:418423"
+  },
+  {
+    "id": 11485,
+    "name": "Lucy Hamilton",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTAUS",
+    "efppm": 50.0,
+    "pid": "ci:1343643"
+  },
+  {
+    "id": 11486,
+    "name": "Alana King",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "WTAUS",
+    "efppm": 45.0,
+    "pid": "ci:944393"
+  },
+  {
+    "id": 11487,
+    "name": "Phoebe Litchfield",
+    "country": "Australia Women",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "WTAUS",
+    "efppm": 45.0,
+    "pid": "ci:1176132"
+  },
+  {
+    "id": 11488,
+    "name": "Beth Mooney",
+    "country": "Australia Women",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "WTAUS",
+    "efppm": 45.0,
+    "pid": "ci:381258"
+  },
+  {
+    "id": 11489,
+    "name": "Ellyse Perry",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "WTAUS",
+    "efppm": 50.0,
+    "pid": "ci:275487"
+  },
+  {
+    "id": 11490,
+    "name": "Megan Schutt",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "WTAUS",
+    "efppm": 45.0,
+    "pid": "ci:420314"
+  },
+  {
+    "id": 11491,
+    "name": "Annabel Sutherland",
+    "country": "Australia Women",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "WTAUS",
+    "efppm": 50.0,
+    "pid": "ci:1071705"
+  },
+  {
+    "id": 11492,
+    "name": "Georgia Voll",
+    "country": "Australia Women",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WTAUS",
+    "efppm": 45.0,
+    "pid": "ci:1215360"
+  },
+  {
+    "id": 11493,
+    "name": "Georgia Wareham",
+    "country": "Australia Women",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "WTAUS",
+    "efppm": 45.0,
+    "pid": "ci:946057"
+  },
+  {
+    "id": 11494,
+    "name": "Melie Kerr",
+    "country": "New Zealand Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "WTNEW",
+    "efppm": 50.0,
+    "pid": "ci:803971"
+  },
+  {
+    "id": 11495,
+    "name": "Rosemary Mair",
+    "country": "New Zealand Women",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:701751"
+  },
+  {
+    "id": 11496,
+    "name": "Eden Carson",
+    "country": "New Zealand Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:1169661"
+  },
+  {
+    "id": 11497,
+    "name": "Flora Devonshire",
+    "country": "New Zealand Women",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "WTNEW",
+    "efppm": 50.0,
+    "pid": "ci:1346697"
+  },
+  {
+    "id": 11498,
+    "name": "Maddy Green",
+    "country": "New Zealand Women",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:438265"
+  },
+  {
+    "id": 11499,
+    "name": "Brooke Halliday",
+    "country": "New Zealand Women",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "WTNEW",
+    "efppm": 50.0,
+    "pid": "ci:594654"
+  },
+  {
+    "id": 11500,
+    "name": "Bree Illing",
+    "country": "New Zealand Women",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:1251598"
+  },
+  {
+    "id": 11501,
+    "name": "Polly Inglis",
+    "country": "New Zealand Women",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:592594"
+  },
+  {
+    "id": 11502,
+    "name": "Bella James",
+    "country": "New Zealand Women",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "uncapped:bella-james"
+  },
+  {
+    "id": 11503,
+    "name": "Jess Kerr",
+    "country": "New Zealand Women",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:1068933"
+  },
+  {
+    "id": 11504,
+    "name": "Nensi Patel",
+    "country": "New Zealand Women",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "WTNEW",
+    "efppm": 50.0,
+    "pid": "ci:1068284"
+  },
+  {
+    "id": 11505,
+    "name": "Molly Penfold",
+    "country": "New Zealand Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:1239671"
+  },
+  {
+    "id": 11506,
+    "name": "Georgia Plimmer",
+    "country": "New Zealand Women",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:1208951"
+  },
+  {
+    "id": 11507,
+    "name": "Hannah Rowe",
+    "country": "New Zealand Women",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:543550"
+  },
+  {
+    "id": 11508,
+    "name": "Izzy Sharp",
+    "country": "New Zealand Women",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "WTNEW",
+    "efppm": 45.0,
+    "pid": "ci:1294098"
   }
 ]

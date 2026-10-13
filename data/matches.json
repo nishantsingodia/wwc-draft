@@ -3190,5 +3190,38 @@
     "date": "2026-10-20T19:00:00+05:30",
     "format": "T20",
     "tour": "zimbabwe-women-tour-of-india-2026-t20i"
+  },
+  {
+    "matchNum": 325,
+    "key": "AUTO_W_AUS_NEW_T20I1_Oct18",
+    "gender": "W",
+    "team1": "WTAUS",
+    "team2": "WTNEW",
+    "label": "1st T20I: AUS v NEW",
+    "date": "2026-10-18T13:45:00+05:30",
+    "format": "T20",
+    "tour": "new-zealand-women-tour-of-australia-2026-t20i"
+  },
+  {
+    "matchNum": 326,
+    "key": "AUTO_W_AUS_NEW_T20I2_Oct20",
+    "gender": "W",
+    "team1": "WTAUS",
+    "team2": "WTNEW",
+    "label": "2nd T20I: AUS v NEW",
+    "date": "2026-10-20T13:45:00+05:30",
+    "format": "T20",
+    "tour": "new-zealand-women-tour-of-australia-2026-t20i"
+  },
+  {
+    "matchNum": 327,
+    "key": "AUTO_W_AUS_NEW_T20I3_Oct22",
+    "gender": "W",
+    "team1": "WTAUS",
+    "team2": "WTNEW",
+    "label": "3rd T20I: AUS v NEW",
+    "date": "2026-10-22T13:45:00+05:30",
+    "format": "T20",
+    "tour": "new-zealand-women-tour-of-australia-2026-t20i"
   }
 ]

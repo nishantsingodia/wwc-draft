@@ -398,5 +398,13 @@
   "WTZIM2": {
     "flag": "🏏",
     "name": "Zimbabwe Women"
+  },
+  "WTAUS": {
+    "flag": "🏏",
+    "name": "Australia Women"
+  },
+  "WTNEW": {
+    "flag": "🏏",
+    "name": "New Zealand Women"
   }
 }
