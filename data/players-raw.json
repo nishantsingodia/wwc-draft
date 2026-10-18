@@ -16292,5 +16292,625 @@
     "team_code": "WTNEW",
     "efppm": 45.0,
     "pid": "ci:1294098"
+  },
+  {
+    "id": 11509,
+    "name": "Mitchell Santner",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:502714"
+  },
+  {
+    "id": 11510,
+    "name": "Michael Bracewell",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:326968"
+  },
+  {
+    "id": 11511,
+    "name": "Mark Chapman",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MONEW",
+    "efppm": 50.0,
+    "pid": "ci:438563"
+  },
+  {
+    "id": 11512,
+    "name": "Devon Conway",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:379140"
+  },
+  {
+    "id": 11513,
+    "name": "Jacob Duffy",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:547766"
+  },
+  {
+    "id": 11514,
+    "name": "Matt Henry",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:506612"
+  },
+  {
+    "id": 11515,
+    "name": "Kyle Jamieson",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:625960"
+  },
+  {
+    "id": 11516,
+    "name": "Tom Latham",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:388802"
+  },
+  {
+    "id": 11517,
+    "name": "Daryl Mitchell",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:381743"
+  },
+  {
+    "id": 11518,
+    "name": "Glenn Phillips",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MONEW",
+    "efppm": 50.0,
+    "pid": "ci:823509"
+  },
+  {
+    "id": 11519,
+    "name": "Rachin Ravindra",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:959767"
+  },
+  {
+    "id": 11520,
+    "name": "Nathan Smith",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:959771"
+  },
+  {
+    "id": 11521,
+    "name": "Blair Tickner",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:854909"
+  },
+  {
+    "id": 11522,
+    "name": "Will Young",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MONEW",
+    "efppm": 45.0,
+    "pid": "ci:547749"
+  },
+  {
+    "id": 11523,
+    "name": "Shubman Gill",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:1070173"
+  },
+  {
+    "id": 11524,
+    "name": "Shreyas Iyer",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:642519"
+  },
+  {
+    "id": 11525,
+    "name": "Arshdeep Singh",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:1125976"
+  },
+  {
+    "id": 11526,
+    "name": "Ruturaj Gaikwad",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:1060380"
+  },
+  {
+    "id": 11527,
+    "name": "Gurnoor Brar",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:1287033"
+  },
+  {
+    "id": 11528,
+    "name": "Ishan Kishan",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:720471"
+  },
+  {
+    "id": 11529,
+    "name": "Anshul Kamboj",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:1175428"
+  },
+  {
+    "id": 11530,
+    "name": "Virat Kohli",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:253802"
+  },
+  {
+    "id": 11531,
+    "name": "Kuldeep Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:559235"
+  },
+  {
+    "id": 11532,
+    "name": "Mohammed Siraj",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:940973"
+  },
+  {
+    "id": 11533,
+    "name": "Naman Dhir",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:1287032"
+  },
+  {
+    "id": 11534,
+    "name": "Nitish Kumar Reddy",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:1175496"
+  },
+  {
+    "id": 11535,
+    "name": "Axar Patel",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MOIND2",
+    "efppm": 50.0,
+    "pid": "ci:554691"
+  },
+  {
+    "id": 11536,
+    "name": "Prasidh Krishna",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:917159"
+  },
+  {
+    "id": 11537,
+    "name": "KL Rahul",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:422108"
+  },
+  {
+    "id": 11538,
+    "name": "Rohit Sharma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 16,
+    "team_code": "MOIND2",
+    "efppm": 45.0,
+    "pid": "ci:34102"
+  },
+  {
+    "id": 11539,
+    "name": "Mitchell Santner",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:502714"
+  },
+  {
+    "id": 11540,
+    "name": "Finn Allen",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:959759"
+  },
+  {
+    "id": 11541,
+    "name": "Michael Bracewell",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:326968"
+  },
+  {
+    "id": 11542,
+    "name": "Josh Clarkson",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:928015"
+  },
+  {
+    "id": 11543,
+    "name": "Devon Conway",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:379140"
+  },
+  {
+    "id": 11544,
+    "name": "Jacob Duffy",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:547766"
+  },
+  {
+    "id": 11545,
+    "name": "Lockie Ferguson",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:493773"
+  },
+  {
+    "id": 11546,
+    "name": "Matt Henry",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:506612"
+  },
+  {
+    "id": 11547,
+    "name": "Bevon Jacobs",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:1410577"
+  },
+  {
+    "id": 11548,
+    "name": "Kyle Jamieson",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:625960"
+  },
+  {
+    "id": 11549,
+    "name": "Adam Milne",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:450860"
+  },
+  {
+    "id": 11550,
+    "name": "Daryl Mitchell",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:381743"
+  },
+  {
+    "id": 11551,
+    "name": "Glenn Phillips",
+    "country": "New Zealand",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTNEW",
+    "efppm": 50.0,
+    "pid": "ci:823509"
+  },
+  {
+    "id": 11552,
+    "name": "Tim Seifert",
+    "country": "New Zealand",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:625964"
+  },
+  {
+    "id": 11553,
+    "name": "Nathan Smith",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:959771"
+  },
+  {
+    "id": 11554,
+    "name": "Blair Tickner",
+    "country": "New Zealand",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MTNEW",
+    "efppm": 45.0,
+    "pid": "ci:854909"
+  },
+  {
+    "id": 11555,
+    "name": "Shreyas Iyer",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:642519"
+  },
+  {
+    "id": 11556,
+    "name": "Tilak Varma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1170265"
+  },
+  {
+    "id": 11557,
+    "name": "Abhishek Sharma",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1070183"
+  },
+  {
+    "id": 11558,
+    "name": "Arshdeep Singh",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1125976"
+  },
+  {
+    "id": 11559,
+    "name": "Shivam Dube",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTIND4",
+    "efppm": 50.0,
+    "pid": "ci:714451"
+  },
+  {
+    "id": 11560,
+    "name": "Ishan Kishan",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:720471"
+  },
+  {
+    "id": 11561,
+    "name": "Kuldeep Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:559235"
+  },
+  {
+    "id": 11562,
+    "name": "Bhuvneshwar Kumar",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "uncapped:bhuvneshwar-kumar"
+  },
+  {
+    "id": 11563,
+    "name": "Naman Dhir",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1287032"
+  },
+  {
+    "id": 11564,
+    "name": "Nitish Kumar Reddy",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1175496"
+  },
+  {
+    "id": 11565,
+    "name": "Axar Patel",
+    "country": "India",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "MTIND4",
+    "efppm": 50.0,
+    "pid": "ci:554691"
+  },
+  {
+    "id": 11566,
+    "name": "Prince Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1350768"
+  },
+  {
+    "id": 11567,
+    "name": "Sanju Samson",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:425943"
+  },
+  {
+    "id": 11568,
+    "name": "Vaibhav Sooryavanshi",
+    "country": "India",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1408688"
+  },
+  {
+    "id": 11569,
+    "name": "Varun Chakravarthy",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1108375"
+  },
+  {
+    "id": 11570,
+    "name": "Mayank Yadav",
+    "country": "India",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MTIND4",
+    "efppm": 45.0,
+    "pid": "ci:1292563"
   }
 ]

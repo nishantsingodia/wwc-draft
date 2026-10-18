@@ -3223,5 +3223,115 @@
     "date": "2026-10-22T13:45:00+05:30",
     "format": "T20",
     "tour": "new-zealand-women-tour-of-australia-2026-t20i"
+  },
+  {
+    "matchNum": 328,
+    "key": "AUTO_M_NEW_IND_ODI1_Nov04",
+    "gender": "M",
+    "team1": "MONEW",
+    "team2": "MOIND2",
+    "label": "1st ODI: NEW v IND",
+    "date": "2026-11-04T07:30:00+05:30",
+    "format": "ODI",
+    "tour": "india-tour-of-new-zealand-2026-odi"
+  },
+  {
+    "matchNum": 329,
+    "key": "AUTO_M_NEW_IND_ODI2_Nov07",
+    "gender": "M",
+    "team1": "MONEW",
+    "team2": "MOIND2",
+    "label": "2nd ODI: NEW v IND",
+    "date": "2026-11-07T07:30:00+05:30",
+    "format": "ODI",
+    "tour": "india-tour-of-new-zealand-2026-odi"
+  },
+  {
+    "matchNum": 330,
+    "key": "AUTO_M_NEW_IND_ODI3_Nov10",
+    "gender": "M",
+    "team1": "MONEW",
+    "team2": "MOIND2",
+    "label": "3rd ODI: NEW v IND",
+    "date": "2026-11-10T07:30:00+05:30",
+    "format": "ODI",
+    "tour": "india-tour-of-new-zealand-2026-odi"
+  },
+  {
+    "matchNum": 331,
+    "key": "AUTO_M_NEW_IND_ODI4_Nov13",
+    "gender": "M",
+    "team1": "MONEW",
+    "team2": "MOIND2",
+    "label": "4th ODI: NEW v IND",
+    "date": "2026-11-13T07:30:00+05:30",
+    "format": "ODI",
+    "tour": "india-tour-of-new-zealand-2026-odi"
+  },
+  {
+    "matchNum": 332,
+    "key": "AUTO_M_NEW_IND_ODI5_Nov15",
+    "gender": "M",
+    "team1": "MONEW",
+    "team2": "MOIND2",
+    "label": "5th ODI: NEW v IND",
+    "date": "2026-11-15T07:30:00+05:30",
+    "format": "ODI",
+    "tour": "india-tour-of-new-zealand-2026-odi"
+  },
+  {
+    "matchNum": 333,
+    "key": "AUTO_M_NEW_IND_T20I1_Oct22",
+    "gender": "M",
+    "team1": "MTNEW",
+    "team2": "MTIND4",
+    "label": "1st T20I: NEW v IND",
+    "date": "2026-10-22T12:30:00+05:30",
+    "format": "T20",
+    "tour": "india-tour-of-new-zealand-2026-t20i"
+  },
+  {
+    "matchNum": 334,
+    "key": "AUTO_M_NEW_IND_T20I2_Oct24",
+    "gender": "M",
+    "team1": "MTNEW",
+    "team2": "MTIND4",
+    "label": "2nd T20I: NEW v IND",
+    "date": "2026-10-24T12:30:00+05:30",
+    "format": "T20",
+    "tour": "india-tour-of-new-zealand-2026-t20i"
+  },
+  {
+    "matchNum": 335,
+    "key": "AUTO_M_NEW_IND_T20I3_Oct27",
+    "gender": "M",
+    "team1": "MTNEW",
+    "team2": "MTIND4",
+    "label": "3rd T20I: NEW v IND",
+    "date": "2026-10-27T12:30:00+05:30",
+    "format": "T20",
+    "tour": "india-tour-of-new-zealand-2026-t20i"
+  },
+  {
+    "matchNum": 336,
+    "key": "AUTO_M_NEW_IND_T20I4_Oct30",
+    "gender": "M",
+    "team1": "MTNEW",
+    "team2": "MTIND4",
+    "label": "4th T20I: NEW v IND",
+    "date": "2026-10-30T12:30:00+05:30",
+    "format": "T20",
+    "tour": "india-tour-of-new-zealand-2026-t20i"
+  },
+  {
+    "matchNum": 337,
+    "key": "AUTO_M_NEW_IND_T20I5_Nov01",
+    "gender": "M",
+    "team1": "MTNEW",
+    "team2": "MTIND4",
+    "label": "5th T20I: NEW v IND",
+    "date": "2026-11-01T12:30:00+05:30",
+    "format": "T20",
+    "tour": "india-tour-of-new-zealand-2026-t20i"
   }
 ]

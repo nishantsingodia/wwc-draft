@@ -406,5 +406,21 @@
   "WTNEW": {
     "flag": "🏏",
     "name": "New Zealand Women"
+  },
+  "MONEW": {
+    "flag": "🇳🇿",
+    "name": "New Zealand"
+  },
+  "MOIND2": {
+    "flag": "🇮🇳",
+    "name": "India"
+  },
+  "MTNEW": {
+    "flag": "🇳🇿",
+    "name": "New Zealand"
+  },
+  "MTIND4": {
+    "flag": "🇮🇳",
+    "name": "India"
   }
 }
