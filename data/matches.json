@@ -3333,5 +3333,93 @@
     "date": "2026-11-01T12:30:00+05:30",
     "format": "T20",
     "tour": "india-tour-of-new-zealand-2026-t20i"
+  },
+  {
+    "matchNum": 338,
+    "key": "AUTO_M_NAM_IRE_ODI1_Oct22",
+    "gender": "M",
+    "team1": "MONAM",
+    "team2": "MOIRE",
+    "label": "1st ODI: NAM v IRE",
+    "date": "2026-10-22T13:30:00+05:30",
+    "format": "ODI",
+    "tour": "ireland-tour-of-namibia-2026-odi"
+  },
+  {
+    "matchNum": 339,
+    "key": "AUTO_M_NAM_IRE_ODI2_Oct24",
+    "gender": "M",
+    "team1": "MONAM",
+    "team2": "MOIRE",
+    "label": "2nd ODI: NAM v IRE",
+    "date": "2026-10-24T13:30:00+05:30",
+    "format": "ODI",
+    "tour": "ireland-tour-of-namibia-2026-odi"
+  },
+  {
+    "matchNum": 340,
+    "key": "AUTO_M_NAM_IRE_ODI3_Oct27",
+    "gender": "M",
+    "team1": "MONAM",
+    "team2": "MOIRE",
+    "label": "3rd ODI: NAM v IRE",
+    "date": "2026-10-27T13:30:00+05:30",
+    "format": "ODI",
+    "tour": "ireland-tour-of-namibia-2026-odi"
+  },
+  {
+    "matchNum": 341,
+    "key": "AUTO_M_NAM_IRE_ODI4_Oct30",
+    "gender": "M",
+    "team1": "MONAM",
+    "team2": "MOIRE",
+    "label": "4th ODI: NAM v IRE",
+    "date": "2026-10-30T13:30:00+05:30",
+    "format": "ODI",
+    "tour": "ireland-tour-of-namibia-2026-odi"
+  },
+  {
+    "matchNum": 342,
+    "key": "AUTO_M_NAM_IRE_ODI5_Nov01",
+    "gender": "M",
+    "team1": "MONAM",
+    "team2": "MOIRE",
+    "label": "5th ODI: NAM v IRE",
+    "date": "2026-11-01T13:30:00+05:30",
+    "format": "ODI",
+    "tour": "ireland-tour-of-namibia-2026-odi"
+  },
+  {
+    "matchNum": 343,
+    "key": "AUTO_M_AFG_ZIM_T20I1_Oct27",
+    "gender": "M",
+    "team1": "MTAFG",
+    "team2": "MTZIM3",
+    "label": "1st T20I: AFG v ZIM",
+    "date": "2026-10-27T10:30:00+05:30",
+    "format": "T20",
+    "tour": "afghanistan-vs-zimbabwe-in-uae-2026-t20i"
+  },
+  {
+    "matchNum": 344,
+    "key": "AUTO_M_AFG_ZIM_T20I2_Oct29",
+    "gender": "M",
+    "team1": "MTAFG",
+    "team2": "MTZIM3",
+    "label": "2nd T20I: AFG v ZIM",
+    "date": "2026-10-29T10:30:00+05:30",
+    "format": "T20",
+    "tour": "afghanistan-vs-zimbabwe-in-uae-2026-t20i"
+  },
+  {
+    "matchNum": 345,
+    "key": "AUTO_M_AFG_ZIM_T20I3_Nov01",
+    "gender": "M",
+    "team1": "MTAFG",
+    "team2": "MTZIM3",
+    "label": "3rd T20I: AFG v ZIM",
+    "date": "2026-11-01T10:30:00+05:30",
+    "format": "T20",
+    "tour": "afghanistan-vs-zimbabwe-in-uae-2026-t20i"
   }
 ]

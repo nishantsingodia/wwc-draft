@@ -11051,7 +11051,7 @@
     "squad_number": 1,
     "team_code": "MTNAM",
     "efppm": 50.0,
-    "pid": "uncapped:gerhard-erasmus"
+    "pid": "ci:519070"
   },
   {
     "id": 10923,
@@ -11441,7 +11441,7 @@
     "squad_number": 11,
     "team_code": "MTZIM2",
     "efppm": 45.0,
-    "pid": "uncapped:kundai-matigimu"
+    "pid": "ci:696135"
   },
   {
     "id": 10962,
@@ -16912,5 +16912,615 @@
     "team_code": "MTIND4",
     "efppm": 45.0,
     "pid": "ci:1292563"
+  },
+  {
+    "id": 11571,
+    "name": "Gerhard Erasmus",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MONAM",
+    "efppm": 50.0,
+    "pid": "ci:519070"
+  },
+  {
+    "id": 11572,
+    "name": "Jan Balt",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:1178066"
+  },
+  {
+    "id": 11573,
+    "name": "Jack Brassell",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:1310415"
+  },
+  {
+    "id": 11574,
+    "name": "Jan Frylinck",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MONAM",
+    "efppm": 50.0,
+    "pid": "ci:482478"
+  },
+  {
+    "id": 11575,
+    "name": "Zane Green",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:596664"
+  },
+  {
+    "id": 11576,
+    "name": "Max Heingo",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:1495161"
+  },
+  {
+    "id": 11577,
+    "name": "Malan Kruger",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:574638"
+  },
+  {
+    "id": 11578,
+    "name": "Jan Nicol Loftie-Eaton",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:1071473"
+  },
+  {
+    "id": 11579,
+    "name": "Bernard Scholtz",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:330223"
+  },
+  {
+    "id": 11580,
+    "name": "JJ Smit",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:553821"
+  },
+  {
+    "id": 11581,
+    "name": "Waldo Smith",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 11,
+    "team_code": "MONAM",
+    "efppm": 50.0,
+    "pid": "ci:1532519"
+  },
+  {
+    "id": 11582,
+    "name": "Louren Steenkamp",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:596087"
+  },
+  {
+    "id": 11583,
+    "name": "Junior Taanyanda",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MONAM",
+    "efppm": 50.0,
+    "pid": "ci:1542041"
+  },
+  {
+    "id": 11584,
+    "name": "Ruben Trumpelmann",
+    "country": "Namibia",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:698317"
+  },
+  {
+    "id": 11585,
+    "name": "Michael van Lingen",
+    "country": "Namibia",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MONAM",
+    "efppm": 45.0,
+    "pid": "ci:833777"
+  },
+  {
+    "id": 11586,
+    "name": "Alexander Busing-Volschenk",
+    "country": "Namibia",
+    "role": "AR",
+    "squad_number": 16,
+    "team_code": "MONAM",
+    "efppm": 50.0,
+    "pid": "ci:1234278"
+  },
+  {
+    "id": 11587,
+    "name": "Paul Stirling",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:303427"
+  },
+  {
+    "id": 11588,
+    "name": "Lorcan Tucker",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:928057"
+  },
+  {
+    "id": 11589,
+    "name": "Mark Adair",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:526441"
+  },
+  {
+    "id": 11590,
+    "name": "Andy Balbirnie",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:303423"
+  },
+  {
+    "id": 11591,
+    "name": "Ben Calitz",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:1193295"
+  },
+  {
+    "id": 11592,
+    "name": "Curtis Campher",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MOIRE",
+    "efppm": 50.0,
+    "pid": "ci:595921"
+  },
+  {
+    "id": 11593,
+    "name": "Cade Carmichael",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:946283"
+  },
+  {
+    "id": 11594,
+    "name": "George Dockrell",
+    "country": "Ireland",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MOIRE",
+    "efppm": 50.0,
+    "pid": "ci:348034"
+  },
+  {
+    "id": 11595,
+    "name": "Gavin Hoey",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:1195662"
+  },
+  {
+    "id": 11596,
+    "name": "Matthew Humphreys",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:1263361"
+  },
+  {
+    "id": 11597,
+    "name": "Andy McBrine",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:417381"
+  },
+  {
+    "id": 11598,
+    "name": "Liam McCarthy",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:1278203"
+  },
+  {
+    "id": 11599,
+    "name": "Byron McDonough",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "uncapped:byron-mcdonough"
+  },
+  {
+    "id": 11600,
+    "name": "Jai Moondra",
+    "country": "Ireland",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:1448923"
+  },
+  {
+    "id": 11601,
+    "name": "Jordan Neill",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:1394079"
+  },
+  {
+    "id": 11602,
+    "name": "Harry Tector",
+    "country": "Ireland",
+    "role": "BAT",
+    "squad_number": 16,
+    "team_code": "MOIRE",
+    "efppm": 45.0,
+    "pid": "ci:961407"
+  },
+  {
+    "id": 11603,
+    "name": "Ibrahim Zadran",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "ci:921509"
+  },
+  {
+    "id": 11604,
+    "name": "Abdollah Ahmadzai",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "uncapped:abdollah-ahmadzai"
+  },
+  {
+    "id": 11605,
+    "name": "Abdullah Tarakhail",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "uncapped:abdullah-tarakhail"
+  },
+  {
+    "id": 11606,
+    "name": "Azmatullah Omarzai",
+    "country": "Afghanistan",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTAFG",
+    "efppm": 50.0,
+    "pid": "ci:819429"
+  },
+  {
+    "id": 11607,
+    "name": "Fareed Ahmad",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "uncapped:fareed-ahmad"
+  },
+  {
+    "id": 11608,
+    "name": "Fazalhaq Farooqi",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "ci:974175"
+  },
+  {
+    "id": 11609,
+    "name": "Ijaz Ahmad Ahmadzai",
+    "country": "Afghanistan",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTAFG",
+    "efppm": 50.0,
+    "pid": "uncapped:ijaz-ahmad-ahmadzai"
+  },
+  {
+    "id": 11610,
+    "name": "Mohammad Akram",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "uncapped:mohammad-akram"
+  },
+  {
+    "id": 11611,
+    "name": "Mujeeb Ur Rahman",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "ci:974109"
+  },
+  {
+    "id": 11612,
+    "name": "Noor Ahmad",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "ci:1182529"
+  },
+  {
+    "id": 11613,
+    "name": "Noor ul Rahman",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "uncapped:noor-ul-rahman"
+  },
+  {
+    "id": 11614,
+    "name": "Rahmanullah Gurbaz",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "ci:974087"
+  },
+  {
+    "id": 11615,
+    "name": "Rashid Khan",
+    "country": "Afghanistan",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "ci:793463"
+  },
+  {
+    "id": 11616,
+    "name": "Sediqullah Atal",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "ci:1161050"
+  },
+  {
+    "id": 11617,
+    "name": "Shahidullah",
+    "country": "Afghanistan",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTAFG",
+    "efppm": 45.0,
+    "pid": "uncapped:shahidullah"
+  },
+  {
+    "id": 11618,
+    "name": "Sikandar Raza",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:299572"
+  },
+  {
+    "id": 11619,
+    "name": "Brian Bennett",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "MTZIM3",
+    "efppm": 50.0,
+    "pid": "ci:1071484"
+  },
+  {
+    "id": 11620,
+    "name": "Ryan Burl",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTZIM3",
+    "efppm": 50.0,
+    "pid": "ci:495964"
+  },
+  {
+    "id": 11621,
+    "name": "Ben Curran",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:910695"
+  },
+  {
+    "id": 11622,
+    "name": "Brad Evans",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTZIM3",
+    "efppm": 50.0,
+    "pid": "ci:696127"
+  },
+  {
+    "id": 11623,
+    "name": "Innocent Kaia",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:465327"
+  },
+  {
+    "id": 11624,
+    "name": "Wessly Madhevere",
+    "country": "Zimbabwe",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTZIM3",
+    "efppm": 50.0,
+    "pid": "ci:938959"
+  },
+  {
+    "id": 11625,
+    "name": "Tadiwanashe Marumani",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:946507"
+  },
+  {
+    "id": 11626,
+    "name": "Wellington Masakadza",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:571703"
+  },
+  {
+    "id": 11627,
+    "name": "Vincent Masekesa",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "uncapped:vincent-masekesa"
+  },
+  {
+    "id": 11628,
+    "name": "Kundai Matigimu",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:696135"
+  },
+  {
+    "id": 11629,
+    "name": "Blessing Muzarabani",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:827051"
+  },
+  {
+    "id": 11630,
+    "name": "Newman Nyamhuri",
+    "country": "Zimbabwe",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:1409283"
+  },
+  {
+    "id": 11631,
+    "name": "Tafadzwa Tsiga",
+    "country": "Zimbabwe",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTZIM3",
+    "efppm": 45.0,
+    "pid": "ci:722321"
   }
 ]

@@ -422,5 +422,21 @@
   "MTIND4": {
     "flag": "🇮🇳",
     "name": "India"
+  },
+  "MONAM": {
+    "flag": "🏏",
+    "name": "Namibia"
+  },
+  "MOIRE": {
+    "flag": "🇮🇪",
+    "name": "Ireland"
+  },
+  "MTAFG": {
+    "flag": "🏏",
+    "name": "Afghanistan"
+  },
+  "MTZIM3": {
+    "flag": "🏏",
+    "name": "Zimbabwe"
   }
 }
