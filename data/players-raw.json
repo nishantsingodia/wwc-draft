@@ -17522,5 +17522,1185 @@
     "team_code": "MTZIM3",
     "efppm": 45.0,
     "pid": "ci:722321"
+  },
+  {
+    "id": 11632,
+    "name": "Deandra Dottin",
+    "country": "Melbourne Renegades Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MTMEL",
+    "efppm": 50.0,
+    "pid": "ci:355349"
+  },
+  {
+    "id": 11633,
+    "name": "Nicole Faltum",
+    "country": "Melbourne Renegades Women",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "uncapped:nicole-faltum"
+  },
+  {
+    "id": 11634,
+    "name": "Tess Flintoff",
+    "country": "Melbourne Renegades Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "uncapped:tess-flintoff"
+  },
+  {
+    "id": 11635,
+    "name": "Milly Illingworth",
+    "country": "Melbourne Renegades Women",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTMEL",
+    "efppm": 50.0,
+    "pid": "uncapped:milly-illingworth"
+  },
+  {
+    "id": 11636,
+    "name": "Sara Kennedy",
+    "country": "Melbourne Renegades Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "uncapped:sara-kennedy"
+  },
+  {
+    "id": 11637,
+    "name": "Hayley Matthews",
+    "country": "Melbourne Renegades Women",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTMEL",
+    "efppm": 50.0,
+    "pid": "ci:474308"
+  },
+  {
+    "id": 11638,
+    "name": "Sophie Molineux",
+    "country": "Melbourne Renegades Women",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "ci:944373"
+  },
+  {
+    "id": 11639,
+    "name": "Olivia Porter",
+    "country": "Melbourne Renegades Women",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "uncapped:olivia-porter"
+  },
+  {
+    "id": 11640,
+    "name": "Sophie Reid",
+    "country": "Melbourne Renegades Women",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "uncapped:sophie-reid"
+  },
+  {
+    "id": 11641,
+    "name": "Chloe Tryon",
+    "country": "Melbourne Renegades Women",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MTMEL",
+    "efppm": 50.0,
+    "pid": "ci:453370"
+  },
+  {
+    "id": 11642,
+    "name": "Tayla Vlaeminck",
+    "country": "Melbourne Renegades Women",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "uncapped:tayla-vlaeminck"
+  },
+  {
+    "id": 11643,
+    "name": "Georgia Wareham",
+    "country": "Melbourne Renegades Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "ci:946057"
+  },
+  {
+    "id": 11644,
+    "name": "Courtney Webb",
+    "country": "Melbourne Renegades Women",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "uncapped:courtney-webb"
+  },
+  {
+    "id": 11645,
+    "name": "Annie Wikman",
+    "country": "Melbourne Renegades Women",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTMEL",
+    "efppm": 45.0,
+    "pid": "uncapped:annie-wikman"
+  },
+  {
+    "id": 11646,
+    "name": "Jemma Barsby",
+    "country": "Sydney Thunder Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MTSYD",
+    "efppm": 50.0,
+    "pid": "uncapped:jemma-barsby"
+  },
+  {
+    "id": 11647,
+    "name": "Sam Bates",
+    "country": "Sydney Thunder Women",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "uncapped:sam-bates"
+  },
+  {
+    "id": 11648,
+    "name": "Lauren Bell",
+    "country": "Sydney Thunder Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "ci:878025"
+  },
+  {
+    "id": 11649,
+    "name": "Hannah Darlington",
+    "country": "Sydney Thunder Women",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "uncapped:hannah-darlington"
+  },
+  {
+    "id": 11650,
+    "name": "Nadine de Klerk",
+    "country": "Sydney Thunder Women",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTSYD",
+    "efppm": 50.0,
+    "pid": "ci:939249"
+  },
+  {
+    "id": 11651,
+    "name": "Lucy Finn",
+    "country": "Sydney Thunder Women",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTSYD",
+    "efppm": 50.0,
+    "pid": "uncapped:lucy-finn"
+  },
+  {
+    "id": 11652,
+    "name": "Nicola Hancock",
+    "country": "Sydney Thunder Women",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTSYD",
+    "efppm": 50.0,
+    "pid": "uncapped:nicola-hancock"
+  },
+  {
+    "id": 11653,
+    "name": "Laura Harris",
+    "country": "Sydney Thunder Women",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "ci:951163"
+  },
+  {
+    "id": 11654,
+    "name": "Hasrat Gill",
+    "country": "Sydney Thunder Women",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "uncapped:hasrat-gill"
+  },
+  {
+    "id": 11655,
+    "name": "Heather Knight",
+    "country": "Sydney Thunder Women",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "ci:358259"
+  },
+  {
+    "id": 11656,
+    "name": "Anika Learoyd",
+    "country": "Sydney Thunder Women",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "uncapped:anika-learoyd"
+  },
+  {
+    "id": 11657,
+    "name": "Phoebe Litchfield",
+    "country": "Sydney Thunder Women",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "ci:1176132"
+  },
+  {
+    "id": 11658,
+    "name": "Claire Moore",
+    "country": "Sydney Thunder Women",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "uncapped:claire-moore"
+  },
+  {
+    "id": 11659,
+    "name": "Georgia Voll",
+    "country": "Sydney Thunder Women",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "ci:1215360"
+  },
+  {
+    "id": 11660,
+    "name": "Tahlia Wilson",
+    "country": "Sydney Thunder Women",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTSYD",
+    "efppm": 45.0,
+    "pid": "uncapped:tahlia-wilson"
+  },
+  {
+    "id": 11661,
+    "name": "Sophie Day",
+    "country": "Melbourne Stars Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MTMEL2",
+    "efppm": 50.0,
+    "pid": "uncapped:sophie-day"
+  },
+  {
+    "id": 11662,
+    "name": "Charlie Dean",
+    "country": "Melbourne Stars Women",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTMEL2",
+    "efppm": 45.0,
+    "pid": "ci:1039421"
+  },
+  {
+    "id": 11663,
+    "name": "Kim Garth",
+    "country": "Melbourne Stars Women",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTMEL2",
+    "efppm": 50.0,
+    "pid": "ci:418423"
+  },
+  {
+    "id": 11664,
+    "name": "Dani Gibson",
+    "country": "Melbourne Stars Women",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTMEL2",
+    "efppm": 45.0,
+    "pid": "ci:886203"
+  },
+  {
+    "id": 11665,
+    "name": "Maisy Gibson",
+    "country": "Melbourne Stars Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTMEL2",
+    "efppm": 45.0,
+    "pid": "uncapped:maisy-gibson"
+  },
+  {
+    "id": 11666,
+    "name": "Amy Jones",
+    "country": "Melbourne Stars Women",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MTMEL2",
+    "efppm": 45.0,
+    "pid": "ci:515874"
+  },
+  {
+    "id": 11667,
+    "name": "Meg Lanning",
+    "country": "Melbourne Stars Women",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTMEL2",
+    "efppm": 45.0,
+    "pid": "ci:329336"
+  },
+  {
+    "id": 11668,
+    "name": "Carly Leeson",
+    "country": "Melbourne Stars Women",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTMEL2",
+    "efppm": 50.0,
+    "pid": "uncapped:carly-leeson"
+  },
+  {
+    "id": 11669,
+    "name": "Rhys McKenna",
+    "country": "Melbourne Stars Women",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MTMEL2",
+    "efppm": 50.0,
+    "pid": "uncapped:rhys-mckenna"
+  },
+  {
+    "id": 11670,
+    "name": "Indigo Noble",
+    "country": "Melbourne Stars Women",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTMEL2",
+    "efppm": 45.0,
+    "pid": "uncapped:indigo-noble"
+  },
+  {
+    "id": 11671,
+    "name": "Georgia Prestwidge",
+    "country": "Melbourne Stars Women",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTMEL2",
+    "efppm": 45.0,
+    "pid": "uncapped:georgia-prestwidge"
+  },
+  {
+    "id": 11672,
+    "name": "Zoe Samuel",
+    "country": "Melbourne Stars Women",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTMEL2",
+    "efppm": 45.0,
+    "pid": "uncapped:zoe-samuel"
+  },
+  {
+    "id": 11673,
+    "name": "Naomi Stalenberg",
+    "country": "Melbourne Stars Women",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTMEL2",
+    "efppm": 50.0,
+    "pid": "uncapped:naomi-stalenberg"
+  },
+  {
+    "id": 11674,
+    "name": "Annabel Sutherland",
+    "country": "Melbourne Stars Women",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MTMEL2",
+    "efppm": 50.0,
+    "pid": "ci:1071705"
+  },
+  {
+    "id": 11675,
+    "name": "Chamari Athapaththu",
+    "country": "Hobart Hurricanes Women",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "ci:318853"
+  },
+  {
+    "id": 11676,
+    "name": "Nicola Carey",
+    "country": "Hobart Hurricanes Women",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "ci:381217"
+  },
+  {
+    "id": 11677,
+    "name": "Heather Graham",
+    "country": "Hobart Hurricanes Women",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTHOB",
+    "efppm": 50.0,
+    "pid": "ci:546629"
+  },
+  {
+    "id": 11678,
+    "name": "Ella Hayward",
+    "country": "Hobart Hurricanes Women",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTHOB",
+    "efppm": 50.0,
+    "pid": "uncapped:ella-hayward"
+  },
+  {
+    "id": 11679,
+    "name": "Chinelle Henry",
+    "country": "Hobart Hurricanes Women",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTHOB",
+    "efppm": 50.0,
+    "pid": "ci:474190"
+  },
+  {
+    "id": 11680,
+    "name": "Ruth Johnston",
+    "country": "Hobart Hurricanes Women",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTHOB",
+    "efppm": 50.0,
+    "pid": "uncapped:ruth-johnston"
+  },
+  {
+    "id": 11681,
+    "name": "Lizelle Lee",
+    "country": "Hobart Hurricanes Women",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "ci:483484"
+  },
+  {
+    "id": 11682,
+    "name": "Kate Pelle",
+    "country": "Hobart Hurricanes Women",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "uncapped:kate-pelle"
+  },
+  {
+    "id": 11683,
+    "name": "Hayley Silver-Holmes",
+    "country": "Hobart Hurricanes Women",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "uncapped:hayley-silver-holmes"
+  },
+  {
+    "id": 11684,
+    "name": "Amy Smith",
+    "country": "Hobart Hurricanes Women",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "uncapped:amy-smith"
+  },
+  {
+    "id": 11685,
+    "name": "Linsey Smith",
+    "country": "Hobart Hurricanes Women",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "ci:517577"
+  },
+  {
+    "id": 11686,
+    "name": "Lauren Smith",
+    "country": "Hobart Hurricanes Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "uncapped:lauren-smith"
+  },
+  {
+    "id": 11687,
+    "name": "Molly Strano",
+    "country": "Hobart Hurricanes Women",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "uncapped:molly-strano"
+  },
+  {
+    "id": 11688,
+    "name": "Rachel Trenaman",
+    "country": "Hobart Hurricanes Women",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MTHOB",
+    "efppm": 50.0,
+    "pid": "uncapped:rachel-trenaman"
+  },
+  {
+    "id": 11689,
+    "name": "Callie Wilson",
+    "country": "Hobart Hurricanes Women",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTHOB",
+    "efppm": 45.0,
+    "pid": "uncapped:callie-wilson"
+  },
+  {
+    "id": 11690,
+    "name": "Orla Prendergast",
+    "country": "Brisbane Heat Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MTBRI",
+    "efppm": 50.0,
+    "pid": "ci:1150585"
+  },
+  {
+    "id": 11691,
+    "name": "Lily Bassingthwaighte",
+    "country": "Brisbane Heat Women",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:lily-bassingthwaighte"
+  },
+  {
+    "id": 11692,
+    "name": "Bonnie Berry",
+    "country": "Brisbane Heat Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:bonnie-berry"
+  },
+  {
+    "id": 11693,
+    "name": "Lucinda Bourke",
+    "country": "Brisbane Heat Women",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:lucinda-bourke"
+  },
+  {
+    "id": 11694,
+    "name": "Sianna Ginger",
+    "country": "Brisbane Heat Women",
+    "role": "AR",
+    "squad_number": 5,
+    "team_code": "MTBRI",
+    "efppm": 50.0,
+    "pid": "uncapped:sianna-ginger"
+  },
+  {
+    "id": 11695,
+    "name": "Sarah Glenn",
+    "country": "Brisbane Heat Women",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "ci:885837"
+  },
+  {
+    "id": 11696,
+    "name": "Lucy Hamilton",
+    "country": "Brisbane Heat Women",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTBRI",
+    "efppm": 50.0,
+    "pid": "ci:1343643"
+  },
+  {
+    "id": 11697,
+    "name": "Grace Harris",
+    "country": "Brisbane Heat Women",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTBRI",
+    "efppm": 50.0,
+    "pid": "ci:381268"
+  },
+  {
+    "id": 11698,
+    "name": "Jess Jonassen",
+    "country": "Brisbane Heat Women",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MTBRI",
+    "efppm": 50.0,
+    "pid": "ci:374936"
+  },
+  {
+    "id": 11699,
+    "name": "Charli Knott",
+    "country": "Brisbane Heat Women",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:charli-knott"
+  },
+  {
+    "id": 11700,
+    "name": "Annie O'Neil",
+    "country": "Brisbane Heat Women",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:annie-o-neil"
+  },
+  {
+    "id": 11701,
+    "name": "Grace Parsons",
+    "country": "Brisbane Heat Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:grace-parsons"
+  },
+  {
+    "id": 11702,
+    "name": "Georgia Redmayne",
+    "country": "Brisbane Heat Women",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:georgia-redmayne"
+  },
+  {
+    "id": 11703,
+    "name": "Catherine White",
+    "country": "Brisbane Heat Women",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:catherine-white"
+  },
+  {
+    "id": 11704,
+    "name": "Mikayla Wrigley",
+    "country": "Brisbane Heat Women",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTBRI",
+    "efppm": 45.0,
+    "pid": "uncapped:mikayla-wrigley"
+  },
+  {
+    "id": 11705,
+    "name": "Caoimhe Bray",
+    "country": "Sydney Sixers Women",
+    "role": "AR",
+    "squad_number": 1,
+    "team_code": "MTSYD2",
+    "efppm": 50.0,
+    "pid": "uncapped:caoimhe-bray"
+  },
+  {
+    "id": 11706,
+    "name": "Maitlan Brown",
+    "country": "Sydney Sixers Women",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "ci:1061621"
+  },
+  {
+    "id": 11707,
+    "name": "Erin Burns",
+    "country": "Sydney Sixers Women",
+    "role": "AR",
+    "squad_number": 3,
+    "team_code": "MTSYD2",
+    "efppm": 50.0,
+    "pid": "ci:275447"
+  },
+  {
+    "id": 11708,
+    "name": "Alice Capsey",
+    "country": "Sydney Sixers Women",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "ci:1187120"
+  },
+  {
+    "id": 11709,
+    "name": "Lauren Cheatle",
+    "country": "Sydney Sixers Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "uncapped:lauren-cheatle"
+  },
+  {
+    "id": 11710,
+    "name": "Sarah Coyte",
+    "country": "Sydney Sixers Women",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "ci:4886"
+  },
+  {
+    "id": 11711,
+    "name": "Sophia Dunkley",
+    "country": "Sydney Sixers Women",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "ci:885815"
+  },
+  {
+    "id": 11712,
+    "name": "Elsa Hunter",
+    "country": "Sydney Sixers Women",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "uncapped:elsa-hunter"
+  },
+  {
+    "id": 11713,
+    "name": "Ashleigh Gardner",
+    "country": "Sydney Sixers Women",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MTSYD2",
+    "efppm": 50.0,
+    "pid": "ci:858809"
+  },
+  {
+    "id": 11714,
+    "name": "Melie Kerr",
+    "country": "Sydney Sixers Women",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MTSYD2",
+    "efppm": 50.0,
+    "pid": "ci:803971"
+  },
+  {
+    "id": 11715,
+    "name": "Grace Lyons",
+    "country": "Sydney Sixers Women",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "uncapped:grace-lyons"
+  },
+  {
+    "id": 11716,
+    "name": "Frankie Nicklin",
+    "country": "Sydney Sixers Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "uncapped:frankie-nicklin"
+  },
+  {
+    "id": 11717,
+    "name": "Ellyse Perry",
+    "country": "Sydney Sixers Women",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTSYD2",
+    "efppm": 50.0,
+    "pid": "ci:275487"
+  },
+  {
+    "id": 11718,
+    "name": "Eva Ragg",
+    "country": "Sydney Sixers Women",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "uncapped:eva-ragg"
+  },
+  {
+    "id": 11719,
+    "name": "Courtney Grace Sippel",
+    "country": "Sydney Sixers Women",
+    "role": "BOWL",
+    "squad_number": 15,
+    "team_code": "MTSYD2",
+    "efppm": 45.0,
+    "pid": "uncapped:courtney-grace-sippel"
+  },
+  {
+    "id": 11720,
+    "name": "Maia Bouchier",
+    "country": "Adelaide Strikers Women",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "ci:1022077"
+  },
+  {
+    "id": 11721,
+    "name": "Darcie Brown",
+    "country": "Adelaide Strikers Women",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "uncapped:darcie-brown"
+  },
+  {
+    "id": 11722,
+    "name": "Maggie Clark",
+    "country": "Adelaide Strikers Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "uncapped:maggie-clark"
+  },
+  {
+    "id": 11723,
+    "name": "Emma de Broughe",
+    "country": "Adelaide Strikers Women",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "uncapped:emma-de-broughe"
+  },
+  {
+    "id": 11724,
+    "name": "Sophie Ecclestone",
+    "country": "Adelaide Strikers Women",
+    "role": "BOWL",
+    "squad_number": 5,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "ci:878039"
+  },
+  {
+    "id": 11725,
+    "name": "Ellie Johnston",
+    "country": "Adelaide Strikers Women",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MTADE",
+    "efppm": 50.0,
+    "pid": "uncapped:ellie-johnston"
+  },
+  {
+    "id": 11726,
+    "name": "Eleanor Larosa",
+    "country": "Adelaide Strikers Women",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTADE",
+    "efppm": 50.0,
+    "pid": "uncapped:eleanor-larosa"
+  },
+  {
+    "id": 11727,
+    "name": "Tahlia McGrath",
+    "country": "Adelaide Strikers Women",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTADE",
+    "efppm": 50.0,
+    "pid": "ci:381311"
+  },
+  {
+    "id": 11728,
+    "name": "Anesu Mushangwe",
+    "country": "Adelaide Strikers Women",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "uncapped:anesu-mushangwe"
+  },
+  {
+    "id": 11729,
+    "name": "Bridget Patterson",
+    "country": "Adelaide Strikers Women",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "uncapped:bridget-patterson"
+  },
+  {
+    "id": 11730,
+    "name": "Madeline Penna",
+    "country": "Adelaide Strikers Women",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "ci:1201476"
+  },
+  {
+    "id": 11731,
+    "name": "Megan Schutt",
+    "country": "Adelaide Strikers Women",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "ci:420314"
+  },
+  {
+    "id": 11732,
+    "name": "Amanda-Jade Wellington",
+    "country": "Adelaide Strikers Women",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "uncapped:amanda-jade-wellington"
+  },
+  {
+    "id": 11733,
+    "name": "Ella Wilson",
+    "country": "Adelaide Strikers Women",
+    "role": "AR",
+    "squad_number": 14,
+    "team_code": "MTADE",
+    "efppm": 50.0,
+    "pid": "uncapped:ella-wilson"
+  },
+  {
+    "id": 11734,
+    "name": "Laura Wolvaardt",
+    "country": "Adelaide Strikers Women",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTADE",
+    "efppm": 45.0,
+    "pid": "ci:922481"
+  },
+  {
+    "id": 11735,
+    "name": "Chloe Ainsworth",
+    "country": "Perth Scorchers Women",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "uncapped:chloe-ainsworth"
+  },
+  {
+    "id": 11736,
+    "name": "Sophie Devine",
+    "country": "Perth Scorchers Women",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "ci:231740"
+  },
+  {
+    "id": 11737,
+    "name": "Amy Edgar",
+    "country": "Perth Scorchers Women",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "uncapped:amy-edgar"
+  },
+  {
+    "id": 11738,
+    "name": "Fatima Sana",
+    "country": "Perth Scorchers Women",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "ci:1144886"
+  },
+  {
+    "id": 11739,
+    "name": "Mikayla Hinkley",
+    "country": "Perth Scorchers Women",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "uncapped:mikayla-hinkley"
+  },
+  {
+    "id": 11740,
+    "name": "Ebony Hoskin",
+    "country": "Perth Scorchers Women",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "uncapped:ebony-hoskin"
+  },
+  {
+    "id": 11741,
+    "name": "Freya Kemp",
+    "country": "Perth Scorchers Women",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTPER",
+    "efppm": 50.0,
+    "pid": "ci:1195947"
+  },
+  {
+    "id": 11742,
+    "name": "Alana King",
+    "country": "Perth Scorchers Women",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "ci:944393"
+  },
+  {
+    "id": 11743,
+    "name": "Katie Mack",
+    "country": "Perth Scorchers Women",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "uncapped:katie-mack"
+  },
+  {
+    "id": 11744,
+    "name": "Ines Mckeon",
+    "country": "Perth Scorchers Women",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "uncapped:ines-mckeon"
+  },
+  {
+    "id": 11745,
+    "name": "Lilly Mills",
+    "country": "Perth Scorchers Women",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "uncapped:lilly-mills"
+  },
+  {
+    "id": 11746,
+    "name": "Beth Mooney",
+    "country": "Perth Scorchers Women",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "ci:381258"
+  },
+  {
+    "id": 11747,
+    "name": "Taneale Peschel",
+    "country": "Perth Scorchers Women",
+    "role": "AR",
+    "squad_number": 13,
+    "team_code": "MTPER",
+    "efppm": 50.0,
+    "pid": "uncapped:taneale-peschel"
+  },
+  {
+    "id": 11748,
+    "name": "Chloe Piparo",
+    "country": "Perth Scorchers Women",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTPER",
+    "efppm": 45.0,
+    "pid": "uncapped:chloe-piparo"
+  },
+  {
+    "id": 11749,
+    "name": "Ruby Strange",
+    "country": "Perth Scorchers Women",
+    "role": "AR",
+    "squad_number": 15,
+    "team_code": "MTPER",
+    "efppm": 50.0,
+    "pid": "uncapped:ruby-strange"
   }
 ]

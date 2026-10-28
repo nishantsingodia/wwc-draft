@@ -438,5 +438,37 @@
   "MTZIM3": {
     "flag": "🏏",
     "name": "Zimbabwe"
+  },
+  "MTMEL": {
+    "flag": "🏏",
+    "name": "Melbourne Renegades Women"
+  },
+  "MTSYD": {
+    "flag": "🏏",
+    "name": "Sydney Thunder Women"
+  },
+  "MTMEL2": {
+    "flag": "🏏",
+    "name": "Melbourne Stars Women"
+  },
+  "MTHOB": {
+    "flag": "🏏",
+    "name": "Hobart Hurricanes Women"
+  },
+  "MTBRI": {
+    "flag": "🏏",
+    "name": "Brisbane Heat Women"
+  },
+  "MTSYD2": {
+    "flag": "🏏",
+    "name": "Sydney Sixers Women"
+  },
+  "MTADE": {
+    "flag": "🏏",
+    "name": "Adelaide Strikers Women"
+  },
+  "MTPER": {
+    "flag": "🏏",
+    "name": "Perth Scorchers Women"
   }
 }
