@@ -3425,7 +3425,7 @@
   {
     "matchNum": 346,
     "key": "WBBL_M1_MTMEL_MTSYD_Oct29",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL",
     "team2": "MTSYD",
     "label": "Match 1: MTMEL v MTSYD",
@@ -3436,7 +3436,7 @@
   {
     "matchNum": 347,
     "key": "WBBL_M2_MTMEL2_MTHOB_Oct29",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL2",
     "team2": "MTHOB",
     "label": "Match 2: MTMEL2 v MTHOB",
@@ -3447,7 +3447,7 @@
   {
     "matchNum": 348,
     "key": "WBBL_M3_MTBRI_MTSYD2_Oct30",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTBRI",
     "team2": "MTSYD2",
     "label": "Match 3: MTBRI v MTSYD2",
@@ -3458,7 +3458,7 @@
   {
     "matchNum": 349,
     "key": "WBBL_M4_MTADE_MTMEL2_Oct31",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTADE",
     "team2": "MTMEL2",
     "label": "Match 4: MTADE v MTMEL2",
@@ -3469,7 +3469,7 @@
   {
     "matchNum": 350,
     "key": "WBBL_M5_MTPER_MTMEL_Oct31",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTPER",
     "team2": "MTMEL",
     "label": "Match 5: MTPER v MTMEL",
@@ -3480,7 +3480,7 @@
   {
     "matchNum": 351,
     "key": "WBBL_M6_MTSYD_MTBRI_Nov01",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD",
     "team2": "MTBRI",
     "label": "Match 6: MTSYD v MTBRI",
@@ -3491,7 +3491,7 @@
   {
     "matchNum": 352,
     "key": "WBBL_M7_MTSYD2_MTHOB_Nov01",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD2",
     "team2": "MTHOB",
     "label": "Match 7: MTSYD2 v MTHOB",
@@ -3502,7 +3502,7 @@
   {
     "matchNum": 353,
     "key": "WBBL_M8_MTMEL2_MTPER_Nov02",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL2",
     "team2": "MTPER",
     "label": "Match 8: MTMEL2 v MTPER",
@@ -3513,7 +3513,7 @@
   {
     "matchNum": 354,
     "key": "WBBL_M9_MTHOB_MTMEL_Nov04",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTHOB",
     "team2": "MTMEL",
     "label": "Match 9: MTHOB v MTMEL",
@@ -3524,7 +3524,7 @@
   {
     "matchNum": 355,
     "key": "WBBL_M10_MTADE_MTBRI_Nov05",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTADE",
     "team2": "MTBRI",
     "label": "Match 10: MTADE v MTBRI",
@@ -3535,7 +3535,7 @@
   {
     "matchNum": 356,
     "key": "WBBL_M11_MTSYD_MTPER_Nov05",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD",
     "team2": "MTPER",
     "label": "Match 11: MTSYD v MTPER",
@@ -3546,7 +3546,7 @@
   {
     "matchNum": 357,
     "key": "WBBL_M12_MTMEL2_MTSYD2_Nov06",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL2",
     "team2": "MTSYD2",
     "label": "Match 12: MTMEL2 v MTSYD2",
@@ -3557,7 +3557,7 @@
   {
     "matchNum": 358,
     "key": "WBBL_M13_MTMEL_MTADE_Nov07",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL",
     "team2": "MTADE",
     "label": "Match 13: MTMEL v MTADE",
@@ -3568,7 +3568,7 @@
   {
     "matchNum": 359,
     "key": "WBBL_M14_MTBRI_MTHOB_Nov07",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTBRI",
     "team2": "MTHOB",
     "label": "Match 14: MTBRI v MTHOB",
@@ -3579,7 +3579,7 @@
   {
     "matchNum": 360,
     "key": "WBBL_M15_MTSYD2_MTSYD_Nov08",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD2",
     "team2": "MTSYD",
     "label": "Match 15: MTSYD2 v MTSYD",
@@ -3590,7 +3590,7 @@
   {
     "matchNum": 361,
     "key": "WBBL_M16_MTPER_MTMEL2_Nov08",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTPER",
     "team2": "MTMEL2",
     "label": "Match 16: MTPER v MTMEL2",
@@ -3601,7 +3601,7 @@
   {
     "matchNum": 362,
     "key": "WBBL_M17_MTHOB_MTADE_Nov10",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTHOB",
     "team2": "MTADE",
     "label": "Match 17: MTHOB v MTADE",
@@ -3612,7 +3612,7 @@
   {
     "matchNum": 363,
     "key": "WBBL_M18_MTPER_MTSYD_Nov11",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTPER",
     "team2": "MTSYD",
     "label": "Match 18: MTPER v MTSYD",
@@ -3623,7 +3623,7 @@
   {
     "matchNum": 364,
     "key": "WBBL_M19_MTMEL2_MTBRI_Nov12",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL2",
     "team2": "MTBRI",
     "label": "Match 19: MTMEL2 v MTBRI",
@@ -3634,7 +3634,7 @@
   {
     "matchNum": 365,
     "key": "WBBL_M20_MTMEL_MTSYD2_Nov12",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL",
     "team2": "MTSYD2",
     "label": "Match 20: MTMEL v MTSYD2",
@@ -3645,7 +3645,7 @@
   {
     "matchNum": 366,
     "key": "WBBL_M21_MTHOB_MTBRI_Nov14",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTHOB",
     "team2": "MTBRI",
     "label": "Match 21: MTHOB v MTBRI",
@@ -3656,7 +3656,7 @@
   {
     "matchNum": 367,
     "key": "WBBL_M22_MTPER_MTADE_Nov14",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTPER",
     "team2": "MTADE",
     "label": "Match 22: MTPER v MTADE",
@@ -3667,7 +3667,7 @@
   {
     "matchNum": 368,
     "key": "WBBL_M23_MTSYD2_MTMEL_Nov15",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD2",
     "team2": "MTMEL",
     "label": "Match 23: MTSYD2 v MTMEL",
@@ -3678,7 +3678,7 @@
   {
     "matchNum": 369,
     "key": "WBBL_M24_MTSYD_MTMEL2_Nov16",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD",
     "team2": "MTMEL2",
     "label": "Match 24: MTSYD v MTMEL2",
@@ -3689,7 +3689,7 @@
   {
     "matchNum": 370,
     "key": "WBBL_M25_MTADE_MTSYD2_Nov17",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTADE",
     "team2": "MTSYD2",
     "label": "Match 25: MTADE v MTSYD2",
@@ -3700,7 +3700,7 @@
   {
     "matchNum": 371,
     "key": "WBBL_M26_MTHOB_MTPER_Nov19",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTHOB",
     "team2": "MTPER",
     "label": "Match 26: MTHOB v MTPER",
@@ -3711,7 +3711,7 @@
   {
     "matchNum": 372,
     "key": "WBBL_M27_MTBRI_MTSYD_Nov19",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTBRI",
     "team2": "MTSYD",
     "label": "Match 27: MTBRI v MTSYD",
@@ -3722,7 +3722,7 @@
   {
     "matchNum": 373,
     "key": "WBBL_M28_MTADE_MTMEL_Nov20",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTADE",
     "team2": "MTMEL",
     "label": "Match 28: MTADE v MTMEL",
@@ -3733,7 +3733,7 @@
   {
     "matchNum": 374,
     "key": "WBBL_M29_MTHOB_MTSYD_Nov21",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTHOB",
     "team2": "MTSYD",
     "label": "Match 29: MTHOB v MTSYD",
@@ -3744,7 +3744,7 @@
   {
     "matchNum": 375,
     "key": "WBBL_M30_MTSYD2_MTPER_Nov21",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD2",
     "team2": "MTPER",
     "label": "Match 30: MTSYD2 v MTPER",
@@ -3755,7 +3755,7 @@
   {
     "matchNum": 376,
     "key": "WBBL_M31_MTBRI_MTADE_Nov22",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTBRI",
     "team2": "MTADE",
     "label": "Match 31: MTBRI v MTADE",
@@ -3766,7 +3766,7 @@
   {
     "matchNum": 377,
     "key": "WBBL_M32_MTMEL_MTMEL2_Nov22",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL",
     "team2": "MTMEL2",
     "label": "Match 32: MTMEL v MTMEL2",
@@ -3777,7 +3777,7 @@
   {
     "matchNum": 378,
     "key": "WBBL_M33_MTMEL_MTBRI_Nov25",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL",
     "team2": "MTBRI",
     "label": "Match 33: MTMEL v MTBRI",
@@ -3788,7 +3788,7 @@
   {
     "matchNum": 379,
     "key": "WBBL_M34_MTSYD_MTADE_Nov26",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD",
     "team2": "MTADE",
     "label": "Match 34: MTSYD v MTADE",
@@ -3799,7 +3799,7 @@
   {
     "matchNum": 380,
     "key": "WBBL_M35_MTSYD2_MTMEL2_Nov26",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD2",
     "team2": "MTMEL2",
     "label": "Match 35: MTSYD2 v MTMEL2",
@@ -3810,7 +3810,7 @@
   {
     "matchNum": 381,
     "key": "WBBL_M36_MTPER_MTHOB_Nov27",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTPER",
     "team2": "MTHOB",
     "label": "Match 36: MTPER v MTHOB",
@@ -3821,7 +3821,7 @@
   {
     "matchNum": 382,
     "key": "WBBL_M37_MTMEL_MTMEL2_Nov28",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTMEL",
     "team2": "MTMEL2",
     "label": "Match 37: MTMEL v MTMEL2",
@@ -3832,7 +3832,7 @@
   {
     "matchNum": 383,
     "key": "WBBL_M38_MTSYD2_MTSYD_Nov28",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTSYD2",
     "team2": "MTSYD",
     "label": "Match 38: MTSYD2 v MTSYD",
@@ -3843,7 +3843,7 @@
   {
     "matchNum": 384,
     "key": "WBBL_M39_MTBRI_MTPER_Nov29",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTBRI",
     "team2": "MTPER",
     "label": "Match 39: MTBRI v MTPER",
@@ -3854,7 +3854,7 @@
   {
     "matchNum": 385,
     "key": "WBBL_M40_MTADE_MTHOB_Nov29",
-    "gender": "M",
+    "gender": "W",
     "team1": "MTADE",
     "team2": "MTHOB",
     "label": "Match 40: MTADE v MTHOB",
