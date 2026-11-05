@@ -18752,5 +18752,605 @@
     "team_code": "MTHOB",
     "efppm": 40.0,
     "pid": "ci:1503496"
+  },
+  {
+    "id": 11755,
+    "name": "Harry Brook",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:911707"
+  },
+  {
+    "id": 11756,
+    "name": "Jofra Archer",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:669855"
+  },
+  {
+    "id": 11757,
+    "name": "Gus Atkinson",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:1039481"
+  },
+  {
+    "id": 11758,
+    "name": "Sonny Baker",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:1191192"
+  },
+  {
+    "id": 11759,
+    "name": "Tom Banton",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:877051"
+  },
+  {
+    "id": 11760,
+    "name": "Jacob Bethell",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:1194959"
+  },
+  {
+    "id": 11761,
+    "name": "Jordan Cox",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:1112537"
+  },
+  {
+    "id": 11762,
+    "name": "Henry Crocombe",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:1143809"
+  },
+  {
+    "id": 11763,
+    "name": "Sam Curran",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MOENG2",
+    "efppm": 50.0,
+    "pid": "ci:662973"
+  },
+  {
+    "id": 11764,
+    "name": "Liam Dawson",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 10,
+    "team_code": "MOENG2",
+    "efppm": 50.0,
+    "pid": "ci:211855"
+  },
+  {
+    "id": 11765,
+    "name": "Ben Duckett",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:521637"
+  },
+  {
+    "id": 11766,
+    "name": "Will Jacks",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:897549"
+  },
+  {
+    "id": 11767,
+    "name": "Jamie Overton",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:510530"
+  },
+  {
+    "id": 11768,
+    "name": "Adil Rashid",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:244497"
+  },
+  {
+    "id": 11769,
+    "name": "Joe Root",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:303669"
+  },
+  {
+    "id": 11770,
+    "name": "Josh Tongue",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MOENG2",
+    "efppm": 45.0,
+    "pid": "ci:857975"
+  },
+  {
+    "id": 11771,
+    "name": "Mitchell Marsh",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:272450"
+  },
+  {
+    "id": 11772,
+    "name": "Xavier Bartlett",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:1050545"
+  },
+  {
+    "id": 11773,
+    "name": "Mahli Beardman",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:1393948"
+  },
+  {
+    "id": 11774,
+    "name": "Alex Carey",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "uncapped:alex-carey"
+  },
+  {
+    "id": 11775,
+    "name": "Cooper Connolly",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:1210488"
+  },
+  {
+    "id": 11776,
+    "name": "Jack Edwards",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 6,
+    "team_code": "MOAUS2",
+    "efppm": 50.0,
+    "pid": "ci:1088610"
+  },
+  {
+    "id": 11777,
+    "name": "Cameron Green",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:1076713"
+  },
+  {
+    "id": 11778,
+    "name": "Travis Head",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:530011"
+  },
+  {
+    "id": 11779,
+    "name": "Josh Inglis",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:662235"
+  },
+  {
+    "id": 11780,
+    "name": "Spencer Johnson",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:1123718"
+  },
+  {
+    "id": 11781,
+    "name": "Oliver Peake",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:1418371"
+  },
+  {
+    "id": 11782,
+    "name": "Matt Renshaw",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 12,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:722303"
+  },
+  {
+    "id": 11783,
+    "name": "Liam Scott",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:1076376"
+  },
+  {
+    "id": 11784,
+    "name": "Adam Zampa",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MOAUS2",
+    "efppm": 45.0,
+    "pid": "ci:379504"
+  },
+  {
+    "id": 11785,
+    "name": "Mitchell Marsh",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:272450"
+  },
+  {
+    "id": 11786,
+    "name": "Xavier Bartlett",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 2,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:1050545"
+  },
+  {
+    "id": 11787,
+    "name": "Mahli Beardman",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 3,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:1393948"
+  },
+  {
+    "id": 11788,
+    "name": "Nikhil Chaudhary",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 4,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:1079380"
+  },
+  {
+    "id": 11789,
+    "name": "Tim David",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:892749"
+  },
+  {
+    "id": 11790,
+    "name": "Joel Davies",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:1295851"
+  },
+  {
+    "id": 11791,
+    "name": "Jack Edwards",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTAUS",
+    "efppm": 50.0,
+    "pid": "ci:1088610"
+  },
+  {
+    "id": 11792,
+    "name": "Nathan Ellis",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 8,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:826915"
+  },
+  {
+    "id": 11793,
+    "name": "Jake Fraser-McGurk",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "uncapped:jake-fraser-mcgurk"
+  },
+  {
+    "id": 11794,
+    "name": "Sam Harper",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 10,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:772361"
+  },
+  {
+    "id": 11795,
+    "name": "Spencer Johnson",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:1123718"
+  },
+  {
+    "id": 11796,
+    "name": "Mitchell Owen",
+    "country": "Australia",
+    "role": "AR",
+    "squad_number": 12,
+    "team_code": "MTAUS",
+    "efppm": 50.0,
+    "pid": "ci:1213979"
+  },
+  {
+    "id": 11797,
+    "name": "Lachlan Shaw",
+    "country": "Australia",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "uncapped:lachlan-shaw"
+  },
+  {
+    "id": 11798,
+    "name": "Adam Zampa",
+    "country": "Australia",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MTAUS",
+    "efppm": 45.0,
+    "pid": "ci:379504"
+  },
+  {
+    "id": 11799,
+    "name": "Harry Brook",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:911707"
+  },
+  {
+    "id": 11800,
+    "name": "Tom Banton",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:877051"
+  },
+  {
+    "id": 11801,
+    "name": "Jacob Bethell",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:1194959"
+  },
+  {
+    "id": 11802,
+    "name": "James Coles",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MTENG2",
+    "efppm": 50.0,
+    "pid": "ci:1231590"
+  },
+  {
+    "id": 11803,
+    "name": "Jordan Cox",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:1112537"
+  },
+  {
+    "id": 11804,
+    "name": "Henry Crocombe",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:1143809"
+  },
+  {
+    "id": 11805,
+    "name": "Sam Curran",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 7,
+    "team_code": "MTENG2",
+    "efppm": 50.0,
+    "pid": "ci:662973"
+  },
+  {
+    "id": 11806,
+    "name": "Liam Dawson",
+    "country": "England",
+    "role": "AR",
+    "squad_number": 8,
+    "team_code": "MTENG2",
+    "efppm": 50.0,
+    "pid": "ci:211855"
+  },
+  {
+    "id": 11807,
+    "name": "Aneurin Donald",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 9,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:562281"
+  },
+  {
+    "id": 11808,
+    "name": "Eddie Jack",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "uncapped:eddie-jack"
+  },
+  {
+    "id": 11809,
+    "name": "Will Jacks",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 11,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:897549"
+  },
+  {
+    "id": 11810,
+    "name": "Jamie Overton",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:510530"
+  },
+  {
+    "id": 11811,
+    "name": "Adil Rashid",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 13,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:244497"
+  },
+  {
+    "id": 11812,
+    "name": "Thomas Rew",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:1379431"
+  },
+  {
+    "id": 11813,
+    "name": "Phil Salt",
+    "country": "England",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:669365"
+  },
+  {
+    "id": 11814,
+    "name": "Luke Wood",
+    "country": "England",
+    "role": "BOWL",
+    "squad_number": 16,
+    "team_code": "MTENG2",
+    "efppm": 45.0,
+    "pid": "ci:573170"
   }
 ]

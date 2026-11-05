@@ -470,5 +470,21 @@
   "MTPER": {
     "flag": "🏏",
     "name": "Perth Scorchers Women"
+  },
+  "MOENG2": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name": "England"
+  },
+  "MOAUS2": {
+    "flag": "🇦🇺",
+    "name": "Australia"
+  },
+  "MTAUS": {
+    "flag": "🇦🇺",
+    "name": "Australia"
+  },
+  "MTENG2": {
+    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+    "name": "England"
   }
 }

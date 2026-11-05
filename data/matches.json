@@ -3861,5 +3861,93 @@
     "date": "2026-11-29T10:00:00+05:30",
     "format": "T20",
     "tour": "womens-big-bash-league-2026"
+  },
+  {
+    "matchNum": 386,
+    "key": "AUTO_M_AUS_ENG_ODI1_Nov13",
+    "gender": "M",
+    "team1": "MOAUS2",
+    "team2": "MOENG2",
+    "label": "1st ODI: AUS v ENG",
+    "date": "2026-11-13T09:00:00+05:30",
+    "format": "ODI",
+    "tour": "england-tour-of-australia-2026-odi"
+  },
+  {
+    "matchNum": 387,
+    "key": "AUTO_M_AUS_ENG_ODI2_Nov15",
+    "gender": "M",
+    "team1": "MOAUS2",
+    "team2": "MOENG2",
+    "label": "2nd ODI: AUS v ENG",
+    "date": "2026-11-15T09:00:00+05:30",
+    "format": "ODI",
+    "tour": "england-tour-of-australia-2026-odi"
+  },
+  {
+    "matchNum": 388,
+    "key": "AUTO_M_AUS_ENG_ODI3_Nov18",
+    "gender": "M",
+    "team1": "MOAUS2",
+    "team2": "MOENG2",
+    "label": "3rd ODI: AUS v ENG",
+    "date": "2026-11-18T09:00:00+05:30",
+    "format": "ODI",
+    "tour": "england-tour-of-australia-2026-odi"
+  },
+  {
+    "matchNum": 389,
+    "key": "AUTO_M_AUS_ENG_T20I1_Nov21",
+    "gender": "M",
+    "team1": "MTAUS",
+    "team2": "MTENG2",
+    "label": "1st T20I: AUS v ENG",
+    "date": "2026-11-21T13:45:00+05:30",
+    "format": "T20",
+    "tour": "england-tour-of-australia-2026-t20i"
+  },
+  {
+    "matchNum": 390,
+    "key": "AUTO_M_AUS_ENG_T20I2_Nov24",
+    "gender": "M",
+    "team1": "MTAUS",
+    "team2": "MTENG2",
+    "label": "2nd T20I: AUS v ENG",
+    "date": "2026-11-24T13:45:00+05:30",
+    "format": "T20",
+    "tour": "england-tour-of-australia-2026-t20i"
+  },
+  {
+    "matchNum": 391,
+    "key": "AUTO_M_AUS_ENG_T20I3_Nov27",
+    "gender": "M",
+    "team1": "MTAUS",
+    "team2": "MTENG2",
+    "label": "3rd T20I: AUS v ENG",
+    "date": "2026-11-27T13:45:00+05:30",
+    "format": "T20",
+    "tour": "england-tour-of-australia-2026-t20i"
+  },
+  {
+    "matchNum": 392,
+    "key": "AUTO_M_AUS_ENG_T20I4_Nov29",
+    "gender": "M",
+    "team1": "MTAUS",
+    "team2": "MTENG2",
+    "label": "4th T20I: AUS v ENG",
+    "date": "2026-11-29T13:45:00+05:30",
+    "format": "T20",
+    "tour": "england-tour-of-australia-2026-t20i"
+  },
+  {
+    "matchNum": 393,
+    "key": "AUTO_M_AUS_ENG_T20I5_Dec02",
+    "gender": "M",
+    "team1": "MTAUS",
+    "team2": "MTENG2",
+    "label": "5th T20I: AUS v ENG",
+    "date": "2026-12-02T13:45:00+05:30",
+    "format": "T20",
+    "tour": "england-tour-of-australia-2026-t20i"
   }
 ]
