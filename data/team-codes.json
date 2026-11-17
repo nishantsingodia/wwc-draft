@@ -486,5 +486,29 @@
   "MTENG2": {
     "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
     "name": "England"
+  },
+  "MTDES": {
+    "flag": "🏏",
+    "name": "Desert Vipers"
+  },
+  "MTMIE": {
+    "flag": "🏏",
+    "name": "MI Emirates"
+  },
+  "MTSHA": {
+    "flag": "🏏",
+    "name": "Sharjah Warriorz"
+  },
+  "MTGUL": {
+    "flag": "🏏",
+    "name": "Gulf Giants"
+  },
+  "MTDUB2": {
+    "flag": "🏏",
+    "name": "Dubai Capitals"
+  },
+  "MTABU": {
+    "flag": "🏏",
+    "name": "Abu Dhabi Knight Riders"
   }
 }

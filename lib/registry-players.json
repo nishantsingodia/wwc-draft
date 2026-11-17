@@ -1,6 +1,6 @@
 {
  "anchor": "cricinfo_id (ci:); cs:/uncapped: fallback; cricsheet_id derived from crosswalk",
- "count": 1088,
+ "count": 1132,
  "players": {
   "ci:597806": {
    "aliases": [
@@ -3499,7 +3499,8 @@
    "tours": [
     "Australia tour of Bangladesh 2026 (Men T20I)",
     "The Hundred Men's Competition 2026",
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "330902",
    "cricsheet_id": "0a8fce53",
@@ -3634,7 +3635,8 @@
    "tours": [
     "Major League Cricket 2026",
     "The Hundred Men's Competition 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "604302",
    "cricsheet_id": "3241e3fd",
@@ -3785,7 +3787,8 @@
    "tours": [
     "Major League Cricket 2026",
     "Caribbean Premier League 2026",
-    "West Indies tour of India 2026 (T20I)"
+    "West Indies tour of India 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "677077",
    "cricsheet_id": "c5aef772",
@@ -3798,10 +3801,12 @@
   },
   "ci:1326798": {
    "aliases": [
-    "allah ghazanfar"
+    "allah ghazanfar",
+    "am ghazanfar"
    ],
    "tours": [
-    "Major League Cricket 2026"
+    "Major League Cricket 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1326798",
    "cricsheet_id": "9ca68676",
@@ -3901,7 +3906,8 @@
    "tours": [
     "Major League Cricket 2026",
     "Caribbean Premier League 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "485379",
    "cricsheet_id": "d1305df0",
@@ -4200,7 +4206,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "44828",
    "cricsheet_id": "3355b542",
@@ -4234,7 +4241,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "554701",
    "cricsheet_id": "6c7a68d0",
@@ -4342,7 +4350,8 @@
    "tours": [
     "Major League Cricket 2026",
     "The Hundred Men's Competition 2026",
-    "India tour of New Zealand 2026 (T20I)"
+    "India tour of New Zealand 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "450860",
    "cricsheet_id": "350bb1b1",
@@ -4448,7 +4457,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1194775",
    "cricsheet_id": "dbe38f35",
@@ -4481,7 +4491,8 @@
    "tours": [
     "Major League Cricket 2026",
     "The Hundred Men's Competition 2026",
-    "India tour of New Zealand 2026 (T20I)"
+    "India tour of New Zealand 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "959759",
    "cricsheet_id": "bf74b130",
@@ -4569,7 +4580,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "959789",
    "cricsheet_id": "486065b3",
@@ -4605,7 +4617,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1277627",
    "cricsheet_id": "3b8e7647",
@@ -4804,7 +4817,8 @@
    "tours": [
     "Major League Cricket 2026",
     "Caribbean Premier League 2026",
-    "West Indies tour of India 2026 (T20I)"
+    "West Indies tour of India 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "670025",
    "cricsheet_id": "48a1d7b7",
@@ -4823,7 +4837,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "325012",
    "cricsheet_id": "d9273ee7",
@@ -4923,7 +4938,8 @@
     "Caribbean Premier League 2026",
     "Sri Lanka tour of England 2026 (ODI)",
     "Sri Lanka tour of England 2026 (T20I)",
-    "Sri Lanka tour of Pakistan 2026 (T20I)"
+    "Sri Lanka tour of Pakistan 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "437316",
    "cricsheet_id": "3ff033bb",
@@ -5067,7 +5083,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "232359",
    "cricsheet_id": "af2c687b",
@@ -5103,7 +5120,8 @@
     "The Hundred Men's Competition 2026",
     "Caribbean Premier League 2026",
     "West Indies tour of India 2026 (ODI)",
-    "West Indies tour of India 2026 (T20I)"
+    "West Indies tour of India 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "914541",
    "cricsheet_id": "d014d5ac",
@@ -5140,7 +5158,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "230558",
    "cricsheet_id": "9d430b40",
@@ -5179,7 +5198,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "391485",
    "cricsheet_id": "0f721006",
@@ -5231,7 +5251,8 @@
    "tours": [
     "Major League Cricket 2026",
     "Caribbean Premier League 2026",
-    "West Indies tour of India 2026 (T20I)"
+    "West Indies tour of India 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "820351",
    "cricsheet_id": "650d5e49",
@@ -5282,7 +5303,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1339100",
    "cricsheet_id": "568473e4",
@@ -5393,7 +5415,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "51862",
    "cricsheet_id": "1bae756b",
@@ -5847,7 +5870,8 @@
    ],
    "tours": [
     "India tour of Ireland 2026 (Men T20I)",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "468573",
    "cricsheet_id": "4ec96094",
@@ -5886,7 +5910,8 @@
    "tours": [
     "India tour of Ireland 2026 (Men T20I)",
     "European T20 Premier League 2026",
-    "Ireland tour of Namibia 2026 (ODI)"
+    "Ireland tour of Namibia 2026 (ODI)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "928057",
    "cricsheet_id": "3979b5e0",
@@ -5944,7 +5969,8 @@
    "tours": [
     "India tour of Ireland 2026 (Men T20I)",
     "European T20 Premier League 2026",
-    "Ireland tour of Namibia 2026 (ODI)"
+    "Ireland tour of Namibia 2026 (ODI)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "348034",
    "cricsheet_id": "99cddc5e",
@@ -6124,7 +6150,8 @@
    "tours": [
     "India tour of England 2026 (Men T20I)",
     "The Hundred Men's Competition 2026",
-    "England tour of Australia 2026 (T20I)"
+    "England tour of Australia 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "669365",
    "cricsheet_id": "3d284ca3",
@@ -6167,7 +6194,8 @@
     "Sri Lanka tour of England 2026 (ODI)",
     "Sri Lanka tour of England 2026 (T20I)",
     "England tour of Australia 2026 (ODI)",
-    "England tour of Australia 2026 (T20I)"
+    "England tour of Australia 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "877051",
    "cricsheet_id": "25f7b7d6",
@@ -6314,7 +6342,8 @@
    "tours": [
     "India tour of England 2026 (Men T20I)",
     "The Hundred Men's Competition 2026",
-    "England tour of Australia 2026 (T20I)"
+    "England tour of Australia 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1231590",
    "cricsheet_id": "9c643d7b",
@@ -6337,7 +6366,8 @@
     "Sri Lanka tour of England 2026 (ODI)",
     "Sri Lanka tour of England 2026 (T20I)",
     "England tour of Australia 2026 (ODI)",
-    "England tour of Australia 2026 (T20I)"
+    "England tour of Australia 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "244497",
    "cricsheet_id": "249d60c9",
@@ -6419,7 +6449,8 @@
    "tours": [
     "India tour of England 2026 (Men T20I)",
     "The Hundred Men's Competition 2026",
-    "England tour of Australia 2026 (T20I)"
+    "England tour of Australia 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "573170",
    "cricsheet_id": "65b6943c",
@@ -6936,7 +6967,8 @@
     "New Zealand vs West Indies Men's ODI 2026",
     "Caribbean Premier League 2026",
     "West Indies tour of India 2026 (ODI)",
-    "West Indies tour of India 2026 (T20I)"
+    "West Indies tour of India 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "670031",
    "cricsheet_id": "b0946605",
@@ -7018,7 +7050,8 @@
     "New Zealand vs West Indies Men's ODI 2026",
     "Caribbean Premier League 2026",
     "West Indies tour of India 2026 (ODI)",
-    "West Indies tour of India 2026 (T20I)"
+    "West Indies tour of India 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1356971",
    "cricsheet_id": "97290faf",
@@ -7092,7 +7125,8 @@
    ],
    "tours": [
     "Lanka Premier League 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "921509",
    "cricsheet_id": "d4550956",
@@ -7199,7 +7233,8 @@
    ],
    "tours": [
     "Lanka Premier League 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "221140",
    "cricsheet_id": "aa8d28ae",
@@ -7298,7 +7333,8 @@
     "zahoor khan"
    ],
    "tours": [
-    "Lanka Premier League 2026"
+    "Lanka Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "384525",
    "cricsheet_id": "f0e293b0",
@@ -7316,7 +7352,8 @@
     "lizaad williams"
    ],
    "tours": [
-    "Lanka Premier League 2026"
+    "Lanka Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "379887",
    "cricsheet_id": "a1d95bd8",
@@ -7568,7 +7605,8 @@
    "tours": [
     "Lanka Premier League 2026",
     "Caribbean Premier League 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "974109",
    "cricsheet_id": "7d92277a",
@@ -7742,7 +7780,8 @@
    ],
    "tours": [
     "Lanka Premier League 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1161050",
    "cricsheet_id": "3c28853f",
@@ -7778,7 +7817,8 @@
    ],
    "tours": [
     "Lanka Premier League 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "300631",
    "cricsheet_id": "f21043a5",
@@ -7853,7 +7893,8 @@
    ],
    "tours": [
     "Lanka Premier League 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "8917",
    "cricsheet_id": "bb351c23",
@@ -7979,7 +8020,8 @@
    ],
    "tours": [
     "Lanka Premier League 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "949473",
    "cricsheet_id": "436c763a",
@@ -8605,7 +8647,8 @@
     "gulbadin naib"
    ],
    "tours": [
-    "Lanka Premier League 2026"
+    "Lanka Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "352048",
    "cricsheet_id": "9f77963a",
@@ -8639,7 +8682,8 @@
    ],
    "tours": [
     "Lanka Premier League 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "974175",
    "cricsheet_id": "e9c7f0d0",
@@ -8741,7 +8785,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "296597",
    "cricsheet_id": "a15618fe",
@@ -8776,7 +8821,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "793463",
    "cricsheet_id": "5f547c8b",
@@ -8795,7 +8841,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "473191",
    "cricsheet_id": "402f8494",
@@ -8912,7 +8959,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "England vs Pakistan Men's Test 2026"
+    "England vs Pakistan Men's Test 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "641423",
    "cricsheet_id": "4b685e2d",
@@ -8996,7 +9044,8 @@
     "matthew potts"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1027781",
    "cricsheet_id": "894b2d25",
@@ -9116,7 +9165,8 @@
    "tours": [
     "The Hundred Men's Competition 2026",
     "European T20 Premier League 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "321777",
    "cricsheet_id": "d67d5f00",
@@ -9150,7 +9200,8 @@
     "ms pepper"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "772293",
    "cricsheet_id": "270e4c23",
@@ -9168,7 +9219,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "288992",
    "cricsheet_id": "ffe699c0",
@@ -9349,7 +9401,8 @@
     "asa tribe"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1195664",
    "cricsheet_id": "86f84b37",
@@ -9381,7 +9434,8 @@
     "jonny bairstow"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "297433",
    "cricsheet_id": "abb83e27",
@@ -9418,7 +9472,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "403902",
    "cricsheet_id": "50c6bc2b",
@@ -9502,7 +9557,8 @@
     "james rew"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1184436",
    "cricsheet_id": "521595e7",
@@ -9571,7 +9627,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "436757",
    "cricsheet_id": "235c2bb6",
@@ -9588,7 +9645,8 @@
     "pi walter"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "909225",
    "cricsheet_id": "57590dbb",
@@ -9632,7 +9690,8 @@
    "tours": [
     "The Hundred Men's Competition 2026",
     "Caribbean Premier League 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1182529",
    "cricsheet_id": "efc04be7",
@@ -9649,7 +9708,8 @@
     "mde holden"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "641387",
    "cricsheet_id": "d34a2268",
@@ -9678,7 +9738,8 @@
     "tom moores"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "788101",
    "cricsheet_id": "85dcb721",
@@ -9726,7 +9787,8 @@
     "joe clarke"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "571911",
    "cricsheet_id": "2eca67f5",
@@ -9777,7 +9839,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "1333415",
    "cricsheet_id": "e94d1dcd",
@@ -9793,7 +9856,8 @@
     "jordan thompson"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "766809",
    "cricsheet_id": "1d2f290a",
@@ -9912,7 +9976,8 @@
     "craig overton"
    ],
    "tours": [
-    "The Hundred Men's Competition 2026"
+    "The Hundred Men's Competition 2026",
+    "International League T20 2026"
    ],
    "cricinfo_id": "464626",
    "cricsheet_id": "e9987a94",
@@ -9979,7 +10044,8 @@
    "tours": [
     "The Hundred Men's Competition 2026",
     "European T20 Premier League 2026",
-    "England tour of Australia 2026 (T20I)"
+    "England tour of Australia 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "562281",
    "cricsheet_id": "72918338",
@@ -11389,7 +11455,8 @@
    "tours": [
     "India tour of Zimbabwe 2026 (T20I)",
     "Namibia T20I Tri-Series 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "299572",
    "cricsheet_id": "26d041c4",
@@ -11578,7 +11645,8 @@
    "tours": [
     "India tour of Zimbabwe 2026 (T20I)",
     "Namibia T20I Tri-Series 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "cricinfo_id": "827051",
    "cricsheet_id": "449f4e3c",
@@ -11837,7 +11905,8 @@
    ],
    "tours": [
     "Caribbean Premier League 2026",
-    "Sri Lanka tour of Pakistan 2026 (T20I)"
+    "Sri Lanka tour of Pakistan 2026 (T20I)",
+    "International League T20 2026"
    ],
    "display": "Shadab Khan",
    "cricinfo_id": "922943",
@@ -12041,7 +12110,8 @@
     "alick athanaze"
    ],
    "tours": [
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "display": "Alick Athanaze",
    "cricinfo_id": "1078692",
@@ -12135,7 +12205,8 @@
    ],
    "tours": [
     "Caribbean Premier League 2026",
-    "Sri Lanka tour of Pakistan 2026 (T20I)"
+    "Sri Lanka tour of Pakistan 2026 (T20I)",
+    "International League T20 2026"
    ],
    "display": "Naseem Shah",
    "cricinfo_id": "1158088",
@@ -12168,7 +12239,8 @@
     "waqar salamkheil"
    ],
    "tours": [
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "display": "Waqar Salamkheil",
    "cricinfo_id": "1108490",
@@ -12450,7 +12522,8 @@
     "george linde"
    ],
    "tours": [
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "display": "George Linde",
    "cricinfo_id": "481875",
@@ -12471,17 +12544,6 @@
    "cricsheet_id": "e796c63a",
    "espn_id": "1420097",
    "draft_id": 10761,
-   "auction_id": null
-  },
-  "uncapped:jakeem-pollard": {
-   "aliases": [
-    "jakeem pollard"
-   ],
-   "tours": [
-    "Caribbean Premier League 2026"
-   ],
-   "display": "Jakeem Pollard",
-   "draft_id": 10764,
    "auction_id": null
   },
   "ci:1209197": {
@@ -12533,7 +12595,8 @@
     "mohammad nabi"
    ],
    "tours": [
-    "Caribbean Premier League 2026"
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
    ],
    "display": "Mohammad Nabi",
    "cricinfo_id": "25913",
@@ -12598,7 +12661,8 @@
    ],
    "tours": [
     "Caribbean Premier League 2026",
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "display": "Rahmanullah Gurbaz",
    "cricinfo_id": "974087",
@@ -13029,7 +13093,8 @@
     "logan verjus van beek"
    ],
    "tours": [
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "display": "Logan van Beek",
    "cricinfo_id": "440522",
@@ -13110,7 +13175,8 @@
    ],
    "tours": [
     "European T20 Premier League 2026",
-    "Ireland tour of Namibia 2026 (ODI)"
+    "Ireland tour of Namibia 2026 (ODI)",
+    "International League T20 2026"
    ],
    "display": "Curtis Campher",
    "cricinfo_id": "595921",
@@ -13192,7 +13258,8 @@
     "david payne"
    ],
    "tours": [
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "display": "David Payne",
    "cricinfo_id": "362710",
@@ -13258,7 +13325,8 @@
    ],
    "tours": [
     "European T20 Premier League 2026",
-    "Ireland tour of Namibia 2026 (ODI)"
+    "Ireland tour of Namibia 2026 (ODI)",
+    "International League T20 2026"
    ],
    "display": "Mark Adair",
    "cricinfo_id": "526441",
@@ -13425,7 +13493,8 @@
     "muhammad waseem"
    ],
    "tours": [
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "International League T20 2026"
    ],
    "display": "Muhammad Waseem",
    "cricinfo_id": "1241277",
@@ -13865,7 +13934,8 @@
     "babar azam"
    ],
    "tours": [
-    "England vs Pakistan Men's Test 2026"
+    "England vs Pakistan Men's Test 2026",
+    "International League T20 2026"
    ],
    "display": "Babar Azam",
    "cricinfo_id": "348144",
@@ -15974,7 +16044,8 @@
     "haider ali"
    ],
    "tours": [
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "International League T20 2026"
    ],
    "display": "Haider Ali",
    "cricinfo_id": "1168651",
@@ -16210,7 +16281,8 @@
     "fakhar zaman"
    ],
    "tours": [
-    "Sri Lanka tour of Pakistan 2026 (T20I)"
+    "Sri Lanka tour of Pakistan 2026 (T20I)",
+    "International League T20 2026"
    ],
    "display": "Fakhar Zaman",
    "cricinfo_id": "512191",
@@ -16550,7 +16622,8 @@
     "abdollah ahmadzai"
    ],
    "tours": [
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "display": "Abdollah Ahmadzai",
    "draft_id": 11604,
@@ -16561,7 +16634,8 @@
     "abdullah tarakhail"
    ],
    "tours": [
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "display": "Abdullah Tarakhail",
    "draft_id": 11605,
@@ -16572,7 +16646,8 @@
     "azmatullah omarzai"
    ],
    "tours": [
-    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)"
+    "Afghanistan vs Zimbabwe in UAE 2026 (T20I)",
+    "International League T20 2026"
    ],
    "display": "Azmatullah Omarzai",
    "cricinfo_id": "819429",
@@ -17795,6 +17870,599 @@
    ],
    "display": "Eddie Jack",
    "draft_id": 11808,
+   "auction_id": null
+  },
+  "uncapped:vriitya-aravind": {
+   "aliases": [
+    "vriitya aravind"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Vriitya Aravind",
+   "draft_id": 11816,
+   "auction_id": null
+  },
+  "ci:796255": {
+   "aliases": [
+    "bilal tahir"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Bilal Tahir",
+   "cricinfo_id": "796255",
+   "cricsheet_id": "3cf06094",
+   "espn_id": "796255",
+   "draft_id": 11818,
+   "auction_id": null
+  },
+  "ci:1284540": {
+   "aliases": [
+    "ishtiaq ahmad"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Ishtiaq Ahmad",
+   "cricinfo_id": "1284540",
+   "cricsheet_id": "056b433b",
+   "espn_id": "1284540",
+   "draft_id": 11824,
+   "auction_id": null
+  },
+  "ci:1460551": {
+   "aliases": [
+    "khuzaima tanveer"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Khuzaima Tanveer",
+   "cricinfo_id": "1460551",
+   "cricsheet_id": "a3690f55",
+   "espn_id": "1460551",
+   "draft_id": 11825,
+   "auction_id": null
+  },
+  "uncapped:mohammad-saleem": {
+   "aliases": [
+    "mohammad saleem"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Mohammad Saleem",
+   "draft_id": 11827,
+   "auction_id": null
+  },
+  "uncapped:nangeyalia-khan": {
+   "aliases": [
+    "nangeyalia khan"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Nangeyalia Khan",
+   "draft_id": 11829,
+   "auction_id": null
+  },
+  "ci:1241280": {
+   "aliases": [
+    "nilansh keswani"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Nilansh Keswani",
+   "cricinfo_id": "1241280",
+   "cricsheet_id": "424a7994",
+   "espn_id": "1241280",
+   "draft_id": 11831,
+   "auction_id": null
+  },
+  "ci:924007": {
+   "aliases": [
+    "sanjay pahal"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Sanjay Pahal",
+   "cricinfo_id": "924007",
+   "cricsheet_id": "2cb7d600",
+   "espn_id": "924007",
+   "draft_id": 11832,
+   "auction_id": null
+  },
+  "uncapped:faridoon-dawoodzai": {
+   "aliases": [
+    "faridoon dawoodzai"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Faridoon Dawoodzai",
+   "draft_id": 11838,
+   "auction_id": null
+  },
+  "ci:1328736": {
+   "aliases": [
+    "mohamed shafeeq"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Mohamed Shafeeq",
+   "cricinfo_id": "1328736",
+   "cricsheet_id": "ff13b10c",
+   "espn_id": "1328736",
+   "draft_id": 11843,
+   "auction_id": null
+  },
+  "uncapped:wasim-akram": {
+   "aliases": [
+    "wasim akram"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Wasim Akram",
+   "draft_id": 11852,
+   "auction_id": null
+  },
+  "ci:1284541": {
+   "aliases": [
+    "zain ul abidin"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Zain Ul Abidin",
+   "cricinfo_id": "1284541",
+   "cricsheet_id": "b93b87ae",
+   "espn_id": "1284541",
+   "draft_id": 11855,
+   "auction_id": null
+  },
+  "ci:1212829": {
+   "aliases": [
+    "ali naseer"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Ali Naseer",
+   "cricinfo_id": "1212829",
+   "cricsheet_id": "f5715b48",
+   "espn_id": "1212829",
+   "draft_id": 11856,
+   "auction_id": null
+  },
+  "uncapped:fareed-malikzai": {
+   "aliases": [
+    "fareed malikzai"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Fareed Malikzai",
+   "draft_id": 11859,
+   "auction_id": null
+  },
+  "uncapped:junaid-siddique": {
+   "aliases": [
+    "junaid siddique"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Junaid Siddique",
+   "draft_id": 11861,
+   "auction_id": null
+  },
+  "ci:1344841": {
+   "aliases": [
+    "muhammad saqib"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Muhammad Saqib",
+   "cricinfo_id": "1344841",
+   "cricsheet_id": "9d6644a0",
+   "espn_id": "1344841",
+   "draft_id": 11866,
+   "auction_id": null
+  },
+  "uncapped:sharafuddin-ashraf": {
+   "aliases": [
+    "sharafuddin ashraf"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Sharafuddin Ashraf",
+   "draft_id": 11870,
+   "auction_id": null
+  },
+  "uncapped:tanish-suri": {
+   "aliases": [
+    "tanish suri"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Tanish Suri",
+   "draft_id": 11872,
+   "auction_id": null
+  },
+  "ci:1046637": {
+   "aliases": [
+    "awais ahmed"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Awais Ahmed",
+   "cricinfo_id": "1046637",
+   "cricsheet_id": "f9f857dc",
+   "espn_id": "1046637",
+   "draft_id": 11878,
+   "auction_id": null
+  },
+  "ci:1167770": {
+   "aliases": [
+    "meet bhavsar"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Meet Bhavsar",
+   "cricinfo_id": "1167770",
+   "cricsheet_id": "b25a3800",
+   "espn_id": "1167770",
+   "draft_id": 11880,
+   "auction_id": null
+  },
+  "ci:1511714": {
+   "aliases": [
+    "haider razzaq"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Haider Razzaq",
+   "cricinfo_id": "1511714",
+   "cricsheet_id": "695b4273",
+   "espn_id": "1511714",
+   "draft_id": 11882,
+   "auction_id": null
+  },
+  "uncapped:imran-mir": {
+   "aliases": [
+    "imran mir"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Imran Mir",
+   "draft_id": 11884,
+   "auction_id": null
+  },
+  "ci:1482497": {
+   "aliases": [
+    "imtiaz khan"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Imtiaz Khan",
+   "cricinfo_id": "1482497",
+   "cricsheet_id": "1500d104",
+   "espn_id": "1482497",
+   "draft_id": 11885,
+   "auction_id": null
+  },
+  "ci:1414159": {
+   "aliases": [
+    "sagar kalyan"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Sagar Kalyan",
+   "cricinfo_id": "1414159",
+   "cricsheet_id": "e6ce0f4a",
+   "espn_id": "1414159",
+   "draft_id": 11888,
+   "auction_id": null
+  },
+  "ci:1241201": {
+   "aliases": [
+    "matiullah khan"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Matiullah Khan",
+   "cricinfo_id": "1241201",
+   "cricsheet_id": "083e01d9",
+   "espn_id": "1241201",
+   "draft_id": 11891,
+   "auction_id": null
+  },
+  "ci:1294144": {
+   "aliases": [
+    "dhruv parashar"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Dhruv Parashar",
+   "cricinfo_id": "1294144",
+   "cricsheet_id": "395179e8",
+   "espn_id": "1294144",
+   "draft_id": 11894,
+   "auction_id": null
+  },
+  "ci:379145": {
+   "aliases": [
+    "tabraiz shamsi"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Tabraiz Shamsi",
+   "cricinfo_id": "379145",
+   "cricsheet_id": "a03bba42",
+   "espn_id": "379145",
+   "draft_id": 11897,
+   "auction_id": null
+  },
+  "ci:1411737": {
+   "aliases": [
+    "wahidullah zadran"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Wahidullah Zadran",
+   "cricinfo_id": "1411737",
+   "cricsheet_id": "c6cc27f4",
+   "espn_id": "1411737",
+   "draft_id": 11898,
+   "auction_id": null
+  },
+  "ci:1241265": {
+   "aliases": [
+    "aayan afzal khan"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Aayan Afzal Khan",
+   "cricinfo_id": "1241265",
+   "cricsheet_id": "d2d15439",
+   "espn_id": "1241265",
+   "draft_id": 11900,
+   "auction_id": null
+  },
+  "ci:1480306": {
+   "aliases": [
+    "anudeep chenthamara"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Anudeep Chenthamara",
+   "cricinfo_id": "1480306",
+   "cricsheet_id": "e7e14ecc",
+   "espn_id": "1480306",
+   "draft_id": 11902,
+   "auction_id": null
+  },
+  "uncapped:darwish-rasooli": {
+   "aliases": [
+    "darwish rasooli"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Darwish Rasooli",
+   "draft_id": 11903,
+   "auction_id": null
+  },
+  "ci:793467": {
+   "aliases": [
+    "karim janat"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Karim Janat",
+   "cricinfo_id": "793467",
+   "cricsheet_id": "62175638",
+   "espn_id": "793467",
+   "draft_id": 11908,
+   "auction_id": null
+  },
+  "uncapped:masood-gurbaz": {
+   "aliases": [
+    "masood gurbaz"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Masood Gurbaz",
+   "draft_id": 11909,
+   "auction_id": null
+  },
+  "ci:1106613": {
+   "aliases": [
+    "muhammad arfan"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Muhammad Arfan",
+   "cricinfo_id": "1106613",
+   "cricsheet_id": "1294ee6d",
+   "espn_id": "1106613",
+   "draft_id": 11911,
+   "auction_id": null
+  },
+  "ci:1344844": {
+   "aliases": [
+    "usman najeeb"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Usman Najeeb",
+   "cricinfo_id": "1344844",
+   "cricsheet_id": "615688b6",
+   "espn_id": "1344844",
+   "draft_id": 11920,
+   "auction_id": null
+  },
+  "ci:1486141": {
+   "aliases": [
+    "muhammad zuhaib"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Muhammad Zuhaib",
+   "cricinfo_id": "1486141",
+   "cricsheet_id": "8f75193e",
+   "espn_id": "1486141",
+   "draft_id": 11922,
+   "auction_id": null
+  },
+  "ci:1511696": {
+   "aliases": [
+    "ajay kumar"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Ajay Kumar",
+   "cricinfo_id": "1511696",
+   "cricsheet_id": "c80b4969",
+   "espn_id": "1511696",
+   "draft_id": 11924,
+   "auction_id": null
+  },
+  "ci:1361613": {
+   "aliases": [
+    "arab gul"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Arab Gul",
+   "cricinfo_id": "1361613",
+   "cricsheet_id": "aed2b202",
+   "espn_id": "1361613",
+   "draft_id": 11927,
+   "auction_id": null
+  },
+  "uncapped:ibrar-ahmed": {
+   "aliases": [
+    "ibrar ahmed"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Ibrar Ahmed",
+   "draft_id": 11932,
+   "auction_id": null
+  },
+  "ci:1369884": {
+   "aliases": [
+    "manan ali"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Manan Ali",
+   "cricinfo_id": "1369884",
+   "cricsheet_id": "d0b643e1",
+   "espn_id": "1369884",
+   "draft_id": 11933,
+   "auction_id": null
+  },
+  "ci:1410354": {
+   "aliases": [
+    "muhammad rohid"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Muhammad Rohid",
+   "cricinfo_id": "1410354",
+   "cricsheet_id": "9103ecdb",
+   "espn_id": "1410354",
+   "draft_id": 11934,
+   "auction_id": null
+  },
+  "ci:1500761": {
+   "aliases": [
+    "jakeem javier pollard",
+    "jakeem pollard",
+    "jj pollard"
+   ],
+   "tours": [
+    "Caribbean Premier League 2026",
+    "International League T20 2026"
+   ],
+   "display": "Jakeem Pollard",
+   "draft_id": 10764,
+   "auction_id": null,
+   "cricinfo_id": "1500761",
+   "cricsheet_id": null,
+   "espn_id": "1500761",
+   "cricbuzz_id": "1467524",
+   "cricbuzz_tier": 1
+  },
+  "ci:914171": {
+   "aliases": [
+    "qais ahmad"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Qais Ahmad",
+   "cricinfo_id": "914171",
+   "cricsheet_id": "8d5d991e",
+   "espn_id": "914171",
+   "draft_id": 11939,
+   "auction_id": null
+  },
+  "uncapped:ravija-sandaruwan": {
+   "aliases": [
+    "ravija sandaruwan"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Ravija Sandaruwan",
+   "draft_id": 11940,
+   "auction_id": null
+  },
+  "ci:1161038": {
+   "aliases": [
+    "alishan sharafu"
+   ],
+   "tours": [
+    "International League T20 2026"
+   ],
+   "display": "Alishan Sharafu",
+   "cricinfo_id": "1161038",
+   "cricsheet_id": "06cad4f0",
+   "espn_id": "1161038",
+   "draft_id": 11941,
    "auction_id": null
   }
  }
