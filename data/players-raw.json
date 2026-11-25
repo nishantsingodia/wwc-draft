@@ -14461,7 +14461,7 @@
     "squad_number": 9,
     "team_code": "MTBAN",
     "efppm": 45.0,
-    "pid": "uncapped:najmul-hossain-shanto"
+    "pid": "ci:629058"
   },
   {
     "id": 11326,
@@ -20652,5 +20652,305 @@
     "team_code": "MTABU",
     "efppm": 45.0,
     "pid": "ci:1333415"
+  },
+  {
+    "id": 11945,
+    "name": "Keshav Maharaj",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 1,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:267724"
+  },
+  {
+    "id": 11946,
+    "name": "Corbin Bosch",
+    "country": "South Africa",
+    "role": "AR",
+    "squad_number": 2,
+    "team_code": "MOSOU2",
+    "efppm": 50.0,
+    "pid": "ci:594322"
+  },
+  {
+    "id": 11947,
+    "name": "Dewald Brevis",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:1070665"
+  },
+  {
+    "id": 11948,
+    "name": "Gerald Coetzee",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 4,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "uncapped:gerald-coetzee"
+  },
+  {
+    "id": 11949,
+    "name": "Quinton de Kock",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:379143"
+  },
+  {
+    "id": 11950,
+    "name": "Tony de Zorzi",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 6,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:697183"
+  },
+  {
+    "id": 11951,
+    "name": "Bjorn Fortuin",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 7,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:553249"
+  },
+  {
+    "id": 11952,
+    "name": "Jordan Hermann",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:1255248"
+  },
+  {
+    "id": 11953,
+    "name": "Duan Jansen",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 9,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:595954"
+  },
+  {
+    "id": 11954,
+    "name": "Nqobani Mokoena",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:1414819"
+  },
+  {
+    "id": 11955,
+    "name": "Lungi Ngidi",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:542023"
+  },
+  {
+    "id": 11956,
+    "name": "Anrich Nortje",
+    "country": "South Africa",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:481979"
+  },
+  {
+    "id": 11957,
+    "name": "Lhuan-dre Pretorius",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:1385640"
+  },
+  {
+    "id": 11958,
+    "name": "Sinethemba Qeshile",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 14,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:952207"
+  },
+  {
+    "id": 11959,
+    "name": "Tristan Stubbs",
+    "country": "South Africa",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MOSOU2",
+    "efppm": 45.0,
+    "pid": "ci:595978"
+  },
+  {
+    "id": 11960,
+    "name": "Litton Das",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 1,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:536936"
+  },
+  {
+    "id": 11961,
+    "name": "Towhid Hridoy",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 2,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:990031"
+  },
+  {
+    "id": 11962,
+    "name": "Jaker Ali",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 3,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:824541"
+  },
+  {
+    "id": 11963,
+    "name": "Mehidy Hasan Miraz",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 4,
+    "team_code": "MOBAN",
+    "efppm": 50.0,
+    "pid": "ci:629063"
+  },
+  {
+    "id": 11964,
+    "name": "Mohammad Naim",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 5,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:990081"
+  },
+  {
+    "id": 11965,
+    "name": "Mustafizur Rahman",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 6,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:330902"
+  },
+  {
+    "id": 11966,
+    "name": "Najmul Hossain Shanto",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 7,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:629058"
+  },
+  {
+    "id": 11967,
+    "name": "Parvez Hossain Emon",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 8,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:1139511"
+  },
+  {
+    "id": 11968,
+    "name": "Rishad Hossain",
+    "country": "Bangladesh",
+    "role": "AR",
+    "squad_number": 9,
+    "team_code": "MOBAN",
+    "efppm": 50.0,
+    "pid": "ci:1139523"
+  },
+  {
+    "id": 11969,
+    "name": "Shoriful Islam",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 10,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:990039"
+  },
+  {
+    "id": 11970,
+    "name": "Khaled Ahmed",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 11,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:927619"
+  },
+  {
+    "id": 11971,
+    "name": "Tanvir Islam",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 12,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:932665"
+  },
+  {
+    "id": 11972,
+    "name": "Tanzid Hasan",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 13,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:990023"
+  },
+  {
+    "id": 11973,
+    "name": "Taskin Ahmed",
+    "country": "Bangladesh",
+    "role": "BOWL",
+    "squad_number": 14,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:538506"
+  },
+  {
+    "id": 11974,
+    "name": "Yasir Ali",
+    "country": "Bangladesh",
+    "role": "BAT",
+    "squad_number": 15,
+    "team_code": "MOBAN",
+    "efppm": 45.0,
+    "pid": "ci:629059"
   }
 ]

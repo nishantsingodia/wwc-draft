@@ -510,5 +510,13 @@
   "MTABU": {
     "flag": "🏏",
     "name": "Abu Dhabi Knight Riders"
+  },
+  "MOSOU2": {
+    "flag": "🇿🇦",
+    "name": "South Africa"
+  },
+  "MOBAN": {
+    "flag": "🇧🇩",
+    "name": "Bangladesh"
   }
 }

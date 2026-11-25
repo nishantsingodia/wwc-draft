@@ -4279,5 +4279,38 @@
     "date": "2026-12-14T20:00:00+05:30",
     "format": "T20",
     "tour": "international-league-t20-2026"
+  },
+  {
+    "matchNum": 424,
+    "key": "AUTO_M_SOU_BAN_ODI1_Dec01",
+    "gender": "M",
+    "team1": "MOSOU2",
+    "team2": "MOBAN",
+    "label": "1st ODI: SOU v BAN",
+    "date": "2026-12-01T17:00:00+05:30",
+    "format": "ODI",
+    "tour": "bangladesh-tour-of-south-africa-2026-odi"
+  },
+  {
+    "matchNum": 425,
+    "key": "AUTO_M_SOU_BAN_ODI2_Dec04",
+    "gender": "M",
+    "team1": "MOSOU2",
+    "team2": "MOBAN",
+    "label": "2nd ODI: SOU v BAN",
+    "date": "2026-12-04T17:00:00+05:30",
+    "format": "ODI",
+    "tour": "bangladesh-tour-of-south-africa-2026-odi"
+  },
+  {
+    "matchNum": 426,
+    "key": "AUTO_M_SOU_BAN_ODI3_Dec07",
+    "gender": "M",
+    "team1": "MOSOU2",
+    "team2": "MOBAN",
+    "label": "3rd ODI: SOU v BAN",
+    "date": "2026-12-07T17:00:00+05:30",
+    "format": "ODI",
+    "tour": "bangladesh-tour-of-south-africa-2026-odi"
   }
 ]

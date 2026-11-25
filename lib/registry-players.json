@@ -1,6 +1,6 @@
 {
  "anchor": "cricinfo_id (ci:); cs:/uncapped: fallback; cricsheet_id derived from crosswalk",
- "count": 1132,
+ "count": 1137,
  "players": {
   "ci:597806": {
    "aliases": [
@@ -209,7 +209,9 @@
    "espn_id": "960715",
    "display": "Yastika Bhatia",
    "draft_id": 1640,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "16209",
+   "cricbuzz_tier": 1
   },
   "ci:961179": {
    "aliases": [
@@ -363,7 +365,9 @@
    "espn_id": "381311",
    "display": "Tahlia McGrath",
    "draft_id": 2483,
-   "auction_id": 2483
+   "auction_id": 2483,
+   "cricbuzz_id": "11956",
+   "cricbuzz_tier": 1
   },
   "ci:858809": {
    "aliases": [
@@ -489,7 +493,9 @@
    "espn_id": "420314",
    "display": "Megan Schutt",
    "draft_id": 854,
-   "auction_id": 854
+   "auction_id": 854,
+   "cricbuzz_id": "9108",
+   "cricbuzz_tier": 1
   },
   "ci:381268": {
    "aliases": [
@@ -664,7 +670,9 @@
    "espn_id": "358259",
    "display": "Heather Knight",
    "draft_id": 838,
-   "auction_id": 838
+   "auction_id": 838,
+   "cricbuzz_id": "9138",
+   "cricbuzz_tier": 1
   },
   "ci:515874": {
    "aliases": [
@@ -985,7 +993,9 @@
    "espn_id": "453370",
    "display": "Chloe Tryon",
    "draft_id": 1255,
-   "auction_id": 1255
+   "auction_id": 1255,
+   "cricbuzz_id": "9192",
+   "cricbuzz_tier": 1
   },
   "ci:499254": {
    "aliases": [
@@ -1222,7 +1232,9 @@
    "espn_id": "438265",
    "display": "Maddy Green",
    "draft_id": 830,
-   "auction_id": 830
+   "auction_id": 830,
+   "cricbuzz_id": "9996",
+   "cricbuzz_tier": 1
   },
   "ci:1294098": {
    "aliases": [
@@ -1906,7 +1918,9 @@
    "espn_id": "318853",
    "display": "Chamari Athapaththu",
    "draft_id": 858,
-   "auction_id": 858
+   "auction_id": 858,
+   "cricbuzz_id": "9149",
+   "cricbuzz_tier": 1
   },
   "ci:1290105": {
    "aliases": [
@@ -3084,7 +3098,9 @@
    "espn_id": "662235",
    "display": "Josh Inglis",
    "draft_id": 10002,
-   "auction_id": 578
+   "auction_id": 578,
+   "cricbuzz_id": "10637",
+   "cricbuzz_tier": 1
   },
   "ci:1210488": {
    "aliases": [
@@ -3102,7 +3118,9 @@
    "espn_id": "1210488",
    "display": "Cooper Connolly",
    "draft_id": 10003,
-   "auction_id": 2913
+   "auction_id": 2913,
+   "cricbuzz_id": "15927",
+   "cricbuzz_tier": 1
   },
   "ci:722303": {
    "aliases": [
@@ -3120,7 +3138,9 @@
    "espn_id": "722303",
    "display": "Matt Renshaw",
    "draft_id": 10004,
-   "auction_id": 4845
+   "auction_id": 4845,
+   "cricbuzz_id": "10055",
+   "cricbuzz_tier": 1
   },
   "ci:892749": {
    "aliases": [
@@ -3235,7 +3255,9 @@
    "espn_id": "1123718",
    "display": "Spencer Johnson",
    "draft_id": 10010,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "13143",
+   "cricbuzz_tier": 1
   },
   "ci:379504": {
    "aliases": [
@@ -3273,7 +3295,9 @@
    "espn_id": "1076713",
    "display": "Cameron Green",
    "draft_id": 10012,
-   "auction_id": 541
+   "auction_id": 541,
+   "cricbuzz_id": "12225",
+   "cricbuzz_tier": 1
   },
   "ci:1124283": {
    "aliases": [
@@ -3343,7 +3367,8 @@
    ],
    "tours": [
     "Australia tour of Bangladesh 2026 (Men T20I)",
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "990023",
    "cricsheet_id": "80fe764d",
@@ -3389,7 +3414,8 @@
    ],
    "tours": [
     "Australia tour of Bangladesh 2026 (Men T20I)",
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "1139511",
    "cricsheet_id": "489aaf0a",
@@ -3405,7 +3431,8 @@
    ],
    "tours": [
     "Australia tour of Bangladesh 2026 (Men T20I)",
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "990031",
    "cricsheet_id": "9e52a414",
@@ -3453,7 +3480,8 @@
    ],
    "tours": [
     "Australia tour of Bangladesh 2026 (Men T20I)",
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "1139523",
    "cricsheet_id": "5935d694",
@@ -3469,7 +3497,8 @@
    ],
    "tours": [
     "Australia tour of Bangladesh 2026 (Men T20I)",
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "990039",
    "cricsheet_id": "bb34fd31",
@@ -3500,7 +3529,8 @@
     "Australia tour of Bangladesh 2026 (Men T20I)",
     "The Hundred Men's Competition 2026",
     "Asian Games 2026",
-    "International League T20 2026"
+    "International League T20 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "330902",
    "cricsheet_id": "0a8fce53",
@@ -3517,7 +3547,8 @@
    "tours": [
     "Australia tour of Bangladesh 2026 (Men T20I)",
     "Lanka Premier League 2026",
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "536936",
    "cricsheet_id": "0404d43c",
@@ -3532,7 +3563,8 @@
    ],
    "tours": [
     "Australia tour of Bangladesh 2026 (Men T20I)",
-    "Lanka Premier League 2026"
+    "Lanka Premier League 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "538506",
    "cricsheet_id": "ef18b66e",
@@ -3616,7 +3648,8 @@
    "tours": [
     "Major League Cricket 2026",
     "Caribbean Premier League 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "379143",
    "cricsheet_id": "372455c4",
@@ -3703,7 +3736,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "594322",
    "cricsheet_id": "172dff15",
@@ -4135,7 +4169,9 @@
    "espn_id": "1088610",
    "display": "Jack Edwards",
    "draft_id": 10064,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "13348",
+   "cricbuzz_tier": 1
   },
   "ci:429748": {
    "aliases": [
@@ -4330,7 +4366,8 @@
    "tours": [
     "Major League Cricket 2026",
     "European T20 Premier League 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "267724",
    "cricsheet_id": "0b60eb09",
@@ -4530,7 +4567,8 @@
    "tours": [
     "Major League Cricket 2026",
     "The Hundred Men's Competition 2026",
-    "Namibia T20I Tri-Series 2026"
+    "Namibia T20I Tri-Series 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "1385640",
    "cricsheet_id": "60aa2db3",
@@ -5233,7 +5271,8 @@
    ],
    "tours": [
     "Major League Cricket 2026",
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "481979",
    "cricsheet_id": "acdc62f5",
@@ -8305,7 +8344,8 @@
     "mehidy hasan miraz"
    ],
    "tours": [
-    "Lanka Premier League 2026"
+    "Lanka Premier League 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "629063",
    "cricsheet_id": "c58b0108",
@@ -9146,7 +9186,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "595978",
    "cricsheet_id": "85b3fab2",
@@ -9453,7 +9494,8 @@
    ],
    "tours": [
     "The Hundred Men's Competition 2026",
-    "Namibia T20I Tri-Series 2026"
+    "Namibia T20I Tri-Series 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "cricinfo_id": "1070665",
    "cricsheet_id": "844e79d1",
@@ -13743,7 +13785,8 @@
     "lungisani true man ngidi"
    ],
    "tours": [
-    "European T20 Premier League 2026"
+    "European T20 Premier League 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "display": "Lungi Ngidi",
    "cricinfo_id": "542023",
@@ -14453,7 +14496,8 @@
    ],
    "tours": [
     "Namibia T20I Tri-Series 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "display": "Bjorn Fortuin",
    "cricinfo_id": "553249",
@@ -14486,7 +14530,8 @@
    ],
    "tours": [
     "Namibia T20I Tri-Series 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "display": "Tony de Zorzi",
    "cricinfo_id": "697183",
@@ -14502,7 +14547,8 @@
     "jordan hermann"
    ],
    "tours": [
-    "Namibia T20I Tri-Series 2026"
+    "Namibia T20I Tri-Series 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "display": "Jordan Hermann",
    "cricinfo_id": "1255248",
@@ -14519,7 +14565,8 @@
    ],
    "tours": [
     "Namibia T20I Tri-Series 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "display": "Duan Jansen",
    "cricinfo_id": "595954",
@@ -14554,7 +14601,8 @@
    ],
    "tours": [
     "Namibia T20I Tri-Series 2026",
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "display": "Nqobani Mokoena",
    "cricinfo_id": "1414819",
@@ -14708,7 +14756,9 @@
    "cricsheet_id": "36e2dc83",
    "espn_id": "951163",
    "draft_id": 10982,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "12047",
+   "cricbuzz_tier": 1
   },
   "ci:1268282": {
    "aliases": [
@@ -14768,7 +14818,9 @@
    "cricsheet_id": "36453b99",
    "espn_id": "1201476",
    "draft_id": 10990,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "15698",
+   "cricbuzz_tier": 1
   },
   "uncapped:brianna-harricharan": {
    "aliases": [
@@ -14872,7 +14924,9 @@
    "cricsheet_id": "2e0b6638",
    "espn_id": "275447",
    "draft_id": 11005,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "12029",
+   "cricbuzz_tier": 1
   },
   "uncapped:tilleya-madramootoo": {
    "aliases": [
@@ -15071,7 +15125,8 @@
     "gerald coetzee"
    ],
    "tours": [
-    "Australia tour of South Africa 2026/27 (ODI)"
+    "Australia tour of South Africa 2026/27 (ODI)",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "display": "Gerald Coetzee",
    "draft_id": 11092,
@@ -16157,23 +16212,13 @@
    "draft_id": 11322,
    "auction_id": null
   },
-  "uncapped:najmul-hossain-shanto": {
-   "aliases": [
-    "najmul hossain shanto"
-   ],
-   "tours": [
-    "Asian Games 2026"
-   ],
-   "display": "Najmul Hossain Shanto",
-   "draft_id": 11325,
-   "auction_id": null
-  },
   "ci:629059": {
    "aliases": [
     "yasir ali"
    ],
    "tours": [
-    "Asian Games 2026"
+    "Asian Games 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
    ],
    "display": "Yasir Ali",
    "cricinfo_id": "629059",
@@ -16749,7 +16794,9 @@
    "auction_id": null,
    "cricinfo_id": "1074185",
    "cricsheet_id": "9a56c670",
-   "espn_id": "1074185"
+   "espn_id": "1074185",
+   "cricbuzz_id": "13285",
+   "cricbuzz_tier": 1
   },
   "ci:1201479": {
    "aliases": [
@@ -16778,7 +16825,9 @@
    "auction_id": null,
    "cricinfo_id": "1351911",
    "cricsheet_id": "99dc3877",
-   "espn_id": "1351911"
+   "espn_id": "1351911",
+   "cricbuzz_id": "38741",
+   "cricbuzz_tier": 1
   },
   "ci:1351915": {
    "aliases": [
@@ -16835,7 +16884,9 @@
    "auction_id": null,
    "cricinfo_id": "1071711",
    "cricsheet_id": "ef70a34b",
-   "espn_id": "1071711"
+   "espn_id": "1071711",
+   "cricbuzz_id": "13293",
+   "cricbuzz_tier": 1
   },
   "ci:1123362": {
    "aliases": [
@@ -16850,7 +16901,9 @@
    "auction_id": null,
    "cricinfo_id": "1123362",
    "cricsheet_id": "1f4a8a2a",
-   "espn_id": "1123362"
+   "espn_id": "1123362",
+   "cricbuzz_id": "14361",
+   "cricbuzz_tier": 1
   },
   "ci:1302181": {
    "aliases": [
@@ -16880,7 +16933,9 @@
    "auction_id": null,
    "cricinfo_id": "381263",
    "cricsheet_id": "47bcaf7a",
-   "espn_id": "381263"
+   "espn_id": "381263",
+   "cricbuzz_id": "12024",
+   "cricbuzz_tier": 1
   },
   "ci:1128781": {
    "aliases": [
@@ -16895,7 +16950,9 @@
    "auction_id": null,
    "cricinfo_id": "1128781",
    "cricsheet_id": "50b558d2",
-   "espn_id": "1128781"
+   "espn_id": "1128781",
+   "cricbuzz_id": "13296",
+   "cricbuzz_tier": 1
   },
   "ci:1427047": {
    "aliases": [
@@ -16952,7 +17009,9 @@
    "auction_id": null,
    "cricinfo_id": "1231570",
    "cricsheet_id": "1757bedf",
-   "espn_id": "1231570"
+   "espn_id": "1231570",
+   "cricbuzz_id": "18489",
+   "cricbuzz_tier": 1
   },
   "ci:1142969": {
    "aliases": [
@@ -16967,7 +17026,9 @@
    "auction_id": null,
    "cricinfo_id": "1142969",
    "cricsheet_id": "32100b2d",
-   "espn_id": "1142969"
+   "espn_id": "1142969",
+   "cricbuzz_id": "14448",
+   "cricbuzz_tier": 1
   },
   "ci:1184973": {
    "aliases": [
@@ -16982,7 +17043,9 @@
    "auction_id": null,
    "cricinfo_id": "1184973",
    "cricsheet_id": "c3d27d76",
-   "espn_id": "1184973"
+   "espn_id": "1184973",
+   "cricbuzz_id": "18455",
+   "cricbuzz_tier": 1
   },
   "ci:947807": {
    "aliases": [
@@ -17027,7 +17090,9 @@
    "auction_id": null,
    "cricinfo_id": "1282067",
    "cricsheet_id": "f7e41cd8",
-   "espn_id": "1282067"
+   "espn_id": "1282067",
+   "cricbuzz_id": "20631",
+   "cricbuzz_tier": 1
   },
   "ci:792417": {
    "aliases": [
@@ -17041,7 +17106,9 @@
    "auction_id": null,
    "cricinfo_id": "792417",
    "cricsheet_id": "c218e4e7",
-   "espn_id": "792417"
+   "espn_id": "792417",
+   "cricbuzz_id": "12048",
+   "cricbuzz_tier": 1
   },
   "ci:592588": {
    "aliases": [
@@ -17070,7 +17137,9 @@
    "auction_id": null,
    "cricinfo_id": "1282061",
    "cricsheet_id": "3cd107a7",
-   "espn_id": "1282061"
+   "espn_id": "1282061",
+   "cricbuzz_id": "20663",
+   "cricbuzz_tier": 1
   },
   "ci:1351913": {
    "aliases": [
@@ -17099,7 +17168,9 @@
    "auction_id": null,
    "cricinfo_id": "1142973",
    "cricsheet_id": "2bfc7199",
-   "espn_id": "1142973"
+   "espn_id": "1142973",
+   "cricbuzz_id": "14422",
+   "cricbuzz_tier": 1
   },
   "ci:788623": {
    "aliases": [
@@ -17113,7 +17184,9 @@
    "auction_id": null,
    "cricinfo_id": "788623",
    "cricsheet_id": "9c515112",
-   "espn_id": "788623"
+   "espn_id": "788623",
+   "cricbuzz_id": "11995",
+   "cricbuzz_tier": 1
   },
   "ci:382231": {
    "aliases": [
@@ -17127,7 +17200,9 @@
    "auction_id": null,
    "cricinfo_id": "382231",
    "cricsheet_id": "f57d5dbb",
-   "espn_id": "382231"
+   "espn_id": "382231",
+   "cricbuzz_id": "12054",
+   "cricbuzz_tier": 1
   },
   "ci:1065982": {
    "aliases": [
@@ -17141,7 +17216,9 @@
    "auction_id": null,
    "cricinfo_id": "1065982",
    "cricsheet_id": "877dd709",
-   "espn_id": "1065982"
+   "espn_id": "1065982",
+   "cricbuzz_id": "13297",
+   "cricbuzz_tier": 1
   },
   "ci:1453529": {
    "aliases": [
@@ -17155,7 +17232,9 @@
    "auction_id": null,
    "cricinfo_id": "1453529",
    "cricsheet_id": "b7d7164e",
-   "espn_id": "1453529"
+   "espn_id": "1453529",
+   "cricbuzz_id": "1431667",
+   "cricbuzz_tier": 1
   },
   "ci:1454734": {
    "aliases": [
@@ -17185,7 +17264,9 @@
    "auction_id": null,
    "cricinfo_id": "1351910",
    "cricsheet_id": "803af9e0",
-   "espn_id": "1351910"
+   "espn_id": "1351910",
+   "cricbuzz_id": "38734",
+   "cricbuzz_tier": 1
   },
   "ci:1164537": {
    "aliases": [
@@ -17221,7 +17302,9 @@
    "espn_id": "1128748",
    "cricinfo_alt": [
     "1173523"
-   ]
+   ],
+   "cricbuzz_id": "13290",
+   "cricbuzz_tier": 1
   },
   "ci:1303894": {
    "aliases": [
@@ -17250,7 +17333,9 @@
    "auction_id": null,
    "cricinfo_id": "381197",
    "cricsheet_id": "324b9eee",
-   "espn_id": "381197"
+   "espn_id": "381197",
+   "cricbuzz_id": "12050",
+   "cricbuzz_tier": 1
   },
   "ci:1452796": {
    "aliases": [
@@ -17278,7 +17363,9 @@
    "auction_id": null,
    "cricinfo_id": "1454764",
    "cricsheet_id": "b54cc792",
-   "espn_id": "1454764"
+   "espn_id": "1454764",
+   "cricbuzz_id": "1432313",
+   "cricbuzz_tier": 1
   },
   "ci:858811": {
    "aliases": [
@@ -17293,7 +17380,9 @@
    "auction_id": null,
    "cricinfo_id": "858811",
    "cricsheet_id": "275dff85",
-   "espn_id": "858811"
+   "espn_id": "858811",
+   "cricbuzz_id": "11100",
+   "cricbuzz_tier": 1
   },
   "ci:1354671": {
    "aliases": [
@@ -17321,7 +17410,9 @@
    "auction_id": null,
    "cricinfo_id": "1167399",
    "cricsheet_id": "c2ac0db5",
-   "espn_id": "1167399"
+   "espn_id": "1167399",
+   "cricbuzz_id": "15645",
+   "cricbuzz_tier": 1
   },
   "ci:1201485": {
    "aliases": [
@@ -17335,7 +17426,9 @@
    "auction_id": null,
    "cricinfo_id": "1201485",
    "cricsheet_id": "5b8826e0",
-   "espn_id": "1201485"
+   "espn_id": "1201485",
+   "cricbuzz_id": "51651",
+   "cricbuzz_tier": 1
   },
   "ci:1249772": {
    "aliases": [
@@ -17350,7 +17443,9 @@
    "auction_id": null,
    "cricinfo_id": "1249772",
    "cricsheet_id": "3785e30d",
-   "espn_id": "1249772"
+   "espn_id": "1249772",
+   "cricbuzz_id": "21148",
+   "cricbuzz_tier": 1
   },
   "ci:1351912": {
    "aliases": [
@@ -17364,7 +17459,9 @@
    "auction_id": null,
    "cricinfo_id": "1351912",
    "cricsheet_id": "2433382a",
-   "espn_id": "1351912"
+   "espn_id": "1351912",
+   "cricbuzz_id": "38748",
+   "cricbuzz_tier": 1
   },
   "ci:922493": {
    "aliases": [
@@ -17394,7 +17491,9 @@
    "auction_id": null,
    "cricinfo_id": "381308",
    "cricsheet_id": "7dfbcfff",
-   "espn_id": "381308"
+   "espn_id": "381308",
+   "cricbuzz_id": "12019",
+   "cricbuzz_tier": 1
   },
   "ci:381305": {
    "aliases": [
@@ -17408,7 +17507,9 @@
    "auction_id": null,
    "cricinfo_id": "381305",
    "cricsheet_id": "9b3bcca4",
-   "espn_id": "381305"
+   "espn_id": "381305",
+   "cricbuzz_id": "11957",
+   "cricbuzz_tier": 1
   },
   "ci:1350560": {
    "aliases": [
@@ -17423,7 +17524,9 @@
    "auction_id": null,
    "cricinfo_id": "1350560",
    "cricsheet_id": "4b69c598",
-   "espn_id": "1350560"
+   "espn_id": "1350560",
+   "cricbuzz_id": "38708",
+   "cricbuzz_tier": 1
   },
   "ci:1160200": {
    "aliases": [
@@ -17438,7 +17541,9 @@
    "auction_id": null,
    "cricinfo_id": "1160200",
    "cricsheet_id": "795ff893",
-   "espn_id": "1160200"
+   "espn_id": "1160200",
+   "cricbuzz_id": "20633",
+   "cricbuzz_tier": 1
   },
   "ci:944419": {
    "aliases": [
@@ -17453,7 +17558,9 @@
    "auction_id": null,
    "cricinfo_id": "944419",
    "cricsheet_id": "3812165d",
-   "espn_id": "944419"
+   "espn_id": "944419",
+   "cricbuzz_id": "12037",
+   "cricbuzz_tier": 1
   },
   "ci:1336105": {
    "aliases": [
@@ -17482,7 +17589,9 @@
    "auction_id": null,
    "cricinfo_id": "678831",
    "cricsheet_id": "ef13bd20",
-   "espn_id": "678831"
+   "espn_id": "678831",
+   "cricbuzz_id": "12005",
+   "cricbuzz_tier": 1
   },
   "ci:338257": {
    "aliases": [
@@ -17511,7 +17620,9 @@
    "auction_id": null,
    "cricinfo_id": "1203888",
    "cricsheet_id": "c35a0b8a",
-   "espn_id": "1203888"
+   "espn_id": "1203888",
+   "cricbuzz_id": "15642",
+   "cricbuzz_tier": 1
   },
   "ci:679171": {
    "aliases": [
@@ -17539,7 +17650,9 @@
    "auction_id": null,
    "cricinfo_id": "437274",
    "cricsheet_id": "276f3dde",
-   "espn_id": "437274"
+   "espn_id": "437274",
+   "cricbuzz_id": "12014",
+   "cricbuzz_tier": 1
   },
   "ci:1454732": {
    "aliases": [
@@ -17693,7 +17806,9 @@
    "auction_id": null,
    "cricinfo_id": "1556109",
    "cricsheet_id": null,
-   "espn_id": "1556109"
+   "espn_id": "1556109",
+   "cricbuzz_id": "1480760",
+   "cricbuzz_tier": 1
   },
   "ci:1486804": {
    "aliases": [
@@ -17708,7 +17823,9 @@
    "cricsheet_id": "034e7939",
    "espn_id": "1486804",
    "draft_id": 11751,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "1454743",
+   "cricbuzz_tier": 1
   },
   "ci:374934": {
    "aliases": [
@@ -17723,7 +17840,9 @@
    "cricsheet_id": "a5f488bc",
    "espn_id": "374934",
    "draft_id": 11710,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "9104",
+   "cricbuzz_tier": 1
   },
   "ci:1171524": {
    "aliases": [
@@ -17765,7 +17884,9 @@
    "auction_id": null,
    "cricinfo_id": "1454760",
    "cricsheet_id": null,
-   "espn_id": "1454760"
+   "espn_id": "1454760",
+   "cricbuzz_id": "1432305",
+   "cricbuzz_tier": 1
   },
   "ci:388845": {
    "aliases": [
@@ -17808,7 +17929,9 @@
    "auction_id": null,
    "cricinfo_id": "1283342",
    "cricsheet_id": null,
-   "espn_id": "1283342"
+   "espn_id": "1283342",
+   "cricbuzz_id": "21311",
+   "cricbuzz_tier": 1
   },
   "ci:1393948": {
    "aliases": [
@@ -17823,7 +17946,9 @@
    "cricsheet_id": "b5a12740",
    "espn_id": "1393948",
    "draft_id": 11773,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "51665",
+   "cricbuzz_tier": 1
   },
   "ci:1076376": {
    "aliases": [
@@ -17837,7 +17962,9 @@
    "cricsheet_id": "0ebb3444",
    "espn_id": "1076376",
    "draft_id": 11783,
-   "auction_id": null
+   "auction_id": null,
+   "cricbuzz_id": "15143",
+   "cricbuzz_tier": 1
   },
   "uncapped:jake-fraser-mcgurk": {
    "aliases": [
@@ -18463,6 +18590,92 @@
    "cricsheet_id": "06cad4f0",
    "espn_id": "1161038",
    "draft_id": 11941,
+   "auction_id": null
+  },
+  "ci:952207": {
+   "aliases": [
+    "sinethemba qeshile"
+   ],
+   "tours": [
+    "Bangladesh tour of South Africa 2026 (ODI)"
+   ],
+   "display": "Sinethemba Qeshile",
+   "cricinfo_id": "952207",
+   "cricsheet_id": "94268960",
+   "espn_id": "952207",
+   "draft_id": 11958,
+   "auction_id": null
+  },
+  "ci:824541": {
+   "aliases": [
+    "jaker ali",
+    "jaker ali anik"
+   ],
+   "tours": [
+    "Bangladesh tour of South Africa 2026 (ODI)"
+   ],
+   "display": "Jaker Ali",
+   "cricinfo_id": "824541",
+   "cricsheet_id": "cd56a813",
+   "espn_id": "824541",
+   "draft_id": 11962,
+   "auction_id": null
+  },
+  "ci:990081": {
+   "aliases": [
+    "mohammad naim"
+   ],
+   "tours": [
+    "Bangladesh tour of South Africa 2026 (ODI)"
+   ],
+   "display": "Mohammad Naim",
+   "cricinfo_id": "990081",
+   "cricsheet_id": "7923a51d",
+   "espn_id": "990081",
+   "draft_id": 11964,
+   "auction_id": null
+  },
+  "ci:629058": {
+   "aliases": [
+    "najmul hossain shanto"
+   ],
+   "tours": [
+    "Asian Games 2026",
+    "Bangladesh tour of South Africa 2026 (ODI)"
+   ],
+   "display": "Najmul Hossain Shanto",
+   "draft_id": 11325,
+   "auction_id": null,
+   "cricinfo_id": "629058",
+   "cricsheet_id": "1274d7ab",
+   "espn_id": "629058"
+  },
+  "ci:927619": {
+   "aliases": [
+    "khaled ahmed"
+   ],
+   "tours": [
+    "Bangladesh tour of South Africa 2026 (ODI)"
+   ],
+   "display": "Khaled Ahmed",
+   "cricinfo_id": "927619",
+   "cricsheet_id": "5dbdecf1",
+   "espn_id": "927619",
+   "draft_id": 11970,
+   "auction_id": null
+  },
+  "ci:932665": {
+   "aliases": [
+    "tanvir islam"
+   ],
+   "tours": [
+    "Bangladesh tour of South Africa 2026 (ODI)"
+   ],
+   "display": "Tanvir Islam",
+   "cricinfo_id": "932665",
+   "cricsheet_id": "aa467af0",
+   "espn_id": "932665",
+   "draft_id": 11971,
    "auction_id": null
   }
  }
